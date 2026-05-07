@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-JY42YLKPRM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-JY42YLKPRM');
+</script>
+<meta charset="utf-8"/>
+<meta content="jqlfBshOy4vgYUb478viCuTswoIsaWL_jdOhL0srx0w" name="google-site-verification">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Light vs Medium vs Dark Roast — Which Should You Buy? | The Beans Hub</title>
+<meta content="New to coffee and confused by roast levels? Honest, no-fluff breakdown of light vs medium vs dark roast coffee — and which one to actually buy first." name="description"/>
+
+<link href="../img/thebeanshub_logo.png" rel="icon" type="image/png"/>
+<link href="https://fonts.googleapis.com/css2?family=Sigmar&amp;family=Outfit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --green: #296241; --green-light: #3a7a50;
+  --cream: #FDF6EC; --white: #FFFFFF;
+  --orange: #FDA11D; --orange-dark: #DA8A10;
+  --border: #E8E0D0; --tag-bg: #f0ebe0;
+  --text: #1a2e1f; --muted: #5a6e5a;
+}
+html { scroll-behavior: smooth; }
+body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+
+/* NAV */
+.site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 68px; background: var(--green); border-bottom: 1px solid rgba(253,161,29,0.3); }
+.nav-logo { font-family: "Sigmar", cursive; color: #FDF6EC; font-size: 1.45rem; font-weight: 700; text-decoration: none; }
+.nav-logo span { color: var(--orange); }
+.nav-links { display: flex; gap: 36px; align-items: center; }
+.nav-links a { color: rgba(253,246,236,0.75); text-decoration: none; font-size: 0.88rem; font-weight: 500; letter-spacing: 0.04em; transition: color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color: #FDF6EC; }
+.nav-links a.cta { background: var(--orange); color: white; padding: 8px 20px; border-radius: 8px; font-weight: 600; }
+.nav-links a.cta:hover { background: var(--orange-dark); }
+.nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.nav-hamburger span { display: block; width: 24px; height: 2px; background: #FDF6EC; border-radius: 2px; }
+.mobile-menu { display: none; position: fixed; top: 68px; left: 0; right: 0; background: var(--green); padding: 20px 24px; flex-direction: column; z-index: 99; border-bottom: 2px solid var(--orange); }
+.mobile-menu.open { display: flex; }
+.mobile-menu a { color: rgba(253,246,236,0.8); text-decoration: none; font-size: 1rem; font-weight: 500; padding: 14px 0; border-bottom: 1px solid rgba(253,246,236,0.15); transition: color 0.2s; }
+.mobile-menu a:last-child { border-bottom: none; }
+.mobile-menu a:hover { color: #FDF6EC; }
+
+/* POST HERO */
+.post-hero { padding: 104px 48px 56px; background: var(--green); position: relative; overflow: hidden; }
+.post-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 0%, rgba(253,161,29,0.15), transparent 55%), radial-gradient(ellipse at 10% 100%, rgba(253,161,29,0.07), transparent 50%); }
+.post-hero-inner { max-width: 800px; margin: 0 auto; position: relative; }
+.post-breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 0.75rem; color: rgba(253,246,236,0.55); margin-bottom: 20px; }
+.post-breadcrumb a { color: rgba(253,246,236,0.55); text-decoration: none; transition: color 0.2s; }
+.post-breadcrumb a:hover { color: #FDF6EC; }
+.post-breadcrumb span { color: rgba(253,246,236,0.3); }
+.post-cat-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 20px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 18px; width: fit-content; }
+.badge-guide  { background: rgba(255,255,255,0.15); color: #FDF6EC; }
+.badge-local  { background: rgba(253,161,29,0.25); color: #FDA11D; }
+.badge-recipe { background: rgba(255,100,100,0.2); color: #ffb0b0; }
+.post-hero h1 { font-family: "Sigmar", cursive; font-size: clamp(1.8rem, 4vw, 2.8rem); color: #FDF6EC; line-height: 1.2; margin-bottom: 20px; }
+.post-hero-meta { display: flex; align-items: center; gap: 12px; font-size: 0.8rem; color: rgba(253,246,236,0.6); flex-wrap: wrap; }
+.post-hero-meta-dot { width: 3px; height: 3px; background: rgba(253,246,236,0.4); border-radius: 50%; }
+.post-read-time { background: rgba(253,161,29,0.2); color: var(--orange); padding: 3px 10px; border-radius: 10px; font-weight: 600; font-size: 0.72rem; }
+
+/* PARALLAX BANNER */
+.post-banner { height: 420px; position: relative; overflow: hidden; }
+.post-banner-img {
+  position: absolute;
+  inset: -80px 0;
+  background-image: url('../img/Girl-bought-coffee-from-the-beans-hub.png');
+  background-size: cover;
+  background-position: center 30%;
+  will-change: transform;
+  transition: transform 0.05s linear;
+}
+
+/* POST BODY */
+.post-body { max-width: 800px; margin: 0 auto; padding: 56px 48px 80px; }
+
+/* TYPOGRAPHY */
+.post-body h2 { font-family: "Sigmar", cursive; font-size: 1.5rem; color: var(--green); margin: 48px 0 16px; line-height: 1.3; }
+.post-body h3 { font-family: "Outfit", sans-serif; font-size: 1.08rem; font-weight: 700; color: var(--text); margin: 28px 0 10px; }
+.post-body p { font-size: 0.97rem; line-height: 1.85; color: #2a3a2a; margin-bottom: 20px; }
+.post-body ul, .post-body ol { padding-left: 24px; margin-bottom: 20px; }
+.post-body li { font-size: 0.97rem; line-height: 1.8; color: #2a3a2a; margin-bottom: 6px; }
+.post-body strong { font-weight: 700; color: var(--text); }
+.post-body em { font-style: italic; color: var(--muted); }
+.post-body a { color: var(--green); font-weight: 600; text-decoration: underline; text-decoration-color: rgba(41,98,65,0.3); transition: color 0.2s; }
+.post-body a:hover { color: var(--orange); }
+
+/* BLOCKQUOTE */
+.post-body blockquote { border-left: 4px solid var(--orange); padding: 4px 0 4px 20px; margin: 20px 0 24px; color: var(--muted); font-size: 0.97rem; line-height: 1.8; font-style: italic; }
+
+/* CALLOUT */
+.callout { background: var(--tag-bg); border-left: 4px solid var(--orange); border-radius: 0 12px 12px 0; padding: 20px 24px; margin: 32px 0; }
+.callout p { margin: 0; font-size: 0.92rem; }
+.callout-title { font-weight: 700; color: var(--green); margin-bottom: 6px !important; font-size: 0.8rem !important; text-transform: uppercase; letter-spacing: 0.08em; }
+
+/* INFO CARD */
+.info-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 24px 28px; margin: 28px 0; }
+.info-card h4 { font-size: 0.88rem; font-weight: 700; color: var(--green); margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.08em; }
+
+/* ROAST CARDS */
+.roast-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 28px 0 36px; }
+.roast-card { border-radius: 14px; padding: 24px 20px; border: 1px solid var(--border); }
+.roast-card.light  { background: linear-gradient(135deg, #fff8ee, #fdf0d8); border-color: #e8d5a0; }
+.roast-card.medium { background: linear-gradient(135deg, #f5ebe0, #ecdcc8); border-color: #c8a87a; }
+.roast-card.dark   { background: linear-gradient(135deg, #2a1f14, #3d2b1a); color: #f5e6d0; border-color: #1a120a; }
+.roast-card-icon { font-size: 2rem; margin-bottom: 12px; }
+.roast-card-name { font-family: "Sigmar", cursive; font-size: 1.1rem; margin-bottom: 10px; }
+.roast-card.light .roast-card-name, .roast-card.medium .roast-card-name { color: var(--text); }
+.roast-card.dark  .roast-card-name { color: #f5e6d0; }
+.roast-card ul { padding-left: 18px; margin: 0; }
+.roast-card li { font-size: 0.83rem; line-height: 1.7; margin-bottom: 4px; }
+.roast-card.light li, .roast-card.medium li { color: #2a3a2a; }
+.roast-card.dark  li { color: #d5c4b0; }
+
+/* COMPARISON TABLE */
+.compare-table { width: 100%; border-collapse: collapse; margin: 28px 0; font-size: 0.88rem; }
+.compare-table thead tr { background: var(--green); color: #FDF6EC; }
+.compare-table thead th { padding: 12px 16px; text-align: left; font-weight: 600; font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; }
+.compare-table thead th:first-child { border-radius: 10px 0 0 0; }
+.compare-table thead th:last-child { border-radius: 0 10px 0 0; }
+.compare-table tbody tr { border-bottom: 1px solid var(--border); }
+.compare-table tbody tr:last-child { border-bottom: none; }
+.compare-table tbody tr:nth-child(even) { background: var(--tag-bg); }
+.compare-table tbody td { padding: 12px 16px; color: #2a3a2a; line-height: 1.6; vertical-align: top; }
+.compare-table tbody td:first-child { font-weight: 600; color: var(--green); }
+
+/* DIVIDER */
+.post-divider { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
+
+/* TAG ROW */
+.post-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 36px 0 0; }
+.post-tag { padding: 5px 14px; background: var(--tag-bg); color: var(--muted); border-radius: 20px; font-size: 0.75rem; font-weight: 500; }
+
+/* POST NAV */
+.post-nav { display: flex; justify-content: space-between; align-items: center; padding: 32px 0; border-top: 1px solid var(--border); margin-top: 48px; }
+.post-nav a { display: flex; align-items: center; gap: 8px; text-decoration: none; font-size: 0.85rem; font-weight: 600; color: var(--green); transition: color 0.2s; }
+.post-nav a:hover { color: var(--orange); }
+
+/* MORE POSTS */
+.more-posts { background: var(--cream); border-top: 1px solid var(--border); padding: 64px 48px; }
+.more-posts-inner { max-width: 1100px; margin: 0 auto; }
+.more-posts h2 { font-family: "Sigmar", cursive; font-size: 1.4rem; color: var(--text); margin-bottom: 32px; }
+.more-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.more-card { background: var(--white); border-radius: 14px; border: 1px solid var(--border); padding: 24px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 10px; transition: transform 0.2s, box-shadow 0.2s; }
+.more-card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(41,98,65,0.1); }
+.more-card-emoji { font-size: 2rem; }
+.more-card h3 { font-family: "Outfit", sans-serif; font-size: 0.92rem; font-weight: 700; color: var(--text); line-height: 1.4; }
+.more-card-meta { font-size: 0.72rem; color: var(--muted); margin-top: auto; }
+
+/* FOOTER */
+footer { background: var(--green); padding: 40px 48px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(253,161,29,0.2); }
+.footer-logo { font-family: "Sigmar", cursive; color: #FDF6EC; font-size: 1.1rem; font-weight: 700; text-decoration: none; }
+.footer-logo span { color: var(--orange); }
+.footer-links { display: flex; gap: 28px; }
+.footer-links a { color: rgba(253,246,236,0.6); text-decoration: none; font-size: 0.8rem; transition: color 0.2s; }
+.footer-links a:hover { color: #FDF6EC; }
+.footer-copy { font-size: 0.75rem; color: rgba(253,246,236,0.4); }
+
+@media (max-width: 768px) {
+  .site-nav { padding: 0 20px; }
+  .site-nav .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  .post-hero { padding: 88px 20px 40px; }
+  .post-body { padding: 40px 20px 60px; }
+  .post-banner { height: 260px; }
+  .roast-cards { grid-template-columns: 1fr; }
+  .more-posts { padding: 48px 20px; }
+  .more-grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: 20px; text-align: center; padding: 32px 20px; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+  .compare-table { font-size: 0.8rem; }
+  .compare-table thead th, .compare-table tbody td { padding: 10px 12px; }
+}
+
+    /* ── TABLE OF CONTENTS ── */
+    .post-layout {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 800px) 220px;
+      column-gap: 40px;
+      align-items: start;
+      padding: 56px 48px 80px;
+    }
+    .post-layout > .post-body {
+      max-width: none;
+      margin: 0;
+      padding: 0;
+    }
+    .toc-sidebar { display: none; }
+    @media (min-width: 1260px) {
+      .toc-sidebar {
+        display: block;
+        position: sticky;
+        top: 90px;
+        align-self: start;
+      }
+    }
+    .toc-inner {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 16px 20px;
+      overflow: hidden;
+      max-height: calc(100vh - 110px);
+      overflow-y: auto;
+      scrollbar-width: none;
+    }
+    .toc-inner::-webkit-scrollbar { display: none; }
+    .toc-title {
+      font-size: 0.62rem;
+      font-weight: 800;
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    .toc-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      min-width: 0;
+      position: static;
+      top: auto;
+      left: auto;
+      right: auto;
+      height: auto;
+      padding: 0;
+      background: transparent;
+      border: 0;
+      align-items: stretch;
+      justify-content: flex-start;
+    }
+    .toc-link {
+      display: block;
+      min-width: 0;
+      white-space: normal;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      font-size: 0.76rem;
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 6px 8px 6px 10px;
+      border-radius: 6px;
+      border-left: 2px solid transparent;
+      line-height: 1.45;
+      transition: all 0.15s;
+    }
+    .toc-link:hover {
+      color: var(--text);
+      background: var(--tag-bg);
+      border-left-color: var(--border);
+    }
+    .toc-link.active {
+      color: var(--green);
+      font-weight: 700;
+      border-left-color: var(--orange);
+      background: rgba(41, 98, 65, 0.05);
+    }
+    .toc-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 8px 0;
+    }
+
+  </style>
+</meta>
+  <link rel="canonical" href="https://www.thebeanshub.com/posts/light-vs-medium-vs-dark-roast">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Light vs Medium vs Dark Roast — Which Should You Buy? | The Beans Hub">
+  <meta property="og:description" content="New to coffee and confused by roast levels? Honest, no-fluff breakdown of light vs medium vs dark roast coffee — and which one to actually buy first.">
+  <meta property="og:url" content="https://www.thebeanshub.com/posts/light-vs-medium-vs-dark-roast">
+  <meta property="og:image" content="https://www.thebeanshub.com/img/Girl-bought-coffee-from-the-beans-hub.png">
+  <meta property="og:site_name" content="The Beans Hub">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Light vs Medium vs Dark Roast — Which Should You Buy? | The Beans Hub">
+  <meta name="twitter:description" content="New to coffee and confused by roast levels? Honest, no-fluff breakdown of light vs medium vs dark roast coffee — and which one to actually buy first.">
+  <meta name="twitter:image" content="https://www.thebeanshub.com/img/Girl-bought-coffee-from-the-beans-hub.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.thebeanshub.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Library",
+      "item": "https://www.thebeanshub.com/library"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Light vs Medium vs Dark Roast",
+      "item": "https://www.thebeanshub.com/posts/light-vs-medium-vs-dark-roast"
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Light vs Medium vs Dark Roast — Which Should You Buy? | The Beans Hub",
+  "description": "New to coffee and confused by roast levels? Honest, no-fluff breakdown of light vs medium vs dark roast coffee — and which one to actually buy first.",
+  "url": "https://www.thebeanshub.com/posts/light-vs-medium-vs-dark-roast",
+  "datePublished": "2026-03-05",
+  "publisher": {
+    "@type": "Organization",
+    "name": "The Beans Hub",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.thebeanshub.com/img/thebeanshub_logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.thebeanshub.com/posts/light-vs-medium-vs-dark-roast"
+  }
+}
+  </script>
+</head>
+<body>
+<nav class="site-nav">
+<a class="nav-logo" href="/">The Beans<span>Hub</span></a>
+<div class="nav-links">
+<a href="/">Home</a>
+<a href="/shop">Coffee Beans</a>
+<a class="active" href="/library">Coffee Library</a>
+<a href="/about">About Us</a>
+<a href="/contact">Contact Us</a>
+<a class="cta" href="/shop">Explore Beans</a>
+</div>
+<button aria-label="Menu" class="nav-hamburger" onclick="toggleMenu()">
+<span></span><span></span><span></span>
+</button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+<a href="/">Home</a>
+<a href="/shop">Coffee Beans</a>
+<a href="/library">Coffee Library</a>
+<a href="/about">About Us</a>
+<a href="/contact">Contact Us</a>
+</div>
+<div class="post-hero">
+<div class="post-hero-inner">
+<div class="post-breadcrumb">
+<a href="/library">Coffee Library</a>
+<span>›</span>
+<span>Beginner Guide</span>
+</div>
+<div class="post-cat-badge badge-guide">🎓 Beginner Guide</div>
+<h1>Light vs Medium vs Dark Roast — Which One Should You Actually Buy?</h1>
+<div class="post-hero-meta">
+<span>The Beans Hub</span>
+<span class="post-hero-meta-dot"></span>
+<span>April 2025</span>
+<span class="post-hero-meta-dot"></span>
+<span class="post-read-time">7 min read</span>
+</div>
+</div>
+</div>
+<div class="post-banner">
+<div class="post-banner-img" id="parallaxImg"></div>
+</div>
+<div class="post-layout">
+<div class="post-body">
+<p>Let me save you some time first.</p>
+<p>If you're just starting out, don't overcomplicate this. Roast level is the first step.</p>
+<p>You don't need to go and look at country la, altitude la, varietal la, or processing method all this rubbish ok. You can't taste any different from them, seriously. Time waster only.</p>
+<div class="callout">
+<p class="callout-title">☕ TLDR — one sentence</p>
+<p>If you're new, you don't like sour coffee, and you drink latte… <strong>just buy dark roast first.</strong> Almost everyone I know started liking coffee from here.</p>
+</div>
+<p>Then slowly, you go café, try this try that, suddenly your "mouth itchy", you get curious, then you start going deeper.</p>
+<p>Then you move to medium dark, then medium, then medium light… then doomed, light. There's where all your salary goes.</p>
+<p>Honestly, most people don't start from light roast. Some start from medium dark, and that's fine too. If you're an overthinker, go to a café, order a latte, and just ask the barista what beans they're using and what roast level.</p>
+<p>That's already your answer.</p>
+<p>If you feel paiseh to ask, just buy a small bag — 100g or 200g — go home and try. Coffee is something you figure out by drinking, not by reading.</p>
+<p>But I know you wanna be knowledgeable, right. So let's talk about the roasting levels properly.</p>
+<h2 id="what-does-roast-level-actually-change-in-coffee">What Does Roast Level Actually Change in Coffee?</h2>
+<p>Roasting is basically applying heat to green coffee beans. During this process, a lot of chemical reactions happen — things like the Maillard reaction — which create hundreds of flavour compounds.</p>
+<p>The longer you roast, the more the original characteristics of the coffee (where it's from, how it's grown) get replaced by flavours from the roasting process itself.</p>
+<p>So when you choose a roast level, you're actually deciding:</p>
+<blockquote>do you want to taste the bean, or do you want to taste the roast?</blockquote>
+<p>That's it. That's the whole thing.</p>
+<h2 id="what-is-light-roast-coffee">What Is Light Roast Coffee?</h2>
+<p>Light roast is roasted for the shortest time — usually stopped around what people call the "first crack".</p>
+<p>Because of that, most of the flavour comes from the bean itself.</p>
+<ul>
+<li>Higher acidity (the "bright" or "sour" taste people talk about)</li>
+<li>Fruit-forward flavours like citrus or berries</li>
+<li>Sometimes floral notes</li>
+<li>Lighter body — sometimes even tea-like</li>
+</ul>
+<p>Light to medium roast is generally more suitable for filter coffee. It's not that you <em>cannot</em> make a latte with it — you definitely can. But first, you're probably paying more for those beans. Second, the milk is going to overpower those delicate flavours.</p>
+<p>So in the end, you're paying more for beans, but not really tasting what makes them special. Which honestly… is a bit of a waste.</p>
+<p>But if you enjoy it, that's already the correct answer. You do you.</p>
+<h2 id="what-is-medium-roast-coffee">What Is Medium Roast Coffee?</h2>
+<p>Medium roast sits in the middle — and it shows.</p>
+<p>You still retain some of the bean's original character, but you also start getting more sweetness from the roasting process itself.</p>
+<ul>
+<li>Chocolate, caramel, toasted nuts</li>
+<li>Acidity is still there, but more balanced</li>
+<li>Body becomes smoother and fuller</li>
+</ul>
+<p>This is why medium roast is the most versatile — it works for both espresso and filter. If you're genuinely not sure where to start and you don't hate acidity, medium is a safe bet.</p>
+<h2 id="what-is-dark-roast-coffee">What Is Dark Roast Coffee?</h2>
+<p>Dark roast is roasted longer — sometimes past what is called the "second crack".</p>
+<p>At this stage, the bean becomes darker, more oily, and most of the flavour comes from roasting rather than origin.</p>
+<ul>
+<li>Bold, smoky flavours</li>
+<li>Dark chocolate, molasses</li>
+<li>Sometimes a slightly charred or bitter note</li>
+<li>Much lower acidity, heavier and more syrupy body</li>
+</ul>
+<p>That's also why dark roast is generally more friendly for people with sensitive stomachs — more on that below.</p>
+<hr class="post-divider"/>
+<div class="roast-cards">
+<div class="roast-card light">
+<div class="roast-card-icon">☀️</div>
+<div class="roast-card-name">Light Roast</div>
+<ul>
+<li>Fruity, floral, citrus</li>
+<li>High acidity</li>
+<li>Light, tea-like body</li>
+<li>Best for: filter, pour-over</li>
+</ul>
+</div>
+<div class="roast-card medium">
+<div class="roast-card-icon">🌤️</div>
+<div class="roast-card-name">Medium Roast</div>
+<ul>
+<li>Chocolate, caramel, nuts</li>
+<li>Balanced acidity</li>
+<li>Smooth, fuller body</li>
+<li>Best for: everything</li>
+</ul>
+</div>
+<div class="roast-card dark">
+<div class="roast-card-icon">🌑</div>
+<div class="roast-card-name">Dark Roast</div>
+<ul>
+<li>Smoky, bold, dark chocolate</li>
+<li>Low acidity</li>
+<li>Heavy, syrupy body</li>
+<li>Best for: espresso, latte, moka pot</li>
+</ul>
+</div>
+</div>
+<h2 id="which-roast-level-works-best-for-which-brew-method">Which Roast Level Works Best for Which Brew Method?</h2>
+<p>Different roast levels work better with different brewing methods. Very generally:</p>
+<ul>
+<li><strong>Light roast</strong> → better for pour-over (V60, Chemex), AeroPress</li>
+<li><strong>Medium roast</strong> → very flexible, can do almost everything</li>
+<li><strong>Dark roast</strong> → better for espresso, French press, moka pot, and milk-based drinks</li>
+</ul>
+<p>For light roast especially, because the beans are denser and harder to extract, you usually need a finer grind and higher water temperature (around 90–96°C).</p>
+<p>But if you're just starting, don't try to optimise everything at once.</p>
+<h2 id="does-dark-roast-have-more-caffeine-than-light-roast">Does Dark Roast Have More Caffeine Than Light Roast?</h2>
+<p>This is one of the most common misconceptions.</p>
+<p>Caffeine is actually quite stable during roasting, so roast level doesn't change caffeine content that much. The difference usually comes from how you measure your coffee:</p>
+<ul>
+<li><strong>By weight</strong> → light roast has slightly more caffeine (because it's denser)</li>
+<li><strong>By volume (scoops)</strong> → dark roast might seem stronger because the beans expand and take up more space</li>
+</ul>
+<p>There's also some research suggesting medium roast might actually give the highest caffeine in a brewed cup, depending on how much mass is lost during roasting.</p>
+<p>But overall:</p>
+<blockquote>your brewing method and dosage matter way more than roast level.</blockquote>
+<h2 id="which-roast-level-is-easier-on-a-sensitive-stomach">Which Roast Level Is Easier on a Sensitive Stomach?</h2>
+<p>If you find that coffee makes your stomach uncomfortable, dark roast is usually a better option.</p>
+<p>Because during longer roasting, the acids break down, it becomes less irritating, and it stimulates less gastric acid. That's why people with acid reflux or heartburn often tolerate dark roast better than light or medium.</p>
+<p>If you still have issues, you can also try:</p>
+<ul>
+<li>Cold brew (much lower acidity)</li>
+<li>Adding milk</li>
+<li>Choosing naturally low-acid beans like some Brazil profiles</li>
+</ul>
+<h2 id="does-grind-size-change-for-different-roast-levels">Does Grind Size Change for Different Roast Levels?</h2>
+<p>This one a lot of people ignore — and then wonder why their coffee tastes off.</p>
+<p>Different roast levels actually require different grind sizes because of how the bean structure changes during roasting.</p>
+<div class="info-card">
+<h4>Simple way to remember</h4>
+<table class="compare-table" style="margin: 0;">
+<thead>
+<tr>
+<th>Roast</th>
+<th>Bean structure</th>
+<th>Grind</th>
+<th>If you get it wrong</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Light</td>
+<td>Denser, harder</td>
+<td>Finer</td>
+<td>Too coarse → sour, thin</td>
+</tr>
+<tr>
+<td>Medium</td>
+<td>Balanced</td>
+<td>Normal</td>
+<td>Usually forgiving</td>
+</tr>
+<tr>
+<td>Dark</td>
+<td>More porous, expanded</td>
+<td>Coarser</td>
+<td>Too fine → bitter, harsh</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>So sometimes when your coffee tastes bad, it's not your beans — it's your grind.</p>
+<hr class="post-divider"/>
+<div class="callout">
+<p class="callout-title">☕ Final advice</p>
+<p>Don't try to understand everything at once. Start with something simple, like roast level. Drink it. Pay attention to how it tastes. Notice what you like, and what you don't. That alone is already progress — I couldn't even spit this out when I first got my coffee machine. I only knew I loved drinking coffee.</p>
+</div>
+<p>Over time, as you keep drinking, your taste starts to change, and your understanding also builds naturally. Then only when you reach that stage, things like origin, varietal, and processing will start to make sense.</p>
+<p>If you're not progressing, that's fine. (Or maybe better — you don't have to increase your coffee budget! It's a whole rabbit hole, let me warn ya.)</p>
+<div class="post-tags">
+<span class="post-tag">Beginner Guide</span>
+<span class="post-tag">Roast Level</span>
+<span class="post-tag">Light Roast</span>
+<span class="post-tag">Dark Roast</span>
+<span class="post-tag">Coffee Basics</span>
+<span class="post-tag">Buying Guide</span>
+<span class="post-tag">Caffeine</span>
+</div>
+<div class="post-nav">
+<a href="/library">← Back to Coffee Library</a>
+<a href="/posts/how-to-read-flavour-notes">Read: Flavour Notes →</a>
+</div>
+</div><!-- /post-body -->
+<aside aria-label="Table of contents" class="toc-sidebar">
+<div class="toc-inner">
+<div class="toc-title">Contents</div>
+<nav class="toc-nav">
+<a class="toc-link" href="#what-does-roast-level-actually-change-in-coffee">What Does Roast Level Actually Change in Coffee?</a>
+<a class="toc-link" href="#what-is-light-roast-coffee">What Is Light Roast Coffee?</a>
+<a class="toc-link" href="#what-is-medium-roast-coffee">What Is Medium Roast Coffee?</a>
+<a class="toc-link" href="#what-is-dark-roast-coffee">What Is Dark Roast Coffee?</a>
+<a class="toc-link" href="#which-roast-level-works-best-for-which-brew-method">Which Roast Level Works Best for Which Brew Method?</a>
+<a class="toc-link" href="#does-dark-roast-have-more-caffeine-than-light-roast">Does Dark Roast Have More Caffeine Than Light Roast?</a>
+<a class="toc-link" href="#which-roast-level-is-easier-on-a-sensitive-stomach">Which Roast Level Is Easier on a Sensitive Stomach?</a>
+<a class="toc-link" href="#does-grind-size-change-for-different-roast-levels">Does Grind Size Change for Different Roast Levels?</a>
+</nav>
+</div>
+</aside>
+</div><!-- /post-layout -->
+<div class="more-posts">
+<div class="more-posts-inner">
+<h2>More from the Library</h2>
+<div class="more-grid">
+<a class="more-card" href="/posts/arabica-robusta-liberica">
+<div class="more-card-emoji">🌿</div>
+<h3>Arabica vs Robusta vs Liberica — What's the Difference?</h3>
+<div class="more-card-meta">5 min read</div>
+</a>
+<a class="more-card" href="/posts/how-to-read-flavour-notes">
+<div class="more-card-emoji">🫐</div>
+<h3>How to Read Flavour Notes in Coffee (Without Feeling Lost)</h3>
+<div class="more-card-meta">6 min read</div>
+</a>
+<a class="more-card" href="/posts/oat-milk-cortado">
+<div class="more-card-emoji">🥛</div>
+<h3>How to Make an Oat Milk Cortado at Home (Café-Quality)</h3>
+<div class="more-card-meta">6 min read</div>
+</a>
+</div>
+</div>
+</div>
+<footer>
+<a class="footer-logo" href="/">The Beans<span>Hub</span></a>
+<div class="footer-links">
+<a href="/shop">Coffee Beans</a>
+<a href="/library">Coffee Library</a>
+<a href="/about">About Us</a>
+<a href="/contact">Contact Us</a>
+</div>
+<div class="footer-copy">© 2025 The Beans Hub</div>
+</footer>
+<script>
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+
+(function () {
+  const img = document.getElementById('parallaxImg');
+  if (!img) return;
+  let ticking = false;
+  function onScroll() {
+    if (!ticking) {
+      requestAnimationFrame(function () {
+        const banner = img.parentElement;
+        const rect = banner.getBoundingClientRect();
+        if (rect.bottom > 0 && rect.top < window.innerHeight) {
+          img.style.transform = 'translateY(' + (rect.top / window.innerHeight * 60) + 'px)';
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+    // TOC — highlight active section on scroll
+    (function () {
+      const tocLinks = document.querySelectorAll('.toc-link[href^="#"]');
+      const headings = Array.from(document.querySelectorAll('.post-body h2[id]'));
+      if (!tocLinks.length || !headings.length) return;
+      function setActive(id) {
+        tocLinks.forEach(l => {
+          l.classList.toggle('active', l.getAttribute('href') === '#' + id);
+        });
+      }
+      if (headings[0]) setActive(headings[0].id);
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      }, { rootMargin: '-10% 0px -80% 0px', threshold: 0 });
+      headings.forEach(h => observer.observe(h));
+      tocLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+          const target = document.querySelector(this.getAttribute('href'));
+          if (!target) return;
+          e.preventDefault();
+          const offset = 88;
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        });
+      });
+    })();
+
+  </script>
+
+</body>
+</html>
