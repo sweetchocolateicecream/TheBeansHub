@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Disallow query-string filter URLs (non-canonical faceted pages)
+Disallow: /shop?*
+
+Sitemap: https://www.thebeanshub.com/sitemap.xml

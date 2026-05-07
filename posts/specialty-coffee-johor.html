@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JY42YLKPRM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-JY42YLKPRM');
+</script>
+<meta charset="UTF-8">
+<meta name="google-site-verification" content="jqlfBshOy4vgYUb478viCuTswoIsaWL_jdOhL0srx0w" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Specialty Coffee in Johor — A Local's Honest List</title>
+<meta name="description" content="The specialty coffee scene in Johor keeps growing and I keep saving cafés I still haven't visited. Here's the honest list.">
+<link rel="canonical" href="https://thebeanshub.com/posts/specialty-coffee-johor">
+<link rel="icon" type="image/png" href="../img/thebeanshub_logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Sigmar&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --green: #296241; --green-light: #3a7a50;
+  --cream: #FDF6EC; --white: #FFFFFF;
+  --orange: #FDA11D; --orange-dark: #DA8A10;
+  --border: #E8E0D0; --tag-bg: #f0ebe0;
+  --text: #1a2e1f; --muted: #5a6e5a;
+}
+html { scroll-behavior: smooth; }
+body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 68px; background: var(--green); border-bottom: 1px solid rgba(253,161,29,0.3); }
+.nav-logo { font-family: "Sigmar", cursive; color: #FDF6EC; font-size: 1.45rem; font-weight: 700; text-decoration: none; }
+.nav-logo span { color: var(--orange); }
+.nav-links { display: flex; gap: 36px; align-items: center; }
+.nav-links a { color: rgba(253,246,236,0.75); text-decoration: none; font-size: 0.88rem; font-weight: 500; letter-spacing: 0.04em; transition: color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color: #FDF6EC; }
+.nav-links a.cta { background: var(--orange); color: white; padding: 8px 20px; border-radius: 8px; font-weight: 600; }
+.nav-links a.cta:hover { background: var(--orange-dark); }
+.nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.nav-hamburger span { display: block; width: 24px; height: 2px; background: #FDF6EC; border-radius: 2px; }
+.mobile-menu { display: none; position: fixed; top: 68px; left: 0; right: 0; background: var(--green); padding: 20px 24px; flex-direction: column; z-index: 99; border-bottom: 2px solid var(--orange); }
+.mobile-menu.open { display: flex; }
+.mobile-menu a { color: rgba(253,246,236,0.8); text-decoration: none; font-size: 1rem; font-weight: 500; padding: 14px 0; border-bottom: 1px solid rgba(253,246,236,0.15); transition: color 0.2s; }
+.mobile-menu a:last-child { border-bottom: none; }
+.mobile-menu a:hover { color: #FDF6EC; }
+
+/* POST HERO */
+.post-hero { padding: 104px 48px 56px; background: var(--green); position: relative; overflow: hidden; }
+.post-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 0%, rgba(253,161,29,0.15), transparent 55%), radial-gradient(ellipse at 10% 100%, rgba(253,161,29,0.07), transparent 50%); }
+.post-hero-inner { max-width: 800px; margin: 0 auto; position: relative; }
+.post-breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 0.75rem; color: rgba(253,246,236,0.55); margin-bottom: 20px; }
+.post-breadcrumb a { color: rgba(253,246,236,0.55); text-decoration: none; transition: color 0.2s; }
+.post-breadcrumb a:hover { color: #FDF6EC; }
+.post-breadcrumb span { color: rgba(253,246,236,0.3); }
+.post-cat-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 20px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 18px; width: fit-content; }
+.badge-guide  { background: rgba(255,255,255,0.15); color: #FDF6EC; }
+.badge-local  { background: rgba(253,161,29,0.25); color: #FDA11D; }
+.badge-recipe { background: rgba(255,100,100,0.2); color: #ffb0b0; }
+.post-hero h1 { font-family: "Sigmar", cursive; font-size: clamp(1.8rem, 4vw, 2.8rem); color: #FDF6EC; line-height: 1.2; margin-bottom: 20px; }
+.post-hero-meta { display: flex; align-items: center; gap: 12px; font-size: 0.8rem; color: rgba(253,246,236,0.6); flex-wrap: wrap; }
+.post-hero-meta-dot { width: 3px; height: 3px; background: rgba(253,246,236,0.4); border-radius: 50%; }
+.post-read-time { background: rgba(253,161,29,0.2); color: var(--orange); padding: 3px 10px; border-radius: 10px; font-weight: 600; font-size: 0.72rem; }
+
+/* PARALLAX BANNER */
+.post-banner { height: 420px; position: relative; overflow: hidden; }
+.post-banner-img {
+  position: absolute;
+  inset: -80px 0;
+  background-image: url('../img/Girl-bought-coffee-from-the-beans-hub.png');
+  background-size: cover;
+  background-position: center 30%;
+  will-change: transform;
+  transition: transform 0.05s linear;
+}
+
+/* POST BODY */
+.post-body { max-width: 800px; margin: 0 auto; padding: 56px 48px 80px; }
+
+/* TYPOGRAPHY */
+.post-body h2 { font-family: "Sigmar", cursive; font-size: 1.5rem; color: var(--green); margin: 48px 0 16px; line-height: 1.3; }
+.post-body h3 { font-family: "Outfit", sans-serif; font-size: 1.08rem; font-weight: 700; color: var(--text); margin: 32px 0 10px; }
+.post-body p { font-size: 0.97rem; line-height: 1.85; color: #2a3a2a; margin-bottom: 20px; }
+.post-body ul, .post-body ol { padding-left: 24px; margin-bottom: 20px; }
+.post-body li { font-size: 0.97rem; line-height: 1.8; color: #2a3a2a; margin-bottom: 6px; }
+.post-body strong { font-weight: 700; color: var(--text); }
+.post-body em { font-style: italic; color: var(--muted); }
+.post-body a { color: var(--green); font-weight: 600; text-decoration: underline; text-decoration-color: rgba(41,98,65,0.3); transition: color 0.2s; }
+.post-body a:hover { color: var(--orange); }
+
+/* CALLOUT BOX */
+.callout { background: var(--tag-bg); border-left: 4px solid var(--orange); border-radius: 0 12px 12px 0; padding: 20px 24px; margin: 32px 0; }
+.callout p { margin: 0; font-size: 0.92rem; }
+.callout-title { font-weight: 700; color: var(--green); margin-bottom: 6px !important; font-size: 0.8rem !important; text-transform: uppercase; letter-spacing: 0.08em; }
+
+/* INFO CARD */
+.info-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 24px 28px; margin: 28px 0; }
+.info-card h4 { font-size: 0.88rem; font-weight: 700; color: var(--green); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.08em; }
+
+/* CAFÉ CARD */
+.cafe-card { border-left: 3px solid var(--border); padding: 4px 0 4px 20px; margin: 28px 0 32px; }
+.cafe-card h3 { margin-top: 0; margin-bottom: 8px; }
+.cafe-card p { margin-bottom: 0; color: var(--muted); }
+
+/* DIVIDER */
+.post-divider { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
+
+/* TAG ROW */
+.post-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 36px 0 0; }
+.post-tag { padding: 5px 14px; background: var(--tag-bg); color: var(--muted); border-radius: 20px; font-size: 0.75rem; font-weight: 500; }
+
+/* BACK + NEXT NAV */
+.post-nav { display: flex; justify-content: space-between; align-items: center; padding: 32px 0; border-top: 1px solid var(--border); margin-top: 48px; }
+.post-nav a { display: flex; align-items: center; gap: 8px; text-decoration: none; font-size: 0.85rem; font-weight: 600; color: var(--green); transition: color 0.2s; }
+.post-nav a:hover { color: var(--orange); }
+
+/* MORE POSTS */
+.more-posts { background: var(--cream); border-top: 1px solid var(--border); padding: 64px 48px; }
+.more-posts-inner { max-width: 1100px; margin: 0 auto; }
+.more-posts h2 { font-family: "Sigmar", cursive; font-size: 1.4rem; color: var(--text); margin-bottom: 32px; }
+.more-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.more-card { background: var(--white); border-radius: 14px; border: 1px solid var(--border); padding: 24px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 10px; transition: transform 0.2s, box-shadow 0.2s; }
+.more-card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(41,98,65,0.1); }
+.more-card-emoji { font-size: 2rem; }
+.more-card h3 { font-family: "Outfit", sans-serif; font-size: 0.92rem; font-weight: 700; color: var(--text); line-height: 1.4; }
+.more-card-meta { font-size: 0.72rem; color: var(--muted); margin-top: auto; }
+
+/* FOOTER */
+footer { background: var(--green); padding: 40px 48px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(253,161,29,0.2); }
+.footer-logo { font-family: "Sigmar", cursive; color: #FDF6EC; font-size: 1.1rem; font-weight: 700; text-decoration: none; }
+.footer-logo span { color: var(--orange); }
+.footer-links { display: flex; gap: 28px; }
+.footer-links a { color: rgba(253,246,236,0.6); text-decoration: none; font-size: 0.8rem; transition: color 0.2s; }
+.footer-links a:hover { color: #FDF6EC; }
+.footer-copy { font-size: 0.75rem; color: rgba(253,246,236,0.4); }
+
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
+  nav .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  .post-hero { padding: 88px 20px 40px; }
+  .post-body { padding: 40px 20px 60px; }
+  .post-banner { height: 260px; }
+  .more-posts { padding: 48px 20px; }
+  .more-grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: 20px; text-align: center; padding: 32px 20px; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">The Beans<span>Hub</span></a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/shop">Coffee Beans</a>
+    <a href="/library" class="active">Coffee Library</a>
+    <a href="/about">About Us</a>
+    <a href="/contact">Contact Us</a>
+    <a href="/shop" class="cta">Explore Beans</a>
+  </div>
+  <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/">Home</a>
+  <a href="/shop">Coffee Beans</a>
+  <a href="/library">Coffee Library</a>
+  <a href="/about">About Us</a>
+  <a href="/contact">Contact Us</a>
+</div>
+
+<div class="post-hero">
+  <div class="post-hero-inner">
+    <div class="post-breadcrumb">
+      <a href="/library">Coffee Library</a>
+      <span>›</span>
+      <span>Local Guide</span>
+    </div>
+    <div class="post-cat-badge badge-local">📍 Local Guide</div>
+    <h1>Specialty Coffee in Johor: I Keep Saving Cafés… But Still End Up Brewing at Home</h1>
+    <div class="post-hero-meta">
+      <span>The Beans Hub</span>
+      <span class="post-hero-meta-dot"></span>
+      <span>April 2025</span>
+      <span class="post-hero-meta-dot"></span>
+      <span class="post-read-time">8 min read</span>
+    </div>
+  </div>
+</div>
+
+<div class="post-banner">
+  <div class="post-banner-img" id="parallaxImg"></div>
+</div>
+
+<div class="post-body">
+
+<p>Johor Bahru is actually my hometown.</p>
+<p>But every time I come back, I realise something quite ironic.</p>
+<p>The specialty coffee scene here keeps growing — more cafés, more roasters, more people taking coffee seriously — yet somehow, I still end up staying at home, making my own coffee.</p>
+<p>I'll scroll, save places, tell myself "next time I go".</p>
+<p>But when I'm actually back in JB, I just feel like sitting at home, brewing something simple, and not moving.</p>
+<p>Maybe that's just the comfort of home.</p>
+
+<h2>Is the Specialty Coffee Scene in Johor Actually Growing?</h2>
+<p>At the same time, it's hard to ignore how much things have changed.</p>
+<p>With people constantly coming in from Singapore to eat, shop, and spend, JB has naturally evolved. And with that, the café culture has followed.</p>
+<p>More roasters. More cafés. And more people who actually care about coffee.</p>
+<p>Not just "nice place to sit" — but genuinely good coffee.</p>
+<p>So even though I don't always go out, I've been keeping a list of places I'd visit… when I feel like it.</p>
+
+<h2>What Is Liberica — Malaysia's Third Coffee?</h2>
+<p>Before the cafés, this is something I think more people should know.</p>
+<p>Most people only know Arabica and Robusta. But Malaysia actually has something else — <strong>Liberica</strong>. Sometimes people call it the "third coffee".</p>
+
+<div class="info-card">
+  <h4>What makes Liberica different?</h4>
+  <ul>
+    <li>Naturally slightly sweeter</li>
+    <li>Works well with milk</li>
+    <li>Lighter roasts lean more fruity; darker ones feel more like chocolate or nuts</li>
+  </ul>
+</div>
+
+<p>Places like <strong>MY LIBERICA in Kulai</strong> have been pushing this forward — even bringing it to bigger stages like the World Barista Championship.</p>
+<p>Not something you must try. But definitely something worth knowing.</p>
+
+<h2>Which Specialty Coffee Cafés in Johor Bahru Should You Know?</h2>
+<p>These are not "best café" rankings. Not "must-go" lists.</p>
+<p>Just places I keep seeing, keep saving, and keep telling myself I'll visit… eventually.</p>
+
+<div class="cafe-card">
+  <h3>Sweet Blossom Coffee Roasters</h3>
+  <p>One of those names that keeps appearing whenever people talk about specialty coffee in Johor. Clean, balanced flavours. Nothing too fancy — just done properly. The kind of place you can rely on for a consistent cup.</p>
+</div>
+
+<div class="cafe-card">
+  <h3>Dateless Coffee Roaster</h3>
+  <p>Feels a bit more experimental. The kind of place that plays around with beans and flavour profiles. Probably somewhere I'd go when I'm in the mood to try something different.</p>
+</div>
+
+<div class="cafe-card">
+  <h3>August Drip Coffee</h3>
+  <p>This one stands out because they let you brew your own coffee — and you even get a small discount if you do it yourself, with guidance. Feels more interactive, especially if you're curious but not confident yet.</p>
+</div>
+
+<div class="cafe-card">
+  <h3>JWC Roastery</h3>
+  <p>One of the more well-known names. More approachable, more casual. The kind of place where coffee, brunch, and catching up all happen together.</p>
+</div>
+
+<div class="cafe-card">
+  <h3>Theus Micro</h3>
+  <p>Feels quieter. More focused on the coffee itself rather than the crowd. Probably somewhere you go when you actually want to sit down and pay attention to what you're drinking.</p>
+</div>
+
+<div class="cafe-card">
+  <h3>Lekker Coffee Roasters</h3>
+  <p>Has that neighbourhood feel. Warm, comfortable, not trying too hard. The kind of place you could easily become a regular at.</p>
+</div>
+
+<div class="cafe-card">
+  <h3>Cofa Store</h3>
+  <p>Feels more lifestyle-driven. More aesthetic, more curated. Shows how cafés now are not just about coffee anymore — but the whole experience.</p>
+</div>
+
+<div class="cafe-card">
+  <h3>Space Cafe</h3>
+  <p>More bold visually. A bit more experimental in its vibe. Shows a more creative side of what cafés in Johor can be.</p>
+</div>
+
+<div class="cafe-card">
+  <h3>Mrs Whó</h3>
+  <p>More café than roastery. But still a solid place if you're looking for somewhere to hang out, eat, and have a decent cup of coffee.</p>
+</div>
+
+<div class="cafe-card">
+  <h3>Vamos Coffee Roastery</h3>
+  <p>Simple, straightforward. Focused on roasting and serving good coffee without overcomplicating things.</p>
+</div>
+
+<div class="cafe-card">
+  <h3>Brewsmith Coffee Roasters</h3>
+  <p>Feels more serious, more craft-focused. Probably more appealing if you're already quite deep into coffee.</p>
+</div>
+
+<hr class="post-divider">
+
+<h2>Is There Specialty Coffee in Johor Outside of JB?</h2>
+<p>My grandparents used to live in Segamat.</p>
+<p>It's a quiet place. Not much going on, and over time, people slowly move away.</p>
+<p>But it still means a lot to me.</p>
+<p>And honestly, I didn't even realise there were specialty coffee places there until much later.</p>
+<p>After my grandmother passed.</p>
+<p>I still think about that sometimes. If I had known earlier, I probably would've gone for a cup every time I visited.</p>
+
+<div class="cafe-card">
+  <h3>Soon Specialty Coffee</h3>
+  <p>Feels like a hidden gem. Quiet, low-key. A reminder that good coffee doesn't only exist in busy cities.</p>
+</div>
+
+<div class="cafe-card">
+  <h3>V Coffee</h3>
+  <p>Simple and approachable. The kind of place that makes specialty coffee feel less intimidating.</p>
+</div>
+
+<div class="cafe-card">
+  <h3>Drunk Coffee Roasters</h3>
+  <p>The name is playful. But having a roastery in Segamat itself already says a lot about how far the specialty coffee scene in Johor has grown.</p>
+</div>
+
+<div class="callout">
+  <p class="callout-title">☕ A note</p>
+  <p>I haven't gone back to Segamat since my grandmother passed. Maybe one day I will. And when I do, I think I'll finally explore this side of Johor properly. Slowly. One cup at a time.</p>
+</div>
+
+<h2>Why Do I Still End Up Brewing at Home?</h2>
+<p>It's funny.</p>
+<p>The specialty coffee scene in Johor is growing so much. More options, more quality, more places to explore.</p>
+<p>But somehow, I still find myself at home, making my own coffee.</p>
+<p>And maybe that's okay.</p>
+<p>Because at the end of the day, whether it's at a café or at home…</p>
+<p>it's still just about enjoying the cup in front of you.</p>
+
+<div class="post-tags">
+  <span class="post-tag">Johor</span>
+  <span class="post-tag">JB Cafés</span>
+  <span class="post-tag">Specialty Coffee</span>
+  <span class="post-tag">Local Guide</span>
+  <span class="post-tag">Malaysia Coffee</span>
+  <span class="post-tag">Liberica</span>
+  <span class="post-tag">Segamat</span>
+</div>
+
+<div class="post-nav">
+  <a href="/library">← Back to Coffee Library</a>
+  <a href="/posts/how-to-read-flavour-notes">Read: Flavour Notes →</a>
+</div>
+</div>
+
+<div class="more-posts">
+  <div class="more-posts-inner">
+    <h2>More from the Library</h2>
+    <div class="more-grid">
+      <a href="/posts/kl-roasters" class="more-card">
+        <div class="more-card-emoji">🏙️</div>
+        <h3>Best Specialty Coffee Roasters in Kuala Lumpur</h3>
+        <div class="more-card-meta">8 min read</div>
+      </a>
+      <a href="/posts/arabica-robusta-liberica" class="more-card">
+        <div class="more-card-emoji">🌿</div>
+        <h3>Arabica vs Robusta vs Liberica — What's the Difference?</h3>
+        <div class="more-card-meta">5 min read</div>
+      </a>
+      <a href="/posts/how-to-read-flavour-notes" class="more-card">
+        <div class="more-card-emoji">🫐</div>
+        <h3>How to Read Flavour Notes in Coffee (Without Feeling Lost)</h3>
+        <div class="more-card-meta">6 min read</div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <a href="/" class="footer-logo">The Beans<span>Hub</span></a>
+  <div class="footer-links">
+    <a href="/shop">Coffee Beans</a>
+    <a href="/library">Coffee Library</a>
+    <a href="/about">About Us</a>
+    <a href="/contact">Contact Us</a>
+  </div>
+  <div class="footer-copy">&copy; 2025 The Beans Hub</div>
+</footer>
+
+<script>
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+
+// Parallax scroll
+(function () {
+  const img = document.getElementById('parallaxImg');
+  if (!img) return;
+  let ticking = false;
+  function onScroll() {
+    if (!ticking) {
+      requestAnimationFrame(function () {
+        const banner = img.parentElement;
+        const rect = banner.getBoundingClientRect();
+        const inView = rect.bottom > 0 && rect.top < window.innerHeight;
+        if (inView) {
+          const offset = (rect.top / window.innerHeight) * 60;
+          img.style.transform = 'translateY(' + offset + 'px)';
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is there good specialty coffee in Johor Bahru?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — the specialty coffee scene in Johor Bahru has grown significantly. There are now multiple roasters and cafés that take coffee seriously, including Sweet Blossom Coffee Roasters, JWC Roastery, Dateless Coffee Roaster, Lekker Coffee Roasters, and more. The growth has been partly driven by the constant flow of visitors from Singapore."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is Liberica coffee and can I try it in Johor?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Liberica is sometimes called Malaysia's 'third coffee' — less well-known than Arabica or Robusta, but naturally sweeter and quite versatile depending on the roast level. Lighter roasts lean fruity; darker ones feel more like chocolate or nuts. MY LIBERICA in Kulai, Johor has been one of the main places championing it locally, even representing it at the World Barista Championship."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are some specialty coffee cafés to visit in Johor Bahru?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Some of the specialty coffee cafés and roasters worth knowing in JB include Sweet Blossom Coffee Roasters (clean and consistent), Dateless Coffee Roaster (more experimental), August Drip Coffee (interactive brewing experience), JWC Roastery (casual and approachable), Theus Micro (quiet and coffee-focused), Lekker Coffee Roasters (neighbourhood feel), and Brewsmith Coffee Roasters (craft-focused)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there specialty coffee outside of JB in Johor?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Segamat, a quieter town in Johor, has its own small but growing specialty coffee scene. Soon Specialty Coffee, V Coffee, and Drunk Coffee Roasters are all worth knowing — a sign that good coffee in Johor isn't limited to the city."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between specialty coffee and regular coffee?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Specialty coffee refers to coffee that has been scored 80 points or above on a 100-point scale by certified tasters. It typically involves traceable origins, careful processing, precise roasting, and intentional brewing. The focus is on the natural flavours of the bean itself — fruity, floral, chocolatey — rather than just a strong caffeine hit."
+      }
+    }
+  ]
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JY42YLKPRM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JY42YLKPRM');
+</script>
+<meta charset="UTF-8">
+<meta name="google-site-verification" content="jqlfBshOy4vgYUb478viCuTswoIsaWL_jdOhL0srx0w" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Learn how to make the Hot Kopiko! A nostalgic recipe upgrading traditional Kopitiam Kopi flavours using smooth Arabica espresso, salted butter, and brown sugar.">
+  <title>Hot Kopiko Recipe: Arabica Meets Kopitiam Kopi — The Beans Hub</title>
+  <link rel="icon" type="image/png" href="img/thebeanshub_logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Sigmar&family=Outfit:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --green: #296241;
+      --green-light: #3a7a50;
+      --cream: #FDF6EC;
+      --white: #FFFFFF;
+      --orange: #FDA11D;
+      --orange-dark: #DA8A10;
+      --border: #E8E0D0;
+      --tag-bg: #f0ebe0;
+      --text: #1a2e1f;
+      --muted: #5a6e5a;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Outfit", sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 68px;
+      background: var(--green);
+      border-bottom: 1px solid rgba(253, 161, 29, 0.3);
+    }
+
+    .nav-logo {
+      font-family: "Sigmar", cursive;
+      color: #FDF6EC;
+      font-size: 1.45rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .nav-logo span {
+      color: var(--orange);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: rgba(253, 246, 236, 0.75);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #FDF6EC;
+    }
+
+    .nav-links a.cta {
+      background: var(--orange);
+      color: white;
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+
+    .nav-links a.cta:hover {
+      background: var(--orange-dark);
+    }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #FDF6EC;
+      border-radius: 2px;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 68px;
+      left: 0;
+      right: 0;
+      background: var(--green);
+      padding: 20px 24px;
+      flex-direction: column;
+      z-index: 99;
+      border-bottom: 2px solid var(--orange);
+    }
+
+    .mobile-menu.open {
+      display: flex;
+    }
+
+    .mobile-menu a {
+      color: rgba(253, 246, 236, 0.8);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(253, 246, 236, 0.15);
+      transition: color 0.2s;
+    }
+
+    .mobile-menu a:last-child {
+      border-bottom: none;
+    }
+
+    .mobile-menu a:hover {
+      color: #FDF6EC;
+    }
+
+    /* POST HERO */
+    .post-hero {
+      padding: 104px 48px 56px;
+      background: var(--green);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .post-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 0%, rgba(253, 161, 29, 0.15), transparent 55%), radial-gradient(ellipse at 10% 100%, rgba(253, 161, 29, 0.07), transparent 50%);
+    }
+
+    .post-hero-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .post-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      color: rgba(253, 246, 236, 0.55);
+      margin-bottom: 20px;
+    }
+
+    .post-breadcrumb a {
+      color: rgba(253, 246, 236, 0.55);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .post-breadcrumb a:hover {
+      color: #FDF6EC;
+    }
+
+    .post-breadcrumb span {
+      color: rgba(253, 246, 236, 0.3);
+    }
+
+    .post-cat-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      width: fit-content;
+    }
+
+    .badge-guide {
+      background: rgba(255, 255, 255, 0.15);
+      color: #FDF6EC;
+    }
+
+    .badge-local {
+      background: rgba(253, 161, 29, 0.25);
+      color: #FDA11D;
+    }
+
+    .badge-recipe {
+      background: rgba(255, 100, 100, 0.2);
+      color: #ffb0b0;
+    }
+
+    .post-hero h1 {
+      font-family: "Sigmar", cursive;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: #FDF6EC;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .post-hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.8rem;
+      color: rgba(253, 246, 236, 0.6);
+      flex-wrap: wrap;
+    }
+
+    .post-hero-meta-dot {
+      width: 3px;
+      height: 3px;
+      background: rgba(253, 246, 236, 0.4);
+      border-radius: 50%;
+    }
+
+    .post-read-time {
+      background: rgba(253, 161, 29, 0.2);
+      color: var(--orange);
+      padding: 3px 10px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.72rem;
+    }
+
+    /* POST EMOJI BANNER */
+    .post-banner {
+      background: var(--green-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 220px;
+      font-size: 7rem;
+    }
+
+    /* POST BODY */
+    .post-body {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 56px 48px 80px;
+    }
+
+    /* TYPOGRAPHY */
+    .post-body h2 {
+      font-family: "Sigmar", cursive;
+      font-size: 1.5rem;
+      color: var(--green);
+      margin: 48px 0 16px;
+      line-height: 1.3;
+    }
+
+    .post-body h3 {
+      font-family: "Outfit", sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 32px 0 12px;
+    }
+
+    .post-body p {
+      font-size: 0.97rem;
+      line-height: 1.85;
+      color: #2a3a2a;
+      margin-bottom: 20px;
+    }
+
+    .post-body ul,
+    .post-body ol {
+      padding-left: 24px;
+      margin-bottom: 20px;
+    }
+
+    .post-body li {
+      font-size: 0.97rem;
+      line-height: 1.8;
+      color: #2a3a2a;
+      margin-bottom: 6px;
+    }
+
+    .post-body strong {
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .post-body em {
+      font-style: italic;
+      color: var(--muted);
+    }
+
+    .post-body a {
+      color: var(--green);
+      font-weight: 600;
+      text-decoration: underline;
+      text-decoration-color: rgba(41, 98, 65, 0.3);
+      transition: color 0.2s;
+    }
+
+    .post-body a:hover {
+      color: var(--orange);
+    }
+
+    /* CALLOUT BOX */
+    .callout {
+      background: var(--tag-bg);
+      border-left: 4px solid var(--orange);
+      border-radius: 0 12px 12px 0;
+      padding: 20px 24px;
+      margin: 32px 0;
+    }
+
+    .callout p {
+      margin: 0;
+      font-size: 0.92rem;
+    }
+
+    .callout-title {
+      font-weight: 700;
+      color: var(--green);
+      margin-bottom: 6px !important;
+      font-size: 0.8rem !important;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* INFO CARD */
+    .info-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px 28px;
+      margin: 28px 0;
+    }
+
+    .info-card h4 {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--green);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* DIVIDER */
+    .post-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 40px 0;
+    }
+
+    /* TAG ROW */
+    .post-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 36px 0 0;
+    }
+
+    .post-tag {
+      padding: 5px 14px;
+      background: var(--tag-bg);
+      color: var(--muted);
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+
+    /* BACK + NEXT NAV */
+    .post-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+      margin-top: 48px;
+    }
+
+    .post-nav a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--green);
+      transition: color 0.2s;
+    }
+
+    .post-nav a:hover {
+      color: var(--orange);
+    }
+
+    /* MORE POSTS */
+    .more-posts {
+      background: var(--cream);
+      border-top: 1px solid var(--border);
+      padding: 64px 48px;
+    }
+
+    .more-posts-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .more-posts h2 {
+      font-family: "Sigmar", cursive;
+      font-size: 1.4rem;
+      color: var(--text);
+      margin-bottom: 32px;
+    }
+
+    .more-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .more-card {
+      background: var(--white);
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      padding: 24px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .more-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(41, 98, 65, 0.1);
+    }
+
+    .more-card-emoji {
+      font-size: 2rem;
+    }
+
+    .more-card h3 {
+      font-family: "Outfit", sans-serif;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    .more-card-meta {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-top: auto;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--green);
+      padding: 40px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(253, 161, 29, 0.2);
+    }
+
+    .footer-logo {
+      font-family: "Sigmar", cursive;
+      color: #FDF6EC;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .footer-logo span {
+      color: var(--orange);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 28px;
+    }
+
+    .footer-links a {
+      color: rgba(253, 246, 236, 0.6);
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: #FDF6EC;
+    }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: rgba(253, 246, 236, 0.4);
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        padding: 0 20px;
+      }
+
+      nav .nav-links {
+        display: none;
+      }
+
+      .nav-hamburger {
+        display: flex;
+      }
+
+      .post-hero {
+        padding: 88px 20px 40px;
+      }
+
+      .post-body {
+        padding: 40px 20px 60px;
+      }
+
+      .more-posts {
+        padding: 48px 20px;
+      }
+
+      .more-grid {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+        padding: 32px 20px;
+      }
+
+      .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">The Beans<span>Hub</span></a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/shop">Coffee Beans</a>
+      <a href="/library" class="active">Coffee Library</a>
+      <a href="/about">About Us</a>
+      <a href="/contact">Contact Us</a>
+      <a href="/shop" class="cta">Explore Beans</a>
+    </div>
+    <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="/">Home</a>
+    <a href="/shop">Coffee Beans</a>
+    <a href="/library">Coffee Library</a>
+    <a href="/about">About Us</a>
+    <a href="/contact">Contact Us</a>
+  </div>
+
+  <div class="post-hero">
+    <div class="post-hero-inner">
+      <div class="post-breadcrumb">
+        <a href="/library">Coffee Library</a>
+        <span>›</span>
+        <span>Recipes</span>
+      </div>
+      <div class="post-cat-badge badge-recipe">☕ Recipe</div>
+      <h1>Hot Kopiko Recipe: Arabica Meets Traditional Kopitiam Kopi</h1>
+      <div class="post-hero-meta">
+        <span>The Beans Hub</span>
+        <span class="post-hero-meta-dot"></span>
+        <span>March 2026</span>
+        <span class="post-hero-meta-dot"></span>
+        <span class="post-read-time">3 min read</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-banner">🍬</div>
+
+  <div class="post-body">
+
+    <p>Remember sneaking a Kopiko candy into your mouth during boring school assemblies? That rich, caramelised,
+      perfectly creamy coffee taste is pure childhood nostalgia.</p>
+    <p>If you’ve ever tried to get your older relatives to appreciate a modern cafe latte, you know the struggle. To the
+      uncles and aunties who grew up on thick, <em>kaw</em> kopitiam kopi, standard <em>angmo</em> lattes often just
+      don't hit the spot. But traditional kopitiam robusta can sometimes be a bit too sharp and bitter for folks who
+      just want a smooth, comforting cup.</p>
+
+    <h2>The Best of Both Worlds: Angmo Coffee Meets Kopitiam Kopi</h2>
+    <p>So, what happens when you upgrade kopitiam flavours with fancy <a
+        href="/posts/arabica-vs-robusta-vs-liberica">Arabica beans</a>? You get the <strong>Hot Kopiko</strong>.</p>
+    <p>This drink is the ultimate bridge between the modern espresso machine and the marble tables of your favourite
+      old-school kopitiam. By using a smooth Arabica espresso shot instead of traditional Robusta, you get brighter,
+      more complex flavours with lower bitterness.</p>
+    <p>But the secret weapon here is <strong>salted butter and brown sugar</strong>.</p>
+
+    <div class="callout">
+      <p class="callout-title">🇲🇾 The Traditional Roasting Secret</p>
+      <p>Why butter and sugar? Traditional Malaysian kopi is typically made with Robusta beans that have been roasted
+        with sugar and butter (a style called "drum-roasted"). By melting high-quality salted butter and brown sugar
+        directly into a fresh espresso shot, we are recreating that iconic local flavour profile right in the cup.</p>
+    </div>
+
+    <p>The result? A beautifully balanced, creamy, and <em>ngam-ngam</em> sweet latte that tastes exactly like a melted
+      down Kopiko sweet. Trust us, even the most skeptical uncles and aunties will be asking for a second cup.</p>
+
+    <h2>☕ The "Hot Kopiko" Recipe</h2>
+    <p>Ready to impress your family (or just treat yourself)? Here is the exact breakdown to recreate this nostalgic
+      masterpiece at home or in your cafe.</p>
+
+    <div class="info-card">
+      <h4>Ingredients Needed</h4>
+      <ul>
+        <li><strong>Salted Butter:</strong> 12g <em>(The secret to that rich, creamy kopitiam mouthfeel)</em></li>
+        <li><strong>Brown Sugar:</strong> 10g <em>(For that deep, molasses-like sweetness)</em></li>
+        <li><strong>Espresso Shot:</strong> 1 shot <em>(A good, balanced Arabica roast works best here)</em></li>
+        <li><strong>Milk:</strong> 125g</li>
+      </ul>
+    </div>
+
+    <h3>Step-by-Step Method:</h3>
+    <ol>
+      <li><strong>Prep your canvas:</strong> Heat up your serving cup so the ingredients melt beautifully.</li>
+      <li><strong>The flavour base:</strong> Drop the 12g of salted butter and 10g of brown sugar directly into the warm
+        cup.</li>
+      <li><strong>Pull the shot:</strong> Extract your single espresso shot straight over the butter and sugar.</li>
+      <li><strong>Melt it down:</strong> Whisk the espresso, butter, and sugar mixture vigorously until everything is
+        fully melted and incorporated into a rich syrup.</li>
+      <li><strong>Finish it off:</strong> Froth your 125g of milk and pour it over your coffee base. It’s art time! :)
+      </li>
+    </ol>
+
+    <p>Take a sip, close your eyes, and let that smooth Kopiko nostalgia wash over you. If you need some beans to get
+      started, browse our full selection of <a href="/shop">Malaysian coffee beans</a>.</p>
+
+    <div class="post-tags">
+      <span class="post-tag">Hot Kopiko</span><span class="post-tag">Recipe</span><span
+        class="post-tag">Arabica</span><span class="post-tag">Kopitiam Kopi</span><span class="post-tag">Malaysia</span>
+    </div>
+
+    <div class="post-nav">
+      <a href="/library">← Back to Coffee Library</a>
+      <a href="/shop">Browse Coffee Beans →</a>
+    </div>
+  </div>
+
+  <div class="more-posts">
+    <div class="more-posts-inner">
+      <h2>More from the Library</h2>
+      <div class="more-grid">
+        <a href="/posts/arabica-vs-robusta-vs-liberica" class="more-card">
+          <div class="more-card-emoji">📖</div>
+          <h3>Arabica vs Robusta vs Liberica — What's the Difference?</h3>
+          <div class="more-card-meta">5 min read</div>
+        </a><a href="/posts/how-to-read-flavour-notes" class="more-card">
+          <div class="more-card-emoji">🌱</div>
+          <h3>How to Read Coffee Flavour Notes (Without Feeling Lost)</h3>
+          <div class="more-card-meta">6 min read</div>
+        </a><a href="/posts/kl-roasters" class="more-card">
+          <div class="more-card-emoji">🏙️</div>
+          <h3>Best Specialty Coffee Roasters in Kuala Lumpur</h3>
+          <div class="more-card-meta">8 min read</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <a href="/" class="footer-logo">The Beans<span>Hub</span></a>
+    <div class="footer-links">
+      <a href="/shop">Coffee Beans</a>
+      <a href="/library">Coffee Library</a>
+      <a href="/about">About Us</a>
+      <a href="/contact">Contact Us</a>
+    </div>
+    <div class="footer-copy">&copy; 2026 The Beans Hub</div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+  </script>
+</body>
+
+</html>

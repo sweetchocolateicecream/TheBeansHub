@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-JY42YLKPRM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JY42YLKPRM');
+</script>
+<meta charset="utf-8"/>
+<meta content="jqlfBshOy4vgYUb478viCuTswoIsaWL_jdOhL0srx0w" name="google-site-verification">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Coffee Library | Guides, Recipes &amp; Roaster Spotlights — The Beans Hub</title>
+<meta content="Guides, local roaster spotlights, cafe recipes and more — everything you need to go deeper into Malaysian coffee culture." name="description"/>
+<link href="img/thebeanshub_logo.png" rel="icon" type="image/png"/>
+<link href="https://fonts.googleapis.com/css2?family=Sigmar&amp;family=Outfit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --green:       #296241;
+  --green-light: #3a7a50;
+  --cream:       #FDF6EC;
+  --white:       #FFFFFF;
+  --orange:      #FDA11D;
+  --orange-dark: #DA8A10;
+  --border:      #E8E0D0;
+  --tag-bg:      #f0ebe0;
+  --text:        #1a2e1f;
+  --muted:       #5a6e5a;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+
+/* ── NAV ── */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 68px; background: var(--green); border-bottom: 1px solid rgba(253,161,29,0.3); }
+.nav-logo { font-family: "Sigmar", cursive; color: #FDF6EC; font-size: 1.45rem; font-weight: 700; text-decoration: none; }
+.nav-logo span { color: var(--orange); }
+.nav-links { display: flex; gap: 36px; align-items: center; }
+.nav-links a { color: rgba(253,246,236,0.75); text-decoration: none; font-size: 0.88rem; font-weight: 500; letter-spacing: 0.04em; transition: color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color: #FDF6EC; }
+.nav-links a.cta { background: var(--orange); color: white; padding: 8px 20px; border-radius: 8px; font-weight: 600; }
+.nav-links a.cta:hover { background: var(--orange-dark); }
+.nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.nav-hamburger span { display: block; width: 24px; height: 2px; background: #FDF6EC; border-radius: 2px; }
+.mobile-menu { display: none; position: fixed; top: 68px; left: 0; right: 0; background: var(--green); padding: 20px 24px; flex-direction: column; z-index: 99; border-bottom: 2px solid var(--orange); }
+.mobile-menu.open { display: flex; }
+.mobile-menu a { color: rgba(253,246,236,0.8); text-decoration: none; font-size: 1rem; font-weight: 500; padding: 14px 0; border-bottom: 1px solid rgba(253,246,236,0.15); transition: color 0.2s; }
+.mobile-menu a:last-child { border-bottom: none; }
+.mobile-menu a:hover { color: #FDF6EC; }
+
+/* ── PAGE HERO ── */
+.library-hero-wrapper {
+  padding: 88px 40px 0;
+  background: var(--cream);
+}
+.library-hero {
+  background: var(--green);
+  padding: 72px 48px 64px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+}
+.library-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 60% 0%, rgba(253,161,29,0.15), transparent 60%),
+              radial-gradient(ellipse at 20% 100%, rgba(253,161,29,0.08), transparent 50%);
+  border-radius: 24px;
+}
+.library-hero-eyebrow {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--orange); margin-bottom: 16px; position: relative;
+}
+.library-hero h1 {
+  font-family: "Sigmar", cursive;
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  color: #FDF6EC;
+  line-height: 1.15;
+  margin-bottom: 16px;
+  position: relative;
+}
+.library-hero h1 em { font-style: italic; color: var(--orange); }
+.library-hero p {
+  color: rgba(253,246,236,0.72);
+  font-size: 1rem; font-weight: 300; line-height: 1.75;
+  max-width: 520px; margin: 0 auto 40px;
+  position: relative;
+}
+
+/* ── CATEGORY TABS ── */
+.tabs-bar-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 24px 40px 0;
+  background: var(--cream);
+}
+.tabs-bar {
+  display: inline-flex;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 50px;
+  padding: 6px;
+}
+.tabs-bar::-webkit-scrollbar { display: none; }
+.tab-btn {
+  padding: 10px 22px;
+  font-family: "Outfit", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--muted);
+  background: none;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+  letter-spacing: 0.02em;
+}
+.tab-btn:hover { color: var(--text); background: var(--tag-bg); }
+.tab-btn.active { color: var(--white); background: var(--green); }
+.tab-icon { margin-right: 7px; }
+
+/* ── MAIN LAYOUT ── */
+.library-body { max-width: 1200px; margin: 0 auto; padding: 56px 48px 80px; }
+
+/* ── FEATURED POST (top of page / "All" view) ── */
+.featured-post {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--white);
+  margin-bottom: 56px;
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow 0.25s, transform 0.25s;
+}
+.featured-post:hover { transform: translateY(-3px); box-shadow: 0 16px 48px rgba(41,98,65,0.13); }
+.featured-post-img {
+  height: 380px;
+  background: linear-gradient(135deg, var(--green), #3a7a50);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 6rem;
+  position: relative;
+  overflow: hidden;
+}
+.featured-post-img::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 30% 40%, rgba(253,161,29,0.18), transparent 60%);
+}
+.featured-post-body { padding: 48px 40px; display: flex; flex-direction: column; justify-content: center; }
+.post-cat-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 12px; border-radius: 20px;
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  margin-bottom: 16px; width: fit-content;
+}
+.badge-guide  { background: rgba(41,98,65,0.1);  color: var(--green); }
+.badge-local  { background: rgba(253,161,29,0.15); color: #a06800; }
+.badge-travel { background: rgba(100,160,255,0.15); color: #2255a0; }
+.badge-recipe { background: rgba(200,50,50,0.1);   color: #a02020; }
+.featured-post-body h2 {
+  font-family: "Sigmar", cursive;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  line-height: 1.25; margin-bottom: 14px; color: var(--text);
+}
+.featured-post-body p { font-size: 0.9rem; color: var(--muted); line-height: 1.8; margin-bottom: 24px; }
+.post-meta { display: flex; align-items: center; gap: 12px; font-size: 0.75rem; color: var(--muted); }
+.post-meta-dot { width: 3px; height: 3px; background: var(--muted); border-radius: 50%; }
+.read-time { background: var(--tag-bg); padding: 3px 9px; border-radius: 10px; font-weight: 500; }
+
+/* ── POSTS GRID ── */
+.section-heading {
+  font-family: "Sigmar", cursive;
+  font-size: 1.3rem; color: var(--text);
+  margin-bottom: 24px;
+  display: flex; align-items: center; gap: 12px;
+}
+.section-heading::after {
+  content: ''; flex: 1; height: 1px; background: var(--border);
+}
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 56px;
+}
+
+/* ── POST CARD ── */
+.post-card {
+  background: var(--white);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  text-decoration: none; color: inherit;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+.post-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(41,98,65,0.11); }
+.post-card-img {
+  height: 180px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 3.5rem;
+  position: relative;
+}
+.post-card-img.guide-img   { background: linear-gradient(135deg, #1a4a2a, #296241); }
+.post-card-img.local-img   { background: linear-gradient(135deg, #4a3000, #a06800); }
+.post-card-img.recipe-img  { background: linear-gradient(135deg, #4a1010, #a03020); }
+.post-card-body { padding: 20px; flex: 1; display: flex; flex-direction: column; gap: 10px; }
+.post-card-body h3 {
+  font-family: "Outfit", sans-serif;
+  font-size: 0.98rem; font-weight: 700;
+  color: var(--text); line-height: 1.4;
+}
+.post-card-body p { font-size: 0.82rem; color: var(--muted); line-height: 1.7; flex: 1; }
+.post-card-footer {
+  padding: 14px 20px;
+  border-top: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.read-more-btn {
+  font-size: 0.78rem; font-weight: 600; color: var(--green);
+  text-decoration: none; letter-spacing: 0.02em;
+  transition: color 0.2s;
+}
+.read-more-btn:hover { color: var(--orange); }
+
+/* ── COMING SOON CARD ── */
+.post-card.coming-soon { opacity: 0.55; cursor: default; }
+.post-card.coming-soon:hover { transform: none; box-shadow: none; }
+.coming-badge {
+  position: absolute; top: 12px; right: 12px;
+  background: rgba(0,0,0,0.4); color: white;
+  font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 4px 8px; border-radius: 6px;
+}
+
+/* ── NEWSLETTER STRIP ── */
+.newsletter-strip {
+  background: var(--green);
+  border-radius: 20px;
+  padding: 48px 56px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 40px; margin-bottom: 56px;
+}
+.newsletter-strip-text h3 { font-family: "Sigmar", cursive; font-size: 1.4rem; color: #FDF6EC; margin-bottom: 6px; }
+.newsletter-strip-text p { font-size: 0.88rem; color: rgba(253,246,236,0.7); }
+.newsletter-strip-form { display: flex; gap: 10px; flex-shrink: 0; }
+.newsletter-strip-input {
+  padding: 12px 18px; border-radius: 10px;
+  border: 1.5px solid rgba(253,246,236,0.25);
+  background: rgba(255,255,255,0.1);
+  color: white; font-family: "Outfit", sans-serif; font-size: 0.88rem;
+  outline: none; width: 220px; transition: border-color 0.2s;
+}
+.newsletter-strip-input::placeholder { color: rgba(253,246,236,0.4); }
+.newsletter-strip-input:focus { border-color: var(--orange); }
+.newsletter-strip-btn {
+  padding: 12px 22px; background: var(--orange); color: white; border: none;
+  border-radius: 10px; font-family: "Outfit", sans-serif; font-size: 0.88rem;
+  font-weight: 700; cursor: pointer; white-space: nowrap; transition: background 0.2s;
+}
+.newsletter-strip-btn:hover { background: var(--orange-dark); }
+
+/* ── FOOTER ── */
+footer { background: var(--green); padding: 40px 48px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(253,161,29,0.2); }
+.footer-logo { font-family: "Sigmar", cursive; color: #FDF6EC; font-size: 1.1rem; font-weight: 700; text-decoration: none; }
+.footer-logo span { color: var(--orange); }
+.footer-links { display: flex; gap: 28px; }
+.footer-links a { color: rgba(253,246,236,0.9); text-decoration: none; font-size: 0.8rem; transition: color 0.2s; }
+.footer-links a:hover { color: #FDF6EC; }
+.footer-copy { font-size: 0.75rem; color: rgba(253,246,236,0.8); }
+
+/* ── REVEAL ── */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── MOBILE ── */
+@media (max-width: 900px) {
+  .featured-post { grid-template-columns: 1fr; }
+  .featured-post-img { height: 220px; }
+  .posts-grid { grid-template-columns: repeat(2, 1fr); }
+  .newsletter-strip { flex-direction: column; gap: 24px; padding: 36px 28px; }
+  .newsletter-strip-form { flex-direction: column; width: 100%; }
+  .newsletter-strip-input { width: 100%; }
+}
+@media (max-width: 640px) {
+  nav { padding: 0 20px; }
+  nav .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  .library-hero-wrapper { padding: 76px 16px 0; }
+  .tabs-bar-wrapper { padding: 16px 16px 0; }
+  .library-hero { padding: 48px 20px 40px; }
+  .library-body { padding: 40px 16px 60px; }
+  .posts-grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: 20px; text-align: center; padding: 32px 20px; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+}
+
+.footer-social { display: flex; gap: 14px; align-items: center; }
+.footer-social a { color: rgba(253,246,236,0.9); text-decoration: none; transition: color 0.2s, transform 0.2s; display: flex; align-items: center; }
+.footer-social a:hover { color: #FDA11D; transform: scale(1.15); }
+.footer-social svg { width: 20px; height: 20px; fill: currentColor; }
+@media (max-width: 768px) { .footer-social { justify-content: center; } }
+</style>
+</meta>
+  <link rel="canonical" href="https://www.thebeanshub.com/library">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Coffee Library | Guides, Recipes & Roaster Spotlights — The Beans Hub">
+  <meta property="og:description" content="Guides, local roaster spotlights, cafe recipes and more — everything you need to go deeper into Malaysian coffee culture.">
+  <meta property="og:url" content="https://www.thebeanshub.com/library">
+  <meta property="og:image" content="https://www.thebeanshub.com/img/Girl-bought-coffee-from-the-beans-hub.png">
+  <meta property="og:site_name" content="The Beans Hub">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Coffee Library | Guides, Recipes & Roaster Spotlights — The Beans Hub">
+  <meta name="twitter:description" content="Guides, local roaster spotlights, cafe recipes and more — everything you need to go deeper into Malaysian coffee culture.">
+  <meta name="twitter:image" content="https://www.thebeanshub.com/img/Girl-bought-coffee-from-the-beans-hub.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.thebeanshub.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Library",
+      "item": "https://www.thebeanshub.com/library"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+<!-- NAV (unchanged) -->
+<nav>
+<a class="nav-logo" href="/">The Beans<span>Hub</span></a>
+<div class="nav-links">
+<a href="/">Home</a>
+<a href="/shop">Coffee Beans</a>
+<a class="active" href="/library">Coffee Library</a>
+<a href="/about">About Us</a>
+<a href="/contact">Contact Us</a>
+<a class="cta" href="/shop">Explore Beans</a>
+</div>
+<button aria-label="Menu" class="nav-hamburger" onclick="toggleMenu()">
+<span></span><span></span><span></span>
+</button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+<a href="/">Home</a>
+<a href="/shop">Coffee Beans</a>
+<a href="/library">Coffee Library</a>
+<a href="/about">About Us</a>
+<a href="/contact">Contact Us</a>
+</div>
+<!-- HERO -->
+<div class="library-hero-wrapper">
+<div class="library-hero">
+<div class="library-hero-eyebrow">☕ Coffee Library</div>
+<h1>Know your<br/><em>coffee</em> better.</h1>
+<p>Beginner guides, local roaster spotlights, and cafe recipes recreated at home — everything to go deeper into Malaysian coffee culture.</p>
+</div>
+</div>
+<!-- TABS -->
+<div class="tabs-bar-wrapper">
+<div class="tabs-bar" id="tabsBar">
+<button class="tab-btn active" data-cat="all"><span class="tab-icon">📚</span>All</button>
+<button class="tab-btn" data-cat="guide"><span class="tab-icon">🎓</span>How To &amp; Beginner Guides</button>
+<button class="tab-btn" data-cat="local"><span class="tab-icon">📍</span>Local Guide</button>
+<button class="tab-btn" data-cat="recipe"><span class="tab-icon">☕</span>Cafe Recipes Recreated</button>
+</div>
+</div>
+<!-- BODY -->
+<div class="library-body">
+<!-- FEATURED POST -->
+<a class="featured-post reveal post-item" data-cat="local" href="/posts/specialty-coffee-johor" id="featuredPost">
+<div class="featured-post-img">📍</div>
+<div class="featured-post-body">
+<div class="post-cat-badge badge-local">📍 Local Guide</div>
+<h2>Specialty Coffee in Johor: I Keep Saving Cafés… But Still End Up Brewing at Home</h2>
+<p>JB is my hometown. The specialty coffee scene here keeps growing — more roasters, more cafés, more people who actually care. Yet somehow I still end up at home, making my own coffee.</p>
+<div class="post-meta">
+<span>The Beans Hub</span>
+<span class="post-meta-dot"></span>
+<span>April 2025</span>
+<span class="post-meta-dot"></span>
+<span class="read-time">8 min read</span>
+</div>
+</div>
+</a>
+<!-- HOW TO SECTION -->
+<div class="section-heading reveal" data-cat-section="guide">🎓 How To &amp; Beginner Guides</div>
+<div class="posts-grid">
+<a class="post-card reveal post-item" data-cat="guide" href="/posts/arabica-robusta-liberica">
+<div class="post-card-img guide-img">☕</div>
+<div class="post-card-body">
+<div class="post-cat-badge badge-guide">🎓 Beginner Guide</div>
+<h3>Arabica vs Robusta vs Liberica — What's the Difference?</h3>
+<p>Malaysia is one of the few places in the world where all three species grow. Here's your plain-English breakdown of how each tastes and why it matters.</p>
+</div>
+<div class="post-card-footer">
+<span class="read-time">5 min read</span>
+<span class="read-more-btn">Read →</span>
+</div>
+</a>
+<a class="post-card reveal post-item" data-cat="guide" href="/posts/how-to-read-flavour-notes">
+<div class="post-card-img guide-img">🫐</div>
+<div class="post-card-body">
+<div class="post-cat-badge badge-guide">🎓 Beginner Guide</div>
+<h3>How to Read Flavour Notes in Coffee (Without Feeling Lost)</h3>
+<p>"Blueberry jam with a floral finish" — but all you taste is coffee. Here's why that happens and how to actually start tasting what the bag says.</p>
+</div>
+<div class="post-card-footer">
+<span class="read-time">6 min read</span>
+<span class="read-more-btn">Read →</span>
+</div>
+</a>
+<a class="post-card reveal post-item" data-cat="guide" href="/posts/processing-methods">
+<div class="post-card-img guide-img">⚙️</div>
+<div class="post-card-body">
+<div class="post-cat-badge badge-guide">🎓 Beginner Guide</div>
+<h3>Natural vs Washed vs Honey — Processing Methods Explained</h3>
+<p>The way coffee is processed after harvesting dramatically changes what ends up in your cup. Here's what each method does and which to look for.</p>
+</div>
+<div class="post-card-footer">
+<span class="read-time">7 min read</span>
+<span class="read-more-btn">Read →</span>
+</div>
+</a>
+<a class="post-card reveal post-item" data-cat="guide" href="/posts/how-much-coffee-is-too-much">
+<div class="post-card-img guide-img">☕</div>
+<div class="post-card-body">
+<div class="post-cat-badge badge-guide">🎓 Personal Experience</div>
+<h3>How Much Coffee Is Too Much? (From Someone With ADHD Who Can Still Sleep After Espresso)</h3>
+<p>I drink espresso at 7pm and still fall asleep. Here's what I found out about caffeine, ADHD, and knowing when you've actually had too much.</p>
+</div>
+<div class="post-card-footer">
+<span class="read-time">7 min read</span>
+<span class="read-more-btn">Read →</span>
+</div>
+</a>
+<a class="post-card reveal post-item" data-cat="guide" href="/posts/light-vs-medium-vs-dark-roast">
+<div class="post-card-img guide-img">🔥</div>
+<div class="post-card-body">
+<div class="post-cat-badge badge-guide">🎓 Beginner Guide</div>
+<h3>Light vs Medium vs Dark Roast — Which Should You Buy?</h3>
+<p>Roast level changes everything — acidity, body, and flavour. Honest guide to picking the right roast for how you actually drink your coffee.</p>
+</div>
+<div class="post-card-footer">
+<span class="read-time">7 min read</span>
+<span class="read-more-btn">Read →</span>
+</div>
+</a>
+<div class="post-card reveal post-item coming-soon" data-cat="guide">
+<div class="post-card-img guide-img" style="position:relative;">🫘<span class="coming-badge">Coming Soon</span></div>
+<div class="post-card-body">
+<div class="post-cat-badge badge-guide">🎓 Beginner Guide</div>
+<h3>Your First Home Brew Setup Under RM 300</h3>
+<p>You don't need to spend a fortune to brew great coffee at home. Our recommended starter kit that covers grinder, brewer, and kettle — all under RM 300.</p>
+</div>
+<div class="post-card-footer">
+<span class="read-time">5 min read</span>
+<span style="font-size:0.75rem;color:var(--muted);">Coming soon</span>
+</div>
+</div>
+</div>
+<!-- LOCAL GUIDE SECTION -->
+<div class="section-heading reveal" data-cat-section="local">📍 Local Guide</div>
+<div class="posts-grid">
+<a class="post-card reveal post-item" data-cat="local" href="/posts/jeju-specialty-coffee">
+<div class="post-card-img local-img">🇰🇷</div>
+<div class="post-card-body">
+<div class="post-cat-badge badge-travel">✈️ Travel &amp; Coffee</div>
+<h3>Specialty Coffee in Jeju Island — Ranked by a Malaysian</h3>
+<p>Spent a week hunting the best specialty coffee in Jeju as a Malaysian coffee lover. Here's an honest latte-by-latte ranking of 6 cafés — one genuinely blew my mind.</p>
+</div>
+<div class="post-card-footer">
+<span class="read-time">6 min read</span>
+<span class="read-more-btn">Read →</span>
+</div>
+</a>
+<a class="post-card reveal post-item" data-cat="local" href="/posts/kl-roasters">
+<div class="post-card-img local-img">🏙️</div>
+<div class="post-card-body">
+<div class="post-cat-badge badge-local">📍 Local Guide</div>
+<h3>Best Specialty Coffee Roasters in Kuala Lumpur</h3>
+<p>From Bangsar to Damansara — every specialty roaster worth visiting in KL, with what to order and what to bring home.</p>
+</div>
+<div class="post-card-footer">
+<span class="read-time">8 min read</span>
+<span class="read-more-btn">Read →</span>
+</div>
+</a>
+<a class="post-card reveal post-item" data-cat="local" href="/posts/specialty-coffee-johor">
+<div class="post-card-img local-img">📍</div>
+<div class="post-card-body">
+<div class="post-cat-badge badge-local">📍 Local Guide</div>
+<h3>Specialty Coffee in Johor: I Keep Saving Cafés… But Still End Up Brewing at Home</h3>
+<p>JB is my hometown. The cafés I keep saving, the Liberica scene in Kulai, and a quieter side of Johor's coffee culture in Segamat.</p>
+</div>
+<div class="post-card-footer">
+<span class="read-time">8 min read</span>
+<span class="read-more-btn">Read →</span>
+</div>
+</a>
+<div class="post-card reveal post-item coming-soon" data-cat="local">
+<div class="post-card-img local-img" style="position:relative;">🌴<span class="coming-badge">Coming Soon</span></div>
+<div class="post-card-body">
+<div class="post-cat-badge badge-local">📍 Local Guide</div>
+<h3>Penang's Specialty Coffee Scene — A Roaster's Map</h3>
+<p>George Town has quietly become one of Malaysia's most exciting coffee cities. Here are the roasters making it happen, and where to find them.</p>
+</div>
+<div class="post-card-footer">
+<span class="read-time">7 min read</span>
+<span style="font-size:0.75rem;color:var(--muted);">Coming soon</span>
+</div>
+</div>
+<div class="post-card reveal post-item coming-soon" data-cat="local">
+<div class="post-card-img local-img" style="position:relative;">🎨<span class="coming-badge">Coming Soon</span></div>
+<div class="post-card-body">
+<div class="post-cat-badge badge-local">📍 Local Guide</div>
+<h3>Where to Learn Latte Art in Malaysia</h3>
+<p>Cafes and schools in KL, Penang and JB that run latte art workshops — from absolute beginner to competitive level. Prices, schedules, and what to expect.</p>
+</div>
+<div class="post-card-footer">
+<span class="read-time">5 min read</span>
+<span style="font-size:0.75rem;color:var(--muted);">Coming soon</span>
+</div>
+</div>
+<div class="post-card reveal post-item coming-soon" data-cat="local">
+<div class="post-card-img local-img" style="position:relative;">🌿<span class="coming-badge">Coming Soon</span></div>
+<div class="post-card-body">
+<div class="post-cat-badge badge-local">📍 Local Guide</div>
+<h3>Malaysian Liberica Farms — Can You Visit?</h3>
+<p>Liberica grows almost nowhere else on earth. We look into whether farm visits are possible and what the experience is like.</p>
+</div>
+<div class="post-card-footer">
+<span class="read-time">5 min read</span>
+<span style="font-size:0.75rem;color:var(--muted);">Coming soon</span>
+</div>
+</div>
+</div>
+<!-- RECIPES SECTION -->
+<div class="section-heading reveal" data-cat-section="recipe">☕ Cafe Recipes Recreated</div>
+<div class="posts-grid">
+<a class="post-card reveal post-item" data-cat="recipe" href="/posts/oat-milk-cortado">
+<div class="post-card-img recipe-img">🥛</div>
+<div class="post-card-body">
+<div class="post-cat-badge badge-recipe">☕ Recipe</div>
+<h3>How to Make an Oat Milk Cortado at Home (Café-Quality)</h3>
+<p>Bean selection, steaming temperature, vortex technique, and the mistakes that ruin most attempts. Everything you need to nail the 1:1 ratio at home.</p>
+</div>
+<div class="post-card-footer">
+<span class="read-time">6 min read</span>
+<span class="read-more-btn">Read →</span>
+</div>
+</a>
+<a class="post-card reveal post-item" data-cat="recipe" href="/posts/iced-brown-sugar-espresso">
+<div class="post-card-img recipe-img">🧊</div>
+<div class="post-card-body">
+<div class="post-cat-badge badge-recipe">☕ Recipe</div>
+<h3>Iced Brown Sugar Shaken Espresso — Malaysian Twist</h3>
+<p>The viral drink, made better with a local spin — using gula melaka instead of brown sugar and a fruity Ethiopian as the espresso base.</p>
+</div>
+<div class="post-card-footer">
+<span class="read-time">3 min read</span>
+<span class="read-more-btn">Read →</span>
+</div>
+</a>
+<a class="post-card reveal post-item" data-cat="recipe" href="/posts/hot-kopiko-arabica-kopitiam-kopi-recipe">
+<div class="post-card-img recipe-img">🧊</div>
+<div class="post-card-body">
+<div class="post-cat-badge badge-recipe">☕ Recipe</div>
+<h3>Using Angmo Coffee to Make Kopitiam Kopi?</h3>
+<p>This drink is the ultimate bridge between the modern espresso machine and the plastic tables of your favorite old-school kopitiam.</p>
+</div>
+<div class="post-card-footer">
+<span class="read-time">3 min read</span>
+<span class="read-more-btn">Read →</span>
+</div>
+</a>
+<div class="post-card reveal post-item coming-soon" data-cat="recipe">
+<div class="post-card-img recipe-img" style="position:relative;">🍵<span class="coming-badge">Coming Soon</span></div>
+<div class="post-card-body">
+<div class="post-cat-badge badge-recipe">☕ Recipe</div>
+<h3>Cold Brew at Home — No Equipment Needed</h3>
+<p>Cold brew sounds fancy but it's literally just coffee and water. Here's the foolproof overnight method that works with any jar you have.</p>
+</div>
+<div class="post-card-footer">
+<span class="read-time">4 min read</span>
+<span style="font-size:0.75rem;color:var(--muted);">Coming soon</span>
+</div>
+</div>
+</div>
+<!-- NEWSLETTER -->
+<div class="newsletter-strip reveal">
+<div class="newsletter-strip-text">
+<h3>New posts, straight to your inbox.</h3>
+<p>No spam. Just good coffee writing, once a month.</p>
+</div>
+<div class="newsletter-strip-form" id="libSub">
+<input class="newsletter-strip-input" id="libEmail" placeholder="Your email address" type="email"/>
+<button class="newsletter-strip-btn" onclick="handleLibSub()">Subscribe →</button>
+</div>
+</div>
+</div><!-- /library-body -->
+<!-- FOOTER -->
+<footer>
+<a class="footer-logo" href="/">The Beans<span>Hub</span></a>
+<div class="footer-links">
+<a href="/shop">Coffee Beans</a>
+<a href="#" style="opacity:0.5;cursor:default;pointer-events:none;">Coffee Library</a>
+<a href="/about">About Us</a>
+<a href="/contact">Contact Us</a>
+</div>
+<div class="footer-social">
+<a aria-label="Instagram" href="https://www.instagram.com/thebeanshub" rel="noopener" target="_blank">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"></path></svg>
+</a>
+<a aria-label="Facebook" href="https://www.facebook.com/thebeanshub" rel="noopener" target="_blank">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg>
+</a>
+</div>
+<div class="footer-copy">© 2025 The Beans Hub</div>
+</footer>
+<script>
+// Mobile menu
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+
+// Tab filtering
+const tabs = document.querySelectorAll('#tabsBar .tab-btn');
+const posts = document.querySelectorAll('.post-item');
+const sections = document.querySelectorAll('[data-cat-section]');
+const featured = document.getElementById('featuredPost');
+
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    tabs.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    const cat = tab.dataset.cat;
+
+    // Show/hide featured post
+    if (featured) {
+      featured.style.display = (cat === 'all' || cat === 'local') ? '' : 'none';
+    }
+
+    // Show/hide section headings
+    sections.forEach(s => {
+      const show = cat === 'all' || s.dataset.catSection === cat;
+      s.style.display = show ? '' : 'none';
+    });
+
+    // Show/hide post cards
+    posts.forEach(p => {
+      if (p === featured) return;
+      const show = cat === 'all' || p.dataset.cat === cat;
+      p.style.display = show ? '' : 'none';
+    });
+  });
+});
+
+// Scroll reveal
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Newsletter
+function handleLibSub() {
+  const email = document.getElementById('libEmail');
+  const btn   = document.querySelector('.newsletter-strip-btn');
+  if (!email.value.includes('@')) { email.style.borderColor = '#e85d4a'; return; }
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  fetch('https://formspree.io/f/mnjbkkaj', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({ email: email.value, source: 'library' })
+  }).then(function(res) {
+    if (res.ok) {
+      btn.textContent = 'You are in!';
+      email.disabled = true;
+    } else {
+      btn.textContent = 'Try again';
+      btn.disabled = false;
+    }
+  }).catch(function() { btn.textContent = 'Network error'; btn.disabled = false; });
+}
+</script>
+</body>
+</html>

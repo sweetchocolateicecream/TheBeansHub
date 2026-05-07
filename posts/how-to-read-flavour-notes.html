@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JY42YLKPRM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JY42YLKPRM');
+</script>
+<meta charset="UTF-8">
+<meta name="google-site-verification" content="jqlfBshOy4vgYUb478viCuTswoIsaWL_jdOhL0srx0w" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Read Flavour Notes in Coffee — Start Here</title>
+<meta name="description" content="Can't taste what the bag says? Here's how to read flavour notes in coffee — even if everything still tastes like, well… coffee.">
+<link rel="canonical" href="https://thebeanshub.com/posts/how-to-read-flavour-notes">
+<link href="https://fonts.googleapis.com/css2?family=Sigmar&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="img/thebeanshub_logo.png">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --green: #296241; --green-light: #3a7a50;
+  --cream: #FDF6EC; --white: #FFFFFF;
+  --orange: #FDA11D; --orange-dark: #DA8A10;
+  --border: #E8E0D0; --tag-bg: #f0ebe0;
+  --text: #1a2e1f; --muted: #5a6e5a;
+}
+html { scroll-behavior: smooth; }
+body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 68px; background: var(--green); border-bottom: 1px solid rgba(253,161,29,0.3); }
+.nav-logo { font-family: "Sigmar", cursive; color: #FDF6EC; font-size: 1.45rem; font-weight: 700; text-decoration: none; }
+.nav-logo span { color: var(--orange); }
+.nav-links { display: flex; gap: 36px; align-items: center; }
+.nav-links a { color: rgba(253,246,236,0.75); text-decoration: none; font-size: 0.88rem; font-weight: 500; letter-spacing: 0.04em; transition: color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color: #FDF6EC; }
+.nav-links a.cta { background: var(--orange); color: white; padding: 8px 20px; border-radius: 8px; font-weight: 600; }
+.nav-links a.cta:hover { background: var(--orange-dark); }
+.nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.nav-hamburger span { display: block; width: 24px; height: 2px; background: #FDF6EC; border-radius: 2px; }
+.mobile-menu { display: none; position: fixed; top: 68px; left: 0; right: 0; background: var(--green); padding: 20px 24px; flex-direction: column; z-index: 99; border-bottom: 2px solid var(--orange); }
+.mobile-menu.open { display: flex; }
+.mobile-menu a { color: rgba(253,246,236,0.8); text-decoration: none; font-size: 1rem; font-weight: 500; padding: 14px 0; border-bottom: 1px solid rgba(253,246,236,0.15); transition: color 0.2s; }
+.mobile-menu a:last-child { border-bottom: none; }
+.mobile-menu a:hover { color: #FDF6EC; }
+
+/* POST HERO */
+.post-hero { padding: 104px 48px 56px; background: var(--green); position: relative; overflow: hidden; }
+.post-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 0%, rgba(253,161,29,0.15), transparent 55%), radial-gradient(ellipse at 10% 100%, rgba(253,161,29,0.07), transparent 50%); }
+.post-hero-inner { max-width: 800px; margin: 0 auto; position: relative; }
+.post-breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 0.75rem; color: rgba(253,246,236,0.55); margin-bottom: 20px; }
+.post-breadcrumb a { color: rgba(253,246,236,0.55); text-decoration: none; transition: color 0.2s; }
+.post-breadcrumb a:hover { color: #FDF6EC; }
+.post-breadcrumb span { color: rgba(253,246,236,0.3); }
+.post-cat-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 20px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 18px; width: fit-content; }
+.badge-guide  { background: rgba(255,255,255,0.15); color: #FDF6EC; }
+.badge-local  { background: rgba(253,161,29,0.25); color: #FDA11D; }
+.badge-recipe { background: rgba(255,100,100,0.2); color: #ffb0b0; }
+.post-hero h1 { font-family: "Sigmar", cursive; font-size: clamp(1.8rem, 4vw, 2.8rem); color: #FDF6EC; line-height: 1.2; margin-bottom: 20px; }
+.post-hero-meta { display: flex; align-items: center; gap: 12px; font-size: 0.8rem; color: rgba(253,246,236,0.6); flex-wrap: wrap; }
+.post-hero-meta-dot { width: 3px; height: 3px; background: rgba(253,246,236,0.4); border-radius: 50%; }
+.post-read-time { background: rgba(253,161,29,0.2); color: var(--orange); padding: 3px 10px; border-radius: 10px; font-weight: 600; font-size: 0.72rem; }
+
+/* POST PARALLAX BANNER */
+.post-banner {
+  height: 420px;
+  position: relative;
+  overflow: hidden;
+}
+.post-banner-img {
+  position: absolute;
+  inset: -80px 0;
+  background-image: url('../img/Girl-bought-coffee-from-the-beans-hub.png');
+  background-size: cover;
+  background-position: center 30%;
+  will-change: transform;
+  transition: transform 0.05s linear;
+}
+
+/* POST BODY */
+.post-body { max-width: 800px; margin: 0 auto; padding: 56px 48px 80px; }
+
+/* TYPOGRAPHY */
+.post-body h2 { font-family: "Sigmar", cursive; font-size: 1.5rem; color: var(--green); margin: 48px 0 16px; line-height: 1.3; }
+.post-body h3 { font-family: "Outfit", sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--text); margin: 32px 0 12px; }
+.post-body p { font-size: 0.97rem; line-height: 1.85; color: #2a3a2a; margin-bottom: 20px; }
+.post-body ul, .post-body ol { padding-left: 24px; margin-bottom: 20px; }
+.post-body li { font-size: 0.97rem; line-height: 1.8; color: #2a3a2a; margin-bottom: 6px; }
+.post-body strong { font-weight: 700; color: var(--text); }
+.post-body em { font-style: italic; color: var(--muted); }
+.post-body a { color: var(--green); font-weight: 600; text-decoration: underline; text-decoration-color: rgba(41,98,65,0.3); transition: color 0.2s; }
+.post-body a:hover { color: var(--orange); }
+
+/* CALLOUT BOX */
+.callout { background: var(--tag-bg); border-left: 4px solid var(--orange); border-radius: 0 12px 12px 0; padding: 20px 24px; margin: 32px 0; }
+.callout p { margin: 0; font-size: 0.92rem; }
+.callout-title { font-weight: 700; color: var(--green); margin-bottom: 6px !important; font-size: 0.8rem !important; text-transform: uppercase; letter-spacing: 0.08em; }
+
+/* INFO CARD */
+.info-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 24px 28px; margin: 28px 0; }
+.info-card h4 { font-size: 0.88rem; font-weight: 700; color: var(--green); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.08em; }
+
+/* FLAVOUR TABLE */
+.flavour-table { width: 100%; border-collapse: collapse; margin: 28px 0; font-size: 0.92rem; }
+.flavour-table thead tr { background: var(--green); color: #FDF6EC; }
+.flavour-table thead th { padding: 12px 16px; text-align: left; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; }
+.flavour-table thead th:first-child { border-radius: 10px 0 0 0; }
+.flavour-table thead th:last-child { border-radius: 0 10px 0 0; }
+.flavour-table tbody tr { border-bottom: 1px solid var(--border); }
+.flavour-table tbody tr:last-child { border-bottom: none; }
+.flavour-table tbody tr:nth-child(even) { background: var(--tag-bg); }
+.flavour-table tbody td { padding: 12px 16px; color: #2a3a2a; line-height: 1.6; }
+
+/* DIVIDER */
+.post-divider { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
+
+/* TAG ROW */
+.post-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 36px 0 0; }
+.post-tag { padding: 5px 14px; background: var(--tag-bg); color: var(--muted); border-radius: 20px; font-size: 0.75rem; font-weight: 500; }
+
+/* BACK + NEXT NAV */
+.post-nav { display: flex; justify-content: space-between; align-items: center; padding: 32px 0; border-top: 1px solid var(--border); margin-top: 48px; }
+.post-nav a { display: flex; align-items: center; gap: 8px; text-decoration: none; font-size: 0.85rem; font-weight: 600; color: var(--green); transition: color 0.2s; }
+.post-nav a:hover { color: var(--orange); }
+
+/* MORE POSTS */
+.more-posts { background: var(--cream); border-top: 1px solid var(--border); padding: 64px 48px; }
+.more-posts-inner { max-width: 1100px; margin: 0 auto; }
+.more-posts h2 { font-family: "Sigmar", cursive; font-size: 1.4rem; color: var(--text); margin-bottom: 32px; }
+.more-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.more-card { background: var(--white); border-radius: 14px; border: 1px solid var(--border); padding: 24px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 10px; transition: transform 0.2s, box-shadow 0.2s; }
+.more-card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(41,98,65,0.1); }
+.more-card-emoji { font-size: 2rem; }
+.more-card h3 { font-family: "Outfit", sans-serif; font-size: 0.92rem; font-weight: 700; color: var(--text); line-height: 1.4; }
+.more-card-meta { font-size: 0.72rem; color: var(--muted); margin-top: auto; }
+
+/* FOOTER */
+footer { background: var(--green); padding: 40px 48px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(253,161,29,0.2); }
+.footer-logo { font-family: "Sigmar", cursive; color: #FDF6EC; font-size: 1.1rem; font-weight: 700; text-decoration: none; }
+.footer-logo span { color: var(--orange); }
+.footer-links { display: flex; gap: 28px; }
+.footer-links a { color: rgba(253,246,236,0.6); text-decoration: none; font-size: 0.8rem; transition: color 0.2s; }
+.footer-links a:hover { color: #FDF6EC; }
+.footer-copy { font-size: 0.75rem; color: rgba(253,246,236,0.4); }
+
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
+  nav .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  .post-hero { padding: 88px 20px 40px; }
+  .post-body { padding: 40px 20px 60px; }
+  .more-posts { padding: 48px 20px; }
+  .more-grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: 20px; text-align: center; padding: 32px 20px; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+  .post-banner { height: 260px; }
+  .flavour-table { font-size: 0.82rem; }
+  .flavour-table thead th, .flavour-table tbody td { padding: 10px 12px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">The Beans<span>Hub</span></a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/shop">Coffee Beans</a>
+    <a href="/library" class="active">Coffee Library</a>
+    <a href="/about">About Us</a>
+    <a href="/contact">Contact Us</a>
+    <a href="/shop" class="cta">Explore Beans</a>
+  </div>
+  <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/">Home</a>
+  <a href="/shop">Coffee Beans</a>
+  <a href="/library">Coffee Library</a>
+  <a href="/about">About Us</a>
+  <a href="/contact">Contact Us</a>
+</div>
+
+<div class="post-hero">
+  <div class="post-hero-inner">
+    <div class="post-breadcrumb">
+      <a href="/library">Coffee Library</a>
+      <span>›</span>
+      <span>Beginner Guide</span>
+    </div>
+    <div class="post-cat-badge badge-guide">🎓 Beginner Guide</div>
+    <h1>How to Read Flavour Notes in Coffee (Without Feeling Lost)</h1>
+    <div class="post-hero-meta">
+      <span>The Beans Hub</span>
+      <span class="post-hero-meta-dot"></span>
+      <span>March 2025</span>
+      <span class="post-hero-meta-dot"></span>
+      <span class="post-read-time">6 min read</span>
+    </div>
+  </div>
+</div>
+
+<div class="post-banner">
+  <div class="post-banner-img" id="parallaxImg"></div>
+</div>
+
+<div class="post-body">
+
+<p><em>"Blueberry jam with a floral finish"</em></p>
+<p>…Errrr, but all I taste is coffee?</p>
+<p>Relax. You're not broken. Your taste buds are working fine.</p>
+<p>You're just untrained.</p>
+<p>And that's normal.</p>
+
+<h2>So… What Are Flavour Notes in Coffee?</h2>
+<p>When you see things like "blueberry jam", "floral", "caramel" — it can feel a bit… dramatic.</p>
+<p>Like, really meh?</p>
+<p>But actually — it's not nonsense.</p>
+<p>Those are just shortcuts people use to describe what they taste. Coffee naturally has compounds that can remind you of fruits, flowers, nuts, chocolate.</p>
+<p>It comes from where the coffee is grown, what type of plant it is, how it's processed, and how it's roasted.</p>
+<p>So yes — some coffees really do have a berry-like or floral kind of taste.</p>
+
+<div class="callout">
+  <p class="callout-title">💡 The tricky part</p>
+  <p>It's not that the flavour isn't there. It's just that your brain doesn't know how to recognise it yet. Same like showing a red colour to a 2-month-old baby. The baby can see it — but cannot say "this is red". Because no one has taught the brain yet. <strong>Coffee is the same.</strong></p>
+</div>
+
+<h2>Why Does Everything Just Taste Like… Coffee?</h2>
+<p>When you drink something, your brain tries to match it with what it already knows.</p>
+<p>If it cannot find a match?</p>
+<p>It just says: <em>"ok… this is coffee."</em></p>
+<p>That's it.</p>
+<p>The more flavours you've experienced before — and the more you've named them — the easier it becomes to recognise them again.</p>
+<p>Same reason a chef can taste 5 spices in one dish, and we just say "wah nice".</p>
+
+<h2>How Do You Taste Flavour Notes in Coffee? (Without Overthinking)</h2>
+<p>You don't need to be expert. Just try these:</p>
+
+<div class="info-card">
+  <h4>5 things to try right now</h4>
+  <ol>
+    <li><strong>Smell first.</strong> Before drinking — smell it. Does it feel fruity? Nutty? Chocolatey? Don't need to be accurate. Just guess.</li>
+    <li><strong>Let it cool a bit.</strong> Hot coffee = everything tastes the same. When it cools down a bit, flavours start to show.</li>
+    <li><strong>Slurp (yes, really).</strong> Sounds weird, but it works. It spreads the coffee across your whole mouth and helps you taste more.</li>
+    <li><strong>Think big first, then small.</strong> Don't jump to "blueberry". Start with: fruity or not? Sweet or not? Bright or not? Then slowly zoom in.</li>
+    <li><strong>Compare 2 coffees.</strong> This is the fastest way. Side by side, you'll suddenly realise: "oh… this one actually different".</li>
+  </ol>
+</div>
+
+<h2>A Simple Way to Find Flavour Notes in Coffee</h2>
+<p>If you taste something like…</p>
+
+<table class="flavour-table">
+  <thead>
+    <tr>
+      <th>If you taste…</th>
+      <th>It might be…</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Bright and sharp</td>
+      <td>Citrus / green apple</td>
+    </tr>
+    <tr>
+      <td>Sweet and jammy</td>
+      <td>Berries / dried fruit</td>
+    </tr>
+    <tr>
+      <td>Smooth and rich</td>
+      <td>Chocolate / caramel</td>
+    </tr>
+    <tr>
+      <td>Earthy</td>
+      <td>Nuts / wood</td>
+    </tr>
+    <tr>
+      <td>Light and soft</td>
+      <td>Floral</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>No need to be perfect. Just close enough is enough.</p>
+
+<h2>Does It Get Easier?</h2>
+<p>Yes. And more fun.</p>
+<p>At first, everything still tastes like coffee. That's normal.</p>
+<p>But slowly… you'll start noticing small things:</p>
+<ul>
+  <li>a bit of sweetness at the end</li>
+  <li>a light fruity feeling</li>
+  <li>something "different" you can't fully explain yet</li>
+</ul>
+<p>Then one day you read: <em>"blueberry jam with a floral finish"</em></p>
+<p>…and you'll go: <em>"eh… I think I can taste that"</em></p>
+<p>That moment? Worth it.</p>
+
+<div class="callout">
+  <p class="callout-title">☕ Start simple</p>
+  <p>You don't need expensive gear. You don't need to be expert. Just try different coffees — and pay a bit more attention each time. Browse our <a href="/shop">current bean selection</a>, each one comes with tasting notes to guide you.</p>
+</div>
+
+<div class="post-tags">
+  <span class="post-tag">Tasting Notes</span>
+  <span class="post-tag">Beginners</span>
+  <span class="post-tag">Coffee Basics</span>
+  <span class="post-tag">Flavour</span>
+  <span class="post-tag">Brewing Tips</span>
+  <span class="post-tag">Palate Training</span>
+</div>
+
+<div class="post-nav">
+  <a href="/library">← Back to Coffee Library</a>
+  <a href="/shop">Browse Coffee Beans →</a>
+</div>
+</div>
+
+<div class="more-posts">
+  <div class="more-posts-inner">
+    <h2>More from the Library</h2>
+    <div class="more-grid">
+      <a href="/posts/arabica-robusta-liberica" class="more-card">
+        <div class="more-card-emoji">🌿</div>
+        <h3>Arabica vs Robusta vs Liberica — What's the Difference?</h3>
+        <div class="more-card-meta">5 min read</div>
+      </a>
+      <a href="/posts/processing-methods" class="more-card">
+        <div class="more-card-emoji">⚙️</div>
+        <h3>Natural vs Washed vs Honey — Coffee Processing Explained</h3>
+        <div class="more-card-meta">7 min read</div>
+      </a>
+      <a href="/posts/kl-roasters" class="more-card">
+        <div class="more-card-emoji">🏙️</div>
+        <h3>Best Specialty Coffee Roasters in Kuala Lumpur</h3>
+        <div class="more-card-meta">8 min read</div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <a href="/" class="footer-logo">The Beans<span>Hub</span></a>
+  <div class="footer-links">
+    <a href="/shop">Coffee Beans</a>
+    <a href="/library">Coffee Library</a>
+    <a href="/about">About Us</a>
+    <a href="/contact">Contact Us</a>
+  </div>
+  <div class="footer-copy">&copy; 2025 The Beans Hub</div>
+</footer>
+
+<script>
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+
+// Parallax scroll
+(function () {
+  const img = document.getElementById('parallaxImg');
+  if (!img) return;
+
+  let ticking = false;
+  function onScroll() {
+    if (!ticking) {
+      requestAnimationFrame(function () {
+        const banner = img.parentElement;
+        const rect = banner.getBoundingClientRect();
+        const inView = rect.bottom > 0 && rect.top < window.innerHeight;
+        if (inView) {
+          const offset = (rect.top / window.innerHeight) * 60;
+          img.style.transform = 'translateY(' + offset + 'px)';
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What are flavour notes in coffee?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Flavour notes are shortcuts roasters use to describe what a coffee naturally tastes like — things like blueberry, caramel, or floral. These come from where the coffee is grown, how it's processed, and how it's roasted. They're not made up — coffee genuinely has compounds that remind your brain of fruits, nuts, chocolate, and flowers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why can't I taste the flavour notes in my coffee?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It's not that the flavour isn't there — it's that your brain doesn't recognise it yet. When you drink something, your brain tries to match it with what it already knows. If it can't find a match, it just says 'this is coffee'. The more flavours you've experienced and named before, the easier it gets to pick them out."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I start tasting flavour notes in coffee?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Start by smelling your coffee before drinking. Let it cool a bit — hot coffee flattens the flavours. Try to slurp it to spread it across your whole mouth. Think broad first: fruity or not? Sweet or not? Then zoom in. The fastest method is to compare two different coffees side by side."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need expensive equipment to find flavour notes in coffee?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not at all. You don't need any special gear. The easiest thing to do is try different coffees and pay a bit more attention each time. Start with single-origin beans that come with tasting notes — use those as a guide and see if you can pick up on what they describe."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it get easier to taste flavour notes in coffee over time?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — and more fun. At first, everything still tastes like coffee. That's completely normal. But slowly you'll start noticing small things: a bit of sweetness at the end, a light fruity feeling, something you can't quite explain yet. With each cup, your brain builds a bigger flavour library."
+      }
+    }
+  ]
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JY42YLKPRM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-JY42YLKPRM');
+</script>
+<meta charset="UTF-8">
+<meta name="google-site-verification" content="jqlfBshOy4vgYUb478viCuTswoIsaWL_jdOhL0srx0w" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Much Coffee Is Too Much? (An ADHD Perspective)</title>
+<meta name="description" content="I drink espresso at 7pm and still fall asleep. So how much coffee is too much — really? Especially if coffee hits you differently than everyone else.">
+<link rel="canonical" href="https://thebeanshub.com/posts/how-much-coffee-is-too-much">
+<link href="https://fonts.googleapis.com/css2?family=Sigmar&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../img/thebeanshub_logo.png">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --green: #296241; --green-light: #3a7a50;
+  --cream: #FDF6EC; --white: #FFFFFF;
+  --orange: #FDA11D; --orange-dark: #DA8A10;
+  --border: #E8E0D0; --tag-bg: #f0ebe0;
+  --text: #1a2e1f; --muted: #5a6e5a;
+}
+html { scroll-behavior: smooth; }
+body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 68px; background: var(--green); border-bottom: 1px solid rgba(253,161,29,0.3); }
+.nav-logo { font-family: "Sigmar", cursive; color: #FDF6EC; font-size: 1.45rem; font-weight: 700; text-decoration: none; }
+.nav-logo span { color: var(--orange); }
+.nav-links { display: flex; gap: 36px; align-items: center; }
+.nav-links a { color: rgba(253,246,236,0.75); text-decoration: none; font-size: 0.88rem; font-weight: 500; letter-spacing: 0.04em; transition: color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color: #FDF6EC; }
+.nav-links a.cta { background: var(--orange); color: white; padding: 8px 20px; border-radius: 8px; font-weight: 600; }
+.nav-links a.cta:hover { background: var(--orange-dark); }
+.nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.nav-hamburger span { display: block; width: 24px; height: 2px; background: #FDF6EC; border-radius: 2px; }
+.mobile-menu { display: none; position: fixed; top: 68px; left: 0; right: 0; background: var(--green); padding: 20px 24px; flex-direction: column; z-index: 99; border-bottom: 2px solid var(--orange); }
+.mobile-menu.open { display: flex; }
+.mobile-menu a { color: rgba(253,246,236,0.8); text-decoration: none; font-size: 1rem; font-weight: 500; padding: 14px 0; border-bottom: 1px solid rgba(253,246,236,0.15); transition: color 0.2s; }
+.mobile-menu a:last-child { border-bottom: none; }
+.mobile-menu a:hover { color: #FDF6EC; }
+
+/* POST HERO */
+.post-hero { padding: 104px 48px 56px; background: var(--green); position: relative; overflow: hidden; }
+.post-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 0%, rgba(253,161,29,0.15), transparent 55%), radial-gradient(ellipse at 10% 100%, rgba(253,161,29,0.07), transparent 50%); }
+.post-hero-inner { max-width: 800px; margin: 0 auto; position: relative; }
+.post-breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 0.75rem; color: rgba(253,246,236,0.55); margin-bottom: 20px; }
+.post-breadcrumb a { color: rgba(253,246,236,0.55); text-decoration: none; transition: color 0.2s; }
+.post-breadcrumb a:hover { color: #FDF6EC; }
+.post-breadcrumb span { color: rgba(253,246,236,0.3); }
+.post-cat-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 20px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 18px; width: fit-content; }
+.badge-guide  { background: rgba(255,255,255,0.15); color: #FDF6EC; }
+.badge-local  { background: rgba(253,161,29,0.25); color: #FDA11D; }
+.badge-recipe { background: rgba(255,100,100,0.2); color: #ffb0b0; }
+.post-hero h1 { font-family: "Sigmar", cursive; font-size: clamp(1.8rem, 4vw, 2.8rem); color: #FDF6EC; line-height: 1.2; margin-bottom: 20px; }
+.post-hero-meta { display: flex; align-items: center; gap: 12px; font-size: 0.8rem; color: rgba(253,246,236,0.6); flex-wrap: wrap; }
+.post-hero-meta-dot { width: 3px; height: 3px; background: rgba(253,246,236,0.4); border-radius: 50%; }
+.post-read-time { background: rgba(253,161,29,0.2); color: var(--orange); padding: 3px 10px; border-radius: 10px; font-weight: 600; font-size: 0.72rem; }
+
+/* POST EMOJI BANNER */
+.post-banner { background: var(--green-light); display: flex; align-items: center; justify-content: center; height: 220px; font-size: 7rem; }
+
+/* POST BODY */
+.post-body { max-width: 800px; margin: 0 auto; padding: 56px 48px 80px; }
+
+/* TYPOGRAPHY */
+.post-body h2 { font-family: "Sigmar", cursive; font-size: 1.5rem; color: var(--green); margin: 48px 0 16px; line-height: 1.3; }
+.post-body h3 { font-family: "Outfit", sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--text); margin: 28px 0 10px; }
+.post-body p { font-size: 0.97rem; line-height: 1.85; color: #2a3a2a; margin-bottom: 20px; }
+.post-body ul, .post-body ol { padding-left: 24px; margin-bottom: 20px; }
+.post-body li { font-size: 0.97rem; line-height: 1.8; color: #2a3a2a; margin-bottom: 6px; }
+.post-body strong { font-weight: 700; color: var(--text); }
+.post-body em { font-style: italic; color: var(--muted); }
+.post-body a { color: var(--green); font-weight: 600; text-decoration: underline; text-decoration-color: rgba(41,98,65,0.3); transition: color 0.2s; }
+.post-body a:hover { color: var(--orange); }
+
+/* BLOCKQUOTE */
+.post-body blockquote { border-left: 4px solid var(--orange); padding: 4px 0 4px 20px; margin: 20px 0 24px; color: var(--muted); font-size: 0.97rem; line-height: 1.8; }
+
+/* CALLOUT BOX */
+.callout { background: var(--tag-bg); border-left: 4px solid var(--orange); border-radius: 0 12px 12px 0; padding: 20px 24px; margin: 32px 0; }
+.callout p { margin: 0; font-size: 0.92rem; }
+.callout-title { font-weight: 700; color: var(--green); margin-bottom: 6px !important; font-size: 0.8rem !important; text-transform: uppercase; letter-spacing: 0.08em; }
+
+/* INFO CARD */
+.info-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 24px 28px; margin: 28px 0; }
+.info-card h4 { font-size: 0.88rem; font-weight: 700; color: var(--green); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.08em; }
+
+/* DIVIDER */
+.post-divider { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
+
+/* TAG ROW */
+.post-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 36px 0 0; }
+.post-tag { padding: 5px 14px; background: var(--tag-bg); color: var(--muted); border-radius: 20px; font-size: 0.75rem; font-weight: 500; }
+
+/* BACK + NEXT NAV */
+.post-nav { display: flex; justify-content: space-between; align-items: center; padding: 32px 0; border-top: 1px solid var(--border); margin-top: 48px; }
+.post-nav a { display: flex; align-items: center; gap: 8px; text-decoration: none; font-size: 0.85rem; font-weight: 600; color: var(--green); transition: color 0.2s; }
+.post-nav a:hover { color: var(--orange); }
+
+/* MORE POSTS */
+.more-posts { background: var(--cream); border-top: 1px solid var(--border); padding: 64px 48px; }
+.more-posts-inner { max-width: 1100px; margin: 0 auto; }
+.more-posts h2 { font-family: "Sigmar", cursive; font-size: 1.4rem; color: var(--text); margin-bottom: 32px; }
+.more-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.more-card { background: var(--white); border-radius: 14px; border: 1px solid var(--border); padding: 24px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 10px; transition: transform 0.2s, box-shadow 0.2s; }
+.more-card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(41,98,65,0.1); }
+.more-card-emoji { font-size: 2rem; }
+.more-card h3 { font-family: "Outfit", sans-serif; font-size: 0.92rem; font-weight: 700; color: var(--text); line-height: 1.4; }
+.more-card-meta { font-size: 0.72rem; color: var(--muted); margin-top: auto; }
+
+/* FOOTER */
+footer { background: var(--green); padding: 40px 48px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(253,161,29,0.2); }
+.footer-logo { font-family: "Sigmar", cursive; color: #FDF6EC; font-size: 1.1rem; font-weight: 700; text-decoration: none; }
+.footer-logo span { color: var(--orange); }
+.footer-links { display: flex; gap: 28px; }
+.footer-links a { color: rgba(253,246,236,0.6); text-decoration: none; font-size: 0.8rem; transition: color 0.2s; }
+.footer-links a:hover { color: #FDF6EC; }
+.footer-copy { font-size: 0.75rem; color: rgba(253,246,236,0.4); }
+
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
+  nav .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  .post-hero { padding: 88px 20px 40px; }
+  .post-body { padding: 40px 20px 60px; }
+  .more-posts { padding: 48px 20px; }
+  .more-grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: 20px; text-align: center; padding: 32px 20px; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">The Beans<span>Hub</span></a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/shop">Coffee Beans</a>
+    <a href="/library" class="active">Coffee Library</a>
+    <a href="/about">About Us</a>
+    <a href="/contact">Contact Us</a>
+    <a href="/shop" class="cta">Explore Beans</a>
+  </div>
+  <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/">Home</a>
+  <a href="/shop">Coffee Beans</a>
+  <a href="/library">Coffee Library</a>
+  <a href="/about">About Us</a>
+  <a href="/contact">Contact Us</a>
+</div>
+
+<div class="post-hero">
+  <div class="post-hero-inner">
+    <div class="post-breadcrumb">
+      <a href="/library">Coffee Library</a>
+      <span>›</span>
+      <span>Personal Experience</span>
+    </div>
+    <div class="post-cat-badge badge-guide">☕ Personal Experience</div>
+    <h1>How Much Coffee Is Too Much? (From Someone With ADHD Who Can Sleep After Espresso)</h1>
+    <div class="post-hero-meta">
+      <span>The Beans Hub</span>
+      <span class="post-hero-meta-dot"></span>
+      <span>April 2025</span>
+      <span class="post-hero-meta-dot"></span>
+      <span class="post-read-time">7 min read</span>
+    </div>
+  </div>
+</div>
+
+<div class="post-banner">☕</div>
+
+<div class="post-body">
+
+<p>I drink coffee... and then I can still fall asleep.</p>
+<p>I realised quite early that my relationship with coffee is a bit different from most people.</p>
+<p>Back in university, I could have a <strong>double shot espresso at 7:30pm</strong>, sit down to study, feel focused for a while... and then somehow still fall asleep at <strong>9:30pm</strong> like nothing happened.</p>
+<p>Meanwhile, my friends would be wide awake until 2am just from one cup.</p>
+<p>At first I thought:</p>
+<blockquote>maybe my coffee not strong enough?</blockquote>
+<p>Turns out... not really.</p>
+
+<hr class="post-divider">
+
+<h2>Does Coffee Hit Everyone the Same?</h2>
+<p>For most people, coffee gives energy, makes them more alert, sometimes even a bit jittery.</p>
+<p>For me, it doesn't always feel like that.</p>
+<p>Sometimes it helps me focus.<br>
+Sometimes it makes me feel calmer.<br>
+And sometimes... it makes me sleepy.</p>
+<p>Which sounds quite weird until you understand this:</p>
+<blockquote>ADHD brains work a bit differently.</blockquote>
+
+<h2>What Does Coffee Actually Do to Your Brain?</h2>
+<p>Coffee mainly works by affecting certain chemicals in your brain that control:</p>
+<ul>
+  <li>alertness</li>
+  <li>focus</li>
+  <li>energy</li>
+</ul>
+<p>For most people, it pushes those levels <strong>above normal</strong> — which is why they feel more awake, more alert, sometimes even too stimulated.</p>
+<p>But for someone like me with ADHD, those levels are usually a bit lower to begin with.</p>
+<p>So when I drink coffee, it doesn't push me "too high".</p>
+<p>It just brings me closer to a normal, balanced state.</p>
+
+<h2>Why Can I Drink Coffee and Still Sleep?</h2>
+<p>This is the part that confuses most people.</p>
+<p>If coffee is supposed to wake you up, why can I still fall asleep after drinking it?</p>
+<p>From my experience, it's because once my brain finally feels "balanced" and less chaotic, it actually becomes easier to relax.</p>
+<p>Less noise.<br>
+Less jumping thoughts.<br>
+Less restlessness.</p>
+<p>And when everything calms down...</p>
+<blockquote>I can finally rest.</blockquote>
+
+<h2>But Can You Still Drink Too Much Coffee?</h2>
+<p>Yes. Absolutely.</p>
+<p>Just because coffee affects me differently doesn't mean I can drink unlimited amounts.</p>
+<p>There are still days where I go overboard — especially when I'm trying to stay productive — and I start to feel it:</p>
+<ul>
+  <li>heart beating faster</li>
+  <li>slight tension in my body</li>
+  <li>thoughts becoming a bit too fast</li>
+</ul>
+<p>So even for me, there is still a limit.</p>
+
+<h2>So How Much Coffee Is Too Much?</h2>
+<p>For most people, around <strong>400mg of caffeine per day</strong> is considered okay.</p>
+<p>And again, I know this sounds like a random number, so let's translate it.</p>
+<p>It's roughly:</p>
+<ul>
+  <li>3–4 cups of coffee</li>
+  <li>or about 5–6 espresso shots</li>
+</ul>
+<p>And most cafés serve a <strong>double shot by default</strong> — which means one drink already gives you 2 shots.</p>
+<p>So if you're not paying attention, it adds up very quickly.</p>
+
+<div class="callout">
+  <p class="callout-title">💡 But here's the important part</p>
+  <p>Even though I have ADHD, I still don't just blindly follow this number. Because what matters more is: <strong>how I feel, not just how much I drink.</strong></p>
+</div>
+
+<h2>Does Drinking Coffee Late Still Affect Your Sleep?</h2>
+<p>Like I mentioned, I can drink coffee at night and still fall asleep.</p>
+<p>But that doesn't mean it has zero effect.</p>
+<p>Sometimes I still notice:</p>
+<ul>
+  <li>lighter sleep</li>
+  <li>waking up not fully rested</li>
+  <li>needing more coffee the next day</li>
+</ul>
+<p>So even if I <em>can</em> sleep, it doesn't always mean I <em>should</em> drink coffee late.</p>
+
+<h2>What Helped Me Manage Coffee Better</h2>
+<p>I didn't cut coffee out. I just became more aware of how I use it.</p>
+
+<div class="info-card">
+  <h4>4 things I actually do</h4>
+
+  <h3>1. I use coffee for focus, not just habit</h3>
+  <p>Instead of drinking randomly, I ask myself:</p>
+  <blockquote>do I actually need it now?</blockquote>
+  <p>If yes → drink<br>If not → maybe skip</p>
+
+  <h3>2. I pay attention to how I feel after</h3>
+  <p>Not all coffees feel the same.</p>
+  <p>Some make me calm and focused. Some make me slightly uneasy. That tells me a lot.</p>
+
+  <h3>3. I don't chase more and more</h3>
+  <p>There's a point where more coffee doesn't mean better focus.</p>
+  <p>It just becomes:</p>
+  <blockquote>more noise</blockquote>
+
+  <h3>4. I still respect the basics</h3>
+  <p>Even with ADHD, simple things still matter:</p>
+  <ul>
+    <li>drink water</li>
+    <li>don't overdo sugar</li>
+    <li>don't rely on coffee to fix bad sleep</li>
+  </ul>
+</div>
+
+<h2>Why Coffee Helps Me (Instead of Making Me Worse)</h2>
+<p>For me, coffee works because it reduces the constant "mental noise".</p>
+<p>It doesn't always make me hyper or energetic.</p>
+<p>Sometimes it just makes everything feel... quieter.</p>
+<p>And that's when I can:</p>
+<ul>
+  <li>focus better</li>
+  <li>think clearer</li>
+  <li>even relax</li>
+</ul>
+
+<h2>So How Much Coffee Is Too Much — For Me?</h2>
+<p>My answer is still the same:</p>
+<blockquote>it's too much when it stops helping and starts making things worse.</blockquote>
+<p>Even with ADHD, I still look at:</p>
+<ul>
+  <li>my focus</li>
+  <li>my mood</li>
+  <li>my sleep</li>
+  <li>my body</li>
+</ul>
+<p>Because those don't lie.</p>
+<p>I don't see coffee as something that "gives me energy".</p>
+<p>I see it as something that helps me regulate my state.</p>
+<p>Sometimes I need more focus. Sometimes I need calm.</p>
+<p>Coffee helps — but only when I use it properly.</p>
+
+<div class="callout">
+  <p class="callout-title">☕ Final thought</p>
+  <p>If you're someone who feels like coffee affects you differently, you're not crazy. And if you're just starting out, don't overthink all this. Just: drink, notice, adjust. That's enough.</p>
+</div>
+
+<div class="post-tags">
+  <span class="post-tag">ADHD</span>
+  <span class="post-tag">Caffeine</span>
+  <span class="post-tag">Coffee &amp; Sleep</span>
+  <span class="post-tag">Personal</span>
+  <span class="post-tag">Coffee Basics</span>
+  <span class="post-tag">How Much Is Too Much</span>
+</div>
+
+<div class="post-nav">
+  <a href="/library">← Back to Coffee Library</a>
+  <a href="/posts/how-to-read-flavour-notes">Read: Flavour Notes →</a>
+</div>
+</div>
+
+<div class="more-posts">
+  <div class="more-posts-inner">
+    <h2>More from the Library</h2>
+    <div class="more-grid">
+      <a href="/posts/how-to-read-flavour-notes" class="more-card">
+        <div class="more-card-emoji">🫐</div>
+        <h3>How to Read Flavour Notes in Coffee (Without Feeling Lost)</h3>
+        <div class="more-card-meta">6 min read</div>
+      </a>
+      <a href="/posts/arabica-robusta-liberica" class="more-card">
+        <div class="more-card-emoji">🌿</div>
+        <h3>Arabica vs Robusta vs Liberica — What's the Difference?</h3>
+        <div class="more-card-meta">5 min read</div>
+      </a>
+      <a href="/posts/kl-roasters" class="more-card">
+        <div class="more-card-emoji">🏙️</div>
+        <h3>Best Specialty Coffee Roasters in Kuala Lumpur</h3>
+        <div class="more-card-meta">8 min read</div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <a href="/" class="footer-logo">The Beans<span>Hub</span></a>
+  <div class="footer-links">
+    <a href="/shop">Coffee Beans</a>
+    <a href="/library">Coffee Library</a>
+    <a href="/about">About Us</a>
+    <a href="/contact">Contact Us</a>
+  </div>
+  <div class="footer-copy">&copy; 2025 The Beans Hub</div>
+</footer>
+
+<script>
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much coffee is too much per day?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For most people, around 400mg of caffeine per day is considered okay. That's roughly 3–4 cups of coffee or 5–6 espresso shots. But most cafés serve a double shot by default, so one drink already gives you 2 shots — it adds up quickly if you're not paying attention."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why can people with ADHD drink coffee and still sleep?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "People with ADHD often have lower baseline levels of certain brain chemicals that affect alertness and focus. Coffee brings those levels closer to normal rather than pushing them above it. So instead of feeling overstimulated and wired, the brain feels more balanced — which can actually make it easier to relax and sleep."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does coffee affect ADHD differently?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, it can. For most people coffee increases alertness and energy above their normal baseline. For someone with ADHD whose baseline is lower, coffee can bring them to a more regulated, calmer state — sometimes helping them focus, feel less restless, and even sleep better."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I know when I've had too much coffee?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The clearest signs are: heart beating faster, slight tension in your body, thoughts becoming too fast or scattered, and feeling anxious or uneasy. Regardless of any condition, it's too much when it stops helping and starts making things worse. Pay attention to how you feel — not just how much you've drunk."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can drinking coffee late at night still affect your sleep?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, even if you can fall asleep after coffee, it can still affect the quality of your sleep. You might notice lighter sleep, waking up not fully rested, or needing more coffee the next day. Being able to sleep doesn't always mean it's a good idea to drink coffee late."
+      }
+    }
+  ]
+}
+</script>
+
+</body>
+</html>
