@@ -16,7 +16,7 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Buy Specialty Coffee Beans Online Malaysia | The Beans Hub</title>
 <meta content="Browse 100+ specialty coffee beans from 38 Malaysian roasters. Filter by origin, process, roast and taste notes. Order online, delivered fresh." name="description"/>
-<link href="img/thebeanshub_logo.png" rel="icon" type="image/png"/>
+<link href="/img/thebeanshub_logo.png" rel="icon" type="image/png"/>
 <link href="https://fonts.googleapis.com/css2?family=Sigmar&amp;family=Outfit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <style>
     :root {
@@ -1336,7 +1336,7 @@
 
     function toggleMenu() { document.getElementById("mobileMenu").classList.toggle("open"); }
     // Load beans from JSON — no external library needed
-    fetch('beans.json')
+    fetch('/beans.json')
       .then(function (r) {
         if (!r.ok) throw new Error('FETCH_FAILED');
         return r.json();
