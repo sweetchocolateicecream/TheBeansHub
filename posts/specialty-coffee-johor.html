@@ -1,22 +1,24 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JY42YLKPRM"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-JY42YLKPRM"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-JY42YLKPRM');
 </script>
-<meta charset="UTF-8">
-<meta name="google-site-verification" content="jqlfBshOy4vgYUb478viCuTswoIsaWL_jdOhL0srx0w" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Specialty Coffee in Johor — A Local's Honest List</title>
-<meta name="description" content="The specialty coffee scene in Johor keeps growing and I keep saving cafés I still haven't visited. Here's the honest list.">
-<link rel="canonical" href="https://thebeanshub.com/posts/specialty-coffee-johor">
-<link rel="icon" type="image/png" href="../img/thebeanshub_logo.png">
-<link href="https://fonts.googleapis.com/css2?family=Sigmar&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<meta charset="utf-8"/>
+<meta content="jqlfBshOy4vgYUb478viCuTswoIsaWL_jdOhL0srx0w" name="google-site-verification">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Specialty Coffee in Johor — A Local's Honest List | The Beans Hub</title>
+<meta content="JB is my hometown. The specialty coffee scene in Johor keeps growing — and I keep saving cafés I still haven't visited. Here's the honest list." name="description"/>
+
+<link href="../img/thebeanshub_logo.png" rel="icon" type="image/png"/>
+<link href="https://fonts.googleapis.com/css2?family=Sigmar&amp;family=Outfit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet">
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -30,7 +32,7 @@ html { scroll-behavior: smooth; }
 body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
 
 /* NAV */
-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 68px; background: var(--green); border-bottom: 1px solid rgba(253,161,29,0.3); }
+.site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 68px; background: var(--green); border-bottom: 1px solid rgba(253,161,29,0.3); }
 .nav-logo { font-family: "Sigmar", cursive; color: #FDF6EC; font-size: 1.45rem; font-weight: 700; text-decoration: none; }
 .nav-logo span { color: var(--orange); }
 .nav-links { display: flex; gap: 36px; align-items: center; }
@@ -98,6 +100,18 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; a
 .info-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 24px 28px; margin: 28px 0; }
 .info-card h4 { font-size: 0.88rem; font-weight: 700; color: var(--green); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.08em; }
 
+/* MAP */
+#johor-map { height: 500px; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); margin: 8px 0 32px; z-index: 1; }
+.map-legend { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 20px; }
+.map-legend-item { display: flex; align-items: center; gap: 8px; font-size: 0.82rem; color: var(--muted); font-weight: 500; }
+.legend-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+.legend-dot.jb { background: #296241; border: 2px solid #1a4a2a; }
+.legend-dot.segamat { background: #FDA11D; border: 2px solid #c07a00; }
+.leaflet-popup-content-wrapper { border-radius: 10px; font-family: "Outfit", sans-serif; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
+.leaflet-popup-content { margin: 12px 16px; font-size: 0.85rem; line-height: 1.5; }
+.map-popup-title { font-weight: 700; color: #1a2e1f; margin-bottom: 2px; }
+.map-popup-area { font-size: 0.75rem; color: #5a6e5a; }
+
 /* CAFÉ CARD */
 .cafe-card { border-left: 3px solid var(--border); padding: 4px 0 4px 20px; margin: 28px 0 32px; }
 .cafe-card h3 { margin-top: 0; margin-bottom: 8px; }
@@ -136,8 +150,8 @@ footer { background: var(--green); padding: 40px 48px; display: flex; justify-co
 .footer-copy { font-size: 0.75rem; color: rgba(253,246,236,0.4); }
 
 @media (max-width: 768px) {
-  nav { padding: 0 20px; }
-  nav .nav-links { display: none; }
+  .site-nav { padding: 0 20px; }
+  .site-nav .nav-links { display: none; }
   .nav-hamburger { display: flex; }
   .post-hero { padding: 88px 20px 40px; }
   .post-body { padding: 40px 20px 60px; }
@@ -147,234 +161,440 @@ footer { background: var(--green); padding: 40px 48px; display: flex; justify-co
   footer { flex-direction: column; gap: 20px; text-align: center; padding: 32px 20px; }
   .footer-links { flex-wrap: wrap; justify-content: center; }
 }
+
+    /* ── TABLE OF CONTENTS ── */
+    .post-layout {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 800px) 220px;
+      column-gap: 40px;
+      align-items: start;
+      padding: 56px 48px 80px;
+    }
+    .post-layout > .post-body {
+      max-width: none;
+      margin: 0;
+      padding: 0;
+    }
+    .toc-sidebar { display: none; }
+    @media (min-width: 1260px) {
+      .toc-sidebar {
+        display: block;
+        position: sticky;
+        top: 90px;
+        align-self: start;
+      }
+    }
+    .toc-inner {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 16px 20px;
+      overflow: hidden;
+      max-height: calc(100vh - 110px);
+      overflow-y: auto;
+      scrollbar-width: none;
+    }
+    .toc-inner::-webkit-scrollbar { display: none; }
+    .toc-title {
+      font-size: 0.62rem;
+      font-weight: 800;
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    .toc-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      min-width: 0;
+      position: static;
+      top: auto;
+      left: auto;
+      right: auto;
+      height: auto;
+      padding: 0;
+      background: transparent;
+      border: 0;
+      align-items: stretch;
+      justify-content: flex-start;
+    }
+    .toc-link {
+      display: block;
+      min-width: 0;
+      white-space: normal;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      font-size: 0.76rem;
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 6px 8px 6px 10px;
+      border-radius: 6px;
+      border-left: 2px solid transparent;
+      line-height: 1.45;
+      transition: all 0.15s;
+    }
+    .toc-link:hover {
+      color: var(--text);
+      background: var(--tag-bg);
+      border-left-color: var(--border);
+    }
+    .toc-link.active {
+      color: var(--green);
+      font-weight: 700;
+      border-left-color: var(--orange);
+      background: rgba(41, 98, 65, 0.05);
+    }
+    .toc-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 8px 0;
+    }
+
+  
+/* ── INFORMATIONAL FOOTER (consistent across all pages) ── */
+footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border-top:1px solid rgba(253,161,29,0.2);font-family:"Outfit",sans-serif;display:block;text-align:left;align-items:stretch;justify-content:flex-start;gap:0}
+.tbh-footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px;align-items:start}
+.tbh-footer-brand{display:flex;flex-direction:column;gap:14px}
+.tbh-footer-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.tbh-footer-logo-img{width:42px;height:42px;border-radius:8px;object-fit:cover;background:rgba(253,246,236,0.08)}
+.tbh-footer-logo-text{font-family:"Sigmar",cursive;color:#FDF6EC;font-size:1.25rem;font-weight:700;line-height:1}
+.tbh-footer-logo-text .accent{color:#FDA11D}
+.tbh-footer-tagline{font-family:"Outfit",sans-serif;font-size:0.85rem;color:rgba(253,246,236,0.75);line-height:1.55;max-width:280px;margin:0}
+.tbh-footer-heading{font-family:"Sigmar",cursive;font-size:0.95rem;color:#FDA11D;margin:0 0 14px;letter-spacing:0.02em;font-weight:400}
+.tbh-footer-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+.tbh-footer-list a{font-family:"Outfit",sans-serif;color:rgba(253,246,236,0.85);text-decoration:none;font-size:0.85rem;transition:color 0.2s}
+.tbh-footer-list a:hover{color:#FDA11D}
+.tbh-footer-social{display:flex;flex-direction:column;gap:10px}
+.tbh-footer-social a{font-family:"Outfit",sans-serif;color:rgba(253,246,236,0.9);text-decoration:none;transition:color 0.2s;display:inline-flex;align-items:center;gap:10px;font-size:0.85rem}
+.tbh-footer-social a:hover{color:#FDA11D}
+.tbh-footer-social svg{width:22px;height:22px;fill:currentColor;flex-shrink:0}
+.tbh-footer-bottom{max-width:1200px;margin:36px auto 0;padding-top:20px;border-top:1px solid rgba(253,246,236,0.15)}
+.tbh-footer-copy{font-family:"Outfit",sans-serif;font-size:0.78rem;color:rgba(253,246,236,0.7);text-align:center;margin:0}
+@media (max-width:900px){.tbh-footer-inner{grid-template-columns:1fr 1fr;gap:32px}}
+@media (max-width:560px){footer.tbh-footer{padding:40px 24px 20px}.tbh-footer-inner{grid-template-columns:1fr;gap:28px}.tbh-footer-tagline{max-width:none}}
 </style>
+</link></meta>
+  <link rel="canonical" href="https://www.thebeanshub.com/posts/specialty-coffee-johor">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Specialty Coffee in Johor — A Local's Honest List | The Beans Hub">
+  <meta property="og:description" content="JB is my hometown. The specialty coffee scene in Johor keeps growing — and I keep saving cafés I still haven't visited. Here's the honest list.">
+  <meta property="og:url" content="https://www.thebeanshub.com/posts/specialty-coffee-johor">
+  <meta property="og:image" content="https://www.thebeanshub.com/img/Girl-bought-coffee-from-the-beans-hub.png">
+  <meta property="og:site_name" content="The Beans Hub">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Specialty Coffee in Johor — A Local's Honest List | The Beans Hub">
+  <meta name="twitter:description" content="JB is my hometown. The specialty coffee scene in Johor keeps growing — and I keep saving cafés I still haven't visited. Here's the honest list.">
+  <meta name="twitter:image" content="https://www.thebeanshub.com/img/Girl-bought-coffee-from-the-beans-hub.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.thebeanshub.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Library",
+      "item": "https://www.thebeanshub.com/library"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Specialty Coffee in Johor",
+      "item": "https://www.thebeanshub.com/posts/specialty-coffee-johor"
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Specialty Coffee in Johor — A Local's Honest List | The Beans Hub",
+  "description": "JB is my hometown. The specialty coffee scene in Johor keeps growing — and I keep saving cafés I still haven't visited. Here's the honest list.",
+  "url": "https://www.thebeanshub.com/posts/specialty-coffee-johor",
+  "datePublished": "2026-03-05",
+  "publisher": {
+    "@type": "Organization",
+    "name": "The Beans Hub",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.thebeanshub.com/img/thebeanshub_logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.thebeanshub.com/posts/specialty-coffee-johor"
+  }
+}
+  </script>
 </head>
 <body>
-
-<nav>
-  <a href="/" class="nav-logo">The Beans<span>Hub</span></a>
-  <div class="nav-links">
-    <a href="/">Home</a>
-    <a href="/shop">Coffee Beans</a>
-    <a href="/library" class="active">Coffee Library</a>
-    <a href="/about">About Us</a>
-    <a href="/contact">Contact Us</a>
-    <a href="/shop" class="cta">Explore Beans</a>
-  </div>
-  <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+<nav class="site-nav">
+<a class="nav-logo" href="/"><img alt="The Beans Hub Logo" src="/img/thebeanshub_logo.png" style="height: 80px; width: auto;" /></a>
+<div class="nav-links">
+<a href="/">Home</a>
+<a href="/shop">Coffee Beans</a>
+<a class="active" href="/library">Coffee Library</a>
+<a href="/about">About Us</a>
+<a href="/contact">Contact Us</a>
+<a class="cta" href="/shop">Explore Beans</a>
+</div>
+<button aria-label="Menu" class="nav-hamburger" onclick="toggleMenu()">
+<span></span><span></span><span></span>
+</button>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="/">Home</a>
-  <a href="/shop">Coffee Beans</a>
-  <a href="/library">Coffee Library</a>
-  <a href="/about">About Us</a>
-  <a href="/contact">Contact Us</a>
+<a href="/">Home</a>
+<a href="/shop">Coffee Beans</a>
+<a href="/library">Coffee Library</a>
+<a href="/about">About Us</a>
+<a href="/contact">Contact Us</a>
 </div>
-
 <div class="post-hero">
-  <div class="post-hero-inner">
-    <div class="post-breadcrumb">
-      <a href="/library">Coffee Library</a>
-      <span>›</span>
-      <span>Local Guide</span>
-    </div>
-    <div class="post-cat-badge badge-local">📍 Local Guide</div>
-    <h1>Specialty Coffee in Johor: I Keep Saving Cafés… But Still End Up Brewing at Home</h1>
-    <div class="post-hero-meta">
-      <span>The Beans Hub</span>
-      <span class="post-hero-meta-dot"></span>
-      <span>April 2025</span>
-      <span class="post-hero-meta-dot"></span>
-      <span class="post-read-time">8 min read</span>
-    </div>
-  </div>
+<div class="post-hero-inner">
+<div class="post-breadcrumb">
+<a href="/library">Coffee Library</a>
+<span>›</span>
+<span>Local Guide</span>
 </div>
-
+<div class="post-cat-badge badge-local">📍 Local Guide</div>
+<h1>Specialty Coffee in Johor: I Keep Saving Cafés… But Still End Up Brewing at Home</h1>
+<div class="post-hero-meta">
+<span>The Beans Hub</span>
+<span class="post-hero-meta-dot"></span>
+<span>April 2025</span>
+<span class="post-hero-meta-dot"></span>
+<span class="post-read-time">8 min read</span>
+</div>
+</div>
+</div>
 <div class="post-banner">
-  <div class="post-banner-img" id="parallaxImg"></div>
+<div class="post-banner-img" id="parallaxImg"></div>
 </div>
-
+<div class="post-layout">
 <div class="post-body">
-
 <p>Johor Bahru is actually my hometown.</p>
 <p>But every time I come back, I realise something quite ironic.</p>
 <p>The specialty coffee scene here keeps growing — more cafés, more roasters, more people taking coffee seriously — yet somehow, I still end up staying at home, making my own coffee.</p>
 <p>I'll scroll, save places, tell myself "next time I go".</p>
 <p>But when I'm actually back in JB, I just feel like sitting at home, brewing something simple, and not moving.</p>
 <p>Maybe that's just the comfort of home.</p>
-
-<h2>Is the Specialty Coffee Scene in Johor Actually Growing?</h2>
+<h2 id="is-the-specialty-coffee-scene-in-johor-actually-growing">Is the Specialty Coffee Scene in Johor Actually Growing?</h2>
 <p>At the same time, it's hard to ignore how much things have changed.</p>
 <p>With people constantly coming in from Singapore to eat, shop, and spend, JB has naturally evolved. And with that, the café culture has followed.</p>
 <p>More roasters. More cafés. And more people who actually care about coffee.</p>
 <p>Not just "nice place to sit" — but genuinely good coffee.</p>
 <p>So even though I don't always go out, I've been keeping a list of places I'd visit… when I feel like it.</p>
-
-<h2>What Is Liberica — Malaysia's Third Coffee?</h2>
+<h2 id="what-is-liberica-malaysias-third-coffee">What Is Liberica — Malaysia's Third Coffee?</h2>
 <p>Before the cafés, this is something I think more people should know.</p>
 <p>Most people only know Arabica and Robusta. But Malaysia actually has something else — <strong>Liberica</strong>. Sometimes people call it the "third coffee".</p>
-
 <div class="info-card">
-  <h4>What makes Liberica different?</h4>
-  <ul>
-    <li>Naturally slightly sweeter</li>
-    <li>Works well with milk</li>
-    <li>Lighter roasts lean more fruity; darker ones feel more like chocolate or nuts</li>
-  </ul>
+<h4>What makes Liberica different?</h4>
+<ul>
+<li>Naturally slightly sweeter</li>
+<li>Works well with milk</li>
+<li>Lighter roasts lean more fruity; darker ones feel more like chocolate or nuts</li>
+</ul>
 </div>
-
 <p>Places like <strong>MY LIBERICA in Kulai</strong> have been pushing this forward — even bringing it to bigger stages like the World Barista Championship.</p>
 <p>Not something you must try. But definitely something worth knowing.</p>
-
-<h2>Which Specialty Coffee Cafés in Johor Bahru Should You Know?</h2>
+<h2 id="which-specialty-coffee-cafs-in-johor-bahru-should-you-know">Which Specialty Coffee Cafés in Johor Bahru Should You Know?</h2>
 <p>These are not "best café" rankings. Not "must-go" lists.</p>
 <p>Just places I keep seeing, keep saving, and keep telling myself I'll visit… eventually.</p>
-
 <div class="cafe-card">
-  <h3>Sweet Blossom Coffee Roasters</h3>
-  <p>One of those names that keeps appearing whenever people talk about specialty coffee in Johor. Clean, balanced flavours. Nothing too fancy — just done properly. The kind of place you can rely on for a consistent cup.</p>
+<h3>Sweet Blossom Coffee Roasters</h3>
+<p>One of those names that keeps appearing whenever people talk about specialty coffee in Johor. Clean, balanced flavours. Nothing too fancy — just done properly. The kind of place you can rely on for a consistent cup.</p>
 </div>
-
 <div class="cafe-card">
-  <h3>Dateless Coffee Roaster</h3>
-  <p>Feels a bit more experimental. The kind of place that plays around with beans and flavour profiles. Probably somewhere I'd go when I'm in the mood to try something different.</p>
+<h3>Dateless Coffee Roaster</h3>
+<p>Feels a bit more experimental. The kind of place that plays around with beans and flavour profiles. Probably somewhere I'd go when I'm in the mood to try something different.</p>
 </div>
-
 <div class="cafe-card">
-  <h3>August Drip Coffee</h3>
-  <p>This one stands out because they let you brew your own coffee — and you even get a small discount if you do it yourself, with guidance. Feels more interactive, especially if you're curious but not confident yet.</p>
+<h3>August Drip Coffee</h3>
+<p>This one stands out because they let you brew your own coffee — and you even get a small discount if you do it yourself, with guidance. Feels more interactive, especially if you're curious but not confident yet.</p>
 </div>
-
 <div class="cafe-card">
-  <h3>JWC Roastery</h3>
-  <p>One of the more well-known names. More approachable, more casual. The kind of place where coffee, brunch, and catching up all happen together.</p>
+<h3>JWC Roastery</h3>
+<p>One of the more well-known names. More approachable, more casual. The kind of place where coffee, brunch, and catching up all happen together.</p>
 </div>
-
 <div class="cafe-card">
-  <h3>Theus Micro</h3>
-  <p>Feels quieter. More focused on the coffee itself rather than the crowd. Probably somewhere you go when you actually want to sit down and pay attention to what you're drinking.</p>
+<h3>Theus Micro</h3>
+<p>Feels quieter. More focused on the coffee itself rather than the crowd. Probably somewhere you go when you actually want to sit down and pay attention to what you're drinking.</p>
 </div>
-
 <div class="cafe-card">
-  <h3>Lekker Coffee Roasters</h3>
-  <p>Has that neighbourhood feel. Warm, comfortable, not trying too hard. The kind of place you could easily become a regular at.</p>
+<h3>Lekker Coffee Roasters</h3>
+<p>Has that neighbourhood feel. Warm, comfortable, not trying too hard. The kind of place you could easily become a regular at.</p>
 </div>
-
 <div class="cafe-card">
-  <h3>Cofa Store</h3>
-  <p>Feels more lifestyle-driven. More aesthetic, more curated. Shows how cafés now are not just about coffee anymore — but the whole experience.</p>
+<h3>Cofa Store</h3>
+<p>Feels more lifestyle-driven. More aesthetic, more curated. Shows how cafés now are not just about coffee anymore — but the whole experience.</p>
 </div>
-
 <div class="cafe-card">
-  <h3>Space Cafe</h3>
-  <p>More bold visually. A bit more experimental in its vibe. Shows a more creative side of what cafés in Johor can be.</p>
+<h3>Space Cafe</h3>
+<p>More bold visually. A bit more experimental in its vibe. Shows a more creative side of what cafés in Johor can be.</p>
 </div>
-
 <div class="cafe-card">
-  <h3>Mrs Whó</h3>
-  <p>More café than roastery. But still a solid place if you're looking for somewhere to hang out, eat, and have a decent cup of coffee.</p>
+<h3>Mrs Whó</h3>
+<p>More café than roastery. But still a solid place if you're looking for somewhere to hang out, eat, and have a decent cup of coffee.</p>
 </div>
-
 <div class="cafe-card">
-  <h3>Vamos Coffee Roastery</h3>
-  <p>Simple, straightforward. Focused on roasting and serving good coffee without overcomplicating things.</p>
+<h3>Vamos Coffee Roastery</h3>
+<p>Simple, straightforward. Focused on roasting and serving good coffee without overcomplicating things.</p>
 </div>
-
 <div class="cafe-card">
-  <h3>Brewsmith Coffee Roasters</h3>
-  <p>Feels more serious, more craft-focused. Probably more appealing if you're already quite deep into coffee.</p>
+<h3>Brewsmith Coffee Roasters</h3>
+<p>Feels more serious, more craft-focused. Probably more appealing if you're already quite deep into coffee.</p>
 </div>
-
-<hr class="post-divider">
-
-<h2>Is There Specialty Coffee in Johor Outside of JB?</h2>
+<hr class="post-divider"/>
+<h2 id="is-there-specialty-coffee-in-johor-outside-of-jb">Is There Specialty Coffee in Johor Outside of JB?</h2>
 <p>My grandparents used to live in Segamat.</p>
 <p>It's a quiet place. Not much going on, and over time, people slowly move away.</p>
 <p>But it still means a lot to me.</p>
 <p>And honestly, I didn't even realise there were specialty coffee places there until much later.</p>
 <p>After my grandmother passed.</p>
 <p>I still think about that sometimes. If I had known earlier, I probably would've gone for a cup every time I visited.</p>
-
 <div class="cafe-card">
-  <h3>Soon Specialty Coffee</h3>
-  <p>Feels like a hidden gem. Quiet, low-key. A reminder that good coffee doesn't only exist in busy cities.</p>
+<h3>Soon Specialty Coffee</h3>
+<p>Feels like a hidden gem. Quiet, low-key. A reminder that good coffee doesn't only exist in busy cities.</p>
 </div>
-
 <div class="cafe-card">
-  <h3>V Coffee</h3>
-  <p>Simple and approachable. The kind of place that makes specialty coffee feel less intimidating.</p>
+<h3>V Coffee</h3>
+<p>Simple and approachable. The kind of place that makes specialty coffee feel less intimidating.</p>
 </div>
-
 <div class="cafe-card">
-  <h3>Drunk Coffee Roasters</h3>
-  <p>The name is playful. But having a roastery in Segamat itself already says a lot about how far the specialty coffee scene in Johor has grown.</p>
+<h3>Drunk Coffee Roasters</h3>
+<p>The name is playful. But having a roastery in Segamat itself already says a lot about how far the specialty coffee scene in Johor has grown.</p>
 </div>
-
 <div class="callout">
-  <p class="callout-title">☕ A note</p>
-  <p>I haven't gone back to Segamat since my grandmother passed. Maybe one day I will. And when I do, I think I'll finally explore this side of Johor properly. Slowly. One cup at a time.</p>
+<p class="callout-title">☕ A note</p>
+<p>I haven't gone back to Segamat since my grandmother passed. Maybe one day I will. And when I do, I think I'll finally explore this side of Johor properly. Slowly. One cup at a time.</p>
 </div>
-
-<h2>Why Do I Still End Up Brewing at Home?</h2>
+<h2 id="all-the-cafs-pinned-on-one-map">All the Cafés — Pinned on One Map</h2>
+<p>JB spots in green, Segamat in orange. Save the ones that look closest to you.</p>
+<div class="map-legend">
+<div class="map-legend-item"><div class="legend-dot jb"></div> Johor Bahru cafés</div>
+<div class="map-legend-item"><div class="legend-dot segamat"></div> Segamat cafés</div>
+</div>
+<div id="johor-map"></div>
+<hr class="post-divider"/>
+<h2 id="why-do-i-still-end-up-brewing-at-home">Why Do I Still End Up Brewing at Home?</h2>
 <p>It's funny.</p>
 <p>The specialty coffee scene in Johor is growing so much. More options, more quality, more places to explore.</p>
 <p>But somehow, I still find myself at home, making my own coffee.</p>
 <p>And maybe that's okay.</p>
 <p>Because at the end of the day, whether it's at a café or at home…</p>
 <p>it's still just about enjoying the cup in front of you.</p>
-
 <div class="post-tags">
-  <span class="post-tag">Johor</span>
-  <span class="post-tag">JB Cafés</span>
-  <span class="post-tag">Specialty Coffee</span>
-  <span class="post-tag">Local Guide</span>
-  <span class="post-tag">Malaysia Coffee</span>
-  <span class="post-tag">Liberica</span>
-  <span class="post-tag">Segamat</span>
+<span class="post-tag">Johor</span>
+<span class="post-tag">JB Cafés</span>
+<span class="post-tag">Specialty Coffee</span>
+<span class="post-tag">Local Guide</span>
+<span class="post-tag">Malaysia Coffee</span>
+<span class="post-tag">Liberica</span>
+<span class="post-tag">Segamat</span>
 </div>
-
 <div class="post-nav">
-  <a href="/library">← Back to Coffee Library</a>
-  <a href="/posts/how-to-read-flavour-notes">Read: Flavour Notes →</a>
+<a href="/library">← Back to Coffee Library</a>
+<a href="/posts/how-to-read-flavour-notes">Read: Flavour Notes →</a>
 </div>
+</div><!-- /post-body -->
+<aside aria-label="Table of contents" class="toc-sidebar">
+<div class="toc-inner">
+<div class="toc-title">Contents</div>
+<nav class="toc-nav">
+<a class="toc-link" href="#is-the-specialty-coffee-scene-in-johor-actually-growing">Is the Specialty Coffee Scene in Johor Actually Growing?</a>
+<a class="toc-link" href="#what-is-liberica-malaysias-third-coffee">What Is Liberica — Malaysia's Third Coffee?</a>
+<a class="toc-link" href="#which-specialty-coffee-cafs-in-johor-bahru-should-you-know">Which Specialty Coffee Cafés in Johor Bahru Should You Know?</a>
+<a class="toc-link" href="#is-there-specialty-coffee-in-johor-outside-of-jb">Is There Specialty Coffee in Johor Outside of JB?</a>
+<a class="toc-link" href="#all-the-cafs-pinned-on-one-map">All the Cafés — Pinned on One Map</a>
+<a class="toc-link" href="#why-do-i-still-end-up-brewing-at-home">Why Do I Still End Up Brewing at Home?</a>
+</nav>
 </div>
-
+</aside>
+</div><!-- /post-layout -->
 <div class="more-posts">
-  <div class="more-posts-inner">
-    <h2>More from the Library</h2>
-    <div class="more-grid">
-      <a href="/posts/kl-roasters" class="more-card">
-        <div class="more-card-emoji">🏙️</div>
-        <h3>Best Specialty Coffee Roasters in Kuala Lumpur</h3>
-        <div class="more-card-meta">8 min read</div>
-      </a>
-      <a href="/posts/arabica-robusta-liberica" class="more-card">
-        <div class="more-card-emoji">🌿</div>
-        <h3>Arabica vs Robusta vs Liberica — What's the Difference?</h3>
-        <div class="more-card-meta">5 min read</div>
-      </a>
-      <a href="/posts/how-to-read-flavour-notes" class="more-card">
-        <div class="more-card-emoji">🫐</div>
-        <h3>How to Read Flavour Notes in Coffee (Without Feeling Lost)</h3>
-        <div class="more-card-meta">6 min read</div>
-      </a>
-    </div>
-  </div>
+<div class="more-posts-inner">
+<h2>More from the Library</h2>
+<div class="more-grid">
+<a class="more-card" href="/posts/kl-roasters">
+<div class="more-card-emoji">🏙️</div>
+<h3>Best Specialty Coffee Roasters in Kuala Lumpur</h3>
+<div class="more-card-meta">8 min read</div>
+</a>
+<a class="more-card" href="/posts/arabica-robusta-liberica">
+<div class="more-card-emoji">🌿</div>
+<h3>Arabica vs Robusta vs Liberica — What's the Difference?</h3>
+<div class="more-card-meta">5 min read</div>
+</a>
+<a class="more-card" href="/posts/how-to-read-flavour-notes">
+<div class="more-card-emoji">🫐</div>
+<h3>How to Read Flavour Notes in Coffee (Without Feeling Lost)</h3>
+<div class="more-card-meta">6 min read</div>
+</a>
 </div>
-
-<footer>
-  <a href="/" class="footer-logo">The Beans<span>Hub</span></a>
-  <div class="footer-links">
-    <a href="/shop">Coffee Beans</a>
-    <a href="/library">Coffee Library</a>
-    <a href="/about">About Us</a>
-    <a href="/contact">Contact Us</a>
-  </div>
-  <div class="footer-copy">&copy; 2025 The Beans Hub</div>
+</div>
+</div>
+<!-- FOOTER -->
+<footer class="tbh-footer">
+<div class="tbh-footer-inner">
+<div class="tbh-footer-brand">
+<a class="tbh-footer-logo" href="/">
+<img alt="The Beans Hub logo" class="tbh-footer-logo-img" src="/img/thebeanshub_logo.png"/>
+<span class="tbh-footer-logo-text">The Beans<span class="accent">Hub</span></span>
+</a>
+<p class="tbh-footer-tagline">Malaysia's home for specialty coffee — beans, brewers, and roaster guides.</p>
+</div>
+<div>
+<h4 class="tbh-footer-heading">Shop</h4>
+<ul class="tbh-footer-list">
+<li><a href="/shop">All Coffee Beans</a></li>
+<li><a href="/shop/ethiopia-coffee-beans">Ethiopia</a></li>
+<li><a href="/shop/colombia%20coffee%20beans">Colombia</a></li>
+<li><a href="/shop/brazil-coffee-beans">Brazil</a></li>
+<li><a href="/shop/yunnan-coffee-beans">Yunnan</a></li>
+<li><a href="/shop/indonesia-coffee-beans">Indonesia</a></li>
+<li><a href="/shop/thailand-coffee-beans">Thailand</a></li>
+<li><a href="/shop/natural-process-coffee-beans">Natural Process</a></li>
+<li><a href="/shop/washed-process-coffee-beans">Washed Process</a></li>
+<li><a href="/shop/fermented-coffee-beans">Fermented</a></li>
+<li><a href="/shop/arabica-blend-coffee-beans">Arabica Blends</a></li>
+</ul>
+</div>
+<div>
+<h4 class="tbh-footer-heading">Explore</h4>
+<ul class="tbh-footer-list">
+<li><a href="/">Home</a></li>
+<li><a href="/about">About Us</a></li>
+<li><a href="/contact">Contact Us</a></li>
+<li><a href="/library">Coffee Library</a></li>
+</ul>
+</div>
+<div>
+<h4 class="tbh-footer-heading">Follow</h4>
+<div class="tbh-footer-social">
+<a aria-label="Instagram — The Beans Hub" href="https://www.instagram.com/thebeanshub/" rel="noopener" target="_blank">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+<span>@thebeanshub</span>
+</a>
+</div>
+</div>
+</div>
+<div class="tbh-footer-bottom">
+<p class="tbh-footer-copy">© 2025 The Beans Hub. All rights reserved.</p>
+</div>
 </footer>
-
 <script>
 function toggleMenu() {
   document.getElementById('mobileMenu').classList.toggle('open');
@@ -403,55 +623,104 @@ function toggleMenu() {
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 })();
-</script>
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Is there good specialty coffee in Johor Bahru?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes — the specialty coffee scene in Johor Bahru has grown significantly. There are now multiple roasters and cafés that take coffee seriously, including Sweet Blossom Coffee Roasters, JWC Roastery, Dateless Coffee Roaster, Lekker Coffee Roasters, and more. The growth has been partly driven by the constant flow of visitors from Singapore."
+    // TOC — highlight active section on scroll
+    (function () {
+      const tocLinks = document.querySelectorAll('.toc-link[href^="#"]');
+      const headings = Array.from(document.querySelectorAll('.post-body h2[id]'));
+      if (!tocLinks.length || !headings.length) return;
+      function setActive(id) {
+        tocLinks.forEach(l => {
+          l.classList.toggle('active', l.getAttribute('href') === '#' + id);
+        });
       }
-    },
-    {
-      "@type": "Question",
-      "name": "What is Liberica coffee and can I try it in Johor?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Liberica is sometimes called Malaysia's 'third coffee' — less well-known than Arabica or Robusta, but naturally sweeter and quite versatile depending on the roast level. Lighter roasts lean fruity; darker ones feel more like chocolate or nuts. MY LIBERICA in Kulai, Johor has been one of the main places championing it locally, even representing it at the World Barista Championship."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What are some specialty coffee cafés to visit in Johor Bahru?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Some of the specialty coffee cafés and roasters worth knowing in JB include Sweet Blossom Coffee Roasters (clean and consistent), Dateless Coffee Roaster (more experimental), August Drip Coffee (interactive brewing experience), JWC Roastery (casual and approachable), Theus Micro (quiet and coffee-focused), Lekker Coffee Roasters (neighbourhood feel), and Brewsmith Coffee Roasters (craft-focused)."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is there specialty coffee outside of JB in Johor?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Segamat, a quieter town in Johor, has its own small but growing specialty coffee scene. Soon Specialty Coffee, V Coffee, and Drunk Coffee Roasters are all worth knowing — a sign that good coffee in Johor isn't limited to the city."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the difference between specialty coffee and regular coffee?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Specialty coffee refers to coffee that has been scored 80 points or above on a 100-point scale by certified tasters. It typically involves traceable origins, careful processing, precise roasting, and intentional brewing. The focus is on the natural flavours of the bean itself — fruity, floral, chocolatey — rather than just a strong caffeine hit."
-      }
-    }
-  ]
-}
+      if (headings[0]) setActive(headings[0].id);
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      }, { rootMargin: '-10% 0px -80% 0px', threshold: 0 });
+      headings.forEach(h => observer.observe(h));
+      tocLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+          const target = document.querySelector(this.getAttribute('href'));
+          if (!target) return;
+          e.preventDefault();
+          const offset = 88;
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        });
+      });
+    })();
+
+  </script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function () {
+  var map = L.map('johor-map', { zoomControl: true, scrollWheelZoom: false });
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    subdomains: 'abcd',
+    maxZoom: 19
+  }).addTo(map);
+
+  // Custom marker icons
+  function makeIcon(color, borderColor) {
+    return L.divIcon({
+      className: '',
+      html: '<div style="width:16px;height:16px;border-radius:50%;background:' + color + ';border:3px solid ' + borderColor + ';box-shadow:0 2px 6px rgba(0,0,0,0.3);"></div>',
+      iconSize: [16, 16],
+      iconAnchor: [8, 8],
+      popupAnchor: [0, -12]
+    });
+  }
+
+  var jbIcon  = makeIcon('#296241', '#1a4a2a');
+  var segIcon = makeIcon('#FDA11D', '#c07a00');
+
+  // JB cafés
+  var jbCafes = [
+    { name: 'Sweet Blossom Coffee Roasters', desc: 'Clean, balanced flavours. Done properly.', lat: 1.4825, lng: 103.7421 },
+    { name: 'Dateless Coffee Roaster',       desc: 'Experimental beans and flavour profiles.', lat: 1.4901, lng: 103.7550 },
+    { name: 'August Drip Coffee',            desc: 'Brew your own — and get a discount for it.', lat: 1.4865, lng: 103.7604 },
+    { name: 'JWC Roastery',                  desc: 'Coffee, brunch, and catching up — all together.', lat: 1.5476, lng: 103.7764 },
+    { name: 'Theus Micro',                   desc: 'Quiet and focused. Go when you want to pay attention.', lat: 1.5020, lng: 103.7310 },
+    { name: 'Lekker Coffee Roasters',        desc: 'Neighbourhood feel. The kind you\'d become a regular at.', lat: 1.4780, lng: 103.7480 },
+    { name: 'Cofa Store',                    desc: 'Lifestyle-driven. The whole experience, not just coffee.', lat: 1.5105, lng: 103.7865 },
+    { name: 'Space Cafe',                    desc: 'Bold visually. Creative side of what cafés can be.', lat: 1.4870, lng: 103.7614 },
+    { name: 'Mrs Whó',                       desc: 'More café than roastery. Good for hanging out.', lat: 1.4707, lng: 103.7631 },
+    { name: 'Vamos Coffee Roastery',         desc: 'Simple, straightforward. Good coffee, no fuss.', lat: 1.5122, lng: 103.7645 },
+    { name: 'Brewsmith Coffee Roasters',     desc: 'Serious and craft-focused. For the coffee-deep crowd.', lat: 1.4910, lng: 103.7298 }
+  ];
+
+  // Segamat cafés
+  var segCafes = [
+    { name: 'Soon Specialty Coffee', desc: 'Hidden gem. Good coffee doesn\'t only exist in cities.', lat: 2.7335, lng: 102.8190 },
+    { name: 'V Coffee',              desc: 'Simple and approachable. Less intimidating specialty coffee.', lat: 2.7320, lng: 102.8175 },
+    { name: 'Drunk Coffee Roasters', desc: 'A roastery in Segamat — says a lot about how far things have grown.', lat: 2.7310, lng: 102.8200 }
+  ];
+
+  var allMarkers = [];
+
+  jbCafes.forEach(function (c) {
+    var m = L.marker([c.lat, c.lng], { icon: jbIcon })
+      .bindPopup('<div class="map-popup-title">' + c.name + '</div><div class="map-popup-area">📍 Johor Bahru</div><div style="margin-top:6px;font-size:0.8rem;color:#2a3a2a;">' + c.desc + '</div>')
+      .addTo(map);
+    allMarkers.push(m);
+  });
+
+  segCafes.forEach(function (c) {
+    var m = L.marker([c.lat, c.lng], { icon: segIcon })
+      .bindPopup('<div class="map-popup-title">' + c.name + '</div><div class="map-popup-area">📍 Segamat</div><div style="margin-top:6px;font-size:0.8rem;color:#2a3a2a;">' + c.desc + '</div>')
+      .addTo(map);
+    allMarkers.push(m);
+  });
+
+  // Fit map to show all markers
+  var group = new L.featureGroup(allMarkers);
+  map.fitBounds(group.getBounds().pad(0.15));
+})();
 </script>
 
 </body>

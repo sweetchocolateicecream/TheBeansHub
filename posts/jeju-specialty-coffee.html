@@ -1,27 +1,26 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Specialty Coffee in Jeju Island — Best Cafés Ranked by a Malaysian | The Beans Hub</title>
-<meta name="description" content="Spent a week hunting specialty coffee in Jeju Island as a Malaysian coffee lover. Here's an honest ranking of 6 cafés — from a peachy iced latte that stopped me mid-sip to a viral spot that's more about aesthetics than the brew.">
-<meta name="keywords" content="specialty coffee in Jeju, Jeju coffee cafes, Jeju Island coffee, Korean coffee roasters, Malaysia coffee travel">
-<meta property="og:title" content="Specialty Coffee in Jeju Island — Best Cafés Ranked by a Malaysian">
-<meta property="og:description" content="Spent a week hunting specialty coffee in Jeju Island as a Malaysian. Here's an honest latte-by-latte ranking of the best (and most overhyped) coffee stops.">
-<meta property="og:type" content="article">
+<meta content="Spent a week hunting specialty coffee in Jeju Island as a Malaysian coffee lover. Here's an honest ranking of 6 cafés — from a peachy iced latte to a viral spot that's more aesthetics than brew." name="description"/>
+<meta content="specialty coffee in Jeju, Jeju coffee cafes, Jeju Island coffee, Korean coffee roasters, Malaysia coffee travel" name="keywords"/>
+
+
 
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JY42YLKPRM"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-JY42YLKPRM"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-JY42YLKPRM');
 </script>
-<meta name="google-site-verification" content="jqlfBsh0y4vgYUb478viCuTswoIsaWL_jd0hL0srx0w" />
-
-<link href="https://fonts.googleapis.com/css2?family=Sigmar&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="icon" type="image/png" href="img/thebeanshub_logo.png">
+<meta content="jqlfBsh0y4vgYUb478viCuTswoIsaWL_jd0hL0srx0w" name="google-site-verification">
+<link href="https://fonts.googleapis.com/css2?family=Sigmar&amp;family=Outfit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="img/thebeanshub_logo.png" rel="icon" type="image/png"/>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -35,7 +34,7 @@ html { scroll-behavior: smooth; }
 body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
 
 /* NAV */
-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 68px; background: var(--green); border-bottom: 1px solid rgba(253,161,29,0.3); }
+.site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 68px; background: var(--green); border-bottom: 1px solid rgba(253,161,29,0.3); }
 .nav-logo { font-family: "Sigmar", cursive; color: #FDF6EC; font-size: 1.45rem; font-weight: 700; text-decoration: none; }
 .nav-logo span { color: var(--orange); }
 .nav-links { display: flex; gap: 36px; align-items: center; }
@@ -139,8 +138,8 @@ footer { background: var(--green); padding: 40px 48px; display: flex; justify-co
 .footer-social svg { width: 20px; height: 20px; fill: currentColor; }
 
 @media (max-width: 768px) {
-  nav { padding: 0 20px; }
-  nav .nav-links { display: none; }
+  .site-nav { padding: 0 20px; }
+  .site-nav .nav-links { display: none; }
   .nav-hamburger { display: flex; }
   .post-hero { padding: 88px 20px 40px; }
   .post-body { padding: 40px 20px 60px; }
@@ -150,213 +149,415 @@ footer { background: var(--green); padding: 40px 48px; display: flex; justify-co
   .footer-links { flex-wrap: wrap; justify-content: center; }
   .footer-social { justify-content: center; }
 }
+
+    /* ── TABLE OF CONTENTS ── */
+    .post-layout {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 800px) 220px;
+      column-gap: 40px;
+      align-items: start;
+      padding: 56px 48px 80px;
+    }
+    .post-layout > .post-body {
+      max-width: none;
+      margin: 0;
+      padding: 0;
+    }
+    .toc-sidebar { display: none; }
+    @media (min-width: 1260px) {
+      .toc-sidebar {
+        display: block;
+        position: sticky;
+        top: 90px;
+        align-self: start;
+      }
+    }
+    .toc-inner {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 16px 20px;
+      overflow: hidden;
+      max-height: calc(100vh - 110px);
+      overflow-y: auto;
+      scrollbar-width: none;
+    }
+    .toc-inner::-webkit-scrollbar { display: none; }
+    .toc-title {
+      font-size: 0.62rem;
+      font-weight: 800;
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    .toc-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      min-width: 0;
+      position: static;
+      top: auto;
+      left: auto;
+      right: auto;
+      height: auto;
+      padding: 0;
+      background: transparent;
+      border: 0;
+      align-items: stretch;
+      justify-content: flex-start;
+    }
+    .toc-link {
+      display: block;
+      min-width: 0;
+      white-space: normal;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      font-size: 0.76rem;
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 6px 8px 6px 10px;
+      border-radius: 6px;
+      border-left: 2px solid transparent;
+      line-height: 1.45;
+      transition: all 0.15s;
+    }
+    .toc-link:hover {
+      color: var(--text);
+      background: var(--tag-bg);
+      border-left-color: var(--border);
+    }
+    .toc-link.active {
+      color: var(--green);
+      font-weight: 700;
+      border-left-color: var(--orange);
+      background: rgba(41, 98, 65, 0.05);
+    }
+    .toc-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 8px 0;
+    }
+
+  
+/* ── INFORMATIONAL FOOTER (consistent across all pages) ── */
+footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border-top:1px solid rgba(253,161,29,0.2);font-family:"Outfit",sans-serif;display:block;text-align:left;align-items:stretch;justify-content:flex-start;gap:0}
+.tbh-footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px;align-items:start}
+.tbh-footer-brand{display:flex;flex-direction:column;gap:14px}
+.tbh-footer-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.tbh-footer-logo-img{width:42px;height:42px;border-radius:8px;object-fit:cover;background:rgba(253,246,236,0.08)}
+.tbh-footer-logo-text{font-family:"Sigmar",cursive;color:#FDF6EC;font-size:1.25rem;font-weight:700;line-height:1}
+.tbh-footer-logo-text .accent{color:#FDA11D}
+.tbh-footer-tagline{font-family:"Outfit",sans-serif;font-size:0.85rem;color:rgba(253,246,236,0.75);line-height:1.55;max-width:280px;margin:0}
+.tbh-footer-heading{font-family:"Sigmar",cursive;font-size:0.95rem;color:#FDA11D;margin:0 0 14px;letter-spacing:0.02em;font-weight:400}
+.tbh-footer-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+.tbh-footer-list a{font-family:"Outfit",sans-serif;color:rgba(253,246,236,0.85);text-decoration:none;font-size:0.85rem;transition:color 0.2s}
+.tbh-footer-list a:hover{color:#FDA11D}
+.tbh-footer-social{display:flex;flex-direction:column;gap:10px}
+.tbh-footer-social a{font-family:"Outfit",sans-serif;color:rgba(253,246,236,0.9);text-decoration:none;transition:color 0.2s;display:inline-flex;align-items:center;gap:10px;font-size:0.85rem}
+.tbh-footer-social a:hover{color:#FDA11D}
+.tbh-footer-social svg{width:22px;height:22px;fill:currentColor;flex-shrink:0}
+.tbh-footer-bottom{max-width:1200px;margin:36px auto 0;padding-top:20px;border-top:1px solid rgba(253,246,236,0.15)}
+.tbh-footer-copy{font-family:"Outfit",sans-serif;font-size:0.78rem;color:rgba(253,246,236,0.7);text-align:center;margin:0}
+@media (max-width:900px){.tbh-footer-inner{grid-template-columns:1fr 1fr;gap:32px}}
+@media (max-width:560px){footer.tbh-footer{padding:40px 24px 20px}.tbh-footer-inner{grid-template-columns:1fr;gap:28px}.tbh-footer-tagline{max-width:none}}
 </style>
+</meta>
+  <link rel="canonical" href="https://www.thebeanshub.com/posts/jeju-specialty-coffee">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Specialty Coffee in Jeju Island — Best Cafés Ranked by a Malaysian | The Beans Hub">
+  <meta property="og:description" content="Spent a week hunting specialty coffee in Jeju Island as a Malaysian coffee lover. Here's an honest ranking of 6 cafés — from a peachy iced latte to a viral spot that's more aesthetics than brew.">
+  <meta property="og:url" content="https://www.thebeanshub.com/posts/jeju-specialty-coffee">
+  <meta property="og:image" content="https://www.thebeanshub.com/img/Girl-bought-coffee-from-the-beans-hub.png">
+  <meta property="og:site_name" content="The Beans Hub">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Specialty Coffee in Jeju Island — Best Cafés Ranked by a Malaysian | The Beans Hub">
+  <meta name="twitter:description" content="Spent a week hunting specialty coffee in Jeju Island as a Malaysian coffee lover. Here's an honest ranking of 6 cafés — from a peachy iced latte to a viral spot that's more aesthetics than brew.">
+  <meta name="twitter:image" content="https://www.thebeanshub.com/img/Girl-bought-coffee-from-the-beans-hub.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.thebeanshub.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Library",
+      "item": "https://www.thebeanshub.com/library"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Specialty Coffee in Jeju Island",
+      "item": "https://www.thebeanshub.com/posts/jeju-specialty-coffee"
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Specialty Coffee in Jeju Island — Best Cafés Ranked by a Malaysian | The Beans Hub",
+  "description": "Spent a week hunting specialty coffee in Jeju Island as a Malaysian coffee lover. Here's an honest ranking of 6 cafés — from a peachy iced latte to a viral spot that's more aesthetics than brew.",
+  "url": "https://www.thebeanshub.com/posts/jeju-specialty-coffee",
+  "datePublished": "2026-03-21",
+  "publisher": {
+    "@type": "Organization",
+    "name": "The Beans Hub",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.thebeanshub.com/img/thebeanshub_logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.thebeanshub.com/posts/jeju-specialty-coffee"
+  }
+}
+  </script>
 </head>
 <body>
-
-<nav>
-  <a href="/" class="nav-logo">The Beans<span>Hub</span></a>
-  <div class="nav-links">
-    <a href="/">Home</a>
-    <a href="/shop">Coffee Beans</a>
-    <a href="/library" class="active">Coffee Library</a>
-    <a href="/about">About Us</a>
-    <a href="/contact">Contact Us</a>
-    <a href="/shop" class="cta">Explore Beans</a>
-  </div>
-  <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+<nav class="site-nav">
+<a class="nav-logo" href="/"><img alt="The Beans Hub Logo" src="/img/thebeanshub_logo.png" style="height: 80px; width: auto;" /></a>
+<div class="nav-links">
+<a href="/">Home</a>
+<a href="/shop">Coffee Beans</a>
+<a class="active" href="/library">Coffee Library</a>
+<a href="/about">About Us</a>
+<a href="/contact">Contact Us</a>
+<a class="cta" href="/shop">Explore Beans</a>
+</div>
+<button aria-label="Menu" class="nav-hamburger" onclick="toggleMenu()">
+<span></span><span></span><span></span>
+</button>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="/">Home</a>
-  <a href="/shop">Coffee Beans</a>
-  <a href="/library">Coffee Library</a>
-  <a href="/about">About Us</a>
-  <a href="/contact">Contact Us</a>
+<a href="/">Home</a>
+<a href="/shop">Coffee Beans</a>
+<a href="/library">Coffee Library</a>
+<a href="/about">About Us</a>
+<a href="/contact">Contact Us</a>
 </div>
-
 <div class="post-hero">
-  <div class="post-hero-inner">
-    <div class="post-breadcrumb">
-      <a href="/library">Coffee Library</a>
-      <span>›</span>
-      <span>Travel & Coffee</span>
-    </div>
-    <div class="post-cat-badge badge-travel">✈️ Travel & Coffee</div>
-    <h1>Specialty Coffee in Jeju Island — Ranked by a Malaysian Coffee Lover</h1>
-    <div class="post-hero-meta">
-      <span>The Beans Hub</span>
-      <span class="post-hero-meta-dot"></span>
-      <span>March 2025</span>
-      <span class="post-hero-meta-dot"></span>
-      <span class="post-read-time">6 min read</span>
-    </div>
-  </div>
+<div class="post-hero-inner">
+<div class="post-breadcrumb">
+<a href="/library">Coffee Library</a>
+<span>›</span>
+<span>Travel &amp; Coffee</span>
 </div>
-
+<div class="post-cat-badge badge-travel">✈️ Travel &amp; Coffee</div>
+<h1>Specialty Coffee in Jeju Island — Ranked by a Malaysian Coffee Lover</h1>
+<div class="post-hero-meta">
+<span>The Beans Hub</span>
+<span class="post-hero-meta-dot"></span>
+<span>March 2025</span>
+<span class="post-hero-meta-dot"></span>
+<span class="post-read-time">6 min read</span>
+</div>
+</div>
+</div>
 <div class="post-banner">🇰🇷</div>
-
+<div class="post-layout">
 <div class="post-body">
-
-<h2>Is There Good Specialty Coffee in Jeju?</h2>
-
+<h2 id="is-there-good-specialty-coffee-in-jeju">Is There Good Specialty Coffee in Jeju?</h2>
 <p>As a Malaysian, most of our great coffee roasters are based in cities — with the exception of places like Penang. We don't usually expect to find great specialty coffee on islands like Pangkor or Redang, at least not from my experience.</p>
-
 <p>So when I arrived in Jeju, I had a small hope that the coffee scene wouldn't be too bad. After all, it's a highly touristic island, especially with all the attention around tangerines, the haenyeo culture, and its unique landscapes.</p>
-
 <p>And during my one week in Jeju, I made it a point to try as many coffees as I could.</p>
-
 <div class="callout">
-  <p class="callout-title">☕ My Ranking Method</p>
-  <p>To keep things fair, I ranked every café based on their <strong>latte</strong> — since that's the one drink I ordered consistently everywhere. I did try some filter coffee and Americanos here and there, but the latte felt like the most standardised way to compare across all the specialty coffee spots in Jeju.</p>
+<p class="callout-title">☕ My Ranking Method</p>
+<p>To keep things fair, I ranked every café based on their <strong>latte</strong> — since that's the one drink I ordered consistently everywhere. I did try some filter coffee and Americanos here and there, but the latte felt like the most standardised way to compare across all the specialty coffee spots in Jeju.</p>
 </div>
-
-<h2>The Best Specialty Coffee Cafés in Jeju — Ranked</h2>
-
+<h2 id="the-best-specialty-coffee-cafs-in-jeju-ranked">The Best Specialty Coffee Cafés in Jeju — Ranked</h2>
 <h3><span class="rank-badge rank-1">1</span> Coffee Nap Roaster — Best Specialty Coffee in Jeju</h3>
-
 <p>If you've seen my Instagram post, you'll know this is my top favourite. They offer three different beans for your drink, and I chose one labelled "216" (or something close — I can't quite remember). But wow, the iced latte completely surprised me. It had this fruity, peachy, almost honey-like sweetness that blended beautifully with the milk. It was one of those cups where the first sip makes you pause with eyes wide open.</p>
-
 <p>We ended up trying lattes with all three beans, and the other two were great as well.</p>
-
 <div class="info-card">
-  <h4>Coffee Nap Roaster — Quick Facts</h4>
-  <ul>
-    <li><strong>Highlight:</strong> Three bean options per drink — fruity, peachy iced latte</li>
-    <li><strong>Bean price:</strong> 19,000 won for 250g</li>
-    <li><strong>Best for:</strong> Specialty coffee lovers who want something truly memorable</li>
-  </ul>
+<h4>Coffee Nap Roaster — Quick Facts</h4>
+<ul>
+<li><strong>Highlight:</strong> Three bean options per drink — fruity, peachy iced latte</li>
+<li><strong>Bean price:</strong> 19,000 won for 250g</li>
+<li><strong>Best for:</strong> Specialty coffee lovers who want something truly memorable</li>
+</ul>
 </div>
-
 <p>They were selling their beans at 19,000 won for 250g, and I was so tempted to bring a bag home… but luggage space and weight said no 🥲</p>
-
-<hr class="post-divider">
-
+<hr class="post-divider"/>
 <h3><span class="rank-badge rank-2">2</span> Cafe Dan Dan — Bright, Citrusy, and Criminally Good Value</h3>
-
 <p>This was my second favourite. The latte had a refreshing, citrusy brightness, which is quite rare to stand out so clearly in a milk-based drink. It felt light, clean, and very drinkable.</p>
-
 <p>Their filter coffee was only 1,000 won more (ie. 6,500 won), which is honestly a steal compared to Malaysia, where filter coffee is usually much more expensive than espresso-based drinks. Of course I have to give it a try! It was good, but didn't quite give me that "wow" factor in terms of flavour notes.</p>
-
 <p>That said, the café itself had a very cozy and comforting vibe, which made the experience even better.</p>
-
-<hr class="post-divider">
-
+<hr class="post-divider"/>
 <h3><span class="rank-badge rank-3">3</span> Evoker — Solid Specialty Coffee for Classic Profiles</h3>
-
 <p>They serve piccolo lattes, which is already a bonus if you prefer something stronger and more intense. Their coffee was solid, well-balanced, clean, and nicely executed. But compared to the first two, it didn't have those standout fruity or citrusy notes that surprised me.</p>
-
 <p>If you prefer a more classic coffee profile (less experimental, more straightforward), this could easily be your number one pick for specialty coffee in Jeju.</p>
-
-<hr class="post-divider">
-
+<hr class="post-divider"/>
 <h3><span class="rank-badge rank-other">4</span> Melts Village — Pretty Views, Average Coffee</h3>
-
 <p>Their lattes are slightly pricier than most cafés in Jeju (around 7,000 won), but the coffee itself was just… average for me. Not bad but not memorable either. It didn't give me that "ahhh" moment on the first sip.</p>
-
 <p>That said, you're definitely paying for the location. It's right by Hamdeok Beach, with large windows and a beautiful sea view — so part of the price goes to that experience.</p>
-
 <div class="callout">
-  <p class="callout-title">🍊 Local Bonus</p>
-  <p>Their <strong>tangerine toast</strong> was really good. A nice local twist that's worth ordering even if the coffee doesn't blow you away — very Jeju, very satisfying.</p>
+<p class="callout-title">🍊 Local Bonus</p>
+<p>Their <strong>tangerine toast</strong> was really good. A nice local twist that's worth ordering even if the coffee doesn't blow you away — very Jeju, very satisfying.</p>
 </div>
-
-<hr class="post-divider">
-
+<hr class="post-divider"/>
 <h3><span class="rank-badge rank-other">5</span> Baum Coffee Museum — Skip the Coffee, Stay for the History</h3>
-
 <p>I had high expectations for the specialty coffee here, but it turned out to be just okay. You may skip the coffee and save your money for other cafés — but don't skip the place itself.</p>
-
 <p>The museum is actually very interesting. You get to explore the history of coffee, see how it has evolved, and learn about different brewing cultures around the world — from Vietnam to Turkey to Western styles. As a Malaysian who loves coffee, the museum context alone makes it worth a stop. We came after our visit to Udo Island and Seongsan Ilchulbong.</p>
-
-<hr class="post-divider">
-
+<hr class="post-divider"/>
 <h3><span class="rank-badge rank-other">6</span> Haejiage Cafe — More Aesthetic Than Specialty</h3>
-
 <p>You've probably seen this place all over the internet. And yes, it's expensive. I didn't order their latte because… you know lah 😅 When a place is super aesthetic and viral, you don't always go there expecting amazing specialty coffee.</p>
-
 <p>I tried a few desserts and drinks instead — they were good! Just not sure if it's fully worth the price. But for the experience and photos, it's still a fun stop in Jeju.</p>
-
-<h2>Bonus: Convenience Store Coffee in Jeju</h2>
-
+<h2 id="bonus-convenience-store-coffee-in-jeju">Bonus: Convenience Store Coffee in Jeju</h2>
 <p>I also tried coffee from GS25 and CU (the machine ones, not packaged or bottled), paired with fresh milk I bought separately. Honestly it's super worth it for the price. It's not specialty-level, of course, but for something quick and affordable, it does the job really well. I ended up drinking quite a lot of these throughout the trip 😂</p>
-
-<h2>Final Verdict — Is the Specialty Coffee Scene in Jeju Worth It?</h2>
-
+<h2 id="final-verdict-is-the-specialty-coffee-scene-in-jeju-worth-it">Final Verdict — Is the Specialty Coffee Scene in Jeju Worth It?</h2>
 <p>Yes — definitely. You just need to know where to look.</p>
-
 <p>From a Malaysian perspective, the quality of specialty coffee in Jeju is genuinely impressive. Coffee Nap Roaster alone would hold its own against the best cafés in KL. And the pricing is surprisingly reasonable — a specialty latte at 5,000 to 6,500 won is actually cheaper than what we pay at most specialty spots back home.</p>
-
 <div class="callout">
-  <p class="callout-title">🔍 Malaysian Traveller Tip</p>
-  <p>Instead of searching for "café" or "coffee" on Google Maps, search for <strong>"coffee roaster"</strong>. That usually leads you to places that care more about the beans and the craft — and in Jeju, that made all the difference. Same tip applies when you're hunting specialty coffee back in Malaysia too.</p>
+<p class="callout-title">🔍 Malaysian Traveller Tip</p>
+<p>Instead of searching for "café" or "coffee" on Google Maps, search for <strong>"coffee roaster"</strong>. That usually leads you to places that care more about the beans and the craft — and in Jeju, that made all the difference. Same tip applies when you're hunting specialty coffee back in Malaysia too.</p>
 </div>
-
 <p>And if you want to keep exploring specialty coffee when you're back home, browse our full directory of <a href="/shop">Malaysian coffee beans</a> — filter by taste profile, origin, and roast level to find something that matches what you loved in Jeju.</p>
-
 <div class="post-tags">
-  <span class="post-tag">Jeju</span>
-  <span class="post-tag">Specialty Coffee</span>
-  <span class="post-tag">Travel</span>
-  <span class="post-tag">Korea</span>
-  <span class="post-tag">Café Guide</span>
-  <span class="post-tag">Malaysian POV</span>
-  <span class="post-tag">Latte Ranking</span>
+<span class="post-tag">Jeju</span>
+<span class="post-tag">Specialty Coffee</span>
+<span class="post-tag">Travel</span>
+<span class="post-tag">Korea</span>
+<span class="post-tag">Café Guide</span>
+<span class="post-tag">Malaysian POV</span>
+<span class="post-tag">Latte Ranking</span>
 </div>
-
 <div class="post-nav">
-  <a href="/library">← Back to Coffee Library</a>
-  <a href="/shop">Browse Coffee Beans →</a>
+<a href="/library">← Back to Coffee Library</a>
+<a href="/shop">Browse Coffee Beans →</a>
 </div>
+</div><!-- /post-body -->
+<aside aria-label="Table of contents" class="toc-sidebar">
+<div class="toc-inner">
+<div class="toc-title">Contents</div>
+<nav class="toc-nav">
+<a class="toc-link" href="#is-there-good-specialty-coffee-in-jeju">Is There Good Specialty Coffee in Jeju?</a>
+<a class="toc-link" href="#the-best-specialty-coffee-cafs-in-jeju-ranked">The Best Specialty Coffee Cafés in Jeju — Ranked</a>
+<a class="toc-link" href="#bonus-convenience-store-coffee-in-jeju">Bonus: Convenience Store Coffee in Jeju</a>
+<a class="toc-link" href="#final-verdict-is-the-specialty-coffee-scene-in-jeju-worth-it">Final Verdict — Is the Specialty Coffee Scene in Jeju Worth It?</a>
+</nav>
 </div>
-
+</aside>
+</div><!-- /post-layout -->
 <div class="more-posts">
-  <div class="more-posts-inner">
-    <h2>More from the Library</h2>
-    <div class="more-grid">
-      <a href="/posts/arabica-robusta-liberica" class="more-card">
-        <div class="more-card-emoji">🌱</div>
-        <h3>Arabica vs Robusta vs Liberica — What's the Difference?</h3>
-        <div class="more-card-meta">5 min read</div>
-      </a>
-      <a href="/posts/processing-methods" class="more-card">
-        <div class="more-card-emoji">⚙️</div>
-        <h3>Natural vs Washed vs Honey — Coffee Processing Explained</h3>
-        <div class="more-card-meta">7 min read</div>
-      </a>
-      <a href="/posts/kl-roasters" class="more-card">
-        <div class="more-card-emoji">🏙️</div>
-        <h3>Best Specialty Coffee Roasters in Kuala Lumpur</h3>
-        <div class="more-card-meta">8 min read</div>
-      </a>
-    </div>
-  </div>
+<div class="more-posts-inner">
+<h2>More from the Library</h2>
+<div class="more-grid">
+<a class="more-card" href="/posts/arabica-robusta-liberica">
+<div class="more-card-emoji">🌱</div>
+<h3>Arabica vs Robusta vs Liberica — What's the Difference?</h3>
+<div class="more-card-meta">5 min read</div>
+</a>
+<a class="more-card" href="/posts/processing-methods">
+<div class="more-card-emoji">⚙️</div>
+<h3>Natural vs Washed vs Honey — Coffee Processing Explained</h3>
+<div class="more-card-meta">7 min read</div>
+</a>
+<a class="more-card" href="/posts/kl-roasters">
+<div class="more-card-emoji">🏙️</div>
+<h3>Best Specialty Coffee Roasters in Kuala Lumpur</h3>
+<div class="more-card-meta">8 min read</div>
+</a>
 </div>
-
-<footer>
-  <a href="/" class="footer-logo">The Beans<span>Hub</span></a>
-  <div class="footer-links">
-    <a href="/shop">Coffee Beans</a>
-    <a href="/library">Coffee Library</a>
-    <a href="/about">About Us</a>
-    <a href="/contact">Contact Us</a>
-  </div>
-  <div class="footer-social">
-    <a href="https://www.instagram.com/thebeanshub" target="_blank" rel="noopener" aria-label="Instagram">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-    </a>
-    <a href="https://www.facebook.com/thebeanshub" target="_blank" rel="noopener" aria-label="Facebook">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-    </a>
-  </div>
-  <div class="footer-copy">&copy; 2025 The Beans Hub</div>
+</div>
+</div>
+<!-- FOOTER -->
+<footer class="tbh-footer">
+<div class="tbh-footer-inner">
+<div class="tbh-footer-brand">
+<a class="tbh-footer-logo" href="/">
+<img alt="The Beans Hub logo" class="tbh-footer-logo-img" src="/img/thebeanshub_logo.png"/>
+<span class="tbh-footer-logo-text">The Beans<span class="accent">Hub</span></span>
+</a>
+<p class="tbh-footer-tagline">Malaysia's home for specialty coffee — beans, brewers, and roaster guides.</p>
+</div>
+<div>
+<h4 class="tbh-footer-heading">Shop</h4>
+<ul class="tbh-footer-list">
+<li><a href="/shop">All Coffee Beans</a></li>
+<li><a href="/shop/ethiopia-coffee-beans">Ethiopia</a></li>
+<li><a href="/shop/colombia%20coffee%20beans">Colombia</a></li>
+<li><a href="/shop/brazil-coffee-beans">Brazil</a></li>
+<li><a href="/shop/yunnan-coffee-beans">Yunnan</a></li>
+<li><a href="/shop/indonesia-coffee-beans">Indonesia</a></li>
+<li><a href="/shop/thailand-coffee-beans">Thailand</a></li>
+<li><a href="/shop/natural-process-coffee-beans">Natural Process</a></li>
+<li><a href="/shop/washed-process-coffee-beans">Washed Process</a></li>
+<li><a href="/shop/fermented-coffee-beans">Fermented</a></li>
+<li><a href="/shop/arabica-blend-coffee-beans">Arabica Blends</a></li>
+</ul>
+</div>
+<div>
+<h4 class="tbh-footer-heading">Explore</h4>
+<ul class="tbh-footer-list">
+<li><a href="/">Home</a></li>
+<li><a href="/about">About Us</a></li>
+<li><a href="/contact">Contact Us</a></li>
+<li><a href="/library">Coffee Library</a></li>
+</ul>
+</div>
+<div>
+<h4 class="tbh-footer-heading">Follow</h4>
+<div class="tbh-footer-social">
+<a aria-label="Instagram — The Beans Hub" href="https://www.instagram.com/thebeanshub/" rel="noopener" target="_blank">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+<span>@thebeanshub</span>
+</a>
+</div>
+</div>
+</div>
+<div class="tbh-footer-bottom">
+<p class="tbh-footer-copy">© 2025 The Beans Hub. All rights reserved.</p>
+</div>
 </footer>
-
 <script>
 function toggleMenu() {
   document.getElementById('mobileMenu').classList.toggle('open');
 }
-</script>
+
+    // TOC — highlight active section on scroll
+    (function () {
+      const tocLinks = document.querySelectorAll('.toc-link[href^="#"]');
+      const headings = Array.from(document.querySelectorAll('.post-body h2[id]'));
+      if (!tocLinks.length || !headings.length) return;
+      function setActive(id) {
+        tocLinks.forEach(l => {
+          l.classList.toggle('active', l.getAttribute('href') === '#' + id);
+        });
+      }
+      if (headings[0]) setActive(headings[0].id);
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      }, { rootMargin: '-10% 0px -80% 0px', threshold: 0 });
+      headings.forEach(h => observer.observe(h));
+      tocLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+          const target = document.querySelector(this.getAttribute('href'));
+          if (!target) return;
+          e.preventDefault();
+          const offset = 88;
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        });
+      });
+    })();
+
+  </script>
 </body>
 </html>

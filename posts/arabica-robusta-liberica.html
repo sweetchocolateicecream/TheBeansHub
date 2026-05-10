@@ -1,8 +1,9 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JY42YLKPRM"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-JY42YLKPRM"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -10,12 +11,12 @@
 
   gtag('config', 'G-JY42YLKPRM');
 </script>
-<meta charset="UTF-8">
-<meta name="google-site-verification" content="jqlfBshOy4vgYUb478viCuTswoIsaWL_jdOhL0srx0w" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Arabica vs Robusta vs Liberica — What's the Difference? — The Beans Hub</title>
-<link href="https://fonts.googleapis.com/css2?family=Sigmar&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="icon" type="image/png" href="img/thebeanshub_logo.png">
+<meta charset="utf-8"/>
+<meta content="jqlfBshOy4vgYUb478viCuTswoIsaWL_jdOhL0srx0w" name="google-site-verification">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Arabica vs Robusta vs Liberica — What's the Difference? | The Beans Hub</title><meta content="Arabica, Robusta, Liberica — what's the actual difference? A guide to Malaysia's three coffee species, from taste to price to where they grow." name="description"/>
+<link href="https://fonts.googleapis.com/css2?family=Sigmar&amp;family=Outfit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="img/thebeanshub_logo.png" rel="icon" type="image/png"/>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -29,7 +30,7 @@ html { scroll-behavior: smooth; }
 body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
 
 /* NAV */
-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 68px; background: var(--green); border-bottom: 1px solid rgba(253,161,29,0.3); }
+.site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 68px; background: var(--green); border-bottom: 1px solid rgba(253,161,29,0.3); }
 .nav-logo { font-family: "Sigmar", cursive; color: #FDF6EC; font-size: 1.45rem; font-weight: 700; text-decoration: none; }
 .nav-logo span { color: var(--orange); }
 .nav-links { display: flex; gap: 36px; align-items: center; }
@@ -121,8 +122,8 @@ footer { background: var(--green); padding: 40px 48px; display: flex; justify-co
 .footer-copy { font-size: 0.75rem; color: rgba(253,246,236,0.4); }
 
 @media (max-width: 768px) {
-  nav { padding: 0 20px; }
-  nav .nav-links { display: none; }
+  .site-nav { padding: 0 20px; }
+  .site-nav .nav-links { display: none; }
   .nav-hamburger { display: flex; }
   .post-hero { padding: 88px 20px 40px; }
   .post-body { padding: 40px 20px 60px; }
@@ -131,157 +132,395 @@ footer { background: var(--green); padding: 40px 48px; display: flex; justify-co
   footer { flex-direction: column; gap: 20px; text-align: center; padding: 32px 20px; }
   .footer-links { flex-wrap: wrap; justify-content: center; }
 }
+
+    /* ── TABLE OF CONTENTS ── */
+    .post-layout {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 800px) 220px;
+      column-gap: 40px;
+      align-items: start;
+      padding: 56px 48px 80px;
+    }
+    .post-layout > .post-body {
+      max-width: none;
+      margin: 0;
+      padding: 0;
+    }
+    .toc-sidebar { display: none; }
+    @media (min-width: 1260px) {
+      .toc-sidebar {
+        display: block;
+        position: sticky;
+        top: 90px;
+        align-self: start;
+      }
+    }
+    .toc-inner {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 16px 20px;
+      overflow: hidden;
+      max-height: calc(100vh - 110px);
+      overflow-y: auto;
+      scrollbar-width: none;
+    }
+    .toc-inner::-webkit-scrollbar { display: none; }
+    .toc-title {
+      font-size: 0.62rem;
+      font-weight: 800;
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    .toc-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      min-width: 0;
+      position: static;
+      top: auto;
+      left: auto;
+      right: auto;
+      height: auto;
+      padding: 0;
+      background: transparent;
+      border: 0;
+      align-items: stretch;
+      justify-content: flex-start;
+    }
+    .toc-link {
+      display: block;
+      min-width: 0;
+      white-space: normal;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      font-size: 0.76rem;
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 6px 8px 6px 10px;
+      border-radius: 6px;
+      border-left: 2px solid transparent;
+      line-height: 1.45;
+      transition: all 0.15s;
+    }
+    .toc-link:hover {
+      color: var(--text);
+      background: var(--tag-bg);
+      border-left-color: var(--border);
+    }
+    .toc-link.active {
+      color: var(--green);
+      font-weight: 700;
+      border-left-color: var(--orange);
+      background: rgba(41, 98, 65, 0.05);
+    }
+    .toc-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 8px 0;
+    }
+
+  
+/* ── INFORMATIONAL FOOTER (consistent across all pages) ── */
+footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border-top:1px solid rgba(253,161,29,0.2);font-family:"Outfit",sans-serif;display:block;text-align:left;align-items:stretch;justify-content:flex-start;gap:0}
+.tbh-footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px;align-items:start}
+.tbh-footer-brand{display:flex;flex-direction:column;gap:14px}
+.tbh-footer-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.tbh-footer-logo-img{width:42px;height:42px;border-radius:8px;object-fit:cover;background:rgba(253,246,236,0.08)}
+.tbh-footer-logo-text{font-family:"Sigmar",cursive;color:#FDF6EC;font-size:1.25rem;font-weight:700;line-height:1}
+.tbh-footer-logo-text .accent{color:#FDA11D}
+.tbh-footer-tagline{font-family:"Outfit",sans-serif;font-size:0.85rem;color:rgba(253,246,236,0.75);line-height:1.55;max-width:280px;margin:0}
+.tbh-footer-heading{font-family:"Sigmar",cursive;font-size:0.95rem;color:#FDA11D;margin:0 0 14px;letter-spacing:0.02em;font-weight:400}
+.tbh-footer-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+.tbh-footer-list a{font-family:"Outfit",sans-serif;color:rgba(253,246,236,0.85);text-decoration:none;font-size:0.85rem;transition:color 0.2s}
+.tbh-footer-list a:hover{color:#FDA11D}
+.tbh-footer-social{display:flex;flex-direction:column;gap:10px}
+.tbh-footer-social a{font-family:"Outfit",sans-serif;color:rgba(253,246,236,0.9);text-decoration:none;transition:color 0.2s;display:inline-flex;align-items:center;gap:10px;font-size:0.85rem}
+.tbh-footer-social a:hover{color:#FDA11D}
+.tbh-footer-social svg{width:22px;height:22px;fill:currentColor;flex-shrink:0}
+.tbh-footer-bottom{max-width:1200px;margin:36px auto 0;padding-top:20px;border-top:1px solid rgba(253,246,236,0.15)}
+.tbh-footer-copy{font-family:"Outfit",sans-serif;font-size:0.78rem;color:rgba(253,246,236,0.7);text-align:center;margin:0}
+@media (max-width:900px){.tbh-footer-inner{grid-template-columns:1fr 1fr;gap:32px}}
+@media (max-width:560px){footer.tbh-footer{padding:40px 24px 20px}.tbh-footer-inner{grid-template-columns:1fr;gap:28px}.tbh-footer-tagline{max-width:none}}
 </style>
+</meta>
+  <link rel="canonical" href="https://www.thebeanshub.com/posts/arabica-robusta-liberica">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Arabica vs Robusta vs Liberica — What's the Difference? | The Beans Hub">
+  <meta property="og:description" content="Arabica, Robusta, Liberica — what's the actual difference? A guide to Malaysia's three coffee species, from taste to price to where they grow.">
+  <meta property="og:url" content="https://www.thebeanshub.com/posts/arabica-robusta-liberica">
+  <meta property="og:image" content="https://www.thebeanshub.com/img/Girl-bought-coffee-from-the-beans-hub.png">
+  <meta property="og:site_name" content="The Beans Hub">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Arabica vs Robusta vs Liberica — What's the Difference? | The Beans Hub">
+  <meta name="twitter:description" content="Arabica, Robusta, Liberica — what's the actual difference? A guide to Malaysia's three coffee species, from taste to price to where they grow.">
+  <meta name="twitter:image" content="https://www.thebeanshub.com/img/Girl-bought-coffee-from-the-beans-hub.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.thebeanshub.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Library",
+      "item": "https://www.thebeanshub.com/library"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Arabica vs Robusta vs Liberica",
+      "item": "https://www.thebeanshub.com/posts/arabica-robusta-liberica"
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Arabica vs Robusta vs Liberica — What's the Difference? | The Beans Hub",
+  "description": "Arabica, Robusta, Liberica — what's the actual difference? A guide to Malaysia's three coffee species, from taste to price to where they grow.",
+  "url": "https://www.thebeanshub.com/posts/arabica-robusta-liberica",
+  "datePublished": "2026-03-05",
+  "publisher": {
+    "@type": "Organization",
+    "name": "The Beans Hub",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.thebeanshub.com/img/thebeanshub_logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.thebeanshub.com/posts/arabica-robusta-liberica"
+  }
+}
+  </script>
 </head>
 <body>
-
-<nav>
-  <a href="/" class="nav-logo">The Beans<span>Hub</span></a>
-  <div class="nav-links">
-    <a href="/">Home</a>
-    <a href="/shop">Coffee Beans</a>
-    <a href="/library" class="active">Coffee Library</a>
-    <a href="/about">About Us</a>
-    <a href="/contact">Contact Us</a>
-    <a href="/shop" class="cta">Explore Beans</a>
-  </div>
-  <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+<nav class="site-nav">
+<a class="nav-logo" href="/"><img alt="The Beans Hub Logo" src="/img/thebeanshub_logo.png" style="height: 80px; width: auto;" /></a>
+<div class="nav-links">
+<a href="/">Home</a>
+<a href="/shop">Coffee Beans</a>
+<a class="active" href="/library">Coffee Library</a>
+<a href="/about">About Us</a>
+<a href="/contact">Contact Us</a>
+<a class="cta" href="/shop">Explore Beans</a>
+</div>
+<button aria-label="Menu" class="nav-hamburger" onclick="toggleMenu()">
+<span></span><span></span><span></span>
+</button>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="/">Home</a>
-  <a href="/shop">Coffee Beans</a>
-  <a href="/library">Coffee Library</a>
-  <a href="/about">About Us</a>
-  <a href="/contact">Contact Us</a>
+<a href="/">Home</a>
+<a href="/shop">Coffee Beans</a>
+<a href="/library">Coffee Library</a>
+<a href="/about">About Us</a>
+<a href="/contact">Contact Us</a>
 </div>
-
 <div class="post-hero">
-  <div class="post-hero-inner">
-    <div class="post-breadcrumb">
-      <a href="/library">Coffee Library</a>
-      <span>›</span>
-      <span>Beginner Guide</span>
-    </div>
-    <div class="post-cat-badge badge-guide">🎓 Beginner Guide</div>
-    <h1>Arabica vs Robusta vs Liberica — What's the Difference?</h1>
-    <div class="post-hero-meta">
-      <span>The Beans Hub</span>
-      <span class="post-hero-meta-dot"></span>
-      <span>February 2025</span>
-      <span class="post-hero-meta-dot"></span>
-      <span class="post-read-time">5 min read</span>
-    </div>
-  </div>
+<div class="post-hero-inner">
+<div class="post-breadcrumb">
+<a href="/library">Coffee Library</a>
+<span>›</span>
+<span>Beginner Guide</span>
 </div>
-
+<div class="post-cat-badge badge-guide">🎓 Beginner Guide</div>
+<h1>Arabica vs Robusta vs Liberica — What's the Difference?</h1>
+<div class="post-hero-meta">
+<span>The Beans Hub</span>
+<span class="post-hero-meta-dot"></span>
+<span>February 2025</span>
+<span class="post-hero-meta-dot"></span>
+<span class="post-read-time">5 min read</span>
+</div>
+</div>
+</div>
 <div class="post-banner">☕</div>
-
+<div class="post-layout">
 <div class="post-body">
-
 <p>There are over 120 species of coffee, but three dominate the world's cups: Arabica, Robusta, and Liberica. Malaysia is one of the very few places on earth where all three grow commercially — which makes this a particularly relevant question if you're buying local.</p>
 <p>Here's the plain-English breakdown.</p>
-
-<h2>Arabica — The Gold Standard</h2>
+<h2 id="arabica-the-gold-standard">Arabica — The Gold Standard</h2>
 <p>Arabica accounts for roughly 60% of the world's coffee production and almost all specialty coffee. It grows at high altitudes (typically 1,000–2,000m above sea level), which slows the cherry's development and produces more complex sugars and acids.</p>
-
 <div class="info-card">
-  <h4>Arabica at a glance</h4>
-  <ul>
-    <li><strong>Taste:</strong> Bright, complex, fruity or floral, higher acidity</li>
-    <li><strong>Caffeine:</strong> Lower (about 1.5% by weight)</li>
-    <li><strong>Price:</strong> Generally more expensive</li>
-    <li><strong>Best for:</strong> Filter coffee, pour-over, light espresso</li>
-  </ul>
+<h4>Arabica at a glance</h4>
+<ul>
+<li><strong>Taste:</strong> Bright, complex, fruity or floral, higher acidity</li>
+<li><strong>Caffeine:</strong> Lower (about 1.5% by weight)</li>
+<li><strong>Price:</strong> Generally more expensive</li>
+<li><strong>Best for:</strong> Filter coffee, pour-over, light espresso</li>
+</ul>
 </div>
-
 <p>Most of what you'll find on The Beans Hub is Arabica — it's what Malaysian specialty roasters primarily source. Ethiopian, Colombian, and Guatemalan Arabicas are the most common origins you'll see.</p>
-
-<h2>Robusta — The Workhorse</h2>
+<h2 id="robusta-the-workhorse">Robusta — The Workhorse</h2>
 <p>Robusta grows at lower altitudes, is more resistant to disease, and produces higher yields — which makes it cheaper to grow. It's the main ingredient in commercial instant coffee and Italian-style espresso blends.</p>
-
 <div class="info-card">
-  <h4>Robusta at a glance</h4>
-  <ul>
-    <li><strong>Taste:</strong> Stronger, more bitter, earthy, rubbery notes</li>
-    <li><strong>Caffeine:</strong> Higher (about 2.7% by weight — nearly double Arabica)</li>
-    <li><strong>Price:</strong> Cheaper</li>
-    <li><strong>Best for:</strong> Espresso blends, traditional kopi, instant coffee</li>
-  </ul>
+<h4>Robusta at a glance</h4>
+<ul>
+<li><strong>Taste:</strong> Stronger, more bitter, earthy, rubbery notes</li>
+<li><strong>Caffeine:</strong> Higher (about 2.7% by weight — nearly double Arabica)</li>
+<li><strong>Price:</strong> Cheaper</li>
+<li><strong>Best for:</strong> Espresso blends, traditional kopi, instant coffee</li>
+</ul>
 </div>
-
 <div class="callout">
-  <p class="callout-title">🇲🇾 Malaysia context</p>
-  <p>Traditional Malaysian kopi is typically made with Robusta beans that have been roasted with sugar and butter (a style called "drum-roasted"). The result is a bold, dark, slightly sweet flavour that's quite different from specialty Robusta.</p>
+<p class="callout-title">🇲🇾 Malaysia context</p>
+<p>Traditional Malaysian kopi is typically made with Robusta beans that have been roasted with sugar and butter (a style called "drum-roasted"). The result is a bold, dark, slightly sweet flavour that's quite different from specialty Robusta.</p>
 </div>
-
-<h2>Liberica — Malaysia's Own</h2>
+<h2 id="liberica-malaysias-own">Liberica — Malaysia's Own</h2>
 <p>This is where Malaysia is genuinely unique. Liberica coffee trees are native to West Africa but took root in Malaysia — particularly Johor — after a global Arabica blight wiped out crops in the 1890s. Today, Malaysia is one of the only countries that grows and roasts Liberica at any meaningful scale.</p>
-
 <div class="info-card">
-  <h4>Liberica at a glance</h4>
-  <ul>
-    <li><strong>Taste:</strong> Bold, woody, fruity-floral, jackfruit notes, smoky</li>
-    <li><strong>Caffeine:</strong> Similar to Arabica</li>
-    <li><strong>Price:</strong> Specialty Liberica can be expensive due to rarity</li>
-    <li><strong>Best for:</strong> Adventurous drinkers, traditional Malaysian kopi</li>
-  </ul>
+<h4>Liberica at a glance</h4>
+<ul>
+<li><strong>Taste:</strong> Bold, woody, fruity-floral, jackfruit notes, smoky</li>
+<li><strong>Caffeine:</strong> Similar to Arabica</li>
+<li><strong>Price:</strong> Specialty Liberica can be expensive due to rarity</li>
+<li><strong>Best for:</strong> Adventurous drinkers, traditional Malaysian kopi</li>
+</ul>
 </div>
-
 <p>Liberica has a polarising reputation — some people find the flavour overwhelming, others find it revelatory. It's very much worth trying at least once, especially in Malaysia where you have access to properly grown and roasted local lots.</p>
-
-<h2>Which Should You Buy?</h2>
+<h2 id="which-should-you-buy">Which Should You Buy?</h2>
 <p>Start with Arabica if you're new to specialty coffee — the range of flavours is vast and approachable. Once you've got a feel for what you like, try a Malaysian Liberica for something genuinely unlike anything else. Robusta is great if you need a caffeine hit or prefer traditional kopi style.</p>
 <p>Browse our full selection of <a href="/shop">Malaysian coffee beans</a> — you can filter by origin and taste profile to find exactly what you're looking for.</p>
-
-
 <div class="post-tags">
 <span class="post-tag">Arabica</span><span class="post-tag">Robusta</span><span class="post-tag">Liberica</span><span class="post-tag">Beginners</span><span class="post-tag">Coffee Basics</span><span class="post-tag">Malaysia</span>
 </div>
-
 <div class="post-nav">
-  <a href="/library">← Back to Coffee Library</a>
-  <a href="/shop">Browse Coffee Beans →</a>
+<a href="/library">← Back to Coffee Library</a>
+<a href="/shop">Browse Coffee Beans →</a>
 </div>
+</div><!-- /post-body -->
+<aside aria-label="Table of contents" class="toc-sidebar">
+<div class="toc-inner">
+<div class="toc-title">Contents</div>
+<nav class="toc-nav">
+<a class="toc-link" href="#arabica-the-gold-standard">Arabica — The Gold Standard</a>
+<a class="toc-link" href="#robusta-the-workhorse">Robusta — The Workhorse</a>
+<a class="toc-link" href="#liberica-malaysias-own">Liberica — Malaysia's Own</a>
+<a class="toc-link" href="#which-should-you-buy">Which Should You Buy?</a>
+</nav>
 </div>
-
+</aside>
+</div><!-- /post-layout -->
 <div class="more-posts">
-  <div class="more-posts-inner">
-    <h2>More from the Library</h2>
-    <div class="more-grid">
-      <a href="/posts/processing-methods" class="more-card">
-          <div class="more-card-emoji">⚙️</div>
-          <h3>Natural vs Washed vs Honey — Coffee Processing Explained</h3>
-          <div class="more-card-meta">7 min read</div>
-        </a><a href="/posts/how-to-read-flavour-notes" class="more-card">
-          <div class="more-card-emoji">🌱</div>
-          <h3>How to Read Coffee Flavour Notes (Without Feeling Lost)</h3>
-          <div class="more-card-meta">6 min read</div>
-        </a><a href="/posts/kl-roasters" class="more-card">
-          <div class="more-card-emoji">🏙️</div>
-          <h3>Best Specialty Coffee Roasters in Kuala Lumpur</h3>
-          <div class="more-card-meta">8 min read</div>
-        </a>
-    </div>
-  </div>
+<div class="more-posts-inner">
+<h2>More from the Library</h2>
+<div class="more-grid">
+<a class="more-card" href="/posts/processing-methods">
+<div class="more-card-emoji">⚙️</div>
+<h3>Natural vs Washed vs Honey — Coffee Processing Explained</h3>
+<div class="more-card-meta">7 min read</div>
+</a><a class="more-card" href="/posts/how-to-read-flavour-notes">
+<div class="more-card-emoji">🌱</div>
+<h3>How to Read Coffee Flavour Notes (Without Feeling Lost)</h3>
+<div class="more-card-meta">6 min read</div>
+</a><a class="more-card" href="/posts/kl-roasters">
+<div class="more-card-emoji">🏙️</div>
+<h3>Best Specialty Coffee Roasters in Kuala Lumpur</h3>
+<div class="more-card-meta">8 min read</div>
+</a>
 </div>
-
-<footer>
-  <a href="/" class="footer-logo">The Beans<span>Hub</span></a>
-  <div class="footer-links">
-    <a href="/shop">Coffee Beans</a>
-    <a href="/library">Coffee Library</a>
-    <a href="/about">About Us</a>
-    <a href="/contact">Contact Us</a>
-  </div>
-  <div class="footer-copy">&copy; 2025 The Beans Hub</div>
+</div>
+</div>
+<!-- FOOTER -->
+<footer class="tbh-footer">
+<div class="tbh-footer-inner">
+<div class="tbh-footer-brand">
+<a class="tbh-footer-logo" href="/">
+<img alt="The Beans Hub logo" class="tbh-footer-logo-img" src="/img/thebeanshub_logo.png"/>
+<span class="tbh-footer-logo-text">The Beans<span class="accent">Hub</span></span>
+</a>
+<p class="tbh-footer-tagline">Malaysia's home for specialty coffee — beans, brewers, and roaster guides.</p>
+</div>
+<div>
+<h4 class="tbh-footer-heading">Shop</h4>
+<ul class="tbh-footer-list">
+<li><a href="/shop">All Coffee Beans</a></li>
+<li><a href="/shop/ethiopia-coffee-beans">Ethiopia</a></li>
+<li><a href="/shop/colombia%20coffee%20beans">Colombia</a></li>
+<li><a href="/shop/brazil-coffee-beans">Brazil</a></li>
+<li><a href="/shop/yunnan-coffee-beans">Yunnan</a></li>
+<li><a href="/shop/indonesia-coffee-beans">Indonesia</a></li>
+<li><a href="/shop/thailand-coffee-beans">Thailand</a></li>
+<li><a href="/shop/natural-process-coffee-beans">Natural Process</a></li>
+<li><a href="/shop/washed-process-coffee-beans">Washed Process</a></li>
+<li><a href="/shop/fermented-coffee-beans">Fermented</a></li>
+<li><a href="/shop/arabica-blend-coffee-beans">Arabica Blends</a></li>
+</ul>
+</div>
+<div>
+<h4 class="tbh-footer-heading">Explore</h4>
+<ul class="tbh-footer-list">
+<li><a href="/">Home</a></li>
+<li><a href="/about">About Us</a></li>
+<li><a href="/contact">Contact Us</a></li>
+<li><a href="/library">Coffee Library</a></li>
+</ul>
+</div>
+<div>
+<h4 class="tbh-footer-heading">Follow</h4>
+<div class="tbh-footer-social">
+<a aria-label="Instagram — The Beans Hub" href="https://www.instagram.com/thebeanshub/" rel="noopener" target="_blank">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+<span>@thebeanshub</span>
+</a>
+</div>
+</div>
+</div>
+<div class="tbh-footer-bottom">
+<p class="tbh-footer-copy">© 2025 The Beans Hub. All rights reserved.</p>
+</div>
 </footer>
-
 <script>
 function toggleMenu() {
   document.getElementById('mobileMenu').classList.toggle('open');
 }
-</script>
+
+    // TOC — highlight active section on scroll
+    (function () {
+      const tocLinks = document.querySelectorAll('.toc-link[href^="#"]');
+      const headings = Array.from(document.querySelectorAll('.post-body h2[id]'));
+      if (!tocLinks.length || !headings.length) return;
+      function setActive(id) {
+        tocLinks.forEach(l => {
+          l.classList.toggle('active', l.getAttribute('href') === '#' + id);
+        });
+      }
+      if (headings[0]) setActive(headings[0].id);
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      }, { rootMargin: '-10% 0px -80% 0px', threshold: 0 });
+      headings.forEach(h => observer.observe(h));
+      tocLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+          const target = document.querySelector(this.getAttribute('href'));
+          if (!target) return;
+          e.preventDefault();
+          const offset = 88;
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        });
+      });
+    })();
+
+  </script>
 </body>
 </html>

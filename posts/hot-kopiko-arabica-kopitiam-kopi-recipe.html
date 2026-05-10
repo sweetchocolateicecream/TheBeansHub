@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
 
+<html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JY42YLKPRM"></script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-JY42YLKPRM"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -11,16 +11,14 @@
 
   gtag('config', 'G-JY42YLKPRM');
 </script>
-<meta charset="UTF-8">
-<meta name="google-site-verification" content="jqlfBshOy4vgYUb478viCuTswoIsaWL_jdOhL0srx0w" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description"
-    content="Learn how to make the Hot Kopiko! A nostalgic recipe upgrading traditional Kopitiam Kopi flavours using smooth Arabica espresso, salted butter, and brown sugar.">
-  <title>Hot Kopiko Recipe: Arabica Meets Kopitiam Kopi — The Beans Hub</title>
-  <link rel="icon" type="image/png" href="img/thebeanshub_logo.png">
-  <link href="https://fonts.googleapis.com/css2?family=Sigmar&family=Outfit:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet">
-  <style>
+<meta charset="utf-8"/>
+<meta content="jqlfBshOy4vgYUb478viCuTswoIsaWL_jdOhL0srx0w" name="google-site-verification">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="A kopitiam-style Arabica coffee recipe that brings together local kopi culture and specialty brewing. Step-by-step guide with bean recommendations." name="description"/>
+<title>Hot Kopiko Recipe: Arabica Meets Kopitiam Kopi | The Beans Hub</title>
+<link href="img/thebeanshub_logo.png" rel="icon" type="image/png"/>
+<link href="https://fonts.googleapis.com/css2?family=Sigmar&amp;family=Outfit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
     * {
       box-sizing: border-box;
       margin: 0;
@@ -52,7 +50,7 @@
     }
 
     /* NAV */
-    nav {
+    .site-nav {
       position: fixed;
       top: 0;
       left: 0;
@@ -541,11 +539,11 @@
     }
 
     @media (max-width: 768px) {
-      nav {
+      .site-nav {
         padding: 0 20px;
       }
 
-      nav .nav-links {
+      .site-nav .nav-links {
         display: none;
       }
 
@@ -581,158 +579,394 @@
         justify-content: center;
       }
     }
-  </style>
+  
+    /* ── TABLE OF CONTENTS ── */
+    .post-layout {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 800px) 220px;
+      column-gap: 40px;
+      align-items: start;
+      padding: 56px 48px 80px;
+    }
+    .post-layout > .post-body {
+      max-width: none;
+      margin: 0;
+      padding: 0;
+    }
+    .toc-sidebar { display: none; }
+    @media (min-width: 1260px) {
+      .toc-sidebar {
+        display: block;
+        position: sticky;
+        top: 90px;
+        align-self: start;
+      }
+    }
+    .toc-inner {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 16px 20px;
+      overflow: hidden;
+      max-height: calc(100vh - 110px);
+      overflow-y: auto;
+      scrollbar-width: none;
+    }
+    .toc-inner::-webkit-scrollbar { display: none; }
+    .toc-title {
+      font-size: 0.62rem;
+      font-weight: 800;
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    .toc-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      min-width: 0;
+      position: static;
+      top: auto;
+      left: auto;
+      right: auto;
+      height: auto;
+      padding: 0;
+      background: transparent;
+      border: 0;
+      align-items: stretch;
+      justify-content: flex-start;
+    }
+    .toc-link {
+      display: block;
+      min-width: 0;
+      white-space: normal;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      font-size: 0.76rem;
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 6px 8px 6px 10px;
+      border-radius: 6px;
+      border-left: 2px solid transparent;
+      line-height: 1.45;
+      transition: all 0.15s;
+    }
+    .toc-link:hover {
+      color: var(--text);
+      background: var(--tag-bg);
+      border-left-color: var(--border);
+    }
+    .toc-link.active {
+      color: var(--green);
+      font-weight: 700;
+      border-left-color: var(--orange);
+      background: rgba(41, 98, 65, 0.05);
+    }
+    .toc-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 8px 0;
+    }
+
+  
+/* ── INFORMATIONAL FOOTER (consistent across all pages) ── */
+footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border-top:1px solid rgba(253,161,29,0.2);font-family:"Outfit",sans-serif;display:block;text-align:left;align-items:stretch;justify-content:flex-start;gap:0}
+.tbh-footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px;align-items:start}
+.tbh-footer-brand{display:flex;flex-direction:column;gap:14px}
+.tbh-footer-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.tbh-footer-logo-img{width:42px;height:42px;border-radius:8px;object-fit:cover;background:rgba(253,246,236,0.08)}
+.tbh-footer-logo-text{font-family:"Sigmar",cursive;color:#FDF6EC;font-size:1.25rem;font-weight:700;line-height:1}
+.tbh-footer-logo-text .accent{color:#FDA11D}
+.tbh-footer-tagline{font-family:"Outfit",sans-serif;font-size:0.85rem;color:rgba(253,246,236,0.75);line-height:1.55;max-width:280px;margin:0}
+.tbh-footer-heading{font-family:"Sigmar",cursive;font-size:0.95rem;color:#FDA11D;margin:0 0 14px;letter-spacing:0.02em;font-weight:400}
+.tbh-footer-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+.tbh-footer-list a{font-family:"Outfit",sans-serif;color:rgba(253,246,236,0.85);text-decoration:none;font-size:0.85rem;transition:color 0.2s}
+.tbh-footer-list a:hover{color:#FDA11D}
+.tbh-footer-social{display:flex;flex-direction:column;gap:10px}
+.tbh-footer-social a{font-family:"Outfit",sans-serif;color:rgba(253,246,236,0.9);text-decoration:none;transition:color 0.2s;display:inline-flex;align-items:center;gap:10px;font-size:0.85rem}
+.tbh-footer-social a:hover{color:#FDA11D}
+.tbh-footer-social svg{width:22px;height:22px;fill:currentColor;flex-shrink:0}
+.tbh-footer-bottom{max-width:1200px;margin:36px auto 0;padding-top:20px;border-top:1px solid rgba(253,246,236,0.15)}
+.tbh-footer-copy{font-family:"Outfit",sans-serif;font-size:0.78rem;color:rgba(253,246,236,0.7);text-align:center;margin:0}
+@media (max-width:900px){.tbh-footer-inner{grid-template-columns:1fr 1fr;gap:32px}}
+@media (max-width:560px){footer.tbh-footer{padding:40px 24px 20px}.tbh-footer-inner{grid-template-columns:1fr;gap:28px}.tbh-footer-tagline{max-width:none}}
+</style>
+</meta>
+  <link rel="canonical" href="https://www.thebeanshub.com/posts/hot-kopiko-arabica-kopitiam-kopi-recipe">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Hot Kopiko Recipe: Arabica Meets Kopitiam Kopi | The Beans Hub">
+  <meta property="og:description" content="A kopitiam-style Arabica coffee recipe that brings together local kopi culture and specialty brewing. Step-by-step guide with bean recommendations.">
+  <meta property="og:url" content="https://www.thebeanshub.com/posts/hot-kopiko-arabica-kopitiam-kopi-recipe">
+  <meta property="og:image" content="https://www.thebeanshub.com/img/Girl-bought-coffee-from-the-beans-hub.png">
+  <meta property="og:site_name" content="The Beans Hub">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Hot Kopiko Recipe: Arabica Meets Kopitiam Kopi | The Beans Hub">
+  <meta name="twitter:description" content="A kopitiam-style Arabica coffee recipe that brings together local kopi culture and specialty brewing. Step-by-step guide with bean recommendations.">
+  <meta name="twitter:image" content="https://www.thebeanshub.com/img/Girl-bought-coffee-from-the-beans-hub.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.thebeanshub.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Library",
+      "item": "https://www.thebeanshub.com/library"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Hot Kopiko Arabica Recipe",
+      "item": "https://www.thebeanshub.com/posts/hot-kopiko-arabica-kopitiam-kopi-recipe"
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Hot Kopiko Recipe: Arabica Meets Kopitiam Kopi | The Beans Hub",
+  "description": "A kopitiam-style Arabica coffee recipe that brings together local kopi culture and specialty brewing. Step-by-step guide with bean recommendations.",
+  "url": "https://www.thebeanshub.com/posts/hot-kopiko-arabica-kopitiam-kopi-recipe",
+  "datePublished": "2026-03-05",
+  "publisher": {
+    "@type": "Organization",
+    "name": "The Beans Hub",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.thebeanshub.com/img/thebeanshub_logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.thebeanshub.com/posts/hot-kopiko-arabica-kopitiam-kopi-recipe"
+  }
+}
+  </script>
 </head>
-
 <body>
-
-  <nav>
-    <a href="/" class="nav-logo">The Beans<span>Hub</span></a>
-    <div class="nav-links">
-      <a href="/">Home</a>
-      <a href="/shop">Coffee Beans</a>
-      <a href="/library" class="active">Coffee Library</a>
-      <a href="/about">About Us</a>
-      <a href="/contact">Contact Us</a>
-      <a href="/shop" class="cta">Explore Beans</a>
-    </div>
-    <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="/">Home</a>
-    <a href="/shop">Coffee Beans</a>
-    <a href="/library">Coffee Library</a>
-    <a href="/about">About Us</a>
-    <a href="/contact">Contact Us</a>
-  </div>
-
-  <div class="post-hero">
-    <div class="post-hero-inner">
-      <div class="post-breadcrumb">
-        <a href="/library">Coffee Library</a>
-        <span>›</span>
-        <span>Recipes</span>
-      </div>
-      <div class="post-cat-badge badge-recipe">☕ Recipe</div>
-      <h1>Hot Kopiko Recipe: Arabica Meets Traditional Kopitiam Kopi</h1>
-      <div class="post-hero-meta">
-        <span>The Beans Hub</span>
-        <span class="post-hero-meta-dot"></span>
-        <span>March 2026</span>
-        <span class="post-hero-meta-dot"></span>
-        <span class="post-read-time">3 min read</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="post-banner">🍬</div>
-
-  <div class="post-body">
-
-    <p>Remember sneaking a Kopiko candy into your mouth during boring school assemblies? That rich, caramelised,
+<nav class="site-nav">
+<a class="nav-logo" href="/"><img alt="The Beans Hub Logo" src="/img/thebeanshub_logo.png" style="height: 80px; width: auto;" /></a>
+<div class="nav-links">
+<a href="/">Home</a>
+<a href="/shop">Coffee Beans</a>
+<a class="active" href="/library">Coffee Library</a>
+<a href="/about">About Us</a>
+<a href="/contact">Contact Us</a>
+<a class="cta" href="/shop">Explore Beans</a>
+</div>
+<button aria-label="Menu" class="nav-hamburger" onclick="toggleMenu()">
+<span></span><span></span><span></span>
+</button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+<a href="/">Home</a>
+<a href="/shop">Coffee Beans</a>
+<a href="/library">Coffee Library</a>
+<a href="/about">About Us</a>
+<a href="/contact">Contact Us</a>
+</div>
+<div class="post-hero">
+<div class="post-hero-inner">
+<div class="post-breadcrumb">
+<a href="/library">Coffee Library</a>
+<span>›</span>
+<span>Recipes</span>
+</div>
+<div class="post-cat-badge badge-recipe">☕ Recipe</div>
+<h1>Hot Kopiko Recipe: Arabica Meets Traditional Kopitiam Kopi</h1>
+<div class="post-hero-meta">
+<span>The Beans Hub</span>
+<span class="post-hero-meta-dot"></span>
+<span>March 2026</span>
+<span class="post-hero-meta-dot"></span>
+<span class="post-read-time">3 min read</span>
+</div>
+</div>
+</div>
+<div class="post-banner">🍬</div>
+<div class="post-layout">
+<div class="post-body">
+<p>Remember sneaking a Kopiko candy into your mouth during boring school assemblies? That rich, caramelised,
       perfectly creamy coffee taste is pure childhood nostalgia.</p>
-    <p>If you’ve ever tried to get your older relatives to appreciate a modern cafe latte, you know the struggle. To the
+<p>If you’ve ever tried to get your older relatives to appreciate a modern cafe latte, you know the struggle. To the
       uncles and aunties who grew up on thick, <em>kaw</em> kopitiam kopi, standard <em>angmo</em> lattes often just
       don't hit the spot. But traditional kopitiam robusta can sometimes be a bit too sharp and bitter for folks who
       just want a smooth, comforting cup.</p>
-
-    <h2>The Best of Both Worlds: Angmo Coffee Meets Kopitiam Kopi</h2>
-    <p>So, what happens when you upgrade kopitiam flavours with fancy <a
-        href="/posts/arabica-vs-robusta-vs-liberica">Arabica beans</a>? You get the <strong>Hot Kopiko</strong>.</p>
-    <p>This drink is the ultimate bridge between the modern espresso machine and the marble tables of your favourite
+<h2 id="the-best-of-both-worlds-angmo-coffee-meets-kopitiam-kopi">The Best of Both Worlds: Angmo Coffee Meets Kopitiam Kopi</h2>
+<p>So, what happens when you upgrade kopitiam flavours with fancy <a href="/posts/arabica-vs-robusta-vs-liberica">Arabica beans</a>? You get the <strong>Hot Kopiko</strong>.</p>
+<p>This drink is the ultimate bridge between the modern espresso machine and the marble tables of your favourite
       old-school kopitiam. By using a smooth Arabica espresso shot instead of traditional Robusta, you get brighter,
       more complex flavours with lower bitterness.</p>
-    <p>But the secret weapon here is <strong>salted butter and brown sugar</strong>.</p>
-
-    <div class="callout">
-      <p class="callout-title">🇲🇾 The Traditional Roasting Secret</p>
-      <p>Why butter and sugar? Traditional Malaysian kopi is typically made with Robusta beans that have been roasted
+<p>But the secret weapon here is <strong>salted butter and brown sugar</strong>.</p>
+<div class="callout">
+<p class="callout-title">🇲🇾 The Traditional Roasting Secret</p>
+<p>Why butter and sugar? Traditional Malaysian kopi is typically made with Robusta beans that have been roasted
         with sugar and butter (a style called "drum-roasted"). By melting high-quality salted butter and brown sugar
         directly into a fresh espresso shot, we are recreating that iconic local flavour profile right in the cup.</p>
-    </div>
-
-    <p>The result? A beautifully balanced, creamy, and <em>ngam-ngam</em> sweet latte that tastes exactly like a melted
+</div>
+<p>The result? A beautifully balanced, creamy, and <em>ngam-ngam</em> sweet latte that tastes exactly like a melted
       down Kopiko sweet. Trust us, even the most skeptical uncles and aunties will be asking for a second cup.</p>
-
-    <h2>☕ The "Hot Kopiko" Recipe</h2>
-    <p>Ready to impress your family (or just treat yourself)? Here is the exact breakdown to recreate this nostalgic
+<h2 id="the-hot-kopiko-recipe">☕ The "Hot Kopiko" Recipe</h2>
+<p>Ready to impress your family (or just treat yourself)? Here is the exact breakdown to recreate this nostalgic
       masterpiece at home or in your cafe.</p>
-
-    <div class="info-card">
-      <h4>Ingredients Needed</h4>
-      <ul>
-        <li><strong>Salted Butter:</strong> 12g <em>(The secret to that rich, creamy kopitiam mouthfeel)</em></li>
-        <li><strong>Brown Sugar:</strong> 10g <em>(For that deep, molasses-like sweetness)</em></li>
-        <li><strong>Espresso Shot:</strong> 1 shot <em>(A good, balanced Arabica roast works best here)</em></li>
-        <li><strong>Milk:</strong> 125g</li>
-      </ul>
-    </div>
-
-    <h3>Step-by-Step Method:</h3>
-    <ol>
-      <li><strong>Prep your canvas:</strong> Heat up your serving cup so the ingredients melt beautifully.</li>
-      <li><strong>The flavour base:</strong> Drop the 12g of salted butter and 10g of brown sugar directly into the warm
+<div class="info-card">
+<h4>Ingredients Needed</h4>
+<ul>
+<li><strong>Salted Butter:</strong> 12g <em>(The secret to that rich, creamy kopitiam mouthfeel)</em></li>
+<li><strong>Brown Sugar:</strong> 10g <em>(For that deep, molasses-like sweetness)</em></li>
+<li><strong>Espresso Shot:</strong> 1 shot <em>(A good, balanced Arabica roast works best here)</em></li>
+<li><strong>Milk:</strong> 125g</li>
+</ul>
+</div>
+<h3>Step-by-Step Method:</h3>
+<ol>
+<li><strong>Prep your canvas:</strong> Heat up your serving cup so the ingredients melt beautifully.</li>
+<li><strong>The flavour base:</strong> Drop the 12g of salted butter and 10g of brown sugar directly into the warm
         cup.</li>
-      <li><strong>Pull the shot:</strong> Extract your single espresso shot straight over the butter and sugar.</li>
-      <li><strong>Melt it down:</strong> Whisk the espresso, butter, and sugar mixture vigorously until everything is
+<li><strong>Pull the shot:</strong> Extract your single espresso shot straight over the butter and sugar.</li>
+<li><strong>Melt it down:</strong> Whisk the espresso, butter, and sugar mixture vigorously until everything is
         fully melted and incorporated into a rich syrup.</li>
-      <li><strong>Finish it off:</strong> Froth your 125g of milk and pour it over your coffee base. It’s art time! :)
+<li><strong>Finish it off:</strong> Froth your 125g of milk and pour it over your coffee base. It’s art time! :)
       </li>
-    </ol>
-
-    <p>Take a sip, close your eyes, and let that smooth Kopiko nostalgia wash over you. If you need some beans to get
+</ol>
+<p>Take a sip, close your eyes, and let that smooth Kopiko nostalgia wash over you. If you need some beans to get
       started, browse our full selection of <a href="/shop">Malaysian coffee beans</a>.</p>
-
-    <div class="post-tags">
-      <span class="post-tag">Hot Kopiko</span><span class="post-tag">Recipe</span><span
-        class="post-tag">Arabica</span><span class="post-tag">Kopitiam Kopi</span><span class="post-tag">Malaysia</span>
-    </div>
-
-    <div class="post-nav">
-      <a href="/library">← Back to Coffee Library</a>
-      <a href="/shop">Browse Coffee Beans →</a>
-    </div>
-  </div>
-
-  <div class="more-posts">
-    <div class="more-posts-inner">
-      <h2>More from the Library</h2>
-      <div class="more-grid">
-        <a href="/posts/arabica-vs-robusta-vs-liberica" class="more-card">
-          <div class="more-card-emoji">📖</div>
-          <h3>Arabica vs Robusta vs Liberica — What's the Difference?</h3>
-          <div class="more-card-meta">5 min read</div>
-        </a><a href="/posts/how-to-read-flavour-notes" class="more-card">
-          <div class="more-card-emoji">🌱</div>
-          <h3>How to Read Coffee Flavour Notes (Without Feeling Lost)</h3>
-          <div class="more-card-meta">6 min read</div>
-        </a><a href="/posts/kl-roasters" class="more-card">
-          <div class="more-card-emoji">🏙️</div>
-          <h3>Best Specialty Coffee Roasters in Kuala Lumpur</h3>
-          <div class="more-card-meta">8 min read</div>
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <footer>
-    <a href="/" class="footer-logo">The Beans<span>Hub</span></a>
-    <div class="footer-links">
-      <a href="/shop">Coffee Beans</a>
-      <a href="/library">Coffee Library</a>
-      <a href="/about">About Us</a>
-      <a href="/contact">Contact Us</a>
-    </div>
-    <div class="footer-copy">&copy; 2026 The Beans Hub</div>
-  </footer>
-
-  <script>
+<div class="post-tags">
+<span class="post-tag">Hot Kopiko</span><span class="post-tag">Recipe</span><span class="post-tag">Arabica</span><span class="post-tag">Kopitiam Kopi</span><span class="post-tag">Malaysia</span>
+</div>
+<div class="post-nav">
+<a href="/library">← Back to Coffee Library</a>
+<a href="/shop">Browse Coffee Beans →</a>
+</div>
+</div><!-- /post-body -->
+<aside aria-label="Table of contents" class="toc-sidebar">
+<div class="toc-inner">
+<div class="toc-title">Contents</div>
+<nav class="toc-nav">
+<a class="toc-link" href="#the-best-of-both-worlds-angmo-coffee-meets-kopitiam-kopi">The Best of Both Worlds: Angmo Coffee Meets Kopitiam Kopi</a>
+<a class="toc-link" href="#the-hot-kopiko-recipe">☕ The "Hot Kopiko" Recipe</a>
+</nav>
+</div>
+</aside>
+</div><!-- /post-layout -->
+<div class="more-posts">
+<div class="more-posts-inner">
+<h2>More from the Library</h2>
+<div class="more-grid">
+<a class="more-card" href="/posts/arabica-vs-robusta-vs-liberica">
+<div class="more-card-emoji">📖</div>
+<h3>Arabica vs Robusta vs Liberica — What's the Difference?</h3>
+<div class="more-card-meta">5 min read</div>
+</a><a class="more-card" href="/posts/how-to-read-flavour-notes">
+<div class="more-card-emoji">🌱</div>
+<h3>How to Read Coffee Flavour Notes (Without Feeling Lost)</h3>
+<div class="more-card-meta">6 min read</div>
+</a><a class="more-card" href="/posts/kl-roasters">
+<div class="more-card-emoji">🏙️</div>
+<h3>Best Specialty Coffee Roasters in Kuala Lumpur</h3>
+<div class="more-card-meta">8 min read</div>
+</a>
+</div>
+</div>
+</div>
+<!-- FOOTER -->
+<footer class="tbh-footer">
+<div class="tbh-footer-inner">
+<div class="tbh-footer-brand">
+<a class="tbh-footer-logo" href="/">
+<img alt="The Beans Hub logo" class="tbh-footer-logo-img" src="/img/thebeanshub_logo.png"/>
+<span class="tbh-footer-logo-text">The Beans<span class="accent">Hub</span></span>
+</a>
+<p class="tbh-footer-tagline">Malaysia's home for specialty coffee — beans, brewers, and roaster guides.</p>
+</div>
+<div>
+<h4 class="tbh-footer-heading">Shop</h4>
+<ul class="tbh-footer-list">
+<li><a href="/shop">All Coffee Beans</a></li>
+<li><a href="/shop/ethiopia-coffee-beans">Ethiopia</a></li>
+<li><a href="/shop/colombia%20coffee%20beans">Colombia</a></li>
+<li><a href="/shop/brazil-coffee-beans">Brazil</a></li>
+<li><a href="/shop/yunnan-coffee-beans">Yunnan</a></li>
+<li><a href="/shop/indonesia-coffee-beans">Indonesia</a></li>
+<li><a href="/shop/thailand-coffee-beans">Thailand</a></li>
+<li><a href="/shop/natural-process-coffee-beans">Natural Process</a></li>
+<li><a href="/shop/washed-process-coffee-beans">Washed Process</a></li>
+<li><a href="/shop/fermented-coffee-beans">Fermented</a></li>
+<li><a href="/shop/arabica-blend-coffee-beans">Arabica Blends</a></li>
+</ul>
+</div>
+<div>
+<h4 class="tbh-footer-heading">Explore</h4>
+<ul class="tbh-footer-list">
+<li><a href="/">Home</a></li>
+<li><a href="/about">About Us</a></li>
+<li><a href="/contact">Contact Us</a></li>
+<li><a href="/library">Coffee Library</a></li>
+</ul>
+</div>
+<div>
+<h4 class="tbh-footer-heading">Follow</h4>
+<div class="tbh-footer-social">
+<a aria-label="Instagram — The Beans Hub" href="https://www.instagram.com/thebeanshub/" rel="noopener" target="_blank">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+<span>@thebeanshub</span>
+</a>
+</div>
+</div>
+</div>
+<div class="tbh-footer-bottom">
+<p class="tbh-footer-copy">© 2025 The Beans Hub. All rights reserved.</p>
+</div>
+</footer>
+<script>
     function toggleMenu() {
       document.getElementById('mobileMenu').classList.toggle('open');
     }
+  
+    // TOC — highlight active section on scroll
+    (function () {
+      const tocLinks = document.querySelectorAll('.toc-link[href^="#"]');
+      const headings = Array.from(document.querySelectorAll('.post-body h2[id]'));
+      if (!tocLinks.length || !headings.length) return;
+      function setActive(id) {
+        tocLinks.forEach(l => {
+          l.classList.toggle('active', l.getAttribute('href') === '#' + id);
+        });
+      }
+      if (headings[0]) setActive(headings[0].id);
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      }, { rootMargin: '-10% 0px -80% 0px', threshold: 0 });
+      headings.forEach(h => observer.observe(h));
+      tocLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+          const target = document.querySelector(this.getAttribute('href'));
+          if (!target) return;
+          e.preventDefault();
+          const offset = 88;
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        });
+      });
+    })();
+
   </script>
 </body>
-
 </html>

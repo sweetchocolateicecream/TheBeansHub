@@ -1,22 +1,23 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JY42YLKPRM"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-JY42YLKPRM"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-JY42YLKPRM');
 </script>
-<meta charset="UTF-8">
-<meta name="google-site-verification" content="jqlfBshOy4vgYUb478viCuTswoIsaWL_jdOhL0srx0w" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>How to Make an Oat Milk Cortado at Home</title>
-<meta name="description" content="Want a café-quality oat milk cortado at home? Here's exactly what to do — beans, temp, steaming technique, and the mistakes that ruin most attempts.">
-<link rel="canonical" href="https://thebeanshub.com/posts/oat-milk-cortado">
-<link rel="icon" type="image/png" href="../img/thebeanshub_logo.png">
-<link href="https://fonts.googleapis.com/css2?family=Sigmar&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<meta charset="utf-8"/>
+<meta content="jqlfBshOy4vgYUb478viCuTswoIsaWL_jdOhL0srx0w" name="google-site-verification">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>How to Make an Oat Milk Cortado at Home | The Beans Hub</title>
+<meta content="Want a café-quality oat milk cortado at home? Here's exactly what to do — beans, temp, steaming technique, and the mistakes that ruin most attempts." name="description"/>
+
+<link href="../img/thebeanshub_logo.png" rel="icon" type="image/png"/>
+<link href="https://fonts.googleapis.com/css2?family=Sigmar&amp;family=Outfit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -30,7 +31,7 @@ html { scroll-behavior: smooth; }
 body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
 
 /* NAV */
-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 68px; background: var(--green); border-bottom: 1px solid rgba(253,161,29,0.3); }
+.site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 68px; background: var(--green); border-bottom: 1px solid rgba(253,161,29,0.3); }
 .nav-logo { font-family: "Sigmar", cursive; color: #FDF6EC; font-size: 1.45rem; font-weight: 700; text-decoration: none; }
 .nav-logo span { color: var(--orange); }
 .nav-links { display: flex; gap: 36px; align-items: center; }
@@ -146,8 +147,8 @@ footer { background: var(--green); padding: 40px 48px; display: flex; justify-co
 .footer-copy { font-size: 0.75rem; color: rgba(253,246,236,0.4); }
 
 @media (max-width: 768px) {
-  nav { padding: 0 20px; }
-  nav .nav-links { display: none; }
+  .site-nav { padding: 0 20px; }
+  .site-nav .nav-links { display: none; }
   .nav-hamburger { display: flex; }
   .post-hero { padding: 88px 20px 40px; }
   .post-body { padding: 40px 20px 60px; }
@@ -159,216 +160,416 @@ footer { background: var(--green); padding: 40px 48px; display: flex; justify-co
   .trouble-table { font-size: 0.82rem; }
   .trouble-table thead th, .trouble-table tbody td { padding: 10px 12px; }
 }
+
+    /* ── TABLE OF CONTENTS ── */
+    .post-layout {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 800px) 220px;
+      column-gap: 40px;
+      align-items: start;
+      padding: 56px 48px 80px;
+    }
+    .post-layout > .post-body {
+      max-width: none;
+      margin: 0;
+      padding: 0;
+    }
+    .toc-sidebar { display: none; }
+    @media (min-width: 1260px) {
+      .toc-sidebar {
+        display: block;
+        position: sticky;
+        top: 90px;
+        align-self: start;
+      }
+    }
+    .toc-inner {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 16px 20px;
+      overflow: hidden;
+      max-height: calc(100vh - 110px);
+      overflow-y: auto;
+      scrollbar-width: none;
+    }
+    .toc-inner::-webkit-scrollbar { display: none; }
+    .toc-title {
+      font-size: 0.62rem;
+      font-weight: 800;
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    .toc-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      min-width: 0;
+      position: static;
+      top: auto;
+      left: auto;
+      right: auto;
+      height: auto;
+      padding: 0;
+      background: transparent;
+      border: 0;
+      align-items: stretch;
+      justify-content: flex-start;
+    }
+    .toc-link {
+      display: block;
+      min-width: 0;
+      white-space: normal;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      font-size: 0.76rem;
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 6px 8px 6px 10px;
+      border-radius: 6px;
+      border-left: 2px solid transparent;
+      line-height: 1.45;
+      transition: all 0.15s;
+    }
+    .toc-link:hover {
+      color: var(--text);
+      background: var(--tag-bg);
+      border-left-color: var(--border);
+    }
+    .toc-link.active {
+      color: var(--green);
+      font-weight: 700;
+      border-left-color: var(--orange);
+      background: rgba(41, 98, 65, 0.05);
+    }
+    .toc-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 8px 0;
+    }
+
+  
+/* ── INFORMATIONAL FOOTER (consistent across all pages) ── */
+footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border-top:1px solid rgba(253,161,29,0.2);font-family:"Outfit",sans-serif;display:block;text-align:left;align-items:stretch;justify-content:flex-start;gap:0}
+.tbh-footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px;align-items:start}
+.tbh-footer-brand{display:flex;flex-direction:column;gap:14px}
+.tbh-footer-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.tbh-footer-logo-img{width:42px;height:42px;border-radius:8px;object-fit:cover;background:rgba(253,246,236,0.08)}
+.tbh-footer-logo-text{font-family:"Sigmar",cursive;color:#FDF6EC;font-size:1.25rem;font-weight:700;line-height:1}
+.tbh-footer-logo-text .accent{color:#FDA11D}
+.tbh-footer-tagline{font-family:"Outfit",sans-serif;font-size:0.85rem;color:rgba(253,246,236,0.75);line-height:1.55;max-width:280px;margin:0}
+.tbh-footer-heading{font-family:"Sigmar",cursive;font-size:0.95rem;color:#FDA11D;margin:0 0 14px;letter-spacing:0.02em;font-weight:400}
+.tbh-footer-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+.tbh-footer-list a{font-family:"Outfit",sans-serif;color:rgba(253,246,236,0.85);text-decoration:none;font-size:0.85rem;transition:color 0.2s}
+.tbh-footer-list a:hover{color:#FDA11D}
+.tbh-footer-social{display:flex;flex-direction:column;gap:10px}
+.tbh-footer-social a{font-family:"Outfit",sans-serif;color:rgba(253,246,236,0.9);text-decoration:none;transition:color 0.2s;display:inline-flex;align-items:center;gap:10px;font-size:0.85rem}
+.tbh-footer-social a:hover{color:#FDA11D}
+.tbh-footer-social svg{width:22px;height:22px;fill:currentColor;flex-shrink:0}
+.tbh-footer-bottom{max-width:1200px;margin:36px auto 0;padding-top:20px;border-top:1px solid rgba(253,246,236,0.15)}
+.tbh-footer-copy{font-family:"Outfit",sans-serif;font-size:0.78rem;color:rgba(253,246,236,0.7);text-align:center;margin:0}
+@media (max-width:900px){.tbh-footer-inner{grid-template-columns:1fr 1fr;gap:32px}}
+@media (max-width:560px){footer.tbh-footer{padding:40px 24px 20px}.tbh-footer-inner{grid-template-columns:1fr;gap:28px}.tbh-footer-tagline{max-width:none}}
 </style>
+</meta>
+  <link rel="canonical" href="https://www.thebeanshub.com/posts/oat-milk-cortado">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="How to Make an Oat Milk Cortado at Home | The Beans Hub">
+  <meta property="og:description" content="Want a café-quality oat milk cortado at home? Here's exactly what to do — beans, temp, steaming technique, and the mistakes that ruin most attempts.">
+  <meta property="og:url" content="https://www.thebeanshub.com/posts/oat-milk-cortado">
+  <meta property="og:image" content="https://www.thebeanshub.com/img/Girl-bought-coffee-from-the-beans-hub.png">
+  <meta property="og:site_name" content="The Beans Hub">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How to Make an Oat Milk Cortado at Home | The Beans Hub">
+  <meta name="twitter:description" content="Want a café-quality oat milk cortado at home? Here's exactly what to do — beans, temp, steaming technique, and the mistakes that ruin most attempts.">
+  <meta name="twitter:image" content="https://www.thebeanshub.com/img/Girl-bought-coffee-from-the-beans-hub.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.thebeanshub.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Library",
+      "item": "https://www.thebeanshub.com/library"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "How to Make an Oat Milk Cortado",
+      "item": "https://www.thebeanshub.com/posts/oat-milk-cortado"
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How to Make an Oat Milk Cortado at Home | The Beans Hub",
+  "description": "Want a café-quality oat milk cortado at home? Here's exactly what to do — beans, temp, steaming technique, and the mistakes that ruin most attempts.",
+  "url": "https://www.thebeanshub.com/posts/oat-milk-cortado",
+  "datePublished": "2026-03-05",
+  "publisher": {
+    "@type": "Organization",
+    "name": "The Beans Hub",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.thebeanshub.com/img/thebeanshub_logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.thebeanshub.com/posts/oat-milk-cortado"
+  }
+}
+  </script>
 </head>
 <body>
-
-<nav>
-  <a href="/" class="nav-logo">The Beans<span>Hub</span></a>
-  <div class="nav-links">
-    <a href="/">Home</a>
-    <a href="/shop">Coffee Beans</a>
-    <a href="/library" class="active">Coffee Library</a>
-    <a href="/about">About Us</a>
-    <a href="/contact">Contact Us</a>
-    <a href="/shop" class="cta">Explore Beans</a>
-  </div>
-  <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+<nav class="site-nav">
+<a class="nav-logo" href="/"><img alt="The Beans Hub Logo" src="/img/thebeanshub_logo.png" style="height: 80px; width: auto;" /></a>
+<div class="nav-links">
+<a href="/">Home</a>
+<a href="/shop">Coffee Beans</a>
+<a class="active" href="/library">Coffee Library</a>
+<a href="/about">About Us</a>
+<a href="/contact">Contact Us</a>
+<a class="cta" href="/shop">Explore Beans</a>
+</div>
+<button aria-label="Menu" class="nav-hamburger" onclick="toggleMenu()">
+<span></span><span></span><span></span>
+</button>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="/">Home</a>
-  <a href="/shop">Coffee Beans</a>
-  <a href="/library">Coffee Library</a>
-  <a href="/about">About Us</a>
-  <a href="/contact">Contact Us</a>
+<a href="/">Home</a>
+<a href="/shop">Coffee Beans</a>
+<a href="/library">Coffee Library</a>
+<a href="/about">About Us</a>
+<a href="/contact">Contact Us</a>
 </div>
-
 <div class="post-hero">
-  <div class="post-hero-inner">
-    <div class="post-breadcrumb">
-      <a href="/library">Coffee Library</a>
-      <span>›</span>
-      <span>Café Recipe</span>
-    </div>
-    <div class="post-cat-badge badge-recipe">☕ Café Recipe</div>
-    <h1>How to Make an Oat Milk Cortado at Home (Café-Quality)</h1>
-    <div class="post-hero-meta">
-      <span>The Beans Hub</span>
-      <span class="post-hero-meta-dot"></span>
-      <span>January 2025</span>
-      <span class="post-hero-meta-dot"></span>
-      <span class="post-read-time">6 min read</span>
-    </div>
-  </div>
+<div class="post-hero-inner">
+<div class="post-breadcrumb">
+<a href="/library">Coffee Library</a>
+<span>›</span>
+<span>Café Recipe</span>
 </div>
-
+<div class="post-cat-badge badge-recipe">☕ Café Recipe</div>
+<h1>How to Make an Oat Milk Cortado at Home (Café-Quality)</h1>
+<div class="post-hero-meta">
+<span>The Beans Hub</span>
+<span class="post-hero-meta-dot"></span>
+<span>January 2025</span>
+<span class="post-hero-meta-dot"></span>
+<span class="post-read-time">6 min read</span>
+</div>
+</div>
+</div>
 <div class="post-banner">
-  <div class="post-banner-img" id="parallaxImg"></div>
+<div class="post-banner-img" id="parallaxImg"></div>
 </div>
-
+<div class="post-layout">
 <div class="post-body">
-
 <p>Making a café-quality oat milk cortado at home is all about balance — bold espresso, creamy oat milk, and a precise <strong>1:1 ratio</strong>.</p>
 <p>The name "cortado" comes from the Spanish word <em>cortar</em>, meaning "to cut." The milk cuts the acidity of the espresso — without drowning it out. That's the whole point.</p>
 <p>Get the ratio wrong, and you've made something else entirely.</p>
-
-<h2>What Do You Need to Make an Oat Milk Cortado?</h2>
-
+<h2 id="what-do-you-need-to-make-an-oat-milk-cortado">What Do You Need to Make an Oat Milk Cortado?</h2>
 <div class="info-card">
-  <h4>Essential gear &amp; ingredients</h4>
-  <ul>
-    <li><strong>Espresso Machine</strong> — necessary for an authentic double shot. No shortcuts here.</li>
-    <li><strong>Coffee Grinder</strong> — essential for a fine, consistent grind (think powdered sugar texture).</li>
-    <li><strong>Barista-Grade Oat Milk</strong> — standard oat milk lacks the fats and thickeners needed to create stable microfoam. Always look for the "Barista" edition.</li>
-    <li><strong>4.5 oz Glass (Gibraltar)</strong> — a small glass is traditional. It keeps the ratio correct and lets you see the texture.</li>
-    <li><strong>Thermometer</strong> — oat milk is sensitive. You need to know exactly when to stop steaming.</li>
-  </ul>
+<h4>Essential gear &amp; ingredients</h4>
+<ul>
+<li><strong>Espresso Machine</strong> — necessary for an authentic double shot. No shortcuts here.</li>
+<li><strong>Coffee Grinder</strong> — essential for a fine, consistent grind (think powdered sugar texture).</li>
+<li><strong>Barista-Grade Oat Milk</strong> — standard oat milk lacks the fats and thickeners needed to create stable microfoam. Always look for the "Barista" edition.</li>
+<li><strong>4.5 oz Glass (Gibraltar)</strong> — a small glass is traditional. It keeps the ratio correct and lets you see the texture.</li>
+<li><strong>Thermometer</strong> — oat milk is sensitive. You need to know exactly when to stop steaming.</li>
+</ul>
 </div>
-
-<h2>Which Coffee Beans Work Best for an Oat Milk Cortado?</h2>
+<h2 id="which-coffee-beans-work-best-for-an-oat-milk-cortado">Which Coffee Beans Work Best for an Oat Milk Cortado?</h2>
 <p>This step is more important than most people think. Oat milk is more reactive to acidity than dairy milk — so the beans you choose will actually affect the texture of your drink, not just the taste.</p>
-
 <h3>What to look for</h3>
 <p>Go for <strong>medium to medium-dark roasts</strong> with notes of chocolate, caramel, or nuts. These profiles pair naturally with the subtle sweetness of oat milk.</p>
-
 <h3>What to avoid</h3>
 <p>Steer clear of light roasts or fruity beans (like Ethiopian natural process). Their high acidity can cause oat milk to curdle and separate — you'll end up with floating goop instead of a smooth cortado.</p>
-
 <div class="callout">
-  <p class="callout-title">💡 Pro tip</p>
-  <p>If you really want to use an acidic roast, add a tiny pinch of baking soda (about 0.1g — and honestly, don't go above that) to the milk before steaming. It neutralises the acid and prevents curdling. Browse our <a href="/shop">bean selection</a> — each one lists the roast profile so you know what you're working with.</p>
+<p class="callout-title">💡 Pro tip</p>
+<p>If you really want to use an acidic roast, add a tiny pinch of baking soda (about 0.1g — and honestly, don't go above that) to the milk before steaming. It neutralises the acid and prevents curdling. Browse our <a href="/shop">bean selection</a> — each one lists the roast profile so you know what you're working with.</p>
 </div>
-
-<h2>How Do You Brew an Oat Milk Cortado Step by Step?</h2>
-
+<h2 id="how-do-you-brew-an-oat-milk-cortado-step-by-step">How Do You Brew an Oat Milk Cortado Step by Step?</h2>
 <h3>Step 1 — Prep the cup</h3>
 <p>Preheat your glass with hot water while you prepare your shot. A warm cup keeps the drink at the right temperature for longer.</p>
-
 <h3>Step 2 — Grind and pull</h3>
 <p>Pull a double shot of espresso (roughly 2 oz) into your preheated glass. For a more concentrated flavour, use a ristretto shot — same amount of coffee, half the water. More intense, slightly sweeter.</p>
-
 <h3>Step 3 — Steam the milk</h3>
 <ul>
-  <li>Use cold oat milk straight from the fridge. Room-temperature milk heats too fast to develop texture.</li>
-  <li>Shake the carton well before pouring into the jug.</li>
-  <li><strong>Vortex technique:</strong> Position the steam wand slightly off-centre to create a whirlpool. Introduce air briefly at the start (you're listening for a light paper-tearing sound), then submerge the wand to work those bubbles into silky microfoam.</li>
+<li>Use cold oat milk straight from the fridge. Room-temperature milk heats too fast to develop texture.</li>
+<li>Shake the carton well before pouring into the jug.</li>
+<li><strong>Vortex technique:</strong> Position the steam wand slightly off-centre to create a whirlpool. Introduce air briefly at the start (you're listening for a light paper-tearing sound), then submerge the wand to work those bubbles into silky microfoam.</li>
 </ul>
-
 <h3>Step 4 — Combine</h3>
 <p>Slowly pour 2 oz of the steamed milk over the espresso. You're aiming for a <strong>1:1 balance</strong> with very minimal foam on top. That's it.</p>
-
-<h2>What's the Right Temperature for Steaming Oat Milk?</h2>
+<h2 id="whats-the-right-temperature-for-steaming-oat-milk">What's the Right Temperature for Steaming Oat Milk?</h2>
 <p>Oat milk is delicate. This is the step that most people get wrong.</p>
 <p>The sweet spot is <strong>130°F to 150°F (54–65°C)</strong>. In that range you get creamy, integrated microfoam that sits beautifully with the espresso.</p>
-
 <div class="callout">
-  <p class="callout-title">⚠️ Do not overheat</p>
-  <p>Heating oat milk past <strong>160°F (71°C)</strong> makes it taste bitter or watery and destroys the creamy texture. Stop before you think you need to.</p>
+<p class="callout-title">⚠️ Do not overheat</p>
+<p>Heating oat milk past <strong>160°F (71°C)</strong> makes it taste bitter or watery and destroys the creamy texture. Stop before you think you need to.</p>
 </div>
-
 <p>For texture — a true oat milk cortado has minimal froth. If you want latte art, aim for the "wet paint" look of microfoam rather than stiff cappuccino-style foam. Smooth and glossy, not fluffy.</p>
-
-<h2>What Mistakes Should You Avoid?</h2>
-
+<h2 id="what-mistakes-should-you-avoid">What Mistakes Should You Avoid?</h2>
 <h3>The wrong glass size</h3>
 <p>If you're using a large cup (8 oz or more), you're not making a cortado — you're making a latte. A true cortado is small. The glass size is what keeps the 1:1 ratio intact.</p>
-
 <h3>Reheating milk</h3>
 <p>Never re-steam milk that's already been heated. It results in a burnt taste and the texture falls apart completely. Steam fresh every time.</p>
-
 <h3>Dirty steam wand</h3>
 <p>Always purge your steam wand before and after use. Dried milk residue turns sour fast and will ruin the flavour of your next drink before you even start.</p>
-
 <h3>Abrasive cleaning</h3>
 <p>When cleaning your milk jug, avoid rough scrubbers. Scratches in the stainless steel harbour bacteria — use a soft cloth or sponge instead.</p>
-
-<h2>Oat Milk Cortado Troubleshooting — Quick Fix Table</h2>
+<h2 id="oat-milk-cortado-troubleshooting-quick-fix-table">Oat Milk Cortado Troubleshooting — Quick Fix Table</h2>
 <p>Something went wrong? Here's what's probably happening and how to fix it.</p>
-
 <table class="trouble-table">
-  <thead>
-    <tr>
-      <th>Problem</th>
-      <th>Likely Cause</th>
-      <th>Fix</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Curdling</td>
-      <td>Coffee is too acidic</td>
-      <td>Use darker roasts, or add a tiny pinch of baking soda to the milk</td>
-    </tr>
-    <tr>
-      <td>No microfoam</td>
-      <td>Using regular oat milk</td>
-      <td>Switch to Barista-grade oat milk</td>
-    </tr>
-    <tr>
-      <td>Watery taste</td>
-      <td>Milk was overheated</td>
-      <td>Stop steaming at 140–150°F</td>
-    </tr>
-    <tr>
-      <td>Sour flavour</td>
-      <td>Dirty steam wand or jug</td>
-      <td>Purge and wipe the wand immediately after every single use</td>
-    </tr>
-  </tbody>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Likely Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Curdling</td>
+<td>Coffee is too acidic</td>
+<td>Use darker roasts, or add a tiny pinch of baking soda to the milk</td>
+</tr>
+<tr>
+<td>No microfoam</td>
+<td>Using regular oat milk</td>
+<td>Switch to Barista-grade oat milk</td>
+</tr>
+<tr>
+<td>Watery taste</td>
+<td>Milk was overheated</td>
+<td>Stop steaming at 140–150°F</td>
+</tr>
+<tr>
+<td>Sour flavour</td>
+<td>Dirty steam wand or jug</td>
+<td>Purge and wipe the wand immediately after every single use</td>
+</tr>
+</tbody>
 </table>
-
 <div class="post-tags">
-  <span class="post-tag">Recipe</span>
-  <span class="post-tag">Cortado</span>
-  <span class="post-tag">Oat Milk</span>
-  <span class="post-tag">Espresso</span>
-  <span class="post-tag">Home Brew</span>
-  <span class="post-tag">How To</span>
-  <span class="post-tag">Steaming Technique</span>
+<span class="post-tag">Recipe</span>
+<span class="post-tag">Cortado</span>
+<span class="post-tag">Oat Milk</span>
+<span class="post-tag">Espresso</span>
+<span class="post-tag">Home Brew</span>
+<span class="post-tag">How To</span>
+<span class="post-tag">Steaming Technique</span>
 </div>
-
 <div class="post-nav">
-  <a href="/library">← Back to Coffee Library</a>
-  <a href="/shop">Browse Coffee Beans →</a>
+<a href="/library">← Back to Coffee Library</a>
+<a href="/shop">Browse Coffee Beans →</a>
 </div>
+</div><!-- /post-body -->
+<aside aria-label="Table of contents" class="toc-sidebar">
+<div class="toc-inner">
+<div class="toc-title">Contents</div>
+<nav class="toc-nav">
+<a class="toc-link" href="#what-do-you-need-to-make-an-oat-milk-cortado">What Do You Need to Make an Oat Milk Cortado?</a>
+<a class="toc-link" href="#which-coffee-beans-work-best-for-an-oat-milk-cortado">Which Coffee Beans Work Best for an Oat Milk Cortado?</a>
+<a class="toc-link" href="#how-do-you-brew-an-oat-milk-cortado-step-by-step">How Do You Brew an Oat Milk Cortado Step by Step?</a>
+<a class="toc-link" href="#whats-the-right-temperature-for-steaming-oat-milk">What's the Right Temperature for Steaming Oat Milk?</a>
+<a class="toc-link" href="#what-mistakes-should-you-avoid">What Mistakes Should You Avoid?</a>
+<a class="toc-link" href="#oat-milk-cortado-troubleshooting-quick-fix-table">Oat Milk Cortado Troubleshooting — Quick Fix Table</a>
+</nav>
 </div>
-
+</aside>
+</div><!-- /post-layout -->
 <div class="more-posts">
-  <div class="more-posts-inner">
-    <h2>More from the Library</h2>
-    <div class="more-grid">
-      <a href="/posts/how-to-read-flavour-notes" class="more-card">
-        <div class="more-card-emoji">🫐</div>
-        <h3>How to Read Flavour Notes in Coffee (Without Feeling Lost)</h3>
-        <div class="more-card-meta">6 min read</div>
-      </a>
-      <a href="/posts/arabica-robusta-liberica" class="more-card">
-        <div class="more-card-emoji">🌿</div>
-        <h3>Arabica vs Robusta vs Liberica — What's the Difference?</h3>
-        <div class="more-card-meta">5 min read</div>
-      </a>
-      <a href="/posts/kl-roasters" class="more-card">
-        <div class="more-card-emoji">🏙️</div>
-        <h3>Best Specialty Coffee Roasters in Kuala Lumpur</h3>
-        <div class="more-card-meta">8 min read</div>
-      </a>
-    </div>
-  </div>
+<div class="more-posts-inner">
+<h2>More from the Library</h2>
+<div class="more-grid">
+<a class="more-card" href="/posts/how-to-read-flavour-notes">
+<div class="more-card-emoji">🫐</div>
+<h3>How to Read Flavour Notes in Coffee (Without Feeling Lost)</h3>
+<div class="more-card-meta">6 min read</div>
+</a>
+<a class="more-card" href="/posts/arabica-robusta-liberica">
+<div class="more-card-emoji">🌿</div>
+<h3>Arabica vs Robusta vs Liberica — What's the Difference?</h3>
+<div class="more-card-meta">5 min read</div>
+</a>
+<a class="more-card" href="/posts/kl-roasters">
+<div class="more-card-emoji">🏙️</div>
+<h3>Best Specialty Coffee Roasters in Kuala Lumpur</h3>
+<div class="more-card-meta">8 min read</div>
+</a>
 </div>
-
-<footer>
-  <a href="/" class="footer-logo">The Beans<span>Hub</span></a>
-  <div class="footer-links">
-    <a href="/shop">Coffee Beans</a>
-    <a href="/library">Coffee Library</a>
-    <a href="/about">About Us</a>
-    <a href="/contact">Contact Us</a>
-  </div>
-  <div class="footer-copy">&copy; 2025 The Beans Hub</div>
+</div>
+</div>
+<!-- FOOTER -->
+<footer class="tbh-footer">
+<div class="tbh-footer-inner">
+<div class="tbh-footer-brand">
+<a class="tbh-footer-logo" href="/">
+<img alt="The Beans Hub logo" class="tbh-footer-logo-img" src="/img/thebeanshub_logo.png"/>
+<span class="tbh-footer-logo-text">The Beans<span class="accent">Hub</span></span>
+</a>
+<p class="tbh-footer-tagline">Malaysia's home for specialty coffee — beans, brewers, and roaster guides.</p>
+</div>
+<div>
+<h4 class="tbh-footer-heading">Shop</h4>
+<ul class="tbh-footer-list">
+<li><a href="/shop">All Coffee Beans</a></li>
+<li><a href="/shop/ethiopia-coffee-beans">Ethiopia</a></li>
+<li><a href="/shop/colombia%20coffee%20beans">Colombia</a></li>
+<li><a href="/shop/brazil-coffee-beans">Brazil</a></li>
+<li><a href="/shop/yunnan-coffee-beans">Yunnan</a></li>
+<li><a href="/shop/indonesia-coffee-beans">Indonesia</a></li>
+<li><a href="/shop/thailand-coffee-beans">Thailand</a></li>
+<li><a href="/shop/natural-process-coffee-beans">Natural Process</a></li>
+<li><a href="/shop/washed-process-coffee-beans">Washed Process</a></li>
+<li><a href="/shop/fermented-coffee-beans">Fermented</a></li>
+<li><a href="/shop/arabica-blend-coffee-beans">Arabica Blends</a></li>
+</ul>
+</div>
+<div>
+<h4 class="tbh-footer-heading">Explore</h4>
+<ul class="tbh-footer-list">
+<li><a href="/">Home</a></li>
+<li><a href="/about">About Us</a></li>
+<li><a href="/contact">Contact Us</a></li>
+<li><a href="/library">Coffee Library</a></li>
+</ul>
+</div>
+<div>
+<h4 class="tbh-footer-heading">Follow</h4>
+<div class="tbh-footer-social">
+<a aria-label="Instagram — The Beans Hub" href="https://www.instagram.com/thebeanshub/" rel="noopener" target="_blank">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+<span>@thebeanshub</span>
+</a>
+</div>
+</div>
+</div>
+<div class="tbh-footer-bottom">
+<p class="tbh-footer-copy">© 2025 The Beans Hub. All rights reserved.</p>
+</div>
 </footer>
-
 <script>
 function toggleMenu() {
   document.getElementById('mobileMenu').classList.toggle('open');
@@ -397,56 +598,37 @@ function toggleMenu() {
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 })();
-</script>
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is an oat milk cortado?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "An oat milk cortado is a small espresso-based drink made with a 1:1 ratio of espresso and steamed oat milk. The word 'cortado' comes from the Spanish 'cortar' — meaning 'to cut' — because the milk cuts the acidity of the espresso without overwhelming it. It's stronger than a latte but smoother than a straight espresso."
+    // TOC — highlight active section on scroll
+    (function () {
+      const tocLinks = document.querySelectorAll('.toc-link[href^="#"]');
+      const headings = Array.from(document.querySelectorAll('.post-body h2[id]'));
+      if (!tocLinks.length || !headings.length) return;
+      function setActive(id) {
+        tocLinks.forEach(l => {
+          l.classList.toggle('active', l.getAttribute('href') === '#' + id);
+        });
       }
-    },
-    {
-      "@type": "Question",
-      "name": "What oat milk is best for a cortado?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Always use Barista-grade oat milk. Regular oat milk doesn't have enough fat or the right thickeners to create stable microfoam — it will separate in the cup. Barista editions are specifically formulated to steam and froth properly for espresso drinks."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Why does oat milk curdle in coffee?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Oat milk curdles when it meets highly acidic coffee — the acid causes the proteins to clump together. This is most common with light roasts or fruity beans like Ethiopian natural process. To avoid it, use medium to medium-dark roasts. If you need to use an acidic roast, add a tiny pinch (about 0.1g) of baking soda to the milk before steaming to neutralise the acid."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What temperature should I steam oat milk to for a cortado?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The sweet spot is between 130°F and 150°F (54–65°C). Going above 160°F (71°C) will make the oat milk taste bitter or watery and destroy the creamy texture you're going for. A thermometer is the easiest way to get this right consistently."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What's the difference between a cortado and a latte?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The main difference is the ratio and size. A cortado is a 1:1 ratio of espresso to steamed milk, typically served in a 4–5 oz glass. A latte uses significantly more milk (usually 6–8 oz or more), which dilutes the espresso flavour. If you're filling a large cup with milk, you're making a latte — not a cortado."
-      }
-    }
-  ]
-}
-</script>
+      if (headings[0]) setActive(headings[0].id);
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      }, { rootMargin: '-10% 0px -80% 0px', threshold: 0 });
+      headings.forEach(h => observer.observe(h));
+      tocLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+          const target = document.querySelector(this.getAttribute('href'));
+          if (!target) return;
+          e.preventDefault();
+          const offset = 88;
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        });
+      });
+    })();
+
+  </script>
 
 </body>
 </html>
