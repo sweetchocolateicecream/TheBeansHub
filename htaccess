@@ -1,16 +1,16 @@
-# Enable Rewrite Engine
-RewriteEngine On
-
 Options +FollowSymLinks
 RewriteEngine On
+RewriteBase /
+
+# Redirect .html URLs to clean URLs (301 for SEO)
+RewriteCond %{THE_REQUEST} \ /([^.]+)\.html [NC]
+RewriteRule ^ /%1 [NC,L,R=301]
+
+# Serve .html file for clean URLs (no extension)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}.html -f
 RewriteRule ^(.+)$ $1.html [L]
-
-# Redirect .html URLs to clean URLs (optional but good for SEO)
-RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
-RewriteRule ^ /%1 [NC,L,R=301]
 
 # Set index.html as default page
 DirectoryIndex index.html
