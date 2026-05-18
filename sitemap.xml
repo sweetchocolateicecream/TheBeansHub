@@ -110,4 +110,88 @@
     <priority>0.65</priority>
   </url>
 
+  <!-- Specialty coffee guides — Cluster 1 -->
+  <url>
+    <loc>https://www.thebeanshub.com/posts/specialty-coffee-malaysia</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.thebeanshub.com/posts/specialty-coffee-beans-kl</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.thebeanshub.com/posts/specialty-coffee-beans-pj-selangor</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.thebeanshub.com/posts/specialty-coffee-penang</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.thebeanshub.com/posts/buy-coffee-beans-online-malaysia</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.thebeanshub.com/posts/malaysia-coffee-brands-roasters</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.thebeanshub.com/posts/best-coffee-beans-malaysia</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <!-- Coffee bean origins — Cluster 2 -->
+  <url>
+    <loc>https://www.thebeanshub.com/posts/coffee-bean-origins</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.thebeanshub.com/posts/asia-coffee-origins-yunnan-thailand</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.thebeanshub.com/posts/single-origin-vs-blend-coffee</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <!-- Coffee processing methods — Cluster 4 -->
+  <url>
+    <loc>https://www.thebeanshub.com/posts/coffee-processing-methods</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.thebeanshub.com/posts/honey-process-coffee</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.thebeanshub.com/posts/natural-vs-washed-coffee</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
 </urlset>
