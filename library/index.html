@@ -314,13 +314,17 @@
         radial-gradient(ellipse at 10% 95%, rgba(253, 246, 236, 0.1), transparent 55%);
     }
 
-    .best-featured-emoji {
+    .best-featured-image {
       position: absolute;
-      font-size: 18rem;
-      right: -20px;
-      bottom: -40px;
-      opacity: 0.25;
-      filter: blur(0.5px);
+      inset: 0;
+      opacity: 0.72;
+    }
+
+    .best-featured-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.04);
     }
 
     .best-date {
@@ -550,13 +554,16 @@
       justify-content: center;
     }
 
-    .picks-emoji {
+    .picks-image {
       position: absolute;
-      font-size: 7rem;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -55%);
-      opacity: 0.45;
+      inset: 0;
+      opacity: 0.7;
+    }
+
+    .picks-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .picks-pill {
@@ -730,9 +737,19 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 4rem;
       color: rgba(255, 255, 255, 0.9);
       overflow: hidden;
+    }
+
+    .post-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.35s ease;
+    }
+
+    .post-card:hover .post-card-img img {
+      transform: scale(1.045);
     }
 
     .post-card-img.cat-guide {
@@ -878,9 +895,15 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.8rem;
       color: white;
       flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .side-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .side-thumb.cat-guide {
@@ -1072,8 +1095,8 @@
         height: 380px;
       }
 
-      .best-featured-emoji {
-        font-size: 12rem;
+      .best-featured-image img {
+        transform: scale(1.08);
       }
 
       .best-headline-box {
@@ -1340,7 +1363,9 @@
     <div class="best-row">
       <!-- LEFT: Featured -->
       <a class="best-featured" href="/posts/specialty-coffee-malaysia">
-        <div class="best-featured-emoji">🇲🇾</div>
+        <div class="best-featured-image">
+          <img src="/img/specialty-coffee-malaysia-featured.png" alt="Specialty coffee in Malaysia" loading="eager" />
+        </div>
         <div class="best-date">May 15, 2026</div>
         <div class="best-tag">Local</div>
         <div class="best-headline-box">
@@ -1363,7 +1388,9 @@
 
         <a class="picks-card" href="/library#all-posts" aria-label="See all posts">
           <div class="picks-count" id="picksCount">25</div>
-          <div class="picks-emoji">☕</div>
+          <div class="picks-image">
+            <img src="/img/all-picks-coffee-beans.png" alt="" loading="lazy" />
+          </div>
           <div class="picks-pill">See all picks →</div>
         </a>
       </div>
@@ -1413,8 +1440,8 @@
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="processing washed natural honey fermented anaerobic"
             href="/posts/coffee-processing-methods">
             <div class="post-card-img cat-guide">
+              <img src="/img/coffee-bean-origins.png" alt="Coffee processing methods explained" loading="lazy" />
               <span class="post-card-tag">Guide</span>
-              🌱
               <div class="post-card-overlay-title">Coffee Processing Methods Explained</div>
             </div>
             <div class="post-card-body">
@@ -1427,8 +1454,8 @@
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="natural washed processing flavour comparison"
             href="/posts/natural-vs-washed-coffee">
             <div class="post-card-img cat-guide">
+              <img src="/img/single-origin-vs-blend-coffee.png" alt="Natural vs washed coffee" loading="lazy" />
               <span class="post-card-tag">Guide</span>
-              💧
               <div class="post-card-overlay-title">Natural vs Washed Coffee</div>
             </div>
             <div class="post-card-body">
@@ -1441,8 +1468,8 @@
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="honey process yellow red black sweetness"
             href="/posts/honey-process-coffee">
             <div class="post-card-img cat-guide">
+              <img src="/img/coffee-bean-origins.png" alt="Honey process coffee explained" loading="lazy" />
               <span class="post-card-tag">Guide</span>
-              🍯
               <div class="post-card-overlay-title">Honey Process Coffee Explained</div>
             </div>
             <div class="post-card-body">
@@ -1455,8 +1482,8 @@
           <a class="post-card reveal post-item" data-cat="local" data-keywords="malaysia specialty home brew"
             href="/posts/specialty-coffee-malaysia">
             <div class="post-card-img cat-local">
+              <img src="/img/specialty-coffee-malaysia.png" alt="Specialty coffee in Malaysia" loading="lazy" />
               <span class="post-card-tag">Local</span>
-              🇲🇾
               <div class="post-card-overlay-title">Specialty Coffee in Malaysia</div>
             </div>
             <div class="post-card-body">
@@ -1469,8 +1496,8 @@
           <a class="post-card reveal post-item" data-cat="local" data-keywords="malaysia best beans 2026"
             href="/posts/best-coffee-beans-malaysia">
             <div class="post-card-img cat-local">
+              <img src="/img/best-coffee-beans-malaysia.png" alt="Best coffee beans in Malaysia 2026" loading="lazy" />
               <span class="post-card-tag">Local</span>
-              🇲🇾
               <div class="post-card-overlay-title">Best Coffee Beans in Malaysia 2026</div>
             </div>
             <div class="post-card-body">
@@ -1483,8 +1510,8 @@
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="online malaysia buy beans"
             href="/posts/buy-coffee-beans-online-malaysia">
             <div class="post-card-img cat-guide">
+              <img src="/img/buy-coffee-beans-online-malaysia.png" alt="Buy coffee beans online in Malaysia" loading="lazy" />
               <span class="post-card-tag">Guide</span>
-              📦
               <div class="post-card-overlay-title">Buy Coffee Beans Online in Malaysia</div>
             </div>
             <div class="post-card-body">
@@ -1497,8 +1524,8 @@
           <a class="post-card reveal post-item" data-cat="local" data-keywords="malaysian brands roasters"
             href="/posts/malaysia-coffee-brands-roasters">
             <div class="post-card-img cat-local">
+              <img src="/img/malaysia-coffee-brands-roasters.png" alt="Malaysian coffee brands and roasters" loading="lazy" />
               <span class="post-card-tag">Local</span>
-              🏭
               <div class="post-card-overlay-title">Malaysian Brands &amp; Roasters</div>
             </div>
             <div class="post-card-body">
@@ -1511,8 +1538,8 @@
           <a class="post-card reveal post-item" data-cat="local" data-keywords="kl kuala lumpur specialty beans"
             href="/posts/specialty-coffee-beans-kl">
             <div class="post-card-img cat-local">
+              <img src="/img/specialty-coffee-beans-kl.png" alt="Specialty coffee beans in Kuala Lumpur" loading="lazy" />
               <span class="post-card-tag">Local</span>
-              🏙️
               <div class="post-card-overlay-title">Specialty Beans in KL</div>
             </div>
             <div class="post-card-body">
@@ -1525,8 +1552,8 @@
           <a class="post-card reveal post-item" data-cat="local" data-keywords="pj petaling jaya selangor beans"
             href="/posts/specialty-coffee-beans-pj-selangor">
             <div class="post-card-img cat-local">
+              <img src="/img/specialty-coffee-beans-pj-selangor.png" alt="Specialty coffee beans in PJ and Selangor" loading="lazy" />
               <span class="post-card-tag">Local</span>
-              🛍️
               <div class="post-card-overlay-title">Specialty Beans in PJ &amp; Selangor</div>
             </div>
             <div class="post-card-body">
@@ -1539,8 +1566,8 @@
           <a class="post-card reveal post-item" data-cat="local" data-keywords="penang george town beans"
             href="/posts/specialty-coffee-penang">
             <div class="post-card-img cat-local">
+              <img src="/img/specialty-coffee-penang.png" alt="Specialty coffee in Penang" loading="lazy" />
               <span class="post-card-tag">Local</span>
-              🏝️
               <div class="post-card-overlay-title">Specialty Coffee in Penang</div>
             </div>
             <div class="post-card-body">
@@ -1553,8 +1580,8 @@
           <a class="post-card reveal post-item" data-cat="origin" data-keywords="single origin coffee bean origins guide"
             href="/posts/coffee-bean-origins">
             <div class="post-card-img cat-origin">
+              <img src="/img/coffee-bean-origins.png" alt="Coffee bean origins explained" loading="lazy" />
               <span class="post-card-tag">Origin</span>
-              🌍
               <div class="post-card-overlay-title">Coffee Bean Origins Explained</div>
             </div>
             <div class="post-card-body">
@@ -1567,8 +1594,8 @@
           <a class="post-card reveal post-item" data-cat="origin" data-keywords="yunnan thailand asia coffee beans"
             href="/posts/asia-coffee-origins-yunnan-thailand">
             <div class="post-card-img cat-origin">
+              <img src="/img/asia-coffee-origins-yunnan-thailand.png" alt="Yunnan and Thailand coffee beans" loading="lazy" />
               <span class="post-card-tag">Origin</span>
-              🌏
               <div class="post-card-overlay-title">Yunnan &amp; Thailand Coffee Beans</div>
             </div>
             <div class="post-card-body">
@@ -1581,8 +1608,8 @@
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="single origin vs blend coffee"
             href="/posts/single-origin-vs-blend-coffee">
             <div class="post-card-img cat-guide">
+              <img src="/img/single-origin-vs-blend-coffee.png" alt="Single origin vs blend coffee" loading="lazy" />
               <span class="post-card-tag">Guide</span>
-              ⚖️
               <div class="post-card-overlay-title">Single Origin vs Blend Coffee</div>
             </div>
             <div class="post-card-body">
@@ -1595,8 +1622,8 @@
           <a class="post-card reveal post-item" data-cat="local" data-keywords="jeju korea travel cafes"
             href="/posts/jeju-specialty-coffee">
             <div class="post-card-img cat-local">
+              <img src="/img/jeju-specialty-coffee.png" alt="Specialty coffee in Jeju Island" loading="lazy" />
               <span class="post-card-tag">Travel</span>
-              🌋
               <div class="post-card-overlay-title">Specialty Coffee in Jeju Island</div>
             </div>
             <div class="post-card-body">
@@ -1609,8 +1636,8 @@
           <a class="post-card reveal post-item" data-cat="local" data-keywords="kl roasters specialty kuala lumpur"
             href="/posts/kl-roasters">
             <div class="post-card-img cat-local">
+              <img src="/img/kl-roasters.png" alt="Best KL specialty roasters" loading="lazy" />
               <span class="post-card-tag">Local</span>
-              🏙️
               <div class="post-card-overlay-title">Best KL Specialty Roasters</div>
             </div>
             <div class="post-card-body">
@@ -1623,8 +1650,8 @@
           <a class="post-card reveal post-item" data-cat="local" data-keywords="johor jb cafes liberica"
             href="/posts/specialty-coffee-johor">
             <div class="post-card-img cat-local">
+              <img src="/img/specialty-coffee-johor.png" alt="Specialty coffee in Johor" loading="lazy" />
               <span class="post-card-tag">Local</span>
-              🌴
               <div class="post-card-overlay-title">Specialty Coffee in Johor</div>
             </div>
             <div class="post-card-body">
@@ -1637,8 +1664,8 @@
           <a class="post-card reveal post-item" data-cat="origin" data-keywords="ethiopia yirgacheffe single origin"
             href="/posts/ethiopia-yirgacheffe-coffee-you-should-try">
             <div class="post-card-img cat-origin">
+              <img src="/img/ethiopia-yirgacheffe-coffee-you-should-try.png" alt="Ethiopia Yirgacheffe coffee guide" loading="lazy" />
               <span class="post-card-tag">Origin</span>
-              🇪🇹
               <div class="post-card-overlay-title">Ethiopia Yirgacheffe Guide</div>
             </div>
             <div class="post-card-body">
@@ -1651,8 +1678,8 @@
           <a class="post-card reveal post-item" data-cat="origin" data-keywords="brazil single origin beans"
             href="/posts/brazil-coffee-beans-to-try">
             <div class="post-card-img cat-origin">
+              <img src="/img/brazil-coffee-beans-to-try.png" alt="Brazil coffee beans worth trying" loading="lazy" />
               <span class="post-card-tag">Origin</span>
-              🇧🇷
               <div class="post-card-overlay-title">Brazil Coffee Beans Worth Trying</div>
             </div>
             <div class="post-card-body">
@@ -1665,8 +1692,8 @@
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="arabica robusta liberica species"
             href="/posts/arabica-robusta-liberica">
             <div class="post-card-img cat-guide">
+              <img src="/img/arabica-robusta-liberica.png" alt="Arabica vs Robusta vs Liberica" loading="lazy" />
               <span class="post-card-tag">Guide</span>
-              ☕
               <div class="post-card-overlay-title">Arabica vs Robusta vs Liberica</div>
             </div>
             <div class="post-card-body">
@@ -1679,8 +1706,8 @@
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="flavour notes tasting beginner"
             href="/posts/how-to-read-flavour-notes">
             <div class="post-card-img cat-guide">
+              <img src="/img/how-to-read-flavour-notes.png" alt="How to read flavour notes" loading="lazy" />
               <span class="post-card-tag">Guide</span>
-              👃
               <div class="post-card-overlay-title">How to Read Flavour Notes</div>
             </div>
             <div class="post-card-body">
@@ -1693,8 +1720,8 @@
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="light medium dark roast levels"
             href="/posts/light-vs-medium-vs-dark-roast">
             <div class="post-card-img cat-guide">
+              <img src="/img/light-vs-medium-vs-dark-roast.png" alt="Light vs medium vs dark roast" loading="lazy" />
               <span class="post-card-tag">Guide</span>
-              🔥
               <div class="post-card-overlay-title">Light vs Medium vs Dark Roast</div>
             </div>
             <div class="post-card-body">
@@ -1707,8 +1734,8 @@
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="caffeine adhd too much"
             href="/posts/how-much-coffee-is-too-much">
             <div class="post-card-img cat-guide">
+              <img src="/img/how-much-coffee-is-too-much.png" alt="How much coffee is too much" loading="lazy" />
               <span class="post-card-tag">Guide</span>
-              🧠
               <div class="post-card-overlay-title">How Much Coffee Is Too Much?</div>
             </div>
             <div class="post-card-body">
@@ -1721,8 +1748,8 @@
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="fermented funky beans list"
             href="/posts/fermented-coffee-beans-to-try-clean">
             <div class="post-card-img cat-guide">
+              <img src="/img/light-vs-medium-vs-dark-roast.png" alt="Fermented coffee beans to try" loading="lazy" />
               <span class="post-card-tag">Guide</span>
-              🍷
               <div class="post-card-overlay-title">20 Fermented Beans to Try</div>
             </div>
             <div class="post-card-body">
@@ -1735,8 +1762,8 @@
           <a class="post-card reveal post-item" data-cat="recipe" data-keywords="oat milk cortado recipe espresso"
             href="/posts/oat-milk-cortado">
             <div class="post-card-img cat-recipe">
+              <img src="/img/Girl-bought-coffee-from-the-beans-hub.png" alt="Oat milk cortado at home" loading="lazy" />
               <span class="post-card-tag">Recipe</span>
-              🥛
               <div class="post-card-overlay-title">Oat Milk Cortado at Home</div>
             </div>
             <div class="post-card-body">
@@ -1749,8 +1776,8 @@
           <a class="post-card reveal post-item" data-cat="recipe" data-keywords="kopiko kopitiam arabica kopi recipe"
             href="/posts/hot-kopiko-arabica-kopitiam-kopi-recipe">
             <div class="post-card-img cat-recipe">
+              <img src="/img/Girl-bought-coffee-from-the-beans-hub.png" alt="Hot Kopiko Arabica kopitiam style" loading="lazy" />
               <span class="post-card-tag">Recipe</span>
-              🥮
               <div class="post-card-overlay-title">Hot Kopiko — Arabica Kopitiam Style</div>
             </div>
             <div class="post-card-body">
@@ -1770,7 +1797,9 @@
           <div class="side-list">
 
             <a class="side-item" href="/posts/specialty-coffee-malaysia">
-              <div class="side-thumb cat-local">🇲🇾</div>
+              <div class="side-thumb cat-local">
+                <img src="/img/specialty-coffee-malaysia.png" alt="" loading="lazy" />
+              </div>
               <div>
                 <div class="side-meta">May 15, 2026</div>
                 <div class="side-title">Specialty Coffee in Malaysia: A Home Brewer's Guide</div>
@@ -1778,7 +1807,9 @@
             </a>
 
             <a class="side-item" href="/posts/arabica-robusta-liberica">
-              <div class="side-thumb cat-guide">☕</div>
+              <div class="side-thumb cat-guide">
+                <img src="/img/arabica-robusta-liberica.png" alt="" loading="lazy" />
+              </div>
               <div>
                 <div class="side-meta">Mar 5, 2026</div>
                 <div class="side-title">Arabica vs Robusta vs Liberica</div>
@@ -1786,7 +1817,9 @@
             </a>
 
             <a class="side-item" href="/posts/kl-roasters">
-              <div class="side-thumb cat-local">🏙️</div>
+              <div class="side-thumb cat-local">
+                <img src="/img/kl-roasters.png" alt="" loading="lazy" />
+              </div>
               <div>
                 <div class="side-meta">Mar 5, 2026</div>
                 <div class="side-title">Best Specialty Coffee Roasters in KL</div>
@@ -1794,7 +1827,9 @@
             </a>
 
             <a class="side-item" href="/posts/jeju-specialty-coffee">
-              <div class="side-thumb cat-local">🌋</div>
+              <div class="side-thumb cat-local">
+                <img src="/img/jeju-specialty-coffee.png" alt="" loading="lazy" />
+              </div>
               <div>
                 <div class="side-meta">Mar 21, 2026</div>
                 <div class="side-title">Specialty Coffee in Jeju Island</div>
@@ -1809,7 +1844,9 @@
           <div class="side-list">
 
             <a class="side-item" href="/posts/coffee-processing-methods">
-              <div class="side-thumb cat-guide">🌱</div>
+              <div class="side-thumb cat-guide">
+                <img src="/img/coffee-bean-origins.png" alt="" loading="lazy" />
+              </div>
               <div>
                 <div class="side-meta">May 17, 2026</div>
                 <div class="side-title">Coffee Processing Methods Explained</div>
@@ -1817,7 +1854,9 @@
             </a>
 
             <a class="side-item" href="/posts/natural-vs-washed-coffee">
-              <div class="side-thumb cat-guide">💧</div>
+              <div class="side-thumb cat-guide">
+                <img src="/img/single-origin-vs-blend-coffee.png" alt="" loading="lazy" />
+              </div>
               <div>
                 <div class="side-meta">May 17, 2026</div>
                 <div class="side-title">Natural vs Washed Coffee</div>
@@ -1825,7 +1864,9 @@
             </a>
 
             <a class="side-item" href="/posts/honey-process-coffee">
-              <div class="side-thumb cat-guide">🍯</div>
+              <div class="side-thumb cat-guide">
+                <img src="/img/coffee-bean-origins.png" alt="" loading="lazy" />
+              </div>
               <div>
                 <div class="side-meta">May 17, 2026</div>
                 <div class="side-title">Honey Process Coffee Explained</div>
@@ -1833,7 +1874,9 @@
             </a>
 
             <a class="side-item" href="/posts/best-coffee-beans-malaysia">
-              <div class="side-thumb cat-local">🇲🇾</div>
+              <div class="side-thumb cat-local">
+                <img src="/img/best-coffee-beans-malaysia.png" alt="" loading="lazy" />
+              </div>
               <div>
                 <div class="side-meta">May 15, 2026</div>
                 <div class="side-title">Best Coffee Beans in Malaysia 2026</div>
