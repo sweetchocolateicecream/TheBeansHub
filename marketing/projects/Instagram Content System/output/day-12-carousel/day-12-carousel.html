@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Beans Hub - Day 12 Carousel</title>
+  <style>
+    * { box-sizing: border-box; }
+    :root {
+      --green: #296241; --green-dark: #183823; --cream: #fdf6ec;
+      --white: #ffffff; --orange: #fda11d; --orange-soft: #ffe4b7;
+      --text: #1a2e1f; --muted: #627160; --border: #eadfcf;
+    }
+    html, body { margin: 0; background: #efe4d4; color: var(--text); font-family: Arial, Helvetica, sans-serif; }
+    body { display: grid; gap: 40px; padding: 40px; }
+    body.export { display: block; padding: 0; background: var(--cream); }
+    body.export .slide { display: none; border: 0; }
+    body.export .slide.active { display: block; }
+    .slide { position: relative; width: 1080px; height: 1350px; overflow: hidden; background: var(--cream); border: 1px solid rgba(0,0,0,0.08); }
+    .slide::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 15% 10%, rgba(253,161,29,0.22), transparent 26%), radial-gradient(circle at 88% 86%, rgba(41,98,65,0.16), transparent 30%); pointer-events: none; }
+    .grain { position: absolute; inset: 0; opacity: 0.09; background-image: linear-gradient(90deg, rgba(41,98,65,0.14) 1px, transparent 1px), linear-gradient(0deg, rgba(41,98,65,0.12) 1px, transparent 1px); background-size: 42px 42px; mask-image: linear-gradient(to bottom, transparent, black 18%, black 82%, transparent); }
+    .brand { position: absolute; top: 54px; left: 64px; right: 64px; display: flex; align-items: center; justify-content: space-between; z-index: 3; }
+    .brand-left { color: var(--green); font-weight: 800; letter-spacing: 0.02em; font-size: 26px; }
+    .count { color: var(--muted); font-weight: 700; font-size: 22px; }
+    .content { position: relative; z-index: 2; height: 100%; padding: 160px 78px 88px; display: flex; flex-direction: column; }
+    .eyebrow { width: fit-content; padding: 12px 20px; border-radius: 999px; background: rgba(253,161,29,0.18); color: var(--green); font-size: 22px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 34px; }
+    h1, h2 { margin: 0; line-height: 0.98; font-weight: 900; color: var(--green-dark); }
+    h1 { max-width: 850px; font-size: 102px; }
+    h2 { max-width: 840px; font-size: 88px; }
+    .accent { display: block; color: var(--green); }
+    .sub { max-width: 830px; margin: 38px 0 0; font-size: 42px; line-height: 1.18; font-weight: 700; color: #304431; }
+    .truth-card { margin-top: 58px; padding: 38px 42px; background: var(--white); border: 2px solid var(--border); border-radius: 8px; box-shadow: 0 24px 60px rgba(41,98,65,0.10); }
+    .truth-label { color: var(--orange); font-size: 24px; font-weight: 900; letter-spacing: 0.09em; text-transform: uppercase; margin-bottom: 14px; }
+    .truth-card p { margin: 0; color: #2a3a2a; font-size: 37px; line-height: 1.28; font-weight: 600; }
+    .note { margin-top: 28px; color: var(--muted); font-size: 29px; line-height: 1.32; font-weight: 600; }
+    .t-list { margin-top: 48px; display: flex; flex-direction: column; gap: 24px; }
+    .t-list-item { padding: 30px 36px; background: white; border: 1.5px solid var(--border); border-radius: 8px; box-shadow: 0 8px 28px rgba(41,98,65,0.06); }
+    .t-list-label { font-size: 22px; font-weight: 900; letter-spacing: 0.07em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; }
+    .t-list-body { font-size: 33px; font-weight: 700; color: #2a3a2a; line-height: 1.25; }
+    .footer { margin-top: auto; display: flex; align-items: flex-end; justify-content: space-between; gap: 28px; color: var(--green); font-size: 25px; font-weight: 800; }
+    .swipe { color: var(--muted); font-weight: 700; }
+    .ghost-num { position: absolute; right: 52px; bottom: 42px; color: rgba(41,98,65,0.10); font-size: 210px; line-height: 0.75; font-weight: 900; z-index: 1; }
+    .tagline { max-width: 740px; margin-top: 40px; padding: 28px 34px; border-left: 8px solid var(--orange); background: rgba(255,255,255,0.62); font-size: 34px; line-height: 1.28; font-weight: 700; color: #2d402f; }
+    .cta { margin-top: 44px; padding: 34px 40px; border-radius: 8px; background: var(--green); color: var(--cream); font-size: 38px; line-height: 1.2; font-weight: 850; }
+    .cta strong { color: var(--orange-soft); }
+    .green-cta { background: var(--green-dark); }
+    .green-cta::before { background: radial-gradient(circle at 20% 15%, rgba(253,161,29,0.25), transparent 30%), radial-gradient(circle at 80% 85%, rgba(253,246,236,0.08), transparent 35%); }
+    .green-cta .brand-left, .green-cta .footer { color: var(--orange); }
+    .green-cta .count, .green-cta .swipe { color: rgba(253,246,236,0.5); }
+    .green-cta h2 { color: var(--cream); }
+    .green-cta .tagline { background: rgba(253,246,236,0.10); color: rgba(253,246,236,0.85); }
+  </style>
+</head>
+<body>
+
+  <!-- SLIDE 1: HOOK -->
+  <section class="slide" id="slide-1">
+    <div class="grain"></div>
+    <div class="brand">
+      <div class="brand-left">The Beans Hub</div>
+      <div class="count">1/6</div>
+    </div>
+    <div class="content">
+      <div class="eyebrow">Processing Methods</div>
+      <h1>Washed. Natural. Honey.<span class="accent">What's actually the difference?</span></h1>
+      <p class="sub">It's not about washing your cup. It's how the coffee cherry is handled after harvest.</p>
+      <div class="footer">
+        <span>The Beans Hub</span>
+        <span class="swipe">Swipe →</span>
+      </div>
+    </div>
+    <div class="ghost-num">01</div>
+  </section>
+
+  <!-- SLIDE 2: WASHED -->
+  <section class="slide" id="slide-2">
+    <div class="grain"></div>
+    <div class="brand">
+      <div class="brand-left">The Beans Hub</div>
+      <div class="count">2/6</div>
+    </div>
+    <div class="content">
+      <div class="eyebrow">Method 01</div>
+      <h2>Washed process.</h2>
+      <div class="truth-card">
+        <div class="truth-label">What happens</div>
+        <p>The fruit is removed from the bean before drying. The bean is then washed clean and dried on raised beds. Result: clean, bright, and high in acidity. The origin flavours come through clearly because there's no fruit fermentation to muddy them.</p>
+      </div>
+      <p class="note">If you love Ethiopian coffees that taste like jasmine or bergamot, washed processing is usually why.</p>
+      <div class="footer">
+        <span>thebeanshub.com</span>
+        <span class="swipe">Next method →</span>
+      </div>
+    </div>
+    <div class="ghost-num">02</div>
+  </section>
+
+  <!-- SLIDE 3: NATURAL -->
+  <section class="slide" id="slide-3">
+    <div class="grain"></div>
+    <div class="brand">
+      <div class="brand-left">The Beans Hub</div>
+      <div class="count">3/6</div>
+    </div>
+    <div class="content">
+      <div class="eyebrow">Method 02</div>
+      <h2>Natural process.</h2>
+      <div class="truth-card">
+        <div class="truth-label">What happens</div>
+        <p>The whole coffee cherry is dried intact — fruit still on the bean. As it dries, the fruit ferments and the sugars transfer into the bean. Result: fruity, heavy, complex. Often tastes like blueberries, wine, or dark chocolate. Very distinct.</p>
+      </div>
+      <p class="note">Natural process is the chaotic one. High reward, but also more room for things to go wrong.</p>
+      <div class="footer">
+        <span>thebeanshub.com</span>
+        <span class="swipe">Next method →</span>
+      </div>
+    </div>
+    <div class="ghost-num">03</div>
+  </section>
+
+  <!-- SLIDE 4: HONEY -->
+  <section class="slide" id="slide-4">
+    <div class="grain"></div>
+    <div class="brand">
+      <div class="brand-left">The Beans Hub</div>
+      <div class="count">4/6</div>
+    </div>
+    <div class="content">
+      <div class="eyebrow">Method 03</div>
+      <h2>Honey process.</h2>
+      <div class="truth-card">
+        <div class="truth-label">What happens</div>
+        <p>The skin is removed but some of the mucilage (sticky fruit layer) is left on the bean during drying. It sits in the middle — more fruit character than washed, more clarity than natural. Sweetness is the signature. No actual honey involved.</p>
+      </div>
+      <p class="note">Named for the sticky texture during drying, not the flavour. Slightly disappointing the first time you find this out.</p>
+      <div class="footer">
+        <span>thebeanshub.com</span>
+        <span class="swipe">Quick summary →</span>
+      </div>
+    </div>
+    <div class="ghost-num">04</div>
+  </section>
+
+  <!-- SLIDE 5: COMPARISON -->
+  <section class="slide" id="slide-5">
+    <div class="grain"></div>
+    <div class="brand">
+      <div class="brand-left">The Beans Hub</div>
+      <div class="count">5/6</div>
+    </div>
+    <div class="content">
+      <div class="eyebrow">Quick Reference</div>
+      <h2>The short version.</h2>
+      <div class="t-list">
+        <div class="t-list-item">
+          <div class="t-list-label">Washed</div>
+          <div class="t-list-body">Clean, bright, high acidity. Origin flavours front and centre.</div>
+        </div>
+        <div class="t-list-item">
+          <div class="t-list-label">Natural</div>
+          <div class="t-list-body">Fruity, heavy, fermented complexity. Bold and winey.</div>
+        </div>
+        <div class="t-list-item">
+          <div class="t-list-label">Honey</div>
+          <div class="t-list-body">Balanced sweetness. Sits between the two. Approachable.</div>
+        </div>
+      </div>
+      <div class="footer">
+        <span>thebeanshub.com</span>
+        <span class="swipe">Last slide →</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 6: CTA -->
+  <section class="slide green-cta" id="slide-6">
+    <div class="grain"></div>
+    <div class="brand">
+      <div class="brand-left">The Beans Hub</div>
+      <div class="count">6/6</div>
+    </div>
+    <div class="content">
+      <h2>You can filter by processing method on The Beans Hub.</h2>
+      <div class="tagline">Already know you love naturals? Search for them directly. No more guessing from the bag design.</div>
+      <div class="cta">Find your next favourite bean.<br><strong>thebeanshub.com</strong></div>
+      <div class="footer">
+        <span>The Beans Hub</span>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const slide = params.get("slide");
+    if (slide) {
+      document.body.classList.add("export");
+      document.querySelectorAll(".slide").forEach(n => n.classList.remove("active"));
+      const target = document.querySelector(`#slide-${slide}`);
+      if (target) target.classList.add("active");
+    }
+  </script>
+</body>
+</html>

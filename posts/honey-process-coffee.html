@@ -232,7 +232,8 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
       max-width: 1240px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: minmax(0, 800px) 220px;
+      grid-template-columns: minmax(0, 800px);
+      justify-content: center;
       column-gap: 40px;
       align-items: start;
       padding: 56px 48px 80px;
@@ -242,14 +243,46 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
       margin: 0;
       padding: 0;
     }
-    .toc-sidebar { display: none; }
+    .toc-sidebar { display: block; order: -1; margin-bottom: 8px; }
+    .toc-inner summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .toc-inner summary::-webkit-details-marker { display: none; }
+    .toc-inner summary::after {
+      content: '\25BE';
+      font-size: 0.9rem;
+      color: var(--muted);
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+    .toc-inner[open] summary::after { transform: rotate(180deg); }
+    @media (max-width: 768px) {
+      .post-layout {
+        padding: 32px 20px 56px;
+      }
+      .toc-inner { max-height: 260px; }
+      .toc-inner[open] .toc-nav { padding-top: 10px; }
+    }
     @media (min-width: 1260px) {
+      .post-layout {
+        grid-template-columns: minmax(0, 800px) 220px;
+        justify-content: start;
+      }
       .toc-sidebar {
         display: block;
+        order: 0;
+        margin-bottom: 0;
         position: sticky;
         top: 90px;
         align-self: start;
       }
+      .toc-inner summary { cursor: default; pointer-events: none; }
+      .toc-inner summary::after { display: none; }
     }
     .toc-inner {
       background: var(--white);
@@ -368,7 +401,6 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
 </div>
 </div>
 </div>
-<div class="post-banner">🍯</div>
 <div class="post-layout">
 <div class="post-body">
 
@@ -467,8 +499,8 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
 </div>
 </div><!-- /post-body -->
 <aside aria-label="Table of contents" class="toc-sidebar">
-<div class="toc-inner">
-<div class="toc-title">Contents</div>
+<details class="toc-inner" open>
+<summary class="toc-title">Contents</summary>
 <nav class="toc-nav">
 <a class="toc-link" href="#what-is-honey-process">What honey process is</a>
 <a class="toc-link" href="#costa-rica-origin">Where it came from</a>
@@ -478,7 +510,7 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
 <a class="toc-link" href="#honey-vs-natural-vs-washed">Honey vs natural vs washed</a>
 <a class="toc-link" href="#faq">FAQ</a>
 </nav>
-</div>
+</details>
 </aside>
 </div><!-- /post-layout -->
 <div class="more-posts">

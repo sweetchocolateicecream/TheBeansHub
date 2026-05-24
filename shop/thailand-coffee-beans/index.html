@@ -1051,6 +1051,225 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
 .tbh-footer-copy{font-family:"Outfit",sans-serif;font-size:0.78rem;color:rgba(253,246,236,0.7);text-align:center;margin:0}
 @media (max-width:900px){.tbh-footer-inner{grid-template-columns:1fr 1fr;gap:32px}}
 @media (max-width:560px){footer.tbh-footer{padding:40px 24px 20px}.tbh-footer-inner{grid-template-columns:1fr;gap:28px}.tbh-footer-tagline{max-width:none}}
+
+/* ─────────────────────────────────────────────
+   INTRO HERO  (replaces the old wall-of-text)
+   ───────────────────────────────────────────── */
+.intro-hero {
+  max-width: 1200px;
+  margin: 36px auto 28px;
+  padding: 0 24px;
+}
+.intro-lead {
+  font-size: 1.18rem;
+  line-height: 1.6;
+  color: var(--brown-dark);
+  max-width: 880px;
+  margin-bottom: 28px;
+  font-weight: 400;
+}
+.intro-lead strong { font-weight: 700; color: var(--brown-dark); }
+
+.quick-facts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin: 0 0 28px;
+}
+.quick-fact-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 18px 16px 22px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.quick-fact-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(41, 98, 65, 0.08);
+}
+.quick-fact-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--accent);
+}
+.quick-fact-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+.quick-fact-value {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--brown-dark);
+  line-height: 1.35;
+}
+
+.intro-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 4px;
+}
+.intro-body p {
+  line-height: 1.7;
+  color: var(--brown-dark);
+  font-size: 0.97rem;
+  margin-bottom: 12px;
+}
+.intro-body p:last-child { margin-bottom: 0; }
+.intro-body strong { color: var(--brown-dark); font-weight: 700; }
+
+.intro-related {
+  background: var(--tag-bg);
+  border-left: 4px solid var(--accent);
+  padding: 14px 20px;
+  border-radius: 0 10px 10px 0;
+  margin-top: 24px;
+  font-size: 0.93rem;
+  line-height: 1.55;
+  color: var(--brown-dark);
+}
+.intro-related a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s;
+}
+.intro-related a:hover { border-bottom-color: var(--accent); }
+.intro-related strong { color: var(--brown-dark); font-weight: 700; margin-right: 4px; }
+
+@media (max-width: 900px) {
+  .quick-facts { grid-template-columns: repeat(2, 1fr); }
+  .intro-body { grid-template-columns: 1fr; gap: 0; }
+}
+@media (max-width: 560px) {
+  .intro-hero { padding: 0 16px; margin: 24px auto 22px; }
+  .intro-lead { font-size: 1.02rem; margin-bottom: 22px; }
+  .quick-facts { gap: 10px; }
+  .quick-fact-card { padding: 13px 14px 13px 18px; }
+  .quick-fact-value { font-size: 0.9rem; }
+}
+
+/* ─────────────────────────────────────────────
+   STICKY FILTER BAR
+   ───────────────────────────────────────────── */
+.filter-bar-wrap {
+  position: sticky;
+  top: 68px;
+  z-index: 50;
+  margin: 0 -24px 22px;
+  background: rgba(253, 246, 236, 0.92);
+  backdrop-filter: saturate(160%) blur(10px);
+  -webkit-backdrop-filter: saturate(160%) blur(10px);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.filter-bar {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.filter-bar-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.filter-bar-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-right: 4px;
+}
+.filter-pill {
+  padding: 5px 13px;
+  border-radius: 18px;
+  border: 1.5px solid var(--border);
+  background: white;
+  color: var(--brown-mid);
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: "Outfit", sans-serif;
+}
+.filter-pill:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.filter-pill.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+  font-weight: 600;
+}
+.filter-bar-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.filter-bar-count {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.filter-bar-count strong {
+  color: var(--brown-dark);
+  font-weight: 700;
+}
+.filter-bar-sort {
+  padding: 7px 30px 7px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-family: "Outfit", sans-serif;
+  font-size: 0.82rem;
+  background: white;
+  color: var(--brown-dark);
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A7460' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.filter-bar-sort:focus { border-color: var(--accent); }
+
+.card.is-hidden { display: none !important; }
+
+.empty-grid-msg {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  display: none;
+}
+.empty-grid-msg.show { display: block; }
+.empty-grid-msg strong { color: var(--brown-dark); display: block; margin-bottom: 6px; font-size: 1.05rem; }
+
+@media (max-width: 768px) {
+  .filter-bar-wrap { margin: 0 -16px 18px; }
+  .filter-bar { padding: 10px 16px; gap: 10px; }
+  .filter-bar-label { font-size: 0.65rem; }
+  .filter-pill { padding: 4px 10px; font-size: 0.74rem; }
+  .filter-bar-right { width: 100%; justify-content: space-between; margin-left: 0; }
+}
 </style>
 
 <!-- CollectionPage + ItemList schema for rich results -->
@@ -1326,27 +1545,75 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
   </div>
 </header>
 
-<main class="main" style="max-width:1200px;margin:0 auto;padding:32px 24px 0;">
-  <section class="category-intro" style="margin-bottom:32px;line-height:1.65;font-size:1rem;color:var(--brown-dark);max-width:820px;">
-    <p>Thailand has become a quiet specialty origin in the last 15 years, mostly thanks to the highland farms in Chiang Mai, Chiang Rai and the surrounding northern provinces. The Thailand coffee beans you'll find on this page are still a small slice of the Malaysian roaster scene, but the quality keeps improving and the prices stay reasonable.</p>
-      <p>Most of the specialty production comes from areas like Doi Chaang, Doi Tung, Doi Pangkhon and Mae Hong Son — mountain villages that sit between around 1,000m and 1,600m above sea level. A lot of these farms grew out of the Royal Project, a long-running initiative that introduced Arabica to the highlands as a replacement crop for opium poppies. The story is unusual but the coffee is genuinely good.</p>
-      <!-- source: Royal Project Foundation, Thailand, https://www.royalprojectthailand.com -->
-      <!-- source: UNODC, "Thailand: From Opium to Coffee" report, 2019 -->
-      <p>Common varietals include Catimor, Caturra, Typica and Bourbon, with smaller lots of Geisha appearing from competition farms. The classic Thai cup leans medium-bodied with cocoa, dried fruit, brown sugar and a soft citrus brightness — somewhere between Latin American sweetness and the cleaner side of Indonesian profiles.</p>
-      <!-- source: Specialty Coffee Association of Thailand origin notes; SCA Flavor Wheel -->
-      <p>Processing covers all the major styles. Washed Thai lots are clean and approachable. Naturals can taste like ripe stone fruit or red berry. A growing number of producers in Chiang Rai are running anaerobic, honey and co-fermentation lots that compete on quality with anything from Central America.</p>
-      <p>For Malaysian home brewers, Thailand is geographically close, often more affordable, and a great way to support an ASEAN origin. It works well across pour-over, espresso and milk drinks. Browse the Thailand selection below, or head back to the <a href="/shop">full shop</a>.</p>
-      <p><strong>Related reads:</strong> Learn how Thailand fits alongside Yunnan in our <a href="/posts/asia-coffee-origins-yunnan-thailand">Asia coffee origins</a> guide, then compare it with the wider <a href="/posts/coffee-bean-origins">origin guide</a>.</p>
-  </section>
+<section class="intro-hero">
+  <p class="intro-lead">Thailand has become a <strong>quiet specialty origin</strong> over the last 15 years, mostly thanks to highland farms in Chiang Mai, Chiang Rai and the surrounding northern provinces. The Malaysian roaster scene only carries a small slice of these beans — but the quality keeps improving and the prices stay reasonable.</p>
 
-  <div class="top-bar">
-    <div class="top-bar-left">Showing <strong>7</strong> beans in this category — visit the <a href="/shop" style="color:var(--accent);text-decoration:none;font-weight:600;">full shop</a> for filters and more.</div>
+  <div class="quick-facts">
+    <div class="quick-fact-card">
+      <div class="quick-fact-label">Regions</div>
+      <div class="quick-fact-value">Doi Chaang · Doi Tung · Doi Pangkhon · Mae Hong Son</div>
+    </div>
+    <div class="quick-fact-card">
+      <div class="quick-fact-label">Elevation</div>
+      <div class="quick-fact-value">1,000 – 1,600 m</div>
+    </div>
+    <div class="quick-fact-card">
+      <div class="quick-fact-label">Varietals</div>
+      <div class="quick-fact-value">Catimor · Caturra · Typica · Bourbon</div>
+    </div>
+    <div class="quick-fact-card">
+      <div class="quick-fact-label">Origin Story</div>
+      <div class="quick-fact-value">Royal Project — Arabica replacing opium</div>
+    </div>
   </div>
-  <div class="shop-heading">
-    <h2>Browse Thailand Coffee Beans</h2>
-    <p>Hand-picked Thai single origins and blends from Malaysian roasters — sorted so the best deals and freshest lots stand out.</p>
+
+  <div class="intro-body">
+    <div>
+      <p>Most specialty production sits in mountain villages between <strong>1,000m and 1,600m</strong>. Many of these farms grew out of the <strong>Royal Project</strong> — a long-running initiative that introduced Arabica as a replacement crop for opium poppies. Unusual story, genuinely good coffee.</p>
+      <p>The classic Thai cup is medium-bodied with <strong>cocoa, dried fruit, brown sugar and a soft citrus brightness</strong> — somewhere between Latin American sweetness and the cleaner side of Indonesian profiles.</p>
+    </div>
+    <div>
+      <p>Processing covers all the major styles. Washed Thai lots are clean and approachable. Naturals taste like ripe stone fruit or red berry. A growing number of Chiang Rai producers are running <strong>anaerobic, honey and co-fermentation</strong> lots that compete on quality with anything from Central America.</p>
+      <p>For Malaysian home brewers, Thailand is geographically close, often more affordable, and a great way to support an ASEAN origin. Works well across pour-over, espresso and milk drinks.</p>
+    </div>
   </div>
-  <div class="grid">
+
+  <div class="intro-related">
+    <strong>Related reads:</strong> Learn how Thailand fits alongside Yunnan in our <a href="/posts/asia-coffee-origins-yunnan-thailand">Asia coffee origins</a> guide, then compare it with the wider <a href="/posts/coffee-bean-origins">origin guide</a>.
+  </div>
+</section>
+
+<main class="main" style="max-width:1200px;margin:0 auto;padding:0 24px;overflow:visible;">
+  <div class="products-section">
+  <div class="filter-bar-wrap">
+    <div class="filter-bar" role="region" aria-label="Filter Thailand coffee beans">
+      <div class="filter-bar-group">
+        <span class="filter-bar-label">Brew</span>
+        <button class="filter-pill active" data-filter="brew" data-value="all">All</button>
+        <button class="filter-pill" data-filter="brew" data-value="filter">Filter</button>
+        <button class="filter-pill" data-filter="brew" data-value="espresso">Espresso</button>
+      </div>
+      <div class="filter-bar-group">
+        <span class="filter-bar-label">Process</span>
+        <button class="filter-pill active" data-filter="process" data-value="all">All</button>
+        <button class="filter-pill" data-filter="process" data-value="washed">Washed</button>
+        <button class="filter-pill" data-filter="process" data-value="natural">Natural</button>
+        <button class="filter-pill" data-filter="process" data-value="anaerobic">Anaerobic / Honey</button>
+      </div>
+      <div class="filter-bar-right">
+        <span class="filter-bar-count">Showing <strong id="resultCount">7</strong> of 7</span>
+        <select class="filter-bar-sort" id="sortSelect" aria-label="Sort coffee beans">
+          <option value="default">Sort: Featured</option>
+          <option value="price-asc">Price: Low → High</option>
+          <option value="price-desc">Price: High → Low</option>
+          <option value="name">Name: A → Z</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid" id="productGrid">
+    <div class="empty-grid-msg" id="emptyMsg"><strong>No beans match these filters.</strong>Try clearing a filter or two.</div>
     
     <div class="card">
       <img class="card-img" src="https://theroastthings.com/cdn/shop/files/Artboard_1_copy_93_2x-100.jpg?v=1753418911&amp;width=1200" alt="The Roast Things Mojo – specialty coffee beans Malaysia" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="card-img-placeholder" style="display:none">☕</div>
@@ -1476,6 +1743,7 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
       </div>
     </div>
   </div>
+  </div>
 
   <section class="faq-section" id="faq" aria-labelledby="faq-heading">
     <h2 id="faq-heading">Thailand Coffee Beans — Frequently Asked Questions</h2>
@@ -1555,6 +1823,80 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
 
 <script>
   function toggleMenu(){ document.getElementById('mobileMenu').classList.toggle('open'); }
+
+  /* ── Thailand shop: filter + sort the product grid ── */
+  (function(){
+    const grid = document.getElementById('productGrid');
+    if (!grid) return;
+    const emptyMsg = document.getElementById('emptyMsg');
+    const cards = Array.from(grid.querySelectorAll('.card'));
+    const countEl = document.getElementById('resultCount');
+    const totalCount = cards.length;
+    const originalOrder = cards.slice();
+
+    const state = { brew: 'all', process: 'all', sort: 'default' };
+
+    const cardData = cards.map(card => {
+      const metas = card.querySelectorAll('.card-meta-item');
+      let brew = '', proc = '';
+      metas.forEach(m => {
+        const txt = m.textContent.trim();
+        const valEl = m.querySelector('span');
+        const val = valEl ? valEl.textContent.trim().toLowerCase() : '';
+        if (txt.startsWith('☕')) brew = val;
+        else if (txt.startsWith('⚙️')) proc = val;
+      });
+      const priceTxt = (card.querySelector('.card-price')?.textContent || '').replace(/[^0-9.]/g,'');
+      const price = parseFloat(priceTxt) || 0;
+      const name = (card.querySelector('.card-name')?.textContent || '').trim();
+      return { card, brew, proc, price, name };
+    });
+
+    function matchBrew(cardBrew, f){
+      if (f === 'all') return true;
+      if (cardBrew.includes('both')) return true;
+      return cardBrew.includes(f);
+    }
+    function matchProcess(cardProc, f){
+      if (f === 'all') return true;
+      if (f === 'anaerobic') return /anaerobic|honey|co-fermentation|co fermentation/.test(cardProc);
+      if (f === 'washed')    return /washed/.test(cardProc);
+      if (f === 'natural')   return /natural/.test(cardProc);
+      return cardProc.includes(f);
+    }
+
+    function apply(){
+      let visible = 0;
+      cardData.forEach(d => {
+        const show = matchBrew(d.brew, state.brew) && matchProcess(d.proc, state.process);
+        d.card.classList.toggle('is-hidden', !show);
+        if (show) visible++;
+      });
+
+      let arr = cardData.slice();
+      if (state.sort === 'price-asc')       arr.sort((a,b) => a.price - b.price);
+      else if (state.sort === 'price-desc') arr.sort((a,b) => b.price - a.price);
+      else if (state.sort === 'name')       arr.sort((a,b) => a.name.localeCompare(b.name));
+      else arr = originalOrder.map(c => cardData.find(d => d.card === c));
+
+      arr.forEach(d => grid.appendChild(d.card));
+      grid.appendChild(emptyMsg);
+
+      countEl.textContent = visible;
+      emptyMsg.classList.toggle('show', visible === 0);
+    }
+
+    document.querySelectorAll('.filter-pill[data-filter]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const f = btn.dataset.filter;
+        state[f] = btn.dataset.value;
+        document.querySelectorAll(`.filter-pill[data-filter="${f}"]`).forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        apply();
+      });
+    });
+    document.getElementById('sortSelect').addEventListener('change', e => { state.sort = e.target.value; apply(); });
+  })();
 </script>
 </body>
 </html>

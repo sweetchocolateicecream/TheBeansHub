@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Green and vegetative taste notes</title>
+  <desc id="desc">A cartoon leafy branch with fresh green pods.</desc>
+  <g fill="none" stroke="#fff8ea" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M81 217c42-50 72-103 91-169" stroke-width="10"/>
+    <path d="M111 170c-39 11-68-4-84-42 42-12 70 3 84 42Z" fill="#7fd36b" stroke-width="9"/>
+    <path d="M136 128c-37 3-62-16-72-56 40-5 66 14 72 56Z" fill="#8bd577" stroke-width="9"/>
+    <path d="M160 91c-25-25-30-53-11-86 31 27 35 56 11 86Z" fill="#a2dd84" stroke-width="9"/>
+    <path d="M150 154c39-8 68 9 84 46-42 10-71-7-84-46Z" fill="#6fbb61" stroke-width="9"/>
+    <path d="M170 110c36-15 67-6 90 27-38 17-68 8-90-27Z" fill="#7fd36b" stroke-width="9"/>
+    <path d="M98 192c-22 1-41-8-55-26M126 145c-23-6-40-20-52-42M168 89c19-18 29-38 31-62M164 146c23 1 43 11 60 29M184 105c23-5 43-1 62 12" stroke-width="6" opacity=".68"/>
+  </g>
+</svg>

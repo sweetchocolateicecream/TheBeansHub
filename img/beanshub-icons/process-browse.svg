@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Browse coffee beans</title>
+  <desc id="desc">A playful cartoon coffee catalogue with a magnifying glass and coffee beans.</desc>
+  <g fill="none" stroke="#fff8ea" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M55 67h88c18 0 31 13 31 31v96H86c-18 0-31-13-31-31V67Z" fill="#f7a83b" stroke-width="11"/>
+    <path d="M76 90h70M76 116h46" stroke-width="10"/>
+    <path d="M88 149c12-23 33-25 47-4-10 24-33 27-47 4Z" fill="#2f623f" stroke-width="9"/>
+    <path d="M108 136c4 13 3 25-4 37" stroke-width="6"/>
+    <circle cx="162" cy="153" r="38" fill="#dbe8d3" stroke-width="11"/>
+    <path d="m190 181 35 35" stroke-width="15"/>
+    <path d="M146 144c10-11 25-14 39-7" stroke-width="8"/>
+    <path d="M48 45h29M217 72h16M38 202h23" stroke="#f7a83b" stroke-width="9"/>
+  </g>
+</svg>

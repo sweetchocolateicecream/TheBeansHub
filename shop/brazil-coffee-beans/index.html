@@ -1051,6 +1051,279 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
 .tbh-footer-copy{font-family:"Outfit",sans-serif;font-size:0.78rem;color:rgba(253,246,236,0.7);text-align:center;margin:0}
 @media (max-width:900px){.tbh-footer-inner{grid-template-columns:1fr 1fr;gap:32px}}
 @media (max-width:560px){footer.tbh-footer{padding:40px 24px 20px}.tbh-footer-inner{grid-template-columns:1fr;gap:28px}.tbh-footer-tagline{max-width:none}}
+
+/* ─────────────────────────────────────────────
+   INTRO HERO  (replaces the old wall-of-text)
+   ───────────────────────────────────────────── */
+.intro-hero {
+  max-width: 1200px;
+  margin: 36px auto 28px;
+  padding: 0 24px;
+}
+.intro-lead {
+  font-size: 1.18rem;
+  line-height: 1.6;
+  color: var(--brown-dark);
+  max-width: 880px;
+  margin-bottom: 28px;
+  font-weight: 400;
+}
+.intro-lead strong { font-weight: 700; color: var(--brown-dark); }
+
+.quick-facts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin: 0 0 28px;
+}
+.quick-fact-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 18px 16px 22px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.quick-fact-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(41, 98, 65, 0.08);
+}
+.quick-fact-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--accent);
+}
+.quick-fact-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+.quick-fact-value {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--brown-dark);
+  line-height: 1.35;
+}
+
+.intro-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 4px;
+}
+.intro-body p {
+  line-height: 1.7;
+  color: var(--brown-dark);
+  font-size: 0.97rem;
+  margin-bottom: 12px;
+}
+.intro-body p:last-child { margin-bottom: 0; }
+.intro-body strong { color: var(--brown-dark); font-weight: 700; }
+
+.intro-related {
+  background: var(--tag-bg);
+  border-left: 4px solid var(--accent);
+  padding: 14px 20px;
+  border-radius: 0 10px 10px 0;
+  margin-top: 24px;
+  font-size: 0.93rem;
+  line-height: 1.55;
+  color: var(--brown-dark);
+}
+.intro-related a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s;
+}
+.intro-related a:hover { border-bottom-color: var(--accent); }
+.intro-related strong { color: var(--brown-dark); font-weight: 700; margin-right: 4px; }
+
+@media (max-width: 900px) {
+  .quick-facts { grid-template-columns: repeat(2, 1fr); }
+  .intro-body { grid-template-columns: 1fr; gap: 0; }
+}
+@media (max-width: 560px) {
+  .intro-hero { padding: 0 16px; margin: 24px auto 22px; }
+  .intro-lead { font-size: 1.02rem; margin-bottom: 22px; }
+  .quick-facts { gap: 10px; }
+  .quick-fact-card { padding: 13px 14px 13px 18px; }
+  .quick-fact-value { font-size: 0.9rem; }
+}
+
+/* ─────────────────────────────────────────────
+   STICKY FILTER BAR
+   ───────────────────────────────────────────── */
+.filter-bar-wrap {
+  position: sticky;
+  top: 68px;
+  z-index: 50;
+  margin: 0 -24px 22px;
+  background: rgba(253, 246, 236, 0.92);
+  backdrop-filter: saturate(160%) blur(10px);
+  -webkit-backdrop-filter: saturate(160%) blur(10px);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.filter-bar {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.filter-bar-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.filter-bar-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-right: 4px;
+}
+.filter-pill {
+  padding: 5px 13px;
+  border-radius: 18px;
+  border: 1.5px solid var(--border);
+  background: white;
+  color: var(--brown-mid);
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: "Outfit", sans-serif;
+}
+.filter-pill:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.filter-pill.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+  font-weight: 600;
+}
+.filter-bar-search {
+  padding: 7px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-family: "Outfit", sans-serif;
+  font-size: 0.85rem;
+  background: white;
+  color: var(--brown-dark);
+  outline: none;
+  min-width: 200px;
+  transition: border-color 0.2s;
+}
+.filter-bar-search:focus { border-color: var(--accent); }
+.filter-bar-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.filter-bar-count {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.filter-bar-count strong {
+  color: var(--brown-dark);
+  font-weight: 700;
+}
+.filter-bar-sort, .filter-bar-select {
+  padding: 7px 30px 7px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-family: "Outfit", sans-serif;
+  font-size: 0.82rem;
+  background: white;
+  color: var(--brown-dark);
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A7460' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.filter-bar-sort:focus, .filter-bar-select:focus { border-color: var(--accent); }
+
+.clear-filters-btn {
+  padding: 5px 12px;
+  border-radius: 18px;
+  border: 1.5px dashed var(--border);
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.76rem;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: "Outfit", sans-serif;
+  transition: all 0.15s;
+}
+.clear-filters-btn:hover {
+  border-color: var(--brown-mid);
+  color: var(--brown-mid);
+}
+
+.card.is-hidden { display: none !important; }
+
+.empty-grid-msg {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  display: none;
+}
+.empty-grid-msg.show { display: block; }
+.empty-grid-msg strong { color: var(--brown-dark); display: block; margin-bottom: 6px; font-size: 1.05rem; }
+
+/* Show-more pagination */
+.show-more-wrap {
+  text-align: center;
+  margin: 28px 0 0;
+}
+.show-more-btn {
+  padding: 10px 26px;
+  background: white;
+  color: var(--brown-dark);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-family: "Outfit", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.show-more-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+@media (max-width: 768px) {
+  .filter-bar-wrap { margin: 0 -16px 18px; }
+  .filter-bar { padding: 10px 16px; gap: 8px; }
+  .filter-bar-label { font-size: 0.65rem; }
+  .filter-pill { padding: 4px 10px; font-size: 0.74rem; }
+  .filter-bar-search { min-width: 0; flex: 1; }
+  .filter-bar-right { width: 100%; justify-content: space-between; margin-left: 0; gap: 8px; }
+}
 </style>
 
 <!-- CollectionPage + ItemList schema for rich results -->
@@ -2271,28 +2544,81 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
   </div>
 </header>
 
-<main class="main" style="max-width:1200px;margin:0 auto;padding:32px 24px 0;">
-  <section class="category-intro" style="margin-bottom:32px;line-height:1.65;font-size:1rem;color:var(--brown-dark);max-width:820px;">
-    <p>Brazil is the largest coffee producer in the world, and that scale shows up in your cup as consistency. Most of the Brazil coffee beans on this page come from Minas Gerais, the Cerrado plateau, Mogiana in São Paulo, and the Sul de Minas region — where the land is flatter, the farms are bigger, and elevations sit lower than in much of Latin America, usually between 800m and 1,300m.</p>
-      <!-- source: Brazil Specialty Coffee Association (BSCA), regional production data, https://bsca.com.br -->
-      <!-- source: USDA Foreign Agricultural Service, Brazil Coffee Annual Report 2024 -->
-      <p>That lower altitude isn't a downside — it's just a different style. Brazilian coffee tends to develop more sweetness and body and less of the bright acidity you get from high-grown East African beans. The flavour profile leans heavily toward dark chocolate, milk chocolate, peanut, almond, hazelnut, brown sugar, and sometimes a soft red apple or orange note in the better lots.</p>
-      <p>Most Brazil lots use natural or pulped natural processing. The cherry dries on the bean, the sugars deepen, and the resulting cup feels rounded and smooth. A smaller but growing number of producers are running anaerobic and yeast-fermented lots, which add tropical fruit and winey notes without losing the body Brazil is known for.</p>
-      <!-- source: World Coffee Research processing manual, "Pulped Natural / Honey Processing in Brazil" -->
-      <p>For Malaysian home brewers, Brazil is the workhorse — the bag you reach for when you want a flat white that actually tastes like a flat white, or a moka pot brew that won't punish you. It plays beautifully in espresso, milk drinks, French press, and AeroPress. Roasts sit anywhere from medium to medium-dark.</p>
-      <p>If you've ever wondered why the espresso at your favourite local café feels familiar — there's almost always Brazil sitting underneath the recipe. Browse the Brazil beans below, or set this origin in context with our <a href="/posts/coffee-bean-origins">coffee bean origins guide</a>. Most Brazilian lots are <a href="/shop/natural-process-coffee-beans">natural processed</a>, which is what gives them their sweetness — and Brazil's body is why so many espresso <a href="/posts/single-origin-vs-blend-coffee">blends</a> are built on it. Back to the <a href="/shop">full shop</a> for the rest.</p>
-      <p><strong>Related reads:</strong> Read why <a href="/posts/brazil-coffee-beans-to-try">Brazil coffee</a> works so well for daily brewing, then compare it with <a href="/posts/single-origin-vs-blend-coffee">single origin vs blend coffee</a> and the <a href="/posts/natural-vs-washed-coffee">natural vs washed</a> guide.</p>
-  </section>
+<section class="intro-hero">
+  <p class="intro-lead">Brazil is the <strong>largest coffee producer in the world</strong>, and that scale shows up in the cup as consistency — smooth, chocolatey, low-acid lots from Cerrado, Sul de Minas, Mogiana and Bahia that anchor most of the espresso you drink.</p>
 
-  <div class="top-bar">
-    <div class="top-bar-left">Showing <strong>129</strong> beans in this category — visit the <a href="/shop" style="color:var(--accent);text-decoration:none;font-weight:600;">full shop</a> for filters and more.</div>
+  <div class="quick-facts">
+    <div class="quick-fact-card">
+      <div class="quick-fact-label">Regions</div>
+      <div class="quick-fact-value">Cerrado · Sul de Minas · Mogiana · Bahia</div>
+    </div>
+    <div class="quick-fact-card">
+      <div class="quick-fact-label">Elevation</div>
+      <div class="quick-fact-value">800 – 1,400 m</div>
+    </div>
+    <div class="quick-fact-card">
+      <div class="quick-fact-label">Varietals</div>
+      <div class="quick-fact-value">Bourbon · Catuai · Mundo Novo · Yellow Bourbon</div>
+    </div>
+    <div class="quick-fact-card">
+      <div class="quick-fact-label">Flavour Profile</div>
+      <div class="quick-fact-value">Nuts · Chocolate · Caramel · Brown Sugar</div>
+    </div>
   </div>
-  <div class="shop-heading">
-    <h2>Browse Brazil Coffee Beans</h2>
-    <p>Smooth Cerrado, Mogiana, Sul de Minas and Minas Gerais lots — the espresso backbone of most blends.</p>
+
+  <div class="intro-body">
+    <div>
+      <p>Brazilian farms sit lower and flatter than most Latin American origins — typically 800–1,400m across Minas Gerais, the Cerrado plateau, Mogiana and Sul de Minas. That altitude builds <strong>more sweetness and body, less of the bright acidity</strong> you get from high-grown East Africans.</p>
+      <p>Expect dark and milk chocolate, peanut, almond, hazelnut, brown sugar, and a soft red apple or orange note in the better lots.</p>
+    </div>
+    <div>
+      <p>Most Brazil lots are <strong>natural or pulped natural</strong> — the cherry dries on the bean, sugars deepen, and the cup feels rounded. A growing crop of anaerobic and yeast-fermented lots adds tropical fruit and winey notes without giving up Brazil's body.</p>
+      <p>It's the workhorse origin — flat whites, moka pot, espresso, milk drinks, French press, AeroPress. Roasts sit medium to medium-dark.</p>
+    </div>
   </div>
-  <div class="grid">
-    
+
+  <div class="intro-related">
+    <strong>Related reads:</strong> Read why <a href="/posts/brazil-coffee-beans-to-try">Brazil coffee</a> works so well for daily brewing, then compare it with <a href="/posts/single-origin-vs-blend-coffee">single origin vs blend coffee</a> and the <a href="/posts/natural-vs-washed-coffee">natural vs washed</a> guide.
+  </div>
+</section>
+
+<main class="main" style="max-width:1200px;margin:0 auto;padding:0 24px;overflow:visible;">
+  <div class="products-section">
+  <div class="filter-bar-wrap">
+    <div class="filter-bar" role="region" aria-label="Filter Brazil coffee beans">
+      <input type="search" class="filter-bar-search" id="searchBox" placeholder="Search bean or roaster…" aria-label="Search beans">
+      <select class="filter-bar-select" id="originSelect" aria-label="Filter by origin">
+        <option value="all">All Origins</option>
+      </select>
+      <div class="filter-bar-group">
+        <span class="filter-bar-label">Roast</span>
+        <button class="filter-pill active" data-filter="roast" data-value="all">All</button>
+        <button class="filter-pill" data-filter="roast" data-value="light">Light</button>
+        <button class="filter-pill" data-filter="roast" data-value="medium">Medium</button>
+        <button class="filter-pill" data-filter="roast" data-value="dark">Dark</button>
+      </div>
+      <div class="filter-bar-group">
+        <span class="filter-bar-label">Brew</span>
+        <button class="filter-pill active" data-filter="brew" data-value="all">All</button>
+        <button class="filter-pill" data-filter="brew" data-value="filter">Filter</button>
+        <button class="filter-pill" data-filter="brew" data-value="espresso">Espresso</button>
+      </div>
+      <button class="clear-filters-btn" id="clearFilters" type="button">Clear</button>
+      <div class="filter-bar-right">
+        <span class="filter-bar-count">Showing <strong id="resultCount">129</strong> of 129</span>
+        <select class="filter-bar-sort" id="sortSelect" aria-label="Sort coffee beans">
+          <option value="default">Sort: Featured</option>
+          <option value="price-asc">Price: Low → High</option>
+          <option value="price-desc">Price: High → Low</option>
+          <option value="name">Name: A → Z</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid" id="productGrid">
+    <div class="empty-grid-msg" id="emptyMsg"><strong>No beans match these filters.</strong>Try clearing a filter or two.</div>
+
     <div class="card">
       <img class="card-img" src="https://down-my.img.susercontent.com/file/my-11134207-23030-wpj5tvnzblov6f.webp" alt="Craft Origin Brazil Cerrado – specialty coffee beans Malaysia" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="card-img-placeholder" style="display:none">☕</div>
       <div class="card-body">
@@ -4669,6 +4995,11 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
     </div>
   </div>
 
+  <div class="show-more-wrap" id="showMoreWrap" style="display:none;">
+    <button class="show-more-btn" id="showMoreBtn" type="button">Show more beans</button>
+  </div>
+  </div>
+
   <section class="faq-section" id="faq" aria-labelledby="faq-heading">
     <h2 id="faq-heading">Brazil Coffee Beans — Frequently Asked Questions</h2>
     <p class="faq-sub">Quick answers from our team and from cuppings across Malaysian roasters.</p>
@@ -4747,6 +5078,150 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
 
 <script>
   function toggleMenu(){ document.getElementById('mobileMenu').classList.toggle('open'); }
+
+  /* ── Brazil shop: filter + sort + search + paginate ── */
+  (function(){
+    const grid = document.getElementById('productGrid');
+    if (!grid) return;
+    const emptyMsg = document.getElementById('emptyMsg');
+    const cards = Array.from(grid.querySelectorAll('.card'));
+    const countEl = document.getElementById('resultCount');
+    const totalCount = cards.length;
+    const originalOrder = cards.slice();
+    const PAGE_SIZE = 24;
+    const showMoreWrap = document.getElementById('showMoreWrap');
+    const showMoreBtn = document.getElementById('showMoreBtn');
+    let visibleLimit = PAGE_SIZE;
+
+    const state = { roast: 'all', brew: 'all', origin: 'all', search: '', sort: 'default' };
+
+    // Pre-parse card data once for speed.
+    const cardData = cards.map(card => {
+      const metas = card.querySelectorAll('.card-meta-item');
+      let roast = '', origin = '', brew = '';
+      metas.forEach(m => {
+        const txt = m.textContent.trim();
+        const valEl = m.querySelector('span');
+        const val = valEl ? valEl.textContent.trim() : '';
+        if (txt.startsWith('🔥')) roast = val.toLowerCase();
+        else if (txt.startsWith('🌍')) origin = val;
+        else if (txt.startsWith('☕')) brew = val.toLowerCase();
+      });
+      const origins = origin.split(',').map(s => s.trim()).filter(Boolean);
+      const priceTxt = (card.querySelector('.card-price')?.textContent || '').replace(/[^0-9.]/g,'');
+      const price = parseFloat(priceTxt) || 0;
+      const name = (card.querySelector('.card-name')?.textContent || '').trim();
+      const brand = (card.querySelector('.card-brand')?.textContent || '').trim();
+      const searchHay = (name + ' ' + brand + ' ' + origin).toLowerCase();
+      return { card, roast, brew, origin, origins, price, name, searchHay };
+    });
+
+    // Build the Origin dropdown dynamically.
+    const originSet = new Set();
+    cardData.forEach(d => d.origins.forEach(o => originSet.add(o)));
+    const originSel = document.getElementById('originSelect');
+    Array.from(originSet).sort().forEach(o => {
+      const opt = document.createElement('option');
+      opt.value = o;
+      opt.textContent = o;
+      originSel.appendChild(opt);
+    });
+
+    function matchRoast(cardRoast, f){
+      if (f === 'all') return true;
+      if (!cardRoast) return false; // hide unknowns when a specific roast is selected
+      if (f === 'light')  return /\blight\b/.test(cardRoast);
+      if (f === 'dark')   return /\bdark\b/.test(cardRoast);
+      if (f === 'medium') return /\bmedium\b/.test(cardRoast) && !/\blight\b|\bdark\b/.test(cardRoast);
+      return cardRoast.includes(f);
+    }
+    function matchOrigin(cardOrigins, f){
+      if (f === 'all') return true;
+      return cardOrigins.includes(f);
+    }
+    function matchBrew(cardBrew, f){
+      if (f === 'all') return true;
+      if (!cardBrew) return false;
+      if (cardBrew.includes('both')) return true; // "Both" matches any brew filter
+      return cardBrew.includes(f);
+    }
+    function matchSearch(hay, q){
+      if (!q) return true;
+      return q.split(/\s+/).every(term => hay.includes(term));
+    }
+
+    function apply(resetPage){
+      if (resetPage) visibleLimit = PAGE_SIZE;
+      const q = state.search.trim().toLowerCase();
+
+      // First pass: determine which cards pass filters
+      cardData.forEach(d => {
+        d.passes = matchRoast(d.roast, state.roast)
+                && matchBrew(d.brew, state.brew)
+                && matchOrigin(d.origins, state.origin)
+                && matchSearch(d.searchHay, q);
+      });
+
+      // Sort the passing cards
+      let passing = cardData.filter(d => d.passes);
+      if (state.sort === 'price-asc')       passing.sort((a,b) => a.price - b.price);
+      else if (state.sort === 'price-desc') passing.sort((a,b) => b.price - a.price);
+      else if (state.sort === 'name')       passing.sort((a,b) => a.name.localeCompare(b.name));
+      else passing = originalOrder.map(c => cardData.find(d => d.card === c)).filter(d => d.passes);
+
+      // Append in sorted order, hide everything else
+      cardData.forEach(d => d.card.classList.add('is-hidden'));
+      const shown = passing.slice(0, visibleLimit);
+      shown.forEach(d => { d.card.classList.remove('is-hidden'); grid.appendChild(d.card); });
+      grid.appendChild(emptyMsg);
+
+      countEl.textContent = passing.length;
+      emptyMsg.classList.toggle('show', passing.length === 0);
+
+      // Show-more button
+      if (passing.length > visibleLimit) {
+        showMoreWrap.style.display = '';
+        showMoreBtn.textContent = `Show more beans (${passing.length - visibleLimit} remaining)`;
+      } else {
+        showMoreWrap.style.display = 'none';
+      }
+    }
+
+    document.querySelectorAll('.filter-pill[data-filter]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const f = btn.dataset.filter;
+        const v = btn.dataset.value;
+        state[f] = v;
+        document.querySelectorAll(`.filter-pill[data-filter="${f}"]`).forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        apply(true);
+      });
+    });
+
+    originSel.addEventListener('change', () => { state.origin = originSel.value; apply(true); });
+    document.getElementById('sortSelect').addEventListener('change', e => { state.sort = e.target.value; apply(true); });
+
+    const searchBox = document.getElementById('searchBox');
+    let searchTimer;
+    searchBox.addEventListener('input', () => {
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(() => { state.search = searchBox.value; apply(true); }, 150);
+    });
+
+    document.getElementById('clearFilters').addEventListener('click', () => {
+      state.roast = 'all'; state.brew = 'all'; state.origin = 'all'; state.search = '';
+      searchBox.value = '';
+      originSel.value = 'all';
+      document.querySelectorAll('.filter-pill[data-filter]').forEach(b => {
+        b.classList.toggle('active', b.dataset.value === 'all');
+      });
+      apply(true);
+    });
+
+    showMoreBtn.addEventListener('click', () => { visibleLimit += PAGE_SIZE; apply(false); });
+
+    apply(true);
+  })();
 </script>
 </body>
 </html>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Nutty and cocoa taste notes</title>
+  <desc id="desc">A cartoon chocolate bar with a cocoa pod and almond.</desc>
+  <g fill="none" stroke="#fff8ea" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M58 81 140 39l57 109-82 43L58 81Z" fill="#7a3d28" stroke-width="9"/>
+    <path d="m87 66 57 109M117 51l57 109M76 111l82-42M94 145l82-42" stroke-width="7" opacity=".9"/>
+    <path d="M145 160c31-24 65-21 78 7-6 34-39 55-76 52-19-20-20-39-2-59Z" fill="#c7843a" stroke-width="9"/>
+    <path d="M161 168c7 15 7 31-1 48M184 162c7 18 6 35-3 51M206 169c0 15-6 28-18 39" stroke-width="6" opacity=".8"/>
+    <path d="M45 163c14-32 44-42 68-21-4 36-27 58-64 58-13-13-15-25-4-37Z" fill="#dca552" stroke-width="9"/>
+    <path d="M65 174c14-12 30-20 48-23" stroke-width="7"/>
+  </g>
+</svg>

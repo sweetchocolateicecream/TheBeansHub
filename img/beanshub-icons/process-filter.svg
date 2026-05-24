@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Filter coffee beans</title>
+  <desc id="desc">A playful cartoon filter funnel with slider controls and coffee beans.</desc>
+  <g fill="none" stroke="#fff8ea" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M43 54h170l-63 75v48l-44 31v-79L43 54Z" fill="#f7a83b" stroke-width="11"/>
+    <path d="M78 86h101M88 117h79" stroke-width="10"/>
+    <circle cx="114" cy="86" r="14" fill="#2f623f" stroke-width="8"/>
+    <circle cx="145" cy="117" r="14" fill="#dbe8d3" stroke-width="8"/>
+    <path d="M45 176c10-18 29-21 43-5-8 20-28 24-43 5ZM173 187c10-18 29-21 43-5-8 20-28 24-43 5Z" fill="#2f623f" stroke-width="8"/>
+    <path d="M55 39h15M202 34h23M213 146h25" stroke="#f7a83b" stroke-width="9"/>
+  </g>
+</svg>

@@ -1,0 +1,1972 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Beans Hub — Carousel Design System</title>
+  <style>
+    /* ============================================================
+       DESIGN SYSTEM TOKENS
+    ============================================================ */
+    :root {
+      /* Brand Colors */
+      --green:        #296241;
+      --green-dark:   #183823;
+      --green-ghost:  rgba(41, 98, 65, 0.10);
+      --green-light:  rgba(41, 98, 65, 0.16);
+      --green-tint:   rgba(41, 98, 65, 0.08);
+      --cream:        #fdf6ec;
+      --cream-bg:     #efe4d4;
+      --white:        #ffffff;
+      --orange:       #fda11d;
+      --orange-soft:  #ffe4b7;
+      --orange-tint:  rgba(253, 161, 29, 0.18);
+      --orange-tint2: rgba(253, 161, 29, 0.22);
+      --text:         #1a2e1f;
+      --text-body:    #2a3a2a;
+      --text-mid:     #2d402f;
+      --text-deep:    #304431;
+      --muted:        #627160;
+      --border:       #eadfcf;
+
+      /* Slide Canvas */
+      --slide-w: 1080px;
+      --slide-h: 1350px;
+
+      /* Spacing Scale */
+      --space-xs:  12px;
+      --space-sm:  24px;
+      --space-md:  38px;
+      --space-lg:  54px;
+      --space-xl:  78px;
+
+      /* Border Radius */
+      --radius-sm:  8px;
+      --radius-md:  14px;
+      --radius-pill: 999px;
+
+      /* Typography Scale (slide-native px) */
+      --type-display:    102px;
+      --type-h1:          88px;
+      --type-h2:          72px;
+      --type-h3:          56px;
+      --type-sub:         42px;
+      --type-body:        37px;
+      --type-note:        29px;
+      --type-meta:        25px;
+      --type-eyebrow:     22px;
+      --type-brand:       26px;
+      --type-count:       22px;
+      --type-ghost:      210px;
+
+      /* System UI scale for design doc */
+      --doc-bg: #f0ebe3;
+      --doc-text: #1a2e1f;
+      --doc-border: #d8cfc4;
+      --doc-section-bg: #ffffff;
+    }
+
+    /* ============================================================
+       DOC CHROME
+    ============================================================ */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--doc-bg);
+      color: var(--doc-text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .doc-header {
+      background: var(--green-dark);
+      color: var(--cream);
+      padding: 56px 64px 48px;
+    }
+    .doc-header .eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 12px;
+    }
+    .doc-header h1 {
+      font-size: 36px;
+      font-weight: 900;
+      line-height: 1.1;
+      color: var(--cream);
+      margin-bottom: 10px;
+    }
+    .doc-header p {
+      font-size: 15px;
+      color: rgba(253, 246, 236, 0.65);
+      max-width: 600px;
+    }
+
+    .doc-nav {
+      background: var(--green);
+      padding: 0 64px;
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+    }
+    .doc-nav a {
+      display: block;
+      padding: 14px 20px;
+      font-size: 12px;
+      font-weight: 700;
+      color: rgba(253, 246, 236, 0.7);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      border-bottom: 3px solid transparent;
+    }
+    .doc-nav a:hover { color: var(--cream); border-bottom-color: var(--orange); }
+
+    .doc-body {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 56px 64px 120px;
+    }
+
+    .section {
+      margin-bottom: 80px;
+    }
+    .section-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 6px;
+    }
+    .section-heading {
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--green-dark);
+      margin-bottom: 4px;
+      line-height: 1.2;
+    }
+    .section-desc {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 32px;
+      max-width: 640px;
+    }
+    hr.section-rule {
+      border: none;
+      border-top: 1px solid var(--doc-border);
+      margin-bottom: 32px;
+    }
+
+    /* ============================================================
+       TOKEN GRIDS
+    ============================================================ */
+    .token-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 12px;
+    }
+    .token-swatch {
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--doc-border);
+      background: white;
+    }
+    .swatch-color {
+      height: 72px;
+    }
+    .swatch-info {
+      padding: 10px 12px;
+    }
+    .swatch-name {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text);
+      display: block;
+    }
+    .swatch-hex {
+      font-size: 11px;
+      color: var(--muted);
+      font-family: monospace;
+    }
+    .swatch-role {
+      font-size: 10px;
+      color: var(--muted);
+      margin-top: 2px;
+      line-height: 1.4;
+    }
+
+    /* ============================================================
+       TYPOGRAPHY TABLE
+    ============================================================ */
+    .type-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--doc-border);
+    }
+    .type-table th {
+      background: var(--cream-bg);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--doc-border);
+    }
+    .type-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid #f0ebe3;
+      font-size: 13px;
+      color: var(--text);
+      vertical-align: middle;
+    }
+    .type-table tr:last-child td { border-bottom: none; }
+    .type-table .preview-cell {
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 900;
+      color: var(--green-dark);
+      line-height: 1;
+    }
+    .type-table code {
+      font-size: 11px;
+      background: var(--cream-bg);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+      color: var(--green);
+    }
+
+    /* ============================================================
+       COMPONENT SHOWCASE
+    ============================================================ */
+    .component-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .component-card {
+      background: white;
+      border: 1px solid var(--doc-border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .component-preview {
+      background: var(--cream-bg);
+      padding: 28px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 120px;
+    }
+    .component-meta {
+      padding: 14px 16px;
+      border-top: 1px solid var(--doc-border);
+    }
+    .component-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+    .component-desc {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* ============================================================
+       SLIDE COMPONENT PREVIEWS (native scale ÷ 5.4)
+       Actual slide = 1080×1350. Preview = 200×250.
+    ============================================================ */
+    .eyebrow-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 12px;
+      border-radius: var(--radius-pill);
+      background: var(--orange-tint);
+      color: var(--green);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .truth-card-preview {
+      padding: 14px 16px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      box-shadow: 0 4px 14px rgba(41, 98, 65, 0.10);
+      max-width: 220px;
+    }
+    .truth-label-preview {
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 6px;
+    }
+    .truth-body-preview {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-body);
+      line-height: 1.3;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .tagline-preview {
+      padding: 12px 14px;
+      border-left: 4px solid var(--orange);
+      background: rgba(255,255,255,0.62);
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--text-mid);
+      max-width: 220px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .cta-preview {
+      padding: 14px 18px;
+      border-radius: var(--radius-sm);
+      background: var(--green);
+      color: var(--cream);
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1.2;
+      font-family: Arial, Helvetica, sans-serif;
+      max-width: 220px;
+    }
+    .cta-preview strong { color: var(--orange-soft); }
+
+    .step-card-preview {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 12px 14px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      max-width: 220px;
+    }
+    .step-num-preview {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--green);
+      color: white;
+      font-size: 11px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .step-text-preview {
+      font-size: 12px;
+      color: var(--text-body);
+      font-weight: 600;
+      line-height: 1.3;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .brand-bar-preview {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 14px;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      width: 100%;
+      max-width: 240px;
+    }
+    .brand-name-preview {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--green);
+      letter-spacing: 0.02em;
+    }
+    .count-preview {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .progress-dots-preview {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+    }
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--border);
+    }
+    .dot.active {
+      background: var(--green);
+      width: 18px;
+      border-radius: 4px;
+    }
+
+    .quote-box-preview {
+      padding: 12px 14px;
+      background: var(--orange-tint);
+      border-radius: var(--radius-sm);
+      max-width: 220px;
+    }
+    .quote-mark-preview {
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--orange);
+      line-height: 0.8;
+      margin-bottom: 4px;
+      font-family: Georgia, serif;
+    }
+    .quote-text-preview {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-deep);
+      line-height: 1.35;
+      font-style: italic;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .divider-preview {
+      width: 100%;
+      max-width: 220px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .divider-dot-center {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--orange);
+      flex-shrink: 0;
+    }
+
+    /* ============================================================
+       SLIDE TYPE GALLERY
+    ============================================================ */
+    .slide-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+    }
+    .slide-card {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--doc-border);
+      background: white;
+    }
+    .slide-preview-wrap {
+      position: relative;
+      width: 100%;
+      padding-top: 125%; /* 1080:1350 = 4:5 */
+      overflow: hidden;
+      background: var(--cream);
+    }
+    .slide-inner {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    /* Full-size 1080×1350 slide scaled to fit */
+    .slide-scaled {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 1080px;
+      height: 1350px;
+      transform-origin: top left;
+    }
+
+    .slide-card-meta {
+      padding: 16px 18px;
+      border-top: 1px solid var(--doc-border);
+    }
+    .slide-type-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 4px;
+    }
+    .slide-card-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--green-dark);
+      margin-bottom: 4px;
+    }
+    .slide-card-desc {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .slide-card-rules {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid #f0ebe3;
+    }
+    .slide-card-rules li {
+      font-size: 11.5px;
+      color: var(--text);
+      line-height: 1.6;
+      list-style: none;
+      padding-left: 14px;
+      position: relative;
+    }
+    .slide-card-rules li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--green);
+      font-size: 10px;
+    }
+
+    /* ============================================================
+       FULL SLIDE TEMPLATES (1080×1350)
+    ============================================================ */
+    .slide-t {
+      position: relative;
+      width: 1080px;
+      height: 1350px;
+      overflow: hidden;
+      background: var(--cream);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* Background treatment */
+    .slide-t::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(253, 161, 29, 0.22), transparent 26%),
+        radial-gradient(circle at 88% 86%, rgba(41, 98, 65, 0.16), transparent 30%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .t-grain {
+      position: absolute;
+      inset: 0;
+      opacity: 0.09;
+      background-image:
+        linear-gradient(90deg, rgba(41, 98, 65, 0.14) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(41, 98, 65, 0.12) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(to bottom, transparent, black 18%, black 82%, transparent);
+      z-index: 0;
+    }
+
+    /* Brand header */
+    .t-brand {
+      position: absolute;
+      top: 54px;
+      left: 64px;
+      right: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 3;
+    }
+    .t-brand-name {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      color: var(--green);
+    }
+    .t-count {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    /* Content layer */
+    .t-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      padding: 160px 78px 88px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Eyebrow pill */
+    .t-eyebrow {
+      width: fit-content;
+      padding: 12px 20px;
+      border-radius: 999px;
+      background: var(--orange-tint);
+      color: var(--green);
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 34px;
+    }
+
+    /* Headings */
+    .t-h1 {
+      margin: 0;
+      font-size: 102px;
+      font-weight: 900;
+      line-height: 0.98;
+      letter-spacing: -0.01em;
+      color: var(--green-dark);
+      max-width: 850px;
+    }
+    .t-h2 {
+      margin: 0;
+      font-size: 88px;
+      font-weight: 900;
+      line-height: 0.98;
+      color: var(--green-dark);
+      max-width: 840px;
+    }
+    .t-h3 {
+      margin: 0;
+      font-size: 72px;
+      font-weight: 900;
+      line-height: 1.0;
+      color: var(--green-dark);
+      max-width: 840px;
+    }
+    .t-quote-span {
+      display: block;
+      color: var(--green);
+    }
+
+    /* Sub / body */
+    .t-sub {
+      max-width: 830px;
+      margin: 38px 0 0;
+      font-size: 42px;
+      line-height: 1.18;
+      font-weight: 700;
+      color: var(--text-deep);
+    }
+    .t-body {
+      font-size: 37px;
+      line-height: 1.28;
+      font-weight: 600;
+      color: var(--text-body);
+    }
+    .t-note {
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: 29px;
+      line-height: 1.32;
+      font-weight: 600;
+    }
+
+    /* Truth card */
+    .t-truth-card {
+      margin-top: 58px;
+      padding: 38px 42px;
+      background: var(--white);
+      border: 2px solid var(--border);
+      border-radius: var(--radius-sm);
+      box-shadow: 0 24px 60px rgba(41, 98, 65, 0.10);
+    }
+    .t-truth-label {
+      color: var(--orange);
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    /* Tagline block */
+    .t-tagline {
+      max-width: 740px;
+      margin-top: 40px;
+      padding: 28px 34px;
+      border-left: 8px solid var(--orange);
+      background: rgba(255, 255, 255, 0.62);
+      font-size: 34px;
+      line-height: 1.28;
+      font-weight: 700;
+      color: var(--text-mid);
+    }
+
+    /* CTA block */
+    .t-cta {
+      margin-top: 44px;
+      padding: 34px 40px;
+      border-radius: var(--radius-sm);
+      background: var(--green);
+      color: var(--cream);
+      font-size: 38px;
+      line-height: 1.2;
+      font-weight: 850;
+    }
+    .t-cta strong { color: var(--orange-soft); }
+
+    /* Ghost number */
+    .t-ghost-num {
+      position: absolute;
+      right: 52px;
+      bottom: 42px;
+      color: var(--green-ghost);
+      font-size: 210px;
+      line-height: 0.75;
+      font-weight: 900;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Footer */
+    .t-footer {
+      margin-top: auto;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 28px;
+      color: var(--green);
+      font-size: 25px;
+      font-weight: 800;
+    }
+    .t-swipe {
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 25px;
+    }
+
+    /* Step list variant */
+    .t-steps {
+      margin-top: 52px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .t-step {
+      display: flex;
+      gap: 36px;
+      align-items: flex-start;
+    }
+    .t-step-num {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--green);
+      color: white;
+      font-size: 34px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .t-step-text {
+      padding-top: 12px;
+    }
+    .t-step-title {
+      font-size: 40px;
+      font-weight: 800;
+      color: var(--green-dark);
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+    .t-step-desc {
+      font-size: 30px;
+      font-weight: 600;
+      color: var(--text-body);
+      line-height: 1.3;
+    }
+
+    /* List variant */
+    .t-list {
+      margin-top: 52px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .t-list-item {
+      padding: 32px 38px;
+      background: white;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      box-shadow: 0 8px 28px rgba(41,98,65,0.06);
+    }
+    .t-list-label {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 10px;
+    }
+    .t-list-body {
+      font-size: 34px;
+      font-weight: 700;
+      color: var(--text-body);
+      line-height: 1.25;
+    }
+
+    /* Quote slide variant */
+    .t-quote-block {
+      margin-top: 58px;
+      padding: 48px 52px;
+      background: var(--orange-tint);
+      border-radius: var(--radius-md);
+      max-width: 900px;
+    }
+    .t-quote-mark {
+      font-family: Georgia, serif;
+      font-size: 90px;
+      line-height: 0.7;
+      color: var(--orange);
+      margin-bottom: 20px;
+    }
+    .t-quote-text {
+      font-size: 48px;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--text-deep);
+      line-height: 1.3;
+    }
+    .t-quote-attr {
+      margin-top: 28px;
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--green);
+      letter-spacing: 0.04em;
+    }
+
+    /* Dark slide variant */
+    .slide-t.dark {
+      background: var(--green-dark);
+    }
+    .slide-t.dark::before {
+      background:
+        radial-gradient(circle at 20% 15%, rgba(253,161,29,0.25), transparent 30%),
+        radial-gradient(circle at 80% 85%, rgba(253,246,236,0.08), transparent 35%);
+    }
+    .slide-t.dark .t-h1,
+    .slide-t.dark .t-h2,
+    .slide-t.dark .t-h3 { color: var(--cream); }
+    .slide-t.dark .t-sub { color: rgba(253,246,236,0.75); }
+    .slide-t.dark .t-brand-name { color: var(--orange); }
+    .slide-t.dark .t-count { color: rgba(253,246,236,0.45); }
+    .slide-t.dark .t-footer { color: var(--orange); }
+    .slide-t.dark .t-swipe { color: rgba(253,246,236,0.5); }
+    .slide-t.dark .t-ghost-num { color: rgba(253,246,236,0.06); }
+
+    /* ============================================================
+       SPACING & LAYOUT REFERENCE
+    ============================================================ */
+    .layout-diagram {
+      position: relative;
+      width: 100%;
+      max-width: 400px;
+      aspect-ratio: 1080 / 1350;
+      background: var(--cream);
+      border: 1px solid var(--doc-border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .layout-zone {
+      position: absolute;
+      border: 1.5px dashed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 700;
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    /* ============================================================
+       RULES TABLE
+    ============================================================ */
+    .rules-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--doc-border);
+    }
+    .rules-table th {
+      background: var(--cream-bg);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--doc-border);
+    }
+    .rules-table td {
+      padding: 13px 16px;
+      border-bottom: 1px solid #f0ebe3;
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.5;
+      vertical-align: top;
+    }
+    .rules-table tr:last-child td { border-bottom: none; }
+    .rules-table .rule-name {
+      font-weight: 700;
+      color: var(--green-dark);
+      white-space: nowrap;
+    }
+    .rules-table code {
+      font-size: 11px;
+      background: var(--cream-bg);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+      color: var(--green);
+    }
+
+    /* ============================================================
+       DO / DON'T
+    ============================================================ */
+    .do-dont {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .do-card, .dont-card {
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--doc-border);
+    }
+    .do-header, .dont-header {
+      padding: 10px 16px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+    }
+    .do-header { background: #e1f5ee; color: #0F6E56; }
+    .dont-header { background: #fcebeb; color: #a32d2d; }
+    .do-body, .dont-body {
+      padding: 14px 16px;
+      background: white;
+    }
+    .do-body li, .dont-body li {
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.6;
+      list-style: none;
+      padding-left: 16px;
+      position: relative;
+      margin-bottom: 4px;
+    }
+    .do-body li::before { content: "✓"; position: absolute; left: 0; color: #0F6E56; font-weight: 700; }
+    .dont-body li::before { content: "✗"; position: absolute; left: 0; color: #a32d2d; font-weight: 700; }
+
+  </style>
+</head>
+<body>
+
+<!-- ================================================================
+     HEADER
+================================================================ -->
+<div class="doc-header">
+  <div class="eyebrow">Design System · v1.0</div>
+  <h1>The Beans Hub<br>Carousel Design System</h1>
+  <p>Brand tokens, slide templates, component library, and layout rules for all Instagram carousel posts.</p>
+</div>
+
+<nav class="doc-nav">
+  <a href="#tokens">Tokens</a>
+  <a href="#typography">Typography</a>
+  <a href="#components">Components</a>
+  <a href="#slide-types">Slide Types</a>
+  <a href="#templates">Templates</a>
+  <a href="#layout">Layout &amp; Spacing</a>
+  <a href="#rules">Rules</a>
+  <a href="#voice">Voice</a>
+</nav>
+
+<div class="doc-body">
+
+  <!-- ============================================================
+       1. DESIGN TOKENS — COLORS
+  ============================================================ -->
+  <section class="section" id="tokens">
+    <div class="section-title">Section 01</div>
+    <div class="section-heading">Color Tokens</div>
+    <div class="section-desc">All slide colors are derived from these six base values. Never introduce a new color — extend using opacity variants of existing tokens.</div>
+    <hr class="section-rule">
+
+    <div class="token-grid">
+      <div class="token-swatch">
+        <div class="swatch-color" style="background:#296241;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">Green</span>
+          <span class="swatch-hex">#296241</span>
+          <div class="swatch-role">Primary brand. Brand name, eyebrow text, CTA backgrounds, step circles, footer.</div>
+        </div>
+      </div>
+      <div class="token-swatch">
+        <div class="swatch-color" style="background:#183823;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">Green Dark</span>
+          <span class="swatch-hex">#183823</span>
+          <div class="swatch-role">All display headings (H1, H2, H3). Dark slide backgrounds.</div>
+        </div>
+      </div>
+      <div class="token-swatch">
+        <div class="swatch-color" style="background:#fdf6ec;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">Cream</span>
+          <span class="swatch-hex">#fdf6ec</span>
+          <div class="swatch-role">Primary slide background. CTA text on dark. Standard canvas.</div>
+        </div>
+      </div>
+      <div class="token-swatch">
+        <div class="swatch-color" style="background:#efe4d4;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">Cream BG</span>
+          <span class="swatch-hex">#efe4d4</span>
+          <div class="swatch-role">Doc/preview backgrounds. Slightly deeper than cream canvas.</div>
+        </div>
+      </div>
+      <div class="token-swatch">
+        <div class="swatch-color" style="background:#fda11d;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">Orange</span>
+          <span class="swatch-hex">#fda11d</span>
+          <div class="swatch-role">Accent. Truth card labels, left-border dividers, quote marks, divider dots.</div>
+        </div>
+      </div>
+      <div class="token-swatch">
+        <div class="swatch-color" style="background:#ffe4b7;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">Orange Soft</span>
+          <span class="swatch-hex">#ffe4b7</span>
+          <div class="swatch-role">CTA strong text on dark green backgrounds only.</div>
+        </div>
+      </div>
+      <div class="token-swatch">
+        <div class="swatch-color" style="background:#627160;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">Muted</span>
+          <span class="swatch-hex">#627160</span>
+          <div class="swatch-role">Slide count, swipe prompts, footnotes, secondary body copy.</div>
+        </div>
+      </div>
+      <div class="token-swatch">
+        <div class="swatch-color" style="background:#eadfcf;"></div>
+        <div class="swatch-info">
+          <span class="swatch-name">Border</span>
+          <span class="swatch-hex">#eadfcf</span>
+          <div class="swatch-role">Card borders, dividers, separator lines.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:24px; padding:16px 20px; background:white; border:1px solid var(--doc-border); border-radius:10px;">
+      <div style="font-size:12px; font-weight:700; color:var(--green-dark); margin-bottom:10px;">Opacity Variants in Use</div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:10px;">
+        <div style="font-size:12px; color:var(--text);">Orange radial glow — <code style="font-family:monospace;font-size:11px;background:var(--cream-bg);padding:2px 5px;border-radius:3px;">rgba(253,161,29,0.22)</code></div>
+        <div style="font-size:12px; color:var(--text);">Green radial glow — <code style="font-family:monospace;font-size:11px;background:var(--cream-bg);padding:2px 5px;border-radius:3px;">rgba(41,98,65,0.16)</code></div>
+        <div style="font-size:12px; color:var(--text);">Orange eyebrow tint — <code style="font-family:monospace;font-size:11px;background:var(--cream-bg);padding:2px 5px;border-radius:3px;">rgba(253,161,29,0.18)</code></div>
+        <div style="font-size:12px; color:var(--text);">White tagline bg — <code style="font-family:monospace;font-size:11px;background:var(--cream-bg);padding:2px 5px;border-radius:3px;">rgba(255,255,255,0.62)</code></div>
+        <div style="font-size:12px; color:var(--text);">Ghost number — <code style="font-family:monospace;font-size:11px;background:var(--cream-bg);padding:2px 5px;border-radius:3px;">rgba(41,98,65,0.10)</code></div>
+        <div style="font-size:12px; color:var(--text);">Grain texture — <code style="font-family:monospace;font-size:11px;background:var(--cream-bg);padding:2px 5px;border-radius:3px;">opacity: 0.09</code></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       2. TYPOGRAPHY
+  ============================================================ -->
+  <section class="section" id="typography">
+    <div class="section-title">Section 02</div>
+    <div class="section-heading">Typography Scale</div>
+    <div class="section-desc">All sizes are native slide pixels (1080×1350 canvas). Font family is Arial/Helvetica — system sans-serif only. No web fonts.</div>
+    <hr class="section-rule">
+
+    <table class="type-table">
+      <thead>
+        <tr>
+          <th>Role</th>
+          <th>Size (slide px)</th>
+          <th>Weight</th>
+          <th>Color</th>
+          <th>Used In</th>
+          <th>Preview</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>--type-display</code></td>
+          <td>102px</td>
+          <td>900</td>
+          <td>Green Dark</td>
+          <td>Hook slide H1 only</td>
+          <td class="preview-cell" style="font-size:28px;">Beans</td>
+        </tr>
+        <tr>
+          <td><code>--type-h1</code></td>
+          <td>88px</td>
+          <td>900</td>
+          <td>Green Dark</td>
+          <td>Content slide main heading</td>
+          <td class="preview-cell" style="font-size:24px;">The Truth</td>
+        </tr>
+        <tr>
+          <td><code>--type-h2</code></td>
+          <td>72px</td>
+          <td>900</td>
+          <td>Green Dark</td>
+          <td>Section headings, multi-point slides</td>
+          <td class="preview-cell" style="font-size:20px;">Single Origin</td>
+        </tr>
+        <tr>
+          <td><code>--type-h3</code></td>
+          <td>56px</td>
+          <td>900</td>
+          <td>Green Dark</td>
+          <td>List item titles, step titles</td>
+          <td class="preview-cell" style="font-size:16px;">Natural Process</td>
+        </tr>
+        <tr>
+          <td><code>--type-sub</code></td>
+          <td>42px</td>
+          <td>700</td>
+          <td>Text Deep</td>
+          <td>Hook subheading, supporting lines</td>
+          <td class="preview-cell" style="font-size:13px; font-weight:700; color:#304431;">Not what you think.</td>
+        </tr>
+        <tr>
+          <td><code>--type-body</code></td>
+          <td>37px</td>
+          <td>600</td>
+          <td>Text Body</td>
+          <td>Truth card body, list descriptions</td>
+          <td class="preview-cell" style="font-size:12px; font-weight:600; color:#2a3a2a;">Caffeine doesn't change that much during roasting.</td>
+        </tr>
+        <tr>
+          <td><code>--type-note</code></td>
+          <td>29px</td>
+          <td>600</td>
+          <td>Muted</td>
+          <td>Footnote, aside, funny aside lines</td>
+          <td class="preview-cell" style="font-size:11px; font-weight:600; color:#627160;">Very rude discovery, honestly.</td>
+        </tr>
+        <tr>
+          <td><code>--type-meta</code></td>
+          <td>25px</td>
+          <td>700–800</td>
+          <td>Green / Muted</td>
+          <td>Footer brand CTA, swipe prompt</td>
+          <td class="preview-cell" style="font-size:10px; font-weight:700; color:#296241;">thebeanshub.com</td>
+        </tr>
+        <tr>
+          <td><code>--type-eyebrow</code></td>
+          <td>22px</td>
+          <td>800</td>
+          <td>Green</td>
+          <td>Eyebrow pill label text</td>
+          <td class="preview-cell" style="font-size:10px; font-weight:800; color:#296241; letter-spacing:0.08em; text-transform:uppercase;">MYTH 1</td>
+        </tr>
+        <tr>
+          <td><code>--type-brand</code></td>
+          <td>26px</td>
+          <td>800</td>
+          <td>Green</td>
+          <td>Brand name in header bar</td>
+          <td class="preview-cell" style="font-size:11px; font-weight:800; color:#296241; letter-spacing:0.02em;">The Beans Hub</td>
+        </tr>
+        <tr>
+          <td><code>--type-ghost</code></td>
+          <td>210px</td>
+          <td>900</td>
+          <td>Green 10% opacity</td>
+          <td>Decorative ghost number (bottom-right)</td>
+          <td class="preview-cell" style="font-size:36px; font-weight:900; color:rgba(41,98,65,0.15);">01</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="margin-top:16px; padding:14px 18px; background:white; border:1px solid var(--doc-border); border-radius:10px; font-size:13px; color:var(--muted);">
+      <strong style="color:var(--text);">Line height rules:</strong> Display/H1 → <code style="font-family:monospace;background:var(--cream-bg);padding:1px 4px;border-radius:3px;">0.98</code> · Sub/body → <code style="font-family:monospace;background:var(--cream-bg);padding:1px 4px;border-radius:3px;">1.18–1.28</code> · Note → <code style="font-family:monospace;background:var(--cream-bg);padding:1px 4px;border-radius:3px;">1.32</code> · Truth card → <code style="font-family:monospace;background:var(--cream-bg);padding:1px 4px;border-radius:3px;">1.28</code>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       3. COMPONENT LIBRARY
+  ============================================================ -->
+  <section class="section" id="components">
+    <div class="section-title">Section 03</div>
+    <div class="section-heading">Component Library</div>
+    <div class="section-desc">Reusable UI building blocks. Every slide is assembled from these components. Do not invent new patterns — combine and reuse.</div>
+    <hr class="section-rule">
+
+    <div class="component-grid">
+
+      <!-- Brand Header Bar -->
+      <div class="component-card">
+        <div class="component-preview">
+          <div class="brand-bar-preview">
+            <span class="brand-name-preview">The Beans Hub</span>
+            <span class="count-preview">2/5</span>
+          </div>
+        </div>
+        <div class="component-meta">
+          <div class="component-name">Brand Header Bar</div>
+          <div class="component-desc">Fixed to top of every slide. Left: brand name at 26px/800. Right: slide count "X/Y" at 22px/700 in Muted. Top offset: 54px. Side padding: 64px.</div>
+        </div>
+      </div>
+
+      <!-- Eyebrow Pill -->
+      <div class="component-card">
+        <div class="component-preview">
+          <span class="eyebrow-pill">MYTH 01</span>
+        </div>
+        <div class="component-meta">
+          <div class="component-name">Eyebrow Pill</div>
+          <div class="component-desc">Orange tint bg + Green text. 22px/800/uppercase/0.08em tracking. Border-radius 999px. Pad 12px 20px. Use to label: Myth N, The Truth, Step N, Fact, etc.</div>
+        </div>
+      </div>
+
+      <!-- Truth Card -->
+      <div class="component-card">
+        <div class="component-preview">
+          <div class="truth-card-preview">
+            <div class="truth-label-preview">ACTUALLY</div>
+            <div class="truth-body-preview">Caffeine barely changes during roasting. Your dose matters more.</div>
+          </div>
+        </div>
+        <div class="component-meta">
+          <div class="component-name">Truth / Reveal Card</div>
+          <div class="component-desc">White card, border #eadfcf 2px, radius 8px, shadow 0 24px 60px green/10%. Label: Orange 24px/900/uppercase. Body: 37px/600 Text Body. Margin-top: 58px.</div>
+        </div>
+      </div>
+
+      <!-- Tagline Block -->
+      <div class="component-card">
+        <div class="component-preview">
+          <div class="tagline-preview">Filter by actual flavour profile, not vibe.</div>
+        </div>
+        <div class="component-meta">
+          <div class="component-name">Tagline / Left-Accent Block</div>
+          <div class="component-desc">8px left border in Orange. Semi-transparent white bg (62%). 34px/700 Text Mid. Max-width 740px. Use for punchy callouts, platform mentions, or key takeaways.</div>
+        </div>
+      </div>
+
+      <!-- CTA Block -->
+      <div class="component-card">
+        <div class="component-preview">
+          <div class="cta-preview">Find your next favourite bean.<br><strong>thebeanshub.com</strong></div>
+        </div>
+        <div class="component-meta">
+          <div class="component-name">CTA Block</div>
+          <div class="component-desc">Green background. Cream text 38px/850. URL or strong phrase in Orange Soft. Border-radius 8px. Pad 34px 40px. Use only on final (CTA) slide.</div>
+        </div>
+      </div>
+
+      <!-- Step Item -->
+      <div class="component-card">
+        <div class="component-preview">
+          <div class="step-card-preview">
+            <div class="step-num-preview">1</div>
+            <div class="step-text-preview">Pick your preferred taste note — chocolatey, fruity, or nutty.</div>
+          </div>
+        </div>
+        <div class="component-meta">
+          <div class="component-name">Step Item</div>
+          <div class="component-desc">Circle: 72px, Green bg, white/900. Step title: 40px/800 Green Dark. Step desc: 30px/600 Text Body. Gap between circle and text: 36px. Vertical gap between steps: 32px.</div>
+        </div>
+      </div>
+
+      <!-- Quote Box -->
+      <div class="component-card">
+        <div class="component-preview">
+          <div class="quote-box-preview">
+            <div class="quote-mark-preview">"</div>
+            <div class="quote-text-preview">If you like dark chocolate and low acidity, you'll find the right roast 90% of the time.</div>
+          </div>
+        </div>
+        <div class="component-meta">
+          <div class="component-name">Quote Box</div>
+          <div class="component-desc">Orange tint background, radius 14px. Opening quote mark: Georgia serif 90px Orange. Body: 48px/700 italic Text Deep. Attribution: 26px/800 Green. Use for roaster or founder quotes.</div>
+        </div>
+      </div>
+
+      <!-- Progress Dots -->
+      <div class="component-card">
+        <div class="component-preview">
+          <div class="progress-dots-preview">
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
+        </div>
+        <div class="component-meta">
+          <div class="component-name">Progress Dots</div>
+          <div class="component-desc">Optional navigation cue. Active dot: 18px wide × 7px, Green, radius 4px. Inactive: 7px circle, Border color. Gap: 5px. Place in footer area if used.</div>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="component-card">
+        <div class="component-preview">
+          <div class="divider-preview">
+            <div class="divider-line"></div>
+            <div class="divider-dot-center"></div>
+            <div class="divider-line"></div>
+          </div>
+        </div>
+        <div class="component-meta">
+          <div class="component-name">Accent Divider</div>
+          <div class="component-desc">Horizontal line in Border color (#eadfcf) with centered Orange dot. Use between sections on content-heavy slides. Keep sparse — max one per slide.</div>
+        </div>
+      </div>
+
+      <!-- Ghost Number -->
+      <div class="component-card">
+        <div class="component-preview" style="position:relative; overflow:hidden; min-height:100px;">
+          <span style="font-size:72px; font-weight:900; color:rgba(41,98,65,0.12); line-height:0.75; font-family:Arial;">02</span>
+        </div>
+        <div class="component-meta">
+          <div class="component-name">Ghost Number</div>
+          <div class="component-desc">210px/900 Green at 10% opacity. Absolute positioned: bottom 42px, right 52px, z-index 1. Decorative — communicates slide position. Never interferes with legible content.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       4. SLIDE TYPES
+  ============================================================ -->
+  <section class="section" id="slide-types">
+    <div class="section-title">Section 04</div>
+    <div class="section-heading">Slide Type Catalogue</div>
+    <div class="section-desc">Five core slide types cover every carousel format. Every carousel should open with a Hook, close with a CTA, and use 2–4 Content/List/Steps slides in the middle.</div>
+    <hr class="section-rule">
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:14px;">
+
+      <div style="background:white;border:1px solid var(--doc-border);border-radius:10px;overflow:hidden;">
+        <div style="background:var(--green-dark);padding:14px 18px;">
+          <div style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);margin-bottom:4px;">Slide Type 01</div>
+          <div style="font-size:16px;font-weight:900;color:var(--cream);">Hook</div>
+        </div>
+        <div style="padding:14px 18px;">
+          <p style="font-size:13px;color:var(--text);line-height:1.5;margin-bottom:10px;">Opens the carousel. Must earn the swipe in 2 seconds.</p>
+          <ul style="list-style:none;padding:0;">
+            <li style="font-size:12px;color:var(--muted);line-height:1.6;padding-left:12px;position:relative;"><span style="position:absolute;left:0;color:var(--green);">→</span> Eyebrow pill (slide topic label)</li>
+            <li style="font-size:12px;color:var(--muted);line-height:1.6;padding-left:12px;position:relative;"><span style="position:absolute;left:0;color:var(--green);">→</span> Display H1 (102px) — the myth/hook/question</li>
+            <li style="font-size:12px;color:var(--muted);line-height:1.6;padding-left:12px;position:relative;"><span style="position:absolute;left:0;color:var(--green);">→</span> Subhead (42px) — one-line setup</li>
+            <li style="font-size:12px;color:var(--muted);line-height:1.6;padding-left:12px;position:relative;"><span style="position:absolute;left:0;color:var(--green);">→</span> Footer: brand name + "Swipe →"</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="background:white;border:1px solid var(--doc-border);border-radius:10px;overflow:hidden;">
+        <div style="background:#296241;padding:14px 18px;">
+          <div style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);margin-bottom:4px;">Slide Type 02</div>
+          <div style="font-size:16px;font-weight:900;color:var(--cream);">Content / Reveal</div>
+        </div>
+        <div style="padding:14px 18px;">
+          <p style="font-size:13px;color:var(--text);line-height:1.5;margin-bottom:10px;">Body of the carousel. One idea per slide.</p>
+          <ul style="list-style:none;padding:0;">
+            <li style="font-size:12px;color:var(--muted);line-height:1.6;padding-left:12px;position:relative;"><span style="position:absolute;left:0;color:var(--green);">→</span> Eyebrow pill (e.g. "The Truth", "Actually")</li>
+            <li style="font-size:12px;color:var(--muted);line-height:1.6;padding-left:12px;position:relative;"><span style="position:absolute;left:0;color:var(--green);">→</span> H1/H2 heading — the reveal</li>
+            <li style="font-size:12px;color:var(--muted);line-height:1.6;padding-left:12px;position:relative;"><span style="position:absolute;left:0;color:var(--green);">→</span> Truth card — explanation block</li>
+            <li style="font-size:12px;color:var(--muted);line-height:1.6;padding-left:12px;position:relative;"><span style="position:absolute;left:0;color:var(--green);">→</span> Note line (funny/honest aside)</li>
+            <li style="font-size:12px;color:var(--muted);line-height:1.6;padding-left:12px;position:relative;"><span style="position:absolute;left:0;color:var(--green);">→</span> Ghost number bottom-right</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="background:white;border:1px solid var(--doc-border);border-radius:10px;overflow:hidden;">
+        <div style="background:#c67e1a;padding:14px 18px;">
+          <div style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--cream);margin-bottom:4px;opacity:0.8;">Slide Type 03</div>
+          <div style="font-size:16px;font-weight:900;color:var(--cream);">List</div>
+        </div>
+        <div style="padding:14px 18px;">
+          <p style="font-size:13px;color:var(--text);line-height:1.5;margin-bottom:10px;">Multiple parallel points — 3 to 5 items max.</p>
+          <ul style="list-style:none;padding:0;">
+            <li style="font-size:12px;color:var(--muted);line-height:1.6;padding-left:12px;position:relative;"><span style="position:absolute;left:0;color:var(--green);">→</span> Eyebrow pill (optional)</li>
+            <li style="font-size:12px;color:var(--muted);line-height:1.6;padding-left:12px;position:relative;"><span style="position:absolute;left:0;color:var(--green);">→</span> H2 heading — the list topic</li>
+            <li style="font-size:12px;color:var(--muted);line-height:1.6;padding-left:12px;position:relative;"><span style="position:absolute;left:0;color:var(--green);">→</span> 3–5 list item cards (label + body)</li>
+            <li style="font-size:12px;color:var(--muted);line-height:1.6;padding-left:12px;position:relative;"><span style="position:absolute;left:0;color:var(--green);">→</span> Footer with "Next →" or slide count</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="background:white;border:1px solid var(--doc-border);border-radius:10px;overflow:hidden;">
+        <div style="background:#304431;padding:14px 18px;">
+          <div style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);margin-bottom:4px;">Slide Type 04</div>
+          <div style="font-size:16px;font-weight:900;color:var(--cream);">Steps</div>
+        </div>
+        <div style="padding:14px 18px;">
+          <p style="font-size:13px;color:var(--text);line-height:1.5;margin-bottom:10px;">Numbered sequential flow. How-to or process slides.</p>
+          <ul style="list-style:none;padding:0;">
+            <li style="font-size:12px;color:var(--muted);line-height:1.6;padding-left:12px;position:relative;"><span style="position:absolute;left:0;color:var(--green);">→</span> H2 heading — what the steps achieve</li>
+            <li style="font-size:12px;color:var(--muted);line-height:1.6;padding-left:12px;position:relative;"><span style="position:absolute;left:0;color:var(--green);">→</span> 3–4 step items (circle num + title + desc)</li>
+            <li style="font-size:12px;color:var(--muted);line-height:1.6;padding-left:12px;position:relative;"><span style="position:absolute;left:0;color:var(--green);">→</span> Tagline block below steps (optional)</li>
+            <li style="font-size:12px;color:var(--muted);line-height:1.6;padding-left:12px;position:relative;"><span style="position:absolute;left:0;color:var(--green);">→</span> Footer brand + CTA text</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="background:white;border:1px solid var(--doc-border);border-radius:10px;overflow:hidden;">
+        <div style="background:#183823;padding:14px 18px;">
+          <div style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);margin-bottom:4px;">Slide Type 05</div>
+          <div style="font-size:16px;font-weight:900;color:var(--cream);">CTA (Closing)</div>
+        </div>
+        <div style="padding:14px 18px;">
+          <p style="font-size:13px;color:var(--text);line-height:1.5;margin-bottom:10px;">Final slide. Converts engagement to platform visit.</p>
+          <ul style="list-style:none;padding:0;">
+            <li style="font-size:12px;color:var(--muted);line-height:1.6;padding-left:12px;position:relative;"><span style="position:absolute;left:0;color:var(--green);">→</span> H2 — reward/payoff for reading</li>
+            <li style="font-size:12px;color:var(--muted);line-height:1.6;padding-left:12px;position:relative;"><span style="position:absolute;left:0;color:var(--green);">→</span> Tagline block (what platform does)</li>
+            <li style="font-size:12px;color:var(--muted);line-height:1.6;padding-left:12px;position:relative;"><span style="position:absolute;left:0;color:var(--green);">→</span> CTA block (Green bg + URL)</li>
+            <li style="font-size:12px;color:var(--muted);line-height:1.6;padding-left:12px;position:relative;"><span style="position:absolute;left:0;color:var(--green);">→</span> Optional: faint photo band at bottom</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       5. FULL SLIDE TEMPLATES
+  ============================================================ -->
+  <section class="section" id="templates">
+    <div class="section-title">Section 05</div>
+    <div class="section-heading">Full Slide Templates</div>
+    <div class="section-desc">Copy-ready HTML for each slide type. All templates render at 1080×1350px. Scale with CSS transform for preview — set scale to 1.0 for export.</div>
+    <hr class="section-rule">
+
+    <div class="slide-gallery">
+
+      <!-- TEMPLATE 1: HOOK -->
+      <div class="slide-card">
+        <div class="slide-preview-wrap">
+          <div class="slide-inner">
+            <div class="slide-scaled" id="scale-1">
+              <div class="slide-t">
+                <div class="t-grain"></div>
+                <div class="t-brand">
+                  <span class="t-brand-name">The Beans Hub</span>
+                  <span class="t-count">1/5</span>
+                </div>
+                <div class="t-content">
+                  <div class="t-eyebrow">MYTH 01</div>
+                  <h1 class="t-h1">Dark roast means<br><span class="t-quote-span">more caffeine.</span></h1>
+                  <p class="t-sub">Starting with the one that fooled almost everyone.</p>
+                  <div class="t-footer">
+                    <span>The Beans Hub</span>
+                    <span class="t-swipe">Swipe →</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slide-card-meta">
+          <div class="slide-type-label">Type 01 — Hook</div>
+          <div class="slide-card-title">Hook Slide</div>
+          <div class="slide-card-desc">Opens every carousel. One clear claim or question. Forces the swipe.</div>
+          <ul class="slide-card-rules">
+            <li>Eyebrow pill labels the series/topic</li>
+            <li>H1 is the hook — bold, specific, contestable</li>
+            <li>Subhead gives one-sentence setup</li>
+            <li>No truth card — save reveals for slide 2+</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- TEMPLATE 2: CONTENT / REVEAL -->
+      <div class="slide-card">
+        <div class="slide-preview-wrap">
+          <div class="slide-inner">
+            <div class="slide-scaled" id="scale-2">
+              <div class="slide-t">
+                <div class="t-grain"></div>
+                <div class="t-brand">
+                  <span class="t-brand-name">The Beans Hub</span>
+                  <span class="t-count">2/5</span>
+                </div>
+                <div class="t-content">
+                  <div class="t-eyebrow">THE TRUTH</div>
+                  <h2 class="t-h2">Dark roast is not<br>automatically stronger.</h2>
+                  <div class="t-truth-card">
+                    <div class="t-truth-label">Actually</div>
+                    <p class="t-body">Caffeine does not change that much during roasting. Your dose, brew method, and how much coffee you use matter more.</p>
+                  </div>
+                  <p class="t-note">Dark roast tastes stronger because it's smoky and bold. Taste ≠ caffeine.</p>
+                  <div class="t-footer">
+                    <span>thebeanshub.com</span>
+                    <span class="t-swipe">Next myth →</span>
+                  </div>
+                </div>
+                <div class="t-ghost-num">02</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slide-card-meta">
+          <div class="slide-type-label">Type 02 — Content / Reveal</div>
+          <div class="slide-card-title">Content Slide</div>
+          <div class="slide-card-desc">One idea per slide. Eyebrow + heading + truth card + aside note.</div>
+          <ul class="slide-card-rules">
+            <li>Truth card label matches eyebrow tone</li>
+            <li>Note line is human/honest — not formal</li>
+            <li>Ghost number = slide position indicator</li>
+            <li>Max one truth card per slide</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- TEMPLATE 3: LIST -->
+      <div class="slide-card">
+        <div class="slide-preview-wrap">
+          <div class="slide-inner">
+            <div class="slide-scaled" id="scale-3">
+              <div class="slide-t">
+                <div class="t-grain"></div>
+                <div class="t-brand">
+                  <span class="t-brand-name">The Beans Hub</span>
+                  <span class="t-count">3/5</span>
+                </div>
+                <div class="t-content">
+                  <div class="t-eyebrow">COFFEE TYPES</div>
+                  <h2 class="t-h2">4 processing<br>methods, explained.</h2>
+                  <div class="t-list">
+                    <div class="t-list-item">
+                      <div class="t-list-label">WASHED</div>
+                      <div class="t-list-body">Fruit removed before drying. Clean, bright, high acidity. Origin flavours shine clearly.</div>
+                    </div>
+                    <div class="t-list-item">
+                      <div class="t-list-label">NATURAL</div>
+                      <div class="t-list-body">Dried whole. Fruit ferments around the bean. Fruity, heavy, complex.</div>
+                    </div>
+                    <div class="t-list-item">
+                      <div class="t-list-label">HONEY</div>
+                      <div class="t-list-body">Partial fruit left on. Sweetness between washed and natural.</div>
+                    </div>
+                  </div>
+                  <div class="t-footer">
+                    <span>thebeanshub.com</span>
+                    <span class="t-swipe">Keep going →</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slide-card-meta">
+          <div class="slide-type-label">Type 03 — List</div>
+          <div class="slide-card-title">List Slide</div>
+          <div class="slide-card-desc">3–5 parallel items, each in a white card with orange label.</div>
+          <ul class="slide-card-rules">
+            <li>List labels uppercase, short (1–2 words)</li>
+            <li>Body text concise — 1–2 sentences max</li>
+            <li>Max 5 items before content collapses</li>
+            <li>No ghost number on dense list slides</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- TEMPLATE 4: STEPS -->
+      <div class="slide-card">
+        <div class="slide-preview-wrap">
+          <div class="slide-inner">
+            <div class="slide-scaled" id="scale-4">
+              <div class="slide-t">
+                <div class="t-grain"></div>
+                <div class="t-brand">
+                  <span class="t-brand-name">The Beans Hub</span>
+                  <span class="t-count">3/5</span>
+                </div>
+                <div class="t-content">
+                  <div class="t-eyebrow">HOW TO</div>
+                  <h2 class="t-h2">Find your next<br>favourite bean.</h2>
+                  <div class="t-steps">
+                    <div class="t-step">
+                      <div class="t-step-num">1</div>
+                      <div class="t-step-text">
+                        <div class="t-step-title">Filter by taste note</div>
+                        <div class="t-step-desc">Chocolatey? Fruity? Start there.</div>
+                      </div>
+                    </div>
+                    <div class="t-step">
+                      <div class="t-step-num">2</div>
+                      <div class="t-step-text">
+                        <div class="t-step-title">Pick a roast level</div>
+                        <div class="t-step-desc">Light for brightness. Dark for body.</div>
+                      </div>
+                    </div>
+                    <div class="t-step">
+                      <div class="t-step-num">3</div>
+                      <div class="t-step-text">
+                        <div class="t-step-title">Explore by origin</div>
+                        <div class="t-step-desc">Ethiopian = floral. Brazilian = nutty.</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="t-footer">
+                    <span>thebeanshub.com</span>
+                    <span class="t-swipe">Almost there →</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slide-card-meta">
+          <div class="slide-type-label">Type 04 — Steps</div>
+          <div class="slide-card-title">Steps Slide</div>
+          <div class="slide-card-desc">Sequential numbered flow. Max 4 steps per slide.</div>
+          <ul class="slide-card-rules">
+            <li>Numbered circles: Green bg, 72px diameter</li>
+            <li>Step title is the action. Desc is the why.</li>
+            <li>Steps should be scannable top to bottom</li>
+            <li>Works well for how-to or filter guides</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- TEMPLATE 5: CTA -->
+      <div class="slide-card">
+        <div class="slide-preview-wrap">
+          <div class="slide-inner">
+            <div class="slide-scaled" id="scale-5">
+              <div class="slide-t">
+                <div class="t-grain"></div>
+                <div class="t-brand">
+                  <span class="t-brand-name">The Beans Hub</span>
+                  <span class="t-count">5/5</span>
+                </div>
+                <div class="t-content">
+                  <h2 class="t-h2">Now you know<br>what to look for.</h2>
+                  <div class="t-tagline">
+                    All Malaysian-roasted specialty beans in one place. Filter by taste, roast level, or roaster.
+                  </div>
+                  <div class="t-cta">
+                    Find your next favourite bean.<br><strong>thebeanshub.com</strong>
+                  </div>
+                  <div class="t-footer">
+                    <span>The Beans Hub</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slide-card-meta">
+          <div class="slide-type-label">Type 05 — CTA</div>
+          <div class="slide-card-title">CTA / Closing Slide</div>
+          <div class="slide-card-desc">Converts the carousel into a platform visit. One payoff + one action.</div>
+          <ul class="slide-card-rules">
+            <li>H2 rewards the reader for finishing</li>
+            <li>Tagline block = 1-sentence platform pitch</li>
+            <li>CTA block always ends: thebeanshub.com</li>
+            <li>Never add a second CTA block</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- TEMPLATE 6: DARK HOOK VARIANT -->
+      <div class="slide-card">
+        <div class="slide-preview-wrap">
+          <div class="slide-inner">
+            <div class="slide-scaled" id="scale-6">
+              <div class="slide-t dark">
+                <div class="t-grain"></div>
+                <div class="t-brand">
+                  <span class="t-brand-name">The Beans Hub</span>
+                  <span class="t-count">1/6</span>
+                </div>
+                <div class="t-content">
+                  <div class="t-eyebrow">LOCAL ROASTERS</div>
+                  <h1 class="t-h1">You've never heard<br>of the best<br><span class="t-quote-span">coffee in Malaysia.</span></h1>
+                  <p class="t-sub">That's exactly the problem we're here to fix.</p>
+                  <div class="t-footer">
+                    <span>The Beans Hub</span>
+                    <span class="t-swipe">Swipe →</span>
+                  </div>
+                </div>
+                <div class="t-ghost-num">01</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slide-card-meta">
+          <div class="slide-type-label">Type 01 — Hook (Dark Variant)</div>
+          <div class="slide-card-title">Dark Hook Slide</div>
+          <div class="slide-card-desc">Green Dark background. Higher contrast impact. Use sparingly — 1 in 3 carousels max.</div>
+          <ul class="slide-card-rules">
+            <li>All text inverted: Cream headings, Orange accents</li>
+            <li>Ghost number at 6% white opacity</li>
+            <li>Same layout rules as standard hook</li>
+            <li>Do not use dark variant for content slides</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       6. LAYOUT & SPACING
+  ============================================================ -->
+  <section class="section" id="layout">
+    <div class="section-title">Section 06</div>
+    <div class="section-heading">Layout &amp; Spacing Rules</div>
+    <div class="section-desc">All values are native slide pixels on the 1080×1350 canvas.</div>
+    <hr class="section-rule">
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:start;">
+
+      <div>
+        <table class="rules-table">
+          <thead>
+            <tr><th>Zone</th><th>Value</th><th>Notes</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="rule-name">Canvas size</td><td><code>1080 × 1350px</code></td><td>Instagram portrait (4:5). Do not change.</td></tr>
+            <tr><td class="rule-name">Side padding</td><td><code>64px</code> L+R</td><td>Brand bar, content block, footer all use this.</td></tr>
+            <tr><td class="rule-name">Brand bar top</td><td><code>54px</code></td><td>Distance from top edge to brand name baseline.</td></tr>
+            <tr><td class="rule-name">Content top</td><td><code>160px</code></td><td>Padding-top of main content area (clears brand bar).</td></tr>
+            <tr><td class="rule-name">Content bottom</td><td><code>88px</code></td><td>Padding-bottom (clears footer).</td></tr>
+            <tr><td class="rule-name">Eyebrow → H1 gap</td><td><code>34px</code></td><td>Margin-bottom on eyebrow pill.</td></tr>
+            <tr><td class="rule-name">H1/H2 → sub gap</td><td><code>38px</code></td><td>Margin-top on subheading.</td></tr>
+            <tr><td class="rule-name">Truth card gap</td><td><code>58px</code></td><td>Margin-top on truth/reveal card.</td></tr>
+            <tr><td class="rule-name">Note line gap</td><td><code>28px</code></td><td>Margin-top on aside note text.</td></tr>
+            <tr><td class="rule-name">Tagline gap</td><td><code>40px</code></td><td>Margin-top on left-accent tagline block.</td></tr>
+            <tr><td class="rule-name">CTA block gap</td><td><code>44px</code></td><td>Margin-top on CTA green block.</td></tr>
+            <tr><td class="rule-name">Steps gap</td><td><code>52px</code></td><td>Margin-top on step list container.</td></tr>
+            <tr><td class="rule-name">Step row gap</td><td><code>32px</code></td><td>Vertical gap between each step item.</td></tr>
+            <tr><td class="rule-name">Step circle size</td><td><code>72px</code></td><td>Diameter of numbered circle.</td></tr>
+            <tr><td class="rule-name">Ghost num: right</td><td><code>52px</code></td><td>From right edge.</td></tr>
+            <tr><td class="rule-name">Ghost num: bottom</td><td><code>42px</code></td><td>From bottom edge.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div>
+        <div style="background:white; border:1px solid var(--doc-border); border-radius:10px; padding:20px; margin-bottom:16px;">
+          <div style="font-size:13px; font-weight:700; color:var(--green-dark); margin-bottom:14px;">Background Treatment (applied to every slide)</div>
+          <div style="font-size:12px; color:var(--text); line-height:1.7;">
+            <strong>Layer 1 — Base:</strong> Cream <code style="font-family:monospace;background:var(--cream-bg);padding:1px 4px;border-radius:3px;">#fdf6ec</code><br>
+            <strong>Layer 2 — Radial glow:</strong><br>
+            &nbsp;&nbsp;· Orange 22%: <code style="font-family:monospace;background:var(--cream-bg);padding:1px 4px;border-radius:3px;">circle at 15% 10%</code>, spread 26%<br>
+            &nbsp;&nbsp;· Green 16%: <code style="font-family:monospace;background:var(--cream-bg);padding:1px 4px;border-radius:3px;">circle at 88% 86%</code>, spread 30%<br>
+            <strong>Layer 3 — Grain texture:</strong><br>
+            &nbsp;&nbsp;· Grid lines 42px, green at 12–14%<br>
+            &nbsp;&nbsp;· Overall opacity 9%<br>
+            &nbsp;&nbsp;· Masked: fades out top 18% and bottom 18%<br>
+            <strong>Layer 4 — Content:</strong> z-index 2, above all backgrounds
+          </div>
+        </div>
+        <div style="background:white; border:1px solid var(--doc-border); border-radius:10px; padding:20px;">
+          <div style="font-size:13px; font-weight:700; color:var(--green-dark); margin-bottom:14px;">Border Radius Tokens</div>
+          <div style="font-size:12px; color:var(--text); line-height:1.8;">
+            <code style="font-family:monospace;background:var(--cream-bg);padding:1px 4px;border-radius:3px;">8px</code> — Truth cards, CTA blocks, list item cards<br>
+            <code style="font-family:monospace;background:var(--cream-bg);padding:1px 4px;border-radius:3px;">14px</code> — Quote boxes<br>
+            <code style="font-family:monospace;background:var(--cream-bg);padding:1px 4px;border-radius:3px;">999px</code> — Eyebrow pills (fully rounded)<br>
+            <code style="font-family:monospace;background:var(--cream-bg);padding:1px 4px;border-radius:3px;">50%</code> — Step number circles<br>
+            <code style="font-family:monospace;background:var(--cream-bg);padding:1px 4px;border-radius:3px;">0</code> — Left-accent tagline (no radius — sharp left edge)
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       7. PRODUCTION RULES
+  ============================================================ -->
+  <section class="section" id="rules">
+    <div class="section-title">Section 07</div>
+    <div class="section-heading">Production Rules</div>
+    <div class="section-desc">Non-negotiable constraints for every carousel produced under this system.</div>
+    <hr class="section-rule">
+
+    <table class="rules-table" style="margin-bottom:24px;">
+      <thead>
+        <tr><th>Rule</th><th>Detail</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="rule-name">Slide count</td>
+          <td>5–7 slides. Under 5 = too thin. Over 7 = drop-off climbs sharply.</td>
+        </tr>
+        <tr>
+          <td class="rule-name">Slide structure</td>
+          <td>Always: Hook (1) → Content/List/Steps (2–5) → CTA (last). Never open with CTA, never skip the hook.</td>
+        </tr>
+        <tr>
+          <td class="rule-name">One idea per slide</td>
+          <td>If a slide contains two separate insights, split it into two slides. Dense slides reduce saves and shares.</td>
+        </tr>
+        <tr>
+          <td class="rule-name">Font</td>
+          <td>Arial/Helvetica only. No web fonts, no Google Fonts, no decorative typefaces. Consistency across all exports.</td>
+        </tr>
+        <tr>
+          <td class="rule-name">Color purity</td>
+          <td>Only tokens defined in Section 01. Opacity variants are allowed; new hex values are not.</td>
+        </tr>
+        <tr>
+          <td class="rule-name">Brand bar</td>
+          <td>Present on every slide, every time. Never remove. Slide count must match actual total (e.g. "3/5" on slide 3 of 5).</td>
+        </tr>
+        <tr>
+          <td class="rule-name">CTA URL</td>
+          <td>Always <strong>thebeanshub.com</strong>. Never a UTM link on the slide itself (use link-in-bio for tracking).</td>
+        </tr>
+        <tr>
+          <td class="rule-name">Export format</td>
+          <td>Append <code>?slide=N</code> to carousel HTML URL to isolate each slide. Screenshot at 1080×1350 for upload. PNG preferred over JPG.</td>
+        </tr>
+        <tr>
+          <td class="rule-name">Dark variant</td>
+          <td>Use at most once per 3 carousels. Hook slide only — never a content or CTA slide in dark mode.</td>
+        </tr>
+        <tr>
+          <td class="rule-name">Ghost numbers</td>
+          <td>Use on content/reveal slides. Omit on dense list slides or when a large card occupies the bottom-right corner.</td>
+        </tr>
+        <tr>
+          <td class="rule-name">Humor/aside lines</td>
+          <td>Every content slide should end with a note line that is honest, slightly self-aware, or funny. It humanises the brand and boosts saves.</td>
+        </tr>
+        <tr>
+          <td class="rule-name">Platform mentions</td>
+          <td>Name-drop The Beans Hub by function: "The Beans Hub lets you filter by…" not "Check out our platform." Functional first, promotional second.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="do-dont">
+      <div class="do-card">
+        <div class="do-header">DO</div>
+        <div class="do-body">
+          <ul>
+            <li>Use eyebrow pills to set context before the heading lands</li>
+            <li>Keep note/aside lines short — one sentence, conversational</li>
+            <li>Name specific roasters, origins, taste notes</li>
+            <li>End every CTA with thebeanshub.com</li>
+            <li>Match ghost number to actual slide position</li>
+            <li>Use "swipe →", "keep going →", "last one →" in footer swipe prompts</li>
+            <li>Let the truth card carry the explanation; keep headings punchy</li>
+          </ul>
+        </div>
+      </div>
+      <div class="dont-card">
+        <div class="dont-header">DON'T</div>
+        <div class="dont-body">
+          <ul>
+            <li>Introduce new colors or fonts</li>
+            <li>Put two truth cards on one slide</li>
+            <li>Write slide text that requires 10+ seconds to read</li>
+            <li>Use "premium", "artisanal", or "journey" in copy</li>
+            <li>Place the CTA block on slide 1–3</li>
+            <li>Omit the brand bar on any slide</li>
+            <li>Use exclamation marks in heading text</li>
+            <li>Make the hook slide too gentle — it must provoke a reaction</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       8. VOICE QUICK-REFERENCE
+  ============================================================ -->
+  <section class="section" id="voice">
+    <div class="section-title">Section 08</div>
+    <div class="section-heading">Voice Quick-Reference</div>
+    <div class="section-desc">Brand voice distilled for slide copy. Full detail in brand-voice.md.</div>
+    <hr class="section-rule">
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:16px;">
+
+      <div style="background:white;border:1px solid var(--doc-border);border-radius:10px;padding:18px 20px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;color:var(--green);margin-bottom:10px;">Audience</div>
+        <p style="font-size:13px;color:var(--text);line-height:1.6;">Urban Malaysian, 22–35, home brewer. Curious, not expert. Buys from 1–2 roasters already. Open to exploring more if it's easy. High word-of-mouth potential.</p>
+      </div>
+
+      <div style="background:white;border:1px solid var(--doc-border);border-radius:10px;padding:18px 20px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;color:var(--green);margin-bottom:10px;">Tone on slides</div>
+        <p style="font-size:13px;color:var(--text);line-height:1.6;">Warm and direct. Sounds like a knowledgeable friend, not a brand. No hype, no gatekeeping. Uses "you" naturally. Honest about complexity — never dumbs down.</p>
+      </div>
+
+      <div style="background:white;border:1px solid var(--doc-border);border-radius:10px;padding:18px 20px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;color:var(--green);margin-bottom:10px;">Hook formulas</div>
+        <p style="font-size:13px;color:var(--text);line-height:1.6;">"[Myth statement]." / "Why your [thing] [problem]." / "[Number] things about [topic] nobody explained." / "If you like [X], you should know about [Y]."</p>
+      </div>
+
+      <div style="background:white;border:1px solid var(--doc-border);border-radius:10px;padding:18px 20px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;color:var(--green);margin-bottom:10px;">Note line formulas</div>
+        <p style="font-size:13px;color:var(--text);line-height:1.6;">"[Honest reaction]. [funny]." / "No shame. [reassurance]." / "[Self-aware observation about coffee culture]." / "Coffee is annoying like that."</p>
+      </div>
+
+      <div style="background:white;border:1px solid var(--doc-border);border-radius:10px;padding:18px 20px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;color:var(--green);margin-bottom:10px;">Vocab: use freely</div>
+        <p style="font-size:13px;color:var(--text);line-height:1.6;">taste notes · roast profile · origin · single origin · washed / natural / honey · local roaster · Malaysian-roasted · discover · try · find · fruity · floral · chocolatey · nutty · bright · clean</p>
+      </div>
+
+      <div style="background:white;border:1px solid var(--doc-border);border-radius:10px;padding:18px 20px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;color:var(--orange);margin-bottom:10px;">Vocab: avoid</div>
+        <p style="font-size:13px;color:var(--text);line-height:1.6;">premium · artisanal · journey (metaphorical) · "We are proud to…" · "Don't miss out…" · excessive exclamation marks · unexplained acronyms (SCA etc.)</p>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+<script>
+  // Auto-scale all .slide-scaled elements to fit their container
+  function scaleSlides() {
+    document.querySelectorAll('.slide-preview-wrap').forEach(wrap => {
+      const inner = wrap.querySelector('.slide-inner');
+      const scaled = wrap.querySelector('.slide-scaled');
+      if (!scaled) return;
+      const wrapW = inner.offsetWidth;
+      const scale = wrapW / 1080;
+      scaled.style.transform = `scale(${scale})`;
+      // Height auto-handled by padding-top: 125%
+    });
+  }
+  scaleSlides();
+  window.addEventListener('resize', scaleSlides);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Beans Hub Icon Preview</title>
+    <style>
+      :root {
+        color: #2f623f;
+        background: #f7f0e4;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      body {
+        margin: 0;
+        padding: 40px;
+      }
+
+      h1,
+      h2,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        font-size: 30px;
+      }
+
+      h2 {
+        margin-top: 38px;
+        font-size: 18px;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        color: #f7a83b;
+      }
+
+      p {
+        margin-top: 8px;
+        color: #62705f;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 18px;
+        margin-top: 18px;
+      }
+
+      .tile {
+        min-height: 178px;
+        border-radius: 18px;
+        display: grid;
+        place-items: center;
+        padding: 20px;
+        box-shadow: inset 0 -52px rgb(255 255 255 / 10%);
+      }
+
+      .process {
+        background: #2f623f;
+      }
+
+      .fruity {
+        background: linear-gradient(135deg, #9f1f3b, #d24c5a);
+      }
+
+      .sweet {
+        background: linear-gradient(135deg, #a33d73, #c35f86);
+      }
+
+      .floral {
+        background: linear-gradient(135deg, #3e257c, #7f62b5);
+      }
+
+      .cocoa {
+        background: linear-gradient(135deg, #214746, #41665b);
+      }
+
+      .roasted {
+        background: linear-gradient(135deg, #4d1713, #743229);
+      }
+
+      .spices {
+        background: linear-gradient(135deg, #793605, #a45e25);
+      }
+
+      .sour {
+        background: linear-gradient(135deg, #406930, #82a96e);
+      }
+
+      .green {
+        background: linear-gradient(135deg, #103a24, #235734);
+      }
+
+      img {
+        width: min(118px, 62%);
+        height: auto;
+      }
+
+      .label {
+        align-self: end;
+        justify-self: start;
+        color: #fff8ea;
+        font-weight: 800;
+        margin-top: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>The Beans Hub icon set</h1>
+    <p>Transparent SVGs, designed for small homepage cards and mobile screens.</p>
+
+    <h2>Process icons</h2>
+    <div class="grid">
+      <div class="tile process"><img src="process-browse.svg" alt=""><div class="label">Browse</div></div>
+      <div class="tile process"><img src="process-filter.svg" alt=""><div class="label">Filter</div></div>
+      <div class="tile process"><img src="process-buy-direct.svg" alt=""><div class="label">Buy Direct</div></div>
+    </div>
+
+    <h2>Taste icons</h2>
+    <div class="grid">
+      <div class="tile fruity"><img src="taste-fruity.svg" alt=""><div class="label">Fruity</div></div>
+      <div class="tile sweet"><img src="taste-sweet.svg" alt=""><div class="label">Sweet</div></div>
+      <div class="tile floral"><img src="taste-floral.svg" alt=""><div class="label">Floral</div></div>
+      <div class="tile cocoa"><img src="taste-nutty-cocoa.svg" alt=""><div class="label">Nutty/Cocoa</div></div>
+      <div class="tile roasted"><img src="taste-roasted.svg" alt=""><div class="label">Roasted</div></div>
+      <div class="tile spices"><img src="taste-spices.svg" alt=""><div class="label">Spices</div></div>
+      <div class="tile sour"><img src="taste-sour-fermented.svg" alt=""><div class="label">Sour/Fermented</div></div>
+      <div class="tile green"><img src="taste-green-vegetative.svg" alt=""><div class="label">Green/Vegetative</div></div>
+    </div>
+  </body>
+</html>

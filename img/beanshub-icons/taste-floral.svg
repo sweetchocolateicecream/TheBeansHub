@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Floral taste notes</title>
+  <desc id="desc">A soft cartoon flower with a smiling centre and leaves.</desc>
+  <g fill="none" stroke="#fff8ea" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M128 143v72" stroke="#7fd36b" stroke-width="10"/>
+    <path d="M124 184c-28-21-54-17-73 9 30 17 55 14 73-9ZM132 172c30-20 56-13 72 15-31 15-56 10-72-15Z" fill="#7fd36b" stroke-width="8"/>
+    <path d="M128 54c17-34 49-29 52 8 36-9 55 21 29 48 34 15 30 48-7 55 11 36-18 56-48 35-19 32-52 24-57-13-35 10-56-17-36-49-31-21-19-53 18-54 0-37 32-50 49-26Z" fill="#f4a6bd" stroke-width="9"/>
+    <circle cx="128" cy="128" r="31" fill="#f7a83b" stroke-width="9"/>
+    <path d="M113 123c7-5 14-5 21 0M122 142c8 5 17 4 24-3" stroke="#8f4c7a" stroke-width="7"/>
+    <path d="M55 62h18M198 58h20" stroke="#f7a83b" stroke-width="9"/>
+  </g>
+</svg>

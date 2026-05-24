@@ -1051,6 +1051,225 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
 .tbh-footer-copy{font-family:"Outfit",sans-serif;font-size:0.78rem;color:rgba(253,246,236,0.7);text-align:center;margin:0}
 @media (max-width:900px){.tbh-footer-inner{grid-template-columns:1fr 1fr;gap:32px}}
 @media (max-width:560px){footer.tbh-footer{padding:40px 24px 20px}.tbh-footer-inner{grid-template-columns:1fr;gap:28px}.tbh-footer-tagline{max-width:none}}
+
+/* ─────────────────────────────────────────────
+   INTRO HERO  (replaces the old wall-of-text)
+   ───────────────────────────────────────────── */
+.intro-hero {
+  max-width: 1200px;
+  margin: 36px auto 28px;
+  padding: 0 24px;
+}
+.intro-lead {
+  font-size: 1.18rem;
+  line-height: 1.6;
+  color: var(--brown-dark);
+  max-width: 880px;
+  margin-bottom: 28px;
+  font-weight: 400;
+}
+.intro-lead strong { font-weight: 700; color: var(--brown-dark); }
+
+.quick-facts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin: 0 0 28px;
+}
+.quick-fact-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 18px 16px 22px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.quick-fact-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(41, 98, 65, 0.08);
+}
+.quick-fact-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--accent);
+}
+.quick-fact-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+.quick-fact-value {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--brown-dark);
+  line-height: 1.35;
+}
+
+.intro-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 4px;
+}
+.intro-body p {
+  line-height: 1.7;
+  color: var(--brown-dark);
+  font-size: 0.97rem;
+  margin-bottom: 12px;
+}
+.intro-body p:last-child { margin-bottom: 0; }
+.intro-body strong { color: var(--brown-dark); font-weight: 700; }
+
+.intro-related {
+  background: var(--tag-bg);
+  border-left: 4px solid var(--accent);
+  padding: 14px 20px;
+  border-radius: 0 10px 10px 0;
+  margin-top: 24px;
+  font-size: 0.93rem;
+  line-height: 1.55;
+  color: var(--brown-dark);
+}
+.intro-related a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s;
+}
+.intro-related a:hover { border-bottom-color: var(--accent); }
+.intro-related strong { color: var(--brown-dark); font-weight: 700; margin-right: 4px; }
+
+@media (max-width: 900px) {
+  .quick-facts { grid-template-columns: repeat(2, 1fr); }
+  .intro-body { grid-template-columns: 1fr; gap: 0; }
+}
+@media (max-width: 560px) {
+  .intro-hero { padding: 0 16px; margin: 24px auto 22px; }
+  .intro-lead { font-size: 1.02rem; margin-bottom: 22px; }
+  .quick-facts { gap: 10px; }
+  .quick-fact-card { padding: 13px 14px 13px 18px; }
+  .quick-fact-value { font-size: 0.9rem; }
+}
+
+/* ─────────────────────────────────────────────
+   STICKY FILTER BAR
+   ───────────────────────────────────────────── */
+.filter-bar-wrap {
+  position: sticky;
+  top: 68px;
+  z-index: 50;
+  margin: 0 -24px 22px;
+  background: rgba(253, 246, 236, 0.92);
+  backdrop-filter: saturate(160%) blur(10px);
+  -webkit-backdrop-filter: saturate(160%) blur(10px);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.filter-bar {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.filter-bar-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.filter-bar-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-right: 4px;
+}
+.filter-pill {
+  padding: 5px 13px;
+  border-radius: 18px;
+  border: 1.5px solid var(--border);
+  background: white;
+  color: var(--brown-mid);
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: "Outfit", sans-serif;
+}
+.filter-pill:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.filter-pill.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+  font-weight: 600;
+}
+.filter-bar-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.filter-bar-count {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.filter-bar-count strong {
+  color: var(--brown-dark);
+  font-weight: 700;
+}
+.filter-bar-sort {
+  padding: 7px 30px 7px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-family: "Outfit", sans-serif;
+  font-size: 0.82rem;
+  background: white;
+  color: var(--brown-dark);
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A7460' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.filter-bar-sort:focus { border-color: var(--accent); }
+
+.card.is-hidden { display: none !important; }
+
+.empty-grid-msg {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  display: none;
+}
+.empty-grid-msg.show { display: block; }
+.empty-grid-msg strong { color: var(--brown-dark); display: block; margin-bottom: 6px; font-size: 1.05rem; }
+
+@media (max-width: 768px) {
+  .filter-bar-wrap { margin: 0 -16px 18px; }
+  .filter-bar { padding: 10px 16px; gap: 10px; }
+  .filter-bar-label { font-size: 0.65rem; }
+  .filter-pill { padding: 4px 10px; font-size: 0.74rem; }
+  .filter-bar-right { width: 100%; justify-content: space-between; margin-left: 0; }
+}
 </style>
 
 <!-- CollectionPage + ItemList schema for rich results -->
@@ -1523,27 +1742,75 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
   </div>
 </header>
 
-<main class="main" style="max-width:1200px;margin:0 auto;padding:32px 24px 0;">
-  <section class="category-intro" style="margin-bottom:32px;line-height:1.65;font-size:1rem;color:var(--brown-dark);max-width:820px;">
-    <p>China grows coffee, and the place where most of it comes from is Yunnan, the southwestern province bordering Myanmar, Laos and Vietnam. The Yunnan coffee beans on this page are still a relatively new conversation in Malaysia, but the quality has moved fast in the last decade and the bags are worth your attention.</p>
-      <p>Most of the production sits in Pu'er, Baoshan, Lincang and Dehong — regions with elevations between roughly 1,100m and 2,000m, monsoon rainfall, and a cool dry winter that lets the cherries ripen slowly. The dominant varietal is Catimor, originally introduced in the 1980s for disease resistance, but you'll increasingly see Bourbon, Typica and even Geisha lots from the better farms.</p>
-      <!-- source: Yunnan International Coffee Exchange (YCE) production data, https://www.yce.cn -->
-      <!-- source: World Coffee Research varietal database, Catimor profile -->
-      <p>The classic Yunnan flavour profile leans nutty, gently sweet and earthy — think roasted almond, dark chocolate, brown sugar, dried longan, and sometimes a soft black tea finish. Newer washed and anaerobic lots from producers in Baoshan and Pu'er push toward stone fruit, citrus and floral notes that genuinely surprise people who think they know what Chinese coffee tastes like.</p>
-      <!-- source: SCA Coffee Tasters Flavor Wheel; Yunnan Coffee Traders cupping notes -->
-      <p>Processing is mostly washed, but natural and honey lots are growing. A handful of farms — Manlao, Manhanmu, Lao Zhai — are running ambitious experimental ferments at prices that are still gentler than Panama or Colombia equivalents. That's part of why Yunnan has become a quiet favourite among Malaysian home brewers looking for value.</p>
-      <p>It's also one of the closest origins to us geographically, so freshness and shipping costs are usually in your favour. Browse the Yunnan selection below, or go back to the <a href="/shop">full shop</a> for everything else.</p>
-      <p><strong>Related reads:</strong> The <a href="/posts/asia-coffee-origins-yunnan-thailand">Yunnan and Thailand origins</a> guide explains why these nearby origins are worth watching, with more context in the <a href="/posts/coffee-bean-origins">coffee bean origins</a> guide.</p>
-  </section>
+<section class="intro-hero">
+  <p class="intro-lead">China grows coffee — and almost all of it comes from <strong>Yunnan</strong>, the southwestern province bordering Myanmar, Laos and Vietnam. These beans are still a relatively new conversation in Malaysia, but the quality has moved fast in the last decade, and the bags are worth your attention.</p>
 
-  <div class="top-bar">
-    <div class="top-bar-left">Showing <strong>16</strong> beans in this category — visit the <a href="/shop" style="color:var(--accent);text-decoration:none;font-weight:600;">full shop</a> for filters and more.</div>
+  <div class="quick-facts">
+    <div class="quick-fact-card">
+      <div class="quick-fact-label">Regions</div>
+      <div class="quick-fact-value">Pu'er · Baoshan · Lincang · Dehong</div>
+    </div>
+    <div class="quick-fact-card">
+      <div class="quick-fact-label">Elevation</div>
+      <div class="quick-fact-value">1,100 – 2,000 m</div>
+    </div>
+    <div class="quick-fact-card">
+      <div class="quick-fact-label">Varietals</div>
+      <div class="quick-fact-value">Catimor · Bourbon · Typica · Geisha</div>
+    </div>
+    <div class="quick-fact-card">
+      <div class="quick-fact-label">Processing</div>
+      <div class="quick-fact-value">Washed · Natural · Honey · Anaerobic</div>
+    </div>
   </div>
-  <div class="shop-heading">
-    <h2>Browse Yunnan Coffee Beans</h2>
-    <p>Pu&#x27;er, Baoshan, Lincang and Dehong lots — China&#x27;s quiet specialty origin, now landing on Malaysian shelves.</p>
+
+  <div class="intro-body">
+    <div>
+      <p>Most production sits in <strong>Pu'er, Baoshan, Lincang and Dehong</strong> — monsoon rainfall, a cool dry winter, and slow-ripening cherries. The dominant varietal is Catimor (introduced in the 1980s for disease resistance), but you'll increasingly see Bourbon, Typica and even Geisha lots from the better farms.</p>
+      <p>The classic Yunnan profile leans <strong>nutty, gently sweet and earthy</strong> — roasted almond, dark chocolate, brown sugar, dried longan, and sometimes a soft black tea finish.</p>
+    </div>
+    <div>
+      <p>Newer washed and anaerobic lots from Baoshan and Pu'er push toward <strong>stone fruit, citrus and floral notes</strong> that genuinely surprise people who think they know what Chinese coffee tastes like. Farms like Manlao, Manhanmu and Lao Zhai are running ambitious experimental ferments at prices still gentler than Panama or Colombia equivalents.</p>
+      <p>It's also one of the closest origins to Malaysia geographically — so freshness and shipping usually work in your favour.</p>
+    </div>
   </div>
-  <div class="grid">
+
+  <div class="intro-related">
+    <strong>Related reads:</strong> The <a href="/posts/asia-coffee-origins-yunnan-thailand">Yunnan and Thailand origins</a> guide explains why these nearby origins are worth watching, with more context in the <a href="/posts/coffee-bean-origins">coffee bean origins</a> guide.
+  </div>
+</section>
+
+<main class="main" style="max-width:1200px;margin:0 auto;padding:0 24px;overflow:visible;">
+  <div class="products-section">
+  <div class="filter-bar-wrap">
+    <div class="filter-bar" role="region" aria-label="Filter Yunnan coffee beans">
+      <div class="filter-bar-group">
+        <span class="filter-bar-label">Roast</span>
+        <button class="filter-pill active" data-filter="roast" data-value="all">All</button>
+        <button class="filter-pill" data-filter="roast" data-value="light">Light</button>
+        <button class="filter-pill" data-filter="roast" data-value="medium">Medium</button>
+        <button class="filter-pill" data-filter="roast" data-value="dark">Dark</button>
+      </div>
+      <div class="filter-bar-group">
+        <span class="filter-bar-label">Brew</span>
+        <button class="filter-pill active" data-filter="brew" data-value="all">All</button>
+        <button class="filter-pill" data-filter="brew" data-value="filter">Filter</button>
+        <button class="filter-pill" data-filter="brew" data-value="espresso">Espresso</button>
+      </div>
+      <div class="filter-bar-right">
+        <span class="filter-bar-count">Showing <strong id="resultCount">16</strong> of 16</span>
+        <select class="filter-bar-sort" id="sortSelect" aria-label="Sort coffee beans">
+          <option value="default">Sort: Featured</option>
+          <option value="price-asc">Price: Low → High</option>
+          <option value="price-desc">Price: High → Low</option>
+          <option value="name">Name: A → Z</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid" id="productGrid">
+    <div class="empty-grid-msg" id="emptyMsg"><strong>No beans match these filters.</strong>Try clearing a filter or two.</div>
     
     <div class="card">
       <img class="card-img" src="https://www.thunderbean.life/cdn/shop/files/Bean-ChinaYunnan_1f9cd8b7-6a1b-45d2-82ae-165fbd3b9fc4.png?v=1766771380" alt="Thunderbean CHINA YUNNAN G1 – specialty coffee beans Malaysia" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="card-img-placeholder" style="display:none">☕</div>
@@ -1848,6 +2115,7 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
       </div>
     </div>
   </div>
+  </div>
 
   <section class="faq-section" id="faq" aria-labelledby="faq-heading">
     <h2 id="faq-heading">Yunnan Coffee Beans — Frequently Asked Questions</h2>
@@ -1927,6 +2195,88 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
 
 <script>
   function toggleMenu(){ document.getElementById('mobileMenu').classList.toggle('open'); }
+
+  /* ── Yunnan shop: filter + sort the product grid ── */
+  (function(){
+    const grid = document.getElementById('productGrid');
+    if (!grid) return;
+    const emptyMsg = document.getElementById('emptyMsg');
+    const cards = Array.from(grid.querySelectorAll('.card'));
+    const countEl = document.getElementById('resultCount');
+    const totalCount = cards.length;
+    const originalOrder = cards.slice();
+
+    const state = { roast: 'all', brew: 'all', sort: 'default' };
+
+    // Pre-parse card data once for speed.
+    const cardData = cards.map(card => {
+      const metas = card.querySelectorAll('.card-meta-item');
+      let roast = '', brew = '';
+      metas.forEach(m => {
+        const txt = m.textContent.trim();
+        const valEl = m.querySelector('span');
+        const val = valEl ? valEl.textContent.trim().toLowerCase() : '';
+        if (txt.startsWith('🔥')) roast = val;
+        else if (txt.startsWith('☕')) brew = val;
+      });
+      const priceTxt = (card.querySelector('.card-price')?.textContent || '').replace(/[^0-9.]/g,'');
+      const price = parseFloat(priceTxt) || 0;
+      const name = (card.querySelector('.card-name')?.textContent || '').trim();
+      return { card, roast, brew, price, name };
+    });
+
+    function matchRoast(cardRoast, f){
+      if (f === 'all') return true;
+      // "medium" should NOT match "medium light" or "medium dark"? In coffee, medium light is usually grouped separately.
+      // Treat exact-ish: medium-light → light; medium-dark → dark; medium alone → medium.
+      if (f === 'light')  return /\blight\b/.test(cardRoast);
+      if (f === 'dark')   return /\bdark\b/.test(cardRoast);
+      if (f === 'medium') return /\bmedium\b/.test(cardRoast) && !/\blight\b|\bdark\b/.test(cardRoast);
+      return cardRoast.includes(f);
+    }
+    function matchBrew(cardBrew, f){
+      if (f === 'all') return true;
+      if (cardBrew.includes('both')) return true; // "Both" matches any brew filter
+      return cardBrew.includes(f);
+    }
+
+    function apply(){
+      let visible = 0;
+      cardData.forEach(d => {
+        const show = matchRoast(d.roast, state.roast) && matchBrew(d.brew, state.brew);
+        d.card.classList.toggle('is-hidden', !show);
+        if (show) visible++;
+      });
+
+      // Sort by reordering DOM
+      let arr = cardData.slice();
+      if (state.sort === 'price-asc')      arr.sort((a,b) => a.price - b.price);
+      else if (state.sort === 'price-desc') arr.sort((a,b) => b.price - a.price);
+      else if (state.sort === 'name')       arr.sort((a,b) => a.name.localeCompare(b.name));
+      else arr = originalOrder.map(c => cardData.find(d => d.card === c));
+
+      arr.forEach(d => grid.appendChild(d.card));
+      // Keep the empty-msg at the end so it shows below cards
+      grid.appendChild(emptyMsg);
+
+      countEl.textContent = visible;
+      emptyMsg.classList.toggle('show', visible === 0);
+    }
+
+    document.querySelectorAll('.filter-pill[data-filter]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const f = btn.dataset.filter;
+        const v = btn.dataset.value;
+        state[f] = v;
+        document.querySelectorAll(`.filter-pill[data-filter="${f}"]`).forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        apply();
+      });
+    });
+
+    const sortSel = document.getElementById('sortSelect');
+    if (sortSel) sortSel.addEventListener('change', () => { state.sort = sortSel.value; apply(); });
+  })();
 </script>
 </body>
 </html>

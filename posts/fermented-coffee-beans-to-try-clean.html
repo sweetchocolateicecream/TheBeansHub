@@ -723,29 +723,65 @@
       max-width: 1240px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: minmax(0, 800px) 220px;
+      grid-template-columns: minmax(0, 800px);
+      justify-content: center;
       column-gap: 40px;
       align-items: start;
       padding: 56px 48px 80px;
     }
 
-    .post-body {
+    .post-layout > .post-body {
       max-width: none;
       margin: 0;
       padding: 0;
     }
 
     .toc-sidebar {
-      display: none;
+      display: block;
+      order: -1;
+      margin-bottom: 8px;
+    }
+    .toc-inner summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .toc-inner summary::-webkit-details-marker { display: none; }
+    .toc-inner summary::after {
+      content: '\25BE';
+      font-size: 0.9rem;
+      color: var(--muted);
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+    .toc-inner[open] summary::after { transform: rotate(180deg); }
+
+    @media (max-width: 768px) {
+      .post-layout {
+        padding: 32px 20px 56px;
+      }
+      .toc-inner { max-height: 260px; }
+      .toc-inner[open] .toc-nav { padding-top: 10px; }
     }
 
     @media (min-width: 1260px) {
+      .post-layout {
+        grid-template-columns: minmax(0, 800px) 220px;
+        justify-content: start;
+      }
       .toc-sidebar {
         display: block;
+        order: 0;
+        margin-bottom: 0;
         position: sticky;
         top: 90px;
         align-self: start;
       }
+      .toc-inner summary { cursor: default; pointer-events: none; }
+      .toc-inner summary::after { display: none; }
     }
 
     .toc-inner {
@@ -1529,8 +1565,8 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
 </div><!-- /post-body -->
 <!-- STICKY TOC — right column -->
 <aside aria-label="Table of contents" class="toc-sidebar">
-<div class="toc-inner">
-<div class="toc-title">Contents</div>
+<details class="toc-inner" open>
+<summary class="toc-title">Contents</summary>
 <nav class="toc-nav">
 <a class="toc-link" href="#fermentation-what">What is fermentation in coffee, actually?</a>
 <a class="toc-link" href="#fermentation-taste">How does fermentation change how your coffee tastes?</a>
@@ -1552,7 +1588,7 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
 <div class="toc-divider"></div>
 <a class="toc-link" href="#where-to-start">So where do you start with fermented coffee beans?</a>
 </nav>
-</div>
+</details>
 </aside>
 </div><!-- /post-layout -->
 <section class="more-posts">

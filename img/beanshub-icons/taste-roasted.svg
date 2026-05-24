@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Roasted taste notes</title>
+  <desc id="desc">A cartoon roasting tray with coffee beans and a warm flame.</desc>
+  <g fill="none" stroke="#fff8ea" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M49 143h119c22 0 38 17 34 39l-1 6c-4 21-23 36-44 36H88c-21 0-40-15-44-36l-1-6c-4-22 12-39 34-39Z" fill="#7b3f2a" stroke-width="10"/>
+    <path d="M201 162h32" stroke-width="11"/>
+    <path d="M70 177h116" stroke-width="7" opacity=".75"/>
+    <path d="M82 123c8-19 26-22 38-6-6 20-25 24-38 6ZM123 109c8-19 26-22 38-6-6 20-25 24-38 6ZM163 126c8-19 26-22 38-6-6 20-25 24-38 6Z" fill="#b36b35" stroke-width="8"/>
+    <path d="M86 79c22 20 15 40 0 52-19-12-24-31 0-52Z" fill="#f7a83b" stroke-width="8"/>
+    <path d="M111 47c31 33 25 65-3 84-30-21-35-52 3-84Z" fill="#f15b3d" stroke-width="8"/>
+    <path d="M137 84c20 23 14 42-5 55-21-15-22-35 5-55Z" fill="#f7c94b" stroke-width="8"/>
+  </g>
+</svg>

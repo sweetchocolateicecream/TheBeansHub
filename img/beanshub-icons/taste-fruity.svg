@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Fruity taste notes</title>
+  <desc id="desc">A bright cartoon pile of berries with leaves and a citrus slice.</desc>
+  <g fill="none" stroke="#fff8ea" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M120 58c12 3 22 12 29 27" stroke="#7fd36b" stroke-width="9"/>
+    <path d="M145 77c15-24 38-29 63-13-14 28-36 34-63 13ZM113 78C97 55 74 51 50 69c16 27 39 31 63 9Z" fill="#7fd36b" stroke-width="8"/>
+    <circle cx="85" cy="126" r="27" fill="#ff6f7d" stroke-width="9"/>
+    <circle cx="124" cy="119" r="30" fill="#cf3d5b" stroke-width="9"/>
+    <circle cx="166" cy="129" r="27" fill="#9f3157" stroke-width="9"/>
+    <circle cx="108" cy="166" r="28" fill="#b72f53" stroke-width="9"/>
+    <circle cx="149" cy="170" r="28" fill="#e05770" stroke-width="9"/>
+    <path d="M176 74c27 5 43 25 38 51-31 0-49-18-38-51Z" fill="#f7a83b" stroke-width="8"/>
+    <path d="M184 88c11 11 16 22 14 36" stroke-width="6"/>
+  </g>
+</svg>

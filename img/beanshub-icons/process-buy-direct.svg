@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Buy direct from roasters</title>
+  <desc id="desc">A playful cartoon shop bag with a direct arrow and coffee beans.</desc>
+  <g fill="none" stroke="#fff8ea" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M59 88h132l-12 113H73L59 88Z" fill="#f7a83b" stroke-width="11"/>
+    <path d="M92 88V75c0-24 18-42 42-42s42 18 42 42v13" stroke-width="11"/>
+    <path d="M95 131h73M95 163h44" stroke-width="10"/>
+    <path d="M111 151c10-18 28-20 39-3-9 19-28 22-39 3Z" fill="#2f623f" stroke-width="8"/>
+    <path d="M31 70h37M31 70l22-21M31 70l22 21" stroke="#f7a83b" stroke-width="10"/>
+    <path d="M185 50h19c22 0 38 17 38 39v16M226 90l16 16 16-16" stroke-width="10"/>
+  </g>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Spices taste notes</title>
+  <desc id="desc">A cartoon chili with cinnamon sticks and a star spice.</desc>
+  <g fill="none" stroke="#fff8ea" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M67 91c48-11 100 18 121 66-39 43-98 46-138 12-20-17-16-57 17-78Z" fill="#dc4f32" stroke-width="10"/>
+    <path d="M60 93c-7-25 6-43 32-48" stroke="#7fd36b" stroke-width="10"/>
+    <path d="M87 128c31-4 63 8 88 33" stroke-width="7" opacity=".72"/>
+    <path d="m151 75 50-38 25 33-50 38-25-33Z" fill="#b87938" stroke-width="9"/>
+    <path d="m172 58 25 33M189 46l25 33" stroke-width="6"/>
+    <path d="m101 55 13 25 28 4-20 20 5 28-26-13-25 13 5-28-21-20 28-4 13-25Z" fill="#f7a83b" stroke-width="8"/>
+  </g>
+</svg>
