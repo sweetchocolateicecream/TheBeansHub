@@ -1,52 +1,79 @@
-Options +FollowSymLinks
+Options -MultiViews
 RewriteEngine On
 RewriteBase /
 
-# Redirect .html URLs to clean URLs (301 for SEO)
-RewriteCond %{THE_REQUEST} \ /([^.]+)\.html [NC]
-RewriteRule ^ /%1 [NC,L,R=301]
+# ── SEO: Canonical domain — 301 redirect non-www → www ──
+RewriteCond %{HTTP_HOST} ^thebeanshub\.com [NC]
+RewriteRule ^(.*)$ https://www.thebeanshub.com/$1 [R=301,L]
 
-# Serve .html file for clean URLs (no extension)
+# Remove .html extension
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.html [NC,L]
+
+# Redirect .html URLs to clean URLs
+RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
+RewriteRule ^ /%1 [NC,R=301,L]
+
+# Home
+RewriteRule ^$ index.html [L]
+
+# Clean URLs for posts subfolder
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^posts/([^\.]+)$ posts/$1.html [NC,L]
+
+RewriteCond %{THE_REQUEST} /posts/([^.]+)\.html [NC]
+RewriteRule ^ /posts/%1 [NC,R=301,L]
+
+__________________________________________________
+
+
+<IfModule mod_headers.c>
+Header set Content-Security-Policy "script-src 'self' 'unsafe-inline' 'unsafe-eval' *thebeanshub.com"
+</IfModule>
+
+# BEGIN LSCACHE
+## LITESPEED WP CACHE PLUGIN - Do not edit the contents of this block! ##
+<IfModule LiteSpeed>
+RewriteEngine on
+CacheLookup on
+RewriteRule .* - [E=Cache-Control:no-autoflush]
+RewriteRule litespeed/debug/.*\.log$ - [F,L]
+RewriteRule \.litespeed_conf\.dat - [F,L]
+
+### marker ASYNC start ###
+RewriteCond %{REQUEST_URI} /wp-admin/admin-ajax\.php
+RewriteCond %{QUERY_STRING} action=async_litespeed
+RewriteRule .* - [E=noabort:1]
+### marker ASYNC end ###
+
+### marker DROPQS start ###
+CacheKeyModify -qs:fbclid
+CacheKeyModify -qs:gclid
+CacheKeyModify -qs:utm*
+CacheKeyModify -qs:_ga
+### marker DROPQS end ###
+
+</IfModule>
+## LITESPEED WP CACHE PLUGIN - Do not edit the contents of this block! ##
+# END LSCACHE
+# BEGIN NON_LSCACHE
+## LITESPEED WP CACHE PLUGIN - Do not edit the contents of this block! ##
+## LITESPEED WP CACHE PLUGIN - Do not edit the contents of this block! ##
+# END NON_LSCACHE
+# BEGIN WordPress
+# The directives (lines) between "BEGIN WordPress" and "END WordPress" are
+# dynamically generated, and should only be modified via WordPress filters.
+# Any changes to the directives between these markers will be overwritten.
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME}.html -f
-RewriteRule ^(.+)$ $1.html [L]
-
-# Set index.html as default page
-DirectoryIndex index.html
-
-# Custom error pages (optional - create these files if you want custom pages)
-# ErrorDocument 404 /404.html
-
-# Security - prevent directory listing
-Options -Indexes
-
-# Security - prevent access to sensitive files
-<FilesMatch "\.(htaccess|htpasswd|git|gitignore|md)$">
-    Order Allow,Deny
-    Deny from all
-</FilesMatch>
-
-
-# Cache static assets
-<IfModule mod_expires.c>
-    ExpiresActive On
-    ExpiresByType image/jpg "access plus 1 month"
-    ExpiresByType image/jpeg "access plus 1 month"
-    ExpiresByType image/png "access plus 1 month"
-    ExpiresByType image/gif "access plus 1 month"
-    ExpiresByType image/webp "access plus 1 month"
-    ExpiresByType image/svg+xml "access plus 1 month"
-    ExpiresByType text/css "access plus 1 week"
-    ExpiresByType application/javascript "access plus 1 week"
-    ExpiresByType text/javascript "access plus 1 week"
+RewriteRule . /index.php [L]
 </IfModule>
 
-# Enable Gzip compression
-<IfModule mod_deflate.c>
-    AddOutputFilterByType DEFLATE text/html
-    AddOutputFilterByType DEFLATE text/css
-    AddOutputFilterByType DEFLATE text/javascript
-    AddOutputFilterByType DEFLATE application/javascript
-    AddOutputFilterByType DEFLATE image/svg+xml
-</IfModule>
+# END WordPress
