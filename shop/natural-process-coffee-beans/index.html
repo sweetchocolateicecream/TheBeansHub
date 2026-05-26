@@ -2588,9 +2588,6 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
   <div class="filter-bar-wrap">
     <div class="filter-bar" role="region" aria-label="Filter natural process coffee beans">
       <input type="search" class="filter-bar-search" id="searchBox" placeholder="Search bean or roaster…" aria-label="Search beans">
-      <select class="filter-bar-select" id="originSelect" aria-label="Filter by origin">
-        <option value="all">All Origins</option>
-      </select>
       <div class="filter-bar-group">
         <span class="filter-bar-label">Roast</span>
         <button class="filter-pill active" data-filter="roast" data-value="all">All</button>
@@ -2604,6 +2601,16 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
         <button class="filter-pill" data-filter="brew" data-value="filter">Filter</button>
         <button class="filter-pill" data-filter="brew" data-value="espresso">Espresso</button>
       </div>
+        <div class="filter-bar-group">
+          <span class="filter-bar-label">Taste</span>
+          <button class="filter-pill active" data-filter="taste" data-value="all">All</button>
+          <button class="filter-pill" data-filter="taste" data-value="Floral">Floral</button>
+          <button class="filter-pill" data-filter="taste" data-value="Fruity">Fruity</button>
+          <button class="filter-pill" data-filter="taste" data-value="Chocolate">Chocolate</button>
+          <button class="filter-pill" data-filter="taste" data-value="Caramel">Caramel</button>
+          <button class="filter-pill" data-filter="taste" data-value="Honey">Honey</button>
+          <button class="filter-pill" data-filter="taste" data-value="Nutty">Nutty</button>
+        </div>
       <button class="clear-filters-btn" id="clearFilters" type="button">Clear</button>
       <div class="filter-bar-right">
         <span class="filter-bar-count">Showing <strong id="resultCount">215</strong> of 215</span>
@@ -6694,6 +6701,141 @@ Sundried</span></div>
 
 <script>
   function toggleMenu(){ document.getElementById('mobileMenu').classList.toggle('open'); }
+
+  /* ── Natural process shop: filter + sort + search + paginate ── */
+  (function(){
+    const grid = document.getElementById('productGrid');
+    if (!grid) return;
+    const emptyMsg = document.getElementById('emptyMsg');
+    const cards = Array.from(grid.querySelectorAll('.card'));
+    const countEl = document.getElementById('resultCount');
+    const originalOrder = cards.slice();
+    const PAGE_SIZE = 24;
+    const showMoreWrap = document.getElementById('showMoreWrap');
+    const showMoreBtn = document.getElementById('showMoreBtn');
+    let visibleLimit = PAGE_SIZE;
+
+    const state = { roast: 'all', origin: 'all', taste: 'all', search: '', sort: 'default' };
+
+    const cardData = cards.map(card => {
+      const metas = card.querySelectorAll('.card-meta-item');
+      let roast = '', origin = '', brew = '';
+      metas.forEach(m => {
+        const txt = m.textContent.trim();
+        const valEl = m.querySelector('span');
+        const val = valEl ? valEl.textContent.trim() : '';
+        if (txt.startsWith('🔥')) roast = val.toLowerCase();
+        else if (txt.startsWith('🌍')) origin = val;
+        else if (txt.startsWith('☕')) brew = val.toLowerCase();
+      });
+      const origins = origin.split(',').map(s => s.trim()).filter(Boolean);
+      const tastes = Array.from(card.querySelectorAll('.taste-tag')).map(t => t.textContent.trim());
+      const priceTxt = (card.querySelector('.card-price')?.textContent || '').replace(/[^0-9.]/g,'');
+      const price = parseFloat(priceTxt) || 0;
+      const name = (card.querySelector('.card-name')?.textContent || '').trim();
+      const brand = (card.querySelector('.card-brand')?.textContent || '').trim();
+      const searchHay = (name + ' ' + brand + ' ' + origin).toLowerCase();
+      return { card, roast, brew, origin, origins, tastes, price, name, searchHay };
+    });
+
+    const TASTE_PILLS = [
+      { label: 'Floral',    re: /floral|rose|jasmine|lavender/i },
+      { label: 'Fruity',    re: /mango|peach|apricot|berry|berries|strawberry|blueberry|passion|tropical|pineapple/i },
+      { label: 'Chocolate', re: /choc|cocoa/i },
+      { label: 'Caramel',   re: /caramel/i },
+      { label: 'Honey',     re: /honey/i },
+      { label: 'Nutty',     re: /nut/i },
+    ];
+    function matchTaste(cardTastes, f){
+      if (f === 'all') return true;
+      const pill = TASTE_PILLS.find(p => p.label === f);
+      if (!pill) return true;
+      return cardTastes.some(t => pill.re.test(t));
+    }
+    function matchRoast(cardRoast, f){
+      if (f === 'all') return true;
+      if (!cardRoast) return false;
+      if (f === 'light')  return /\blight\b/.test(cardRoast);
+      if (f === 'dark')   return /\bdark\b/.test(cardRoast);
+      if (f === 'medium') return /\bmedium\b/.test(cardRoast) && !/\blight\b|\bdark\b/.test(cardRoast);
+      return cardRoast.includes(f);
+    }
+    function matchOrigin(cardOrigins, f){
+      if (f === 'all') return true;
+      return cardOrigins.includes(f);
+    }
+    function matchBrew(cardBrew, f){
+      if (f === 'all') return true;
+      if (!cardBrew) return false;
+      if (cardBrew.includes('both')) return true;
+      return cardBrew.includes(f);
+    }
+    function matchSearch(hay, q){
+      if (!q) return true;
+      return q.split(/\s+/).every(term => hay.includes(term));
+    }
+
+    function apply(resetPage){
+      if (resetPage) visibleLimit = PAGE_SIZE;
+      const q = state.search.trim().toLowerCase();
+      cardData.forEach(d => {
+        d.passes = matchRoast(d.roast, state.roast)
+                && matchOrigin(d.origins, state.origin)
+                && matchTaste(d.tastes, state.taste)
+                && matchSearch(d.searchHay, q);
+      });
+      let passing = cardData.filter(d => d.passes);
+      if (state.sort === 'price-asc')       passing.sort((a,b) => a.price - b.price);
+      else if (state.sort === 'price-desc') passing.sort((a,b) => b.price - a.price);
+      else if (state.sort === 'name')       passing.sort((a,b) => a.name.localeCompare(b.name));
+      else passing = originalOrder.map(c => cardData.find(d => d.card === c)).filter(d => d.passes);
+      cardData.forEach(d => d.card.classList.add('is-hidden'));
+      const shown = passing.slice(0, visibleLimit);
+      shown.forEach(d => { d.card.classList.remove('is-hidden'); grid.appendChild(d.card); });
+      grid.appendChild(emptyMsg);
+      countEl.textContent = passing.length;
+      emptyMsg.classList.toggle('show', passing.length === 0);
+      if (passing.length > visibleLimit) {
+        showMoreWrap.style.display = '';
+        showMoreBtn.textContent = `Show more beans (${passing.length - visibleLimit} remaining)`;
+      } else {
+        showMoreWrap.style.display = 'none';
+      }
+    }
+
+    document.querySelectorAll('.filter-pill[data-filter]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const f = btn.dataset.filter;
+        const v = btn.dataset.value;
+        state[f] = v;
+        document.querySelectorAll(`.filter-pill[data-filter="${f}"]`).forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        apply(true);
+      });
+    });
+
+    document.getElementById('sortSelect').addEventListener('change', e => { state.sort = e.target.value; apply(true); });
+
+    const searchBox = document.getElementById('searchBox');
+    let searchTimer;
+    searchBox.addEventListener('input', () => {
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(() => { state.search = searchBox.value; apply(true); }, 150);
+    });
+
+    document.getElementById('clearFilters').addEventListener('click', () => {
+      state.roast = 'all'; state.origin = 'all'; state.taste = 'all'; state.search = '';
+      searchBox.value = '';
+      document.querySelectorAll('.filter-pill[data-filter]').forEach(b => {
+        b.classList.toggle('active', b.dataset.value === 'all');
+      });
+      apply(true);
+    });
+
+    showMoreBtn.addEventListener('click', () => { visibleLimit += PAGE_SIZE; apply(false); });
+
+    apply(true);
+  })();
 </script>
 </body>
 </html>

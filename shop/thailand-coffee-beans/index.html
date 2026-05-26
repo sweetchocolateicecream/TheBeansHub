@@ -1600,6 +1600,14 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
         <button class="filter-pill" data-filter="process" data-value="natural">Natural</button>
         <button class="filter-pill" data-filter="process" data-value="anaerobic">Anaerobic / Honey</button>
       </div>
+        <div class="filter-bar-group">
+          <span class="filter-bar-label">Taste</span>
+          <button class="filter-pill active" data-filter="taste" data-value="all">All</button>
+          <button class="filter-pill" data-filter="taste" data-value="Fruity">Fruity</button>
+          <button class="filter-pill" data-filter="taste" data-value="Citrus">Citrus</button>
+          <button class="filter-pill" data-filter="taste" data-value="Floral">Floral</button>
+          <button class="filter-pill" data-filter="taste" data-value="Tea">Tea</button>
+        </div>
       <div class="filter-bar-right">
         <span class="filter-bar-count">Showing <strong id="resultCount">7</strong> of 7</span>
         <select class="filter-bar-sort" id="sortSelect" aria-label="Sort coffee beans">
@@ -1834,7 +1842,7 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
     const totalCount = cards.length;
     const originalOrder = cards.slice();
 
-    const state = { brew: 'all', process: 'all', sort: 'default' };
+    const state = { brew: 'all', process: 'all', taste: 'all', sort: 'default' };
 
     const cardData = cards.map(card => {
       const metas = card.querySelectorAll('.card-meta-item');
@@ -1849,9 +1857,22 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
       const priceTxt = (card.querySelector('.card-price')?.textContent || '').replace(/[^0-9.]/g,'');
       const price = parseFloat(priceTxt) || 0;
       const name = (card.querySelector('.card-name')?.textContent || '').trim();
-      return { card, brew, proc, price, name };
+      const tastes = Array.from(card.querySelectorAll('.taste-tag')).map(t => t.textContent.trim());
+      return { card, brew, proc, tastes, price, name };
     });
 
+    const TASTE_PILLS = [
+      { label: 'Fruity', re: /berry|berries|peach|mango|passion|tropical|starfruit|soursop|apple|raisin/i },
+      { label: 'Citrus', re: /citrus|orange|lemon|tangerine|pomelo|grapefruit/i },
+      { label: 'Floral', re: /floral|rose|jasmine/i },
+      { label: 'Tea', re: /tea/i },
+    ];
+    function matchTaste(cardTastes, f){
+      if (f === 'all') return true;
+      const pill = TASTE_PILLS.find(p => p.label === f);
+      if (!pill) return true;
+      return cardTastes.some(t => pill.re.test(t));
+    }
     function matchBrew(cardBrew, f){
       if (f === 'all') return true;
       if (cardBrew.includes('both')) return true;
@@ -1868,7 +1889,7 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
     function apply(){
       let visible = 0;
       cardData.forEach(d => {
-        const show = matchBrew(d.brew, state.brew) && matchProcess(d.proc, state.process);
+        const show = matchBrew(d.brew, state.brew) && matchProcess(d.proc, state.process) && matchTaste(d.tastes, state.taste);
         d.card.classList.toggle('is-hidden', !show);
         if (show) visible++;
       });

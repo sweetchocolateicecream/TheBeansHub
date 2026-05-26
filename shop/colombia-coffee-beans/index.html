@@ -2585,9 +2585,6 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
   <div class="filter-bar-wrap">
     <div class="filter-bar" role="region" aria-label="Filter Colombia coffee beans">
       <input type="search" class="filter-bar-search" id="searchBox" placeholder="Search bean or roaster…" aria-label="Search beans">
-      <select class="filter-bar-select" id="originSelect" aria-label="Filter by origin">
-        <option value="all">All Origins</option>
-      </select>
       <div class="filter-bar-group">
         <span class="filter-bar-label">Roast</span>
         <button class="filter-pill active" data-filter="roast" data-value="all">All</button>
@@ -2601,6 +2598,16 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
         <button class="filter-pill" data-filter="brew" data-value="filter">Filter</button>
         <button class="filter-pill" data-filter="brew" data-value="espresso">Espresso</button>
       </div>
+        <div class="filter-bar-group">
+          <span class="filter-bar-label">Taste</span>
+          <button class="filter-pill active" data-filter="taste" data-value="all">All</button>
+          <button class="filter-pill" data-filter="taste" data-value="Chocolate">Chocolate</button>
+          <button class="filter-pill" data-filter="taste" data-value="Caramel">Caramel</button>
+          <button class="filter-pill" data-filter="taste" data-value="Floral">Floral</button>
+          <button class="filter-pill" data-filter="taste" data-value="Berries">Berries</button>
+          <button class="filter-pill" data-filter="taste" data-value="Nutty">Nutty</button>
+          <button class="filter-pill" data-filter="taste" data-value="Fruity">Fruity</button>
+        </div>
       <button class="clear-filters-btn" id="clearFilters" type="button">Clear</button>
       <div class="filter-bar-right">
         <span class="filter-bar-count">Showing <strong id="resultCount">107</strong> of 107</span>
@@ -4694,7 +4701,7 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
     const showMoreBtn = document.getElementById('showMoreBtn');
     let visibleLimit = PAGE_SIZE;
 
-    const state = { roast: 'all', origin: 'all', brew: 'all', search: '', sort: 'default' };
+    const state = { roast: 'all', origin: 'Colombia', brew: 'all', taste: 'all', search: '', sort: 'default' };
 
     // Pre-parse card data once for speed.
     const cardData = cards.map(card => {
@@ -4713,21 +4720,25 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
       const price = parseFloat(priceTxt) || 0;
       const name = (card.querySelector('.card-name')?.textContent || '').trim();
       const brand = (card.querySelector('.card-brand')?.textContent || '').trim();
+      const tastes = Array.from(card.querySelectorAll('.taste-tag')).map(t => t.textContent.trim());
       const searchHay = (name + ' ' + brand + ' ' + origin).toLowerCase();
-      return { card, roast, origin, origins, brew, price, name, searchHay };
+      return { card, roast, origin, origins, brew, tastes, price, name, searchHay };
     });
 
-    // Build the Origin dropdown dynamically.
-    const originSet = new Set();
-    cardData.forEach(d => d.origins.forEach(o => originSet.add(o)));
-    const originSel = document.getElementById('originSelect');
-    Array.from(originSet).sort().forEach(o => {
-      const opt = document.createElement('option');
-      opt.value = o;
-      opt.textContent = o;
-      originSel.appendChild(opt);
-    });
-
+    const TASTE_PILLS = [
+      { label: 'Chocolate', re: /choc|cocoa/i },
+      { label: 'Caramel', re: /caramel|maple/i },
+      { label: 'Floral', re: /floral|rose|jasmine|lavender/i },
+      { label: 'Berries', re: /berry|berries|strawberry|raspberry|blueberry|blackcurrant/i },
+      { label: 'Nutty', re: /nut/i },
+      { label: 'Fruity', re: /mango|peach|orange|grape|cherry|tropical|passion/i },
+    ];
+    function matchTaste(cardTastes, f){
+      if (f === 'all') return true;
+      const pill = TASTE_PILLS.find(p => p.label === f);
+      if (!pill) return true;
+      return cardTastes.some(t => pill.re.test(t));
+    }
     function matchRoast(cardRoast, f){
       if (f === 'all') return true;
       if (!cardRoast) return false; // hide unknowns when a specific roast is selected
@@ -4759,6 +4770,7 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
         d.passes = matchRoast(d.roast, state.roast)
                 && matchOrigin(d.origins, state.origin)
                 && matchBrew(d.brew, state.brew)
+                && matchTaste(d.tastes, state.taste)
                 && matchSearch(d.searchHay, q);
       });
 
@@ -4798,7 +4810,6 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
       });
     });
 
-    originSel.addEventListener('change', () => { state.origin = originSel.value; apply(true); });
     document.getElementById('sortSelect').addEventListener('change', e => { state.sort = e.target.value; apply(true); });
 
     const searchBox = document.getElementById('searchBox');
@@ -4809,9 +4820,8 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
     });
 
     document.getElementById('clearFilters').addEventListener('click', () => {
-      state.roast = 'all'; state.origin = 'all'; state.brew = 'all'; state.search = '';
+      state.roast = 'all'; state.origin = 'Colombia'; state.brew = 'all'; state.taste = 'all'; state.search = '';
       searchBox.value = '';
-      originSel.value = 'all';
       document.querySelectorAll('.filter-pill[data-filter]').forEach(b => {
         b.classList.toggle('active', b.dataset.value === 'all');
       });

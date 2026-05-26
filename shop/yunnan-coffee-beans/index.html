@@ -1797,6 +1797,15 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
         <button class="filter-pill" data-filter="brew" data-value="filter">Filter</button>
         <button class="filter-pill" data-filter="brew" data-value="espresso">Espresso</button>
       </div>
+        <div class="filter-bar-group">
+          <span class="filter-bar-label">Taste</span>
+          <button class="filter-pill active" data-filter="taste" data-value="all">All</button>
+          <button class="filter-pill" data-filter="taste" data-value="Fruity">Fruity</button>
+          <button class="filter-pill" data-filter="taste" data-value="Chocolate">Chocolate</button>
+          <button class="filter-pill" data-filter="taste" data-value="Caramel">Caramel</button>
+          <button class="filter-pill" data-filter="taste" data-value="Floral">Floral</button>
+          <button class="filter-pill" data-filter="taste" data-value="Herbal">Herbal</button>
+        </div>
       <div class="filter-bar-right">
         <span class="filter-bar-count">Showing <strong id="resultCount">16</strong> of 16</span>
         <select class="filter-bar-sort" id="sortSelect" aria-label="Sort coffee beans">
@@ -2206,7 +2215,7 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
     const totalCount = cards.length;
     const originalOrder = cards.slice();
 
-    const state = { roast: 'all', brew: 'all', sort: 'default' };
+    const state = { roast: 'all', brew: 'all', taste: 'all', sort: 'default' };
 
     // Pre-parse card data once for speed.
     const cardData = cards.map(card => {
@@ -2222,9 +2231,23 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
       const priceTxt = (card.querySelector('.card-price')?.textContent || '').replace(/[^0-9.]/g,'');
       const price = parseFloat(priceTxt) || 0;
       const name = (card.querySelector('.card-name')?.textContent || '').trim();
-      return { card, roast, brew, price, name };
+      const tastes = Array.from(card.querySelectorAll('.taste-tag')).map(t => t.textContent.trim());
+      return { card, roast, brew, tastes, price, name };
     });
 
+    const TASTE_PILLS = [
+      { label: 'Fruity', re: /berry|berries|raisin|grape|passion|tropical|fruit|wine/i },
+      { label: 'Chocolate', re: /choc|cocoa/i },
+      { label: 'Caramel', re: /caramel/i },
+      { label: 'Floral', re: /floral|rose|jasmine/i },
+      { label: 'Herbal', re: /herbal|spice/i },
+    ];
+    function matchTaste(cardTastes, f){
+      if (f === 'all') return true;
+      const pill = TASTE_PILLS.find(p => p.label === f);
+      if (!pill) return true;
+      return cardTastes.some(t => pill.re.test(t));
+    }
     function matchRoast(cardRoast, f){
       if (f === 'all') return true;
       // "medium" should NOT match "medium light" or "medium dark"? In coffee, medium light is usually grouped separately.
@@ -2243,7 +2266,7 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
     function apply(){
       let visible = 0;
       cardData.forEach(d => {
-        const show = matchRoast(d.roast, state.roast) && matchBrew(d.brew, state.brew);
+        const show = matchRoast(d.roast, state.roast) && matchBrew(d.brew, state.brew) && matchTaste(d.tastes, state.taste);
         d.card.classList.toggle('is-hidden', !show);
         if (show) visible++;
       });
