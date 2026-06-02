@@ -86,7 +86,7 @@
     <priority>0.70</priority>
   </url>
   <url>
-    <loc>https://www.thebeanshub.com/posts/fermented-coffee-beans-to-try</loc>
+    <loc>https://www.thebeanshub.com/posts/fermented-coffee-beans-to-try-clean</loc>
     <lastmod>2026-03-05</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.65</priority>
@@ -149,6 +149,68 @@
   </url>
   <url>
     <loc>https://www.thebeanshub.com/posts/best-coffee-beans-malaysia</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <!-- Shop category pages — Cluster 2 & 4 -->
+  <url>
+    <loc>https://www.thebeanshub.com/shop/ethiopia-coffee-beans</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://www.thebeanshub.com/shop/colombia-coffee-beans</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://www.thebeanshub.com/shop/brazil-coffee-beans</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://www.thebeanshub.com/shop/indonesia-coffee-beans</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://www.thebeanshub.com/shop/yunnan-coffee-beans</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.thebeanshub.com/shop/thailand-coffee-beans</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.thebeanshub.com/shop/natural-process-coffee-beans</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://www.thebeanshub.com/shop/washed-process-coffee-beans</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://www.thebeanshub.com/shop/fermented-coffee-beans</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.thebeanshub.com/shop/arabica-blend-coffee-beans</loc>
     <lastmod>2026-05-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
