@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>The Beans Hub - Day 5 Carousel</title>
+  <title>The Beans Hub - Day 4 Carousel</title>
   <style>
     * { box-sizing: border-box; }
     :root {
@@ -27,18 +27,6 @@
       display: grid;
       gap: 40px;
       padding: 40px;
-    }
-    body.export {
-      display: block;
-      padding: 0;
-      background: var(--cream);
-    }
-    body.export .slide {
-      display: none;
-      border: 0;
-    }
-    body.export .slide.active {
-      display: block;
     }
     .slide {
       position: relative;
@@ -131,11 +119,6 @@
       max-width: 840px;
       font-size: 88px;
     }
-    .big-quote {
-      display: block;
-      margin-top: 18px;
-      color: var(--green);
-    }
     .sub {
       max-width: 830px;
       margin: 38px 0 0;
@@ -143,6 +126,30 @@
       line-height: 1.18;
       font-weight: 700;
       color: #304431;
+    }
+    .body-text {
+      max-width: 860px;
+      margin-top: 52px;
+      font-size: 40px;
+      line-height: 1.32;
+      font-weight: 600;
+      color: #2a3a2a;
+    }
+    .body-text em {
+      font-style: italic;
+      color: var(--green);
+    }
+    .pull-quote {
+      margin-top: 64px;
+      padding: 40px 48px;
+      border-left: 8px solid var(--orange);
+      background: rgba(253, 161, 29, 0.07);
+      border-radius: 0 8px 8px 0;
+      font-size: 46px;
+      line-height: 1.18;
+      font-weight: 800;
+      color: var(--green-dark);
+      max-width: 860px;
     }
     .truth-card {
       margin-top: 58px;
@@ -165,13 +172,6 @@
       color: #2a3a2a;
       font-size: 37px;
       line-height: 1.28;
-      font-weight: 600;
-    }
-    .note {
-      margin-top: 28px;
-      color: var(--muted);
-      font-size: 29px;
-      line-height: 1.32;
       font-weight: 600;
     }
     .footer {
@@ -203,7 +203,7 @@
       z-index: 1;
       overflow: hidden;
       border-radius: 8px;
-      box-shadow: 0 28px 70px rgba(41, 98, 65, 0.18);
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.18);
     }
     .photo-bg img {
       width: 100%;
@@ -211,90 +211,64 @@
       object-fit: cover;
       display: block;
     }
-    .phone-photo {
+    .bottom-photo {
       left: 78px;
       right: 78px;
-      bottom: 108px;
-      height: 410px;
-      opacity: 0.40;
+      bottom: 110px;
+      height: 360px;
+      opacity: 0.30;
     }
-    .phone-photo::after,
-    .laptop-photo::after {
+    .bottom-photo::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(253, 246, 236, 0.20), rgba(253, 246, 236, 0.76));
+      background: linear-gradient(180deg, rgba(24, 56, 35, 0.10), rgba(24, 56, 35, 0.70));
     }
-    .laptop-photo {
-      right: 58px;
-      bottom: 84px;
-      width: 410px;
-      height: 410px;
-      opacity: 0.50;
-    }
-    .steps {
-      margin-top: 52px;
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-      max-width: 670px;
-    }
-    .step {
-      padding: 28px 34px;
-      background: var(--white);
-      border: 1.5px solid var(--border);
-      border-radius: 8px;
-      box-shadow: 0 8px 28px rgba(41, 98, 65, 0.06);
-    }
-    .step-label {
-      font-size: 22px;
-      font-weight: 900;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      color: var(--orange);
-      margin-bottom: 10px;
-    }
-    .step-body {
-      font-size: 34px;
-      font-weight: 700;
-      color: #2a3a2a;
-      line-height: 1.25;
-    }
-    .green {
+    /* Dark hook variant */
+    .dark {
       background: var(--green-dark);
     }
-    .green::before {
+    .dark::before {
       background:
         radial-gradient(circle at 20% 15%, rgba(253, 161, 29, 0.25), transparent 30%),
         radial-gradient(circle at 80% 85%, rgba(253, 246, 236, 0.08), transparent 35%);
     }
-    .green .brand-left,
-    .green .footer {
-      color: var(--orange);
+    .dark .brand-left { color: var(--orange); }
+    .dark .count { color: rgba(253, 246, 236, 0.45); }
+    .dark h1 { color: var(--cream); }
+    .dark .sub { color: rgba(253, 246, 236, 0.75); }
+    .dark .eyebrow {
+      background: rgba(253, 246, 236, 0.12);
+      color: var(--orange-soft);
     }
-    .green .count,
-    .green .swipe {
-      color: rgba(253, 246, 236, 0.5);
+    .dark .footer { color: var(--orange); }
+    .dark .swipe { color: rgba(253, 246, 236, 0.5); }
+    .dark .ghost-num { color: rgba(253, 246, 236, 0.06); }
+    .dark .body-text { color: rgba(253, 246, 236, 0.80); }
+    /* CTA slide */
+    .green-cta {
+      background: var(--green-dark);
     }
-    .green h2 {
-      color: var(--cream);
+    .green-cta::before {
+      background:
+        radial-gradient(circle at 20% 15%, rgba(253, 161, 29, 0.25), transparent 30%),
+        radial-gradient(circle at 80% 85%, rgba(253, 246, 236, 0.08), transparent 35%);
     }
-    .green .ghost-num {
-      color: rgba(253, 246, 236, 0.06);
-    }
+    .green-cta .brand-left,
+    .green-cta .footer { color: var(--orange); }
+    .green-cta .count,
+    .green-cta .swipe { color: rgba(253, 246, 236, 0.5); }
+    .green-cta h2 { color: var(--cream); }
+    .green-cta .ghost-num { color: rgba(253, 246, 236, 0.06); }
     .tagline {
       max-width: 740px;
       margin-top: 40px;
       padding: 28px 34px;
       border-left: 8px solid var(--orange);
-      background: rgba(255, 255, 255, 0.62);
+      background: rgba(253, 246, 236, 0.10);
       font-size: 34px;
       line-height: 1.28;
       font-weight: 700;
-      color: #2d402f;
-    }
-    .green .tagline {
-      background: rgba(253, 246, 236, 0.10);
       color: rgba(253, 246, 236, 0.85);
     }
     .cta {
@@ -307,62 +281,31 @@
       line-height: 1.2;
       font-weight: 850;
     }
-    .cta strong {
-      color: var(--orange-soft);
-    }
-    .ui-mockup {
-      margin-top: 36px;
-      border-radius: 18px;
-      overflow: hidden;
-      height: 390px;
-      box-shadow: 0 20px 60px rgba(41, 98, 65, 0.20);
-      border: 2px solid var(--border);
-      position: relative;
-    }
-    .ui-mockup img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      display: block;
-    }
-    .ui-mockup-label {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 14px 22px;
-      background: linear-gradient(transparent, rgba(41, 98, 65, 0.82));
-      color: rgba(253, 246, 236, 0.9);
-      font-size: 23px;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-    }
+    .cta strong { color: var(--orange-soft); }
   </style>
 </head>
 <body>
 
-  <!-- SLIDE 1: HOOK -->
-  <section class="slide" id="slide-1">
+  <!-- SLIDE 1: HOOK (dark) -->
+  <section class="slide dark" id="slide-1">
     <div class="grain"></div>
-    <div class="photo-bg phone-photo"><img src="assets/day-5-phone-filters.png" alt=""></div>
     <div class="brand">
       <div class="brand-left"><img src="assets/thebeanshub_logo.png" alt="">The Beans Hub</div>
       <div class="count">1/5</div>
     </div>
     <div class="content">
-      <div class="eyebrow">Platform Walkthrough</div>
-      <h1>How The Beans Hub saves your time.</h1>
-      <p class="sub">Find the same taste notes but from different roasters. Swipe to see how.</p>
+      <div class="eyebrow">Long Weekend Thought</div>
+      <h1>You had time this weekend.</h1>
+      <div class="sub">Did your coffee taste different?</div>
       <div class="footer">
-        <span>The Beans Hub</span>
-        <span class="swipe">Swipe &rarr;</span>
+        <span>thebeanshub.com</span>
+        <span class="swipe">Swipe to find out →</span>
       </div>
     </div>
     <div class="ghost-num">01</div>
   </section>
 
-  <!-- SLIDE 2: CHOOSE FLAVOUR -->
+  <!-- SLIDE 2: THE OBSERVATION -->
   <section class="slide" id="slide-2">
     <div class="grain"></div>
     <div class="brand">
@@ -370,25 +313,21 @@
       <div class="count">2/5</div>
     </div>
     <div class="content">
-      <div class="eyebrow">Step 01</div>
-      <h2>Start with what you want to taste.</h2>
-      <div class="truth-card">
-        <div class="truth-label">Actually Useful</div>
-        <p>Pick from broad taste profiles: Fruity, Sweet, Floral, Nutty/Cocoa, Roasted, Spices, Sour/Fermented. No jargon. Just pick what sounds good to you.</p>
+      <div class="eyebrow">The Observation</div>
+      <h2>The slow morning changes everything.</h2>
+      <div class="body-text">
+        When you're not rushing, you hold the cup longer. You smell it before you sip. You notice things you normally don't — the sweetness, the finish, the way it cools.
       </div>
-      <div class="ui-mockup">
-        <img src="assets/website-filters.png" alt="Taste Profile filter on The Beans Hub" style="object-position: center 18%;">
-        <div class="ui-mockup-label">Taste Profile filter — thebeanshub.com/shop</div>
-      </div>
+      <div class="pull-quote">When's the last time you actually noticed your coffee?</div>
       <div class="footer">
         <span>thebeanshub.com</span>
-        <span class="swipe">Next step &rarr;</span>
+        <span class="swipe">Keep reading →</span>
       </div>
     </div>
     <div class="ghost-num">02</div>
   </section>
 
-  <!-- SLIDE 3: MATCH BREW METHOD -->
+  <!-- SLIDE 3: THE SCIENCE -->
   <section class="slide" id="slide-3">
     <div class="grain"></div>
     <div class="brand">
@@ -396,82 +335,57 @@
       <div class="count">3/5</div>
     </div>
     <div class="content">
-      <div class="eyebrow">Step 02</div>
-      <h2>Then tell us: espresso or filter?</h2>
+      <div class="eyebrow">Here's Why</div>
+      <h2>Rushing changes the brew. And your brain.</h2>
       <div class="truth-card">
-        <div class="truth-label">Why This Matters</div>
-        <p>Filter roasts are lighter — they preserve more of the bean's natural flavour. Espresso roasts are developed a bit longer to round off the acidity. And if you brew both, just pick "Both" — those are omni roasts, dialled in to work either way.</p>
-      </div>
-      <div class="ui-mockup">
-        <img src="assets/website-filters.png" alt="Roasted For filter on The Beans Hub" style="object-position: center 75%;">
-        <div class="ui-mockup-label">Roasted For filter — thebeanshub.com/shop</div>
+        <div class="truth-label">The Detail</div>
+        <p>You grind too fast, your water's too hot, you pour without thinking. Your brain is already at the office. The coffee pays for it. Slow mornings give the brew the attention it needs — and give your senses time to actually register what's in the cup.</p>
       </div>
       <div class="footer">
         <span>thebeanshub.com</span>
-        <span class="swipe">Keep going &rarr;</span>
+        <span class="swipe">Keep reading →</span>
       </div>
     </div>
     <div class="ghost-num">03</div>
   </section>
 
-  <!-- SLIDE 4: BROWSE RESULTS -->
+  <!-- SLIDE 4: THE UNCOMFORTABLE TRUTH -->
   <section class="slide" id="slide-4">
     <div class="grain"></div>
-    <div class="photo-bg laptop-photo"><img src="assets/day-5-laptop-marketplace.png" alt=""></div>
     <div class="brand">
       <div class="brand-left"><img src="assets/thebeanshub_logo.png" alt="">The Beans Hub</div>
       <div class="count">4/5</div>
     </div>
     <div class="content">
-      <div class="eyebrow">Step 03</div>
-      <h2>Compare beans without opening 17 tabs.</h2>
-      <div class="steps">
-        <div class="step">
-          <div class="step-label">Roaster</div>
-          <div class="step-body">See who roasted it, not just "wah packaging nice".</div>
-        </div>
-        <div class="step">
-          <div class="step-label">Taste Notes</div>
-          <div class="step-body">Know if it leans chocolate, fruit, nuts, or bright acidity.</div>
-        </div>
-        <div class="step">
-          <div class="step-label">Roast Date</div>
-          <div class="step-body">Freshness matters. Old beans are where joy goes to retire.</div>
-        </div>
-      </div>
+      <div class="eyebrow">The Hard Truth</div>
+      <h2>Most of us have never tasted our weekday coffee.</h2>
+      <div class="body-text">We've just consumed it.</div>
+      <div class="pull-quote">What if you actually just need 10 minutes of presence every morning — instead of a better coffee machine?</div>
       <div class="footer">
         <span>thebeanshub.com</span>
-        <span class="swipe">Last one &rarr;</span>
+        <span class="swipe">One more →</span>
       </div>
     </div>
+    <div class="ghost-num">04</div>
   </section>
 
   <!-- SLIDE 5: CTA -->
-  <section class="slide green" id="slide-5">
+  <section class="slide green-cta" id="slide-5">
     <div class="grain"></div>
     <div class="brand">
       <div class="brand-left"><img src="assets/thebeanshub_logo.png" alt="">The Beans Hub</div>
       <div class="count">5/5</div>
     </div>
     <div class="content">
-      <h2>That's it. Filter, compare, pick one.</h2>
-      <div class="tagline">The Beans Hub helps you find coffee by actual flavour profile and brew method, not just whatever looks nice on the shelf.</div>
-      <div class="cta">Find your next favourite bean.<br><strong>thebeanshub.com</strong></div>
+      <h2>Tomorrow the rush starts again.</h2>
+      <div class="tagline">But now you know what's possible. Find beans worth slowing down for.</div>
+      <div class="cta">Start with origin and tasting notes.<br><strong>thebeanshub.com</strong></div>
       <div class="footer">
         <span>The Beans Hub</span>
       </div>
     </div>
+    <div class="ghost-num">05</div>
   </section>
 
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const slide = params.get("slide");
-    if (slide) {
-      document.body.classList.add("export");
-      document.querySelectorAll(".slide").forEach((node) => node.classList.remove("active"));
-      const target = document.querySelector(`#slide-${slide}`);
-      if (target) target.classList.add("active");
-    }
-  </script>
 </body>
 </html>

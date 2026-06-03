@@ -225,17 +225,18 @@
       background: linear-gradient(180deg, rgba(24, 56, 35, 0.18), rgba(24, 56, 35, 0.82));
     }
     .variable-photo {
-      right: 58px;
-      bottom: 86px;
-      width: 394px;
-      height: 394px;
-      opacity: 0.50;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+      box-shadow: none;
+      opacity: 1;
     }
     .variable-photo::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(253, 246, 236, 0.18), rgba(253, 246, 236, 0.72));
+      background: linear-gradient(180deg, rgba(253, 246, 236, 0.35), rgba(253, 246, 236, 0.72));
     }
     /* Dark hook variant */
     .dark {
@@ -293,6 +294,9 @@
     }
     .green-cta h2 {
       color: var(--cream);
+    }
+    #slide-4 h2 {
+      color: var(--green-dark);
     }
     .tagline {
       max-width: 740px;
@@ -402,12 +406,11 @@
     </div>
     <div class="content">
       <div class="eyebrow">Variable 03</div>
-      <h2>Grind consistency — not the setting. The actual grind.</h2>
+      <h2>Your grinder matters more than your coffee machine.</h2>
       <div class="truth-card">
         <div class="truth-label">The Detail</div>
-        <p>Even with the same grinder setting, the grind can vary slightly based on bean density, humidity, and how full the hopper is. Uneven grind = uneven extraction = uneven taste. The coffee didn't change. Your grind did.</p>
+        <p>Even with the same grinder setting, the grind can vary slightly based on bean density, humidity, and how full the hopper is. That variation matters more than most people realise — a RM10,000 machine paired with a cheap grinder will consistently lose to a RM1,500 machine with a great one. The grinder controls how evenly water passes through your coffee. Uneven grind means uneven extraction, and that's what ends up as a flat, bitter, or sour cup.</p>
       </div>
-      <p class="note">If you have a cheap blade grinder, this is happening every single day. No shame. Just worth knowing why.</p>
       <div class="footer">
         <span>thebeanshub.com</span>
         <span class="swipe">Last one →</span>
@@ -448,7 +451,7 @@
     </div>
     <div class="content">
       <h2>Now you know why it keeps changing.</h2>
-      <div class="tagline">The Beans Hub lists roast date, origin, and tasting notes for every bean — so you at least know what you're starting with.</div>
+      <div class="tagline">The Beans Hub lists origin and tasting notes for every bean — so you at least know what you're starting with.</div>
       <div class="cta">Find your next favourite bean.<br><strong>thebeanshub.com</strong></div>
       <div class="footer">
         <span>The Beans Hub</span>

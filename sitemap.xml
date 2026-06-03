@@ -216,6 +216,50 @@
     <priority>0.75</priority>
   </url>
 
+  <!-- Coffee bean varieties — Cluster 3 -->
+  <url>
+    <loc>https://www.thebeanshub.com/posts/coffee-bean-varieties</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.thebeanshub.com/posts/arabica-coffee-beans</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.thebeanshub.com/posts/liberica-coffee-malaysia</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.thebeanshub.com/posts/robusta-coffee</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.thebeanshub.com/posts/arabica-vs-robusta</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.thebeanshub.com/posts/liberica-vs-arabica</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.thebeanshub.com/posts/malaysian-coffee-heritage</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
   <!-- Coffee bean origins — Cluster 2 -->
   <url>
     <loc>https://www.thebeanshub.com/posts/coffee-bean-origins</loc>
