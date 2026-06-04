@@ -136,7 +136,7 @@ Each layer feeds the next. Roasters pay to reach your audience. Your audience gr
 
 **DO charge more than you're comfortable with.** Hormozi's line: *"Charge so much it hurts a little."* A roaster paying RM499/month will promote the fact they're listed on The Beans Hub. A roaster paying RM49 doesn't care.
 
-**DO make your numbers visible.** "38 roasters. 100+ beans. X,XXX monthly visitors." These numbers are social proof. They make new roasters feel like they're missing out. Put them on your homepage above the fold.
+**DO make your numbers visible.** "52 roasters. 744+ beans. X,XXX monthly visitors." These numbers are social proof. They make new roasters feel like they're missing out. Put them on your homepage above the fold.
 
 **DO create FOMO for roasters.** "We only onboard 3 new partner roasters per month." This is real if you enforce it. Scarcity makes people act.
 
@@ -170,7 +170,7 @@ Each layer feeds the next. Roasters pay to reach your audience. Your audience gr
 - Add email capture (quiz or lead magnet) to every page
 - Audit your top 5 traffic pages in GA — add a clear CTA to each
 - Write your Roaster Partner offer one-pager (one page, plain language, the full value stack + guarantee)
-- Make a list of all 38 roasters. Which ones are NOT yet paying partners? That's your pipeline.
+- Make a list of all 52 roasters. Which ones are NOT yet paying partners? That's your pipeline.
 
 **Days 31–60: Revenue**
 - Pitch 10 roasters per week via email or DM (personalised, not copy-paste)
