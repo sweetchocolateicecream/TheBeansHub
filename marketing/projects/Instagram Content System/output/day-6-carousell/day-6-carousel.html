@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Beans Hub - Day 6 Carousel</title>
+  <style>
+    * { box-sizing: border-box; }
+    :root {
+      --green: #296241; --green-dark: #183823; --cream: #fdf6ec;
+      --white: #ffffff; --orange: #fda11d; --orange-soft: #ffe4b7;
+      --text: #1a2e1f; --muted: #627160; --border: #eadfcf;
+    }
+    html, body { margin: 0; background: #efe4d4; color: var(--text); font-family: Arial, Helvetica, sans-serif; }
+    body { display: grid; gap: 40px; padding: 40px; }
+    body.export { display: block; padding: 0; background: var(--cream); }
+    body.export .slide { display: none; border: 0; }
+    body.export .slide.active { display: block; }
+
+    .slide {
+      position: relative;
+      width: 1080px;
+      height: 1350px;
+      overflow: hidden;
+      background: var(--cream);
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+    .slide::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(253,161,29,0.22), transparent 26%),
+        radial-gradient(circle at 88% 86%, rgba(41,98,65,0.16), transparent 30%);
+      pointer-events: none;
+    }
+    .grain {
+      position: absolute;
+      inset: 0;
+      opacity: 0.09;
+      background-image:
+        linear-gradient(90deg, rgba(41,98,65,0.14) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(41,98,65,0.12) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(to bottom, transparent, black 18%, black 82%, transparent);
+    }
+    .brand {
+      position: absolute;
+      top: 54px; left: 64px; right: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 3;
+    }
+    .brand-left { color: var(--green); font-weight: 800; letter-spacing: 0.02em; font-size: 26px; }
+    .count { color: var(--muted); font-weight: 700; font-size: 22px; }
+    .content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      padding: 160px 78px 88px;
+      display: flex;
+      flex-direction: column;
+    }
+    .eyebrow {
+      width: fit-content;
+      padding: 12px 20px;
+      border-radius: 999px;
+      background: rgba(253,161,29,0.18);
+      color: var(--green);
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 34px;
+    }
+    h1, h2 { margin: 0; line-height: 0.98; font-weight: 900; color: var(--green-dark); }
+    h1 { max-width: 850px; font-size: 96px; }
+    h2 { max-width: 840px; font-size: 82px; }
+    .accent { display: block; color: var(--green); }
+    .sub { max-width: 830px; margin: 38px 0 0; font-size: 40px; line-height: 1.2; font-weight: 700; color: #304431; }
+    .body-text {
+      max-width: 860px;
+      margin: 40px 0 0;
+      font-size: 36px;
+      line-height: 1.32;
+      font-weight: 600;
+      color: #2a3a2a;
+    }
+    .truth-card {
+      margin-top: 50px;
+      padding: 38px 42px;
+      background: var(--white);
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      box-shadow: 0 24px 60px rgba(41,98,65,0.10);
+    }
+    .truth-label {
+      color: var(--orange);
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .truth-card p { margin: 0; color: #2a3a2a; font-size: 36px; line-height: 1.28; font-weight: 600; }
+    .note { margin-top: 28px; color: var(--muted); font-size: 29px; line-height: 1.32; font-weight: 600; }
+    .stat-row {
+      display: flex;
+      gap: 28px;
+      margin-top: 48px;
+    }
+    .stat-box {
+      flex: 1;
+      padding: 32px 28px;
+      background: white;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .stat-label { font-size: 20px; font-weight: 900; letter-spacing: 0.07em; text-transform: uppercase; color: var(--orange); }
+    .stat-value { font-size: 52px; font-weight: 900; color: var(--green-dark); line-height: 1; }
+    .stat-desc { font-size: 28px; font-weight: 600; color: #2a3a2a; line-height: 1.25; }
+    .tagline {
+      max-width: 740px;
+      margin-top: 40px;
+      padding: 28px 34px;
+      border-left: 8px solid var(--orange);
+      background: rgba(255,255,255,0.62);
+      font-size: 34px;
+      line-height: 1.28;
+      font-weight: 700;
+      color: #2d402f;
+    }
+    .cta {
+      margin-top: 44px;
+      padding: 34px 40px;
+      border-radius: 8px;
+      background: var(--green);
+      color: var(--cream);
+      font-size: 38px;
+      line-height: 1.2;
+      font-weight: 850;
+    }
+    .cta strong { color: var(--orange-soft); }
+    .footer {
+      margin-top: auto;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 28px;
+      color: var(--green);
+      font-size: 25px;
+      font-weight: 800;
+    }
+    .swipe { color: var(--muted); font-weight: 700; }
+    .ghost-num {
+      position: absolute;
+      right: 52px;
+      bottom: 42px;
+      color: rgba(41,98,65,0.10);
+      font-size: 210px;
+      line-height: 0.75;
+      font-weight: 900;
+      z-index: 1;
+    }
+
+    /* Dark CTA slide */
+    .green-cta { background: var(--green-dark); }
+    .green-cta::before {
+      background:
+        radial-gradient(circle at 20% 15%, rgba(253,161,29,0.25), transparent 30%),
+        radial-gradient(circle at 80% 85%, rgba(253,246,236,0.08), transparent 35%);
+    }
+    .green-cta .brand-left, .green-cta .footer { color: var(--orange); }
+    .green-cta .count, .green-cta .swipe { color: rgba(253,246,236,0.5); }
+    .green-cta h2 { color: var(--cream); }
+    .green-cta .tagline { background: rgba(253,246,236,0.10); color: rgba(253,246,236,0.85); border-left-color: var(--orange); }
+  </style>
+</head>
+<body>
+
+  <!-- SLIDE 1: HOOK -->
+  <section class="slide" id="slide-1">
+    <div class="grain"></div>
+    <div class="brand">
+      <div class="brand-left">The Beans Hub</div>
+      <div class="count">1/6</div>
+    </div>
+    <div class="content">
+      <div class="eyebrow">Liberica</div>
+      <h1>I have not fallen in love with Liberica yet.<span class="accent">But I keep coming back to it.</span></h1>
+      <p class="sub">I have tasted it. I have read about it. There is something here I have not figured out yet, and that is exactly why I keep paying attention.</p>
+      <div class="footer">
+        <span>The Beans Hub</span>
+        <span class="swipe">Swipe →</span>
+      </div>
+    </div>
+    <div class="ghost-num">01</div>
+  </section>
+
+  <!-- SLIDE 2: FLAVOUR TERRITORY -->
+  <section class="slide" id="slide-2">
+    <div class="grain"></div>
+    <div class="brand">
+      <div class="brand-left">The Beans Hub</div>
+      <div class="count">2/6</div>
+    </div>
+    <div class="content">
+      <div class="eyebrow">Flavour</div>
+      <h2>In Vietnam, they call it Cà phê mít.<span class="accent">Jackfruit Coffee.</span></h2>
+      <div class="truth-card">
+        <div class="truth-label">Where it lives on the wheel</div>
+        <p>Arabica lives in floral and fruity. Robusta settles into nutty and cocoa. Liberica goes somewhere else entirely — spice, herbal, savoury, umami. The territories that most coffees never visit.</p>
+      </div>
+      <p class="note">Pull up a flavour wheel. Find the section that doesn't look like coffee. That's where Liberica is.</p>
+      <div class="footer">
+        <span>thebeanshub.com</span>
+        <span class="swipe">Next →</span>
+      </div>
+    </div>
+    <div class="ghost-num">02</div>
+  </section>
+
+  <!-- SLIDE 3: THE WAITING -->
+  <section class="slide" id="slide-3">
+    <div class="grain"></div>
+    <div class="brand">
+      <div class="brand-left">The Beans Hub</div>
+      <div class="count">3/6</div>
+    </div>
+    <div class="content">
+      <div class="eyebrow">The Bean</div>
+      <h2>Arabica ripens in 6–8 months.<span class="accent">Liberica takes 9–11.</span></h2>
+      <p class="body-text">That extra time is everything. The bean sits inside thick fruit pulp for longer, soaking up sugars and aromatic compounds as the cherry slowly breaks down around it.</p>
+      <div class="tagline">The jackfruit note you taste in the cup is not an accident. It is the record of that waiting.</div>
+      <div class="footer">
+        <span>thebeanshub.com</span>
+        <span class="swipe">Next →</span>
+      </div>
+    </div>
+    <div class="ghost-num">03</div>
+  </section>
+
+  <!-- SLIDE 4: THE TREE -->
+  <section class="slide" id="slide-4">
+    <div class="grain"></div>
+    <div class="brand">
+      <div class="brand-left">The Beans Hub</div>
+      <div class="count">4/6</div>
+    </div>
+    <div class="content">
+      <div class="eyebrow">The Tree</div>
+      <h2>Liberica grows where Arabica would die.</h2>
+      <div class="stat-row">
+        <div class="stat-box">
+          <div class="stat-label">Height</div>
+          <div class="stat-value">18–20m</div>
+          <div class="stat-desc">Four times taller than Arabica</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Soil</div>
+          <div class="stat-value">Any</div>
+          <div class="stat-desc">Peat, clay, acidic — the land farmers write off</div>
+        </div>
+      </div>
+      <p class="body-text">The leaves are large, thick, and waxy. They hold moisture. They keep working in direct sunlight when other species would struggle.</p>
+      <div class="footer">
+        <span>thebeanshub.com</span>
+        <span class="swipe">Next →</span>
+      </div>
+    </div>
+    <div class="ghost-num">04</div>
+  </section>
+
+  <!-- SLIDE 5: THE ECONOMICS -->
+  <section class="slide" id="slide-5">
+    <div class="grain"></div>
+    <div class="brand">
+      <div class="brand-left">The Beans Hub</div>
+      <div class="count">5/6</div>
+    </div>
+    <div class="content">
+      <div class="eyebrow">Economics</div>
+      <h2>For most of its history, farmers walked away from Liberica.</h2>
+      <div class="truth-card">
+        <div class="truth-label">The old problem</div>
+        <p>The trees grew too tall. Harvesting required ladders and twice the labour. Ten kilograms of fresh cherries produced only about one kilogram of green beans — where Arabica gives you five or six.</p>
+      </div>
+      <p class="note">Today, specialty-processed Liberica sells at 3–4× the price of Robusta. The economics have turned around completely.</p>
+      <div class="footer">
+        <span>thebeanshub.com</span>
+        <span class="swipe">Last slide →</span>
+      </div>
+    </div>
+    <div class="ghost-num">05</div>
+  </section>
+
+  <!-- SLIDE 6: CTA -->
+  <section class="slide green-cta" id="slide-6">
+    <div class="grain"></div>
+    <div class="brand">
+      <div class="brand-left">The Beans Hub</div>
+      <div class="count">6/6</div>
+    </div>
+    <div class="content">
+      <div class="eyebrow" style="background:rgba(253,161,29,0.22);color:var(--orange);">Liberica</div>
+      <h2>Liberica divides people cleanly.</h2>
+      <p class="body-text" style="color:rgba(253,246,236,0.80);font-size:34px;">Some find the complexity and sweetness unlike anything they've had before. Others find it too far from what they expect coffee to be. There is rarely a middle opinion.</p>
+      <div class="tagline">The people who seek it out are usually the ones who have grown tired of safe choices.</div>
+      <div class="cta">Full guide at<br><strong>thebeanshub.com</strong></div>
+      <div class="footer">
+        <span>The Beans Hub</span>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const slide = params.get("slide");
+    if (slide) {
+      document.body.classList.add("export");
+      document.querySelectorAll(".slide").forEach(n => n.classList.remove("active"));
+      const target = document.querySelector(`#slide-${slide}`);
+      if (target) target.classList.add("active");
+    }
+  </script>
+</body>
+</html>
