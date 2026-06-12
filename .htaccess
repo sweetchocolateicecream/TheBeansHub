@@ -6,6 +6,30 @@ RewriteBase /
 RewriteCond %{HTTP_HOST} ^thebeanshub\.com [NC]
 RewriteRule ^(.*)$ https://www.thebeanshub.com/$1 [R=301,L]
 
+# ── SEO: 301 redirects for old WordPress URLs (9.2k 404s in GSC) ──
+# Old bean pages lived under /product/, /coffee_bean/, /coffee-beans/.
+# Match origin in the slug → closest /shop/ category page.
+RewriteRule ^(?:product|coffee_bean|coffee-beans)/.*ethiopia /shop/ethiopia-coffee-beans [R=301,L,NC]
+RewriteRule ^(?:product|coffee_bean|coffee-beans)/.*colombia /shop/colombia-coffee-beans [R=301,L,NC]
+RewriteRule ^(?:product|coffee_bean|coffee-beans)/.*brazil /shop/brazil-coffee-beans [R=301,L,NC]
+RewriteRule ^(?:product|coffee_bean|coffee-beans)/.*yunnan /shop/yunnan-coffee-beans [R=301,L,NC]
+RewriteRule ^(?:product|coffee_bean|coffee-beans)/.*indonesia /shop/indonesia-coffee-beans [R=301,L,NC]
+RewriteRule ^(?:product|coffee_bean|coffee-beans)/.*thailand /shop/thailand-coffee-beans [R=301,L,NC]
+# No matching origin → match by processing method.
+RewriteRule ^(?:product|coffee_bean|coffee-beans)/.*(anaerobic|carbonic|ferment) /shop/fermented-coffee-beans [R=301,L,NC]
+RewriteRule ^(?:product|coffee_bean|coffee-beans)/.*washed /shop/washed-process-coffee-beans [R=301,L,NC]
+RewriteRule ^(?:product|coffee_bean|coffee-beans)/.*natural /shop/natural-process-coffee-beans [R=301,L,NC]
+RewriteRule ^(?:product|coffee_bean|coffee-beans)/.*blend /shop/arabica-blend-coffee-beans [R=301,L,NC]
+# Old origin taxonomy pages.
+RewriteRule ^origin_country/ethiopia /shop/ethiopia-coffee-beans [R=301,L,NC]
+RewriteRule ^origin_country/colombia /shop/colombia-coffee-beans [R=301,L,NC]
+RewriteRule ^origin_country/brazil /shop/brazil-coffee-beans [R=301,L,NC]
+RewriteRule ^origin_country/yunnan /shop/yunnan-coffee-beans [R=301,L,NC]
+RewriteRule ^origin_country/indonesia /shop/indonesia-coffee-beans [R=301,L,NC]
+RewriteRule ^origin_country/thailand /shop/thailand-coffee-beans [R=301,L,NC]
+# Everything else from the old WP structure → main shop page.
+RewriteRule ^(?:product|coffee_bean|coffee-beans|origin_country|brand)(/.*)?$ /shop [R=301,L,NC]
+
 # Remove .html extension
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
