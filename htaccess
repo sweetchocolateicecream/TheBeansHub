@@ -26,8 +26,7 @@ RewriteRule ^posts/([^\.]+)$ posts/$1.html [NC,L]
 RewriteCond %{THE_REQUEST} /posts/([^.]+)\.html [NC]
 RewriteRule ^ /posts/%1 [NC,R=301,L]
 
-__________________________________________________
-
+# ──────────────────────────────────────────────────
 
 <IfModule mod_headers.c>
 Header set Content-Security-Policy "script-src 'self' 'unsafe-inline' 'unsafe-eval' *thebeanshub.com"
@@ -62,18 +61,5 @@ CacheKeyModify -qs:_ga
 ## LITESPEED WP CACHE PLUGIN - Do not edit the contents of this block! ##
 ## LITESPEED WP CACHE PLUGIN - Do not edit the contents of this block! ##
 # END NON_LSCACHE
-# BEGIN WordPress
-# The directives (lines) between "BEGIN WordPress" and "END WordPress" are
-# dynamically generated, and should only be modified via WordPress filters.
-# Any changes to the directives between these markers will be overwritten.
-<IfModule mod_rewrite.c>
-RewriteEngine On
-RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-RewriteBase /
-RewriteRule ^index\.php$ - [L]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /index.php [L]
-</IfModule>
-
-# END WordPress
+# (Removed leftover WordPress block — this is a static site; it was
+# rewriting all missing URLs to /index.php, which doesn't exist.)
