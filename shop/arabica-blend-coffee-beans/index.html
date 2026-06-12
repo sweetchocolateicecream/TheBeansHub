@@ -966,6 +966,150 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
 .tbh-footer-copy{font-family:"Outfit",sans-serif;font-size:0.78rem;color:rgba(253,246,236,0.7);text-align:center;margin:0}
 @media (max-width:900px){.tbh-footer-inner{grid-template-columns:1fr 1fr;gap:32px}}
 @media (max-width:560px){footer.tbh-footer{padding:40px 24px 20px}.tbh-footer-inner{grid-template-columns:1fr;gap:28px}.tbh-footer-tagline{max-width:none}}
+.intro-hero {
+  max-width: 1200px;
+  margin: 36px auto 28px;
+  padding: 0 24px;
+}
+.intro-lead {
+  font-size: 1.18rem;
+  line-height: 1.6;
+  color: var(--brown-dark);
+  max-width: 880px;
+  margin-bottom: 28px;
+  font-weight: 400;
+}
+.intro-lead strong { font-weight: 700; color: var(--brown-dark); }
+
+.quick-facts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin: 0 0 28px;
+}
+.quick-fact-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 18px 16px 22px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.quick-fact-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(41, 98, 65, 0.08);
+}
+.quick-fact-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--accent);
+}
+.quick-fact-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+.quick-fact-value {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--brown-dark);
+  line-height: 1.35;
+}
+.intro-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 4px;
+}
+.intro-body p {
+  line-height: 1.7;
+  color: var(--brown-dark);
+  font-size: 0.97rem;
+  margin-bottom: 12px;
+}
+.intro-body p:last-child { margin-bottom: 0; }
+.intro-body strong { color: var(--brown-dark); font-weight: 700; }
+.intro-related {
+  background: var(--tag-bg);
+  border-left: 4px solid var(--accent);
+  padding: 14px 20px;
+  border-radius: 0 10px 10px 0;
+  margin-top: 24px;
+  font-size: 0.93rem;
+  line-height: 1.55;
+  color: var(--brown-dark);
+}
+.intro-related a { color: var(--accent); font-weight: 600; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.15s; }
+.intro-related a:hover { border-bottom-color: var(--accent); }
+.intro-related strong { color: var(--brown-dark); font-weight: 700; margin-right: 4px; }
+
+.filter-bar-wrap {
+  position: sticky;
+  top: 68px;
+  z-index: 50;
+  margin: 0 -24px 22px;
+  background: rgba(253, 246, 236, 0.92);
+  backdrop-filter: saturate(160%) blur(10px);
+  -webkit-backdrop-filter: saturate(160%) blur(10px);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.filter-bar {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.filter-bar-group { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.filter-bar-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-right: 4px; }
+.filter-pill { padding: 5px 13px; border-radius: 18px; border: 1.5px solid var(--border); background: white; color: var(--brown-mid); font-size: 0.78rem; font-weight: 500; cursor: pointer; transition: all 0.15s; font-family: "Outfit", sans-serif; }
+.filter-pill:hover { border-color: var(--accent); color: var(--accent); }
+.filter-pill.active { background: var(--accent); border-color: var(--accent); color: white; font-weight: 600; }
+.filter-bar-search { padding: 7px 12px; border: 1.5px solid var(--border); border-radius: 8px; font-family: "Outfit", sans-serif; font-size: 0.85rem; background: white; color: var(--brown-dark); outline: none; min-width: 200px; transition: border-color 0.2s; }
+.filter-bar-search:focus { border-color: var(--accent); }
+.filter-bar-right { margin-left: auto; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.filter-bar-count { font-size: 0.82rem; color: var(--text-muted); white-space: nowrap; }
+.filter-bar-count strong { color: var(--brown-dark); font-weight: 700; }
+.filter-bar-sort { padding: 7px 30px 7px 12px; border: 1.5px solid var(--border); border-radius: 8px; font-family: "Outfit", sans-serif; font-size: 0.82rem; background: white; color: var(--brown-dark); cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A7460' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; outline: none; transition: border-color 0.2s; }
+.filter-bar-sort:focus { border-color: var(--accent); }
+.clear-filters-btn { padding: 5px 12px; border-radius: 18px; border: 1.5px dashed var(--border); background: transparent; color: var(--text-muted); font-size: 0.76rem; font-weight: 500; cursor: pointer; font-family: "Outfit", sans-serif; transition: all 0.15s; }
+.clear-filters-btn:hover { border-color: var(--brown-mid); color: var(--brown-mid); }
+.card.is-hidden { display: none !important; }
+.empty-grid-msg { grid-column: 1 / -1; text-align: center; padding: 60px 20px; color: var(--text-muted); font-size: 0.95rem; display: none; }
+.empty-grid-msg.show { display: block; }
+.empty-grid-msg strong { color: var(--brown-dark); display: block; margin-bottom: 6px; font-size: 1.05rem; }
+.show-more-wrap { text-align: center; margin: 28px 0 0; }
+.show-more-btn { padding: 10px 26px; background: white; color: var(--brown-dark); border: 1.5px solid var(--border); border-radius: 10px; font-family: "Outfit", sans-serif; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.15s; }
+.show-more-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+@media (max-width: 900px) {
+  .quick-facts { grid-template-columns: repeat(2, 1fr); }
+  .intro-body { grid-template-columns: 1fr; gap: 0; }
+}
+@media (max-width: 768px) {
+  .filter-bar-wrap { margin: 0 -16px 18px; }
+  .filter-bar { padding: 10px 16px; gap: 8px; }
+  .filter-bar-label { font-size: 0.65rem; }
+  .filter-pill { padding: 4px 10px; font-size: 0.74rem; }
+  .filter-bar-search { min-width: 0; flex: 1; }
+  .filter-bar-right { width: 100%; justify-content: space-between; margin-left: 0; gap: 8px; }
+}
+@media (max-width: 560px) {
+  .intro-hero { padding: 0 16px; margin: 24px auto 22px; }
+  .intro-lead { font-size: 1.02rem; margin-bottom: 22px; }
+  .quick-facts { gap: 10px; }
+  .quick-fact-card { padding: 13px 14px 13px 18px; }
+  .quick-fact-value { font-size: 0.9rem; }
+}
 </style>
 
 <!-- CollectionPage + ItemList schema for rich results -->
@@ -2133,22 +2277,88 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
   <p>Multi-origin recipes from Malaysian specialty roasters.</p>
 </header>
 
-<main class="main" style="max-width:1200px;margin:0 auto;padding:32px 32px 0;">
-  <section class="category-intro" style="margin-bottom:32px;line-height:1.65;font-size:1rem;color:var(--brown-dark);max-width:820px;">
-    <p>A coffee blend is what you get when a roaster combines two or more single-origin coffees into one bag, and the goal is almost always the same: a cup that tastes more complete, more balanced or more reliable than any single origin could deliver on its own. The coffee blends on this page come from Malaysian roasters who've spent years dialling in their house recipes.</p>
-      <p>Blending is a craft. A good blend balances body, acidity, sweetness and finish — using one origin for chocolate depth, another for fruit lift, a third for the long aftertaste. Brazil shows up in a lot of espresso blends because of its body and low acidity. Ethiopia gets added for floral or fruit top notes. Colombia and Central American washed lots round out the middle.</p>
-      <!-- source: James Hoffmann, "The World Atlas of Coffee", 2nd edition, 2018, blending chapter -->
-      <!-- source: Counter Culture Coffee blending notes; SCA Brewing Standards -->
-      <p>Most blends are roasted medium to medium-dark, which is part of why they hold up better in milk drinks, moka pots, espresso machines and bigger-batch brewing. They're forgiving — the kind of bag you can grind for a flat white at 7am without thinking, and that won't punish you if your espresso recipe drifts a few seconds off.</p>
-      <p>You'll see two broad styles on this page. Espresso blends are designed to taste good as a shot or with milk — chocolate, caramel, nut, brown sugar profiles dominate. Filter or omni-roast blends lean lighter and brighter, and work better in pour-over or AeroPress. Some roasters call out the components on the bag, others treat the recipe as house IP.</p>
-      <p>If you've been chasing single-origin lots and want something that just works every morning, coffee blends are where you settle in. Browse the blend selection below, or back to the <a href="/shop">full shop</a>.</p>
-  </section>
+<section class="intro-hero">
+  <p class="intro-lead">A coffee blend is two or more single origins mixed into one bag to deliver <strong>balance, consistency and a cup that holds up day after day</strong> — especially in espresso, milk drinks and bigger-batch brewing.</p>
 
-  <div class="top-bar">
-    <div class="top-bar-left">Showing <strong>143</strong> beans in this category — visit the <a href="/shop" style="color:var(--accent);text-decoration:none;font-weight:600;">full shop</a> for filters and more.</div>
+  <div class="quick-facts">
+    <div class="quick-fact-card">
+      <div class="quick-fact-label">Components</div>
+      <div class="quick-fact-value">Brazil · Colombia · Ethiopia · Indonesia</div>
+    </div>
+    <div class="quick-fact-card">
+      <div class="quick-fact-label">Roast</div>
+      <div class="quick-fact-value">Medium · Medium-Dark · Dark</div>
+    </div>
+    <div class="quick-fact-card">
+      <div class="quick-fact-label">Best For</div>
+      <div class="quick-fact-value">Espresso · Milk drinks · Moka pot</div>
+    </div>
+    <div class="quick-fact-card">
+      <div class="quick-fact-label">Flavour Notes</div>
+      <div class="quick-fact-value">Chocolate · Caramel · Nut · Brown Sugar</div>
+    </div>
   </div>
 
-  <div class="grid">
+  <div class="intro-body">
+    <div>
+      <p>Blending is a craft. A good recipe balances <strong>body, acidity, sweetness and finish</strong> — Brazil for chocolate depth and low acidity, Ethiopia for floral or fruit top notes, Colombia and Central American washed lots to round out the middle.</p>
+      <p>Most blends are roasted medium to medium-dark so they hold up in milk, moka pots and espresso machines. They're forgiving — the kind of bag you can grind for a flat white at 7am without thinking.</p>
+    </div>
+    <div>
+      <p>You'll see two broad styles here. <strong>Espresso blends</strong> are built for shots and milk — chocolate, caramel, nut, brown sugar dominate. <strong>Filter or omni blends</strong> lean lighter and brighter, better suited to pour-over or AeroPress.</p>
+      <p>If you've been chasing single-origin lots and want something that just works every morning, blends are where you settle in. Some roasters list the components on the bag, others treat the recipe as house IP.</p>
+    </div>
+  </div>
+
+  <div class="intro-related">
+    <strong>Related reads:</strong> Learn when blends beat single origins in <a href="/posts/single-origin-vs-blend-coffee">single origin vs blend coffee</a>, then compare species in <a href="/posts/arabica-robusta-liberica">Arabica, Robusta and Liberica</a> and roast levels in the <a href="/posts/light-vs-medium-vs-dark-roast">roast guide</a>.
+  </div>
+</section>
+
+<main class="main" style="max-width:1200px;margin:0 auto;padding:0 24px;overflow:visible;">
+  <div class="products-section">
+  <div class="filter-bar-wrap">
+    <div class="filter-bar" role="region" aria-label="Filter arabica blend coffee beans">
+      <input type="search" class="filter-bar-search" id="searchBox" placeholder="Search blend or roaster…" aria-label="Search beans">
+      <div class="filter-bar-group">
+        <span class="filter-bar-label">Roast</span>
+        <button class="filter-pill active" data-filter="roast" data-value="all">All</button>
+        <button class="filter-pill" data-filter="roast" data-value="light">Light</button>
+        <button class="filter-pill" data-filter="roast" data-value="medium">Medium</button>
+        <button class="filter-pill" data-filter="roast" data-value="dark">Dark</button>
+      </div>
+      <div class="filter-bar-group">
+        <span class="filter-bar-label">Brew</span>
+        <button class="filter-pill active" data-filter="brew" data-value="all">All</button>
+        <button class="filter-pill" data-filter="brew" data-value="espresso">Espresso</button>
+        <button class="filter-pill" data-filter="brew" data-value="filter">Filter</button>
+        <button class="filter-pill" data-filter="brew" data-value="both">Both</button>
+      </div>
+        <div class="filter-bar-group">
+          <span class="filter-bar-label">Taste</span>
+          <button class="filter-pill active" data-filter="taste" data-value="all">All</button>
+          <button class="filter-pill" data-filter="taste" data-value="Chocolate">Chocolate</button>
+          <button class="filter-pill" data-filter="taste" data-value="Caramel">Caramel</button>
+          <button class="filter-pill" data-filter="taste" data-value="Nutty">Nutty</button>
+          <button class="filter-pill" data-filter="taste" data-value="Floral">Floral</button>
+          <button class="filter-pill" data-filter="taste" data-value="Fruity">Fruity</button>
+          <button class="filter-pill" data-filter="taste" data-value="Sweet">Sweet</button>
+        </div>
+      <button class="clear-filters-btn" id="clearFilters" type="button">Clear</button>
+      <div class="filter-bar-right">
+        <span class="filter-bar-count">Showing <strong id="resultCount">143</strong> of 143</span>
+        <select class="filter-bar-sort" id="sortSelect" aria-label="Sort coffee beans">
+          <option value="default">Sort: Featured</option>
+          <option value="price-asc">Price: Low → High</option>
+          <option value="price-desc">Price: High → Low</option>
+          <option value="name">Name: A → Z</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid" id="productGrid">
+    <div class="empty-grid-msg" id="emptyMsg"><strong>No beans match these filters.</strong> Try clearing a filter or two.</div>
     
     <div class="card">
       <img class="card-img" src="https://down-my.img.susercontent.com/file/my-11134207-7rasj-m5awsxl0bxbd4a.webp" alt="Coffex Coffee Day Traveller Blend – specialty coffee beans Malaysia" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="card-img-placeholder" style="display:none">☕</div>
@@ -4766,6 +4976,10 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
       </div>
     </div>
   </div>
+  <div class="show-more-wrap" id="showMoreWrap" style="display:none;">
+    <button class="show-more-btn" id="showMoreBtn" type="button">Show more beans</button>
+  </div>
+  </div>
 </main>
 
 <footer class="tbh-footer">
@@ -4819,6 +5033,106 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
 
 <script>
   function toggleMenu(){ document.getElementById('mobileMenu').classList.toggle('open'); }
+
+  /* ── Arabica Blend shop: filter + sort + search + paginate ── */
+  (function(){
+    const grid = document.getElementById('productGrid');
+    if (!grid) return;
+    const emptyMsg = document.getElementById('emptyMsg');
+    const cards = Array.from(grid.querySelectorAll('.card'));
+    const countEl = document.getElementById('resultCount');
+    const originalOrder = cards.slice();
+    const PAGE_SIZE = 24;
+    const showMoreWrap = document.getElementById('showMoreWrap');
+    const showMoreBtn = document.getElementById('showMoreBtn');
+    let visibleLimit = PAGE_SIZE;
+
+    const state = { roast: 'all', brew: 'all', origin: 'all', taste: 'all', search: '', sort: 'default' };
+
+    const cardData = cards.map(card => {
+      const metas = card.querySelectorAll('.card-meta-item');
+      let roast = '', origin = '', brew = '';
+      metas.forEach(m => {
+        const txt = m.textContent.trim();
+        const valEl = m.querySelector('span');
+        const val = valEl ? valEl.textContent.trim() : '';
+        if (txt.startsWith('🔥')) roast = val.toLowerCase();
+        else if (txt.startsWith('🌍')) origin = val;
+        else if (txt.startsWith('☕')) brew = val.toLowerCase();
+      });
+      const origins = origin.split(',').map(s => s.trim()).filter(Boolean);
+      const priceTxt = (card.querySelector('.card-price')?.textContent || '').replace(/[^0-9.]/g,'');
+      const price = parseFloat(priceTxt) || 0;
+      const name = (card.querySelector('.card-name')?.textContent || '').trim();
+      const brand = (card.querySelector('.card-brand')?.textContent || '').trim();
+      const tastes = Array.from(card.querySelectorAll('.taste-tag')).map(t => t.textContent.trim());
+      const searchHay = (name + ' ' + brand + ' ' + origin).toLowerCase();
+      return { card, roast, brew, origin, origins, tastes, price, name, searchHay };
+    });
+
+    const TASTE_PILLS = [
+      { label: 'Chocolate', re: /choc|cocoa/i },
+      { label: 'Caramel', re: /caramel|toffee/i },
+      { label: 'Nutty', re: /nut|almond/i },
+      { label: 'Floral', re: /floral|rose|jasmine|lavender/i },
+      { label: 'Fruity', re: /berry|berries|mango|orange|cherry|fruit/i },
+      { label: 'Sweet', re: /brown sugar|honey|maple/i },
+    ];
+    function matchTaste(cardTastes, f){ if (f==='all') return true; const pill=TASTE_PILLS.find(p=>p.label===f); if (!pill) return true; return cardTastes.some(t=>pill.re.test(t)); }
+    function matchRoast(cardRoast, f){ if (f==='all') return true; if (!cardRoast) return false; if (f==='light') return /\blight\b/.test(cardRoast); if (f==='dark') return /\bdark\b/.test(cardRoast); if (f==='medium') return /\bmedium\b/.test(cardRoast) && !/\blight\b|\bdark\b/.test(cardRoast); return cardRoast.includes(f); }
+    function matchBrew(cardBrew, f){ if (f==='all') return true; if (!cardBrew) return false; if (cardBrew.includes('both')) return true; return cardBrew.includes(f); }
+    function matchSearch(hay, q){ if (!q) return true; return q.split(/\s+/).every(term => hay.includes(term)); }
+
+    function apply(resetPage){
+      if (resetPage) visibleLimit = PAGE_SIZE;
+      const q = state.search.trim().toLowerCase();
+      cardData.forEach(d => {
+        d.passes = matchRoast(d.roast, state.roast)
+                && matchBrew(d.brew, state.brew)
+                && matchTaste(d.tastes, state.taste)
+                && matchSearch(d.searchHay, q);
+      });
+      let passing = cardData.filter(d => d.passes);
+      if (state.sort === 'price-asc')       passing.sort((a,b) => a.price - b.price);
+      else if (state.sort === 'price-desc') passing.sort((a,b) => b.price - a.price);
+      else if (state.sort === 'name')       passing.sort((a,b) => a.name.localeCompare(b.name));
+      else passing = originalOrder.map(c => cardData.find(d => d.card === c)).filter(d => d.passes);
+      cardData.forEach(d => d.card.classList.add('is-hidden'));
+      const shown = passing.slice(0, visibleLimit);
+      shown.forEach(d => { d.card.classList.remove('is-hidden'); grid.appendChild(d.card); });
+      grid.appendChild(emptyMsg);
+      countEl.textContent = passing.length;
+      emptyMsg.classList.toggle('show', passing.length === 0);
+      if (passing.length > visibleLimit) {
+        showMoreWrap.style.display = '';
+        showMoreBtn.textContent = `Show more beans (${passing.length - visibleLimit} remaining)`;
+      } else {
+        showMoreWrap.style.display = 'none';
+      }
+    }
+
+    document.querySelectorAll('.filter-pill[data-filter]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const f = btn.dataset.filter, v = btn.dataset.value;
+        state[f] = v;
+        document.querySelectorAll(`.filter-pill[data-filter="${f}"]`).forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        apply(true);
+      });
+    });
+    document.getElementById('sortSelect').addEventListener('change', e => { state.sort = e.target.value; apply(true); });
+    const searchBox = document.getElementById('searchBox');
+    let searchTimer;
+    searchBox.addEventListener('input', () => { clearTimeout(searchTimer); searchTimer = setTimeout(() => { state.search = searchBox.value; apply(true); }, 150); });
+    document.getElementById('clearFilters').addEventListener('click', () => {
+      state.roast = 'all'; state.brew = 'all'; state.taste = 'all'; state.search = '';
+      searchBox.value = '';
+      document.querySelectorAll('.filter-pill[data-filter]').forEach(b => { b.classList.toggle('active', b.dataset.value === 'all'); });
+      apply(true);
+    });
+    showMoreBtn.addEventListener('click', () => { visibleLimit += PAGE_SIZE; apply(false); });
+    apply(true);
+  })();
 </script>
 </body>
 </html>
