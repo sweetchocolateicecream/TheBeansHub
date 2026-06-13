@@ -3166,5 +3166,26 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
     apply(true);
   })();
 </script>
+
+  <script>
+    /* Buy click tracking — auto-attaches to every .buy-btn on this page */
+    document.addEventListener('DOMContentLoaded', function() {
+      var pagePath = window.location.pathname || document.location.pathname;
+      document.querySelectorAll('.buy-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var card = btn.closest('.card');
+          var beanName = card && card.querySelector('.card-name') ? card.querySelector('.card-name').textContent.trim() : '';
+          var roaster  = card && card.querySelector('.card-brand') ? card.querySelector('.card-brand').textContent.trim() : '';
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'buy_click', {
+              bean_name: beanName,
+              roaster:   roaster,
+              source:    pagePath
+            });
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
