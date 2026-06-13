@@ -1099,6 +1099,7 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
       brew: [],
       processing: '',
       blend: 'all',
+      maxprice: null,
       page: 1,
       sort: 'default'
     };
@@ -1245,6 +1246,13 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
       if (state.blend === 'blend') results = results.filter(b => b.is_blend);
       if (state.blend === 'single') results = results.filter(b => !b.is_blend);
 
+      if (state.maxprice) {
+        results = results.filter(b => {
+          const p = parsePrice(b.price_200g || b.price_500g || b.price_1kg);
+          return p <= state.maxprice;
+        });
+      }
+
       // Sort
       const sort = document.getElementById('sortSelect')?.value || 'default';
       if (sort === 'name_asc') results.sort((a, b) => a.name.localeCompare(b.name));
@@ -1373,7 +1381,7 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
     }
 
     function clearAllFilters() {
-      state = { ...state, search: '', tastes: [], origin: '', roast: [], brew: [], processing: '', blend: 'all', page: 1 };
+      state = { ...state, search: '', tastes: [], origin: '', roast: [], brew: [], processing: '', blend: 'all', maxprice: null, page: 1 };
       document.getElementById('searchInput').value = '';
       document.getElementById('originSelect').value = '';
       document.getElementById('processingSelect').value = '';
@@ -1390,12 +1398,26 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
         return r.json();
       })
       .then(function (data) {
-        // Normalise: ensure arrays are always arrays
+        // Normalise across both data schemas:
+        //  - legacy: arrays + snake_case keys (taste_notes, roast_level, brand, is_blend…)
+        //  - current: comma-strings + spaced/renamed keys (brands, 'roast level', blend='Yes'…)
+        function toArray(v) {
+          if (Array.isArray(v)) return v.filter(Boolean);
+          if (typeof v === 'string' && v.trim()) return v.split(',').map(function (s) { return s.trim(); }).filter(Boolean);
+          return [];
+        }
         BEANS = data.map(function (b) {
+          var blendRaw = b.is_blend !== undefined ? b.is_blend : b.blend;
           return Object.assign({}, b, {
-            origin: Array.isArray(b.origin) ? b.origin : [],
-            taste_notes: Array.isArray(b.taste_notes) ? b.taste_notes : [],
-            taste_notes_category: Array.isArray(b.taste_notes_category) ? b.taste_notes_category : []
+            sku: b.sku || b.SKU || '',
+            brand: b.brand || b.brands || '',
+            origin: toArray(b.origin),
+            taste_notes: toArray(b.taste_notes),
+            taste_notes_category: toArray(b.taste_notes_category),
+            roast_level: b.roast_level || b['roast level'] || '',
+            roasted_for: b.roasted_for || b['roasted for'] || '',
+            processing_method: b.processing_method || b['processing method'] || '',
+            is_blend: blendRaw === true || blendRaw === 'Yes' || blendRaw === 'yes'
           });
         });
 
@@ -1405,16 +1427,69 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
         // Initialise desktop filters + render
         initFilters();
 
-        // Read taste filter from URL param (e.g. ?taste=Fruity,Berry)
+        // Read filters from URL params (e.g. ?taste=Fruity,Berry&roast=Light&maxprice=50&sort=price_asc)
         const urlParams = new URLSearchParams(window.location.search);
+        let hasUrlFilter = false;
+
         const tasteParam = urlParams.get('taste');
         if (tasteParam) {
+          hasUrlFilter = true;
           tasteParam.split(',').forEach(t => {
             const trimmed = t.trim();
-            if (!state.tastes.includes(trimmed)) {
+            if (trimmed && !state.tastes.includes(trimmed)) {
               toggleFilter('tastes', trimmed);
             }
           });
+        }
+
+        const roastParam = urlParams.get('roast');
+        if (roastParam) {
+          hasUrlFilter = true;
+          roastParam.split(',').forEach(r => {
+            const trimmed = r.trim();
+            if (trimmed && !state.roast.includes(trimmed)) {
+              toggleFilter('roast', trimmed);
+            }
+          });
+        }
+
+        const brewParam = urlParams.get('brew');
+        if (brewParam) {
+          hasUrlFilter = true;
+          brewParam.split(',').forEach(b => {
+            const trimmed = b.trim();
+            if (trimmed && !state.brew.includes(trimmed)) {
+              toggleFilter('brew', trimmed);
+            }
+          });
+        }
+
+        const originParam = urlParams.get('origin');
+        if (originParam) {
+          hasUrlFilter = true;
+          state.origin = originParam.trim();
+          const originSel = document.getElementById('originSelect');
+          if (originSel) originSel.value = state.origin;
+          const originSelM = document.getElementById('originSelectMobile');
+          if (originSelM) originSelM.value = state.origin;
+        }
+
+        const maxpriceParam = urlParams.get('maxprice');
+        if (maxpriceParam) {
+          const mp = parseFloat(maxpriceParam);
+          if (!isNaN(mp)) { hasUrlFilter = true; state.maxprice = mp; }
+        }
+
+        const sortParam = urlParams.get('sort');
+        if (sortParam) {
+          hasUrlFilter = true;
+          state.sort = sortParam;
+          const sortSel = document.getElementById('sortSelect');
+          if (sortSel) sortSel.value = sortParam;
+        }
+
+        if (hasUrlFilter) {
+          state.page = 1;
           setTimeout(() => {
             const grid = document.getElementById('grid');
             if (grid) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });

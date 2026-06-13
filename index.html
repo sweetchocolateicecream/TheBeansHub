@@ -32,8 +32,17 @@
     html { scroll-behavior: smooth; }
     body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(--green); overflow-x: hidden; }
 
+    /* ANNOUNCEMENT BAR */
+    .announce-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 101; height: 38px; display: flex; align-items: center; justify-content: center; background: #FFF3DF; border-bottom: 2px solid var(--accent); overflow: hidden; padding: 0 16px; }
+    .announce-track { position: relative; width: 100%; max-width: 900px; height: 100%; }
+    .announce-msg { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: 7px; text-align: center; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.02em; color: var(--green); opacity: 0; transform: translateY(6px); transition: opacity 0.5s ease, transform 0.5s ease; pointer-events: none; }
+    .announce-msg.active { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .announce-msg a { color: var(--accent); text-decoration: underline; font-weight: 700; }
+    .announce-msg a:hover { color: var(--accent-hover); }
+    .announce-msg .ann-em { color: var(--accent); font-weight: 700; }
+
     /* NAV */
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 68px; background: #296241; border-bottom: 1px solid rgba(253,161,29,0.3); }
+    nav { position: fixed; top: 38px; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 68px; background: #296241; border-bottom: 1px solid rgba(253,161,29,0.3); }
     .nav-logo { font-family: "Sigmar", cursive; color: #FDF6EC; font-size: 1.45rem; font-weight: 700; text-decoration: none; }
     .nav-logo span { color: #FDA11D; }
     .nav-links { display: flex; gap: 36px; align-items: center; }
@@ -43,13 +52,13 @@
     .nav-links a.cta:hover { background: #DA8A10; }
     .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
     .nav-hamburger span { display: block; width: 24px; height: 2px; background: #FDF6EC; border-radius: 2px; }
-    .mobile-menu { display: none; position: fixed; top: 68px; left: 0; right: 0; background: #296241; padding: 20px 24px; flex-direction: column; z-index: 99; border-bottom: 2px solid #FDA11D; }
+    .mobile-menu { display: none; position: fixed; top: 106px; left: 0; right: 0; background: #296241; padding: 20px 24px; flex-direction: column; z-index: 99; border-bottom: 2px solid #FDA11D; }
     .mobile-menu.open { display: flex; }
     .mobile-menu a { color: rgba(253,246,236,0.85); text-decoration: none; font-size: 1rem; font-weight: 500; padding: 12px 0; border-bottom: 1px solid rgba(253,161,29,0.15); }
     .mobile-menu a:last-child { border-bottom: none; color: #FDA11D; font-weight: 700; }
 
     /* HERO */
-    .hero-wrapper { padding: 88px 20px 0; background: var(--cream); }
+    .hero-wrapper { padding: 126px 20px 0; background: var(--cream); }
     .hero { position: relative; min-height: 92vh; border-radius: 24px; overflow: hidden; display: flex; align-items: center; }
     .hero-bg { position: absolute; inset: 0; border-radius: 24px; background: linear-gradient(135deg, rgba(41,98,65,0.88) 0%, rgba(41,98,65,0.45) 55%, rgba(41,98,65,0.3) 100%), url('img/hero-bg.jpg') center/cover no-repeat; }
     .hero-grain { position: absolute; inset: 0; border-radius: 24px; opacity: 0.04; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); pointer-events: none; }
@@ -69,6 +78,23 @@
     .hero-teaser { position: absolute; bottom: 40px; left: 72px; z-index: 2; display: flex; align-items: center; gap: 10px; color: rgba(253,246,236,0.6); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.05em; animation: teaserBob 2.5s ease-in-out infinite; }
     .hero-teaser::after { content: '↓'; font-size: 1rem; color: #FDA11D; margin-left: 6px; }
     @keyframes teaserBob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
+    .hero-trust { margin-top: 22px; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.03em; color: rgba(253,246,236,0.6); }
+    .hero-trust strong { color: rgba(253,246,236,0.85); font-weight: 700; }
+
+    /* PERSONA TILES */
+    .persona-section { background: var(--cream); padding: 72px 48px 40px; }
+    .persona-inner { max-width: 1200px; margin: 0 auto; }
+    .persona-header { text-align: center; margin-bottom: 40px; }
+    .persona-header .section-sub { margin: 0 auto; }
+    .persona-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .persona-card { position: relative; text-decoration: none; background: white; border: 1px solid var(--border); border-radius: 18px; padding: 26px 22px 24px; display: flex; flex-direction: column; gap: 8px; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; }
+    .persona-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 0.25s ease; }
+    .persona-card:hover { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(41,98,65,0.12); border-color: transparent; }
+    .persona-card:hover::before { transform: scaleX(1); }
+    .persona-emoji { font-size: 1.6rem; line-height: 1; }
+    .persona-name { font-family: "Sigmar", cursive; font-size: 1.08rem; color: var(--green); line-height: 1.2; }
+    .persona-desc { font-size: 0.84rem; color: var(--text-muted); line-height: 1.55; flex: 1; }
+    .persona-link { font-size: 0.8rem; font-weight: 700; color: var(--accent); margin-top: 4px; }
 
     /* SECTION COMMONS */
     .section-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
@@ -216,13 +242,17 @@
     @media (max-width: 1024px) {
       .roasters-grid { grid-template-columns: repeat(2, 1fr); }
       .bean-carousel { grid-template-columns: repeat(2, 1fr); }
+      .persona-grid { grid-template-columns: repeat(2, 1fr); }
       .tbh-footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
     }
     @media (max-width: 768px) {
       nav { padding: 0 20px; }
       .nav-links { display: none; }
       .nav-hamburger { display: flex; }
-      .hero-wrapper { padding: 80px 12px 0; }
+      .announce-msg { font-size: 0.72rem; }
+      .hero-wrapper { padding: 118px 12px 0; }
+      .persona-section { padding: 56px 20px 32px; }
+      .persona-grid { gap: 12px; }
       .hero-content { padding: 48px 28px; }
       .hero-title { font-size: 2rem; }
       .hero-teaser { left: 28px; bottom: 28px; }
@@ -240,6 +270,7 @@
     }
     @media (max-width: 480px) {
       .finder-grid { grid-template-columns: repeat(2, 1fr); }
+      .persona-grid { grid-template-columns: 1fr; }
       .roasters-grid { grid-template-columns: 1fr; }
       .stats-grid { grid-template-columns: 1fr; gap: 24px; }
       .tbh-footer-inner { grid-template-columns: 1fr; }
@@ -248,6 +279,15 @@
 </head>
 
 <body>
+
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="announce-bar" aria-label="Announcements">
+    <div class="announce-track" id="announceTrack">
+      <div class="announce-msg active">🆕 <span>Fresh this week — <span class="ann-em">new beans just added</span> from Malaysian roasters</span></div>
+      <div class="announce-msg">☕ <span><span class="ann-em">750+</span> specialty coffee beans, all in one place</span></div>
+      <div class="announce-msg">📬 <span>New roaster drops &amp; monthly picks — <a href="#newsletter">join the list →</a></span></div>
+    </div>
+  </div>
 
   <!-- NAV -->
   <nav>
@@ -283,16 +323,55 @@
       <div class="hero-dots" id="heroDots"></div>
       <div class="hero-content">
         <div class="hero-eyebrow">☕ Roasted in Malaysia</div>
-        <h1 class="hero-title">Malaysia's home for<br /><em>specialty</em> coffee beans</h1>
-        <p class="hero-sub">744 beans. 52 roasters. One place to discover, filter, and buy direct — no middleman, just great coffee.</p>
+        <h1 class="hero-title">Find the cup you've<br />been <em>looking for</em></h1>
+        <p class="hero-sub">Discover, compare and fall for specialty beans from Malaysia's best roasters — then buy fresh, straight from the source.</p>
         <div class="hero-actions">
           <a class="btn-primary" href="/shop">Explore All Beans →</a>
           <a class="btn-ghost" href="#flavour-finder">Find by taste ↓</a>
+          <a class="btn-ghost" href="/library">New to specialty? Start here →</a>
         </div>
+        <p class="hero-trust"><strong>744 beans</strong> · <strong>52 roasters</strong> · one place, no middleman</p>
       </div>
       <div class="hero-teaser">What does your perfect cup taste like?</div>
     </section>
   </div>
+
+  <!-- PERSONA TILES -->
+  <section class="persona-section">
+    <div class="persona-inner">
+      <div class="persona-header reveal">
+        <div class="section-label">Where do you start?</div>
+        <h2 class="section-title">Find your way in</h2>
+        <p class="section-sub">Tell us what you're after and we'll jump you straight to the right beans.</p>
+      </div>
+      <div class="persona-grid reveal">
+        <a class="persona-card" href="/shop?taste=Nutty%2FCocoa&amp;roast=Medium-Dark">
+          <span class="persona-emoji">🌱</span>
+          <span class="persona-name">New to specialty</span>
+          <span class="persona-desc">Easy-drinking, chocolatey and approachable. No surprises in the cup.</span>
+          <span class="persona-link">Show me →</span>
+        </a>
+        <a class="persona-card" href="/shop?maxprice=50&amp;sort=price_asc">
+          <span class="persona-emoji">☕</span>
+          <span class="persona-name">Daily driver under RM50</span>
+          <span class="persona-desc">Great-value everyday beans that won't break the budget.</span>
+          <span class="persona-link">Show me →</span>
+        </a>
+        <a class="persona-card" href="/shop?sort=price_desc">
+          <span class="persona-emoji">✨</span>
+          <span class="persona-name">Impress a guest</span>
+          <span class="persona-desc">Showpiece lots and rare finds for when the cup needs to wow.</span>
+          <span class="persona-link">Show me →</span>
+        </a>
+        <a class="persona-card" href="/shop?taste=Fruity&amp;roast=Light">
+          <span class="persona-emoji">🍓</span>
+          <span class="persona-name">Bright &amp; fruity</span>
+          <span class="persona-desc">Light roasts bursting with juicy, vibrant flavour.</span>
+          <span class="persona-link">Show me →</span>
+        </a>
+      </div>
+    </div>
+  </section>
 
   <!-- HOW IT WORKS -->
   <section class="how-section" id="how">
@@ -602,6 +681,17 @@
     function toggleMenu() {
       document.getElementById('mobileMenu').classList.toggle('open');
     }
+
+    (function rotateAnnounce() {
+      var msgs = document.querySelectorAll('.announce-msg');
+      if (msgs.length < 2) return;
+      var i = 0;
+      setInterval(function() {
+        msgs[i].classList.remove('active');
+        i = (i + 1) % msgs.length;
+        msgs[i].classList.add('active');
+      }, 4500);
+    })();
 
     function handleHomeSub() {
       var form = document.getElementById('homeSubForm');
