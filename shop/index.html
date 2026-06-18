@@ -88,7 +88,7 @@
     }
 
     .nav-links a {
-      color: rgba(253, 246, 236, 0.75);
+      color: rgba(253, 246, 236, 0.92);
       text-decoration: none;
       font-size: 0.88rem;
       font-weight: 500;
@@ -219,15 +219,19 @@
       top: 64px;
       height: calc(100vh - 64px);
       overflow-y: auto;
+      /* Cross-browser scrollbar (HIG: scroll views — keep scrollers discoverable) */
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent) transparent;
     }
 
     .sidebar::-webkit-scrollbar {
-      width: 4px;
+      width: 10px;
     }
 
     .sidebar::-webkit-scrollbar-thumb {
-      background: var(--border);
-      border-radius: 2px;
+      background: var(--accent);
+      border-radius: 5px;
+      border: 3px solid var(--sidebar-bg);
     }
 
     .filter-section {
@@ -247,6 +251,7 @@
 
     .search-box {
       width: 100%;
+      min-height: 40px;
       padding: 9px 14px;
       border: 1.5px solid var(--border);
       border-radius: 8px;
@@ -257,6 +262,8 @@
       outline: none;
       transition: border-color 0.2s;
     }
+    /* type=search clear button (HIG: search fields offer a clear control) */
+    .search-box::-webkit-search-cancel-button { -webkit-appearance: none; height: 16px; width: 16px; cursor: pointer; background: var(--text-muted); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/%3E%3C/svg%3E") center/contain no-repeat; }
 
     .search-box:focus {
       border-color: var(--accent);
@@ -273,7 +280,10 @@
     }
 
     .filter-tag {
-      padding: 5px 12px;
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 7px 14px;
       border-radius: 20px;
       border: 1.5px solid var(--border);
       background: white;
@@ -957,6 +967,54 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
 .tbh-footer-copy{font-family:"Outfit",sans-serif;font-size:0.78rem;color:rgba(253,246,236,0.7);text-align:center;margin:0}
 @media (max-width:900px){.tbh-footer-inner{grid-template-columns:1fr 1fr;gap:32px}}
 @media (max-width:560px){footer.tbh-footer{padding:40px 24px 20px}.tbh-footer-inner{grid-template-columns:1fr;gap:28px}.tbh-footer-tagline{max-width:none}}
+
+    /* ============================================================
+       APPLE HIG ALIGNMENT — accessibility, system settings, layout
+       ============================================================ */
+
+    /* Skip link */
+    .skip-link { position: absolute; left: 50%; top: -60px; transform: translateX(-50%); z-index: 300; background: var(--brown-dark); color: #FDF6EC; padding: 10px 18px; border-radius: 0 0 10px 10px; font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: top 0.2s; }
+    .skip-link:focus { top: 0; }
+
+    /* Visible keyboard focus on every interactive element */
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, [tabindex]:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+    :focus:not(:focus-visible) { outline: none; }
+
+    /* Respect "Reduce Motion" */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* Safe areas */
+    nav { padding-left: max(48px, env(safe-area-inset-left)); padding-right: max(48px, env(safe-area-inset-right)); }
+
+    /* Dark Mode */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --cream: #1A1410;
+        --warm-white: #1A1410;
+        --brown-dark: #E9DFC9;
+        --brown-mid: #E9DFC9;
+        --accent: #FDB44B;
+        --accent-hover: #FDA11D;
+        --tag-bg: #2A2018;
+        --tag-text: #E9DFC9;
+        --border: #3A2E22;
+        --text-muted: #B8AE98;
+        --card-bg: #221A12;
+        --sidebar-bg: #15100B;
+      }
+      .search-box, .filter-select, .filter-tag { background: #221A12; }
+    }
 </style>
   </meta>
   <link rel="canonical" href="https://www.thebeanshub.com/shop">
@@ -995,17 +1053,20 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
 </head>
 
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <nav>
-    <a class="nav-logo" href="/"><img alt="The Beans Hub Logo" src="/img/thebeanshub_logo.png" style="height: 80px; width: auto;" /></a>
+    <a class="nav-logo" href="/">
+      <img alt="The Beans Hub Logo" src="/img/thebeanshub_logo.png" style="height:56px;width:auto;" />
+    </a>
     <div class="nav-links">
-      <a href="/">Home</a>
-      <a class="active" href="/shop">Coffee Beans</a>
+      <a class="active" href="/">Home</a>
+      <a href="/shop">Coffee Beans</a>
       <a href="/library">Coffee Library</a>
       <a href="/about">About Us</a>
       <a href="/contact">Contact Us</a>
       <a class="cta" href="/shop">Explore Beans</a>
     </div>
-    <button aria-label="Menu" class="nav-hamburger" onclick="toggleMenu()">
+    <button aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu" class="nav-hamburger" id="navHamburger" onclick="toggleMenu()">
       <span></span><span></span><span></span>
     </button>
   </nav>
@@ -1015,6 +1076,7 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
     <a href="/library">Coffee Library</a>
     <a href="/about">About Us</a>
     <a href="/contact">Contact Us</a>
+    <a href="/shop">Explore Beans →</a>
   </div>
   <div class="page-header">
     <h1>Find Your Perfect Arabica <span class="result-count" id="headerCount">744</span></h1>
@@ -1025,7 +1087,7 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
     <aside class="sidebar">
       <div class="filter-section">
         <div class="filter-title">Search</div>
-        <input class="search-box" id="searchInput" placeholder="Search beans or brands..." type="text" />
+        <input class="search-box" id="searchInput" aria-label="Search beans or brands" placeholder="Search beans or brands..." type="search" autocomplete="off" />
       </div>
       <div class="filter-section">
         <div class="filter-title">Taste Profile</div>
@@ -1033,7 +1095,7 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
       </div>
       <div class="filter-section">
         <div class="filter-title">Origin Country</div>
-        <select class="filter-select" id="originSelect">
+        <select class="filter-select" id="originSelect" aria-label="Filter by origin country">
           <option value="">All Origins</option>
         </select>
       </div>
@@ -1047,7 +1109,7 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
       </div>
       <div class="filter-section">
         <div class="filter-title">Processing Method</div>
-        <select class="filter-select" id="processingSelect">
+        <select class="filter-select" id="processingSelect" aria-label="Filter by processing method">
           <option value="">All Methods</option>
         </select>
       </div>
@@ -1064,13 +1126,13 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
       </div>
     </aside>
     <!-- MAIN -->
-    <main class="main">
+    <main class="main" id="main-content" tabindex="-1">
       <div class="shop-intro">
         Browse the full coffee bean catalogue, or start with focused pages for <a href="/shop/ethiopia-coffee-beans">Ethiopia</a>, <a href="/shop/brazil-coffee-beans">Brazil</a>, <a href="/shop/colombia-coffee-beans">Colombia</a>, <a href="/shop/natural-process-coffee-beans">natural process</a>, <a href="/shop/washed-process-coffee-beans">washed process</a>, <a href="/shop/fermented-coffee-beans">fermented coffee</a> and <a href="/shop/arabica-blend-coffee-beans">arabica blends</a>. If you are still deciding what to buy, read the <a href="/posts/best-coffee-beans-malaysia">Malaysia coffee bean buying guide</a> first.
       </div>
       <div class="top-bar">
         <div style="display:flex;align-items:center;gap:12px;">
-          <button class="mobile-filter-btn" onclick="openDrawer()">⚙ Filters</button>
+          <button class="mobile-filter-btn" id="mobileFilterBtn" aria-haspopup="dialog" onclick="openDrawer()">⚙ Filters</button>
           <div class="top-bar-left">Showing <strong id="countDisplay">0</strong> beans</div>
         </div>
         <select class="sort-select" id="sortSelect" onchange="render()">
@@ -1390,7 +1452,22 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
       render();
     }
 
-    function toggleMenu() { document.getElementById("mobileMenu").classList.toggle("open"); }
+    function toggleMenu() {
+      var menu = document.getElementById("mobileMenu");
+      var btn = document.getElementById("navHamburger");
+      var isOpen = menu.classList.toggle("open");
+      if (btn) btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    }
+    // Esc closes the mobile nav menu and returns focus to its toggle
+    document.addEventListener("keydown", function (e) {
+      if (e.key !== "Escape") return;
+      var menu = document.getElementById("mobileMenu");
+      var btn = document.getElementById("navHamburger");
+      if (menu && menu.classList.contains("open")) {
+        menu.classList.remove("open");
+        if (btn) { btn.setAttribute("aria-expanded", "false"); btn.focus(); }
+      }
+    });
     // Load beans from JSON — no external library needed
     fetch('/beans.json')
       .then(function (r) {
@@ -1510,14 +1587,14 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
   </script>
   <!-- MOBILE FILTER DRAWER -->
   <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
-  <div class="drawer" id="drawer">
+  <div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Filters">
     <div class="drawer-header">
       <h3>Filters</h3>
-      <button class="drawer-close" onclick="closeDrawer()">✕</button>
+      <button class="drawer-close" aria-label="Close filters" onclick="closeDrawer()">✕</button>
     </div>
     <div class="filter-section">
       <div class="filter-title">Search</div>
-      <input class="search-box" id="searchInputMobile" placeholder="Search beans or brands..." type="text" />
+      <input class="search-box" id="searchInputMobile" aria-label="Search beans or brands" placeholder="Search beans or brands..." type="search" autocomplete="off" />
     </div>
     <div class="filter-section">
       <div class="filter-title">Taste Profile</div>
@@ -1525,7 +1602,7 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
     </div>
     <div class="filter-section">
       <div class="filter-title">Origin Country</div>
-      <select class="filter-select" id="originSelectMobile">
+      <select class="filter-select" id="originSelectMobile" aria-label="Filter by origin country">
         <option value="">All Origins</option>
       </select>
     </div>
@@ -1539,7 +1616,7 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
     </div>
     <div class="filter-section">
       <div class="filter-title">Processing Method</div>
-      <select class="filter-select" id="processingSelectMobile">
+      <select class="filter-select" id="processingSelectMobile" aria-label="Filter by processing method">
         <option value="">All Methods</option>
       </select>
     </div>
@@ -1558,15 +1635,28 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
   </div>
   <script>
     function openDrawer() {
-      document.getElementById('drawer').classList.add('open');
+      var drawer = document.getElementById('drawer');
+      drawer.classList.add('open');
       document.getElementById('drawerOverlay').classList.add('open');
       document.body.style.overflow = 'hidden';
+      // Move focus into the dialog (HIG: modal focus management)
+      var close = drawer.querySelector('.drawer-close');
+      if (close) close.focus();
     }
     function closeDrawer() {
       document.getElementById('drawer').classList.remove('open');
       document.getElementById('drawerOverlay').classList.remove('open');
       document.body.style.overflow = '';
+      // Return focus to the button that opened the drawer
+      var opener = document.getElementById('mobileFilterBtn');
+      if (opener) opener.focus();
     }
+    // Esc closes the filter drawer
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape') return;
+      var drawer = document.getElementById('drawer');
+      if (drawer && drawer.classList.contains('open')) closeDrawer();
+    });
 
     // Init mobile filters (mirrors desktop)
     function initMobileFilters() {
@@ -1633,53 +1723,55 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
   </script>
   <!-- FOOTER -->
 <footer class="tbh-footer">
-<div class="tbh-footer-inner">
-<div class="tbh-footer-brand">
-<a class="tbh-footer-logo" href="/">
-<img alt="The Beans Hub logo" class="tbh-footer-logo-img" src="/img/thebeanshub_logo.png"/>
-<span class="tbh-footer-logo-text">The Beans<span class="accent">Hub</span></span>
-</a>
-<p class="tbh-footer-tagline">Malaysia's home for specialty coffee — beans, brewers, and roaster guides.</p>
-</div>
-<div>
-<h4 class="tbh-footer-heading">Shop</h4>
-<ul class="tbh-footer-list">
-<li><a href="/shop">All Coffee Beans</a></li>
-<li><a href="/shop/ethiopia-coffee-beans">Ethiopia</a></li>
-<li><a href="/shop/colombia-coffee-beans">Colombia</a></li>
-<li><a href="/shop/brazil-coffee-beans">Brazil</a></li>
-<li><a href="/shop/yunnan-coffee-beans">Yunnan</a></li>
-<li><a href="/shop/indonesia-coffee-beans">Indonesia</a></li>
-<li><a href="/shop/thailand-coffee-beans">Thailand</a></li>
-<li><a href="/shop/natural-process-coffee-beans">Natural Process</a></li>
-<li><a href="/shop/washed-process-coffee-beans">Washed Process</a></li>
-<li><a href="/shop/fermented-coffee-beans">Fermented</a></li>
-<li><a href="/shop/arabica-blend-coffee-beans">Arabica Blends</a></li>
-</ul>
-</div>
-<div>
-<h4 class="tbh-footer-heading">Explore</h4>
-<ul class="tbh-footer-list">
-<li><a href="/">Home</a></li>
-<li><a href="/about">About Us</a></li>
-<li><a href="/contact">Contact Us</a></li>
-<li><a href="/library">Coffee Library</a></li>
-</ul>
-</div>
-<div>
-<h4 class="tbh-footer-heading">Follow</h4>
-<div class="tbh-footer-social">
-<a aria-label="Instagram — The Beans Hub" href="https://www.instagram.com/thebeanshub/" rel="noopener" target="_blank">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-<span>@thebeanshub</span>
-</a>
-</div>
-</div>
-</div>
-<div class="tbh-footer-bottom">
-<p class="tbh-footer-copy">© 2025 The Beans Hub. All rights reserved.</p>
-</div>
-</footer>
+    <div class="tbh-footer-inner">
+      <div class="tbh-footer-brand">
+        <a class="tbh-footer-logo" href="/">
+          <img alt="The Beans Hub logo" class="tbh-footer-logo-img" src="/img/thebeanshub_logo.png" />
+          <span class="tbh-footer-logo-text">The Beans<span class="accent">Hub</span></span>
+        </a>
+        <p class="tbh-footer-tagline">Malaysia's home for specialty coffee — beans, brewers, and roaster guides.</p>
+      </div>
+      <div>
+        <h4 class="tbh-footer-heading">Shop</h4>
+        <ul class="tbh-footer-list">
+          <li><a href="/shop">All Coffee Beans</a></li>
+          <li><a href="/shop/ethiopia-coffee-beans">Ethiopia</a></li>
+          <li><a href="/shop/colombia-coffee-beans">Colombia</a></li>
+          <li><a href="/shop/brazil-coffee-beans">Brazil</a></li>
+          <li><a href="/shop/yunnan-coffee-beans">Yunnan</a></li>
+          <li><a href="/shop/indonesia-coffee-beans">Indonesia</a></li>
+          <li><a href="/shop/thailand-coffee-beans">Thailand</a></li>
+          <li><a href="/shop/natural-process-coffee-beans">Natural Process</a></li>
+          <li><a href="/shop/washed-process-coffee-beans">Washed Process</a></li>
+          <li><a href="/shop/fermented-coffee-beans">Fermented</a></li>
+          <li><a href="/shop/arabica-blend-coffee-beans">Arabica Blends</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="tbh-footer-heading">Explore</h4>
+        <ul class="tbh-footer-list">
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+          <li><a href="/library">Coffee Library</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="tbh-footer-heading">Follow</h4>
+        <div class="tbh-footer-social">
+          <a aria-label="Instagram — The Beans Hub" href="https://www.instagram.com/thebeanshub/" rel="noopener" target="_blank">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+            </svg>
+            <span>@thebeanshub</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="tbh-footer-bottom">
+      <p class="tbh-footer-copy">© 2026 The Beans Hub. All rights reserved.</p>
+    </div>
+  </footer>
 
   <script>
     /* Buy click tracking — auto-attaches to every .buy-btn on this page */

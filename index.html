@@ -42,17 +42,17 @@
     .announce-msg .ann-em { color: var(--accent); font-weight: 700; }
 
     /* NAV */
-    nav { position: fixed; top: 38px; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 68px; background: #296241; border-bottom: 1px solid rgba(253,161,29,0.3); }
+    nav { position: fixed; top: 38px; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 68px; background: #296241; border-radius: 0 0 22px 22px; box-shadow: 0 8px 24px rgba(41,98,65,0.18); }
     .nav-logo { font-family: "Sigmar", cursive; color: #FDF6EC; font-size: 1.45rem; font-weight: 700; text-decoration: none; }
     .nav-logo span { color: #FDA11D; }
     .nav-links { display: flex; gap: 36px; align-items: center; }
-    .nav-links a { color: rgba(253,246,236,0.75); text-decoration: none; font-size: 0.88rem; font-weight: 500; letter-spacing: 0.04em; transition: color 0.2s; }
+    .nav-links a { color: rgba(253,246,236,0.92); text-decoration: none; font-size: 0.88rem; font-weight: 500; letter-spacing: 0.04em; transition: color 0.2s; }
     .nav-links a:hover, .nav-links a.active { color: #FDF6EC; }
     .nav-links a.cta { background: #FDA11D; color: white; padding: 8px 20px; border-radius: 8px; font-weight: 600; }
     .nav-links a.cta:hover { background: #DA8A10; }
     .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
     .nav-hamburger span { display: block; width: 24px; height: 2px; background: #FDF6EC; border-radius: 2px; }
-    .mobile-menu { display: none; position: fixed; top: 106px; left: 0; right: 0; background: #296241; padding: 20px 24px; flex-direction: column; z-index: 99; border-bottom: 2px solid #FDA11D; }
+    .mobile-menu { display: none; position: fixed; top: 106px; left: 0; right: 0; background: #296241; padding: 20px 24px; flex-direction: column; z-index: 99; border-radius: 0 0 22px 22px; box-shadow: 0 8px 24px rgba(41,98,65,0.18); }
     .mobile-menu.open { display: flex; }
     .mobile-menu a { color: rgba(253,246,236,0.85); text-decoration: none; font-size: 1rem; font-weight: 500; padding: 12px 0; border-bottom: 1px solid rgba(253,161,29,0.15); }
     .mobile-menu a:last-child { border-bottom: none; color: #FDA11D; font-weight: 700; }
@@ -88,9 +88,7 @@
     .persona-header .section-sub { margin: 0 auto; }
     .persona-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
     .persona-card { position: relative; text-decoration: none; background: white; border: 1px solid var(--border); border-radius: 18px; padding: 26px 22px 24px; display: flex; flex-direction: column; gap: 8px; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; }
-    .persona-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 0.25s ease; }
     .persona-card:hover { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(41,98,65,0.12); border-color: transparent; }
-    .persona-card:hover::before { transform: scaleX(1); }
     .persona-emoji { font-size: 1.6rem; line-height: 1; }
     .persona-name { font-family: "Sigmar", cursive; font-size: 1.08rem; color: var(--green); line-height: 1.2; }
     .persona-desc { font-size: 0.84rem; color: var(--text-muted); line-height: 1.55; flex: 1; }
@@ -156,6 +154,23 @@
     .bean-panel { display: none; }
     .bean-panel.active { display: block; }
 
+    /* LATEST FROM THE LIBRARY */
+    .library-section { background: var(--cream); padding: 80px 48px; }
+    .library-inner { max-width: 1200px; margin: 0 auto; }
+    .library-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 28px; flex-wrap: wrap; gap: 12px; }
+    .library-header a { color: var(--accent); text-decoration: none; font-size: 0.85rem; font-weight: 600; }
+    .library-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .library-card { display: flex; flex-direction: column; background: #FFF; border: 1px solid var(--border); border-radius: 18px; overflow: hidden; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; }
+    .library-card:hover { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(41,98,65,0.12); border-color: transparent; }
+    .library-card-media { aspect-ratio: 4/3; overflow: hidden; background: var(--tag-bg); }
+    .library-card-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+    .library-card:hover .library-card-media img { transform: scale(1.05); }
+    .library-card-body { padding: 22px 22px 24px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+    .library-card-tag { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+    .library-card-title { font-family: "Sigmar", cursive; font-size: 1.08rem; color: var(--green); line-height: 1.25; }
+    .library-card-desc { font-size: 0.84rem; color: var(--text-muted); line-height: 1.55; flex: 1; }
+    .library-card-link { font-size: 0.8rem; font-weight: 700; color: var(--accent); margin-top: 4px; }
+
     /* BEAN CARDS */
     .bean-card { background: #FFF; border-radius: 14px; border: 1px solid var(--border); overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; }
     .bean-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(41,98,65,0.12); }
@@ -219,7 +234,7 @@
     .newsletter-perk::before { content: "✓"; color: #FDA11D; font-weight: 700; }
 
     /* FOOTER */
-    .tbh-footer { background: #296241; padding: 64px 48px 32px; }
+    .tbh-footer { background: #296241; padding: 64px 48px 32px; border-radius: 40px 40px 0 0; }
     .tbh-footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
     .tbh-footer-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; margin-bottom: 14px; }
     .tbh-footer-logo-img { height: 40px; width: auto; }
@@ -250,14 +265,16 @@
       .nav-links { display: none; }
       .nav-hamburger { display: flex; }
       .announce-msg { font-size: 0.72rem; }
-      .hero-wrapper { padding: 118px 12px 0; }
+      .hero-wrapper { padding: 122px 12px 0; }
+      .tbh-footer { border-radius: 28px 28px 0 0; }
       .persona-section { padding: 56px 20px 32px; }
       .persona-grid { gap: 12px; }
       .hero-content { padding: 48px 28px; }
       .hero-title { font-size: 2rem; }
       .hero-teaser { left: 28px; bottom: 28px; }
-      .finder-section, .how-section, .featured-section, .roasters-section, .stats-section, .liberica-section { padding: 56px 20px; }
+      .finder-section, .how-section, .featured-section, .roasters-section, .stats-section, .liberica-section, .library-section { padding: 56px 20px; }
       .finder-grid { grid-template-columns: repeat(2, 1fr); }
+      .library-grid { grid-template-columns: 1fr; }
       .steps { flex-direction: column; align-items: center; gap: 24px; }
       .step-connector { display: none; }
       .bean-carousel { grid-template-columns: 1fr; }
@@ -275,10 +292,62 @@
       .stats-grid { grid-template-columns: 1fr; gap: 24px; }
       .tbh-footer-inner { grid-template-columns: 1fr; }
     }
+
+    /* ============================================================
+       APPLE HIG ALIGNMENT — accessibility, system settings, layout
+       ============================================================ */
+
+    /* Skip link (keyboard/VoiceOver users jump past the nav) */
+    .skip-link { position: absolute; left: 50%; top: -60px; transform: translateX(-50%); z-index: 200; background: var(--green); color: #FDF6EC; padding: 10px 18px; border-radius: 0 0 10px 10px; font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: top 0.2s; }
+    .skip-link:focus { top: 0; }
+
+    /* Visible keyboard focus on every interactive element (HIG: focus & selection) */
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, [tabindex]:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+    /* Hide the ring for mouse users only (focus-visible already does this; keep default removed) */
+    :focus:not(:focus-visible) { outline: none; }
+
+    /* Respect "Reduce Motion" (HIG: motion) */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+      }
+      .hero-dot, .hero-teaser { animation: none !important; }
+      .reveal { opacity: 1 !important; transform: none !important; }
+    }
+
+    /* Honour the system safe areas (notch / home indicator) */
+    .announce-bar { padding-left: max(16px, env(safe-area-inset-left)); padding-right: max(16px, env(safe-area-inset-right)); }
+    nav { padding-left: max(48px, env(safe-area-inset-left)); padding-right: max(48px, env(safe-area-inset-right)); }
+
+    /* Dark Mode (HIG: dark appearance) — mirrors the light tokens */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --cream: #1A1410;
+        --green: #E9DFC9;
+        --accent: #FDB44B;
+        --accent-hover: #FDA11D;
+        --tag-bg: #2A2018;
+        --tag-text: #E9DFC9;
+        --border: #3A2E22;
+        --text-muted: #B8AE98;
+      }
+      body { background: var(--cream); color: var(--green); }
+      .persona-card, .bean-card, .roaster-card, .featured-section, .liberica-section, .library-card { background: #221A12; }
+      .step-icon { background: #221A12; }
+    }
   </style>
 </head>
 
 <body>
+
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
   <!-- ANNOUNCEMENT BAR -->
   <div class="announce-bar" aria-label="Announcements">
@@ -292,7 +361,7 @@
   <!-- NAV -->
   <nav>
     <a class="nav-logo" href="/">
-      <img alt="The Beans Hub Logo" src="img/thebeanshub_logo.png" style="height:80px;width:auto;" />
+      <img alt="The Beans Hub Logo" src="img/thebeanshub_logo.png" style="height:56px;width:auto;" />
     </a>
     <div class="nav-links">
       <a class="active" href="/">Home</a>
@@ -300,9 +369,9 @@
       <a href="/library">Coffee Library</a>
       <a href="/about">About Us</a>
       <a href="/contact">Contact Us</a>
-      <a class="cta" href="/shop">Explore Beans</a>
+      <a class="cta" href="/find-your-beans">Find Your Beans</a>
     </div>
-    <button aria-label="Menu" class="nav-hamburger" onclick="toggleMenu()">
+    <button aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu" class="nav-hamburger" id="navHamburger" onclick="toggleMenu()">
       <span></span><span></span><span></span>
     </button>
   </nav>
@@ -312,10 +381,11 @@
     <a href="/library">Coffee Library</a>
     <a href="/about">About Us</a>
     <a href="/contact">Contact Us</a>
-    <a href="/shop">Explore Beans →</a>
+    <a href="/find-your-beans">Find Your Beans →</a>
   </div>
 
   <!-- HERO -->
+  <main id="main-content" tabindex="-1">
   <div class="hero-wrapper">
     <section class="hero">
       <div class="hero-bg"></div>
@@ -326,9 +396,9 @@
         <h1 class="hero-title">Find the cup you've<br />been <em>looking for</em></h1>
         <p class="hero-sub">Discover, compare and fall for specialty beans from Malaysia's best roasters — then buy fresh, straight from the source.</p>
         <div class="hero-actions">
-          <a class="btn-primary" href="/shop">Explore All Beans →</a>
+          <a class="btn-primary" href="/find-your-beans">Find Your Perfect Bean →</a>
+          <a class="btn-ghost" href="/shop">Browse all beans →</a>
           <a class="btn-ghost" href="#flavour-finder">Find by taste ↓</a>
-          <a class="btn-ghost" href="/library">New to specialty? Start here →</a>
         </div>
         <p class="hero-trust"><strong>744 beans</strong> · <strong>52 roasters</strong> · one place, no middleman</p>
       </div>
@@ -527,6 +597,54 @@
     </div>
   </section>
 
+  <!-- LATEST FROM THE LIBRARY -->
+  <section class="library-section">
+    <div class="library-inner">
+      <div class="library-header reveal">
+        <div>
+          <div class="section-label">From the Coffee Library</div>
+          <h2 class="section-title" style="margin-bottom:0">Latest from the Library</h2>
+        </div>
+        <a href="/library">Read all guides →</a>
+      </div>
+      <div class="library-grid reveal">
+        <a class="library-card" href="/posts/asia-coffee-origins-yunnan-thailand">
+          <div class="library-card-media">
+            <img alt="Yunnan and Thailand specialty coffee beans" loading="lazy" src="/img/asia-coffee-origins-yunnan-thailand.png" />
+          </div>
+          <div class="library-card-body">
+            <span class="library-card-tag">Origins</span>
+            <span class="library-card-title">Yunnan &amp; Thailand: Asia's Coffee Origins</span>
+            <span class="library-card-desc">Asia's quiet specialty origins — what they taste like, and why proximity matters for Malaysian brewers.</span>
+            <span class="library-card-link">Read the guide →</span>
+          </div>
+        </a>
+        <a class="library-card" href="/posts/best-coffee-beans-malaysia">
+          <div class="library-card-media">
+            <img alt="Best coffee beans in Malaysia buying guide" loading="lazy" src="/img/best-coffee-beans-malaysia.png" />
+          </div>
+          <div class="library-card-body">
+            <span class="library-card-tag">Buying Guide</span>
+            <span class="library-card-title">Best Coffee Beans in Malaysia: 2026 Guide</span>
+            <span class="library-card-desc">Five buying criteria that actually matter, plus how to match roast level to the way you brew.</span>
+            <span class="library-card-link">Read the guide →</span>
+          </div>
+        </a>
+        <a class="library-card" href="/posts/brazil-coffee-beans-to-try">
+          <div class="library-card-media">
+            <img alt="Brazil coffee beans worth trying" loading="lazy" src="/img/brazil-coffee-beans-to-try.png" />
+          </div>
+          <div class="library-card-body">
+            <span class="library-card-tag">Origins</span>
+            <span class="library-card-title">Brazil Coffee Beans Worth Trying</span>
+            <span class="library-card-desc">Soft, nutty and chocolatey — the dependable beans that quietly anchor an everyday cup.</span>
+            <span class="library-card-link">Read the guide →</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- NEWSLETTER -->
   <div class="newsletter-wrap" id="newsletter">
     <section class="newsletter-section">
@@ -534,8 +652,8 @@
       <div class="newsletter-title reveal">New roasters. New beans.<br />First in your inbox.</div>
       <p class="newsletter-sub reveal">Monthly picks, fresh roaster drops, and brewing guides — curated for Malaysian coffee lovers. No spam, just great coffee.</p>
       <div class="newsletter-form reveal" id="homeSubForm">
-        <input class="newsletter-input sub-name" placeholder="Your first name" style="flex:0.8" type="text" />
-        <input class="newsletter-input sub-email" placeholder="Your email address" type="email" />
+        <input class="newsletter-input sub-name" aria-label="Your first name" autocomplete="given-name" placeholder="Your first name" style="flex:0.8" type="text" />
+        <input class="newsletter-input sub-email" aria-label="Your email address" autocomplete="email" placeholder="Your email address" type="email" />
         <button class="newsletter-btn" onclick="handleHomeSub()">Join the Hub →</button>
       </div>
       <p id="homeSubMsg" style="display:none;color:#A8D5A2;font-size:0.85rem;margin-top:12px;position:relative;z-index:1;">🎉 Welcome to The Beans Hub! Check your inbox.</p>
@@ -546,6 +664,7 @@
       </div>
     </section>
   </div>
+  </main>
 
   <!-- FOOTER -->
   <footer class="tbh-footer">
@@ -595,7 +714,7 @@
       </div>
     </div>
     <div class="tbh-footer-bottom">
-      <p class="tbh-footer-copy">© 2025 The Beans Hub. All rights reserved.</p>
+      <p class="tbh-footer-copy">© 2026 The Beans Hub. All rights reserved.</p>
     </div>
   </footer>
 
@@ -679,8 +798,21 @@
     })();
 
     function toggleMenu() {
-      document.getElementById('mobileMenu').classList.toggle('open');
+      var menu = document.getElementById('mobileMenu');
+      var btn = document.getElementById('navHamburger');
+      var isOpen = menu.classList.toggle('open');
+      if (btn) btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     }
+    // Esc closes the mobile menu and returns focus to the toggle (HIG: menus dismiss with Escape)
+    document.addEventListener('keydown', function(e) {
+      if (e.key !== 'Escape') return;
+      var menu = document.getElementById('mobileMenu');
+      var btn = document.getElementById('navHamburger');
+      if (menu && menu.classList.contains('open')) {
+        menu.classList.remove('open');
+        if (btn) { btn.setAttribute('aria-expanded', 'false'); btn.focus(); }
+      }
+    });
 
     (function rotateAnnounce() {
       var msgs = document.querySelectorAll('.announce-msg');
