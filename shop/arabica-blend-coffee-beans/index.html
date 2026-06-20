@@ -11,24 +11,25 @@
 </script>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Coffee Blends Malaysia | Multi-Origin Beans | The Beans Hub</title>
-<meta name="description" content="Shop coffee blends from Malaysian roasters — multi-origin beans built for espresso, milk drinks and daily brewing. Chocolate, caramel, smooth daily cups.">
+<title>Coffee Blends Malaysia | Specialty Espresso Beans | The Beans Hub</title>
+<meta name="description" content="Browse 143 specialty coffee blends from Malaysian roasters — multi-origin beans for espresso, milk drinks & daily brewing. Filter by roast, taste & price.">
 <link rel="canonical" href="https://www.thebeanshub.com/shop/arabica-blend-coffee-beans">
+<meta content="jqlfBshOy4vgYUb478viCuTswoIsaWL_jdOhL0srx0w" name="google-site-verification">
 <link rel="icon" type="image/png" href="/img/thebeanshub_logo.png">
 <link href="https://fonts.googleapis.com/css2?family=Sigmar&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="Coffee Blends Malaysia | Multi-Origin Beans | The Beans Hub">
-<meta property="og:description" content="Shop coffee blends from Malaysian roasters — multi-origin beans built for espresso, milk drinks and daily brewing. Chocolate, caramel, smooth daily cups.">
+<meta property="og:title" content="Coffee Blends Malaysia | Specialty Espresso Beans | The Beans Hub">
+<meta property="og:description" content="Browse 143 specialty coffee blends from Malaysian roasters — multi-origin beans for espresso, milk drinks & daily brewing. Filter by roast, taste & price.">
 <meta property="og:url" content="https://www.thebeanshub.com/shop/arabica-blend-coffee-beans">
 <meta property="og:image" content="https://www.thebeanshub.com/img/Girl-bought-coffee-from-the-beans-hub.png">
 <meta property="og:site_name" content="The Beans Hub">
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Coffee Blends Malaysia | Multi-Origin Beans | The Beans Hub">
-<meta name="twitter:description" content="Shop coffee blends from Malaysian roasters — multi-origin beans built for espresso, milk drinks and daily brewing. Chocolate, caramel, smooth daily cups.">
+<meta name="twitter:title" content="Coffee Blends Malaysia | Specialty Espresso Beans | The Beans Hub">
+<meta name="twitter:description" content="Browse 143 specialty coffee blends from Malaysian roasters — multi-origin beans for espresso, milk drinks & daily brewing. Filter by roast, taste & price.">
 <meta name="twitter:image" content="https://www.thebeanshub.com/img/Girl-bought-coffee-from-the-beans-hub.png">
 
 <!-- Inline CSS inherited from shop.html (kept identical so styling stays in sync) -->
@@ -178,34 +179,46 @@
     /* PAGE HEADER */
     .page-header {
       background: var(--brown-dark);
-      padding: 40px 40px 48px;
       border-bottom: 3px solid var(--accent);
+    }
+
+    .page-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 52px 24px 56px;
     }
 
     .page-header h1 {
       font-family: "Sigmar", cursive;
-      font-size: 2.4rem;
+      font-size: 2.25rem;
+      line-height: 1.16;
+      letter-spacing: -0.005em;
       color: var(--cream);
       font-weight: 700;
-      margin-bottom: 8px;
+      margin: 0 0 14px;
+      max-width: 24ch;
     }
 
     .page-header p {
-      color: rgba(253, 246, 236, 0.75);
-      font-size: 1rem;
+      color: rgba(253, 246, 236, 0.78);
+      font-size: 1.05rem;
+      line-height: 1.5;
       font-weight: 300;
+      max-width: 60ch;
+      margin: 0;
     }
 
     .result-count {
       display: inline-block;
       background: var(--accent);
       color: white;
-      padding: 2px 12px;
+      padding: 3px 13px;
       border-radius: 20px;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 600;
-      margin-left: 10px;
+      margin-left: 12px;
       vertical-align: middle;
+      transform: translateY(-0.18em);
     }
 
     /* LAYOUT */
@@ -814,12 +827,13 @@
         display: none;
       }
 
-      .page-header {
-        padding: 24px 16px 28px;
+      .page-header-inner {
+        padding: 30px 16px 34px;
       }
 
       .page-header h1 {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
+        max-width: none;
       }
 
       .grid {
@@ -954,7 +968,7 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
 .tbh-footer-logo-text{font-family:"Sigmar",cursive;color:#FDF6EC;font-size:1.25rem;font-weight:700;line-height:1}
 .tbh-footer-logo-text .accent{color:#FDA11D}
 .tbh-footer-tagline{font-family:"Outfit",sans-serif;font-size:0.85rem;color:rgba(253,246,236,0.75);line-height:1.55;max-width:280px;margin:0}
-.tbh-footer-heading{font-family:"Sigmar",cursive;font-size:0.95rem;color:#FDA11D;margin:0 0 14px;letter-spacing:0.02em;font-weight:400}
+.tbh-footer-heading{font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(253,246,236,0.4);margin-bottom:16px}
 .tbh-footer-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
 .tbh-footer-list a{font-family:"Outfit",sans-serif;color:rgba(253,246,236,0.85);text-decoration:none;font-size:0.85rem;transition:color 0.2s}
 .tbh-footer-list a:hover{color:#FDA11D}
@@ -985,13 +999,17 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
-  margin: 0 0 28px;
+  margin: 0 0 32px;
+  align-items: stretch;
 }
 .quick-fact-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   background: white;
   border: 1px solid var(--border);
   border-radius: 12px;
-  padding: 16px 18px 16px 22px;
+  padding: 18px 20px 18px 24px;
   position: relative;
   overflow: hidden;
   transition: transform 0.2s, box-shadow 0.2s;
@@ -1013,13 +1031,12 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--text-muted);
-  margin-bottom: 6px;
 }
 .quick-fact-value {
   font-size: 0.98rem;
   font-weight: 600;
   color: var(--brown-dark);
-  line-height: 1.35;
+  line-height: 1.4;
 }
 .intro-body {
   display: grid;
@@ -1110,6 +1127,29 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
   .quick-fact-card { padding: 13px 14px 13px 18px; }
   .quick-fact-value { font-size: 0.9rem; }
 }
+
+    /* ===== Coffee Beans mega-dropdown (added for category internal linking) ===== */
+    .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
+    .nav-dropdown .nav-dropdown-trigger { display: inline-flex; align-items: center; gap: 5px; }
+    .nav-caret { font-size: 0.7em; transition: transform 0.2s; }
+    .nav-dropdown:hover .nav-caret, .nav-dropdown:focus-within .nav-caret { transform: rotate(180deg); }
+    .nav-dropdown::after { content: ""; position: absolute; top: 100%; left: -10px; right: -10px; height: 22px; }
+    .nav-dropdown-menu { position: absolute; top: calc(100% + 20px); left: 50%; transform: translateX(-50%) translateY(8px); display: grid; grid-template-columns: repeat(3, max-content); gap: 4px 32px; background: var(--cream, #FDF6EC); border: 1px solid var(--border, #E8E0D0); border-radius: 14px; padding: 22px 26px; box-shadow: 0 16px 44px rgba(41,98,65,0.20); opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.18s ease, transform 0.18s ease; z-index: 200; }
+    .nav-dropdown:hover .nav-dropdown-menu, .nav-dropdown:focus-within .nav-dropdown-menu { opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+    .nav-dd-group { display: flex; flex-direction: column; gap: 1px; }
+    .nav-dd-heading { font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted, #5a6e5a); font-weight: 700; margin-bottom: 7px; }
+    .nav-dropdown-menu a { color: var(--green, #296241) !important; font-size: 0.9rem !important; font-weight: 500 !important; letter-spacing: normal !important; padding: 5px 0 !important; white-space: nowrap; }
+    .nav-dropdown-menu a:hover { color: var(--accent-hover, #DA8A10) !important; }
+    .nav-dd-all { margin-top: 9px; font-weight: 700 !important; color: var(--accent-hover, #DA8A10) !important; }
+    /* mobile accordion */
+    .mobile-menu details.mobile-dd { border-bottom: 1px solid rgba(253,161,29,0.15); }
+    .mobile-menu details.mobile-dd summary { color: rgba(253,246,236,0.85); font-size: 1rem; font-weight: 500; padding: 12px 0; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    .mobile-menu details.mobile-dd summary::-webkit-details-marker { display: none; }
+    .mobile-menu details.mobile-dd summary::after { content: "\25be"; color: #FDA11D; font-size: 0.85em; transition: transform 0.2s; }
+    .mobile-menu details.mobile-dd[open] summary::after { transform: rotate(180deg); }
+    .mobile-menu details.mobile-dd a { display: block; color: rgba(253,246,236,0.7); font-size: 0.92rem; font-weight: 500; padding: 9px 0 9px 16px; border-bottom: none; }
+    .mobile-menu details.mobile-dd a:last-child { color: #FDA11D; font-weight: 600; }
+    /* ===== end dropdown ===== */
 </style>
 
 <!-- CollectionPage + ItemList schema for rich results -->
@@ -1118,7 +1158,7 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
   "@context": "https://schema.org",
   "@type": "CollectionPage",
   "name": "Coffee Blends — Multi-Origin Beans Built for Daily Drinking",
-  "description": "Shop coffee blends from Malaysian roasters — multi-origin beans built for espresso, milk drinks and daily brewing. Chocolate, caramel, smooth daily cups.",
+  "description": "Browse 143 specialty coffee blends from Malaysian roasters — multi-origin beans for espresso, milk drinks & daily brewing. Filter by roast, taste & price.",
   "url": "https://www.thebeanshub.com/shop/arabica-blend-coffee-beans",
   "mainEntity": {
     "@type": "ItemList",
@@ -2256,7 +2296,32 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
     </a>
     <div class="nav-links">
       <a class="active" href="/">Home</a>
-      <a href="/shop">Coffee Beans</a>
+      <div class="nav-dropdown">
+        <a href="/shop" class="nav-dropdown-trigger">Coffee Beans <span class="nav-caret">▾</span></a>
+        <div class="nav-dropdown-menu">
+          <div class="nav-dd-group">
+            <span class="nav-dd-heading">By Origin</span>
+            <a href="/shop/ethiopia-coffee-beans">Ethiopia</a>
+            <a href="/shop/colombia-coffee-beans">Colombia</a>
+            <a href="/shop/brazil-coffee-beans">Brazil</a>
+            <a href="/shop/yunnan-coffee-beans">Yunnan</a>
+            <a href="/shop/indonesia-coffee-beans">Indonesia</a>
+            <a href="/shop/thailand-coffee-beans">Thailand</a>
+          </div>
+          <div class="nav-dd-group">
+            <span class="nav-dd-heading">By Process</span>
+            <a href="/shop/washed-process-coffee-beans">Washed</a>
+            <a href="/shop/natural-process-coffee-beans">Natural</a>
+            <a href="/shop/fermented-coffee-beans">Fermented</a>
+          </div>
+          <div class="nav-dd-group">
+            <span class="nav-dd-heading">By Type</span>
+            <a href="/shop/arabica-blend-coffee-beans">Arabica Blend</a>
+            <a href="/shop/coffee-beans-for-iced-latte">For Iced Latte</a>
+            <a href="/shop" class="nav-dd-all">Shop all beans →</a>
+          </div>
+        </div>
+      </div>
       <a href="/library">Coffee Library</a>
       <a href="/about">About Us</a>
       <a href="/contact">Contact Us</a>
@@ -2268,7 +2333,21 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
   </nav>
 <div class="mobile-menu" id="mobileMenu">
     <a href="/">Home</a>
-    <a href="/shop">Coffee Beans</a>
+    <details class="mobile-dd">
+      <summary>Coffee Beans</summary>
+      <a href="/shop/ethiopia-coffee-beans">Ethiopia</a>
+      <a href="/shop/colombia-coffee-beans">Colombia</a>
+      <a href="/shop/brazil-coffee-beans">Brazil</a>
+      <a href="/shop/yunnan-coffee-beans">Yunnan</a>
+      <a href="/shop/indonesia-coffee-beans">Indonesia</a>
+      <a href="/shop/thailand-coffee-beans">Thailand</a>
+      <a href="/shop/washed-process-coffee-beans">Washed Process</a>
+      <a href="/shop/natural-process-coffee-beans">Natural Process</a>
+      <a href="/shop/fermented-coffee-beans">Fermented</a>
+      <a href="/shop/arabica-blend-coffee-beans">Arabica Blend</a>
+      <a href="/shop/coffee-beans-for-iced-latte">For Iced Latte</a>
+      <a href="/shop">Shop all beans →</a>
+    </details>
     <a href="/library">Coffee Library</a>
     <a href="/about">About Us</a>
     <a href="/contact">Contact Us</a>
@@ -2276,8 +2355,10 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
   </div>
 
 <header class="page-header">
+  <div class="page-header-inner">
   <h1>Coffee Blends — Multi-Origin Beans Built for Daily Drinking <span class="result-count">143</span></h1>
   <p>Multi-origin recipes from Malaysian specialty roasters.</p>
+  </div>
 </header>
 
 <section class="intro-hero">
@@ -4985,6 +5066,126 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
   </div>
 </main>
 
+<style>
+  .blend-deep { max-width: 880px; margin: 8px auto 12px; padding: 0 24px; color: var(--brown-dark); }
+  .blend-deep h2 { font-family: "Outfit", sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--brown-dark); margin: 38px 0 12px; line-height: 1.25; scroll-margin-top: 84px; }
+  .blend-deep h3 { font-size: 1.08rem; font-weight: 600; margin: 22px 0 8px; color: var(--brown-dark); }
+  .blend-deep p { font-size: 1.0rem; line-height: 1.75; margin-bottom: 14px; }
+  .blend-deep p strong { font-weight: 700; }
+  .blend-deep a { color: var(--accent); font-weight: 600; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.15s; }
+  .blend-deep a:hover { border-bottom-color: var(--accent); }
+  .blend-deep ul { margin: 4px 0 16px; padding-left: 0; list-style: none; }
+  .blend-deep ul li { position: relative; padding-left: 26px; margin-bottom: 10px; line-height: 1.65; }
+  .blend-deep ul li::before { content: '☕'; position: absolute; left: 0; top: 0; font-size: 0.9rem; }
+  .blend-deep .answer-lead { font-size: 1.06rem; font-weight: 500; background: var(--tag-bg); border-left: 4px solid var(--accent); padding: 14px 20px; border-radius: 0 10px 10px 0; margin-bottom: 16px; }
+  .blend-compare { width: 100%; border-collapse: collapse; margin: 8px 0 20px; font-size: 0.95rem; }
+  .blend-compare th, .blend-compare td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .blend-compare thead th { background: var(--green); color: var(--cream); font-weight: 600; }
+  .blend-compare tbody th { font-weight: 700; color: var(--brown-dark); width: 28%; }
+  .blend-compare tbody tr:nth-child(even) td, .blend-compare tbody tr:nth-child(even) th { background: #fff; }
+  .blend-faq { margin-top: 12px; }
+  .blend-faq details { border: 1px solid var(--border); border-radius: 12px; background: white; margin-bottom: 12px; padding: 0 20px; }
+  .blend-faq summary { font-weight: 600; font-size: 1.02rem; padding: 16px 0; cursor: pointer; list-style: none; color: var(--brown-dark); }
+  .blend-faq summary::-webkit-details-marker { display: none; }
+  .blend-faq summary::after { content: '+'; float: right; color: var(--accent); font-size: 1.4rem; line-height: 1; font-weight: 400; }
+  .blend-faq details[open] summary::after { content: '–'; }
+  .blend-faq details > p { padding: 0 0 18px; margin: 0; line-height: 1.7; font-size: 0.97rem; }
+  .blend-cta-block { background: var(--green); color: var(--cream); border-radius: 16px; padding: 28px 30px; margin: 36px 0 8px; text-align: center; }
+  .blend-cta-block h2 { color: var(--cream); margin: 0 0 8px; }
+  .blend-cta-block p { color: rgba(253,246,236,0.85); margin: 0 auto 18px; max-width: 560px; }
+  .blend-cta-block a.cta-btn { display: inline-block; background: var(--accent); color: #fff; padding: 12px 28px; border-radius: 10px; font-weight: 700; text-decoration: none; border: none; transition: background 0.15s; }
+  .blend-cta-block a.cta-btn:hover { background: var(--accent-hover); }
+  @media (max-width: 620px) {
+    .blend-deep h2 { font-size: 1.3rem; }
+    .blend-compare tbody th { width: 38%; }
+  }
+</style>
+
+<section class="blend-deep" aria-label="Coffee blend guide for Malaysia">
+
+  <h2 id="what-is-a-coffee-blend">What is a coffee blend?</h2>
+  <p class="answer-lead">A coffee blend is a single bag made by combining two or more coffees — usually from different farms, regions or countries — into one recipe. The roaster mixes them so each bean covers another's gaps, giving you a balanced cup that tastes the same from bag to bag.</p>
+  <p>Think of it like a recipe rather than a single ingredient. A roaster might lean on <strong>Brazil for chocolate depth and low acidity</strong>, add a washed <strong>Colombia to round out the body</strong>, then lift the top with a touch of <strong>Ethiopia for floral or berry brightness</strong>. The point of blending is balance and consistency — a cup built to hold up every morning, not to taste different every time.</p>
+  <p>On The Beans Hub you'll find blends from Malaysian roasters like <strong>Coffex Coffee, V-Coffee, Craft Origin, ASK Coffee Roastery, KAFFEI and Tatih Roast Works</strong>. Some print every origin on the bag; others treat the recipe as house knowledge and just tell you how it tastes and what it's built for.</p>
+
+  <h2 id="single-origin-vs-blend">Single-origin vs blend: what's the difference?</h2>
+  <p>A <strong>single-origin</strong> coffee comes from one place — one country, often one farm or washing station — so it shows off the character of that specific origin. A <strong>blend</strong> mixes several origins to build a flavour the roaster is aiming for, trading a little individuality for balance and reliability.</p>
+  <table class="blend-compare">
+    <thead><tr><th scope="col"></th><th scope="col">Single origin</th><th scope="col">Blend</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Made from</th><td>One country / farm / lot</td><td>Two or more origins combined</td></tr>
+      <tr><th scope="row">Flavour goal</th><td>Express one place — distinct, sometimes bright or unusual</td><td>Balance and a consistent house taste</td></tr>
+      <tr><th scope="row">Bag-to-bag consistency</th><td>Shifts with each harvest</td><td>Roaster adjusts the recipe to keep it steady</td></tr>
+      <tr><th scope="row">Best for</th><td>Pour-over, exploring flavour, tasting notes</td><td>Espresso, milk drinks, daily brewing</td></tr>
+      <tr><th scope="row">Forgiveness when brewing</th><td>Rewards precise technique</td><td>Easier to dial in, harder to ruin</td></tr>
+    </tbody>
+  </table>
+  <p>Neither is better — they answer different questions. If you want to taste what makes a Yirgacheffe or a Gesha special, go single origin. If you want a bag that just works for your 7am flat white, go blend. We unpack this in full in <a href="/posts/single-origin-vs-blend-coffee">single origin vs blend coffee</a>.</p>
+
+  <h2 id="who-should-buy">Who is a coffee blend for?</h2>
+  <p>Blends suit you if you want a reliable, repeatable cup more than a different experience every bag. You're a strong fit if you:</p>
+  <ul>
+    <li><strong>Pull espresso or make milk drinks at home</strong> — blends are built for the pressure and crema of an espresso machine, and chocolate-caramel profiles cut beautifully through milk in a latte or flat white.</li>
+    <li><strong>Want one bag the whole household can use</strong> — forgiving to grind and brew, so a missed gram or a slightly wrong grind won't wreck the cup.</li>
+    <li><strong>Brew in bigger batches</strong> — moka pot, French press or a drip machine for the family table.</li>
+    <li><strong>Are newer to specialty coffee</strong> — blends ease you in with familiar, comforting flavours before you chase bright single origins.</li>
+    <li><strong>Drink coffee daily and value consistency</strong> — you want the same good cup tomorrow, not a surprise.</li>
+  </ul>
+  <p>If you mostly brew pour-over and love hunting unusual flavour notes, a <a href="/shop">single-origin bean</a> may suit you better — but plenty of people keep one of each on the shelf.</p>
+
+  <h2 id="espresso-vs-filter-blend">Espresso blend vs filter blend: which should you pick?</h2>
+  <p class="answer-lead">An espresso blend is roasted and recipe-built for shots and milk drinks — usually medium to dark, with chocolate, caramel and nut flavours that stay rich under milk. A filter (or omni) blend leans lighter and brighter, made for pour-over, drip and AeroPress.</p>
+  <p>Most blends from Malaysian roasters are <strong>espresso-style</strong>, because that's what cafés and home machines run. Searching for an <strong>espresso blend in Malaysia</strong>? Use the <strong>Espresso</strong> filter at the top of this page to narrow the 143 beans down to shot-ready recipes. Want something for a V60 or AeroPress instead? Switch to the <strong>Filter</strong> filter, or read <a href="/posts/espresso-vs-filter-vs-omni-beans">espresso vs filter vs omni beans</a> to understand how the same bean behaves across brew methods.</p>
+
+  <h2 id="how-to-choose">How to choose a specialty coffee blend</h2>
+  <p>Work through four quick questions and you'll land on the right bag:</p>
+  <ul>
+    <li><strong>How will you brew it?</strong> Espresso and milk drinks want a medium-to-dark espresso blend; pour-over and drip want a lighter filter blend.</li>
+    <li><strong>What flavours do you like?</strong> Chocolate, caramel, nut and brown sugar mean a comforting, classic cup. Floral or fruity notes mean a brighter, more modern blend. Our <a href="/posts/how-to-read-flavour-notes">flavour notes guide</a> decodes the bag.</li>
+    <li><strong>How dark do you want it?</strong> Medium keeps sweetness and a little brightness; dark gives bolder, roastier depth. See <a href="/posts/light-vs-medium-vs-dark-roast">light vs medium vs dark roast</a>.</li>
+    <li><strong>Whole bean or ground?</strong> Buy whole bean and grind fresh if you can — it's the single biggest upgrade to any blend. Match the grind to your <a href="/posts/coffee-brewing-methods">brew method</a>.</li>
+  </ul>
+
+  <h2 id="blend-prices-malaysia">How much do coffee blends cost in Malaysia?</h2>
+  <p>Specialty coffee blends from Malaysian roasters generally run <strong>RM 30 to RM 90 per 200–250g bag</strong>, depending on the roaster, the origins in the recipe and the bag size. Everyday house and café blends sit at the lower end, while small-batch recipes with named single-origin components sit higher. Larger 500g and 1kg bags usually bring the price-per-gram down, which is why many home baristas who pull espresso daily buy bigger. Every price on this page is shown per 200g so you can compare bags fairly, and the <strong>Buy Now</strong> button takes you straight to the roaster to order.</p>
+
+  <h2 id="faq">Coffee blend FAQ</h2>
+  <div class="blend-faq">
+    <details><summary>Is a coffee blend better than single origin?</summary><p>Neither is better — they're built for different goals. A blend is made for balance and consistency, which makes it the stronger choice for espresso, milk drinks and reliable daily brewing. A single origin shows off the character of one place and rewards careful pour-over. Choose by how you brew and what you want from the cup, not by which is "higher quality."</p></details>
+    <details><summary>Are coffee blends good for espresso?</summary><p>Yes — blends are the classic espresso choice. Roasters build espresso blends to deliver balanced body, sweetness and crema under pressure, and the chocolate-and-caramel profiles common in blends stay rich when you add milk. Most blends sold by Malaysian roasters are espresso-style for exactly this reason.</p></details>
+    <details><summary>Does a blend mean lower-quality beans?</summary><p>No. Blending is a deliberate craft, not a way to hide poor beans. Specialty roasters combine carefully chosen origins so each one's strengths cover another's gaps. A well-built blend can use the same grade of beans as a single origin — it's just assembled for balance and consistency rather than to spotlight one place.</p></details>
+    <details><summary>What does "100% Arabica blend" mean?</summary><p>It means every coffee in the recipe is the Arabica species — known for sweeter, more nuanced flavour — with no Robusta added. The "blend" part means two or more Arabica coffees from different origins are combined. Some espresso blends deliberately add a little Robusta for extra body and crema; "100% Arabica" tells you they haven't.</p></details>
+    <details><summary>What roast level are most blends?</summary><p>Most blends are roasted medium to medium-dark. That range keeps enough sweetness and body to work in espresso and milk drinks while staying forgiving to brew. Filter-focused blends are sometimes roasted lighter to keep brighter, fruitier notes for pour-over.</p></details>
+    <details><summary>Can you use a blend for pour-over or filter coffee?</summary><p>Yes. A medium-roast or filter-style blend works well in a V60, drip machine or AeroPress. Darker espresso blends can taste heavy through filter, so for pour-over choose a lighter blend or use the Filter filter on this page to find beans built for it.</p></details>
+    <details><summary>How much does a specialty coffee blend cost in Malaysia?</summary><p>Specialty blends from Malaysian roasters typically cost RM 30 to RM 90 per 200–250g bag. Everyday house blends sit lower; small-batch recipes with named origins sit higher. Buying 500g or 1kg usually lowers the price per gram.</p></details>
+    <details><summary>Which Malaysian roasters make coffee blends?</summary><p>Plenty — this page lists 143 blends from roasters including Coffex Coffee, V-Coffee, Craft Origin, ASK Coffee Roastery, KAFFEI, Tatih Roast Works, Ghostbird Coffee and 43 Coffee. Use the roast, brew and taste filters above to narrow them to the cup you want.</p></details>
+  </div>
+
+  <div class="blend-cta-block">
+    <h2>Find your blend</h2>
+    <p>Filter all 143 coffee blends by roast, brew method and flavour, then buy straight from the Malaysian roaster.</p>
+    <a class="cta-btn" href="#productGrid">Browse the blends ↑</a>
+  </div>
+
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Is a coffee blend better than single origin?", "acceptedAnswer": {"@type": "Answer", "text": "Neither is better — they're built for different goals. A blend is made for balance and consistency, which makes it the stronger choice for espresso, milk drinks and reliable daily brewing. A single origin shows off the character of one place and rewards careful pour-over. Choose by how you brew and what you want from the cup, not by which is higher quality."}},
+    {"@type": "Question", "name": "Are coffee blends good for espresso?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — blends are the classic espresso choice. Roasters build espresso blends to deliver balanced body, sweetness and crema under pressure, and the chocolate-and-caramel profiles common in blends stay rich when you add milk. Most blends sold by Malaysian roasters are espresso-style for exactly this reason."}},
+    {"@type": "Question", "name": "Does a blend mean lower-quality beans?", "acceptedAnswer": {"@type": "Answer", "text": "No. Blending is a deliberate craft, not a way to hide poor beans. Specialty roasters combine carefully chosen origins so each one's strengths cover another's gaps. A well-built blend can use the same grade of beans as a single origin — it's just assembled for balance and consistency rather than to spotlight one place."}},
+    {"@type": "Question", "name": "What does 100% Arabica blend mean?", "acceptedAnswer": {"@type": "Answer", "text": "It means every coffee in the recipe is the Arabica species — known for sweeter, more nuanced flavour — with no Robusta added. The blend part means two or more Arabica coffees from different origins are combined. Some espresso blends deliberately add a little Robusta for extra body and crema; 100% Arabica tells you they haven't."}},
+    {"@type": "Question", "name": "What roast level are most coffee blends?", "acceptedAnswer": {"@type": "Answer", "text": "Most blends are roasted medium to medium-dark. That range keeps enough sweetness and body to work in espresso and milk drinks while staying forgiving to brew. Filter-focused blends are sometimes roasted lighter to keep brighter, fruitier notes for pour-over."}},
+    {"@type": "Question", "name": "Can you use a blend for pour-over or filter coffee?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. A medium-roast or filter-style blend works well in a V60, drip machine or AeroPress. Darker espresso blends can taste heavy through filter, so for pour-over choose a lighter blend or filter for beans built for it."}},
+    {"@type": "Question", "name": "How much does a specialty coffee blend cost in Malaysia?", "acceptedAnswer": {"@type": "Answer", "text": "Specialty blends from Malaysian roasters typically cost RM 30 to RM 90 per 200 to 250g bag. Everyday house blends sit lower; small-batch recipes with named origins sit higher. Buying 500g or 1kg usually lowers the price per gram."}},
+    {"@type": "Question", "name": "Which Malaysian roasters make coffee blends?", "acceptedAnswer": {"@type": "Answer", "text": "Plenty — The Beans Hub lists 143 blends from roasters including Coffex Coffee, V-Coffee, Craft Origin, ASK Coffee Roastery, KAFFEI, Tatih Roast Works, Ghostbird Coffee and 43 Coffee. Use the roast, brew and taste filters to narrow them to the cup you want."}}
+  ]
+}
+</script>
+
 <footer class="tbh-footer">
     <div class="tbh-footer-inner">
       <div class="tbh-footer-brand">
@@ -4996,18 +5197,26 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
       </div>
       <div>
         <h4 class="tbh-footer-heading">Shop</h4>
-        <ul class="tbh-footer-list">
-          <li><a href="/shop">All Coffee Beans</a></li>
+        <a href="/shop" style="display:inline-block;color:#FDA11D;font-size:0.85rem;font-weight:600;text-decoration:none;margin-bottom:16px;">Browse all coffee beans &rarr;</a>
+        <p style="font-size:0.8rem;color:rgba(253,246,236,0.45);margin:0 0 6px;">Coffee grown in&hellip;</p>
+        <ul class="tbh-footer-list" style="display:flex;flex-wrap:wrap;gap:4px 16px;margin-bottom:16px;">
           <li><a href="/shop/ethiopia-coffee-beans">Ethiopia</a></li>
           <li><a href="/shop/colombia-coffee-beans">Colombia</a></li>
           <li><a href="/shop/brazil-coffee-beans">Brazil</a></li>
           <li><a href="/shop/yunnan-coffee-beans">Yunnan</a></li>
           <li><a href="/shop/indonesia-coffee-beans">Indonesia</a></li>
           <li><a href="/shop/thailand-coffee-beans">Thailand</a></li>
-          <li><a href="/shop/natural-process-coffee-beans">Natural Process</a></li>
-          <li><a href="/shop/washed-process-coffee-beans">Washed Process</a></li>
+        </ul>
+        <p style="font-size:0.8rem;color:rgba(253,246,236,0.45);margin:0 0 6px;">Made by&hellip; (process)</p>
+        <ul class="tbh-footer-list" style="display:flex;flex-wrap:wrap;gap:4px 16px;margin-bottom:16px;">
+          <li><a href="/shop/natural-process-coffee-beans">Natural</a></li>
+          <li><a href="/shop/washed-process-coffee-beans">Washed</a></li>
           <li><a href="/shop/fermented-coffee-beans">Fermented</a></li>
-          <li><a href="/shop/arabica-blend-coffee-beans">Arabica Blends</a></li>
+        </ul>
+        <p style="font-size:0.8rem;color:rgba(253,246,236,0.45);margin:0 0 6px;">Or browse by&hellip;</p>
+        <ul class="tbh-footer-list" style="display:flex;flex-wrap:wrap;gap:4px 16px;">
+          <li><a href="/shop/arabica-blend-coffee-beans">Arabica blends</a></li>
+          <li><a href="/shop/coffee-beans-for-iced-latte">For iced latte</a></li>
         </ul>
       </div>
       <div>

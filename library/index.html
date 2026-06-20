@@ -1218,12 +1218,12 @@
     }
 
     .tbh-footer-heading {
-      font-family: "Sigmar", cursive;
-      font-size: 0.95rem;
-      color: #FDA11D;
-      margin: 0 0 14px;
-      letter-spacing: 0.02em;
-      font-weight: 400
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(253,246,236,0.4);
+      margin-bottom: 16px;
     }
 
     .tbh-footer-list {
@@ -1309,7 +1309,30 @@
         max-width: none
       }
     }
-  </style>
+  
+    /* ===== Coffee Beans mega-dropdown (added for category internal linking) ===== */
+    .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
+    .nav-dropdown .nav-dropdown-trigger { display: inline-flex; align-items: center; gap: 5px; }
+    .nav-caret { font-size: 0.7em; transition: transform 0.2s; }
+    .nav-dropdown:hover .nav-caret, .nav-dropdown:focus-within .nav-caret { transform: rotate(180deg); }
+    .nav-dropdown::after { content: ""; position: absolute; top: 100%; left: -10px; right: -10px; height: 22px; }
+    .nav-dropdown-menu { position: absolute; top: calc(100% + 20px); left: 50%; transform: translateX(-50%) translateY(8px); display: grid; grid-template-columns: repeat(3, max-content); gap: 4px 32px; background: var(--cream, #FDF6EC); border: 1px solid var(--border, #E8E0D0); border-radius: 14px; padding: 22px 26px; box-shadow: 0 16px 44px rgba(41,98,65,0.20); opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.18s ease, transform 0.18s ease; z-index: 200; }
+    .nav-dropdown:hover .nav-dropdown-menu, .nav-dropdown:focus-within .nav-dropdown-menu { opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+    .nav-dd-group { display: flex; flex-direction: column; gap: 1px; }
+    .nav-dd-heading { font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted, #5a6e5a); font-weight: 700; margin-bottom: 7px; }
+    .nav-dropdown-menu a { color: var(--green, #296241) !important; font-size: 0.9rem !important; font-weight: 500 !important; letter-spacing: normal !important; padding: 5px 0 !important; white-space: nowrap; }
+    .nav-dropdown-menu a:hover { color: var(--accent-hover, #DA8A10) !important; }
+    .nav-dd-all { margin-top: 9px; font-weight: 700 !important; color: var(--accent-hover, #DA8A10) !important; }
+    /* mobile accordion */
+    .mobile-menu details.mobile-dd { border-bottom: 1px solid rgba(253,161,29,0.15); }
+    .mobile-menu details.mobile-dd summary { color: rgba(253,246,236,0.85); font-size: 1rem; font-weight: 500; padding: 12px 0; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    .mobile-menu details.mobile-dd summary::-webkit-details-marker { display: none; }
+    .mobile-menu details.mobile-dd summary::after { content: "\25be"; color: #FDA11D; font-size: 0.85em; transition: transform 0.2s; }
+    .mobile-menu details.mobile-dd[open] summary::after { transform: rotate(180deg); }
+    .mobile-menu details.mobile-dd a { display: block; color: rgba(253,246,236,0.7); font-size: 0.92rem; font-weight: 500; padding: 9px 0 9px 16px; border-bottom: none; }
+    .mobile-menu details.mobile-dd a:last-child { color: #FDA11D; font-weight: 600; }
+    /* ===== end dropdown ===== */
+</style>
 
   <script type="application/ld+json">
 {
@@ -1332,7 +1355,32 @@
     </a>
     <div class="nav-links">
       <a class="active" href="/">Home</a>
-      <a href="/shop">Coffee Beans</a>
+      <div class="nav-dropdown">
+        <a href="/shop" class="nav-dropdown-trigger">Coffee Beans <span class="nav-caret">▾</span></a>
+        <div class="nav-dropdown-menu">
+          <div class="nav-dd-group">
+            <span class="nav-dd-heading">By Origin</span>
+            <a href="/shop/ethiopia-coffee-beans">Ethiopia</a>
+            <a href="/shop/colombia-coffee-beans">Colombia</a>
+            <a href="/shop/brazil-coffee-beans">Brazil</a>
+            <a href="/shop/yunnan-coffee-beans">Yunnan</a>
+            <a href="/shop/indonesia-coffee-beans">Indonesia</a>
+            <a href="/shop/thailand-coffee-beans">Thailand</a>
+          </div>
+          <div class="nav-dd-group">
+            <span class="nav-dd-heading">By Process</span>
+            <a href="/shop/washed-process-coffee-beans">Washed</a>
+            <a href="/shop/natural-process-coffee-beans">Natural</a>
+            <a href="/shop/fermented-coffee-beans">Fermented</a>
+          </div>
+          <div class="nav-dd-group">
+            <span class="nav-dd-heading">By Type</span>
+            <a href="/shop/arabica-blend-coffee-beans">Arabica Blend</a>
+            <a href="/shop/coffee-beans-for-iced-latte">For Iced Latte</a>
+            <a href="/shop" class="nav-dd-all">Shop all beans →</a>
+          </div>
+        </div>
+      </div>
       <a href="/library">Coffee Library</a>
       <a href="/about">About Us</a>
       <a href="/contact">Contact Us</a>
@@ -1344,7 +1392,21 @@
   </nav>
   <div class="mobile-menu" id="mobileMenu">
     <a href="/">Home</a>
-    <a href="/shop">Coffee Beans</a>
+    <details class="mobile-dd">
+      <summary>Coffee Beans</summary>
+      <a href="/shop/ethiopia-coffee-beans">Ethiopia</a>
+      <a href="/shop/colombia-coffee-beans">Colombia</a>
+      <a href="/shop/brazil-coffee-beans">Brazil</a>
+      <a href="/shop/yunnan-coffee-beans">Yunnan</a>
+      <a href="/shop/indonesia-coffee-beans">Indonesia</a>
+      <a href="/shop/thailand-coffee-beans">Thailand</a>
+      <a href="/shop/washed-process-coffee-beans">Washed Process</a>
+      <a href="/shop/natural-process-coffee-beans">Natural Process</a>
+      <a href="/shop/fermented-coffee-beans">Fermented</a>
+      <a href="/shop/arabica-blend-coffee-beans">Arabica Blend</a>
+      <a href="/shop/coffee-beans-for-iced-latte">For Iced Latte</a>
+      <a href="/shop">Shop all beans →</a>
+    </details>
     <a href="/library">Coffee Library</a>
     <a href="/about">About Us</a>
     <a href="/contact">Contact Us</a>
@@ -1366,7 +1428,7 @@
       <!-- LEFT: Featured -->
       <a class="best-featured" href="/posts/specialty-coffee-malaysia">
         <div class="best-featured-image">
-          <img src="/img/specialty-coffee-malaysia-featured.png" alt="Specialty coffee in Malaysia" loading="eager" />
+          <img src="/img/specialty-coffee-malaysia-featured.webp" alt="Specialty coffee in Malaysia" loading="eager" />
         </div>
         <div class="best-date">May 15, 2026</div>
         <div class="best-tag">Local</div>
@@ -1391,7 +1453,7 @@
         <a class="picks-card" href="/library#all-posts" aria-label="See all posts">
           <div class="picks-count" id="picksCount">32</div>
           <div class="picks-image">
-            <img src="/img/all-picks-coffee-beans.png" alt="" loading="lazy" />
+            <img src="/img/all-picks-coffee-beans.webp" alt="" loading="lazy" />
           </div>
           <div class="picks-pill">See all picks →</div>
         </a>
@@ -1444,7 +1506,7 @@
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="arabica robusta liberica species types coffee beans"
             href="/posts/coffee-bean-varieties">
             <div class="post-card-img cat-guide">
-              <img src="/img/arabica-robusta-liberica.png" alt="Arabica, Robusta and Liberica coffee species guide" loading="lazy" />
+              <img src="/img/arabica-robusta-liberica.webp" alt="Arabica, Robusta and Liberica coffee species guide" loading="lazy" />
               <span class="post-card-tag">Guide</span>
               <div class="post-card-overlay-title">Arabica, Robusta &amp; Liberica: The Coffee Species Guide</div>
             </div>
@@ -1457,7 +1519,7 @@
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="arabica coffee beans taste specialty price"
             href="/posts/arabica-coffee-beans">
             <div class="post-card-img cat-guide">
-              <img src="/img/coffee-bean-origins.png" alt="Arabica coffee beans guide" loading="lazy" />
+              <img src="/img/coffee-bean-origins.webp" alt="Arabica coffee beans guide" loading="lazy" />
               <span class="post-card-tag">Guide</span>
               <div class="post-card-overlay-title">Arabica Coffee Beans: What They Taste Like &amp; Why They Cost More</div>
             </div>
@@ -1470,7 +1532,7 @@
           <a class="post-card reveal post-item" data-cat="local" data-keywords="liberica kopi johor malaysia native bean specialty"
             href="/posts/liberica-coffee-malaysia">
             <div class="post-card-img cat-local">
-              <img src="/img/arabica-robusta-liberica.png" alt="Liberica coffee Malaysia guide" loading="lazy" />
+              <img src="/img/arabica-robusta-liberica.webp" alt="Liberica coffee Malaysia guide" loading="lazy" />
               <span class="post-card-tag">Local</span>
               <div class="post-card-overlay-title">Liberica Coffee Malaysia: The Native Bean Most Malaysians Have Never Tried</div>
             </div>
@@ -1483,7 +1545,7 @@
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="robusta coffee beans stronger cheaper espresso"
             href="/posts/robusta-coffee">
             <div class="post-card-img cat-guide">
-              <img src="/img/coffee-bean-origins.png" alt="Robusta coffee beans guide" loading="lazy" />
+              <img src="/img/coffee-bean-origins.webp" alt="Robusta coffee beans guide" loading="lazy" />
               <span class="post-card-tag">Guide</span>
               <div class="post-card-overlay-title">Robusta Coffee: Stronger, Cheaper, and Misunderstood</div>
             </div>
@@ -1496,7 +1558,7 @@
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="arabica vs robusta comparison caffeine flavour"
             href="/posts/arabica-vs-robusta">
             <div class="post-card-img cat-guide">
-              <img src="/img/single-origin-vs-blend-coffee.png" alt="Arabica vs Robusta comparison" loading="lazy" />
+              <img src="/img/single-origin-vs-blend-coffee.webp" alt="Arabica vs Robusta comparison" loading="lazy" />
               <span class="post-card-tag">Guide</span>
               <div class="post-card-overlay-title">Arabica vs Robusta: A Side-by-Side Comparison</div>
             </div>
@@ -1509,7 +1571,7 @@
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="liberica vs arabica comparison malaysia flavour"
             href="/posts/liberica-vs-arabica">
             <div class="post-card-img cat-guide">
-              <img src="/img/arabica-robusta-liberica.png" alt="Liberica vs Arabica comparison" loading="lazy" />
+              <img src="/img/arabica-robusta-liberica.webp" alt="Liberica vs Arabica comparison" loading="lazy" />
               <span class="post-card-tag">Guide</span>
               <div class="post-card-overlay-title">Liberica vs Arabica: How Malaysia's Native Bean Compares</div>
             </div>
@@ -1522,7 +1584,7 @@
           <a class="post-card reveal post-item" data-cat="local" data-keywords="kopi malaysia kopitiam white coffee liberica heritage culture"
             href="/posts/malaysian-coffee-heritage">
             <div class="post-card-img cat-local">
-              <img src="/img/arabica-robusta-liberica.png" alt="Malaysian coffee heritage kopi culture" loading="lazy" />
+              <img src="/img/arabica-robusta-liberica.webp" alt="Malaysian coffee heritage kopi culture" loading="lazy" />
               <span class="post-card-tag">Local</span>
               <div class="post-card-overlay-title">Malaysian Coffee Heritage: Kopi, White Coffee &amp; Liberica</div>
             </div>
@@ -1535,7 +1597,7 @@
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="processing washed natural honey fermented anaerobic"
             href="/posts/coffee-processing-methods">
             <div class="post-card-img cat-guide">
-              <img src="/img/coffee-bean-origins.png" alt="Coffee processing methods explained" loading="lazy" />
+              <img src="/img/coffee-bean-origins.webp" alt="Coffee processing methods explained" loading="lazy" />
               <span class="post-card-tag">Guide</span>
               <div class="post-card-overlay-title">Coffee Processing Methods Explained</div>
             </div>
@@ -1549,7 +1611,7 @@
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="natural washed processing flavour comparison"
             href="/posts/natural-vs-washed-coffee">
             <div class="post-card-img cat-guide">
-              <img src="/img/single-origin-vs-blend-coffee.png" alt="Natural vs washed coffee" loading="lazy" />
+              <img src="/img/single-origin-vs-blend-coffee.webp" alt="Natural vs washed coffee" loading="lazy" />
               <span class="post-card-tag">Guide</span>
               <div class="post-card-overlay-title">Natural vs Washed Coffee</div>
             </div>
@@ -1563,7 +1625,7 @@
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="honey process yellow red black sweetness"
             href="/posts/honey-process-coffee">
             <div class="post-card-img cat-guide">
-              <img src="/img/coffee-bean-origins.png" alt="Honey process coffee explained" loading="lazy" />
+              <img src="/img/coffee-bean-origins.webp" alt="Honey process coffee explained" loading="lazy" />
               <span class="post-card-tag">Guide</span>
               <div class="post-card-overlay-title">Honey Process Coffee Explained</div>
             </div>
@@ -1577,7 +1639,7 @@
           <a class="post-card reveal post-item" data-cat="local" data-keywords="malaysia specialty home brew"
             href="/posts/specialty-coffee-malaysia">
             <div class="post-card-img cat-local">
-              <img src="/img/specialty-coffee-malaysia.png" alt="Specialty coffee in Malaysia" loading="lazy" />
+              <img src="/img/specialty-coffee-malaysia.webp" alt="Specialty coffee in Malaysia" loading="lazy" />
               <span class="post-card-tag">Local</span>
               <div class="post-card-overlay-title">Specialty Coffee in Malaysia</div>
             </div>
@@ -1591,7 +1653,7 @@
           <a class="post-card reveal post-item" data-cat="local" data-keywords="malaysia best beans 2026"
             href="/posts/best-coffee-beans-malaysia">
             <div class="post-card-img cat-local">
-              <img src="/img/best-coffee-beans-malaysia.png" alt="Best coffee beans in Malaysia 2026" loading="lazy" />
+              <img src="/img/best-coffee-beans-malaysia.webp" alt="Best coffee beans in Malaysia 2026" loading="lazy" />
               <span class="post-card-tag">Local</span>
               <div class="post-card-overlay-title">Best Coffee Beans in Malaysia 2026</div>
             </div>
@@ -1605,7 +1667,7 @@
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="online malaysia buy beans"
             href="/posts/buy-coffee-beans-online-malaysia">
             <div class="post-card-img cat-guide">
-              <img src="/img/buy-coffee-beans-online-malaysia.png" alt="Buy coffee beans online in Malaysia" loading="lazy" />
+              <img src="/img/buy-coffee-beans-online-malaysia.webp" alt="Buy coffee beans online in Malaysia" loading="lazy" />
               <span class="post-card-tag">Guide</span>
               <div class="post-card-overlay-title">Buy Coffee Beans Online in Malaysia</div>
             </div>
@@ -1619,7 +1681,7 @@
           <a class="post-card reveal post-item" data-cat="local" data-keywords="malaysian brands roasters"
             href="/posts/malaysia-coffee-brands-roasters">
             <div class="post-card-img cat-local">
-              <img src="/img/malaysia-coffee-brands-roasters.png" alt="Malaysian coffee brands and roasters" loading="lazy" />
+              <img src="/img/malaysia-coffee-brands-roasters.webp" alt="Malaysian coffee brands and roasters" loading="lazy" />
               <span class="post-card-tag">Local</span>
               <div class="post-card-overlay-title">Malaysian Brands &amp; Roasters</div>
             </div>
@@ -1633,7 +1695,7 @@
           <a class="post-card reveal post-item" data-cat="local" data-keywords="kl kuala lumpur specialty beans"
             href="/posts/specialty-coffee-beans-kl">
             <div class="post-card-img cat-local">
-              <img src="/img/specialty-coffee-beans-kl.png" alt="Specialty coffee beans in Kuala Lumpur" loading="lazy" />
+              <img src="/img/specialty-coffee-beans-kl.webp" alt="Specialty coffee beans in Kuala Lumpur" loading="lazy" />
               <span class="post-card-tag">Local</span>
               <div class="post-card-overlay-title">Specialty Beans in KL</div>
             </div>
@@ -1647,7 +1709,7 @@
           <a class="post-card reveal post-item" data-cat="local" data-keywords="pj petaling jaya selangor beans"
             href="/posts/specialty-coffee-beans-pj-selangor">
             <div class="post-card-img cat-local">
-              <img src="/img/specialty-coffee-beans-pj-selangor.png" alt="Specialty coffee beans in PJ and Selangor" loading="lazy" />
+              <img src="/img/specialty-coffee-beans-pj-selangor.webp" alt="Specialty coffee beans in PJ and Selangor" loading="lazy" />
               <span class="post-card-tag">Local</span>
               <div class="post-card-overlay-title">Specialty Beans in PJ &amp; Selangor</div>
             </div>
@@ -1661,7 +1723,7 @@
           <a class="post-card reveal post-item" data-cat="local" data-keywords="penang george town beans"
             href="/posts/specialty-coffee-penang">
             <div class="post-card-img cat-local">
-              <img src="/img/specialty-coffee-penang.png" alt="Specialty coffee in Penang" loading="lazy" />
+              <img src="/img/specialty-coffee-penang.webp" alt="Specialty coffee in Penang" loading="lazy" />
               <span class="post-card-tag">Local</span>
               <div class="post-card-overlay-title">Specialty Coffee in Penang</div>
             </div>
@@ -1675,7 +1737,7 @@
           <a class="post-card reveal post-item" data-cat="origin" data-keywords="single origin coffee bean origins guide"
             href="/posts/coffee-bean-origins">
             <div class="post-card-img cat-origin">
-              <img src="/img/coffee-bean-origins.png" alt="Coffee bean origins explained" loading="lazy" />
+              <img src="/img/coffee-bean-origins.webp" alt="Coffee bean origins explained" loading="lazy" />
               <span class="post-card-tag">Origin</span>
               <div class="post-card-overlay-title">Coffee Bean Origins Explained</div>
             </div>
@@ -1689,7 +1751,7 @@
           <a class="post-card reveal post-item" data-cat="origin" data-keywords="yunnan thailand asia coffee beans"
             href="/posts/asia-coffee-origins-yunnan-thailand">
             <div class="post-card-img cat-origin">
-              <img src="/img/asia-coffee-origins-yunnan-thailand.png" alt="Yunnan and Thailand coffee beans" loading="lazy" />
+              <img src="/img/asia-coffee-origins-yunnan-thailand.webp" alt="Yunnan and Thailand coffee beans" loading="lazy" />
               <span class="post-card-tag">Origin</span>
               <div class="post-card-overlay-title">Yunnan &amp; Thailand Coffee Beans</div>
             </div>
@@ -1703,7 +1765,7 @@
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="single origin vs blend coffee"
             href="/posts/single-origin-vs-blend-coffee">
             <div class="post-card-img cat-guide">
-              <img src="/img/single-origin-vs-blend-coffee.png" alt="Single origin vs blend coffee" loading="lazy" />
+              <img src="/img/single-origin-vs-blend-coffee.webp" alt="Single origin vs blend coffee" loading="lazy" />
               <span class="post-card-tag">Guide</span>
               <div class="post-card-overlay-title">Single Origin vs Blend Coffee</div>
             </div>
@@ -1717,7 +1779,7 @@
           <a class="post-card reveal post-item" data-cat="local" data-keywords="jeju korea travel cafes"
             href="/posts/jeju-specialty-coffee">
             <div class="post-card-img cat-local">
-              <img src="/img/jeju-specialty-coffee.png" alt="Specialty coffee in Jeju Island" loading="lazy" />
+              <img src="/img/jeju-specialty-coffee.webp" alt="Specialty coffee in Jeju Island" loading="lazy" />
               <span class="post-card-tag">Travel</span>
               <div class="post-card-overlay-title">Specialty Coffee in Jeju Island</div>
             </div>
@@ -1731,7 +1793,7 @@
           <a class="post-card reveal post-item" data-cat="local" data-keywords="kl roasters specialty kuala lumpur"
             href="/posts/kl-roasters">
             <div class="post-card-img cat-local">
-              <img src="/img/kl-roasters.png" alt="Best KL specialty roasters" loading="lazy" />
+              <img src="/img/kl-roasters.webp" alt="Best KL specialty roasters" loading="lazy" />
               <span class="post-card-tag">Local</span>
               <div class="post-card-overlay-title">Best KL Specialty Roasters</div>
             </div>
@@ -1745,7 +1807,7 @@
           <a class="post-card reveal post-item" data-cat="local" data-keywords="johor jb cafes liberica"
             href="/posts/specialty-coffee-johor">
             <div class="post-card-img cat-local">
-              <img src="/img/specialty-coffee-johor.png" alt="Specialty coffee in Johor" loading="lazy" />
+              <img src="/img/specialty-coffee-johor.webp" alt="Specialty coffee in Johor" loading="lazy" />
               <span class="post-card-tag">Local</span>
               <div class="post-card-overlay-title">Specialty Coffee in Johor</div>
             </div>
@@ -1759,7 +1821,7 @@
           <a class="post-card reveal post-item" data-cat="origin" data-keywords="ethiopia yirgacheffe single origin"
             href="/posts/ethiopia-yirgacheffe-coffee-you-should-try">
             <div class="post-card-img cat-origin">
-              <img src="/img/ethiopia-yirgacheffe-coffee-you-should-try.png" alt="Ethiopia Yirgacheffe coffee guide" loading="lazy" />
+              <img src="/img/ethiopia-yirgacheffe-coffee-you-should-try.webp" alt="Ethiopia Yirgacheffe coffee guide" loading="lazy" />
               <span class="post-card-tag">Origin</span>
               <div class="post-card-overlay-title">Ethiopia Yirgacheffe Guide</div>
             </div>
@@ -1773,7 +1835,7 @@
           <a class="post-card reveal post-item" data-cat="origin" data-keywords="brazil single origin beans"
             href="/posts/brazil-coffee-beans-to-try">
             <div class="post-card-img cat-origin">
-              <img src="/img/brazil-coffee-beans-to-try.png" alt="Brazil coffee beans worth trying" loading="lazy" />
+              <img src="/img/brazil-coffee-beans-to-try.webp" alt="Brazil coffee beans worth trying" loading="lazy" />
               <span class="post-card-tag">Origin</span>
               <div class="post-card-overlay-title">Brazil Coffee Beans Worth Trying</div>
             </div>
@@ -1787,7 +1849,7 @@
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="arabica robusta liberica species"
             href="/posts/arabica-robusta-liberica">
             <div class="post-card-img cat-guide">
-              <img src="/img/arabica-robusta-liberica.png" alt="Arabica vs Robusta vs Liberica" loading="lazy" />
+              <img src="/img/arabica-robusta-liberica.webp" alt="Arabica vs Robusta vs Liberica" loading="lazy" />
               <span class="post-card-tag">Guide</span>
               <div class="post-card-overlay-title">Arabica vs Robusta vs Liberica</div>
             </div>
@@ -1801,7 +1863,7 @@
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="flavour notes tasting beginner"
             href="/posts/how-to-read-flavour-notes">
             <div class="post-card-img cat-guide">
-              <img src="/img/how-to-read-flavour-notes.png" alt="How to read flavour notes" loading="lazy" />
+              <img src="/img/how-to-read-flavour-notes.webp" alt="How to read flavour notes" loading="lazy" />
               <span class="post-card-tag">Guide</span>
               <div class="post-card-overlay-title">How to Read Flavour Notes</div>
             </div>
@@ -1815,7 +1877,7 @@
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="light medium dark roast levels"
             href="/posts/light-vs-medium-vs-dark-roast">
             <div class="post-card-img cat-guide">
-              <img src="/img/light-vs-medium-vs-dark-roast.png" alt="Light vs medium vs dark roast" loading="lazy" />
+              <img src="/img/light-vs-medium-vs-dark-roast.webp" alt="Light vs medium vs dark roast" loading="lazy" />
               <span class="post-card-tag">Guide</span>
               <div class="post-card-overlay-title">Light vs Medium vs Dark Roast</div>
             </div>
@@ -1829,7 +1891,7 @@
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="caffeine adhd too much"
             href="/posts/how-much-coffee-is-too-much">
             <div class="post-card-img cat-guide">
-              <img src="/img/how-much-coffee-is-too-much.png" alt="How much coffee is too much" loading="lazy" />
+              <img src="/img/how-much-coffee-is-too-much.webp" alt="How much coffee is too much" loading="lazy" />
               <span class="post-card-tag">Guide</span>
               <div class="post-card-overlay-title">How Much Coffee Is Too Much?</div>
             </div>
@@ -1843,7 +1905,7 @@
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="fermented funky beans list"
             href="/posts/fermented-coffee-beans-to-try-clean">
             <div class="post-card-img cat-guide">
-              <img src="/img/light-vs-medium-vs-dark-roast.png" alt="Fermented coffee beans to try" loading="lazy" />
+              <img src="/img/light-vs-medium-vs-dark-roast.webp" alt="Fermented coffee beans to try" loading="lazy" />
               <span class="post-card-tag">Guide</span>
               <div class="post-card-overlay-title">20 Fermented Beans to Try</div>
             </div>
@@ -1857,7 +1919,7 @@
           <a class="post-card reveal post-item" data-cat="recipe" data-keywords="oat milk cortado recipe espresso"
             href="/posts/oat-milk-cortado">
             <div class="post-card-img cat-recipe">
-              <img src="/img/Girl-bought-coffee-from-the-beans-hub.png" alt="Oat milk cortado at home" loading="lazy" />
+              <img src="/img/Girl-bought-coffee-from-the-beans-hub.webp" alt="Oat milk cortado at home" loading="lazy" />
               <span class="post-card-tag">Recipe</span>
               <div class="post-card-overlay-title">Oat Milk Cortado at Home</div>
             </div>
@@ -1871,7 +1933,7 @@
           <a class="post-card reveal post-item" data-cat="recipe" data-keywords="kopiko kopitiam arabica kopi recipe"
             href="/posts/hot-kopiko-arabica-kopitiam-kopi-recipe">
             <div class="post-card-img cat-recipe">
-              <img src="/img/Girl-bought-coffee-from-the-beans-hub.png" alt="Hot Kopiko Arabica kopitiam style" loading="lazy" />
+              <img src="/img/Girl-bought-coffee-from-the-beans-hub.webp" alt="Hot Kopiko Arabica kopitiam style" loading="lazy" />
               <span class="post-card-tag">Recipe</span>
               <div class="post-card-overlay-title">Hot Kopiko — Arabica Kopitiam Style</div>
             </div>
@@ -1893,7 +1955,7 @@
 
             <a class="side-item" href="/posts/specialty-coffee-malaysia">
               <div class="side-thumb cat-local">
-                <img src="/img/specialty-coffee-malaysia.png" alt="" loading="lazy" />
+                <img src="/img/specialty-coffee-malaysia.webp" alt="" loading="lazy" />
               </div>
               <div>
                 <div class="side-meta">May 15, 2026</div>
@@ -1903,7 +1965,7 @@
 
             <a class="side-item" href="/posts/arabica-robusta-liberica">
               <div class="side-thumb cat-guide">
-                <img src="/img/arabica-robusta-liberica.png" alt="" loading="lazy" />
+                <img src="/img/arabica-robusta-liberica.webp" alt="" loading="lazy" />
               </div>
               <div>
                 <div class="side-meta">Mar 5, 2026</div>
@@ -1913,7 +1975,7 @@
 
             <a class="side-item" href="/posts/kl-roasters">
               <div class="side-thumb cat-local">
-                <img src="/img/kl-roasters.png" alt="" loading="lazy" />
+                <img src="/img/kl-roasters.webp" alt="" loading="lazy" />
               </div>
               <div>
                 <div class="side-meta">Mar 5, 2026</div>
@@ -1923,7 +1985,7 @@
 
             <a class="side-item" href="/posts/jeju-specialty-coffee">
               <div class="side-thumb cat-local">
-                <img src="/img/jeju-specialty-coffee.png" alt="" loading="lazy" />
+                <img src="/img/jeju-specialty-coffee.webp" alt="" loading="lazy" />
               </div>
               <div>
                 <div class="side-meta">Mar 21, 2026</div>
@@ -1940,7 +2002,7 @@
 
             <a class="side-item" href="/posts/coffee-processing-methods">
               <div class="side-thumb cat-guide">
-                <img src="/img/coffee-bean-origins.png" alt="" loading="lazy" />
+                <img src="/img/coffee-bean-origins.webp" alt="" loading="lazy" />
               </div>
               <div>
                 <div class="side-meta">May 17, 2026</div>
@@ -1950,7 +2012,7 @@
 
             <a class="side-item" href="/posts/natural-vs-washed-coffee">
               <div class="side-thumb cat-guide">
-                <img src="/img/single-origin-vs-blend-coffee.png" alt="" loading="lazy" />
+                <img src="/img/single-origin-vs-blend-coffee.webp" alt="" loading="lazy" />
               </div>
               <div>
                 <div class="side-meta">May 17, 2026</div>
@@ -1960,7 +2022,7 @@
 
             <a class="side-item" href="/posts/honey-process-coffee">
               <div class="side-thumb cat-guide">
-                <img src="/img/coffee-bean-origins.png" alt="" loading="lazy" />
+                <img src="/img/coffee-bean-origins.webp" alt="" loading="lazy" />
               </div>
               <div>
                 <div class="side-meta">May 17, 2026</div>
@@ -1970,7 +2032,7 @@
 
             <a class="side-item" href="/posts/best-coffee-beans-malaysia">
               <div class="side-thumb cat-local">
-                <img src="/img/best-coffee-beans-malaysia.png" alt="" loading="lazy" />
+                <img src="/img/best-coffee-beans-malaysia.webp" alt="" loading="lazy" />
               </div>
               <div>
                 <div class="side-meta">May 15, 2026</div>
@@ -2010,18 +2072,26 @@
       </div>
       <div>
         <h4 class="tbh-footer-heading">Shop</h4>
-        <ul class="tbh-footer-list">
-          <li><a href="/shop">All Coffee Beans</a></li>
+        <a href="/shop" style="display:inline-block;color:#FDA11D;font-size:0.85rem;font-weight:600;text-decoration:none;margin-bottom:16px;">Browse all coffee beans &rarr;</a>
+        <p style="font-size:0.8rem;color:rgba(253,246,236,0.45);margin:0 0 6px;">Coffee grown in&hellip;</p>
+        <ul class="tbh-footer-list" style="display:flex;flex-wrap:wrap;gap:4px 16px;margin-bottom:16px;">
           <li><a href="/shop/ethiopia-coffee-beans">Ethiopia</a></li>
           <li><a href="/shop/colombia-coffee-beans">Colombia</a></li>
           <li><a href="/shop/brazil-coffee-beans">Brazil</a></li>
           <li><a href="/shop/yunnan-coffee-beans">Yunnan</a></li>
           <li><a href="/shop/indonesia-coffee-beans">Indonesia</a></li>
           <li><a href="/shop/thailand-coffee-beans">Thailand</a></li>
-          <li><a href="/shop/natural-process-coffee-beans">Natural Process</a></li>
-          <li><a href="/shop/washed-process-coffee-beans">Washed Process</a></li>
+        </ul>
+        <p style="font-size:0.8rem;color:rgba(253,246,236,0.45);margin:0 0 6px;">Made by&hellip; (process)</p>
+        <ul class="tbh-footer-list" style="display:flex;flex-wrap:wrap;gap:4px 16px;margin-bottom:16px;">
+          <li><a href="/shop/natural-process-coffee-beans">Natural</a></li>
+          <li><a href="/shop/washed-process-coffee-beans">Washed</a></li>
           <li><a href="/shop/fermented-coffee-beans">Fermented</a></li>
-          <li><a href="/shop/arabica-blend-coffee-beans">Arabica Blends</a></li>
+        </ul>
+        <p style="font-size:0.8rem;color:rgba(253,246,236,0.45);margin:0 0 6px;">Or browse by&hellip;</p>
+        <ul class="tbh-footer-list" style="display:flex;flex-wrap:wrap;gap:4px 16px;">
+          <li><a href="/shop/arabica-blend-coffee-beans">Arabica blends</a></li>
+          <li><a href="/shop/coffee-beans-for-iced-latte">For iced latte</a></li>
         </ul>
       </div>
       <div>

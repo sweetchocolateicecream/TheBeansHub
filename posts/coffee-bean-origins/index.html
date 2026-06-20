@@ -375,7 +375,7 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
 .tbh-footer-logo-text{font-family:"Sigmar",cursive;color:#FDF6EC;font-size:1.25rem;font-weight:700;line-height:1}
 .tbh-footer-logo-text .accent{color:#FDA11D}
 .tbh-footer-tagline{font-family:"Outfit",sans-serif;font-size:0.85rem;color:rgba(253,246,236,0.75);line-height:1.55;max-width:280px;margin:0}
-.tbh-footer-heading{font-family:"Sigmar",cursive;font-size:0.95rem;color:#FDA11D;margin:0 0 14px;letter-spacing:0.02em;font-weight:400}
+.tbh-footer-heading{font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(253,246,236,0.4);margin-bottom:16px}
 .tbh-footer-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
 .tbh-footer-list a{font-family:"Outfit",sans-serif;color:rgba(253,246,236,0.85);text-decoration:none;font-size:0.85rem;transition:color 0.2s}
 .tbh-footer-list a:hover{color:#FDA11D}
@@ -387,6 +387,29 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
 .tbh-footer-copy{font-family:"Outfit",sans-serif;font-size:0.78rem;color:rgba(253,246,236,0.7);text-align:center;margin:0}
 @media (max-width:900px){.tbh-footer-inner{grid-template-columns:1fr 1fr;gap:32px}}
 @media (max-width:560px){footer.tbh-footer{padding:40px 24px 20px}.tbh-footer-inner{grid-template-columns:1fr;gap:28px}.tbh-footer-tagline{max-width:none}}
+
+    /* ===== Coffee Beans mega-dropdown (added for category internal linking) ===== */
+    .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
+    .nav-dropdown .nav-dropdown-trigger { display: inline-flex; align-items: center; gap: 5px; }
+    .nav-caret { font-size: 0.7em; transition: transform 0.2s; }
+    .nav-dropdown:hover .nav-caret, .nav-dropdown:focus-within .nav-caret { transform: rotate(180deg); }
+    .nav-dropdown::after { content: ""; position: absolute; top: 100%; left: -10px; right: -10px; height: 22px; }
+    .nav-dropdown-menu { position: absolute; top: calc(100% + 20px); left: 50%; transform: translateX(-50%) translateY(8px); display: grid; grid-template-columns: repeat(3, max-content); gap: 4px 32px; background: var(--cream, #FDF6EC); border: 1px solid var(--border, #E8E0D0); border-radius: 14px; padding: 22px 26px; box-shadow: 0 16px 44px rgba(41,98,65,0.20); opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.18s ease, transform 0.18s ease; z-index: 200; }
+    .nav-dropdown:hover .nav-dropdown-menu, .nav-dropdown:focus-within .nav-dropdown-menu { opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+    .nav-dd-group { display: flex; flex-direction: column; gap: 1px; }
+    .nav-dd-heading { font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted, #5a6e5a); font-weight: 700; margin-bottom: 7px; }
+    .nav-dropdown-menu a { color: var(--green, #296241) !important; font-size: 0.9rem !important; font-weight: 500 !important; letter-spacing: normal !important; padding: 5px 0 !important; white-space: nowrap; }
+    .nav-dropdown-menu a:hover { color: var(--accent-hover, #DA8A10) !important; }
+    .nav-dd-all { margin-top: 9px; font-weight: 700 !important; color: var(--accent-hover, #DA8A10) !important; }
+    /* mobile accordion */
+    .mobile-menu details.mobile-dd { border-bottom: 1px solid rgba(253,161,29,0.15); }
+    .mobile-menu details.mobile-dd summary { color: rgba(253,246,236,0.85); font-size: 1rem; font-weight: 500; padding: 12px 0; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    .mobile-menu details.mobile-dd summary::-webkit-details-marker { display: none; }
+    .mobile-menu details.mobile-dd summary::after { content: "\25be"; color: #FDA11D; font-size: 0.85em; transition: transform 0.2s; }
+    .mobile-menu details.mobile-dd[open] summary::after { transform: rotate(180deg); }
+    .mobile-menu details.mobile-dd a { display: block; color: rgba(253,246,236,0.7); font-size: 0.92rem; font-weight: 500; padding: 9px 0 9px 16px; border-bottom: none; }
+    .mobile-menu details.mobile-dd a:last-child { color: #FDA11D; font-weight: 600; }
+    /* ===== end dropdown ===== */
 </style>
 </head><body>
 <nav>
@@ -395,7 +418,32 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
     </a>
     <div class="nav-links">
       <a class="active" href="/">Home</a>
-      <a href="/shop">Coffee Beans</a>
+      <div class="nav-dropdown">
+        <a href="/shop" class="nav-dropdown-trigger">Coffee Beans <span class="nav-caret">▾</span></a>
+        <div class="nav-dropdown-menu">
+          <div class="nav-dd-group">
+            <span class="nav-dd-heading">By Origin</span>
+            <a href="/shop/ethiopia-coffee-beans">Ethiopia</a>
+            <a href="/shop/colombia-coffee-beans">Colombia</a>
+            <a href="/shop/brazil-coffee-beans">Brazil</a>
+            <a href="/shop/yunnan-coffee-beans">Yunnan</a>
+            <a href="/shop/indonesia-coffee-beans">Indonesia</a>
+            <a href="/shop/thailand-coffee-beans">Thailand</a>
+          </div>
+          <div class="nav-dd-group">
+            <span class="nav-dd-heading">By Process</span>
+            <a href="/shop/washed-process-coffee-beans">Washed</a>
+            <a href="/shop/natural-process-coffee-beans">Natural</a>
+            <a href="/shop/fermented-coffee-beans">Fermented</a>
+          </div>
+          <div class="nav-dd-group">
+            <span class="nav-dd-heading">By Type</span>
+            <a href="/shop/arabica-blend-coffee-beans">Arabica Blend</a>
+            <a href="/shop/coffee-beans-for-iced-latte">For Iced Latte</a>
+            <a href="/shop" class="nav-dd-all">Shop all beans →</a>
+          </div>
+        </div>
+      </div>
       <a href="/library">Coffee Library</a>
       <a href="/about">About Us</a>
       <a href="/contact">Contact Us</a>
@@ -407,7 +455,21 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
   </nav>
 <div class="mobile-menu" id="mobileMenu">
     <a href="/">Home</a>
-    <a href="/shop">Coffee Beans</a>
+    <details class="mobile-dd">
+      <summary>Coffee Beans</summary>
+      <a href="/shop/ethiopia-coffee-beans">Ethiopia</a>
+      <a href="/shop/colombia-coffee-beans">Colombia</a>
+      <a href="/shop/brazil-coffee-beans">Brazil</a>
+      <a href="/shop/yunnan-coffee-beans">Yunnan</a>
+      <a href="/shop/indonesia-coffee-beans">Indonesia</a>
+      <a href="/shop/thailand-coffee-beans">Thailand</a>
+      <a href="/shop/washed-process-coffee-beans">Washed Process</a>
+      <a href="/shop/natural-process-coffee-beans">Natural Process</a>
+      <a href="/shop/fermented-coffee-beans">Fermented</a>
+      <a href="/shop/arabica-blend-coffee-beans">Arabica Blend</a>
+      <a href="/shop/coffee-beans-for-iced-latte">For Iced Latte</a>
+      <a href="/shop">Shop all beans →</a>
+    </details>
     <a href="/library">Coffee Library</a>
     <a href="/about">About Us</a>
     <a href="/contact">Contact Us</a>
@@ -568,18 +630,26 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
       </div>
       <div>
         <h4 class="tbh-footer-heading">Shop</h4>
-        <ul class="tbh-footer-list">
-          <li><a href="/shop">All Coffee Beans</a></li>
+        <a href="/shop" style="display:inline-block;color:#FDA11D;font-size:0.85rem;font-weight:600;text-decoration:none;margin-bottom:16px;">Browse all coffee beans &rarr;</a>
+        <p style="font-size:0.8rem;color:rgba(253,246,236,0.45);margin:0 0 6px;">Coffee grown in&hellip;</p>
+        <ul class="tbh-footer-list" style="display:flex;flex-wrap:wrap;gap:4px 16px;margin-bottom:16px;">
           <li><a href="/shop/ethiopia-coffee-beans">Ethiopia</a></li>
           <li><a href="/shop/colombia-coffee-beans">Colombia</a></li>
           <li><a href="/shop/brazil-coffee-beans">Brazil</a></li>
           <li><a href="/shop/yunnan-coffee-beans">Yunnan</a></li>
           <li><a href="/shop/indonesia-coffee-beans">Indonesia</a></li>
           <li><a href="/shop/thailand-coffee-beans">Thailand</a></li>
-          <li><a href="/shop/natural-process-coffee-beans">Natural Process</a></li>
-          <li><a href="/shop/washed-process-coffee-beans">Washed Process</a></li>
+        </ul>
+        <p style="font-size:0.8rem;color:rgba(253,246,236,0.45);margin:0 0 6px;">Made by&hellip; (process)</p>
+        <ul class="tbh-footer-list" style="display:flex;flex-wrap:wrap;gap:4px 16px;margin-bottom:16px;">
+          <li><a href="/shop/natural-process-coffee-beans">Natural</a></li>
+          <li><a href="/shop/washed-process-coffee-beans">Washed</a></li>
           <li><a href="/shop/fermented-coffee-beans">Fermented</a></li>
-          <li><a href="/shop/arabica-blend-coffee-beans">Arabica Blends</a></li>
+        </ul>
+        <p style="font-size:0.8rem;color:rgba(253,246,236,0.45);margin:0 0 6px;">Or browse by&hellip;</p>
+        <ul class="tbh-footer-list" style="display:flex;flex-wrap:wrap;gap:4px 16px;">
+          <li><a href="/shop/arabica-blend-coffee-beans">Arabica blends</a></li>
+          <li><a href="/shop/coffee-beans-for-iced-latte">For iced latte</a></li>
         </ul>
       </div>
       <div>

@@ -172,17 +172,73 @@ never makes you feel like an outsider.
 
 ## 8. Key reference files in this repo
 
+- **`THE-BEANS-HUB-STRATEGY.docx`** — the single source of truth for strategy: positioning, traffic
+  reality, keywords, SEO architecture, email capture, growth/monetisation, social, backlinks,
+  what's done vs not, and the 90-day plan. **Read this first; update it instead of starting new strategy docs.**
+- **`THE-BEANS-HUB-PAGES-AND-FUNNEL.xlsx`** — companion workbook: every page, funnel stage, target
+  keyword, next-step CTA, and the user-journey/funnel map.
 - `marketing/context/brand-voice.md`, `brand-context.md`, `ideal-customer-profile.md` — canonical brand docs
-- `beans-hub-growth-playbook.md` — monetisation strategy (roaster partner programme, email list, subscription box)
-- `SEO plans/` — topic-cluster strategy, keyword/gap audits, cluster checklists, and the
-  `build-cluster*.js` / `generate-category-pages.js` generators used to mass-produce pages
-- `marketing/projects/Instagram Content System/` — social content plan + carousel design system
+- `SEO plans/` — now holds only the operational generators (`build-cluster*.js` /
+  `generate-category-pages.js`) + `library-image-prompts.md`. The strategy/keyword/cluster docs were
+  consolidated into the source of truth and moved to `/archive` (see `archive/README.md`).
+- `marketing/projects/Instagram Content System/` + `The-Beans-Hub-Xiaohongshu-Playbook.docx` — social
+  content production playbooks (operational; strategy lives in the source of truth).
 
 ---
 
 ## 9. Known gaps / watch-outs
 
-- **No email capture is live yet** — the growth playbook flags building the list as urgent.
+- **Email capture is now live but not yet a system** — a newsletter signup is on the homepage
+  (and a `/find-your-beans` page exists), but there's no lead magnet, no compelling reason-to-join,
+  and social traffic is not deliberately routed into the list. See section 10 for the capture status.
 - Two older posts use a `<slug>.html` filename instead of the standard `index.html`
   (`posts/specialty-coffee-beans-kl`, `posts/specialty-coffee-beans-pj-selangor`).
 - Don't attempt an on-site checkout or a framework rebuild — it's intentionally a static, SEO-first site.
+
+---
+
+## 10. Traffic & audience reality (as of June 2026)
+
+The honest state of the funnel, established from GA4 + Search Console. Read this before judging
+traffic numbers or planning growth work.
+
+### Channel mix — single-channel dependency
+- **Organic Social (Instagram) drives nearly everything.** It is the #1 channel by a wide margin
+  and is effectively the whole top of funnel.
+- **Google Search contributes very little** — ~11 clicks and ~561 impressions over a rolling
+  3-month window, average position ~25. The site is indexed but not yet winning on its target queries.
+- **The entire traffic base rests on a single algorithm we don't control.** When Instagram reach
+  cools, traffic falls with it — there is no organic-search baseline to catch the site.
+- **No owned audience yet.** Until the email list is built, there is no way to reach past visitors
+  directly; every visit is rented from the social algorithm.
+
+### What this means strategically
+- This is an **ownership/retention problem, not a traffic problem.** The site can attract attention
+  (Instagram can spike, even go viral) but currently keeps almost none of it.
+- A viral spike with no capture in place leaks away — exactly what happened in June 2026.
+
+### The June 2026 episode (worked example, don't misread it next time)
+- GA4 showed a sharp "cliff" in active users mid-June (anomaly flagged ~16 Jun, ~92% drop).
+- Investigation confirmed: **the GA tag is installed correctly and firing** — this was NOT a
+  tracking bug. Search Console showed no indexing/penalty/site-down event (impressions held in
+  normal range). The drop was **real and concentrated in Organic Social**: an Instagram post had
+  gone semi-viral and then naturally decayed. Posting has continued intermittently since.
+- Lesson: a sudden GA drop on this site is most likely a **social-reach change**, not a site bug —
+  but always confirm the tag fires and cross-check Search Console before assuming either way.
+
+### Capture & growth status — done vs. not done
+**Done / in place:**
+- Newsletter signup is live on the homepage.
+- A `/find-your-beans` taste-finder entry page exists.
+- GA4 + the `buy_click` conversion event are wired and working (see section 3).
+
+**Not done yet (the priorities):**
+- No lead magnet or strong reason-to-subscribe; the list isn't yet positioned around a clear value
+  (e.g. monthly Malaysian roaster drops, taste-matched picks).
+- Instagram traffic is **not deliberately funnelled into the email list** — capturing the *next*
+  spike into owned audience is the urgent job.
+- **Organic-search baseline is weak.** The 850-bean / 52-roaster catalogue and ~40 articles are an
+  underused SEO asset — long-tail roaster / origin / taste queries are winnable with on-page work
+  and internal linking, and would give traffic that survives quiet posting weeks.
+- Posting cadence is not yet a repeatable system (the Instagram Content System project exists to
+  support this); virality should be treated as a bonus on top of consistency, not the plan.

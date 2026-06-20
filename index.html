@@ -342,7 +342,30 @@
       .persona-card, .bean-card, .roaster-card, .featured-section, .liberica-section, .library-card { background: #221A12; }
       .step-icon { background: #221A12; }
     }
-  </style>
+  
+    /* ===== Coffee Beans mega-dropdown (added for category internal linking) ===== */
+    .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
+    .nav-dropdown .nav-dropdown-trigger { display: inline-flex; align-items: center; gap: 5px; }
+    .nav-caret { font-size: 0.7em; transition: transform 0.2s; }
+    .nav-dropdown:hover .nav-caret, .nav-dropdown:focus-within .nav-caret { transform: rotate(180deg); }
+    .nav-dropdown::after { content: ""; position: absolute; top: 100%; left: -10px; right: -10px; height: 22px; }
+    .nav-dropdown-menu { position: absolute; top: calc(100% + 20px); left: 50%; transform: translateX(-50%) translateY(8px); display: grid; grid-template-columns: repeat(3, max-content); gap: 4px 32px; background: var(--cream, #FDF6EC); border: 1px solid var(--border, #E8E0D0); border-radius: 14px; padding: 22px 26px; box-shadow: 0 16px 44px rgba(41,98,65,0.20); opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.18s ease, transform 0.18s ease; z-index: 200; }
+    .nav-dropdown:hover .nav-dropdown-menu, .nav-dropdown:focus-within .nav-dropdown-menu { opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+    .nav-dd-group { display: flex; flex-direction: column; gap: 1px; }
+    .nav-dd-heading { font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted, #5a6e5a); font-weight: 700; margin-bottom: 7px; }
+    .nav-dropdown-menu a { color: var(--green, #296241) !important; font-size: 0.9rem !important; font-weight: 500 !important; letter-spacing: normal !important; padding: 5px 0 !important; white-space: nowrap; }
+    .nav-dropdown-menu a:hover { color: var(--accent-hover, #DA8A10) !important; }
+    .nav-dd-all { margin-top: 9px; font-weight: 700 !important; color: var(--accent-hover, #DA8A10) !important; }
+    /* mobile accordion */
+    .mobile-menu details.mobile-dd { border-bottom: 1px solid rgba(253,161,29,0.15); }
+    .mobile-menu details.mobile-dd summary { color: rgba(253,246,236,0.85); font-size: 1rem; font-weight: 500; padding: 12px 0; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    .mobile-menu details.mobile-dd summary::-webkit-details-marker { display: none; }
+    .mobile-menu details.mobile-dd summary::after { content: "\25be"; color: #FDA11D; font-size: 0.85em; transition: transform 0.2s; }
+    .mobile-menu details.mobile-dd[open] summary::after { transform: rotate(180deg); }
+    .mobile-menu details.mobile-dd a { display: block; color: rgba(253,246,236,0.7); font-size: 0.92rem; font-weight: 500; padding: 9px 0 9px 16px; border-bottom: none; }
+    .mobile-menu details.mobile-dd a:last-child { color: #FDA11D; font-weight: 600; }
+    /* ===== end dropdown ===== */
+</style>
 </head>
 
 <body>
@@ -365,7 +388,32 @@
     </a>
     <div class="nav-links">
       <a class="active" href="/">Home</a>
-      <a href="/shop">Coffee Beans</a>
+      <div class="nav-dropdown">
+        <a href="/shop" class="nav-dropdown-trigger">Coffee Beans <span class="nav-caret">▾</span></a>
+        <div class="nav-dropdown-menu">
+          <div class="nav-dd-group">
+            <span class="nav-dd-heading">By Origin</span>
+            <a href="/shop/ethiopia-coffee-beans">Ethiopia</a>
+            <a href="/shop/colombia-coffee-beans">Colombia</a>
+            <a href="/shop/brazil-coffee-beans">Brazil</a>
+            <a href="/shop/yunnan-coffee-beans">Yunnan</a>
+            <a href="/shop/indonesia-coffee-beans">Indonesia</a>
+            <a href="/shop/thailand-coffee-beans">Thailand</a>
+          </div>
+          <div class="nav-dd-group">
+            <span class="nav-dd-heading">By Process</span>
+            <a href="/shop/washed-process-coffee-beans">Washed</a>
+            <a href="/shop/natural-process-coffee-beans">Natural</a>
+            <a href="/shop/fermented-coffee-beans">Fermented</a>
+          </div>
+          <div class="nav-dd-group">
+            <span class="nav-dd-heading">By Type</span>
+            <a href="/shop/arabica-blend-coffee-beans">Arabica Blend</a>
+            <a href="/shop/coffee-beans-for-iced-latte">For Iced Latte</a>
+            <a href="/shop" class="nav-dd-all">Shop all beans →</a>
+          </div>
+        </div>
+      </div>
       <a href="/library">Coffee Library</a>
       <a href="/about">About Us</a>
       <a href="/contact">Contact Us</a>
@@ -377,7 +425,21 @@
   </nav>
   <div class="mobile-menu" id="mobileMenu">
     <a href="/">Home</a>
-    <a href="/shop">Coffee Beans</a>
+    <details class="mobile-dd">
+      <summary>Coffee Beans</summary>
+      <a href="/shop/ethiopia-coffee-beans">Ethiopia</a>
+      <a href="/shop/colombia-coffee-beans">Colombia</a>
+      <a href="/shop/brazil-coffee-beans">Brazil</a>
+      <a href="/shop/yunnan-coffee-beans">Yunnan</a>
+      <a href="/shop/indonesia-coffee-beans">Indonesia</a>
+      <a href="/shop/thailand-coffee-beans">Thailand</a>
+      <a href="/shop/washed-process-coffee-beans">Washed Process</a>
+      <a href="/shop/natural-process-coffee-beans">Natural Process</a>
+      <a href="/shop/fermented-coffee-beans">Fermented</a>
+      <a href="/shop/arabica-blend-coffee-beans">Arabica Blend</a>
+      <a href="/shop/coffee-beans-for-iced-latte">For Iced Latte</a>
+      <a href="/shop">Shop all beans →</a>
+    </details>
     <a href="/library">Coffee Library</a>
     <a href="/about">About Us</a>
     <a href="/contact">Contact Us</a>
@@ -486,7 +548,7 @@
       </div>
       <div class="finder-grid reveal">
         <a class="finder-card finder-fruity" href="/shop?taste=Fruity">
-          <div class="finder-card-bg"><img src="img/beanshub-icons/taste-notes-fruity.png" alt="Fruity"></div>
+          <div class="finder-card-bg"><img src="img/beanshub-icons/taste-notes-fruity.webp" alt="Fruity"></div>
           <div class="finder-card-overlay"></div>
           <div class="finder-card-label">
             <span class="finder-card-name">Fruity</span>
@@ -494,7 +556,7 @@
           </div>
         </a>
         <a class="finder-card finder-sweet" href="/shop?taste=Sweet">
-          <div class="finder-card-bg"><img src="img/beanshub-icons/taste-notes-sweet.png" alt="Sweet"></div>
+          <div class="finder-card-bg"><img src="img/beanshub-icons/taste-notes-sweet.webp" alt="Sweet"></div>
           <div class="finder-card-overlay"></div>
           <div class="finder-card-label">
             <span class="finder-card-name">Sweet</span>
@@ -502,7 +564,7 @@
           </div>
         </a>
         <a class="finder-card finder-floral" href="/shop?taste=Floral">
-          <div class="finder-card-bg"><img src="img/beanshub-icons/taste-notes-floral.png" alt="Floral"></div>
+          <div class="finder-card-bg"><img src="img/beanshub-icons/taste-notes-floral.webp" alt="Floral"></div>
           <div class="finder-card-overlay"></div>
           <div class="finder-card-label">
             <span class="finder-card-name">Floral</span>
@@ -510,7 +572,7 @@
           </div>
         </a>
         <a class="finder-card finder-nutty" href="/shop?taste=Nutty%2FCocoa">
-          <div class="finder-card-bg"><img src="img/beanshub-icons/taste-notes-cocoa:nutty.png" alt="Nutty and Cocoa"></div>
+          <div class="finder-card-bg"><img src="img/beanshub-icons/taste-notes-cocoa:nutty.webp" alt="Nutty and Cocoa"></div>
           <div class="finder-card-overlay"></div>
           <div class="finder-card-label">
             <span class="finder-card-name">Nutty / Cocoa</span>
@@ -518,7 +580,7 @@
           </div>
         </a>
         <a class="finder-card finder-roasted" href="/shop?taste=Roasted">
-          <div class="finder-card-bg"><img src="img/beanshub-icons/taste-notes-roasted.png" alt="Roasted"></div>
+          <div class="finder-card-bg"><img src="img/beanshub-icons/taste-notes-roasted.webp" alt="Roasted"></div>
           <div class="finder-card-overlay"></div>
           <div class="finder-card-label">
             <span class="finder-card-name">Roasted</span>
@@ -526,7 +588,7 @@
           </div>
         </a>
         <a class="finder-card finder-spices" href="/shop?taste=Spices">
-          <div class="finder-card-bg"><img src="img/beanshub-icons/taste-notes-spices.png" alt="Spices"></div>
+          <div class="finder-card-bg"><img src="img/beanshub-icons/taste-notes-spices.webp" alt="Spices"></div>
           <div class="finder-card-overlay"></div>
           <div class="finder-card-label">
             <span class="finder-card-name">Spices</span>
@@ -534,7 +596,7 @@
           </div>
         </a>
         <a class="finder-card finder-sour" href="/shop?taste=Sour%2FFermented">
-          <div class="finder-card-bg"><img src="img/beanshub-icons/taste-notes-sour-fermented.png" alt="Sour and Fermented"></div>
+          <div class="finder-card-bg"><img src="img/beanshub-icons/taste-notes-sour-fermented.webp" alt="Sour and Fermented"></div>
           <div class="finder-card-overlay"></div>
           <div class="finder-card-label">
             <span class="finder-card-name">Sour / Fermented</span>
@@ -542,7 +604,7 @@
           </div>
         </a>
         <a class="finder-card finder-green-veg" href="/shop?taste=Green%2FVegetative">
-          <div class="finder-card-bg"><img src="img/beanshub-icons/taste-notes-green.png" alt="Green and Vegetative"></div>
+          <div class="finder-card-bg"><img src="img/beanshub-icons/taste-notes-green.webp" alt="Green and Vegetative"></div>
           <div class="finder-card-overlay"></div>
           <div class="finder-card-label">
             <span class="finder-card-name">Green / Vegetal</span>
@@ -610,7 +672,7 @@
       <div class="library-grid reveal">
         <a class="library-card" href="/posts/asia-coffee-origins-yunnan-thailand">
           <div class="library-card-media">
-            <img alt="Yunnan and Thailand specialty coffee beans" loading="lazy" src="/img/asia-coffee-origins-yunnan-thailand.png" />
+            <img alt="Yunnan and Thailand specialty coffee beans" loading="lazy" src="/img/asia-coffee-origins-yunnan-thailand.webp" />
           </div>
           <div class="library-card-body">
             <span class="library-card-tag">Origins</span>
@@ -621,7 +683,7 @@
         </a>
         <a class="library-card" href="/posts/best-coffee-beans-malaysia">
           <div class="library-card-media">
-            <img alt="Best coffee beans in Malaysia buying guide" loading="lazy" src="/img/best-coffee-beans-malaysia.png" />
+            <img alt="Best coffee beans in Malaysia buying guide" loading="lazy" src="/img/best-coffee-beans-malaysia.webp" />
           </div>
           <div class="library-card-body">
             <span class="library-card-tag">Buying Guide</span>
@@ -632,7 +694,7 @@
         </a>
         <a class="library-card" href="/posts/brazil-coffee-beans-to-try">
           <div class="library-card-media">
-            <img alt="Brazil coffee beans worth trying" loading="lazy" src="/img/brazil-coffee-beans-to-try.png" />
+            <img alt="Brazil coffee beans worth trying" loading="lazy" src="/img/brazil-coffee-beans-to-try.webp" />
           </div>
           <div class="library-card-body">
             <span class="library-card-tag">Origins</span>
@@ -650,7 +712,7 @@
     <section class="newsletter-section">
       <div class="newsletter-eyebrow">Join the Hub</div>
       <div class="newsletter-title reveal">New roasters. New beans.<br />First in your inbox.</div>
-      <p class="newsletter-sub reveal">Monthly picks, fresh roaster drops, and brewing guides — curated for Malaysian coffee lovers. No spam, just great coffee.</p>
+      <p class="newsletter-sub reveal">Monthly picks, fresh roaster drops, and brewing guides — curated for Malaysian coffee lovers.</p>
       <div class="newsletter-form reveal" id="homeSubForm">
         <input class="newsletter-input sub-name" aria-label="Your first name" autocomplete="given-name" placeholder="Your first name" style="flex:0.8" type="text" />
         <input class="newsletter-input sub-email" aria-label="Your email address" autocomplete="email" placeholder="Your email address" type="email" />
@@ -678,18 +740,26 @@
       </div>
       <div>
         <h4 class="tbh-footer-heading">Shop</h4>
-        <ul class="tbh-footer-list">
-          <li><a href="/shop">All Coffee Beans</a></li>
+        <a href="/shop" style="display:inline-block;color:#FDA11D;font-size:0.85rem;font-weight:600;text-decoration:none;margin-bottom:16px;">Browse all coffee beans &rarr;</a>
+        <p style="font-size:0.8rem;color:rgba(253,246,236,0.45);margin:0 0 6px;">Coffee grown in&hellip;</p>
+        <ul class="tbh-footer-list" style="display:flex;flex-wrap:wrap;gap:4px 16px;margin-bottom:16px;">
           <li><a href="/shop/ethiopia-coffee-beans">Ethiopia</a></li>
           <li><a href="/shop/colombia-coffee-beans">Colombia</a></li>
           <li><a href="/shop/brazil-coffee-beans">Brazil</a></li>
           <li><a href="/shop/yunnan-coffee-beans">Yunnan</a></li>
           <li><a href="/shop/indonesia-coffee-beans">Indonesia</a></li>
           <li><a href="/shop/thailand-coffee-beans">Thailand</a></li>
-          <li><a href="/shop/natural-process-coffee-beans">Natural Process</a></li>
-          <li><a href="/shop/washed-process-coffee-beans">Washed Process</a></li>
+        </ul>
+        <p style="font-size:0.8rem;color:rgba(253,246,236,0.45);margin:0 0 6px;">Made by&hellip; (process)</p>
+        <ul class="tbh-footer-list" style="display:flex;flex-wrap:wrap;gap:4px 16px;margin-bottom:16px;">
+          <li><a href="/shop/natural-process-coffee-beans">Natural</a></li>
+          <li><a href="/shop/washed-process-coffee-beans">Washed</a></li>
           <li><a href="/shop/fermented-coffee-beans">Fermented</a></li>
-          <li><a href="/shop/arabica-blend-coffee-beans">Arabica Blends</a></li>
+        </ul>
+        <p style="font-size:0.8rem;color:rgba(253,246,236,0.45);margin:0 0 6px;">Or browse by&hellip;</p>
+        <ul class="tbh-footer-list" style="display:flex;flex-wrap:wrap;gap:4px 16px;">
+          <li><a href="/shop/arabica-blend-coffee-beans">Arabica blends</a></li>
+          <li><a href="/shop/coffee-beans-for-iced-latte">For iced latte</a></li>
         </ul>
       </div>
       <div>
