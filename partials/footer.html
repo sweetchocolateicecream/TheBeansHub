@@ -1,0 +1,88 @@
+<!-- ============================================================
+     THE BEANS HUB — SITEWIDE FOOTER
+     Single source of truth. Edit here only. Pages pull this in with an
+     SSI include directive pointing at /partials/footer.html
+     Self-contained: carries its own CSS. Logo path is absolute.
+     ============================================================ -->
+<style>
+  .tbh-footer { background: #296241; padding: 64px 48px 32px; border-radius: 40px 40px 0 0; }
+  .tbh-footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+  .tbh-footer-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; margin-bottom: 14px; }
+  .tbh-footer-logo-img { height: 40px; width: auto; }
+  .tbh-footer-logo-text { font-family: "Sigmar", cursive; font-size: 1.15rem; color: #FDF6EC; }
+  .tbh-footer-logo-text .accent { color: #FDA11D; }
+  .tbh-footer-tagline { font-size: 0.85rem; color: rgba(253,246,236,0.5); line-height: 1.7; }
+  .tbh-footer-heading { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(253,246,236,0.4); margin-bottom: 16px; }
+  .tbh-footer-list { list-style: none; }
+  .tbh-footer-list li { margin-bottom: 8px; }
+  .tbh-footer-list a { color: rgba(253,246,236,0.6); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+  .tbh-footer-list a:hover { color: #FDA11D; }
+  .tbh-footer-social { display: flex; flex-direction: column; gap: 12px; }
+  .tbh-footer-social a { display: flex; align-items: center; gap: 8px; color: rgba(253,246,236,0.6); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+  .tbh-footer-social a:hover { color: #FDA11D; }
+  .tbh-footer-social svg { width: 18px; height: 18px; fill: currentColor; }
+  .tbh-footer-bottom { max-width: 1200px; margin: 0 auto; border-top: 1px solid rgba(253,246,236,0.08); padding-top: 24px; }
+  .tbh-footer-copy { font-size: 0.8rem; color: rgba(253,246,236,0.3); }
+  @media (max-width: 1024px) { .tbh-footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; } }
+  @media (max-width: 768px) { .tbh-footer { border-radius: 28px 28px 0 0; padding: 48px 20px 24px; } .tbh-footer-inner { grid-template-columns: 1fr 1fr; gap: 28px; } }
+  @media (max-width: 480px) { .tbh-footer-inner { grid-template-columns: 1fr; } }
+</style>
+
+<footer class="tbh-footer">
+  <div class="tbh-footer-inner">
+    <div class="tbh-footer-brand">
+      <a class="tbh-footer-logo" href="/">
+        <img alt="The Beans Hub logo" class="tbh-footer-logo-img" src="/img/thebeanshub_logo.png" />
+        <span class="tbh-footer-logo-text">The Beans<span class="accent">Hub</span></span>
+      </a>
+      <p class="tbh-footer-tagline">Malaysia's home for specialty coffee — beans, brewers, and roaster guides.</p>
+    </div>
+    <div>
+      <h4 class="tbh-footer-heading">Shop</h4>
+      <a href="/shop" style="display:inline-block;color:#FDA11D;font-size:0.85rem;font-weight:600;text-decoration:none;margin-bottom:16px;">Browse all coffee beans &rarr;</a>
+      <p style="font-size:0.8rem;color:rgba(253,246,236,0.45);margin:0 0 6px;">Coffee grown in&hellip;</p>
+      <ul class="tbh-footer-list" style="display:flex;flex-wrap:wrap;gap:4px 16px;margin-bottom:16px;">
+        <li><a href="/shop/ethiopia-coffee-beans">Ethiopia</a></li>
+        <li><a href="/shop/colombia-coffee-beans">Colombia</a></li>
+        <li><a href="/shop/brazil-coffee-beans">Brazil</a></li>
+        <li><a href="/shop/yunnan-coffee-beans">Yunnan</a></li>
+        <li><a href="/shop/indonesia-coffee-beans">Indonesia</a></li>
+        <li><a href="/shop/thailand-coffee-beans">Thailand</a></li>
+      </ul>
+      <p style="font-size:0.8rem;color:rgba(253,246,236,0.45);margin:0 0 6px;">Made by&hellip; (process)</p>
+      <ul class="tbh-footer-list" style="display:flex;flex-wrap:wrap;gap:4px 16px;margin-bottom:16px;">
+        <li><a href="/shop/natural-process-coffee-beans">Natural</a></li>
+        <li><a href="/shop/washed-process-coffee-beans">Washed</a></li>
+        <li><a href="/shop/fermented-coffee-beans">Fermented</a></li>
+      </ul>
+      <p style="font-size:0.8rem;color:rgba(253,246,236,0.45);margin:0 0 6px;">Or browse by&hellip;</p>
+      <ul class="tbh-footer-list" style="display:flex;flex-wrap:wrap;gap:4px 16px;">
+        <li><a href="/shop/arabica-blend-coffee-beans">Arabica blends</a></li>
+        <li><a href="/shop/coffee-beans-for-iced-latte">For iced latte</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="tbh-footer-heading">Explore</h4>
+      <ul class="tbh-footer-list">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/contact">Contact Us</a></li>
+        <li><a href="/library">Coffee Library</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="tbh-footer-heading">Follow</h4>
+      <div class="tbh-footer-social">
+        <a aria-label="Instagram — The Beans Hub" href="https://www.instagram.com/thebeanshub/" rel="noopener" target="_blank">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+          </svg>
+          <span>@thebeanshub</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="tbh-footer-bottom">
+    <p class="tbh-footer-copy">© 2026 The Beans Hub. All rights reserved.</p>
+  </div>
+</footer>

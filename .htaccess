@@ -56,6 +56,16 @@ RewriteRule ^ /posts/%1 [NC,R=301,L]
 Header set Content-Security-Policy "script-src 'self' 'unsafe-inline' 'unsafe-eval' *thebeanshub.com"
 </IfModule>
 
+# ── Server-Side Includes (SSI): shared header/footer partials ──
+# Lets every .html page pull the sitewide header & footer from /partials/
+# via <!--#include virtual="/partials/header.html" -->. Edit the partial once,
+# every page updates. IncludesNOEXEC = includes allowed, shell #exec blocked.
+Options +IncludesNOEXEC
+AddOutputFilter INCLUDES .html
+# (Raw /partials/*.html fragments are inert — no <html> wrapper — and are
+#  kept out of search via robots.txt rather than an access rule, which would
+#  also block the SSI subrequest.)
+
 # BEGIN LSCACHE
 ## LITESPEED WP CACHE PLUGIN - Do not edit the contents of this block! ##
 <IfModule LiteSpeed>

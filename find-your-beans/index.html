@@ -411,10 +411,10 @@
         <div class="quiz-q">First up — how do you take your coffee?</div>
         <div class="quiz-hint">However you drink it most days.</div>
         <div class="quiz-opts" data-single data-key="milk">
-          <button class="quiz-opt" data-val="black">Black, no milk</button>
-          <button class="quiz-opt" data-val="milk">With milk</button>
-          <button class="quiz-opt" data-val="both">A bit of both</button>
-          <button class="quiz-opt" data-val="both">Still figuring it out</button>
+          <button class="quiz-opt" data-val="black-no-milk">Black, no milk</button>
+          <button class="quiz-opt" data-val="with-milk">With milk</button>
+          <button class="quiz-opt" data-val="a-bit-of-both">A bit of both</button>
+          <button class="quiz-opt" data-val="still-figuring-it-out">Still figuring it out</button>
         </div>
         <div class="quiz-nav">
           <button class="quiz-back" disabled>← Back</button>
@@ -428,12 +428,12 @@
         <div class="quiz-q">How do you usually brew at home?</div>
         <div class="quiz-hint">Pick the one you reach for most.</div>
         <div class="quiz-opts" data-single data-key="brew">
-          <button class="quiz-opt" data-val="espresso">Espresso machine</button>
-          <button class="quiz-opt" data-val="espresso">Moka pot</button>
-          <button class="quiz-opt" data-val="filter">V60 / pour-over</button>
-          <button class="quiz-opt" data-val="filter">French press</button>
-          <button class="quiz-opt" data-val="filter">Aeropress</button>
-          <button class="quiz-opt" data-val="any">I'm just starting out</button>
+          <button class="quiz-opt" data-val="espresso-machine">Espresso machine</button>
+          <button class="quiz-opt" data-val="moka-pot">Moka pot</button>
+          <button class="quiz-opt" data-val="v60-pour-over">V60 / pour-over</button>
+          <button class="quiz-opt" data-val="french-press">French press</button>
+          <button class="quiz-opt" data-val="aeropress">Aeropress</button>
+          <button class="quiz-opt" data-val="im-just-starting-out">I'm just starting out</button>
         </div>
         <div class="quiz-nav">
           <button class="quiz-back">← Back</button>
@@ -486,11 +486,11 @@
         <div class="quiz-q">Rough budget per 200g bag?</div>
         <div class="quiz-hint">So we match beans you'd actually buy.</div>
         <div class="quiz-opts" data-single data-key="budget">
-          <button class="quiz-opt" data-val="value">Under RM30</button>
-          <button class="quiz-opt" data-val="everyday">RM30–49</button>
-          <button class="quiz-opt" data-val="premium">RM50–79</button>
-          <button class="quiz-opt" data-val="splurge">RM80+</button>
-          <button class="quiz-opt" data-val="any">Price isn't the deciding factor</button>
+          <button class="quiz-opt" data-val="under-rm30">Under RM30</button>
+          <button class="quiz-opt" data-val="rm30-49">RM30–49</button>
+          <button class="quiz-opt" data-val="rm50-79">RM50–79</button>
+          <button class="quiz-opt" data-val="rm80-plus">RM80+</button>
+          <button class="quiz-opt" data-val="price-isnt-the-deciding-factor">Price isn't the deciding factor</button>
         </div>
         <div class="quiz-nav">
           <button class="quiz-back">← Back</button>
@@ -708,6 +708,17 @@
     var ROAST_WANT = { 'light': 1, 'medium-light': 2, 'medium': 3, 'medium-dark': 4, 'dark': 5 };
     var ROAST_LABEL = { 'light': 'light', 'medium-light': 'medium-light', 'medium': 'medium', 'medium-dark': 'medium-dark', 'dark': 'dark', 'any': 'any' };
 
+    // Q2 brew: map each option's data-val (slugified label) to the brew family used for matching.
+    var BREW_MATCH = {
+      'espresso-machine': 'espresso',
+      'moka-pot': 'espresso',
+      'v60-pour-over': 'filter',
+      'french-press': 'filter',
+      'aeropress': 'filter',
+      'im-just-starting-out': 'any'
+    };
+    function brewCat(v) { return BREW_MATCH[v] || 'any'; }
+
     // taste-profile verdicts, keyed by primary flavour
     var PROFILES = {
       fruity:  { emoji: '☀️', name: 'The Bright Explorer',     blurb: 'You chase sparkle — berries, citrus, stone fruit. Lively, juicy cups light you up, and Ethiopia is calling your name.' },
@@ -870,23 +881,24 @@
         } else { score += 0.5; }
         // brew nudge
         var rf = String(b['roasted for'] || '').toLowerCase();
-        if (answers.brew && answers.brew !== 'any' && rf.indexOf(answers.brew) > -1) score += 2;
+        var bc = brewCat(answers.brew);
+        if (bc !== 'any' && rf.indexOf(bc) > -1) score += 2;
         // milk nudge (gentle — flavour & roast still lead)
-        if (answers.milk === 'black') {
+        if (answers.milk === 'black-no-milk') {
           if (rf.indexOf('filter') > -1) score += 0.8;
           if (have != null && have <= 2) score += 0.5;
-        } else if (answers.milk === 'milk') {
+        } else if (answers.milk === 'with-milk') {
           if (rf.indexOf('espresso') > -1 || rf.indexOf('both') > -1) score += 0.8;
           if (have != null && have >= 4) score += 0.5;
           if (cat.indexOf('nutty') > -1 || cat.indexOf('cocoa') > -1 || cat.indexOf('roasted') > -1) score += 0.5;
         }
         var p = parsePrice(b.price_200g);
         if (p != null) {
-          if (answers.budget === 'value' && p < 30) score += 1;
-          else if (answers.budget === 'everyday' && p >= 30 && p < 50) score += 1;
-          else if (answers.budget === 'premium' && p >= 50 && p < 80) score += 1;
-          else if (answers.budget === 'splurge' && p >= 80) score += 1;
-          else if (answers.budget === 'any') score += 0.5;
+          if (answers.budget === 'under-rm30' && p < 30) score += 1;
+          else if (answers.budget === 'rm30-49' && p >= 30 && p < 50) score += 1;
+          else if (answers.budget === 'rm50-79' && p >= 50 && p < 80) score += 1;
+          else if (answers.budget === 'rm80-plus' && p >= 80) score += 1;
+          else if (answers.budget === 'price-isnt-the-deciding-factor') score += 0.5;
         }
         return { b: b, score: score, r: Math.random() };
       });
@@ -952,9 +964,10 @@
       var p = PROFILES[primary] || PROFILES.any;
       var bits = [];
       if (answers.roast && answers.roast !== 'any') bits.push('<strong>' + ROAST_LABEL[answers.roast] + '</strong> roasts');
-      if (answers.milk === 'black') bits.push('taken black');
-      else if (answers.milk === 'milk') bits.push('with milk');
-      if (answers.brew && answers.brew !== 'any') bits.push('brewed ' + (answers.brew === 'espresso' ? 'as espresso' : 'as filter'));
+      if (answers.milk === 'black-no-milk') bits.push('taken black');
+      else if (answers.milk === 'with-milk') bits.push('with milk');
+      var vbc = brewCat(answers.brew);
+      if (vbc !== 'any') bits.push('brewed ' + (vbc === 'espresso' ? 'as espresso' : 'as filter'));
       var meta = bits.length ? '<div class="verdict-meta">Your lane: ' + bits.join(' · ') + '.</div>' : '';
       return '<div class="verdict-emoji">' + p.emoji + '</div>'
         + '<div class="verdict-eyebrow">Your coffee profile</div>'
@@ -969,7 +982,8 @@
       var sub = [];
       if (answers.flavours.length && answers.flavours[0] !== 'any') sub.push(answers.flavours.join(' + '));
       if (answers.roast && answers.roast !== 'any') sub.push(ROAST_LABEL[answers.roast] + ' roast');
-      if (answers.brew && answers.brew !== 'any') sub.push('for ' + answers.brew);
+      var rbc = brewCat(answers.brew);
+      if (rbc !== 'any') sub.push('for ' + rbc);
       document.getElementById('resultsSub').textContent =
         sub.length ? 'Matched to: ' + sub.join(' · ') + ' — from across 52 Malaysian roasters.'
                    : 'A spread from across 52 Malaysian roasters.';

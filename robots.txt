@@ -4,4 +4,7 @@ Allow: /
 # Disallow query-string filter URLs (non-canonical faceted pages)
 Disallow: /shop?*
 
+# Shared header/footer fragments — included server-side, not standalone pages
+Disallow: /partials/
+
 Sitemap: https://www.thebeanshub.com/sitemap.xml

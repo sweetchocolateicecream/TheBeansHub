@@ -1,0 +1,183 @@
+<!-- ============================================================
+     THE BEANS HUB — SITEWIDE HEADER (announce bar + nav + mobile menu)
+     Single source of truth. Edit here only. Pages pull this in with an
+     SSI include directive pointing at /partials/header.html
+     Self-contained: carries its own CSS + JS. Logo paths are absolute
+     so it works from any URL depth (/, /shop, /posts/xyz, ...).
+     ============================================================ -->
+<style>
+  /* --- skip link --- */
+  .skip-link { position: absolute; left: 50%; top: -60px; transform: translateX(-50%); z-index: 200; background: var(--green,#296241); color: #FDF6EC; padding: 10px 18px; border-radius: 0 0 10px 10px; font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: top 0.2s; }
+  .skip-link:focus { top: 0; }
+
+  /* --- announcement bar --- */
+  .announce-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 101; height: 38px; display: flex; align-items: center; justify-content: center; background: #FFF3DF; border-bottom: 2px solid var(--accent,#FDA11D); overflow: hidden; padding: 0 16px; padding-left: max(16px, env(safe-area-inset-left)); padding-right: max(16px, env(safe-area-inset-right)); }
+  .announce-track { position: relative; width: 100%; max-width: 900px; height: 100%; }
+  .announce-msg { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: 7px; text-align: center; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.02em; color: var(--green,#296241); opacity: 0; transform: translateY(6px); transition: opacity 0.5s ease, transform 0.5s ease; pointer-events: none; }
+  .announce-msg.active { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  .announce-msg a { color: var(--accent,#FDA11D); text-decoration: underline; font-weight: 700; }
+  .announce-msg a:hover { color: var(--accent-hover,#DA8A10); }
+  .announce-msg .ann-em { color: var(--accent,#FDA11D); font-weight: 700; }
+
+  /* --- nav --- */
+  nav { position: fixed; top: 38px; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; padding-left: max(48px, env(safe-area-inset-left)); padding-right: max(48px, env(safe-area-inset-right)); height: 68px; background: #296241; border-radius: 0 0 22px 22px; box-shadow: 0 8px 24px rgba(41,98,65,0.18); }
+  .nav-logo { font-family: "Sigmar", cursive; color: #FDF6EC; font-size: 1.45rem; font-weight: 700; text-decoration: none; }
+  .nav-logo span { color: #FDA11D; }
+  .nav-links { display: flex; gap: 36px; align-items: center; }
+  .nav-links a { color: rgba(253,246,236,0.92); text-decoration: none; font-size: 0.88rem; font-weight: 500; letter-spacing: 0.04em; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: #FDF6EC; }
+  .nav-links a.cta { background: #FDA11D; color: white; padding: 8px 20px; border-radius: 8px; font-weight: 600; }
+  .nav-links a.cta:hover { background: #DA8A10; }
+  .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .nav-hamburger span { display: block; width: 24px; height: 2px; background: #FDF6EC; border-radius: 2px; }
+  .mobile-menu { display: none; position: fixed; top: 106px; left: 0; right: 0; background: #296241; padding: 20px 24px; flex-direction: column; z-index: 99; border-radius: 0 0 22px 22px; box-shadow: 0 8px 24px rgba(41,98,65,0.18); }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { color: rgba(253,246,236,0.85); text-decoration: none; font-size: 1rem; font-weight: 500; padding: 12px 0; border-bottom: 1px solid rgba(253,161,29,0.15); }
+  .mobile-menu a:last-child { border-bottom: none; color: #FDA11D; font-weight: 700; }
+
+  /* --- nav dropdown (desktop) --- */
+  .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
+  .nav-dropdown .nav-dropdown-trigger { display: inline-flex; align-items: center; gap: 5px; }
+  .nav-caret { font-size: 0.7em; transition: transform 0.2s; }
+  .nav-dropdown:hover .nav-caret, .nav-dropdown:focus-within .nav-caret { transform: rotate(180deg); }
+  .nav-dropdown::after { content: ""; position: absolute; top: 100%; left: -10px; right: -10px; height: 22px; }
+  .nav-dropdown-menu { position: absolute; top: calc(100% + 20px); left: 50%; transform: translateX(-50%) translateY(8px); display: grid; grid-template-columns: repeat(3, max-content); gap: 4px 32px; background: var(--cream, #FDF6EC); border: 1px solid var(--border, #E8E0D0); border-radius: 14px; padding: 22px 26px; box-shadow: 0 16px 44px rgba(41,98,65,0.20); opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.18s ease, transform 0.18s ease; z-index: 200; }
+  .nav-dropdown:hover .nav-dropdown-menu, .nav-dropdown:focus-within .nav-dropdown-menu { opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+  .nav-dd-group { display: flex; flex-direction: column; gap: 1px; }
+  .nav-dd-heading { font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted, #5a6e5a); font-weight: 700; margin-bottom: 7px; }
+  .nav-dropdown-menu a { color: var(--green, #296241) !important; font-size: 0.9rem !important; font-weight: 500 !important; letter-spacing: normal !important; padding: 5px 0 !important; white-space: nowrap; }
+  .nav-dropdown-menu a:hover { color: var(--accent-hover, #DA8A10) !important; }
+  .nav-dd-all { margin-top: 9px; font-weight: 700 !important; color: var(--accent-hover, #DA8A10) !important; }
+
+  /* --- mobile accordion --- */
+  .mobile-menu details.mobile-dd { border-bottom: 1px solid rgba(253,161,29,0.15); }
+  .mobile-menu details.mobile-dd summary { color: rgba(253,246,236,0.85); font-size: 1rem; font-weight: 500; padding: 12px 0; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+  .mobile-menu details.mobile-dd summary::-webkit-details-marker { display: none; }
+  .mobile-menu details.mobile-dd summary::after { content: "\25be"; color: #FDA11D; font-size: 0.85em; transition: transform 0.2s; }
+  .mobile-menu details.mobile-dd[open] summary::after { transform: rotate(180deg); }
+  .mobile-menu details.mobile-dd a { display: block; color: rgba(253,246,236,0.7); font-size: 0.92rem; font-weight: 500; padding: 9px 0 9px 16px; border-bottom: none; }
+  .mobile-menu details.mobile-dd a:last-child { color: #FDA11D; font-weight: 600; }
+
+  /* --- responsive --- */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    .announce-msg { font-size: 0.72rem; }
+  }
+</style>
+
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<!-- ANNOUNCEMENT BAR -->
+<div class="announce-bar" aria-label="Announcements">
+  <div class="announce-track" id="announceTrack">
+    <div class="announce-msg active">🆕 <span>Fresh this week — <span class="ann-em">new beans just added</span> from Malaysian roasters</span></div>
+    <div class="announce-msg">☕ <span><span class="ann-em">750+</span> specialty coffee beans, all in one place</span></div>
+    <div class="announce-msg">📬 <span>New roaster drops &amp; monthly picks — <a href="/find-your-beans">join the list →</a></span></div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="/">
+    <img alt="The Beans Hub Logo" src="/img/thebeanshub_logo.png" style="height:56px;width:auto;" />
+  </a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <div class="nav-dropdown">
+      <a href="/shop" class="nav-dropdown-trigger">Coffee Beans <span class="nav-caret">▾</span></a>
+      <div class="nav-dropdown-menu">
+        <div class="nav-dd-group">
+          <span class="nav-dd-heading">By Origin</span>
+          <a href="/shop/ethiopia-coffee-beans">Ethiopia</a>
+          <a href="/shop/colombia-coffee-beans">Colombia</a>
+          <a href="/shop/brazil-coffee-beans">Brazil</a>
+          <a href="/shop/yunnan-coffee-beans">Yunnan</a>
+          <a href="/shop/indonesia-coffee-beans">Indonesia</a>
+          <a href="/shop/thailand-coffee-beans">Thailand</a>
+        </div>
+        <div class="nav-dd-group">
+          <span class="nav-dd-heading">By Process</span>
+          <a href="/shop/washed-process-coffee-beans">Washed</a>
+          <a href="/shop/natural-process-coffee-beans">Natural</a>
+          <a href="/shop/fermented-coffee-beans">Fermented</a>
+        </div>
+        <div class="nav-dd-group">
+          <span class="nav-dd-heading">By Type</span>
+          <a href="/shop/arabica-blend-coffee-beans">Arabica Blend</a>
+          <a href="/shop/coffee-beans-for-iced-latte">For Iced Latte</a>
+          <a href="/shop" class="nav-dd-all">Shop all beans →</a>
+        </div>
+      </div>
+    </div>
+    <a href="/library">Coffee Library</a>
+    <a href="/about">About Us</a>
+    <a href="/contact">Contact Us</a>
+    <a class="cta" href="/find-your-beans">Find Your Beans</a>
+  </div>
+  <button aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu" class="nav-hamburger" id="navHamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/">Home</a>
+  <details class="mobile-dd">
+    <summary>Coffee Beans</summary>
+    <a href="/shop/ethiopia-coffee-beans">Ethiopia</a>
+    <a href="/shop/colombia-coffee-beans">Colombia</a>
+    <a href="/shop/brazil-coffee-beans">Brazil</a>
+    <a href="/shop/yunnan-coffee-beans">Yunnan</a>
+    <a href="/shop/indonesia-coffee-beans">Indonesia</a>
+    <a href="/shop/thailand-coffee-beans">Thailand</a>
+    <a href="/shop/washed-process-coffee-beans">Washed Process</a>
+    <a href="/shop/natural-process-coffee-beans">Natural Process</a>
+    <a href="/shop/fermented-coffee-beans">Fermented</a>
+    <a href="/shop/arabica-blend-coffee-beans">Arabica Blend</a>
+    <a href="/shop/coffee-beans-for-iced-latte">For Iced Latte</a>
+    <a href="/shop">Shop all beans →</a>
+  </details>
+  <a href="/library">Coffee Library</a>
+  <a href="/about">About Us</a>
+  <a href="/contact">Contact Us</a>
+  <a href="/find-your-beans">Find Your Beans →</a>
+</div>
+
+<script>
+  // Mobile menu toggle
+  function toggleMenu() {
+    var menu = document.getElementById('mobileMenu');
+    var btn = document.getElementById('navHamburger');
+    var isOpen = menu.classList.toggle('open');
+    if (btn) btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  }
+  // Esc closes the mobile menu and returns focus to the toggle
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    var menu = document.getElementById('mobileMenu');
+    var btn = document.getElementById('navHamburger');
+    if (menu && menu.classList.contains('open')) {
+      menu.classList.remove('open');
+      if (btn) { btn.setAttribute('aria-expanded', 'false'); btn.focus(); }
+    }
+  });
+  // Rotating announcement messages
+  (function rotateAnnounce() {
+    var msgs = document.querySelectorAll('.announce-msg');
+    if (msgs.length < 2) return;
+    var i = 0;
+    setInterval(function () {
+      msgs[i].classList.remove('active');
+      i = (i + 1) % msgs.length;
+      msgs[i].classList.add('active');
+    }, 4500);
+  })();
+  // Highlight the current page's nav link (replaces hard-coded "active")
+  (function setActiveNav() {
+    var path = location.pathname.replace(/\/+$/, '') || '/';
+    document.querySelectorAll('.nav-links a').forEach(function (a) {
+      var href = (a.getAttribute('href') || '').replace(/\/+$/, '') || '/';
+      if (href === path) a.classList.add('active');
+    });
+  })();
+</script>
