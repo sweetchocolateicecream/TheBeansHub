@@ -6,6 +6,12 @@ RewriteBase /
 RewriteCond %{HTTP_HOST} ^thebeanshub\.com [NC]
 RewriteRule ^(.*)$ https://www.thebeanshub.com/$1 [R=301,L]
 
+# ── SSI partials: serve as-is, never rewrite/redirect ──
+# The .html→clean-URL 301 below would otherwise 301 /partials/header.html,
+# and mod_include can't follow a redirect on an #include (it errors).
+# Keep this BEFORE the .html rules so SSI subrequests resolve to a 200.
+RewriteRule ^partials/ - [L]
+
 # ── SEO: 301 redirects for old WordPress URLs (9.2k 404s in GSC) ──
 # Old bean pages lived under /product/, /coffee_bean/, /coffee-beans/.
 # Match origin in the slug → closest /shop/ category page.
