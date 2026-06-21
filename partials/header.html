@@ -20,7 +20,7 @@
   .announce-msg .ann-em { color: var(--accent,#FDA11D); font-weight: 700; }
 
   /* --- nav --- */
-  nav { position: fixed; top: 38px; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; padding-left: max(48px, env(safe-area-inset-left)); padding-right: max(48px, env(safe-area-inset-right)); height: 68px; background: #296241; border-radius: 0 0 22px 22px; box-shadow: 0 8px 24px rgba(41,98,65,0.18); }
+  .tbh-nav { position: fixed; top: 38px; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; padding-left: max(48px, env(safe-area-inset-left)); padding-right: max(48px, env(safe-area-inset-right)); height: 68px; background: #296241; border-radius: 0 0 22px 22px; box-shadow: 0 8px 24px rgba(41,98,65,0.18); }
   .nav-logo { font-family: "Sigmar", cursive; color: #FDF6EC; font-size: 1.45rem; font-weight: 700; text-decoration: none; }
   .nav-logo span { color: #FDA11D; }
   .nav-links { display: flex; gap: 36px; align-items: center; }
@@ -60,7 +60,7 @@
 
   /* --- responsive --- */
   @media (max-width: 768px) {
-    nav { padding: 0 20px; }
+    .tbh-nav { padding: 0 20px; }
     .nav-links { display: none; }
     .nav-hamburger { display: flex; }
     .announce-msg { font-size: 0.72rem; }
@@ -79,7 +79,7 @@
 </div>
 
 <!-- NAV -->
-<nav>
+<nav class="tbh-nav">
   <a class="nav-logo" href="/">
     <img alt="The Beans Hub Logo" src="/img/thebeanshub_logo.png" style="height:56px;width:auto;" />
   </a>
