@@ -46,7 +46,12 @@ def convert(path, offset_prefix=None):
         text = fh.read()
     if HEADER_INCLUDE in text:
         return 'skip (already converted)'
-    new, nh = HEADER_RE.subn(HEADER_INCLUDE, text, count=1)
+    # Strip a leading skip-link and announcement bar if present — the partial
+    # carries its own, so leaving these would duplicate them. Both sit before
+    # the first <nav>; remove up to it.
+    new = re.sub(r'<a class="skip-link"[^>]*>.*?</a>\s*', '', text, count=1, flags=re.DOTALL)
+    new = re.sub(r'<div class="announce-bar".*?(?=<nav)', '', new, count=1, flags=re.DOTALL)
+    new, nh = HEADER_RE.subn(HEADER_INCLUDE, new, count=1)
     if nh == 0:
         return 'FAIL (header block not found)'
     new, nf = FOOTER_RE.subn(FOOTER_INCLUDE, new, count=1)

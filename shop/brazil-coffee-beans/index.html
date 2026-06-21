@@ -185,7 +185,7 @@
     .page-header-inner {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 52px 24px 56px;
+      padding: 90px 24px 56px;
     }
 
     .page-header h1 {
@@ -828,7 +828,7 @@
       }
 
       .page-header-inner {
-        padding: 30px 16px 34px;
+        padding: 68px 16px 34px;
       }
 
       .page-header h1 {
@@ -2136,69 +2136,7 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
 </script>
 </head>
 <body>
-<nav>
-    <a class="nav-logo" href="/">
-      <img alt="The Beans Hub Logo" src="/img/thebeanshub_logo.png" style="height:56px;width:auto;" />
-    </a>
-    <div class="nav-links">
-      <a class="active" href="/">Home</a>
-      <div class="nav-dropdown">
-        <a href="/shop" class="nav-dropdown-trigger">Coffee Beans <span class="nav-caret">▾</span></a>
-        <div class="nav-dropdown-menu">
-          <div class="nav-dd-group">
-            <span class="nav-dd-heading">By Origin</span>
-            <a href="/shop/ethiopia-coffee-beans">Ethiopia</a>
-            <a href="/shop/colombia-coffee-beans">Colombia</a>
-            <a href="/shop/brazil-coffee-beans">Brazil</a>
-            <a href="/shop/yunnan-coffee-beans">Yunnan</a>
-            <a href="/shop/indonesia-coffee-beans">Indonesia</a>
-            <a href="/shop/thailand-coffee-beans">Thailand</a>
-          </div>
-          <div class="nav-dd-group">
-            <span class="nav-dd-heading">By Process</span>
-            <a href="/shop/washed-process-coffee-beans">Washed</a>
-            <a href="/shop/natural-process-coffee-beans">Natural</a>
-            <a href="/shop/fermented-coffee-beans">Fermented</a>
-          </div>
-          <div class="nav-dd-group">
-            <span class="nav-dd-heading">By Type</span>
-            <a href="/shop/arabica-blend-coffee-beans">Arabica Blend</a>
-            <a href="/shop/coffee-beans-for-iced-latte">For Iced Latte</a>
-            <a href="/shop" class="nav-dd-all">Shop all beans →</a>
-          </div>
-        </div>
-      </div>
-      <a href="/library">Coffee Library</a>
-      <a href="/about">About Us</a>
-      <a href="/contact">Contact Us</a>
-      <a class="cta" href="/shop">Explore Beans</a>
-    </div>
-    <button aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu" class="nav-hamburger" id="navHamburger" onclick="toggleMenu()">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
-<div class="mobile-menu" id="mobileMenu">
-    <a href="/">Home</a>
-    <details class="mobile-dd">
-      <summary>Coffee Beans</summary>
-      <a href="/shop/ethiopia-coffee-beans">Ethiopia</a>
-      <a href="/shop/colombia-coffee-beans">Colombia</a>
-      <a href="/shop/brazil-coffee-beans">Brazil</a>
-      <a href="/shop/yunnan-coffee-beans">Yunnan</a>
-      <a href="/shop/indonesia-coffee-beans">Indonesia</a>
-      <a href="/shop/thailand-coffee-beans">Thailand</a>
-      <a href="/shop/washed-process-coffee-beans">Washed Process</a>
-      <a href="/shop/natural-process-coffee-beans">Natural Process</a>
-      <a href="/shop/fermented-coffee-beans">Fermented</a>
-      <a href="/shop/arabica-blend-coffee-beans">Arabica Blend</a>
-      <a href="/shop/coffee-beans-for-iced-latte">For Iced Latte</a>
-      <a href="/shop">Shop all beans →</a>
-    </details>
-    <a href="/library">Coffee Library</a>
-    <a href="/about">About Us</a>
-    <a href="/contact">Contact Us</a>
-    <a href="/shop">Explore Beans →</a>
-  </div>
+<!--#include virtual="/partials/header.html" -->
 
 <header class="page-header">
   <div class="page-header-inner">
@@ -3098,64 +3036,7 @@ footer.tbh-footer{background:#296241;color:#FDF6EC;padding:56px 48px 24px;border
   </div>
 </main>
 
-<footer class="tbh-footer">
-    <div class="tbh-footer-inner">
-      <div class="tbh-footer-brand">
-        <a class="tbh-footer-logo" href="/">
-          <img alt="The Beans Hub logo" class="tbh-footer-logo-img" src="/img/thebeanshub_logo.png" />
-          <span class="tbh-footer-logo-text">The Beans<span class="accent">Hub</span></span>
-        </a>
-        <p class="tbh-footer-tagline">Malaysia's home for specialty coffee — beans, brewers, and roaster guides.</p>
-      </div>
-      <div>
-        <h4 class="tbh-footer-heading">Shop</h4>
-        <a href="/shop" style="display:inline-block;color:#FDA11D;font-size:0.85rem;font-weight:600;text-decoration:none;margin-bottom:16px;">Browse all coffee beans &rarr;</a>
-        <p style="font-size:0.8rem;color:rgba(253,246,236,0.45);margin:0 0 6px;">Coffee grown in&hellip;</p>
-        <ul class="tbh-footer-list" style="display:flex;flex-wrap:wrap;gap:4px 16px;margin-bottom:16px;">
-          <li><a href="/shop/ethiopia-coffee-beans">Ethiopia</a></li>
-          <li><a href="/shop/colombia-coffee-beans">Colombia</a></li>
-          <li><a href="/shop/brazil-coffee-beans">Brazil</a></li>
-          <li><a href="/shop/yunnan-coffee-beans">Yunnan</a></li>
-          <li><a href="/shop/indonesia-coffee-beans">Indonesia</a></li>
-          <li><a href="/shop/thailand-coffee-beans">Thailand</a></li>
-        </ul>
-        <p style="font-size:0.8rem;color:rgba(253,246,236,0.45);margin:0 0 6px;">Made by&hellip; (process)</p>
-        <ul class="tbh-footer-list" style="display:flex;flex-wrap:wrap;gap:4px 16px;margin-bottom:16px;">
-          <li><a href="/shop/natural-process-coffee-beans">Natural</a></li>
-          <li><a href="/shop/washed-process-coffee-beans">Washed</a></li>
-          <li><a href="/shop/fermented-coffee-beans">Fermented</a></li>
-        </ul>
-        <p style="font-size:0.8rem;color:rgba(253,246,236,0.45);margin:0 0 6px;">Or browse by&hellip;</p>
-        <ul class="tbh-footer-list" style="display:flex;flex-wrap:wrap;gap:4px 16px;">
-          <li><a href="/shop/arabica-blend-coffee-beans">Arabica blends</a></li>
-          <li><a href="/shop/coffee-beans-for-iced-latte">For iced latte</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="tbh-footer-heading">Explore</h4>
-        <ul class="tbh-footer-list">
-          <li><a href="/">Home</a></li>
-          <li><a href="/about">About Us</a></li>
-          <li><a href="/contact">Contact Us</a></li>
-          <li><a href="/library">Coffee Library</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="tbh-footer-heading">Follow</h4>
-        <div class="tbh-footer-social">
-          <a aria-label="Instagram — The Beans Hub" href="https://www.instagram.com/thebeanshub/" rel="noopener" target="_blank">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
-            </svg>
-            <span>@thebeanshub</span>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="tbh-footer-bottom">
-      <p class="tbh-footer-copy">© 2026 The Beans Hub. All rights reserved.</p>
-    </div>
-  </footer>
+<!--#include virtual="/partials/footer.html" -->
 
 <script>
   function toggleMenu(){ document.getElementById('mobileMenu').classList.toggle('open'); }
