@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-JY42YLKPRM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JY42YLKPRM');
+</script>
+<meta charset="utf-8"/>
+<meta content="jqlfBshOy4vgYUb478viCuTswoIsaWL_jdOhL0srx0w" name="google-site-verification">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="robots" content="index, follow">
+<title>How to Taste Specialty Coffee Beans Like a Pro | The Beans Hub</title>
+<meta content="Learn how to taste specialty coffee beans step by step — what your tongue really does, why slurping works, and how to name the fruit, acidity and body in your cup." name="description"/>
+
+<link href="https://fonts.googleapis.com/css2?family=Sigmar&amp;family=Outfit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="img/thebeanshub_logo.png" rel="icon" type="image/png"/>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --green: #296241; --green-light: #3a7a50;
+  --cream: #FDF6EC; --white: #FFFFFF;
+  --orange: #FDA11D; --orange-dark: #DA8A10;
+  --border: #E8E0D0; --tag-bg: #f0ebe0;
+  --text: #1a2e1f; --muted: #5a6e5a;
+}
+html { scroll-behavior: smooth; }
+body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+
+/* NAV */
+.site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 68px; background: var(--green); border-bottom: 1px solid rgba(253,161,29,0.3); }
+.nav-logo { font-family: "Sigmar", cursive; color: #FDF6EC; font-size: 1.45rem; font-weight: 700; text-decoration: none; }
+.nav-logo span { color: var(--orange); }
+.nav-links { display: flex; gap: 36px; align-items: center; }
+.nav-links a { color: rgba(253,246,236,0.75); text-decoration: none; font-size: 0.88rem; font-weight: 500; letter-spacing: 0.04em; transition: color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color: #FDF6EC; }
+.nav-links a.cta { background: var(--orange); color: white; padding: 8px 20px; border-radius: 8px; font-weight: 600; }
+.nav-links a.cta:hover { background: var(--orange-dark); }
+.nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.nav-hamburger span { display: block; width: 24px; height: 2px; background: #FDF6EC; border-radius: 2px; }
+.mobile-menu { display: none; position: fixed; top: 68px; left: 0; right: 0; background: var(--green); padding: 20px 24px; flex-direction: column; z-index: 99; border-bottom: 2px solid var(--orange); }
+.mobile-menu.open { display: flex; }
+.mobile-menu a { color: rgba(253,246,236,0.8); text-decoration: none; font-size: 1rem; font-weight: 500; padding: 14px 0; border-bottom: 1px solid rgba(253,246,236,0.15); transition: color 0.2s; }
+.mobile-menu a:last-child { border-bottom: none; }
+.mobile-menu a:hover { color: #FDF6EC; }
+
+/* POST HERO */
+.post-hero { padding: 142px 48px 56px; background: var(--green); position: relative; overflow: hidden; }
+.post-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 0%, rgba(253,161,29,0.15), transparent 55%), radial-gradient(ellipse at 10% 100%, rgba(253,161,29,0.07), transparent 50%); }
+.post-hero-inner { max-width: 800px; margin: 0 auto; position: relative; }
+.post-breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 0.75rem; color: rgba(253,246,236,0.55); margin-bottom: 20px; }
+.post-breadcrumb a { color: rgba(253,246,236,0.55); text-decoration: none; transition: color 0.2s; }
+.post-breadcrumb a:hover { color: #FDF6EC; }
+.post-breadcrumb span { color: rgba(253,246,236,0.3); }
+.post-cat-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 20px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 18px; width: fit-content; }
+.badge-guide  { background: rgba(255,255,255,0.15); color: #FDF6EC; }
+.badge-local  { background: rgba(253,161,29,0.25); color: #FDA11D; }
+.badge-recipe { background: rgba(255,100,100,0.2); color: #ffb0b0; }
+.post-hero h1 { font-family: "Sigmar", cursive; font-size: clamp(1.8rem, 4vw, 2.8rem); color: #FDF6EC; line-height: 1.2; margin-bottom: 20px; }
+.post-hero-meta { display: flex; align-items: center; gap: 12px; font-size: 0.8rem; color: rgba(253,246,236,0.6); flex-wrap: wrap; }
+.post-hero-meta-dot { width: 3px; height: 3px; background: rgba(253,246,236,0.4); border-radius: 50%; }
+.post-read-time { background: rgba(253,161,29,0.2); color: var(--orange); padding: 3px 10px; border-radius: 10px; font-weight: 600; font-size: 0.72rem; }
+
+/* POST PARALLAX BANNER */
+.post-banner {
+  height: 420px;
+  position: relative;
+  overflow: hidden;
+}
+.post-banner-img {
+  position: absolute;
+  inset: -80px 0;
+  background-image: url('../img/Girl-bought-coffee-from-the-beans-hub.png');
+  background-size: cover;
+  background-position: center 30%;
+  will-change: transform;
+  transition: transform 0.05s linear;
+}
+
+/* POST BODY */
+.post-body { max-width: 800px; margin: 0 auto; padding: 56px 48px 80px; }
+
+/* TYPOGRAPHY */
+.post-body h2 { font-family: "Sigmar", cursive; font-size: 1.5rem; color: var(--green); margin: 48px 0 16px; line-height: 1.3; }
+.post-body h3 { font-family: "Outfit", sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--text); margin: 32px 0 12px; }
+.post-body p { font-size: 0.97rem; line-height: 1.85; color: #2a3a2a; margin-bottom: 20px; }
+.post-body ul, .post-body ol { padding-left: 24px; margin-bottom: 20px; }
+.post-body li { font-size: 0.97rem; line-height: 1.8; color: #2a3a2a; margin-bottom: 6px; }
+.post-body strong { font-weight: 700; color: var(--text); }
+.post-body em { font-style: italic; color: var(--muted); }
+.post-body a { color: var(--green); font-weight: 600; text-decoration: underline; text-decoration-color: rgba(41,98,65,0.3); transition: color 0.2s; }
+.post-body a:hover { color: var(--orange); }
+
+/* CALLOUT BOX */
+.callout { background: var(--tag-bg); border-left: 4px solid var(--orange); border-radius: 0 12px 12px 0; padding: 20px 24px; margin: 32px 0; }
+.callout p { margin: 0; font-size: 0.92rem; }
+.callout-title { font-weight: 700; color: var(--green); margin-bottom: 6px !important; font-size: 0.8rem !important; text-transform: uppercase; letter-spacing: 0.08em; }
+
+/* INFO CARD */
+.info-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 24px 28px; margin: 28px 0; }
+.info-card h4 { font-size: 0.88rem; font-weight: 700; color: var(--green); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.08em; }
+
+/* FLAVOUR TABLE */
+.flavour-table { width: 100%; border-collapse: collapse; margin: 28px 0; font-size: 0.92rem; }
+.flavour-table thead tr { background: var(--green); color: #FDF6EC; }
+.flavour-table thead th { padding: 12px 16px; text-align: left; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; }
+.flavour-table thead th:first-child { border-radius: 10px 0 0 0; }
+.flavour-table thead th:last-child { border-radius: 0 10px 0 0; }
+.flavour-table tbody tr { border-bottom: 1px solid var(--border); }
+.flavour-table tbody tr:last-child { border-bottom: none; }
+.flavour-table tbody tr:nth-child(even) { background: var(--tag-bg); }
+.flavour-table tbody td { padding: 12px 16px; color: #2a3a2a; line-height: 1.6; }
+
+/* DIVIDER */
+.post-divider { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
+
+/* FAQ */
+.faq-item { border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; background: var(--white); overflow: hidden; }
+.faq-item summary { cursor: pointer; padding: 18px 22px; font-weight: 700; color: var(--green); font-size: 0.95rem; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after { content: '+'; font-size: 1.3rem; color: var(--orange); flex-shrink: 0; transition: transform 0.2s; }
+.faq-item[open] summary::after { transform: rotate(45deg); }
+.faq-item .faq-answer { padding: 0 22px 20px; }
+.faq-item .faq-answer p { margin: 0; font-size: 0.94rem; }
+
+/* TAG ROW */
+.post-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 36px 0 0; }
+.post-tag { padding: 5px 14px; background: var(--tag-bg); color: var(--muted); border-radius: 20px; font-size: 0.75rem; font-weight: 500; }
+
+/* BACK + NEXT NAV */
+.post-nav { display: flex; justify-content: space-between; align-items: center; padding: 32px 0; border-top: 1px solid var(--border); margin-top: 48px; }
+.post-nav a { display: flex; align-items: center; gap: 8px; text-decoration: none; font-size: 0.85rem; font-weight: 600; color: var(--green); transition: color 0.2s; }
+.post-nav a:hover { color: var(--orange); }
+
+/* MORE POSTS */
+.more-posts { background: var(--cream); border-top: 1px solid var(--border); padding: 64px 48px; }
+.more-posts-inner { max-width: 1100px; margin: 0 auto; }
+.more-posts h2 { font-family: "Sigmar", cursive; font-size: 1.4rem; color: var(--text); margin-bottom: 32px; }
+.more-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.more-card { background: var(--white); border-radius: 14px; border: 1px solid var(--border); padding: 24px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 10px; transition: transform 0.2s, box-shadow 0.2s; }
+.more-card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(41,98,65,0.1); }
+.more-card-emoji { font-size: 2rem; }
+.more-card h3 { font-family: "Outfit", sans-serif; font-size: 0.92rem; font-weight: 700; color: var(--text); line-height: 1.4; }
+.more-card-meta { font-size: 0.72rem; color: var(--muted); margin-top: auto; }
+
+/* FOOTER */
+footer { background: var(--green); padding: 40px 48px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(253,161,29,0.2); }
+.footer-logo { font-family: "Sigmar", cursive; color: #FDF6EC; font-size: 1.1rem; font-weight: 700; text-decoration: none; }
+.footer-logo span { color: var(--orange); }
+.footer-links { display: flex; gap: 28px; }
+.footer-links a { color: rgba(253,246,236,0.6); text-decoration: none; font-size: 0.8rem; transition: color 0.2s; }
+.footer-links a:hover { color: #FDF6EC; }
+.footer-copy { font-size: 0.75rem; color: rgba(253,246,236,0.4); }
+
+@media (max-width: 768px) {
+  .site-nav { padding: 0 20px; }
+  .site-nav .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  .post-hero { padding: 126px 20px 40px; }
+  .post-body { padding: 40px 20px 60px; }
+  .more-posts { padding: 48px 20px; }
+  .more-grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: 20px; text-align: center; padding: 32px 20px; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+  .post-banner { height: 260px; }
+  .flavour-table { font-size: 0.82rem; }
+  .flavour-table thead th, .flavour-table tbody td { padding: 10px 12px; }
+}
+
+    /* TABLE OF CONTENTS */
+    .post-layout {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 800px);
+      justify-content: center;
+      column-gap: 40px;
+      align-items: start;
+      padding: 56px 48px 80px;
+    }
+    .post-layout > .post-body {
+      max-width: none;
+      margin: 0;
+      padding: 0;
+    }
+    .toc-sidebar { display: block; order: -1; margin-bottom: 8px; }
+    .toc-inner summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .toc-inner summary::-webkit-details-marker { display: none; }
+    .toc-inner summary::after {
+      content: '\25BE';
+      font-size: 0.9rem;
+      color: var(--muted);
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+    .toc-inner[open] summary::after { transform: rotate(180deg); }
+    @media (max-width: 768px) {
+      .post-layout {
+        padding: 32px 20px 56px;
+      }
+      .toc-inner { max-height: 260px; }
+      .toc-inner[open] .toc-nav { padding-top: 10px; }
+    }
+    @media (min-width: 1260px) {
+      .post-layout {
+        grid-template-columns: minmax(0, 800px) 220px;
+        justify-content: start;
+      }
+      .toc-sidebar {
+        display: block;
+        order: 0;
+        margin-bottom: 0;
+        position: sticky;
+        top: 90px;
+        align-self: start;
+      }
+      .toc-inner summary { cursor: default; pointer-events: none; }
+      .toc-inner summary::after { display: none; }
+    }
+    .toc-inner {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 16px 20px;
+      overflow: hidden;
+      max-height: calc(100vh - 110px);
+      overflow-y: auto;
+      scrollbar-width: none;
+    }
+    .toc-inner::-webkit-scrollbar { display: none; }
+    .toc-title {
+      font-size: 0.62rem;
+      font-weight: 800;
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    .toc-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      min-width: 0;
+    }
+    .toc-link {
+      display: block;
+      min-width: 0;
+      white-space: normal;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      font-size: 0.76rem;
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 6px 8px 6px 10px;
+      border-radius: 6px;
+      border-left: 2px solid transparent;
+      line-height: 1.45;
+      transition: all 0.15s;
+    }
+    .toc-link:hover {
+      color: var(--text);
+      background: var(--tag-bg);
+      border-left-color: var(--border);
+    }
+    .toc-link.active {
+      color: var(--green);
+      font-weight: 700;
+      border-left-color: var(--orange);
+      background: rgba(41, 98, 65, 0.05);
+    }
+</style>
+  <link rel="canonical" href="https://www.thebeanshub.com/posts/how-to-taste-specialty-coffee-beans">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="How to Taste Specialty Coffee Beans Like a Pro | The Beans Hub">
+  <meta property="og:description" content="Learn how to taste specialty coffee beans step by step — what your tongue really does, why slurping works, and how to name the fruit, acidity and body in your cup.">
+  <meta property="og:url" content="https://www.thebeanshub.com/posts/how-to-taste-specialty-coffee-beans">
+  <meta property="og:image" content="https://www.thebeanshub.com/img/Girl-bought-coffee-from-the-beans-hub.png">
+  <meta property="og:site_name" content="The Beans Hub">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How to Taste Specialty Coffee Beans Like a Pro | The Beans Hub">
+  <meta name="twitter:description" content="Learn how to taste specialty coffee beans step by step — what your tongue really does, why slurping works, and how to name the fruit, acidity and body in your cup.">
+  <meta name="twitter:image" content="https://www.thebeanshub.com/img/Girl-bought-coffee-from-the-beans-hub.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.thebeanshub.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Coffee Library",
+      "item": "https://www.thebeanshub.com/library"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "How to Taste Specialty Coffee Beans",
+      "item": "https://www.thebeanshub.com/posts/how-to-taste-specialty-coffee-beans"
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How to Taste Specialty Coffee Beans Like a Pro",
+  "description": "Learn how to taste specialty coffee beans step by step — what your tongue really does, why slurping works, and how to name the fruit, acidity and body in your cup.",
+  "url": "https://www.thebeanshub.com/posts/how-to-taste-specialty-coffee-beans",
+  "datePublished": "2026-06-24",
+  "dateModified": "2026-06-24",
+  "image": "https://www.thebeanshub.com/img/Girl-bought-coffee-from-the-beans-hub.png",
+  "author": {
+    "@type": "Organization",
+    "name": "The Beans Hub"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "The Beans Hub",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.thebeanshub.com/img/thebeanshub_logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.thebeanshub.com/posts/how-to-taste-specialty-coffee-beans"
+  }
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I need special equipment to taste specialty coffee at home?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. A spoon, a bowl or mug, a kitchen scale and a kettle are enough to run a simple home cupping. You don't need an espresso machine or fancy filters — the point of cupping is to strip brewing variables away so you taste the bean itself."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why do you slurp coffee when tasting it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Slurping sprays a fine mist of coffee across your whole tongue at once and aerates it, pushing aroma up into your nasal cavity. Since most of what we call flavour is actually smell, that burst of aroma is what lets you pick out fruit, chocolate or floral notes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the tongue map real — does the tip taste sweet and the back taste bitter?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The tongue map is a myth that came from a mistranslated 1901 study. Every taste — sweet, sour, salty, bitter and umami — can be detected across the whole tongue. There is no single zone that only tastes sweetness or only tastes bitterness."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How fresh should beans be for tasting?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For critical tasting, let beans rest about 4 to 7 days after the roast date. Coffee roasted in the last day or two is still releasing carbon dioxide, which can give a sharp, prickly sensation that masks the more delicate flavour notes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take to train your palate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "There is no fixed timeline, but it builds faster than people expect with regular practice. Tasting a little every day, comparing two coffees side by side, and writing down what you notice will sharpen your palate within a few weeks. The skill is repetition, not talent."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+<!--#include virtual="/partials/header.html" -->
+<div class="post-hero">
+<div class="post-hero-inner">
+<div class="post-breadcrumb">
+<a href="/library">Coffee Library</a>
+<span>›</span>
+<span>Beginner Guide</span>
+</div>
+<div class="post-cat-badge badge-guide">🎓 Beginner Guide</div>
+<h1>How to Taste Specialty Coffee Beans (A Beginner-Friendly Guide)</h1>
+<div class="post-hero-meta">
+<span>The Beans Hub</span>
+<span class="post-hero-meta-dot"></span>
+<span>June 2026</span>
+<span class="post-hero-meta-dot"></span>
+<span class="post-read-time">11 min read</span>
+</div>
+</div>
+</div>
+<div class="post-banner">
+<div class="post-banner-img" id="parallaxImg"></div>
+</div>
+<div class="post-layout">
+<div class="post-body">
+
+<p>Most people drink coffee to wake up. Tasting coffee is a different thing entirely — it's drinking on purpose, paying attention to what's actually in the cup instead of letting it disappear while you check your phone.</p>
+<p>And here's the part nobody tells you: learning how to taste specialty coffee beans isn't a gift you're born with. It's a skill, and a fairly quick one to pick up once you know what your mouth and nose are really doing. The bag says "jasmine, peach, brown sugar" and you taste… coffee. That gap isn't your tongue failing. It's just untrained — and this guide closes the gap.</p>
+<p>We'll cover what's physically happening when you taste, how to set up a fair tasting at home, the exact steps roasters and buyers use, and how to put a name to what you're tasting. By the end you'll be able to sit down with a bag of Malaysian-roasted single origin and actually find the fruit.</p>
+
+<h2 id="taste-vs-flavour">Taste vs. flavour: they're not the same thing</h2>
+<p>This is the single most useful idea in coffee tasting, so we'll start here.</p>
+<p><strong>Taste</strong> happens only on your tongue, and it's surprisingly limited. There are just five basic tastes: sweet, sour, salty, bitter, and umami (savoury). That's the whole list. Your tongue cannot, on its own, detect "blueberry" or "hazelnut" — those aren't tastes.</p>
+<p><strong>Aroma</strong> happens in your nose, and it's enormous by comparison. This is where blueberry and hazelnut actually live.</p>
+<p><strong>Flavour</strong> is the two combined — taste plus aroma, stitched together by your brain into a single experience.</p>
+<p>Here's the proof you can run in ten seconds: pinch your nose shut and take a sip of coffee. You'll get bitterness and maybe some sourness — the tongue-only part. Now let go of your nose mid-sip. The fruit, the chocolate, the florals all rush in at once. That flood is aroma reaching your smell receptors from inside your mouth, and it's responsible for the large majority of what you think of as flavour.</p>
+<div class="callout">
+<p class="callout-title">💡 The 80% rule</p>
+<p>The mechanism behind that nose trick is called <strong>retronasal olfaction</strong> — aroma travelling up the back of your throat into your nasal cavity as you sip and swallow. Most of what we call "flavour" comes from smell, not taste. Roasted coffee carries over <strong>800–1,000 aromatic compounds</strong> — more than double what's in wine — which is exactly why a single cup can remind you of so many different things.</p>
+</div>
+<p>The takeaway: if you want to taste more, you have to <em>smell</em> more. Almost every technique below is really a trick for getting more aroma to your nose.</p>
+
+<h2 id="forget-the-tongue-map">Forget the tongue map you learned in school</h2>
+<p>You've probably seen the diagram: sweet on the tip, salty and sour on the sides, bitter across the back. It's printed in textbooks, on placemats, all over the internet. It's also wrong.</p>
+<p>The "tongue map" traces back to a 1901 German study that was mistranslated and oversimplified decades later. Researchers have debunked it repeatedly — by the 1970s and again in the 1990s, scientists confirmed that <strong>every basic taste can be detected across the entire tongue.</strong> There's no zone that only tastes sweetness and no zone that only tastes bitterness.</p>
+<p>Why does this matter for coffee? Because the map quietly teaches bad habits — like only sipping from the front of your mouth, or assuming bitterness must come "from the back." In reality you want coffee to coat your whole tongue at once, which is the entire reason cuppers slurp (more on that shortly). Some areas may be a touch <em>more sensitive</em> to certain tastes, but all of your tongue is working all of the time.</p>
+
+<h2 id="set-up-a-fair-tasting">Set up a fair tasting at home</h2>
+<p>To judge a bean honestly, you strip away the variables. Espresso machines and paper filters change texture and trap oils — useful for a great morning cup, but they get in the way when you're trying to assess the coffee itself. So tasters use the simplest possible method: <strong>cupping</strong>, which is just ground coffee steeped in hot water, like a tea.</p>
+<p>You already own everything you need:</p>
+<div class="info-card">
+<h4>Your home cupping kit</h4>
+<ul>
+<li><strong>A scale</strong> — to keep the ratio consistent.</li>
+<li><strong>A bowl or mug</strong> — one per coffee.</li>
+<li><strong>A spoon</strong> — any soup spoon works.</li>
+<li><strong>A kettle</strong> — water just off the boil, around 93–96°C.</li>
+<li><strong>Fresh beans, coarsely ground</strong> — about the texture of sea salt.</li>
+</ul>
+</div>
+<p>The standard ratio is roughly <strong>8.25g of coffee to 150ml of water</strong> — but you don't need to be precise to the decimal. A rounded tablespoon and a half of grounds to a regular mug of water gets you close. The important thing is using the <em>same</em> ratio across every cup so you're comparing the beans, not your pours.</p>
+<div class="callout">
+<p class="callout-title">⏳ Let the beans rest first</p>
+<p>Coffee roasted in the last 24–48 hours is still off-gassing carbon dioxide, which gives a sharp, prickly, fizzy edge on the tongue. It's not a defect — it's just noise that drowns out the subtle stuff. For tasting, beans are usually clearest <strong>4–7 days after the roast date.</strong> Check the roast date on the bag, not the "best before."</p>
+</div>
+
+<h2 id="the-five-steps">The five steps roasters actually use</h2>
+<p>Here's the sequence used in cupping rooms everywhere. Even if you never set up a formal cupping, knowing these steps changes how you drink any cup of coffee.</p>
+
+<h3>1. Smell the dry grounds</h3>
+<p>Before any water touches them, put your nose right into the freshly ground coffee and breathe in. This is the <strong>dry fragrance</strong>, and it's where the most volatile, fleeting aromatics live — light florals, spices like cardamom, things that vanish the moment the coffee gets wet. Don't try to name everything. Just ask: fruity, nutty, sweet, or floral? First impressions count.</p>
+
+<h3>2. Pour, wait, and break the crust</h3>
+<p>Pour your hot water over the grounds and leave it completely alone for four minutes. A "crust" of floating grounds will form on top — resist touching it. After four minutes, lean in close with your spoon and gently push the crust back. The burst of steam and aroma released at this <strong>break</strong> is the clearest, most intense smell of the coffee's character you'll get. This is the moment most beginners skip, and it's the best one.</p>
+
+<h3>3. Slurp (loudly — it's not rude)</h3>
+<p>Once the coffee has cooled for ten minutes or so, take a spoonful and slurp it hard. Yes, the obnoxious noise is the point. Slurping sprays the liquid as a fine mist across your <em>entire</em> tongue at once and aerates it, launching aroma straight up into your nasal cavity. A polite little sip puts coffee on one spot; a proper slurp puts flavour everywhere. This is the single biggest difference between drinking and tasting.</p>
+
+<h3>4. Run the four pillars</h3>
+<p>As the coffee sits in your mouth, your brain wants a reference point. Give it a structure instead of grabbing for "blueberry" straight away. Walk through four things in order — acidity, sweetness, body, aftertaste — covered in detail in the next section.</p>
+
+<h3>5. Notice the aftertaste — and taste again as it cools</h3>
+<p>Swallow (or spit, if you're tasting many) and pay attention to what lingers. A long, sweet, clean finish is the mark of a quality bean; a short, dry, ashy one is not. Then keep going. Coffee changes dramatically as it cools — a cup can taste of chocolate at 68°C and shift to red apple or stone fruit at 60°C. Tasting the same coffee hot, warm, and nearly cold is like hearing three different songs from one bean.</p>
+
+<h2 id="the-four-pillars">The four pillars of a good cup</h2>
+<p>These four attributes are your scaffolding. Run through them every time and the vague "it's nice" turns into something you can actually describe.</p>
+<table class="flavour-table">
+<thead>
+<tr>
+<th>Pillar</th>
+<th>What it is</th>
+<th>What good looks like</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Acidity</strong></td>
+<td>The brightness or sparkle — a positive word in coffee, not a flaw. Shows up as citrus, apple, grape, stone fruit.</td>
+<td>Crisp and lively = quality. Sharp, sour and harsh = under-ripe or under-extracted.</td>
+</tr>
+<tr>
+<td><strong>Sweetness</strong></td>
+<td>Coffee is the seed of a fruit, and better beans carry more natural sugar — caramel, honey, brown sugar, ripe fruit.</td>
+<td>Clear sweetness with no sugar added = excellent green-bean quality.</td>
+</tr>
+<tr>
+<td><strong>Body</strong></td>
+<td>The weight and texture in your mouth — not a flavour but a feeling. Tea-like and light, or syrupy and coating?</td>
+<td>Neither is "better," but a full, round body signals a well-developed roast and good extraction.</td>
+</tr>
+<tr>
+<td><strong>Aftertaste</strong></td>
+<td>The impression left after you swallow — how long it lasts and how it ends.</td>
+<td>Long, sweet and clean = quality. Short, bitter or woody = stale or over-extracted.</td>
+</tr>
+</tbody>
+</table>
+<div class="callout">
+<p class="callout-title">🤔 Sour or bitter? A quick diagnosis</p>
+<p>Beginners constantly mix these two up. A simple home rule from the pros: a balanced coffee should be about <strong>as sour as it is bitter.</strong> If it's aggressively sour, it's often <em>under</em>-extracted (grind finer or use hotter water). If it's flatly bitter, it's often <em>over</em>-extracted or the grind is too fine. Before you blame the bean, rule out your brew — your <a href="/posts/coffee-brewing-methods">brewing method</a> shapes the cup as much as the roast.</p>
+</div>
+
+<h2 id="name-what-you-taste">Putting a name to what you taste</h2>
+<p>This is the part that feels like magic but is really just vocabulary. You can't recognise a flavour you've never consciously named — it's like showing red to a baby. The colour is right there, but the brain has no word for it yet. Coffee works the same way.</p>
+<p>The fix is to go <strong>big first, then zoom in.</strong> Don't reach for "blueberry jam" on the first sip. Ask broad questions and narrow down:</p>
+<ul>
+<li>Is it <strong>fruity</strong> or not?</li>
+<li>If fruity — citrus and bright, or dark and jammy?</li>
+<li>If citrus — lemon? orange? grapefruit?</li>
+</ul>
+<p>Each question gets you one step closer without the pressure of nailing it instantly. The industry's shared map for this is the <strong>SCA Coffee Taster's Flavour Wheel</strong> (SCA stands for the Specialty Coffee Association) — it starts at broad categories in the centre and fans out to specific notes at the rim, exactly mirroring the big-to-small approach.</p>
+<p>A rough starting key, by origin and the categories we use across <a href="/shop">the catalogue</a>:</p>
+<table class="flavour-table">
+<thead>
+<tr>
+<th>If you taste…</th>
+<th>It might be…</th>
+<th>Often from…</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bright, floral, tea-like</td>
+<td>Jasmine, bergamot, lemon, peach</td>
+<td>Ethiopia, Kenya, Panama Geisha</td>
+</tr>
+<tr>
+<td>Sweet and balanced</td>
+<td>Caramel, honey, red apple, brown sugar</td>
+<td>Colombia, Costa Rica, Guatemala</td>
+</tr>
+<tr>
+<td>Smooth, rich, low-acid</td>
+<td>Dark chocolate, almond, hazelnut, malt</td>
+<td>Brazil, El Salvador</td>
+</tr>
+<tr>
+<td>Earthy, spicy, heavy</td>
+<td>Clove, cedar, tobacco, leather</td>
+<td>Sumatra, India, Papua New Guinea</td>
+</tr>
+</tbody>
+</table>
+<p>One honest caveat: these origin links only hold for genuine single-origin beans, and how a coffee is <a href="/posts/coffee-processing-methods">processed</a> and <a href="/posts/coffee-roast-levels-explained">roasted</a> can shift the whole profile. A natural-process Ethiopian tastes wildly different from a washed one. If you want the deeper version of decoding what's on the bag, our guide to <a href="/posts/how-to-read-flavour-notes">reading flavour notes</a> picks up exactly here.</p>
+
+<h2 id="train-your-palate">Train your palate (the part that actually works)</h2>
+<p>Tasting is a muscle. Here's how working pros build it — and none of it requires expensive gear.</p>
+
+<h3>Eat and drink more "pure"</h3>
+<p>Modern food is loaded with concentrated salt and sugar, which dulls your sensitivity to subtler tastes. It's why so many people taste a sweet espresso and call it "bitter" — their reference for sweetness has been reset by soft drinks. Recalibrate by tasting real ingredients: smell a fresh lemon instead of lemonade, compare a red apple to a green one, smell the difference between tomato varieties at the market. You're building a flavour library your brain can pull from later.</p>
+
+<h3>Compare two coffees side by side</h3>
+<p>This is the fastest shortcut to a sharper palate. A single coffee gives you nothing to push against; two coffees make differences jump out. The classic exercise is a <a href="/posts/natural-vs-washed-coffee">washed versus natural</a> pair of the same origin — suddenly "they're different" becomes "oh, this one is cleaner and that one is jammy."</p>
+
+<h3>Write everything down</h3>
+<p>Keep a simple coffee diary. Note the bean, the roast date, how you brewed it, and three words for how it tasted. Writing forces you to commit to a description, and looking back shows you patterns — that you love naturals, say, or that a coffee you struggled with last week makes sense now. Professionals keep dial-in sheets for exactly this reason.</p>
+
+<h3>Taste with other people</h3>
+<p>Tasting out loud is uncomfortable at first and invaluable fast. Hearing how someone else describes the same cup calibrates your own vocabulary and surfaces notes you'd have missed. If words fail you, try colours — "this tastes light red with an orange finish" — since the brain links colour to flavour more readily than it reaches for fruit names.</p>
+
+<div class="callout">
+<p class="callout-title">☕ The one-line version</p>
+<p>Smell before you sip. Slurp to spread it around. Go big (fruity? sweet? bright?) before you go small. Taste it again as it cools. Write down three words. Do that with two coffees a week and your palate will climb faster than you'd believe.</p>
+</div>
+
+<h2 id="common-mistakes">Common mistakes that flatten the flavour</h2>
+<ul>
+<li><strong>Drinking it scalding hot.</strong> Heat masks nuance. The interesting notes show up as the cup cools — give it ten minutes.</li>
+<li><strong>Sipping politely.</strong> A genteel sip wastes the aroma. Slurp, even alone in your kitchen.</li>
+<li><strong>Holding your nose, literally or figuratively.</strong> If you're not actively smelling, you're getting maybe 20% of the cup.</li>
+<li><strong>Tasting beans that are too fresh.</strong> Days 1–2 off the roast can fizz and prickle. Rest them.</li>
+<li><strong>Blaming the bean for a brewing error.</strong> Sour or bitter is often extraction, not the coffee. Check your <a href="/posts/coffee-brewing-methods">grind and method</a> first.</li>
+<li><strong>Chasing the "right" answer.</strong> If you taste plum and the bag says cherry, you're not wrong — you're close, and close is the whole game.</li>
+</ul>
+
+<h2 id="faq">Frequently asked questions</h2>
+<details class="faq-item">
+<summary>Do I need special equipment to taste specialty coffee at home?</summary>
+<div class="faq-answer"><p>No. A spoon, a bowl or mug, a kitchen scale and a kettle are enough to run a simple home cupping. You don't need an espresso machine or fancy filters — the point of cupping is to strip brewing variables away so you taste the bean itself.</p></div>
+</details>
+<details class="faq-item">
+<summary>Why do you slurp coffee when tasting it?</summary>
+<div class="faq-answer"><p>Slurping sprays a fine mist of coffee across your whole tongue at once and aerates it, pushing aroma up into your nasal cavity. Since most of what we call flavour is actually smell, that burst of aroma is what lets you pick out fruit, chocolate or floral notes.</p></div>
+</details>
+<details class="faq-item">
+<summary>Is the tongue map real — does the tip taste sweet and the back taste bitter?</summary>
+<div class="faq-answer"><p>No. The tongue map is a myth that came from a mistranslated 1901 study. Every taste — sweet, sour, salty, bitter and umami — can be detected across the whole tongue. There's no single zone that only tastes sweetness or only tastes bitterness.</p></div>
+</details>
+<details class="faq-item">
+<summary>How fresh should beans be for tasting?</summary>
+<div class="faq-answer"><p>For critical tasting, let beans rest about 4 to 7 days after the roast date. Coffee roasted in the last day or two is still releasing carbon dioxide, which can give a sharp, prickly sensation that masks the more delicate flavour notes.</p></div>
+</details>
+<details class="faq-item">
+<summary>How long does it take to train your palate?</summary>
+<div class="faq-answer"><p>There's no fixed timeline, but it builds faster than people expect. Tasting a little every day, comparing two coffees side by side, and writing down what you notice will sharpen your palate within a few weeks. The skill is repetition, not talent.</p></div>
+</details>
+
+<div class="callout">
+<p class="callout-title">🫘 Ready to put it into practice?</p>
+<p>The best way to train your palate is on coffee worth tasting. Browse <a href="/shop">our selection of Malaysian-roasted beans</a> — each one comes with tasting notes you can hold up against what you actually find in the cup. Pick two contrasting origins, run the five steps, and see how close you get. Not sure where to start? <a href="/posts/how-to-choose-coffee-beans">How to choose coffee beans</a> walks you through it.</p>
+</div>
+
+<div class="post-tags">
+<span class="post-tag">Tasting</span>
+<span class="post-tag">Cupping</span>
+<span class="post-tag">Specialty Coffee</span>
+<span class="post-tag">Palate Training</span>
+<span class="post-tag">Flavour Notes</span>
+<span class="post-tag">Beginners</span>
+</div>
+<div class="post-nav">
+<a href="/library">← Back to Coffee Library</a>
+<a href="/shop">Browse Coffee Beans →</a>
+</div>
+</div><!-- /post-body -->
+<aside aria-label="Table of contents" class="toc-sidebar">
+<details class="toc-inner" open>
+<summary class="toc-title">Contents</summary>
+<nav class="toc-nav">
+<a class="toc-link" href="#taste-vs-flavour">Taste vs. flavour</a>
+<a class="toc-link" href="#forget-the-tongue-map">Forget the tongue map</a>
+<a class="toc-link" href="#set-up-a-fair-tasting">Set up a fair tasting</a>
+<a class="toc-link" href="#the-five-steps">The five steps</a>
+<a class="toc-link" href="#the-four-pillars">The four pillars</a>
+<a class="toc-link" href="#name-what-you-taste">Name what you taste</a>
+<a class="toc-link" href="#train-your-palate">Train your palate</a>
+<a class="toc-link" href="#common-mistakes">Common mistakes</a>
+<a class="toc-link" href="#faq">FAQ</a>
+</nav>
+</details>
+</aside>
+</div><!-- /post-layout -->
+<div class="more-posts">
+<div class="more-posts-inner">
+<h2>More from the Library</h2>
+<div class="more-grid">
+<a class="more-card" href="/posts/how-to-read-flavour-notes">
+<div class="more-card-emoji">📖</div>
+<h3>How to Read Flavour Notes in Coffee (Without Feeling Lost)</h3>
+<div class="more-card-meta">6 min read</div>
+</a>
+<a class="more-card" href="/posts/coffee-processing-methods">
+<div class="more-card-emoji">⚙️</div>
+<h3>Natural vs Washed vs Honey — Coffee Processing Explained</h3>
+<div class="more-card-meta">7 min read</div>
+</a>
+<a class="more-card" href="/posts/coffee-roast-levels-explained">
+<div class="more-card-emoji">🔥</div>
+<h3>Light vs Medium vs Dark — Coffee Roast Levels Explained</h3>
+<div class="more-card-meta">6 min read</div>
+</a>
+</div>
+</div>
+</div>
+<!-- FOOTER -->
+<!--#include virtual="/partials/footer.html" -->
+<script>
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+
+// Parallax scroll
+(function () {
+  const img = document.getElementById('parallaxImg');
+  if (!img) return;
+
+  let ticking = false;
+  function onScroll() {
+    if (!ticking) {
+      requestAnimationFrame(function () {
+        const banner = img.parentElement;
+        const rect = banner.getBoundingClientRect();
+        const inView = rect.bottom > 0 && rect.top < window.innerHeight;
+        if (inView) {
+          const offset = (rect.top / window.innerHeight) * 60;
+          img.style.transform = 'translateY(' + offset + 'px)';
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+    // TOC — highlight active section on scroll
+    (function () {
+      const tocLinks = document.querySelectorAll('.toc-link[href^="#"]');
+      const headings = Array.from(document.querySelectorAll('.post-body h2[id]'));
+      if (!tocLinks.length || !headings.length) return;
+      function setActive(id) {
+        tocLinks.forEach(l => {
+          l.classList.toggle('active', l.getAttribute('href') === '#' + id);
+        });
+      }
+      if (headings[0]) setActive(headings[0].id);
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      }, { rootMargin: '-10% 0px -80% 0px', threshold: 0 });
+      headings.forEach(h => observer.observe(h));
+      tocLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+          const target = document.querySelector(this.getAttribute('href'));
+          if (!target) return;
+          e.preventDefault();
+          const offset = 88;
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        });
+      });
+    })();
+
+  </script>
+
+</body>
+</html>

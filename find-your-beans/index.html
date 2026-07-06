@@ -15,20 +15,20 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <meta name="robots" content="index, follow" />
   <title>Find Your Beans | Malaysia's Most Complete Coffee Directory</title>
-  <meta content="851 specialty beans from 52 Malaysian roasters in one directory. Take the 30-second taste quiz and get matched to beans you can buy direct from the roaster." name="description" />
+  <meta content="851 specialty beans from 55 Malaysian roasters in one directory. Take the 30-second taste quiz and get matched to beans you can buy direct from the roaster." name="description" />
   <link rel="canonical" href="https://www.thebeanshub.com/find-your-beans" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Find Your Beans | Malaysia's Most Complete Coffee Directory" />
-  <meta property="og:description" content="851 beans from 52 Malaysian roasters. Take the 30-second taste quiz and get matched to beans you can buy direct from the roaster." />
+  <meta property="og:description" content="851 beans from 55 Malaysian roasters. Take the 30-second taste quiz and get matched to beans you can buy direct from the roaster." />
   <meta property="og:url" content="https://www.thebeanshub.com/find-your-beans" />
   <meta property="og:image" content="https://www.thebeanshub.com/img/thebeanshub_logo.png" />
   <meta property="og:site_name" content="The Beans Hub" />
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Find Your Beans | Malaysia's Most Complete Coffee Directory" />
-  <meta name="twitter:description" content="851 beans from 52 Malaysian roasters. Take the 30-second taste quiz and get matched." />
+  <meta name="twitter:description" content="851 beans from 55 Malaysian roasters. Take the 30-second taste quiz and get matched." />
   <meta name="twitter:image" content="https://www.thebeanshub.com/img/thebeanshub_logo.png" />
 
   <link href="https://fonts.googleapis.com/css2?family=Sigmar&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -147,6 +147,9 @@
     .results-title { font-family: "Sigmar", cursive; font-size: 1.45rem; color: var(--green); }
     .results-sub { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 8px; }
     .results-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 16px; margin-top: 20px; }
+    .results-note { max-width: 480px; margin: 22px auto 0; padding: 16px 18px; background: var(--tag-bg); border: 1px solid var(--border); border-radius: 12px; }
+    .results-note p { margin: 0; font-size: 0.9rem; line-height: 1.6; color: var(--text-muted); }
+    .results-note strong { color: var(--green); }
     .bean-card { background: #fff; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s; }
     .bean-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(41,98,65,0.12); }
     .bean-card img { width: 100%; height: 160px; object-fit: cover; background: var(--tag-bg); display: block; }
@@ -312,7 +315,7 @@
     <section class="hero">
       <div class="hero-grain"></div>
       <div class="hero-left">
-        <div class="hero-eyebrow">☕ 851 beans · 52 roasters</div>
+        <div class="hero-eyebrow">☕ 851 beans · 55 roasters</div>
         <h1 class="hero-title">Malaysia's most complete<br /><em>specialty coffee directory</em></h1>
         <p class="hero-sub">Every specialty bag roasted in Malaysia, in one place. Filter by taste, roast, origin and process — then buy straight from the roaster.</p>
         <div class="hero-cta-row">
@@ -337,7 +340,7 @@
     <div class="quiz-head">
       <div class="sec-label">The taste quiz</div>
       <h2 class="sec-title">Find your 5 perfect Malaysian beans</h2>
-      <p class="sec-sub">Five quick taps. We'll read your taste, name your coffee profile, and match you to beans — and the roasters who make them — from across all 52.</p>
+      <p class="sec-sub">Five quick taps. We'll read your taste, name your coffee profile, and match you to beans — and the roasters who make them — from across all 55.</p>
     </div>
 
     <div class="quiz-card">
@@ -440,8 +443,8 @@
       <div class="quiz-step" data-step="6">
         <div class="gate">
           <div class="gate-icon">✦</div>
-          <div class="gate-title">Your coffee profile + 5 matches are ready.</div>
-          <p class="gate-sub">Drop your email to reveal your taste profile and your 5 matched beans — plus we'll keep you in the loop when roasters switch up their beans or a new one lands.</p>
+          <div class="gate-title">Your coffee profile is ready.</div>
+          <p class="gate-sub">Tell us where to send your matches. We'll reveal your taste profile now, then a real person hand-picks your 5 beans and emails them to you within 24 hours.</p>
           <form class="gate-form" id="gateForm" onsubmit="return submitGate(event)">
             <input type="text" id="gateName" placeholder="How can we address you?" required autocomplete="given-name" aria-label="Your name" />
             <input type="email" id="gateEmail" placeholder="your@email.com" required autocomplete="email" />
@@ -455,12 +458,14 @@
       <div class="quiz-step" data-step="7">
         <div class="verdict" id="verdict"></div>
         <div class="results-head">
-          <div class="results-title">Your 5 matched beans ✦</div>
-          <p class="results-sub" id="resultsSub">Based on your taste profile, from across 52 Malaysian roasters.</p>
+          <div class="results-title" id="resultsTitle">Your beans are on the way ✦</div>
+          <p class="results-sub" id="resultsSub">Quick promise: this isn't one of those forms that drops everyone into the same automated mailout. There's no fixed set of beans "for your type" — your taste, your brew, and your budget are your own, and Malaysian roasters refresh what they've got all the time. So a real person reads your answers and hand-picks 5 beans that genuinely suit you. Give us up to 24 hours and they'll be in your inbox.</p>
         </div>
-        <div class="results-grid" id="resultsGrid"></div>
+        <div class="results-note">
+          <p>📩 One favour — <strong>peek at your spam or promotions folder</strong> over the next 24 hours, just in case we land there. Move us to your inbox so your picks don't get buried, and if you've got a sec, hit reply and say hi so we know it reached you.</p>
+        </div>
         <div class="results-foot">
-          <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:10px;">Each button takes you straight to the roaster's own store — they ship it to you.</p>
+          <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:10px;">In the meantime, explore the whole catalogue yourself.</p>
           <a href="/shop">Browse all 851 beans in the full directory →</a>
         </div>
       </div>
@@ -477,7 +482,7 @@
       </div>
       <div class="stat-row">
         <div class="stat-card"><div class="stat-num">851</div><div class="stat-label">beans catalogued</div></div>
-        <div class="stat-card"><div class="stat-num">52</div><div class="stat-label">roasters, from KL to Sabah</div></div>
+        <div class="stat-card"><div class="stat-num">55</div><div class="stat-label">roasters, from KL to Sabah</div></div>
         <div class="stat-card"><div class="stat-num">8</div><div class="stat-label">taste-note families to filter by</div></div>
       </div>
       <div class="roaster-wall" id="roasterWall"></div>
@@ -821,6 +826,7 @@
       var btn = document.getElementById('gateBtn');
       btn.textContent = 'Matching…'; btn.disabled = true;
       gtag('event', 'quiz_complete');
+      answers.name = name;
       var payload = {
         name: name, email: email, source: 'find-your-beans-quiz',
         milk: answers.milk, brew: answers.brew, flavours: answers.flavours.join(', '),
@@ -862,15 +868,9 @@
 
     function reveal() {
       document.getElementById('verdict').innerHTML = buildVerdict();
-      renderResults();
-      var sub = [];
-      if (answers.flavours.length && answers.flavours[0] !== 'any') sub.push(answers.flavours.join(' + '));
-      if (answers.roast && answers.roast !== 'any') sub.push(ROAST_LABEL[answers.roast] + ' roast');
-      var rbc = brewCat(answers.brew);
-      if (rbc !== 'any') sub.push('for ' + rbc);
-      document.getElementById('resultsSub').textContent =
-        sub.length ? 'Matched to: ' + sub.join(' · ') + ' — from across 52 Malaysian roasters.'
-                   : 'A spread from across 52 Malaysian roasters.';
+      if (answers.name) {
+        document.getElementById('resultsTitle').textContent = 'Your beans are on the way, ' + answers.name + ' ✦';
+      }
       goStep(7);
     }
 
@@ -909,7 +909,7 @@
     (function () {
       var w = document.getElementById('roasterWall');
       w.innerHTML = ROASTERS.map(function (r) { return '<span class="roaster-chip">' + r + '</span>'; }).join('')
-        + '<span class="roaster-chip roaster-more">+ 34 more</span>';
+        + '<span class="roaster-chip roaster-more">+ 37 more</span>';
     })();
 
     // ---------- NAV ----------

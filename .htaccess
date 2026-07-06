@@ -36,6 +36,21 @@ RewriteRule ^origin_country/thailand /shop/thailand-coffee-beans [R=301,L,NC]
 # Everything else from the old WP structure → main shop page.
 RewriteRule ^(?:product|coffee_bean|coffee-beans|origin_country|brand)(/.*)?$ /shop [R=301,L,NC]
 
+# ── SEO: directory pages — serve index.html at the clean slash-less URL ──
+# Every page lives as <slug>/index.html, but all canonical tags, sitemap
+# entries and internal links use the slash-less URL (/shop/ethiopia-coffee-beans).
+# Without these rules, mod_dir 301s the slash-less URL to its trailing-slash
+# twin, so every canonical/sitemap URL pointed at a redirect — GSC reported
+# the canonical URLs as "Page is not indexed: Page with redirect" and
+# Google self-selected the /slash/ variants instead. (Diagnosed 5 Jul 2026.)
+# 1. Trailing-slash directory URLs 301 → slash-less canonical (skip root & partials)
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteCond %{REQUEST_URI} !^/partials/
+RewriteRule ^(.+)/$ /$1 [R=301,L]
+# 2. Serve the directory's index.html directly so mod_dir never redirects
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^(.+[^/])$ $1/index.html [L]
+
 # Remove .html extension
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f

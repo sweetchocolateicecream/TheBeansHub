@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hero Beans Fill — Preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Sigmar&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --cream:#FDF6EC; --green:#296241; --accent:#FDA11D; --accent-hover:#DA8A10;
+    --tag-bg:#f0ebe0; --tag-text:#296241; --border:#E8E0D0; --text-muted:#5a6e5a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Outfit",sans-serif;background:var(--cream);color:var(--green)}
+
+  .hero-wrap{padding:60px 20px 40px;max-width:1200px;margin:0 auto}
+  .hero{position:relative;border-radius:24px;overflow:hidden;
+    background:linear-gradient(135deg,#296241 0%,#1f4d33 100%);
+    display:grid;grid-template-columns:1.05fr 0.95fr;gap:20px;align-items:center;
+    padding:64px 56px;min-height:520px}
+
+  /* --- bean animation layer --- */
+  .hero-beans{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+  /* readability scrim so the h1 stays legible over the beans */
+  .hero-scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
+    background:linear-gradient(90deg,rgba(31,77,51,0.85) 0%,rgba(31,77,51,0.55) 34%,rgba(31,77,51,0) 60%)}
+  .hero-grain{position:absolute;inset:0;opacity:0.05;pointer-events:none;z-index:1;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+  .hero-left{position:relative;z-index:2}
+  .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(253,161,29,0.18);
+    border:1px solid rgba(253,161,29,0.4);color:var(--accent);font-size:0.74rem;font-weight:600;
+    letter-spacing:0.1em;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:22px}
+  .hero-title{font-family:"Sigmar",cursive;font-size:clamp(2.1rem,4vw,3.4rem);color:var(--cream);
+    line-height:1.12;margin-bottom:18px}
+  .hero-title em{font-style:normal;color:var(--accent)}
+  .hero-sub{font-size:1.05rem;color:rgba(253,246,236,0.82);line-height:1.65;max-width:460px;margin-bottom:26px}
+  .btn-primary{display:inline-block;background:var(--accent);color:#1f4d33;font-weight:700;
+    text-decoration:none;padding:15px 30px;border-radius:12px;font-size:1rem;transition:background .2s}
+  .btn-primary:hover{background:var(--accent-hover)}
+  .hero-note{font-size:0.82rem;color:rgba(253,246,236,0.6);margin-top:14px}
+
+  .demo{position:relative;z-index:2;background:var(--cream);border-radius:18px;padding:22px;
+    box-shadow:0 24px 60px rgba(0,0,0,0.28)}
+  .demo-head{display:flex;justify-content:space-between;font-size:0.72rem;font-weight:600;
+    letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px}
+  .demo-head .live{color:var(--accent)}
+  .demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .demo-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:12px;font-size:0.8rem}
+  .demo-card b{display:block;color:var(--green);margin:6px 0 2px}
+  .demo-card .price{color:var(--text-muted)}
+  .demo-card .roaster{font-size:0.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);font-weight:600}
+  .demo-card .thumb{height:56px;border-radius:8px;background:linear-gradient(135deg,#3a6b4c,#2b5138)}
+
+  @media(max-width:820px){
+    .hero{grid-template-columns:1fr;padding:44px 28px}
+    .hero-scrim{background:linear-gradient(180deg,rgba(31,77,51,0.6) 0%,rgba(31,77,51,0.35) 100%)}
+  }
+
+  .note-bar{max-width:1200px;margin:0 auto;padding:0 20px 60px;color:var(--text-muted);font-size:.9rem;line-height:1.6}
+  .note-bar code{background:var(--tag-bg);padding:2px 6px;border-radius:5px;color:var(--green)}
+</style>
+</head>
+<body>
+
+<div class="hero-wrap">
+  <section class="hero">
+    <!-- animation layer -->
+    <canvas class="hero-beans" id="heroBeans" aria-hidden="true"></canvas>
+    <div class="hero-scrim"></div>
+    <div class="hero-grain"></div>
+
+    <div class="hero-left">
+      <div class="hero-eyebrow">☕ 851 beans · 55 roasters</div>
+      <h1 class="hero-title">Malaysia's most complete<br /><em>specialty coffee directory</em></h1>
+      <p class="hero-sub">Every specialty bag roasted in Malaysia, in one place. Filter by taste, roast, origin and process — then buy straight from the roaster.</p>
+      <a href="#" class="btn-primary">Match me to my beans →</a>
+      <p class="hero-note">30-second taste quiz. No spam — unsubscribe any time.</p>
+    </div>
+
+    <div class="demo">
+      <div class="demo-head"><span>Live directory</span><span class="live">● real beans</span></div>
+      <div class="demo-grid">
+        <div class="demo-card"><div class="thumb"></div><span class="roaster">103 Coffee</span><b>Colombia Narino</b><span class="price">RM 70</span></div>
+        <div class="demo-card"><div class="thumb"></div><span class="roaster">2F Roastery</span><b>Yun Nan Lan</b><span class="price">RM 90</span></div>
+        <div class="demo-card"><div class="thumb"></div><span class="roaster">43 Coffee</span><b>Ethiopia Aricha</b><span class="price">RM 33</span></div>
+        <div class="demo-card"><div class="thumb"></div><span class="roaster">Afloat</span><b>Macro Espresso</b><span class="price">RM 70</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="note-bar">
+  Preview only. To ship this, copy the <code>&lt;canvas class="hero-beans"&gt;</code> + <code>&lt;div class="hero-scrim"&gt;</code> into the real hero, add the <code>.hero-beans</code>/<code>.hero-scrim</code> CSS, and the script block at the bottom. Nothing else on the page changes.
+</div>
+
+<script>
+(function(){
+  const canvas = document.getElementById('heroBeans');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // --- Malaysia outline (lon/lat), Peninsular + Borneo ---
+  const POLYS = [
+    [[101.075516,6.204867],[101.154219,5.691384],[101.814282,5.810808],[102.141187,6.221636],[102.371147,6.128205],[102.961705,5.524495],[103.381215,4.855001],[103.438575,4.181606],[103.332122,3.726698],[103.429429,3.382869],[103.502448,2.791019],[103.854674,2.515454],[104.247932,1.631141],[104.228811,1.293048],[103.519707,1.226334],[102.573615,1.967115],[101.390638,2.760814],[101.27354,3.270292],[100.695435,3.93914],[100.557408,4.76728],[100.196706,5.312493],[100.30626,6.040562],[100.085757,6.464489],[100.259596,6.642825]],
+    [[118.618321,4.478202],[117.882035,4.137551],[117.015214,4.306094],[115.865517,4.306559],[115.519078,3.169238],[115.134037,2.821482],[114.621355,1.430688],[113.80585,1.217549],[112.859809,1.49779],[112.380252,1.410121],[111.797548,0.904441],[111.159138,0.976478],[110.514061,0.773131],[109.830227,1.338136],[109.66326,2.006467],[110.396135,1.663775],[111.168853,1.850637],[111.370081,2.697303],[111.796928,2.885897],[112.995615,3.102395],[113.712935,3.893509],[114.204017,4.525874],[114.659596,4.007637],[114.869557,4.348314],[115.347461,4.316636],[115.4057,4.955228],[115.45071,5.44773],[116.220741,6.143191],[116.725103,6.924771],[117.129626,6.928053],[117.643393,6.422166],[117.689075,5.98749],[118.347691,5.708696],[119.181904,5.407836],[119.110694,5.016128],[118.439727,4.966519]]
+  ];
+  const LON=[100.085757,119.181904], LAT=[0.773131,6.928053];
+  const meanLat=(LAT[0]+LAT[1])/2*Math.PI/180;
+
+  const BEAN_COLORS=['#FDA11D','#DA8A10','#f6c56a','#6f4a2f','#8a5a38','#FDF6EC'];
+
+  let W,H,dpr, mapPolys, targets, beans, settledCanvas, settledCtx, filledCount, spawnAcc, running, done;
+  const BEAN=6;            // bean radius-ish
+  const STEP=BEAN*1.55;    // target grid spacing
+  const GRAV=0.55, MAXV=13;
+
+  function project(box){
+    const gw=(LON[1]-LON[0])*Math.cos(meanLat), gh=(LAT[1]-LAT[0]);
+    const s=Math.min(box.w/gw, box.h/gh);
+    const drawW=gw*s, drawH=gh*s;
+    const ox=box.x+(box.w-drawW)/2, oy=box.y+(box.h-drawH)/2;
+    return {
+      s, toXY:(lon,lat)=>[ ox+(lon-LON[0])*Math.cos(meanLat)*s, oy+(LAT[1]-lat)*s ]
+    };
+  }
+
+  function pointInPoly(x,y,poly){
+    let inside=false;
+    for(let i=0,j=poly.length-1;i<poly.length;j=i++){
+      const xi=poly[i][0],yi=poly[i][1],xj=poly[j][0],yj=poly[j][1];
+      if(((yi>y)!=(yj>y)) && (x < (xj-xi)*(y-yi)/(yj-yi)+xi)) inside=!inside;
+    }
+    return inside;
+  }
+  function insideMap(x,y){ for(const p of mapPolys){ if(pointInPoly(x,y,p)) return true; } return false; }
+
+  function setup(){
+    dpr=Math.min(window.devicePixelRatio||1,2);
+    const r=canvas.getBoundingClientRect();
+    W=r.width; H=r.height;
+    canvas.width=W*dpr; canvas.height=H*dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+
+    // map occupies center-right of the hero; keep some margin
+    const box={ x:W*0.30, y:H*0.10, w:W*0.62, h:H*0.80 };
+    if(W<820){ box.x=W*0.12; box.y=H*0.06; box.w=W*0.76; box.h=H*0.9; }
+    const proj=project(box);
+    mapPolys=POLYS.map(poly=>poly.map(([lon,lat])=>proj.toXY(lon,lat)));
+
+    // sample target slots inside the map
+    let minX=1e9,minY=1e9,maxX=-1e9,maxY=-1e9;
+    mapPolys.forEach(p=>p.forEach(([x,y])=>{minX=Math.min(minX,x);minY=Math.min(minY,y);maxX=Math.max(maxX,x);maxY=Math.max(maxY,y);}));
+    targets=[];
+    for(let y=minY;y<=maxY;y+=STEP){
+      for(let x=minX;x<=maxX;x+=STEP){
+        const jx=x+(Math.random()-0.5)*STEP*0.4, jy=y+(Math.random()-0.5)*STEP*0.4;
+        if(insideMap(jx,jy)) targets.push({x:jx,y:jy});
+      }
+    }
+    // fill bottom-first, so it "pours" up like a container
+    targets.sort((a,b)=> b.y-a.y || (Math.random()-0.5));
+
+    settledCanvas=document.createElement('canvas');
+    settledCanvas.width=W*dpr; settledCanvas.height=H*dpr;
+    settledCtx=settledCanvas.getContext('2d');
+    settledCtx.setTransform(dpr,0,0,dpr,0,0);
+
+    beans=[]; filledCount=0; spawnAcc=0; done=false;
+
+    if(reduce){ // no motion: just draw the filled map instantly
+      targets.forEach(t=>drawBean(settledCtx,t.x,t.y,Math.random()*Math.PI, pickColor()));
+      blit();
+      running=false;
+      return;
+    }
+  }
+
+  function pickColor(){ return BEAN_COLORS[(Math.random()*BEAN_COLORS.length)|0]; }
+
+  function drawBean(c,x,y,rot,color){
+    c.save();
+    c.translate(x,y); c.rotate(rot);
+    c.fillStyle=color;
+    c.beginPath();
+    c.ellipse(0,0,BEAN,BEAN*0.62,0,0,Math.PI*2);
+    c.fill();
+    // crease
+    c.strokeStyle='rgba(60,35,20,0.35)'; c.lineWidth=0.9;
+    c.beginPath(); c.moveTo(-BEAN*0.7,0); c.quadraticCurveTo(0,BEAN*0.28,BEAN*0.7,0); c.stroke();
+    c.restore();
+  }
+
+  function spawnBean(){
+    if(filledCount>=targets.length) return;
+    const t=targets[filledCount++];
+    beans.push({
+      x:t.x+(Math.random()-0.5)*W*0.25,
+      y:-10-Math.random()*40,
+      vx:0, vy:Math.random()*2,
+      tx:t.x, ty:t.y, rot:Math.random()*Math.PI, color:pickColor(), landed:false
+    });
+  }
+
+  function blit(){
+    ctx.clearRect(0,0,W,H);
+    ctx.drawImage(settledCanvas,0,0,W,H);
+  }
+
+  function frame(){
+    if(!running) return;
+    // spawn rate tuned so full fill ~ 5s regardless of count
+    spawnAcc += targets.length/300;
+    while(spawnAcc>=1){ spawnBean(); spawnAcc--; }
+
+    blit();
+    for(let i=beans.length-1;i>=0;i--){
+      const b=beans[i];
+      b.vy=Math.min(b.vy+GRAV,MAXV);
+      b.y+=b.vy;
+      b.x+=(b.tx-b.x)*0.12;      // drift toward target column
+      b.rot+=0.04;
+      if(b.y>=b.ty){             // landed
+        drawBean(settledCtx,b.tx,b.ty,b.rot,b.color);
+        beans.splice(i,1);
+        continue;
+      }
+      drawBean(ctx,b.x,b.y,b.rot,b.color);
+    }
+    if(filledCount>=targets.length && beans.length===0){
+      done=true; running=false; blit(); return;
+    }
+    requestAnimationFrame(frame);
+  }
+
+  function start(){ if(running||done) return; running=true; requestAnimationFrame(frame); }
+
+  // build; start when hero scrolls into view
+  function init(){
+    setup();
+    if(reduce) return;
+    const io=new IntersectionObserver(es=>{
+      es.forEach(e=>{ if(e.isIntersecting){ start(); } });
+    },{threshold:0.25});
+    io.observe(canvas);
+  }
+
+  let rt;
+  window.addEventListener('resize',()=>{ clearTimeout(rt); rt=setTimeout(()=>{ done=false;running=false; init(); },250); });
+  init();
+})();
+</script>
+</body>
+</html>

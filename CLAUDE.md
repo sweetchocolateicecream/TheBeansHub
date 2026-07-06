@@ -116,6 +116,13 @@ URL rules enforced by **`.htaccess`** — do not break these:
 - **Canonical domain = `www.thebeanshub.com`** (non-www 301s to www).
 - **Clean URLs** — `.html` is stripped and 301-redirected. **Never link with a `.html` extension.**
   Link posts as `/posts/<slug>`, categories as `/shop/<slug>`.
+- **Canonical URLs have NO trailing slash** (`/shop/ethiopia-coffee-beans`, not `.../beans/`).
+  `.htaccess` serves each directory's `index.html` directly at the slash-less URL and 301s the
+  trailing-slash variant to it. This was added 5 Jul 2026 to fix a sitewide bug: mod_dir was
+  301-ing the slash-less URL to the `/slash/` twin, so every canonical tag, sitemap entry, and
+  internal link pointed at a redirect — GSC reported the canonical URLs as "Page with redirect"
+  and Google self-selected the `/slash/` variants. **Keep canonicals, sitemap entries, and
+  internal links slash-less, and don't remove those rewrite rules.**
 - Large **301 map from the old WordPress structure** (`/product/`, `/coffee_bean/`, `/coffee-beans/`,
   `/origin_country/`, `/brand/`) into the new `/shop/` categories. This fixed ~9.2k Search Console
   404s — leave it intact.
@@ -191,13 +198,15 @@ never makes you feel like an outsider.
 - **Email capture is now live but not yet a system** — a newsletter signup is on the homepage
   (and a `/find-your-beans` page exists), but there's no lead magnet, no compelling reason-to-join,
   and social traffic is not deliberately routed into the list. See section 10 for the capture status.
-- Two older posts use a `<slug>.html` filename instead of the standard `index.html`
-  (`posts/specialty-coffee-beans-kl`, `posts/specialty-coffee-beans-pj-selangor`).
+- **Every page directory must contain an `index.html`** — the slash-less URL rewrite (section 5)
+  maps `/posts/<slug>` to `<slug>/index.html`, so a folder without one 404s. (The two legacy
+  posts that used a `<slug>.html` filename — `specialty-coffee-beans-kl`,
+  `specialty-coffee-beans-pj-selangor` — were renamed to `index.html` on 5 Jul 2026.)
 - Don't attempt an on-site checkout or a framework rebuild — it's intentionally a static, SEO-first site.
 
 ---
 
-## 10. Traffic & audience reality (as of June 2026)
+## 10. Traffic & audience reality (as of July 2026)
 
 The honest state of the funnel, established from GA4 + Search Console. Read this before judging
 traffic numbers or planning growth work.
@@ -205,8 +214,10 @@ traffic numbers or planning growth work.
 ### Channel mix — single-channel dependency
 - **Organic Social (Instagram) drives nearly everything.** It is the #1 channel by a wide margin
   and is effectively the whole top of funnel.
-- **Google Search contributes very little** — ~11 clicks and ~561 impressions over a rolling
-  3-month window, average position ~25. The site is indexed but not yet winning on its target queries.
+- **Google Search contributes very little** — ~64 clicks / ~2.5k impressions over a rolling
+  3-month window (as of 5 Jul 2026), average position ~19, and almost all clicks are branded
+  ("the beans hub" and misspellings). See the July 2026 GSC audit below: the site is **mostly
+  not indexed**, which caps search before keywords even matter.
 - **The entire traffic base rests on a single algorithm we don't control.** When Instagram reach
   cools, traffic falls with it — there is no organic-search baseline to catch the site.
 - **No owned audience yet.** Until the email list is built, there is no way to reach past visitors
@@ -226,6 +237,35 @@ traffic numbers or planning growth work.
 - Lesson: a sudden GA drop on this site is most likely a **social-reach change**, not a site bug —
   but always confirm the tag fires and cross-check Search Console before assuming either way.
 
+### The July 2026 GSC audit (why only the brand name ranks)
+Full diagnosis run 5 Jul 2026 from Search Console. Three findings, in order of importance:
+
+1. **Indexing, not keywords, is the bottleneck.** Only **16 of the 57 sitemap pages were indexed**.
+   ~40 real pages (posts + categories) sat in "Crawled – currently not indexed" — Google fetched
+   them and declined to keep them. The other 17k excluded URLs are old WordPress junk (9.4k 404s,
+   1.1k noindexed filter URLs) and are expected/harmless.
+2. **Sitewide canonical/redirect bug (fixed 5 Jul 2026, see sections 5 & 9).** Canonical tags,
+   sitemap, and internal links all used slash-less URLs, but the server 301'd those to
+   trailing-slash twins — so every declared canonical pointed at a redirect and Google
+   self-selected the `/slash/` variants. Fixed in `.htaccess`; after any redeploy, verify the
+   slash-less URLs return 200 (GSC URL Inspection → Test Live URL), resubmit `sitemap.xml`,
+   and Request Indexing on the category pages + top posts.
+3. **Non-brand demand already shows impressions, just on page 2–3 with zero clicks:**
+   "coffee blend malaysia" (~53 imp), "traditional coffee" (~48), "espresso blend malaysia" (~46),
+   "coffee blends" (~34), "specialty coffee beans" (~28), "ethiopia coffee beans" (~6), plus
+   bean-level queries ("kiambu aa", "ethiopian guji buku sayisa"). Content quality is NOT the
+   problem (posts are 1.6k–2.2k words with schema and internal links). The remaining constraint
+   is **domain authority — the site has essentially no backlinks**, the classic cause of
+   "Crawled – currently not indexed" at this scale.
+
+Priority order that follows: (a) deploy the canonical fix + force re-indexing, (b) build
+backlinks — the 52 featured roasters are the warmest targets ("we feature you" outreach), plus
+Malaysian directories/communities, (c) harvest existing impressions — the arabica-blend category
+page collects the "coffee blend / espresso blend malaysia" impressions with a mismatched title;
+retitle/expand or split out a blends page, and point internal links at `/shop/ethiopia-coffee-beans`
+(best non-home performer: ~355 imp). **Do NOT mass-generate per-bean pages until (a) and (b) have
+landed** — they would just pile into "Crawled – currently not indexed".
+
 ### Capture & growth status — done vs. not done
 **Done / in place:**
 - Newsletter signup is live on the homepage.
@@ -238,7 +278,7 @@ traffic numbers or planning growth work.
 - Instagram traffic is **not deliberately funnelled into the email list** — capturing the *next*
   spike into owned audience is the urgent job.
 - **Organic-search baseline is weak.** The 850-bean / 52-roaster catalogue and ~40 articles are an
-  underused SEO asset — long-tail roaster / origin / taste queries are winnable with on-page work
-  and internal linking, and would give traffic that survives quiet posting weeks.
+  underused SEO asset, but the July 2026 audit showed on-page work alone won't unlock it —
+  indexing + backlinks come first (see the July 2026 GSC audit above for the priority order).
 - Posting cadence is not yet a repeatable system (the Instagram Content System project exists to
   support this); virality should be treated as a bonus on top of consistency, not the plan.
