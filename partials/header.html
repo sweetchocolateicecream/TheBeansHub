@@ -10,14 +10,15 @@
   .skip-link { position: absolute; left: 50%; top: -60px; transform: translateX(-50%); z-index: 200; background: var(--green,#296241); color: #FDF6EC; padding: 10px 18px; border-radius: 0 0 10px 10px; font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: top 0.2s; }
   .skip-link:focus { top: 0; }
 
-  /* --- announcement bar --- */
-  .announce-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 101; height: 38px; display: flex; align-items: center; justify-content: center; background: #FFF3DF; border-bottom: 2px solid var(--accent,#FDA11D); overflow: hidden; padding: 0 16px; padding-left: max(16px, env(safe-area-inset-left)); padding-right: max(16px, env(safe-area-inset-right)); }
-  .announce-track { position: relative; width: 100%; max-width: 900px; height: 100%; }
-  .announce-msg { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: 7px; text-align: center; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.02em; color: var(--green,#296241); opacity: 0; transform: translateY(6px); transition: opacity 0.5s ease, transform 0.5s ease; pointer-events: none; }
-  .announce-msg.active { opacity: 1; transform: translateY(0); pointer-events: auto; }
-  .announce-msg a { color: var(--accent,#FDA11D); text-decoration: underline; font-weight: 700; }
-  .announce-msg a:hover { color: var(--accent-hover,#DA8A10); }
-  .announce-msg .ann-em { color: var(--accent,#FDA11D); font-weight: 700; }
+  /* --- announcement bar (Tasting Flight launch) --- */
+  .announce-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 101; height: 38px; display: flex; align-items: center; justify-content: center; gap: 7px; background: var(--green,#296241); border-bottom: 2px solid var(--accent,#FDA11D); overflow: hidden; padding: 0 16px; padding-left: max(16px, env(safe-area-inset-left)); padding-right: max(16px, env(safe-area-inset-right)); text-align: center; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.02em; color: var(--cream,#FDF6EC); text-decoration: none; white-space: nowrap; }
+  .announce-bar .ann-cta { color: var(--accent,#FDA11D); font-weight: 700; margin-left: 5px; }
+  .announce-bar:hover .ann-cta { text-decoration: underline; color: var(--accent,#FDA11D); }
+  .announce-bar .ann-short { display: none; }
+  @media (max-width: 520px) {
+    .announce-bar .ann-long { display: none; }
+    .announce-bar .ann-short { display: inline; }
+  }
 
   /* --- nav --- */
   .tbh-nav { position: fixed; top: 38px; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; padding-left: max(48px, env(safe-area-inset-left)); padding-right: max(48px, env(safe-area-inset-right)); height: 68px; background: #296241; border-radius: 0 0 22px 22px; box-shadow: 0 8px 24px rgba(41,98,65,0.18); }
@@ -70,13 +71,10 @@
 <a class="skip-link" href="#main-content">Skip to content</a>
 
 <!-- ANNOUNCEMENT BAR -->
-<div class="announce-bar" aria-label="Announcements">
-  <div class="announce-track" id="announceTrack">
-    <div class="announce-msg active">🆕 <span>Fresh this week — <span class="ann-em">new beans just added</span> from Malaysian roasters</span></div>
-    <div class="announce-msg">☕ <span><span class="ann-em">750+</span> specialty coffee beans, all in one place</span></div>
-    <div class="announce-msg">📬 <span>New roaster drops &amp; monthly picks — <a href="/find-your-beans">join the list →</a></span></div>
-  </div>
-</div>
+<a class="announce-bar" href="/tasting-flight" onclick="if(window.gtag)gtag('event','cta_click',{location:'announcement-bar'})">
+  <span class="ann-long">🎉 The Tasting Flight — 50 only, launches 30 July.<span class="ann-cta">Join the waitlist →</span></span>
+  <span class="ann-short">🎉 Tasting Flight — 50 only.<span class="ann-cta">Join the waitlist →</span></span>
+</a>
 
 <!-- NAV -->
 <nav class="tbh-nav">
@@ -161,17 +159,6 @@
       if (btn) { btn.setAttribute('aria-expanded', 'false'); btn.focus(); }
     }
   });
-  // Rotating announcement messages
-  (function rotateAnnounce() {
-    var msgs = document.querySelectorAll('.announce-msg');
-    if (msgs.length < 2) return;
-    var i = 0;
-    setInterval(function () {
-      msgs[i].classList.remove('active');
-      i = (i + 1) % msgs.length;
-      msgs[i].classList.add('active');
-    }, 4500);
-  })();
   // Highlight the current page's nav link (replaces hard-coded "active")
   (function setActiveNav() {
     var path = location.pathname.replace(/\/+$/, '') || '/';

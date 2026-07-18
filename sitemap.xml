@@ -18,6 +18,18 @@
     <priority>0.90</priority>
   </url>
   <url>
+    <loc>https://www.thebeanshub.com/tasting-flight</loc>
+    <lastmod>2026-07-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://www.thebeanshub.com/coffee-roasters-malaysia</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
     <loc>https://www.thebeanshub.com/shop</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>daily</changefreq>
