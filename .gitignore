@@ -5,3 +5,30 @@
 # LibreOffice / fuse temp & lock files
 .~lock.*#
 .fuse_hidden*
+
+# ──────────────────────────────────────────────────────────────
+# INTERNAL — never commit. This repo is PUBLIC and doubles as the
+# live webroot (thebeanshub.com serves whatever is committed).
+# Strategy, marketing, planning and pipeline files stay local only.
+# ──────────────────────────────────────────────────────────────
+CLAUDE.md
+THE-BEANS-HUB-*.docx
+THE-BEANS-HUB-*.xlsx
+The-Beans-Hub-*.docx
+*-BUILD-PLAN.md
+*-HANDOFF.md
+30 Series Ideas - TikTok and Instagram.md
+For a series on TikTok and Instagram.docx
+CoffeeRoastersList.csv
+roasters-directory.json
+beans.json.bak
+marketing/
+archive/
+SEO plans/
+XiaoHongShu/
+routine/
+analysis/
+Scripts/
+outputs/
+.tmp-*/
+*.pdf
