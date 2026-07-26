@@ -82,6 +82,11 @@
 }
 html { scroll-behavior: smooth; }
 body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+
+/* ── READING PROGRESS BAR (slim, MindMarket-inspired, brand-coloured) ── */
+.read-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0%; background: var(--orange); z-index: 200; transition: width 0.08s linear; }
+
+/* NAV (unchanged — served by /partials/header.html) */
 .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 68px; background: var(--green); border-bottom: 1px solid rgba(253,161,29,0.3); }
 .nav-logo { font-family: "Sigmar", cursive; color: #FDF6EC; font-size: 1.45rem; font-weight: 700; text-decoration: none; }
 .nav-logo span { color: var(--orange); }
@@ -97,138 +102,250 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
 .mobile-menu a { color: rgba(253,246,236,0.8); text-decoration: none; font-size: 1rem; font-weight: 500; padding: 14px 0; border-bottom: 1px solid rgba(253,246,236,0.15); transition: color 0.2s; }
 .mobile-menu a:last-child { border-bottom: none; }
 .mobile-menu a:hover { color: #FDF6EC; }
-.post-hero { padding: 142px 48px 56px; background: var(--green); position: relative; overflow: hidden; }
-.post-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 0%, rgba(253,161,29,0.15), transparent 55%), radial-gradient(ellipse at 10% 100%, rgba(253,161,29,0.07), transparent 50%); }
-.post-hero-inner { max-width: 800px; margin: 0 auto; position: relative; }
-.post-breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 0.75rem; color: rgba(253,246,236,0.55); margin-bottom: 20px; }
-.post-breadcrumb a { color: rgba(253,246,236,0.55); text-decoration: none; transition: color 0.2s; }
-.post-breadcrumb a:hover { color: #FDF6EC; }
-.post-breadcrumb span { color: rgba(253,246,236,0.3); }
-.post-cat-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 20px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 18px; width: fit-content; }
-.badge-guide { background: rgba(255,255,255,0.15); color: #FDF6EC; }
-.badge-local { background: rgba(253,161,29,0.25); color: #FDA11D; }
-.post-hero h1 { font-family: "Sigmar", cursive; font-size: clamp(1.8rem, 4vw, 2.8rem); color: #FDF6EC; line-height: 1.2; margin-bottom: 20px; }
-.post-hero-meta { display: flex; align-items: center; gap: 12px; font-size: 0.8rem; color: rgba(253,246,236,0.6); flex-wrap: wrap; }
-.post-hero-meta-dot { width: 3px; height: 3px; background: rgba(253,246,236,0.4); border-radius: 50%; }
-.post-read-time { background: rgba(253,161,29,0.2); color: var(--orange); padding: 3px 10px; border-radius: 10px; font-weight: 600; font-size: 0.72rem; }
-.post-banner { background: var(--green-light); display: flex; align-items: center; justify-content: center; height: 220px; font-size: 7rem; }
-.post-body { max-width: 800px; margin: 0 auto; padding: 56px 48px 80px; }
-.post-body h2 { font-family: "Sigmar", cursive; font-size: 1.5rem; color: var(--green); margin: 48px 0 16px; line-height: 1.3; }
-.post-body h3 { font-family: "Outfit", sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--text); margin: 32px 0 12px; }
-.post-body p { font-size: 0.97rem; line-height: 1.85; color: #2a3a2a; margin-bottom: 20px; }
-.post-body ul, .post-body ol { padding-left: 24px; margin-bottom: 20px; }
-.post-body li { font-size: 0.97rem; line-height: 1.8; color: #2a3a2a; margin-bottom: 6px; }
+
+/* ══════════════════════════════════════════════════
+   POST HERO — MindMarket-style: centred headline on a
+   calm cream field, then a full-width rounded hero image.
+   ══════════════════════════════════════════════════ */
+.post-hero { padding: 172px 24px 76px; background: var(--cream); text-align: center; }
+.post-hero-inner { max-width: 960px; margin: 0 auto; will-change: opacity, transform; }
+.hero-breadcrumb { display: inline-flex; align-items: center; gap: 8px; font-size: 0.74rem; color: var(--muted); margin-bottom: 26px; }
+.hero-breadcrumb a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.hero-breadcrumb a:hover { color: var(--green); }
+.hero-breadcrumb span { color: var(--border); }
+.hero-pills { display: flex; justify-content: center; gap: 10px; margin-bottom: 24px; }
+.hero-pill { display: inline-flex; align-items: center; gap: 6px; padding: 6px 16px; border-radius: 30px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; background: var(--white); color: var(--green); border: 1px solid var(--border); }
+.post-hero h1 { font-family: "Sigmar", cursive; font-size: clamp(2.4rem, 5.8vw, 4.4rem); color: var(--green); line-height: 1.08; letter-spacing: -0.015em; max-width: 16ch; margin: 0 auto 28px; }
+.hero-meta { display: flex; justify-content: center; align-items: center; gap: 12px; font-size: 0.86rem; color: var(--muted); }
+.hero-meta-dot { width: 3px; height: 3px; background: var(--muted); border-radius: 50%; opacity: 0.6; }
+
+/* Full-width rounded hero image with overlaid pills (MindMarket signature) */
+.hero-figure { max-width: 1240px; margin: 64px auto 0; padding: 0 24px; position: relative; will-change: transform; }
+.hero-figure img { width: 100%; height: clamp(320px, 52vh, 620px); object-fit: cover; border-radius: 28px; display: block; }
+
+/* ══════════════════════════════════════════════════
+   BODY LAYOUT — sticky left rail + narrow reading column
+   ══════════════════════════════════════════════════ */
+.post-layout { max-width: 1240px; margin: 0 auto; padding: 64px 24px 40px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px; align-items: start; }
+.post-body { max-width: 720px; margin: 0 auto; }
+
+/* Left rail */
+.post-rail { order: -1; }
+.rail-back { display: inline-flex; align-items: center; gap: 8px; font-size: 0.82rem; font-weight: 600; color: var(--green); text-decoration: none; background: var(--white); border: 1px solid var(--border); border-radius: 30px; padding: 8px 18px 8px 14px; transition: all 0.2s; }
+.rail-back:hover { color: var(--orange-dark); border-color: var(--orange); }
+.rail-title { font-family: "Outfit", sans-serif; font-weight: 700; font-size: 1.05rem; color: var(--text); line-height: 1.35; margin: 20px 0 6px; }
+.rail-date { font-size: 0.8rem; color: var(--muted); margin-bottom: 20px; }
+.rail-toc-title { font-size: 0.62rem; font-weight: 800; color: var(--orange); text-transform: uppercase; letter-spacing: 0.16em; margin-bottom: 10px; padding-top: 18px; border-top: 1px solid var(--border); }
+.toc-nav { display: flex; flex-direction: column; gap: 1px; }
+#tocDesktop { display: none; } /* desktop-only TOC; the <details> handles mobile */
+.toc-link { display: block; font-size: 0.82rem; color: var(--muted); text-decoration: none; font-weight: 500; padding: 7px 10px; border-radius: 6px; border-left: 2px solid transparent; line-height: 1.45; transition: all 0.15s; overflow-wrap: anywhere; }
+.toc-link:hover { color: var(--text); background: var(--tag-bg); }
+.toc-link.active { color: var(--green); font-weight: 700; border-left-color: var(--orange); background: rgba(41,98,65,0.05); }
+
+/* SHARE PANEL (sidebar, below the TOC) */
+.share-panel { margin-top: 22px; padding-top: 20px; border-top: 1px solid var(--border); }
+.share-title { font-size: 0.62rem; font-weight: 800; color: var(--orange); text-transform: uppercase; letter-spacing: 0.16em; margin-bottom: 14px; }
+.share-btns { display: flex; flex-wrap: wrap; gap: 10px; }
+.share-btn { width: 38px; height: 38px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; background: var(--green); color: var(--cream); border: none; padding: 0; cursor: pointer; text-decoration: none; transition: background 0.2s, transform 0.2s; }
+.share-btn:hover { background: var(--orange); color: #fff; transform: translateY(-2px); }
+.share-btn svg { width: 17px; height: 17px; fill: currentColor; display: block; }
+.share-toast { position: fixed; bottom: 26px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--green); color: var(--cream); padding: 11px 22px; border-radius: 30px; font-size: 0.86rem; font-weight: 600; opacity: 0; pointer-events: none; transition: opacity 0.3s, transform 0.3s; z-index: 300; box-shadow: 0 10px 30px rgba(41,98,65,0.25); }
+.share-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* Desktop: two columns, rail sticky on the LEFT */
+@media (min-width: 1000px) {
+  .post-layout { grid-template-columns: 300px minmax(0, 720px); gap: 72px; justify-content: center; }
+  .post-rail { order: 0; position: sticky; top: 96px; align-self: start; }
+  .post-body { margin: 0; }
+  #tocDesktop { display: flex; }
+  .post-rail > details { display: none; } /* hide the mobile accordion on desktop */
+}
+/* Mobile: rail collapses into a details/summary at the top */
+.rail-mobile-toggle { display: none; }
+@media (max-width: 999px) {
+  .post-rail details { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 4px 16px 14px; margin-top: 16px; }
+  .post-rail summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; padding: 12px 0; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.14em; color: var(--orange); }
+  .post-rail summary::-webkit-details-marker { display: none; }
+  .post-rail summary::after { content: '\25BE'; color: var(--muted); transition: transform 0.2s; }
+  .post-rail details[open] summary::after { transform: rotate(180deg); }
+  .rail-toc-title { display: none; }
+}
+
+/* ── ARTICLE TYPOGRAPHY ── */
+.post-body .lead { font-size: 1.18rem; line-height: 1.7; color: var(--text); margin-bottom: 40px; }
+.post-body h2 { font-family: "Sigmar", cursive; font-size: clamp(1.5rem, 2.4vw, 2rem); color: var(--green); margin: 8px 0 6px; line-height: 1.2; }
+.post-body .thesis { font-family: "Outfit", sans-serif; font-size: 1.22rem; font-weight: 600; color: var(--text); line-height: 1.4; margin: 0 0 24px; }
+.post-body h3 { font-family: "Outfit", sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--text); margin: 30px 0 12px; }
+.post-body p { font-size: 1.02rem; line-height: 1.85; color: #2a3a2a; margin-bottom: 22px; }
+.post-body ul, .post-body ol { padding-left: 22px; margin-bottom: 22px; }
+.post-body li { font-size: 1.02rem; line-height: 1.8; color: #2a3a2a; margin-bottom: 8px; }
 .post-body strong { font-weight: 700; color: var(--text); }
 .post-body em { font-style: italic; color: var(--muted); }
-.post-body a { color: var(--green); font-weight: 600; text-decoration: underline; text-decoration-color: rgba(41,98,65,0.3); transition: color 0.2s; }
-.post-body a:hover { color: var(--orange); }
-.callout { background: var(--tag-bg); border-left: 4px solid var(--orange); border-radius: 0 12px 12px 0; padding: 20px 24px; margin: 32px 0; }
-.callout p { margin: 0; font-size: 0.92rem; }
-.callout-title { font-weight: 700; color: var(--green); margin-bottom: 6px !important; font-size: 0.8rem !important; text-transform: uppercase; letter-spacing: 0.08em; }
-.info-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 24px 28px; margin: 28px 0; }
-.info-card h4 { font-size: 0.88rem; font-weight: 700; color: var(--green); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.08em; }
-.post-divider { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
-.post-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 36px 0 0; }
+
+/* Inline links styled as subtle highlight pills (MindMarket pattern) */
+.post-body p a, .post-body li a { color: var(--green); font-weight: 600; text-decoration: none; background: var(--tag-bg); padding: 1px 7px; border-radius: 6px; box-decoration-break: clone; -webkit-box-decoration-break: clone; transition: all 0.18s; }
+.post-body p a:hover, .post-body li a:hover { background: var(--orange); color: var(--white); }
+
+/* Section divider — hairline rule between acts */
+.section-rule { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+
+/* PULL-QUOTE (MindMarket signature) */
+.pullquote { margin: 40px 0; padding: 4px 0 4px 24px; border-left: 3px solid var(--orange); }
+.pullquote p { font-size: 1.35rem; line-height: 1.5; font-weight: 600; font-style: italic; color: var(--green); margin: 0; }
+
+/* INFO CARD */
+.info-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 22px 26px; margin: 22px 0; }
+.info-card h4 { font-size: 0.86rem; font-weight: 700; color: var(--green); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.08em; }
+.info-card p { margin-bottom: 0; }
+
+/* CTA BLOCK (MindMarket "Planning a study?" pattern) */
+.cta-block { margin: 48px 0; }
+.cta-block h2 { font-family: "Sigmar", cursive; font-size: clamp(1.4rem, 2.2vw, 1.9rem); color: var(--green); margin-bottom: 14px; }
+.cta-block p { font-size: 1.05rem; line-height: 1.7; color: #2a3a2a; margin-bottom: 20px; }
+.pill-btn { display: inline-flex; align-items: center; gap: 12px; background: var(--orange); color: var(--white); font-weight: 700; font-size: 0.95rem; text-decoration: none; padding: 12px 14px 12px 24px; border-radius: 40px; transition: background 0.2s, transform 0.2s; }
+.pill-btn:hover { background: var(--orange-dark); transform: translateX(2px); }
+.pill-btn .pill-ico { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.22); font-size: 1rem; }
+
+/* FAQ ACCORDION (MindMarket rounded cards + toggle) */
+.faq-wrap { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+.faq-item { background: var(--white); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+.faq-item summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 22px; font-weight: 700; font-size: 1rem; color: var(--text); }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after { content: '+'; font-size: 1.4rem; font-weight: 400; color: var(--orange); line-height: 1; flex-shrink: 0; transition: transform 0.2s; }
+.faq-item[open] summary::after { content: '\2212'; }
+.faq-item .faq-a { padding: 0 22px 20px; }
+.faq-item .faq-a p { font-size: 0.98rem; line-height: 1.8; color: #2a3a2a; margin: 0; }
+
+/* TAG ROW */
+.post-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 40px 0 0; }
 .post-tag { padding: 5px 14px; background: var(--tag-bg); color: var(--muted); border-radius: 20px; font-size: 0.75rem; font-weight: 500; }
-.post-nav { display: flex; justify-content: space-between; align-items: center; padding: 32px 0; border-top: 1px solid var(--border); margin-top: 48px; }
-.post-nav a { display: flex; align-items: center; gap: 8px; text-decoration: none; font-size: 0.85rem; font-weight: 600; color: var(--green); transition: color 0.2s; }
-.post-nav a:hover { color: var(--orange); }
-.more-posts { background: var(--cream); border-top: 1px solid var(--border); padding: 64px 48px; }
+
+/* NEXT ARTICLE — MindMarket split card */
+.next-article { max-width: 1240px; margin: 24px auto 0; padding: 0 24px; }
+.next-card { display: grid; grid-template-columns: 1fr 1fr; border-radius: 24px; overflow: hidden; border: 1px solid var(--border); background: var(--white); text-decoration: none; color: inherit; transition: box-shadow 0.25s; }
+.next-card:hover { box-shadow: 0 18px 50px rgba(41,98,65,0.14); }
+.next-card-img { position: relative; min-height: 300px; }
+.next-card-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.next-card-body { padding: 48px 44px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: var(--cream); }
+.next-card-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+.next-card-title { font-family: "Sigmar", cursive; font-size: clamp(1.2rem, 1.8vw, 1.7rem); color: var(--green); line-height: 1.25; margin-bottom: 24px; }
+@media (max-width: 768px) { .next-card { grid-template-columns: 1fr; } .next-card-img { min-height: 220px; } .next-card-body { padding: 36px 24px; } }
+
+/* MORE POSTS */
+.more-posts { background: var(--cream); border-top: 1px solid var(--border); padding: 64px 24px; margin-top: 48px; }
 .more-posts-inner { max-width: 1100px; margin: 0 auto; }
 .more-posts h2 { font-family: "Sigmar", cursive; font-size: 1.4rem; color: var(--text); margin-bottom: 32px; }
 .more-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .more-card { background: var(--white); border-radius: 14px; border: 1px solid var(--border); padding: 24px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 10px; transition: transform 0.2s, box-shadow 0.2s; }
 .more-card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(41,98,65,0.1); }
 .more-card-emoji { font-size: 2rem; }
-.more-card-icon.material-icons { font-size: 2.2rem; color: var(--green); display: block; line-height: 1; }
 .more-card h3 { font-family: "Outfit", sans-serif; font-size: 0.92rem; font-weight: 700; color: var(--text); line-height: 1.4; }
 .more-card-meta { font-size: 0.72rem; color: var(--muted); margin-top: auto; }
+
 @media (max-width: 768px) {
   .site-nav { padding: 0 20px; }
   .site-nav .nav-links { display: none; }
   .nav-hamburger { display: flex; }
-  .post-hero { padding: 126px 20px 40px; }
-  .post-body { padding: 40px 20px 60px; }
+  .post-hero { padding: 108px 20px 24px; }
+  .hero-figure { padding: 0 16px; }
+  .post-layout { padding: 40px 20px; }
   .more-posts { padding: 48px 20px; }
   .more-grid { grid-template-columns: 1fr; }
 }
-.post-layout { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 800px); justify-content: center; column-gap: 40px; align-items: start; padding: 56px 48px 80px; }
-.post-layout > .post-body { max-width: none; margin: 0; padding: 0; }
-.toc-sidebar { display: block; order: -1; margin-bottom: 8px; }
-.toc-inner summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-.toc-inner summary::-webkit-details-marker { display: none; }
-.toc-inner summary::after { content: '\25BE'; font-size: 0.9rem; color: var(--muted); transition: transform 0.2s; flex-shrink: 0; }
-.toc-inner[open] summary::after { transform: rotate(180deg); }
-@media (max-width: 768px) { .post-layout { padding: 32px 20px 56px; } .toc-inner { max-height: 260px; } .toc-inner[open] .toc-nav { padding-top: 10px; } }
-@media (min-width: 1260px) {
-  .post-layout { grid-template-columns: minmax(0, 800px) 220px; justify-content: start; }
-  .toc-sidebar { display: block; order: 0; margin-bottom: 0; position: sticky; top: 90px; align-self: start; }
-  .toc-inner summary { cursor: default; pointer-events: none; }
-  .toc-inner summary::after { display: none; }
-}
-.toc-inner { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 18px 16px 20px; overflow: hidden; max-height: calc(100vh - 110px); overflow-y: auto; scrollbar-width: none; }
-.toc-inner::-webkit-scrollbar { display: none; }
-.toc-title { font-size: 0.62rem; font-weight: 800; color: var(--orange); text-transform: uppercase; letter-spacing: 0.16em; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
-.toc-nav { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
-.toc-link { display: block; min-width: 0; white-space: normal; overflow-wrap: anywhere; word-break: break-word; font-size: 0.76rem; color: var(--muted); text-decoration: none; font-weight: 500; padding: 6px 8px 6px 10px; border-radius: 6px; border-left: 2px solid transparent; line-height: 1.45; transition: all 0.15s; }
-.toc-link:hover { color: var(--text); background: var(--tag-bg); border-left-color: var(--border); }
-.toc-link.active { color: var(--green); font-weight: 700; border-left-color: var(--orange); background: rgba(41,98,65,0.05); }
 
-    /* ===== Coffee Beans mega-dropdown (added for category internal linking) ===== */
-    .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
-    .nav-dropdown .nav-dropdown-trigger { display: inline-flex; align-items: center; gap: 5px; }
-    .nav-caret { font-size: 0.7em; transition: transform 0.2s; }
-    .nav-dropdown:hover .nav-caret, .nav-dropdown:focus-within .nav-caret { transform: rotate(180deg); }
-    .nav-dropdown::after { content: ""; position: absolute; top: 100%; left: -10px; right: -10px; height: 22px; }
-    .nav-dropdown-menu { position: absolute; top: calc(100% + 20px); left: 50%; transform: translateX(-50%) translateY(8px); display: grid; grid-template-columns: repeat(3, max-content); gap: 4px 32px; background: var(--cream, #FDF6EC); border: 1px solid var(--border, #E8E0D0); border-radius: 14px; padding: 22px 26px; box-shadow: 0 16px 44px rgba(41,98,65,0.20); opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.18s ease, transform 0.18s ease; z-index: 200; }
-    .nav-dropdown:hover .nav-dropdown-menu, .nav-dropdown:focus-within .nav-dropdown-menu { opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(-50%) translateY(0); }
-    .nav-dd-group { display: flex; flex-direction: column; gap: 1px; }
-    .nav-dd-heading { font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted, #5a6e5a); font-weight: 700; margin-bottom: 7px; }
-    .nav-dropdown-menu a { color: var(--green, #296241) !important; font-size: 0.9rem !important; font-weight: 500 !important; letter-spacing: normal !important; padding: 5px 0 !important; white-space: nowrap; }
-    .nav-dropdown-menu a:hover { color: var(--accent-hover, #DA8A10) !important; }
-    .nav-dd-all { margin-top: 9px; font-weight: 700 !important; color: var(--accent-hover, #DA8A10) !important; }
-    /* mobile accordion */
-    .mobile-menu details.mobile-dd { border-bottom: 1px solid rgba(253,161,29,0.15); }
-    .mobile-menu details.mobile-dd summary { color: rgba(253,246,236,0.85); font-size: 1rem; font-weight: 500; padding: 12px 0; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
-    .mobile-menu details.mobile-dd summary::-webkit-details-marker { display: none; }
-    .mobile-menu details.mobile-dd summary::after { content: "\25be"; color: #FDA11D; font-size: 0.85em; transition: transform 0.2s; }
-    .mobile-menu details.mobile-dd[open] summary::after { transform: rotate(180deg); }
-    .mobile-menu details.mobile-dd a { display: block; color: rgba(253,246,236,0.7); font-size: 0.92rem; font-weight: 500; padding: 9px 0 9px 16px; border-bottom: none; }
-    .mobile-menu details.mobile-dd a:last-child { color: #FDA11D; font-weight: 600; }
-    /* ===== end dropdown ===== */
+/* ===== Coffee Beans mega-dropdown (nav internal linking — unchanged) ===== */
+.nav-dropdown { position: relative; display: inline-flex; align-items: center; }
+.nav-dropdown .nav-dropdown-trigger { display: inline-flex; align-items: center; gap: 5px; }
+.nav-caret { font-size: 0.7em; transition: transform 0.2s; }
+.nav-dropdown:hover .nav-caret, .nav-dropdown:focus-within .nav-caret { transform: rotate(180deg); }
+.nav-dropdown::after { content: ""; position: absolute; top: 100%; left: -10px; right: -10px; height: 22px; }
+.nav-dropdown-menu { position: absolute; top: calc(100% + 20px); left: 50%; transform: translateX(-50%) translateY(8px); display: grid; grid-template-columns: repeat(3, max-content); gap: 4px 32px; background: var(--cream, #FDF6EC); border: 1px solid var(--border, #E8E0D0); border-radius: 14px; padding: 22px 26px; box-shadow: 0 16px 44px rgba(41,98,65,0.20); opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.18s ease, transform 0.18s ease; z-index: 200; }
+.nav-dropdown:hover .nav-dropdown-menu, .nav-dropdown:focus-within .nav-dropdown-menu { opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+.nav-dd-group { display: flex; flex-direction: column; gap: 1px; }
+.nav-dd-heading { font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted, #5a6e5a); font-weight: 700; margin-bottom: 7px; }
+.nav-dropdown-menu a { color: var(--green, #296241) !important; font-size: 0.9rem !important; font-weight: 500 !important; letter-spacing: normal !important; padding: 5px 0 !important; white-space: nowrap; }
+.nav-dropdown-menu a:hover { color: var(--accent-hover, #DA8A10) !important; }
+.nav-dd-all { margin-top: 9px; font-weight: 700 !important; color: var(--accent-hover, #DA8A10) !important; }
+.mobile-menu details.mobile-dd { border-bottom: 1px solid rgba(253,161,29,0.15); }
+.mobile-menu details.mobile-dd summary { color: rgba(253,246,236,0.85); font-size: 1rem; font-weight: 500; padding: 12px 0; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+.mobile-menu details.mobile-dd summary::-webkit-details-marker { display: none; }
+.mobile-menu details.mobile-dd summary::after { content: "\25be"; color: #FDA11D; font-size: 0.85em; transition: transform 0.2s; }
+.mobile-menu details.mobile-dd[open] summary::after { transform: rotate(180deg); }
+.mobile-menu details.mobile-dd a { display: block; color: rgba(253,246,236,0.7); font-size: 0.92rem; font-weight: 500; padding: 9px 0 9px 16px; border-bottom: none; }
+.mobile-menu details.mobile-dd a:last-child { color: #FDA11D; font-weight: 600; }
+/* ===== end dropdown ===== */
+
+/* --- legacy content components (kept so existing article bodies render) --- */
+.callout { background: var(--tag-bg); border-left: 4px solid var(--orange); border-radius: 0 12px 12px 0; padding: 20px 24px; margin: 32px 0; }
+.callout p { margin: 0; font-size: 0.95rem; line-height: 1.7; }
+.callout-title { font-weight: 700; color: var(--green); margin-bottom: 6px !important; font-size: 0.8rem !important; text-transform: uppercase; letter-spacing: 0.08em; }
+.post-nav { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding: 28px 0 0; border-top: 1px solid var(--border); margin-top: 40px; }
+.post-nav a { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-size: 0.9rem; font-weight: 600; color: var(--green); transition: color 0.2s; }
+.post-nav a:hover { color: var(--orange); }
+.post-banner { background: var(--green-light); display: flex; align-items: center; justify-content: center; height: 220px; font-size: 7rem; border-radius: 20px; margin: 8px 0 24px; }
 </style>
 </head>
 <body>
 <!--#include virtual="/partials/header.html" -->
+<div class="read-progress" id="readProgress"></div>
 
 <div class="post-hero">
 <div class="post-hero-inner">
-<div class="post-breadcrumb"><a href="/library">Coffee Library</a><span>&rsaquo;</span><span>Guide</span></div>
-<div class="post-cat-badge badge-guide">💪 Guide</div>
+<div class="hero-breadcrumb"><a href="/">Home</a><span>&rsaquo;</span><a href="/library">Coffee Library</a><span>&rsaquo;</span><span>Guide</span></div>
+<div class="hero-pills"><span class="hero-pill">Guide</span></div>
 <h1>Robusta Coffee: Stronger, Cheaper, and More Misunderstood Than You Think</h1>
-<div class="post-hero-meta">
-<span>The Beans Hub</span><span class="post-hero-meta-dot"></span>
-<span>June 2026</span><span class="post-hero-meta-dot"></span>
-<span class="post-read-time">7 min read</span>
+<div class="hero-meta"><span>The Beans Hub</span><span class="hero-meta-dot"></span><span>June 2026</span><span class="hero-meta-dot"></span><span>7 min read</span></div>
 </div>
 </div>
-</div>
-
-
+<figure class="hero-figure"><img src="/img/arabica-robusta-liberica.webp" alt="Robusta Coffee: Stronger, Cheaper, and More Misunderstood Than You Think"/></figure>
 <div class="post-layout">
-
+<aside class="post-rail" aria-label="Article navigation">
+<a class="rail-back" href="/library">&larr; Back to Coffee Library</a>
+<p class="rail-title">Robusta Coffee: Stronger, Cheaper, and More Misunderstood Than You Think</p>
+<p class="rail-date">June 2026 · 7 min read</p>
+<div class="rail-toc-title">On this page</div>
+<nav class="toc-nav" id="tocDesktop"><a class="toc-link" href="#what-robusta-is">What Robusta actually is</a>
+<a class="toc-link" href="#why-robusta-reputation">Why Robusta has a bad reputation</a>
+<a class="toc-link" href="#what-good-robusta-tastes-like">What good Robusta tastes like</a>
+<a class="toc-link" href="#robusta-in-malaysia">Robusta in Malaysian coffee culture</a>
+<a class="toc-link" href="#when-to-choose-robusta">When to choose Robusta</a>
+<a class="toc-link" href="#faq">Frequently Asked Questions</a></nav>
+<details>
+<summary>On this page</summary>
+<nav class="toc-nav"><a class="toc-link" href="#what-robusta-is">What Robusta actually is</a>
+<a class="toc-link" href="#why-robusta-reputation">Why Robusta has a bad reputation</a>
+<a class="toc-link" href="#what-good-robusta-tastes-like">What good Robusta tastes like</a>
+<a class="toc-link" href="#robusta-in-malaysia">Robusta in Malaysian coffee culture</a>
+<a class="toc-link" href="#when-to-choose-robusta">When to choose Robusta</a>
+<a class="toc-link" href="#faq">Frequently Asked Questions</a></nav>
+</details>
+<div class="share-panel">
+<div class="share-title">Share</div>
+<div class="share-btns">
+<a class="share-btn" href="#" data-share="facebook" aria-label="Share on Facebook" title="Share on Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg></a>
+<a class="share-btn" href="#" data-share="instagram" aria-label="Share to Instagram" title="Share to Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg></a>
+<a class="share-btn" href="#" data-share="threads" aria-label="Share on Threads" title="Share on Threads"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.056 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32L7.734 7.847c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.046.216.094.324.145 1.524.716 2.64 1.802 3.23 3.142.82 1.867.899 4.909-1.575 7.325-1.895 1.828-4.195 2.573-7.245 2.588Zm1.063-11.24c-.267 0-.535.007-.808.023-1.797.106-2.884.909-2.826 2.09.055 1.16 1.24 1.727 2.436 1.662 1.088-.059 2.55-.483 2.836-3.606-.585-.14-1.207-.169-1.638-.169Z"/></svg></a>
+<a class="share-btn" href="#" data-share="x" aria-label="Share on X" title="Share on X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+<a class="share-btn" href="#" data-share="reddit" aria-label="Share on Reddit" title="Share on Reddit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-6.993 4.87-3.863 0-6.993-2.176-6.993-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.11-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg></a>
+<button class="share-btn" type="button" data-share="copy" aria-label="Copy link" title="Copy link"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg></button>
+</div>
+</div>
+</aside>
 <div class="post-body">
 
+<hr class="section-rule"/>
 <h2 id="what-robusta-is">What Robusta actually is</h2>
 <p>Coffea canephora — sold commercially under the name Robusta — is the second most widely grown coffee species in the world, accounting for roughly 40% of global production. The name "Robusta" is a trade name, not the botanical species name, but it's stuck in the industry because it captures something real about the plant: it's genuinely robust. It grows from sea level to about 800 metres altitude, thrives in hot and humid conditions, resists disease and pests far better than Arabica, yields more fruit per tree, and matures faster. From a farming economics standpoint, Robusta is the easier species to grow at scale.</p>
 <p>The plant's hardiness comes partly from its chemistry. Robusta contains approximately 2.7% caffeine by dry weight, compared to Arabica's 1.5%. Caffeine is a natural insect repellent — in sufficient concentrations, it's toxic to many insects and inhibits seed germination of competing plants. Growing in lowland conditions where insect pressure is higher, Robusta evolved more caffeine as a defence mechanism. That same caffeine content makes the bean taste bolder and more bitter in the cup, and it's one reason Robusta-dominant blends hit differently than pure Arabica.</p>
 <p>The full species comparison — including where Robusta sits relative to Arabica and Liberica — is in the <a href="/posts/coffee-bean-varieties">coffee species guide</a>. The <a href="/posts/arabica-vs-robusta">Arabica vs Robusta comparison</a> puts these two species side by side in more detail if you're trying to decide between them.</p>
 
+<hr class="section-rule"/>
 <h2 id="why-robusta-reputation">Why Robusta has a bad reputation</h2>
 <p>Robusta's reputation in specialty coffee circles is poor, and it's not entirely unfair — but it's also not the full picture. The problem starts at the farm level. Because Robusta is easier to grow and commands a lower price than Arabica, there's less economic incentive to invest in careful cultivation, selective picking, or quality processing. Much of the global Robusta supply is strip-harvested (all cherries removed at once regardless of ripeness), wet-hulled or dry-processed under inconsistent conditions, and graded loosely. Defect rates in commodity Robusta are high, and defective beans in the cup mean bitterness, sourness, rubber, and astringency.</p>
 <p>The second problem is dark roasting. To mask those processing defects, commodity Robusta is typically roasted very dark — beyond second crack, sometimes to a near-black colour. Heavy roasting does cover up the worst defect flavours, but it also destroys any positive flavour compounds the bean might have had. The result is a flat, harsh, one-dimensional bitterness that tastes less like coffee and more like burnt grain. This is what most people have in mind when they say "Robusta is low quality".</p>
 <p>What that experience actually reflects is poor processing and aggressive roasting of commodity-grade beans — not the full potential of the species. The distinction matters, and it's worth understanding before you write off an entire species based on what's in a RM 12 sachet pack.</p>
 
+<hr class="section-rule"/>
 <h2 id="what-good-robusta-tastes-like">What good Robusta actually tastes like</h2>
 <p>Specialty-grade Robusta — properly processed, cupped and graded, roasted with care — tastes like a specific and legitimate cup that's worth understanding on its own terms rather than comparing unfavourably to Ethiopian Arabica.</p>
 <div class="info-card">
@@ -244,12 +361,14 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
 <p>Vietnamese specialty Robusta — from the Central Highlands region — has been gaining serious attention from Western roasters who previously dismissed it entirely. Ugandan Robusta, washed and carefully processed in the Rwenzori region, has appeared at international cupping competitions with respectable scores. These aren't anomalies; they're demonstrations of what the species can do with proper treatment. Understanding what drives those flavour notes is covered in more depth in the <a href="/posts/how-to-read-flavour-notes">coffee flavour notes guide</a>.</p>
 <p>Robusta's lack of acidity is actually a selling point for some drinkers. If you find Ethiopian or Kenyan Arabica too bright or acidic for your palate, a well-made Robusta-dominant cup might be far more comfortable to drink daily. Malaysian kopitiam regulars have known this for generations, even if they didn't frame it in those terms.</p>
 
+<hr class="section-rule"/>
 <h2 id="robusta-in-malaysia">Robusta in Malaysian coffee culture</h2>
 <p>Robusta is the backbone of traditional Malaysian kopi alongside Liberica, and understanding it means understanding how kopitiam coffee actually works. The beans arrive at the roastery green, then go into a large drum with rock sugar and sometimes butter or margarine. The drum rotates over high heat for an extended period — the exact time and temperature vary by roastery and are often guarded as trade secrets. The sugar melts and caramelises onto the bean surface, the beans darken significantly, and the result is a coated, intensely dark roast quite unlike anything produced by a Western specialty roaster.</p>
 <p>This kopi roasting style transforms Robusta's natural profile. The sugar coating adds a slight caramel sweetness that tempers the bitterness. The high heat drives the roast well beyond what specialty coffee would consider acceptable, compressing the flavour profile into something more singular: dark, bitter, bittersweet, heavy. And then it gets brewed through a cloth sock at very high coffee-to-water ratios — the concentrate that comes out is strong enough to hold its own against a generous pour of sweetened condensed milk.</p>
 <p>That pairing — strong dark Robusta with condensed milk — is one of the great flavour combinations in Malaysian food culture. The bitterness of the coffee, the richness of the condensed milk, the slight sweetness tying it together: it's a cup calibrated for the Malaysian palate over more than a century. The <a href="/posts/malaysian-coffee-heritage">Malaysian coffee heritage guide</a> covers this tradition fully, including the Hainanese and Hokkien origins of kopitiam culture.</p>
 <p>Robusta also underpins almost all commercial instant coffee sold in Malaysia — the sachets of 3-in-1 that are still the most common coffee format by volume in the country. The convenience format depends on Robusta's higher yield, lower cost, and robustness through the spray-drying process that creates instant coffee powder.</p>
 
+<hr class="section-rule"/>
 <h2 id="when-to-choose-robusta">When to choose Robusta</h2>
 <p>There are legitimate reasons to reach for Robusta over Arabica, beyond tradition or price.</p>
 <p>If you're making espresso-based drinks at home and you want a thicker crema and heavier body, adding 10–20% Robusta to an Arabica blend is a proven technique. Italian espresso culture has used this approach for decades — many classic Italian house blends run 20–30% Robusta specifically because it contributes the thick, stable crema and body that pure Arabica espresso sometimes lacks, particularly with lighter-roasted beans. The caffeine boost is a secondary benefit.</p>
@@ -257,20 +376,28 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
 <p>If you're curious about Robusta as a deliberate exploration, seek out a washed Vietnamese or Ugandan specialty Robusta lot. Brew it as a French press or espresso — methods that emphasise body — and taste it without the filter of expecting Arabica flavours. The <a href="/posts/arabica-vs-robusta">Arabica vs Robusta comparison</a> gives you a structured framework for that tasting if you want to evaluate the two side by side.</p>
 
 <hr class="post-divider"/>
+<hr class="section-rule"/>
 <h2 id="faq">Frequently Asked Questions</h2>
 
-<h3>What does Robusta coffee taste like?</h3>
-<p>Commodity Robusta tends toward harsh bitterness, rubber, and grain — which is why it has a poor reputation in specialty circles. Good quality Robusta, however, tastes like dark chocolate, tobacco, earth, and grain, with a very heavy body and low acidity. Specialty-grade Robusta from Uganda or Vietnam can be genuinely complex within those parameters. The key variable is processing quality — poorly processed Robusta is unpleasant, well-processed Robusta is a legitimate cup.</p>
 
-<h3>Why does Robusta have more caffeine than Arabica?</h3>
-<p>Caffeine in coffee plants evolved primarily as a natural insect repellent — it's toxic to many insects at sufficient concentrations. Robusta grows at lower altitudes in hotter, wetter conditions where insect pressure is higher, so the plant evolved a higher caffeine concentration (around 2.7% vs Arabica's 1.5%) as a defence mechanism. This higher caffeine also makes the plant more bitter and naturally disease-resistant, contributing to its hardiness.</p>
-
-<h3>Is Robusta used in Malaysian kopi?</h3>
-<p>Yes, extensively. Traditional Malaysian kopi — the cup you get at a kopitiam — is typically made from Robusta, Liberica, or a blend of both, roasted in the traditional drum-roasting style with sugar and sometimes butter. This produces a caramelised, dark roast with a heavy body and bitter-sweet character that pairs well with condensed or evaporated milk. It's a completely different preparation tradition from specialty coffee.</p>
-
-<h3>Is Robusta coffee bad quality?</h3>
-<p>Commodity Robusta is often poor quality — harvested carelessly, processed without quality control, and sold without grading. But that's a quality and processing problem, not an inherent flaw of the species. Specialty-grade Robusta exists, is graded by the SCA, and can produce complex, distinctive cups. The negative reputation of Robusta comes from the commodity market, not from the species' full potential.</p>
-
+<div class="faq-wrap">
+<details class="faq-item">
+<summary>What does Robusta coffee taste like?</summary>
+<div class="faq-a"><p>Commodity Robusta tends toward harsh bitterness, rubber, and grain — which is why it has a poor reputation in specialty circles. Good quality Robusta, however, tastes like dark chocolate, tobacco, earth, and grain, with a very heavy body and low acidity. Specialty-grade Robusta from Uganda or Vietnam can be genuinely complex within those parameters. The key variable is processing quality — poorly processed Robusta is unpleasant, well-processed Robusta is a legitimate cup.</p></div>
+</details>
+<details class="faq-item">
+<summary>Why does Robusta have more caffeine than Arabica?</summary>
+<div class="faq-a"><p>Caffeine in coffee plants evolved primarily as a natural insect repellent — it's toxic to many insects at sufficient concentrations. Robusta grows at lower altitudes in hotter, wetter conditions where insect pressure is higher, so the plant evolved a higher caffeine concentration (around 2.7% vs Arabica's 1.5%) as a defence mechanism. This higher caffeine also makes the plant more bitter and naturally disease-resistant, contributing to its hardiness.</p></div>
+</details>
+<details class="faq-item">
+<summary>Is Robusta used in Malaysian kopi?</summary>
+<div class="faq-a"><p>Yes, extensively. Traditional Malaysian kopi — the cup you get at a kopitiam — is typically made from Robusta, Liberica, or a blend of both, roasted in the traditional drum-roasting style with sugar and sometimes butter. This produces a caramelised, dark roast with a heavy body and bitter-sweet character that pairs well with condensed or evaporated milk. It's a completely different preparation tradition from specialty coffee.</p></div>
+</details>
+<details class="faq-item">
+<summary>Is Robusta coffee bad quality?</summary>
+<div class="faq-a"><p>Commodity Robusta is often poor quality — harvested carelessly, processed without quality control, and sold without grading. But that's a quality and processing problem, not an inherent flaw of the species. Specialty-grade Robusta exists, is graded by the SCA, and can produce complex, distinctive cups. The negative reputation of Robusta comes from the commodity market, not from the species' full potential.</p></div>
+</details>
+</div>
 <div class="post-tags">
 <span class="post-tag">Robusta</span>
 <span class="post-tag">Coffee Species</span>
@@ -285,19 +412,6 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
 <a href="/shop">Browse Coffee Beans &rarr;</a>
 </nav>
 </div><!-- /post-body -->
-<aside aria-label="Table of contents" class="toc-sidebar">
-<details class="toc-inner" open>
-<summary class="toc-title">Contents</summary>
-<nav class="toc-nav">
-<a class="toc-link" href="#what-robusta-is">What Robusta actually is</a>
-<a class="toc-link" href="#why-robusta-reputation">Why Robusta has a bad reputation</a>
-<a class="toc-link" href="#what-good-robusta-tastes-like">What good Robusta tastes like</a>
-<a class="toc-link" href="#robusta-in-malaysia">Robusta in Malaysian coffee culture</a>
-<a class="toc-link" href="#when-to-choose-robusta">When to choose Robusta</a>
-<a class="toc-link" href="#faq">Frequently Asked Questions</a>
-</nav>
-</details>
-</aside>
 </div><!-- /post-layout -->
 
 <div class="more-posts">
@@ -323,20 +437,125 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
 </div>
 </div>
 
+<div class="share-toast" id="shareToast" role="status" aria-live="polite">Link copied!</div>
 <!--#include virtual="/partials/footer.html" -->
 <script>
-function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+// Reading progress bar
 (function () {
-  const tocLinks = document.querySelectorAll('.toc-link[href^="#"]');
+  const bar = document.getElementById('readProgress');
+  if (!bar) return;
+  function update() {
+    const h = document.documentElement;
+    const scrolled = h.scrollTop;
+    const max = h.scrollHeight - h.clientHeight;
+    bar.style.width = (max > 0 ? (scrolled / max) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
+// Hero title fades out & drifts up on scroll; image rises with a gentle parallax
+(function () {
+  const inner = document.querySelector('.post-hero-inner');
+  const figure = document.querySelector('.hero-figure');
+  if (!inner) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const FADE = 460; // px of scroll over which the title fully disappears
+  let ticking = false;
+  function apply() {
+    const y = window.scrollY || window.pageYOffset;
+    const p = Math.min(1, y / FADE);
+    inner.style.opacity = String(1 - p);
+    inner.style.transform = 'translateY(' + (y * 0.35) + 'px)';
+    if (figure) figure.style.transform = 'translateY(' + (-y * 0.06) + 'px)';
+    ticking = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) { window.requestAnimationFrame(apply); ticking = true; }
+  }, { passive: true });
+  apply();
+})();
+// SHARE panel
+(function () {
+  const url = location.href;
+  const title = document.title;
+  const eu = encodeURIComponent(url), et = encodeURIComponent(title);
+  const targets = {
+    facebook: 'https://www.facebook.com/sharer/sharer.php?u=' + eu,
+    x:        'https://twitter.com/intent/tweet?url=' + eu + '&text=' + et,
+    threads:  'https://www.threads.net/intent/post?text=' + et + '%20' + eu,
+    reddit:   'https://www.reddit.com/submit?url=' + eu + '&title=' + et
+  };
+  const toast = document.getElementById('shareToast');
+  function showToast(msg) {
+    if (!toast) return;
+    toast.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(toast._t);
+    toast._t = setTimeout(function () { toast.classList.remove('show'); }, 2400);
+  }
+  function track(method) {
+    if (typeof gtag === 'function') {
+      gtag('event', 'share', { method: method, content_type: 'article', item_id: location.pathname });
+    }
+  }
+  async function copyLink() {
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(url);
+      } else {
+        const ta = document.createElement('textarea');
+        ta.value = url; ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove();
+      }
+      return true;
+    } catch (e) { return false; }
+  }
+  document.querySelectorAll('.share-btn').forEach(function (btn) {
+    btn.addEventListener('click', async function (e) {
+      e.preventDefault();
+      const k = btn.getAttribute('data-share');
+      if (targets[k]) {
+        window.open(targets[k], '_blank', 'noopener,noreferrer,width=600,height=560');
+        track(k);
+        return;
+      }
+      if (k === 'instagram') {
+        // Instagram has no web link-share; use the native share sheet on mobile, else copy.
+        if (navigator.share) {
+          try { await navigator.share({ title: title, url: url }); track('instagram'); } catch (_) {}
+        } else {
+          const ok = await copyLink();
+          showToast(ok ? 'Link copied — paste it into Instagram' : 'Copy failed, please copy manually');
+          track('instagram');
+        }
+        return;
+      }
+      if (k === 'copy') {
+        const ok = await copyLink();
+        showToast(ok ? 'Link copied!' : 'Copy failed, please copy manually');
+        track('copy_link');
+      }
+    });
+  });
+})();
+// TOC — highlight active section on scroll
+(function () {
+  const tocLinks = document.querySelectorAll('#tocDesktop .toc-link[href^="#"]');
   const headings = Array.from(document.querySelectorAll('.post-body h2[id]'));
   if (!tocLinks.length || !headings.length) return;
-  function setActive(id) { tocLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id)); }
+  function setActive(id) {
+    tocLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+  }
   if (headings[0]) setActive(headings[0].id);
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => { if (entry.isIntersecting) setActive(entry.target.id); });
   }, { rootMargin: '-10% 0px -80% 0px', threshold: 0 });
   headings.forEach(h => observer.observe(h));
-  tocLinks.forEach(link => {
+  document.querySelectorAll('.toc-link[href^="#"]').forEach(link => {
     link.addEventListener('click', function (e) {
       const target = document.querySelector(this.getAttribute('href'));
       if (!target) return;

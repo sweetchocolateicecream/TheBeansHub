@@ -32,7 +32,10 @@
 html { scroll-behavior: smooth; }
 body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
 
-/* NAV */
+/* ── READING PROGRESS BAR (slim, MindMarket-inspired, brand-coloured) ── */
+.read-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0%; background: var(--orange); z-index: 200; transition: width 0.08s linear; }
+
+/* NAV (unchanged — served by /partials/header.html) */
 .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 68px; background: var(--green); border-bottom: 1px solid rgba(253,161,29,0.3); }
 .nav-logo { font-family: "Sigmar", cursive; color: #FDF6EC; font-size: 1.45rem; font-weight: 700; text-decoration: none; }
 .nav-logo span { color: var(--orange); }
@@ -49,96 +52,136 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
 .mobile-menu a:last-child { border-bottom: none; }
 .mobile-menu a:hover { color: #FDF6EC; }
 
-/* POST HERO */
-.post-hero { padding: 142px 48px 56px; background: var(--green); position: relative; overflow: hidden; }
-.post-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 0%, rgba(253,161,29,0.15), transparent 55%), radial-gradient(ellipse at 10% 100%, rgba(253,161,29,0.07), transparent 50%); }
-.post-hero-inner { max-width: 800px; margin: 0 auto; position: relative; }
-.post-breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 0.75rem; color: rgba(253,246,236,0.55); margin-bottom: 20px; }
-.post-breadcrumb a { color: rgba(253,246,236,0.55); text-decoration: none; transition: color 0.2s; }
-.post-breadcrumb a:hover { color: #FDF6EC; }
-.post-breadcrumb span { color: rgba(253,246,236,0.3); }
-.post-cat-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 20px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 18px; width: fit-content; }
-.badge-guide  { background: rgba(255,255,255,0.15); color: #FDF6EC; }
-.badge-local  { background: rgba(253,161,29,0.25); color: #FDA11D; }
-.badge-recipe { background: rgba(255,100,100,0.2); color: #ffb0b0; }
-.post-hero h1 { font-family: "Sigmar", cursive; font-size: clamp(1.8rem, 4vw, 2.8rem); color: #FDF6EC; line-height: 1.2; margin-bottom: 20px; }
-.post-hero-meta { display: flex; align-items: center; gap: 12px; font-size: 0.8rem; color: rgba(253,246,236,0.6); flex-wrap: wrap; }
-.post-hero-meta-dot { width: 3px; height: 3px; background: rgba(253,246,236,0.4); border-radius: 50%; }
-.post-read-time { background: rgba(253,161,29,0.2); color: var(--orange); padding: 3px 10px; border-radius: 10px; font-weight: 600; font-size: 0.72rem; }
+/* ══════════════════════════════════════════════════
+   POST HERO — MindMarket-style: centred headline on a
+   calm cream field, then a full-width rounded hero image.
+   ══════════════════════════════════════════════════ */
+.post-hero { padding: 172px 24px 76px; background: var(--cream); text-align: center; }
+.post-hero-inner { max-width: 960px; margin: 0 auto; will-change: opacity, transform; }
+.hero-breadcrumb { display: inline-flex; align-items: center; gap: 8px; font-size: 0.74rem; color: var(--muted); margin-bottom: 26px; }
+.hero-breadcrumb a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.hero-breadcrumb a:hover { color: var(--green); }
+.hero-breadcrumb span { color: var(--border); }
+.hero-pills { display: flex; justify-content: center; gap: 10px; margin-bottom: 24px; }
+.hero-pill { display: inline-flex; align-items: center; gap: 6px; padding: 6px 16px; border-radius: 30px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; background: var(--white); color: var(--green); border: 1px solid var(--border); }
+.post-hero h1 { font-family: "Sigmar", cursive; font-size: clamp(2.4rem, 5.8vw, 4.4rem); color: var(--green); line-height: 1.08; letter-spacing: -0.015em; max-width: 16ch; margin: 0 auto 28px; }
+.hero-meta { display: flex; justify-content: center; align-items: center; gap: 12px; font-size: 0.86rem; color: var(--muted); }
+.hero-meta-dot { width: 3px; height: 3px; background: var(--muted); border-radius: 50%; opacity: 0.6; }
 
-/* POST PARALLAX BANNER */
-.post-banner {
-  height: 420px;
-  position: relative;
-  overflow: hidden;
+/* Full-width rounded hero image with overlaid pills (MindMarket signature) */
+.hero-figure { max-width: 1240px; margin: 64px auto 0; padding: 0 24px; position: relative; will-change: transform; }
+.hero-figure img { width: 100%; height: clamp(320px, 52vh, 620px); object-fit: cover; border-radius: 28px; display: block; }
+
+/* ══════════════════════════════════════════════════
+   BODY LAYOUT — sticky left rail + narrow reading column
+   ══════════════════════════════════════════════════ */
+.post-layout { max-width: 1240px; margin: 0 auto; padding: 64px 24px 40px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px; align-items: start; }
+.post-body { max-width: 720px; margin: 0 auto; }
+
+/* Left rail */
+.post-rail { order: -1; }
+.rail-back { display: inline-flex; align-items: center; gap: 8px; font-size: 0.82rem; font-weight: 600; color: var(--green); text-decoration: none; background: var(--white); border: 1px solid var(--border); border-radius: 30px; padding: 8px 18px 8px 14px; transition: all 0.2s; }
+.rail-back:hover { color: var(--orange-dark); border-color: var(--orange); }
+.rail-title { font-family: "Outfit", sans-serif; font-weight: 700; font-size: 1.05rem; color: var(--text); line-height: 1.35; margin: 20px 0 6px; }
+.rail-date { font-size: 0.8rem; color: var(--muted); margin-bottom: 20px; }
+.rail-toc-title { font-size: 0.62rem; font-weight: 800; color: var(--orange); text-transform: uppercase; letter-spacing: 0.16em; margin-bottom: 10px; padding-top: 18px; border-top: 1px solid var(--border); }
+.toc-nav { display: flex; flex-direction: column; gap: 1px; }
+#tocDesktop { display: none; } /* desktop-only TOC; the <details> handles mobile */
+.toc-link { display: block; font-size: 0.82rem; color: var(--muted); text-decoration: none; font-weight: 500; padding: 7px 10px; border-radius: 6px; border-left: 2px solid transparent; line-height: 1.45; transition: all 0.15s; overflow-wrap: anywhere; }
+.toc-link:hover { color: var(--text); background: var(--tag-bg); }
+.toc-link.active { color: var(--green); font-weight: 700; border-left-color: var(--orange); background: rgba(41,98,65,0.05); }
+
+/* SHARE PANEL (sidebar, below the TOC) */
+.share-panel { margin-top: 22px; padding-top: 20px; border-top: 1px solid var(--border); }
+.share-title { font-size: 0.62rem; font-weight: 800; color: var(--orange); text-transform: uppercase; letter-spacing: 0.16em; margin-bottom: 14px; }
+.share-btns { display: flex; flex-wrap: wrap; gap: 10px; }
+.share-btn { width: 38px; height: 38px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; background: var(--green); color: var(--cream); border: none; padding: 0; cursor: pointer; text-decoration: none; transition: background 0.2s, transform 0.2s; }
+.share-btn:hover { background: var(--orange); color: #fff; transform: translateY(-2px); }
+.share-btn svg { width: 17px; height: 17px; fill: currentColor; display: block; }
+.share-toast { position: fixed; bottom: 26px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--green); color: var(--cream); padding: 11px 22px; border-radius: 30px; font-size: 0.86rem; font-weight: 600; opacity: 0; pointer-events: none; transition: opacity 0.3s, transform 0.3s; z-index: 300; box-shadow: 0 10px 30px rgba(41,98,65,0.25); }
+.share-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* Desktop: two columns, rail sticky on the LEFT */
+@media (min-width: 1000px) {
+  .post-layout { grid-template-columns: 300px minmax(0, 720px); gap: 72px; justify-content: center; }
+  .post-rail { order: 0; position: sticky; top: 96px; align-self: start; }
+  .post-body { margin: 0; }
+  #tocDesktop { display: flex; }
+  .post-rail > details { display: none; } /* hide the mobile accordion on desktop */
 }
-.post-banner-img {
-  position: absolute;
-  inset: -80px 0;
-  background-image: url('../img/Girl-bought-coffee-from-the-beans-hub.png');
-  background-size: cover;
-  background-position: center 30%;
-  will-change: transform;
-  transition: transform 0.05s linear;
+/* Mobile: rail collapses into a details/summary at the top */
+.rail-mobile-toggle { display: none; }
+@media (max-width: 999px) {
+  .post-rail details { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 4px 16px 14px; margin-top: 16px; }
+  .post-rail summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; padding: 12px 0; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.14em; color: var(--orange); }
+  .post-rail summary::-webkit-details-marker { display: none; }
+  .post-rail summary::after { content: '\25BE'; color: var(--muted); transition: transform 0.2s; }
+  .post-rail details[open] summary::after { transform: rotate(180deg); }
+  .rail-toc-title { display: none; }
 }
 
-/* POST BODY */
-.post-body { max-width: 800px; margin: 0 auto; padding: 56px 48px 80px; }
-
-/* TYPOGRAPHY */
-.post-body h2 { font-family: "Sigmar", cursive; font-size: 1.5rem; color: var(--green); margin: 48px 0 16px; line-height: 1.3; }
-.post-body h3 { font-family: "Outfit", sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--text); margin: 32px 0 12px; }
-.post-body p { font-size: 0.97rem; line-height: 1.85; color: #2a3a2a; margin-bottom: 20px; }
-.post-body ul, .post-body ol { padding-left: 24px; margin-bottom: 20px; }
-.post-body li { font-size: 0.97rem; line-height: 1.8; color: #2a3a2a; margin-bottom: 6px; }
+/* ── ARTICLE TYPOGRAPHY ── */
+.post-body .lead { font-size: 1.18rem; line-height: 1.7; color: var(--text); margin-bottom: 40px; }
+.post-body h2 { font-family: "Sigmar", cursive; font-size: clamp(1.5rem, 2.4vw, 2rem); color: var(--green); margin: 8px 0 6px; line-height: 1.2; }
+.post-body .thesis { font-family: "Outfit", sans-serif; font-size: 1.22rem; font-weight: 600; color: var(--text); line-height: 1.4; margin: 0 0 24px; }
+.post-body h3 { font-family: "Outfit", sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--text); margin: 30px 0 12px; }
+.post-body p { font-size: 1.02rem; line-height: 1.85; color: #2a3a2a; margin-bottom: 22px; }
+.post-body ul, .post-body ol { padding-left: 22px; margin-bottom: 22px; }
+.post-body li { font-size: 1.02rem; line-height: 1.8; color: #2a3a2a; margin-bottom: 8px; }
 .post-body strong { font-weight: 700; color: var(--text); }
 .post-body em { font-style: italic; color: var(--muted); }
-.post-body a { color: var(--green); font-weight: 600; text-decoration: underline; text-decoration-color: rgba(41,98,65,0.3); transition: color 0.2s; }
-.post-body a:hover { color: var(--orange); }
 
-/* CALLOUT BOX */
-.callout { background: var(--tag-bg); border-left: 4px solid var(--orange); border-radius: 0 12px 12px 0; padding: 20px 24px; margin: 32px 0; }
-.callout p { margin: 0; font-size: 0.92rem; }
-.callout-title { font-weight: 700; color: var(--green); margin-bottom: 6px !important; font-size: 0.8rem !important; text-transform: uppercase; letter-spacing: 0.08em; }
+/* Inline links styled as subtle highlight pills (MindMarket pattern) */
+.post-body p a, .post-body li a { color: var(--green); font-weight: 600; text-decoration: none; background: var(--tag-bg); padding: 1px 7px; border-radius: 6px; box-decoration-break: clone; -webkit-box-decoration-break: clone; transition: all 0.18s; }
+.post-body p a:hover, .post-body li a:hover { background: var(--orange); color: var(--white); }
+
+/* Section divider — hairline rule between acts */
+.section-rule { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+
+/* PULL-QUOTE (MindMarket signature) */
+.pullquote { margin: 40px 0; padding: 4px 0 4px 24px; border-left: 3px solid var(--orange); }
+.pullquote p { font-size: 1.35rem; line-height: 1.5; font-weight: 600; font-style: italic; color: var(--green); margin: 0; }
 
 /* INFO CARD */
-.info-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 24px 28px; margin: 28px 0; }
-.info-card h4 { font-size: 0.88rem; font-weight: 700; color: var(--green); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.08em; }
+.info-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 22px 26px; margin: 22px 0; }
+.info-card h4 { font-size: 0.86rem; font-weight: 700; color: var(--green); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.08em; }
+.info-card p { margin-bottom: 0; }
 
-/* FLAVOUR TABLE */
-.flavour-table { width: 100%; border-collapse: collapse; margin: 28px 0; font-size: 0.92rem; }
-.flavour-table thead tr { background: var(--green); color: #FDF6EC; }
-.flavour-table thead th { padding: 12px 16px; text-align: left; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; }
-.flavour-table thead th:first-child { border-radius: 10px 0 0 0; }
-.flavour-table thead th:last-child { border-radius: 0 10px 0 0; }
-.flavour-table tbody tr { border-bottom: 1px solid var(--border); }
-.flavour-table tbody tr:last-child { border-bottom: none; }
-.flavour-table tbody tr:nth-child(even) { background: var(--tag-bg); }
-.flavour-table tbody td { padding: 12px 16px; color: #2a3a2a; line-height: 1.6; }
+/* CTA BLOCK (MindMarket "Planning a study?" pattern) */
+.cta-block { margin: 48px 0; }
+.cta-block h2 { font-family: "Sigmar", cursive; font-size: clamp(1.4rem, 2.2vw, 1.9rem); color: var(--green); margin-bottom: 14px; }
+.cta-block p { font-size: 1.05rem; line-height: 1.7; color: #2a3a2a; margin-bottom: 20px; }
+.pill-btn { display: inline-flex; align-items: center; gap: 12px; background: var(--orange); color: var(--white); font-weight: 700; font-size: 0.95rem; text-decoration: none; padding: 12px 14px 12px 24px; border-radius: 40px; transition: background 0.2s, transform 0.2s; }
+.pill-btn:hover { background: var(--orange-dark); transform: translateX(2px); }
+.pill-btn .pill-ico { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.22); font-size: 1rem; }
 
-/* DIVIDER */
-.post-divider { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
-
-/* FAQ */
-.faq-item { border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; background: var(--white); overflow: hidden; }
-.faq-item summary { cursor: pointer; padding: 18px 22px; font-weight: 700; color: var(--green); font-size: 0.95rem; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+/* FAQ ACCORDION (MindMarket rounded cards + toggle) */
+.faq-wrap { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+.faq-item { background: var(--white); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+.faq-item summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 22px; font-weight: 700; font-size: 1rem; color: var(--text); }
 .faq-item summary::-webkit-details-marker { display: none; }
-.faq-item summary::after { content: '+'; font-size: 1.3rem; color: var(--orange); flex-shrink: 0; transition: transform 0.2s; }
-.faq-item[open] summary::after { transform: rotate(45deg); }
-.faq-item .faq-answer { padding: 0 22px 20px; }
-.faq-item .faq-answer p { margin: 0; font-size: 0.94rem; }
+.faq-item summary::after { content: '+'; font-size: 1.4rem; font-weight: 400; color: var(--orange); line-height: 1; flex-shrink: 0; transition: transform 0.2s; }
+.faq-item[open] summary::after { content: '\2212'; }
+.faq-item .faq-a { padding: 0 22px 20px; }
+.faq-item .faq-a p { font-size: 0.98rem; line-height: 1.8; color: #2a3a2a; margin: 0; }
 
 /* TAG ROW */
-.post-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 36px 0 0; }
+.post-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 40px 0 0; }
 .post-tag { padding: 5px 14px; background: var(--tag-bg); color: var(--muted); border-radius: 20px; font-size: 0.75rem; font-weight: 500; }
 
-/* BACK + NEXT NAV */
-.post-nav { display: flex; justify-content: space-between; align-items: center; padding: 32px 0; border-top: 1px solid var(--border); margin-top: 48px; }
-.post-nav a { display: flex; align-items: center; gap: 8px; text-decoration: none; font-size: 0.85rem; font-weight: 600; color: var(--green); transition: color 0.2s; }
-.post-nav a:hover { color: var(--orange); }
+/* NEXT ARTICLE — MindMarket split card */
+.next-article { max-width: 1240px; margin: 24px auto 0; padding: 0 24px; }
+.next-card { display: grid; grid-template-columns: 1fr 1fr; border-radius: 24px; overflow: hidden; border: 1px solid var(--border); background: var(--white); text-decoration: none; color: inherit; transition: box-shadow 0.25s; }
+.next-card:hover { box-shadow: 0 18px 50px rgba(41,98,65,0.14); }
+.next-card-img { position: relative; min-height: 300px; }
+.next-card-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.next-card-body { padding: 48px 44px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: var(--cream); }
+.next-card-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+.next-card-title { font-family: "Sigmar", cursive; font-size: clamp(1.2rem, 1.8vw, 1.7rem); color: var(--green); line-height: 1.25; margin-bottom: 24px; }
+@media (max-width: 768px) { .next-card { grid-template-columns: 1fr; } .next-card-img { min-height: 220px; } .next-card-body { padding: 36px 24px; } }
 
 /* MORE POSTS */
-.more-posts { background: var(--cream); border-top: 1px solid var(--border); padding: 64px 48px; }
+.more-posts { background: var(--cream); border-top: 1px solid var(--border); padding: 64px 24px; margin-top: 48px; }
 .more-posts-inner { max-width: 1100px; margin: 0 auto; }
 .more-posts h2 { font-family: "Sigmar", cursive; font-size: 1.4rem; color: var(--text); margin-bottom: 32px; }
 .more-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -148,132 +191,47 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
 .more-card h3 { font-family: "Outfit", sans-serif; font-size: 0.92rem; font-weight: 700; color: var(--text); line-height: 1.4; }
 .more-card-meta { font-size: 0.72rem; color: var(--muted); margin-top: auto; }
 
-/* FOOTER */
-
 @media (max-width: 768px) {
   .site-nav { padding: 0 20px; }
   .site-nav .nav-links { display: none; }
   .nav-hamburger { display: flex; }
-  .post-hero { padding: 126px 20px 40px; }
-  .post-body { padding: 40px 20px 60px; }
+  .post-hero { padding: 108px 20px 24px; }
+  .hero-figure { padding: 0 16px; }
+  .post-layout { padding: 40px 20px; }
   .more-posts { padding: 48px 20px; }
   .more-grid { grid-template-columns: 1fr; }
-  .post-banner { height: 260px; }
-  .flavour-table { font-size: 0.82rem; }
-  .flavour-table thead th, .flavour-table tbody td { padding: 10px 12px; }
 }
 
-    /* TABLE OF CONTENTS */
-    .post-layout {
-      max-width: 1240px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: minmax(0, 800px);
-      justify-content: center;
-      column-gap: 40px;
-      align-items: start;
-      padding: 56px 48px 80px;
-    }
-    .post-layout > .post-body {
-      max-width: none;
-      margin: 0;
-      padding: 0;
-    }
-    .toc-sidebar { display: block; order: -1; margin-bottom: 8px; }
-    .toc-inner summary {
-      list-style: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-    }
-    .toc-inner summary::-webkit-details-marker { display: none; }
-    .toc-inner summary::after {
-      content: '\25BE';
-      font-size: 0.9rem;
-      color: var(--muted);
-      transition: transform 0.2s;
-      flex-shrink: 0;
-    }
-    .toc-inner[open] summary::after { transform: rotate(180deg); }
-    @media (max-width: 768px) {
-      .post-layout {
-        padding: 32px 20px 56px;
-      }
-      .toc-inner { max-height: 260px; }
-      .toc-inner[open] .toc-nav { padding-top: 10px; }
-    }
-    @media (min-width: 1260px) {
-      .post-layout {
-        grid-template-columns: minmax(0, 800px) 220px;
-        justify-content: start;
-      }
-      .toc-sidebar {
-        display: block;
-        order: 0;
-        margin-bottom: 0;
-        position: sticky;
-        top: 90px;
-        align-self: start;
-      }
-      .toc-inner summary { cursor: default; pointer-events: none; }
-      .toc-inner summary::after { display: none; }
-    }
-    .toc-inner {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 18px 16px 20px;
-      overflow: hidden;
-      max-height: calc(100vh - 110px);
-      overflow-y: auto;
-      scrollbar-width: none;
-    }
-    .toc-inner::-webkit-scrollbar { display: none; }
-    .toc-title {
-      font-size: 0.62rem;
-      font-weight: 800;
-      color: var(--orange);
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      margin-bottom: 12px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid var(--border);
-    }
-    .toc-nav {
-      display: flex;
-      flex-direction: column;
-      gap: 1px;
-      min-width: 0;
-    }
-    .toc-link {
-      display: block;
-      min-width: 0;
-      white-space: normal;
-      overflow-wrap: anywhere;
-      word-break: break-word;
-      font-size: 0.76rem;
-      color: var(--muted);
-      text-decoration: none;
-      font-weight: 500;
-      padding: 6px 8px 6px 10px;
-      border-radius: 6px;
-      border-left: 2px solid transparent;
-      line-height: 1.45;
-      transition: all 0.15s;
-    }
-    .toc-link:hover {
-      color: var(--text);
-      background: var(--tag-bg);
-      border-left-color: var(--border);
-    }
-    .toc-link.active {
-      color: var(--green);
-      font-weight: 700;
-      border-left-color: var(--orange);
-      background: rgba(41, 98, 65, 0.05);
-    }
+/* ===== Coffee Beans mega-dropdown (nav internal linking — unchanged) ===== */
+.nav-dropdown { position: relative; display: inline-flex; align-items: center; }
+.nav-dropdown .nav-dropdown-trigger { display: inline-flex; align-items: center; gap: 5px; }
+.nav-caret { font-size: 0.7em; transition: transform 0.2s; }
+.nav-dropdown:hover .nav-caret, .nav-dropdown:focus-within .nav-caret { transform: rotate(180deg); }
+.nav-dropdown::after { content: ""; position: absolute; top: 100%; left: -10px; right: -10px; height: 22px; }
+.nav-dropdown-menu { position: absolute; top: calc(100% + 20px); left: 50%; transform: translateX(-50%) translateY(8px); display: grid; grid-template-columns: repeat(3, max-content); gap: 4px 32px; background: var(--cream, #FDF6EC); border: 1px solid var(--border, #E8E0D0); border-radius: 14px; padding: 22px 26px; box-shadow: 0 16px 44px rgba(41,98,65,0.20); opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.18s ease, transform 0.18s ease; z-index: 200; }
+.nav-dropdown:hover .nav-dropdown-menu, .nav-dropdown:focus-within .nav-dropdown-menu { opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+.nav-dd-group { display: flex; flex-direction: column; gap: 1px; }
+.nav-dd-heading { font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted, #5a6e5a); font-weight: 700; margin-bottom: 7px; }
+.nav-dropdown-menu a { color: var(--green, #296241) !important; font-size: 0.9rem !important; font-weight: 500 !important; letter-spacing: normal !important; padding: 5px 0 !important; white-space: nowrap; }
+.nav-dropdown-menu a:hover { color: var(--accent-hover, #DA8A10) !important; }
+.nav-dd-all { margin-top: 9px; font-weight: 700 !important; color: var(--accent-hover, #DA8A10) !important; }
+.mobile-menu details.mobile-dd { border-bottom: 1px solid rgba(253,161,29,0.15); }
+.mobile-menu details.mobile-dd summary { color: rgba(253,246,236,0.85); font-size: 1rem; font-weight: 500; padding: 12px 0; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+.mobile-menu details.mobile-dd summary::-webkit-details-marker { display: none; }
+.mobile-menu details.mobile-dd summary::after { content: "\25be"; color: #FDA11D; font-size: 0.85em; transition: transform 0.2s; }
+.mobile-menu details.mobile-dd[open] summary::after { transform: rotate(180deg); }
+.mobile-menu details.mobile-dd a { display: block; color: rgba(253,246,236,0.7); font-size: 0.92rem; font-weight: 500; padding: 9px 0 9px 16px; border-bottom: none; }
+.mobile-menu details.mobile-dd a:last-child { color: #FDA11D; font-weight: 600; }
+/* ===== end dropdown ===== */
+
+/* --- legacy content components (kept so existing article bodies render) --- */
+.callout { background: var(--tag-bg); border-left: 4px solid var(--orange); border-radius: 0 12px 12px 0; padding: 20px 24px; margin: 32px 0; }
+.callout p { margin: 0; font-size: 0.95rem; line-height: 1.7; }
+.callout-title { font-weight: 700; color: var(--green); margin-bottom: 6px !important; font-size: 0.8rem !important; text-transform: uppercase; letter-spacing: 0.08em; }
+.post-nav { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding: 28px 0 0; border-top: 1px solid var(--border); margin-top: 40px; }
+.post-nav a { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-size: 0.9rem; font-weight: 600; color: var(--green); transition: color 0.2s; }
+.post-nav a:hover { color: var(--orange); }
+.post-banner { background: var(--green-light); display: flex; align-items: center; justify-content: center; height: 220px; font-size: 7rem; border-radius: 20px; margin: 8px 0 24px; }
 </style>
   <link rel="canonical" href="https://www.thebeanshub.com/posts/how-to-taste-specialty-coffee-beans">
   <meta property="og:type" content="article">
@@ -391,34 +349,62 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
 </head>
 <body>
 <!--#include virtual="/partials/header.html" -->
+<div class="read-progress" id="readProgress"></div>
 <div class="post-hero">
 <div class="post-hero-inner">
-<div class="post-breadcrumb">
-<a href="/library">Coffee Library</a>
-<span>›</span>
-<span>Beginner Guide</span>
-</div>
-<div class="post-cat-badge badge-guide">🎓 Beginner Guide</div>
+<div class="hero-breadcrumb"><a href="/">Home</a><span>&rsaquo;</span><a href="/library">Coffee Library</a><span>&rsaquo;</span><span>Beginner Guide</span></div>
+<div class="hero-pills"><span class="hero-pill">Beginner Guide</span></div>
 <h1>How to Taste Specialty Coffee Beans (A Beginner-Friendly Guide)</h1>
-<div class="post-hero-meta">
-<span>The Beans Hub</span>
-<span class="post-hero-meta-dot"></span>
-<span>June 2026</span>
-<span class="post-hero-meta-dot"></span>
-<span class="post-read-time">11 min read</span>
+<div class="hero-meta"><span>The Beans Hub</span><span class="hero-meta-dot"></span><span>June 2026</span><span class="hero-meta-dot"></span><span>11 min read</span></div>
 </div>
 </div>
-</div>
-<div class="post-banner">
-<div class="post-banner-img" id="parallaxImg"></div>
-</div>
+<figure class="hero-figure"><img src="/img/how-to-read-flavour-notes.webp" alt="How to Taste Specialty Coffee Beans (A Beginner-Friendly Guide)"/></figure>
 <div class="post-layout">
+<aside class="post-rail" aria-label="Article navigation">
+<a class="rail-back" href="/library">&larr; Back to Coffee Library</a>
+<p class="rail-title">How to Taste Specialty Coffee Beans (A Beginner-Friendly Guide)</p>
+<p class="rail-date">June 2026 · 11 min read</p>
+<div class="rail-toc-title">On this page</div>
+<nav class="toc-nav" id="tocDesktop"><a class="toc-link" href="#taste-vs-flavour">Taste vs. flavour</a>
+<a class="toc-link" href="#forget-the-tongue-map">Forget the tongue map</a>
+<a class="toc-link" href="#set-up-a-fair-tasting">Set up a fair tasting</a>
+<a class="toc-link" href="#the-five-steps">The five steps</a>
+<a class="toc-link" href="#the-four-pillars">The four pillars</a>
+<a class="toc-link" href="#name-what-you-taste">Name what you taste</a>
+<a class="toc-link" href="#train-your-palate">Train your palate</a>
+<a class="toc-link" href="#common-mistakes">Common mistakes</a>
+<a class="toc-link" href="#faq">FAQ</a></nav>
+<details>
+<summary>On this page</summary>
+<nav class="toc-nav"><a class="toc-link" href="#taste-vs-flavour">Taste vs. flavour</a>
+<a class="toc-link" href="#forget-the-tongue-map">Forget the tongue map</a>
+<a class="toc-link" href="#set-up-a-fair-tasting">Set up a fair tasting</a>
+<a class="toc-link" href="#the-five-steps">The five steps</a>
+<a class="toc-link" href="#the-four-pillars">The four pillars</a>
+<a class="toc-link" href="#name-what-you-taste">Name what you taste</a>
+<a class="toc-link" href="#train-your-palate">Train your palate</a>
+<a class="toc-link" href="#common-mistakes">Common mistakes</a>
+<a class="toc-link" href="#faq">FAQ</a></nav>
+</details>
+<div class="share-panel">
+<div class="share-title">Share</div>
+<div class="share-btns">
+<a class="share-btn" href="#" data-share="facebook" aria-label="Share on Facebook" title="Share on Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg></a>
+<a class="share-btn" href="#" data-share="instagram" aria-label="Share to Instagram" title="Share to Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg></a>
+<a class="share-btn" href="#" data-share="threads" aria-label="Share on Threads" title="Share on Threads"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.056 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32L7.734 7.847c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.046.216.094.324.145 1.524.716 2.64 1.802 3.23 3.142.82 1.867.899 4.909-1.575 7.325-1.895 1.828-4.195 2.573-7.245 2.588Zm1.063-11.24c-.267 0-.535.007-.808.023-1.797.106-2.884.909-2.826 2.09.055 1.16 1.24 1.727 2.436 1.662 1.088-.059 2.55-.483 2.836-3.606-.585-.14-1.207-.169-1.638-.169Z"/></svg></a>
+<a class="share-btn" href="#" data-share="x" aria-label="Share on X" title="Share on X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+<a class="share-btn" href="#" data-share="reddit" aria-label="Share on Reddit" title="Share on Reddit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-6.993 4.87-3.863 0-6.993-2.176-6.993-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.11-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg></a>
+<button class="share-btn" type="button" data-share="copy" aria-label="Copy link" title="Copy link"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg></button>
+</div>
+</div>
+</aside>
 <div class="post-body">
 
 <p>Most people drink coffee to wake up. Tasting coffee is a different thing entirely — it's drinking on purpose, paying attention to what's actually in the cup instead of letting it disappear while you check your phone.</p>
 <p>And here's the part nobody tells you: learning how to taste specialty coffee beans isn't a gift you're born with. It's a skill, and a fairly quick one to pick up once you know what your mouth and nose are really doing. The bag says "jasmine, peach, brown sugar" and you taste… coffee. That gap isn't your tongue failing. It's just untrained — and this guide closes the gap.</p>
 <p>We'll cover what's physically happening when you taste, how to set up a fair tasting at home, the exact steps roasters and buyers use, and how to put a name to what you're tasting. By the end you'll be able to sit down with a bag of Malaysian-roasted single origin and actually find the fruit.</p>
 
+<hr class="section-rule"/>
 <h2 id="taste-vs-flavour">Taste vs. flavour: they're not the same thing</h2>
 <p>This is the single most useful idea in coffee tasting, so we'll start here.</p>
 <p><strong>Taste</strong> happens only on your tongue, and it's surprisingly limited. There are just five basic tastes: sweet, sour, salty, bitter, and umami (savoury). That's the whole list. Your tongue cannot, on its own, detect "blueberry" or "hazelnut" — those aren't tastes.</p>
@@ -431,11 +417,13 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
 </div>
 <p>The takeaway: if you want to taste more, you have to <em>smell</em> more. Almost every technique below is really a trick for getting more aroma to your nose.</p>
 
+<hr class="section-rule"/>
 <h2 id="forget-the-tongue-map">Forget the tongue map you learned in school</h2>
 <p>You've probably seen the diagram: sweet on the tip, salty and sour on the sides, bitter across the back. It's printed in textbooks, on placemats, all over the internet. It's also wrong.</p>
 <p>The "tongue map" traces back to a 1901 German study that was mistranslated and oversimplified decades later. Researchers have debunked it repeatedly — by the 1970s and again in the 1990s, scientists confirmed that <strong>every basic taste can be detected across the entire tongue.</strong> There's no zone that only tastes sweetness and no zone that only tastes bitterness.</p>
 <p>Why does this matter for coffee? Because the map quietly teaches bad habits — like only sipping from the front of your mouth, or assuming bitterness must come "from the back." In reality you want coffee to coat your whole tongue at once, which is the entire reason cuppers slurp (more on that shortly). Some areas may be a touch <em>more sensitive</em> to certain tastes, but all of your tongue is working all of the time.</p>
 
+<hr class="section-rule"/>
 <h2 id="set-up-a-fair-tasting">Set up a fair tasting at home</h2>
 <p>To judge a bean honestly, you strip away the variables. Espresso machines and paper filters change texture and trap oils — useful for a great morning cup, but they get in the way when you're trying to assess the coffee itself. So tasters use the simplest possible method: <strong>cupping</strong>, which is just ground coffee steeped in hot water, like a tea.</p>
 <p>You already own everything you need:</p>
@@ -455,6 +443,7 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
 <p>Coffee roasted in the last 24–48 hours is still off-gassing carbon dioxide, which gives a sharp, prickly, fizzy edge on the tongue. It's not a defect — it's just noise that drowns out the subtle stuff. For tasting, beans are usually clearest <strong>4–7 days after the roast date.</strong> Check the roast date on the bag, not the "best before."</p>
 </div>
 
+<hr class="section-rule"/>
 <h2 id="the-five-steps">The five steps roasters actually use</h2>
 <p>Here's the sequence used in cupping rooms everywhere. Even if you never set up a formal cupping, knowing these steps changes how you drink any cup of coffee.</p>
 
@@ -473,6 +462,7 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
 <h3>5. Notice the aftertaste — and taste again as it cools</h3>
 <p>Swallow (or spit, if you're tasting many) and pay attention to what lingers. A long, sweet, clean finish is the mark of a quality bean; a short, dry, ashy one is not. Then keep going. Coffee changes dramatically as it cools — a cup can taste of chocolate at 68°C and shift to red apple or stone fruit at 60°C. Tasting the same coffee hot, warm, and nearly cold is like hearing three different songs from one bean.</p>
 
+<hr class="section-rule"/>
 <h2 id="the-four-pillars">The four pillars of a good cup</h2>
 <p>These four attributes are your scaffolding. Run through them every time and the vague "it's nice" turns into something you can actually describe.</p>
 <table class="flavour-table">
@@ -511,6 +501,7 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
 <p>Beginners constantly mix these two up. A simple home rule from the pros: a balanced coffee should be about <strong>as sour as it is bitter.</strong> If it's aggressively sour, it's often <em>under</em>-extracted (grind finer or use hotter water). If it's flatly bitter, it's often <em>over</em>-extracted or the grind is too fine. Before you blame the bean, rule out your brew — your <a href="/posts/coffee-brewing-methods">brewing method</a> shapes the cup as much as the roast.</p>
 </div>
 
+<hr class="section-rule"/>
 <h2 id="name-what-you-taste">Putting a name to what you taste</h2>
 <p>This is the part that feels like magic but is really just vocabulary. You can't recognise a flavour you've never consciously named — it's like showing red to a baby. The colour is right there, but the brain has no word for it yet. Coffee works the same way.</p>
 <p>The fix is to go <strong>big first, then zoom in.</strong> Don't reach for "blueberry jam" on the first sip. Ask broad questions and narrow down:</p>
@@ -554,6 +545,7 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
 </table>
 <p>One honest caveat: these origin links only hold for genuine single-origin beans, and how a coffee is <a href="/posts/coffee-processing-methods">processed</a> and <a href="/posts/coffee-roast-levels-explained">roasted</a> can shift the whole profile. A natural-process Ethiopian tastes wildly different from a washed one. If you want the deeper version of decoding what's on the bag, our guide to <a href="/posts/how-to-read-flavour-notes">reading flavour notes</a> picks up exactly here.</p>
 
+<hr class="section-rule"/>
 <h2 id="train-your-palate">Train your palate (the part that actually works)</h2>
 <p>Tasting is a muscle. Here's how working pros build it — and none of it requires expensive gear.</p>
 
@@ -574,6 +566,7 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
 <p>Smell before you sip. Slurp to spread it around. Go big (fruity? sweet? bright?) before you go small. Taste it again as it cools. Write down three words. Do that with two coffees a week and your palate will climb faster than you'd believe.</p>
 </div>
 
+<hr class="section-rule"/>
 <h2 id="common-mistakes">Common mistakes that flatten the flavour</h2>
 <ul>
 <li><strong>Drinking it scalding hot.</strong> Heat masks nuance. The interesting notes show up as the cup cools — give it ten minutes.</li>
@@ -584,6 +577,7 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
 <li><strong>Chasing the "right" answer.</strong> If you taste plum and the bag says cherry, you're not wrong — you're close, and close is the whole game.</li>
 </ul>
 
+<hr class="section-rule"/>
 <h2 id="faq">Frequently asked questions</h2>
 <details class="faq-item">
 <summary>Do I need special equipment to taste specialty coffee at home?</summary>
@@ -624,22 +618,6 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
 <a href="/shop">Browse Coffee Beans →</a>
 </div>
 </div><!-- /post-body -->
-<aside aria-label="Table of contents" class="toc-sidebar">
-<details class="toc-inner" open>
-<summary class="toc-title">Contents</summary>
-<nav class="toc-nav">
-<a class="toc-link" href="#taste-vs-flavour">Taste vs. flavour</a>
-<a class="toc-link" href="#forget-the-tongue-map">Forget the tongue map</a>
-<a class="toc-link" href="#set-up-a-fair-tasting">Set up a fair tasting</a>
-<a class="toc-link" href="#the-five-steps">The five steps</a>
-<a class="toc-link" href="#the-four-pillars">The four pillars</a>
-<a class="toc-link" href="#name-what-you-taste">Name what you taste</a>
-<a class="toc-link" href="#train-your-palate">Train your palate</a>
-<a class="toc-link" href="#common-mistakes">Common mistakes</a>
-<a class="toc-link" href="#faq">FAQ</a>
-</nav>
-</details>
-</aside>
 </div><!-- /post-layout -->
 <div class="more-posts">
 <div class="more-posts-inner">
@@ -664,68 +642,135 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
 </div>
 </div>
 <!-- FOOTER -->
+<div class="share-toast" id="shareToast" role="status" aria-live="polite">Link copied!</div>
 <!--#include virtual="/partials/footer.html" -->
 <script>
 function toggleMenu() {
   document.getElementById('mobileMenu').classList.toggle('open');
 }
-
-// Parallax scroll
+// Reading progress bar
 (function () {
-  const img = document.getElementById('parallaxImg');
-  if (!img) return;
-
+  const bar = document.getElementById('readProgress');
+  if (!bar) return;
+  function update() {
+    const h = document.documentElement;
+    const scrolled = h.scrollTop;
+    const max = h.scrollHeight - h.clientHeight;
+    bar.style.width = (max > 0 ? (scrolled / max) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
+// Hero title fades out & drifts up on scroll; image rises with a gentle parallax
+(function () {
+  const inner = document.querySelector('.post-hero-inner');
+  const figure = document.querySelector('.hero-figure');
+  if (!inner) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const FADE = 460; // px of scroll over which the title fully disappears
   let ticking = false;
-  function onScroll() {
-    if (!ticking) {
-      requestAnimationFrame(function () {
-        const banner = img.parentElement;
-        const rect = banner.getBoundingClientRect();
-        const inView = rect.bottom > 0 && rect.top < window.innerHeight;
-        if (inView) {
-          const offset = (rect.top / window.innerHeight) * 60;
-          img.style.transform = 'translateY(' + offset + 'px)';
-        }
-        ticking = false;
-      });
-      ticking = true;
+  function apply() {
+    const y = window.scrollY || window.pageYOffset;
+    const p = Math.min(1, y / FADE);
+    inner.style.opacity = String(1 - p);
+    inner.style.transform = 'translateY(' + (y * 0.35) + 'px)';
+    if (figure) figure.style.transform = 'translateY(' + (-y * 0.06) + 'px)';
+    ticking = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) { window.requestAnimationFrame(apply); ticking = true; }
+  }, { passive: true });
+  apply();
+})();
+// SHARE panel
+(function () {
+  const url = location.href;
+  const title = document.title;
+  const eu = encodeURIComponent(url), et = encodeURIComponent(title);
+  const targets = {
+    facebook: 'https://www.facebook.com/sharer/sharer.php?u=' + eu,
+    x:        'https://twitter.com/intent/tweet?url=' + eu + '&text=' + et,
+    threads:  'https://www.threads.net/intent/post?text=' + et + '%20' + eu,
+    reddit:   'https://www.reddit.com/submit?url=' + eu + '&title=' + et
+  };
+  const toast = document.getElementById('shareToast');
+  function showToast(msg) {
+    if (!toast) return;
+    toast.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(toast._t);
+    toast._t = setTimeout(function () { toast.classList.remove('show'); }, 2400);
+  }
+  function track(method) {
+    if (typeof gtag === 'function') {
+      gtag('event', 'share', { method: method, content_type: 'article', item_id: location.pathname });
     }
   }
-
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-})();
-
-    // TOC — highlight active section on scroll
-    (function () {
-      const tocLinks = document.querySelectorAll('.toc-link[href^="#"]');
-      const headings = Array.from(document.querySelectorAll('.post-body h2[id]'));
-      if (!tocLinks.length || !headings.length) return;
-      function setActive(id) {
-        tocLinks.forEach(l => {
-          l.classList.toggle('active', l.getAttribute('href') === '#' + id);
-        });
+  async function copyLink() {
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(url);
+      } else {
+        const ta = document.createElement('textarea');
+        ta.value = url; ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove();
       }
-      if (headings[0]) setActive(headings[0].id);
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) setActive(entry.target.id);
-        });
-      }, { rootMargin: '-10% 0px -80% 0px', threshold: 0 });
-      headings.forEach(h => observer.observe(h));
-      tocLinks.forEach(link => {
-        link.addEventListener('click', function (e) {
-          const target = document.querySelector(this.getAttribute('href'));
-          if (!target) return;
-          e.preventDefault();
-          const offset = 88;
-          const top = target.getBoundingClientRect().top + window.scrollY - offset;
-          window.scrollTo({ top, behavior: 'smooth' });
-        });
-      });
-    })();
-
-  </script>
+      return true;
+    } catch (e) { return false; }
+  }
+  document.querySelectorAll('.share-btn').forEach(function (btn) {
+    btn.addEventListener('click', async function (e) {
+      e.preventDefault();
+      const k = btn.getAttribute('data-share');
+      if (targets[k]) {
+        window.open(targets[k], '_blank', 'noopener,noreferrer,width=600,height=560');
+        track(k);
+        return;
+      }
+      if (k === 'instagram') {
+        // Instagram has no web link-share; use the native share sheet on mobile, else copy.
+        if (navigator.share) {
+          try { await navigator.share({ title: title, url: url }); track('instagram'); } catch (_) {}
+        } else {
+          const ok = await copyLink();
+          showToast(ok ? 'Link copied — paste it into Instagram' : 'Copy failed, please copy manually');
+          track('instagram');
+        }
+        return;
+      }
+      if (k === 'copy') {
+        const ok = await copyLink();
+        showToast(ok ? 'Link copied!' : 'Copy failed, please copy manually');
+        track('copy_link');
+      }
+    });
+  });
+})();
+// TOC — highlight active section on scroll
+(function () {
+  const tocLinks = document.querySelectorAll('#tocDesktop .toc-link[href^="#"]');
+  const headings = Array.from(document.querySelectorAll('.post-body h2[id]'));
+  if (!tocLinks.length || !headings.length) return;
+  function setActive(id) {
+    tocLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+  }
+  if (headings[0]) setActive(headings[0].id);
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => { if (entry.isIntersecting) setActive(entry.target.id); });
+  }, { rootMargin: '-10% 0px -80% 0px', threshold: 0 });
+  headings.forEach(h => observer.observe(h));
+  document.querySelectorAll('.toc-link[href^="#"]').forEach(link => {
+    link.addEventListener('click', function (e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      const top = target.getBoundingClientRect().top + window.scrollY - 88;
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+  });
+})();
+</script>
 
 </body>
 </html>

@@ -32,3 +32,5 @@ Scripts/
 outputs/
 .tmp-*/
 *.pdf
+.codex_work/
+*-design-analysis.md

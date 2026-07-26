@@ -109,6 +109,11 @@
 }
 html { scroll-behavior: smooth; }
 body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+
+/* ── READING PROGRESS BAR (slim, MindMarket-inspired, brand-coloured) ── */
+.read-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0%; background: var(--orange); z-index: 200; transition: width 0.08s linear; }
+
+/* NAV (unchanged — served by /partials/header.html) */
 .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 68px; background: var(--green); border-bottom: 1px solid rgba(253,161,29,0.3); }
 .nav-logo { font-family: "Sigmar", cursive; color: #FDF6EC; font-size: 1.45rem; font-weight: 700; text-decoration: none; }
 .nav-logo span { color: var(--orange); }
@@ -124,48 +129,137 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
 .mobile-menu a { color: rgba(253,246,236,0.8); text-decoration: none; font-size: 1rem; font-weight: 500; padding: 14px 0; border-bottom: 1px solid rgba(253,246,236,0.15); transition: color 0.2s; }
 .mobile-menu a:last-child { border-bottom: none; }
 .mobile-menu a:hover { color: #FDF6EC; }
-.post-hero { padding: 142px 48px 56px; background: var(--green); position: relative; overflow: hidden; }
-.post-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 0%, rgba(253,161,29,0.15), transparent 55%), radial-gradient(ellipse at 10% 100%, rgba(253,161,29,0.07), transparent 50%); }
-.post-hero-inner { max-width: 800px; margin: 0 auto; position: relative; }
-.post-breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 0.75rem; color: rgba(253,246,236,0.55); margin-bottom: 20px; }
-.post-breadcrumb a { color: rgba(253,246,236,0.55); text-decoration: none; transition: color 0.2s; }
-.post-breadcrumb a:hover { color: #FDF6EC; }
-.post-breadcrumb span { color: rgba(253,246,236,0.3); }
-.post-cat-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 20px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 18px; width: fit-content; }
-.badge-guide { background: rgba(255,255,255,0.15); color: #FDF6EC; }
-.post-hero h1 { font-family: "Sigmar", cursive; font-size: clamp(1.8rem, 4vw, 2.8rem); color: #FDF6EC; line-height: 1.2; margin-bottom: 20px; }
-.post-hero-meta { display: flex; align-items: center; gap: 12px; font-size: 0.8rem; color: rgba(253,246,236,0.6); flex-wrap: wrap; }
-.post-hero-meta-dot { width: 3px; height: 3px; background: rgba(253,246,236,0.4); border-radius: 50%; }
-.post-read-time { background: rgba(253,161,29,0.2); color: var(--orange); padding: 3px 10px; border-radius: 10px; font-weight: 600; font-size: 0.72rem; }
-.post-layout { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 800px); justify-content: center; column-gap: 40px; align-items: start; padding: 56px 48px 80px; }
-.post-layout > .post-body { max-width: none; margin: 0; padding: 0; }
-.post-body h2 { font-family: "Sigmar", cursive; font-size: 1.5rem; color: var(--green); margin: 48px 0 16px; line-height: 1.3; }
-.post-body h3 { font-family: "Outfit", sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--text); margin: 32px 0 12px; }
-.post-body p { font-size: 0.97rem; line-height: 1.85; color: #2a3a2a; margin-bottom: 20px; }
-.post-body ul, .post-body ol { padding-left: 24px; margin-bottom: 20px; }
-.post-body li { font-size: 0.97rem; line-height: 1.8; color: #2a3a2a; margin-bottom: 6px; }
+
+/* ══════════════════════════════════════════════════
+   POST HERO — MindMarket-style: centred headline on a
+   calm cream field, then a full-width rounded hero image.
+   ══════════════════════════════════════════════════ */
+.post-hero { padding: 172px 24px 76px; background: var(--cream); text-align: center; }
+.post-hero-inner { max-width: 960px; margin: 0 auto; will-change: opacity, transform; }
+.hero-breadcrumb { display: inline-flex; align-items: center; gap: 8px; font-size: 0.74rem; color: var(--muted); margin-bottom: 26px; }
+.hero-breadcrumb a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.hero-breadcrumb a:hover { color: var(--green); }
+.hero-breadcrumb span { color: var(--border); }
+.hero-pills { display: flex; justify-content: center; gap: 10px; margin-bottom: 24px; }
+.hero-pill { display: inline-flex; align-items: center; gap: 6px; padding: 6px 16px; border-radius: 30px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; background: var(--white); color: var(--green); border: 1px solid var(--border); }
+.post-hero h1 { font-family: "Sigmar", cursive; font-size: clamp(2.4rem, 5.8vw, 4.4rem); color: var(--green); line-height: 1.08; letter-spacing: -0.015em; max-width: 16ch; margin: 0 auto 28px; }
+.hero-meta { display: flex; justify-content: center; align-items: center; gap: 12px; font-size: 0.86rem; color: var(--muted); }
+.hero-meta-dot { width: 3px; height: 3px; background: var(--muted); border-radius: 50%; opacity: 0.6; }
+
+/* Full-width rounded hero image with overlaid pills (MindMarket signature) */
+.hero-figure { max-width: 1240px; margin: 64px auto 0; padding: 0 24px; position: relative; will-change: transform; }
+.hero-figure img { width: 100%; height: clamp(320px, 52vh, 620px); object-fit: cover; border-radius: 28px; display: block; }
+
+/* ══════════════════════════════════════════════════
+   BODY LAYOUT — sticky left rail + narrow reading column
+   ══════════════════════════════════════════════════ */
+.post-layout { max-width: 1240px; margin: 0 auto; padding: 64px 24px 40px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px; align-items: start; }
+.post-body { max-width: 720px; margin: 0 auto; }
+
+/* Left rail */
+.post-rail { order: -1; }
+.rail-back { display: inline-flex; align-items: center; gap: 8px; font-size: 0.82rem; font-weight: 600; color: var(--green); text-decoration: none; background: var(--white); border: 1px solid var(--border); border-radius: 30px; padding: 8px 18px 8px 14px; transition: all 0.2s; }
+.rail-back:hover { color: var(--orange-dark); border-color: var(--orange); }
+.rail-title { font-family: "Outfit", sans-serif; font-weight: 700; font-size: 1.05rem; color: var(--text); line-height: 1.35; margin: 20px 0 6px; }
+.rail-date { font-size: 0.8rem; color: var(--muted); margin-bottom: 20px; }
+.rail-toc-title { font-size: 0.62rem; font-weight: 800; color: var(--orange); text-transform: uppercase; letter-spacing: 0.16em; margin-bottom: 10px; padding-top: 18px; border-top: 1px solid var(--border); }
+.toc-nav { display: flex; flex-direction: column; gap: 1px; }
+#tocDesktop { display: none; } /* desktop-only TOC; the <details> handles mobile */
+.toc-link { display: block; font-size: 0.82rem; color: var(--muted); text-decoration: none; font-weight: 500; padding: 7px 10px; border-radius: 6px; border-left: 2px solid transparent; line-height: 1.45; transition: all 0.15s; overflow-wrap: anywhere; }
+.toc-link:hover { color: var(--text); background: var(--tag-bg); }
+.toc-link.active { color: var(--green); font-weight: 700; border-left-color: var(--orange); background: rgba(41,98,65,0.05); }
+
+/* SHARE PANEL (sidebar, below the TOC) */
+.share-panel { margin-top: 22px; padding-top: 20px; border-top: 1px solid var(--border); }
+.share-title { font-size: 0.62rem; font-weight: 800; color: var(--orange); text-transform: uppercase; letter-spacing: 0.16em; margin-bottom: 14px; }
+.share-btns { display: flex; flex-wrap: wrap; gap: 10px; }
+.share-btn { width: 38px; height: 38px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; background: var(--green); color: var(--cream); border: none; padding: 0; cursor: pointer; text-decoration: none; transition: background 0.2s, transform 0.2s; }
+.share-btn:hover { background: var(--orange); color: #fff; transform: translateY(-2px); }
+.share-btn svg { width: 17px; height: 17px; fill: currentColor; display: block; }
+.share-toast { position: fixed; bottom: 26px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--green); color: var(--cream); padding: 11px 22px; border-radius: 30px; font-size: 0.86rem; font-weight: 600; opacity: 0; pointer-events: none; transition: opacity 0.3s, transform 0.3s; z-index: 300; box-shadow: 0 10px 30px rgba(41,98,65,0.25); }
+.share-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* Desktop: two columns, rail sticky on the LEFT */
+@media (min-width: 1000px) {
+  .post-layout { grid-template-columns: 300px minmax(0, 720px); gap: 72px; justify-content: center; }
+  .post-rail { order: 0; position: sticky; top: 96px; align-self: start; }
+  .post-body { margin: 0; }
+  #tocDesktop { display: flex; }
+  .post-rail > details { display: none; } /* hide the mobile accordion on desktop */
+}
+/* Mobile: rail collapses into a details/summary at the top */
+.rail-mobile-toggle { display: none; }
+@media (max-width: 999px) {
+  .post-rail details { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 4px 16px 14px; margin-top: 16px; }
+  .post-rail summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; padding: 12px 0; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.14em; color: var(--orange); }
+  .post-rail summary::-webkit-details-marker { display: none; }
+  .post-rail summary::after { content: '\25BE'; color: var(--muted); transition: transform 0.2s; }
+  .post-rail details[open] summary::after { transform: rotate(180deg); }
+  .rail-toc-title { display: none; }
+}
+
+/* ── ARTICLE TYPOGRAPHY ── */
+.post-body .lead { font-size: 1.18rem; line-height: 1.7; color: var(--text); margin-bottom: 40px; }
+.post-body h2 { font-family: "Sigmar", cursive; font-size: clamp(1.5rem, 2.4vw, 2rem); color: var(--green); margin: 8px 0 6px; line-height: 1.2; }
+.post-body .thesis { font-family: "Outfit", sans-serif; font-size: 1.22rem; font-weight: 600; color: var(--text); line-height: 1.4; margin: 0 0 24px; }
+.post-body h3 { font-family: "Outfit", sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--text); margin: 30px 0 12px; }
+.post-body p { font-size: 1.02rem; line-height: 1.85; color: #2a3a2a; margin-bottom: 22px; }
+.post-body ul, .post-body ol { padding-left: 22px; margin-bottom: 22px; }
+.post-body li { font-size: 1.02rem; line-height: 1.8; color: #2a3a2a; margin-bottom: 8px; }
 .post-body strong { font-weight: 700; color: var(--text); }
 .post-body em { font-style: italic; color: var(--muted); }
-.post-body a { color: var(--green); font-weight: 600; text-decoration: underline; text-decoration-color: rgba(41,98,65,0.3); transition: color 0.2s; }
-.post-body a:hover { color: var(--orange); }
-.callout { background: var(--tag-bg); border-left: 4px solid var(--orange); border-radius: 0 12px 12px 0; padding: 20px 24px; margin: 32px 0; }
-.callout p { margin: 0; font-size: 0.92rem; }
-.callout-title { font-weight: 700; color: var(--green); margin-bottom: 6px !important; font-size: 0.8rem !important; text-transform: uppercase; letter-spacing: 0.08em; }
-.info-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 24px 28px; margin: 28px 0; }
-.info-card h4 { font-size: 0.88rem; font-weight: 700; color: var(--green); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.08em; }
-.post-divider { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
-.compare-table { width: 100%; border-collapse: collapse; margin: 28px 0; background: var(--white); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
-.compare-table th, .compare-table td { padding: 14px 16px; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.9rem; line-height: 1.6; }
-.compare-table th { background: var(--tag-bg); color: var(--green); font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; }
-.compare-table tr:last-child td { border-bottom: none; }
-.compare-table td:first-child { font-weight: 600; color: var(--text); }
-@media (max-width: 640px) { .compare-table { font-size: 0.82rem; } .compare-table th, .compare-table td { padding: 10px 12px; } }
-.post-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 36px 0 0; }
+
+/* Inline links styled as subtle highlight pills (MindMarket pattern) */
+.post-body p a, .post-body li a { color: var(--green); font-weight: 600; text-decoration: none; background: var(--tag-bg); padding: 1px 7px; border-radius: 6px; box-decoration-break: clone; -webkit-box-decoration-break: clone; transition: all 0.18s; }
+.post-body p a:hover, .post-body li a:hover { background: var(--orange); color: var(--white); }
+
+/* Section divider — hairline rule between acts */
+.section-rule { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+
+/* PULL-QUOTE (MindMarket signature) */
+.pullquote { margin: 40px 0; padding: 4px 0 4px 24px; border-left: 3px solid var(--orange); }
+.pullquote p { font-size: 1.35rem; line-height: 1.5; font-weight: 600; font-style: italic; color: var(--green); margin: 0; }
+
+/* INFO CARD */
+.info-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 22px 26px; margin: 22px 0; }
+.info-card h4 { font-size: 0.86rem; font-weight: 700; color: var(--green); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.08em; }
+.info-card p { margin-bottom: 0; }
+
+/* CTA BLOCK (MindMarket "Planning a study?" pattern) */
+.cta-block { margin: 48px 0; }
+.cta-block h2 { font-family: "Sigmar", cursive; font-size: clamp(1.4rem, 2.2vw, 1.9rem); color: var(--green); margin-bottom: 14px; }
+.cta-block p { font-size: 1.05rem; line-height: 1.7; color: #2a3a2a; margin-bottom: 20px; }
+.pill-btn { display: inline-flex; align-items: center; gap: 12px; background: var(--orange); color: var(--white); font-weight: 700; font-size: 0.95rem; text-decoration: none; padding: 12px 14px 12px 24px; border-radius: 40px; transition: background 0.2s, transform 0.2s; }
+.pill-btn:hover { background: var(--orange-dark); transform: translateX(2px); }
+.pill-btn .pill-ico { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.22); font-size: 1rem; }
+
+/* FAQ ACCORDION (MindMarket rounded cards + toggle) */
+.faq-wrap { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+.faq-item { background: var(--white); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+.faq-item summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 22px; font-weight: 700; font-size: 1rem; color: var(--text); }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after { content: '+'; font-size: 1.4rem; font-weight: 400; color: var(--orange); line-height: 1; flex-shrink: 0; transition: transform 0.2s; }
+.faq-item[open] summary::after { content: '\2212'; }
+.faq-item .faq-a { padding: 0 22px 20px; }
+.faq-item .faq-a p { font-size: 0.98rem; line-height: 1.8; color: #2a3a2a; margin: 0; }
+
+/* TAG ROW */
+.post-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 40px 0 0; }
 .post-tag { padding: 5px 14px; background: var(--tag-bg); color: var(--muted); border-radius: 20px; font-size: 0.75rem; font-weight: 500; }
-.post-nav { display: flex; justify-content: space-between; align-items: center; padding: 32px 0; border-top: 1px solid var(--border); margin-top: 48px; }
-.post-nav a { display: flex; align-items: center; gap: 8px; text-decoration: none; font-size: 0.85rem; font-weight: 600; color: var(--green); transition: color 0.2s; }
-.post-nav a:hover { color: var(--orange); }
-.more-posts { background: var(--cream); border-top: 1px solid var(--border); padding: 64px 48px; }
+
+/* NEXT ARTICLE — MindMarket split card */
+.next-article { max-width: 1240px; margin: 24px auto 0; padding: 0 24px; }
+.next-card { display: grid; grid-template-columns: 1fr 1fr; border-radius: 24px; overflow: hidden; border: 1px solid var(--border); background: var(--white); text-decoration: none; color: inherit; transition: box-shadow 0.25s; }
+.next-card:hover { box-shadow: 0 18px 50px rgba(41,98,65,0.14); }
+.next-card-img { position: relative; min-height: 300px; }
+.next-card-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.next-card-body { padding: 48px 44px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: var(--cream); }
+.next-card-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+.next-card-title { font-family: "Sigmar", cursive; font-size: clamp(1.2rem, 1.8vw, 1.7rem); color: var(--green); line-height: 1.25; margin-bottom: 24px; }
+@media (max-width: 768px) { .next-card { grid-template-columns: 1fr; } .next-card-img { min-height: 220px; } .next-card-body { padding: 36px 24px; } }
+
+/* MORE POSTS */
+.more-posts { background: var(--cream); border-top: 1px solid var(--border); padding: 64px 24px; margin-top: 48px; }
 .more-posts-inner { max-width: 1100px; margin: 0 auto; }
 .more-posts h2 { font-family: "Sigmar", cursive; font-size: 1.4rem; color: var(--text); margin-bottom: 32px; }
 .more-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -174,88 +268,107 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
 .more-card-emoji { font-size: 2rem; }
 .more-card h3 { font-family: "Outfit", sans-serif; font-size: 0.92rem; font-weight: 700; color: var(--text); line-height: 1.4; }
 .more-card-meta { font-size: 0.72rem; color: var(--muted); margin-top: auto; }
-.toc-sidebar { display: block; order: -1; margin-bottom: 8px; }
-.toc-inner summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-.toc-inner summary::-webkit-details-marker { display: none; }
-.toc-inner summary::after { content: '\25BE'; font-size: 0.9rem; color: var(--muted); transition: transform 0.2s; flex-shrink: 0; }
-.toc-inner[open] summary::after { transform: rotate(180deg); }
-.toc-inner { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 18px 16px 20px; overflow: hidden; max-height: calc(100vh - 110px); overflow-y: auto; scrollbar-width: none; }
-.toc-inner::-webkit-scrollbar { display: none; }
-.toc-title { font-size: 0.62rem; font-weight: 800; color: var(--orange); text-transform: uppercase; letter-spacing: 0.16em; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
-.toc-nav { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
-.toc-link { display: block; min-width: 0; white-space: normal; overflow-wrap: anywhere; word-break: break-word; font-size: 0.76rem; color: var(--muted); text-decoration: none; font-weight: 500; padding: 6px 8px 6px 10px; border-radius: 6px; border-left: 2px solid transparent; line-height: 1.45; transition: all 0.15s; }
-.toc-link:hover { color: var(--text); background: var(--tag-bg); border-left-color: var(--border); }
-.toc-link.active { color: var(--green); font-weight: 700; border-left-color: var(--orange); background: rgba(41,98,65,0.05); }
+
 @media (max-width: 768px) {
   .site-nav { padding: 0 20px; }
   .site-nav .nav-links { display: none; }
   .nav-hamburger { display: flex; }
-  .post-hero { padding: 126px 20px 40px; }
-  .post-layout { padding: 32px 20px 56px; }
-  .toc-inner { max-height: 260px; }
+  .post-hero { padding: 108px 20px 24px; }
+  .hero-figure { padding: 0 16px; }
+  .post-layout { padding: 40px 20px; }
   .more-posts { padding: 48px 20px; }
   .more-grid { grid-template-columns: 1fr; }
 }
-@media (min-width: 1260px) {
-  .post-layout { grid-template-columns: minmax(0, 800px) 220px; justify-content: start; }
-  .toc-sidebar { display: block; order: 0; margin-bottom: 0; position: sticky; top: 90px; align-self: start; }
-  .toc-inner summary { cursor: default; pointer-events: none; }
-  .toc-inner summary::after { display: none; }
-}
 
-    /* ===== Coffee Beans mega-dropdown (added for category internal linking) ===== */
-    .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
-    .nav-dropdown .nav-dropdown-trigger { display: inline-flex; align-items: center; gap: 5px; }
-    .nav-caret { font-size: 0.7em; transition: transform 0.2s; }
-    .nav-dropdown:hover .nav-caret, .nav-dropdown:focus-within .nav-caret { transform: rotate(180deg); }
-    .nav-dropdown::after { content: ""; position: absolute; top: 100%; left: -10px; right: -10px; height: 22px; }
-    .nav-dropdown-menu { position: absolute; top: calc(100% + 20px); left: 50%; transform: translateX(-50%) translateY(8px); display: grid; grid-template-columns: repeat(3, max-content); gap: 4px 32px; background: var(--cream, #FDF6EC); border: 1px solid var(--border, #E8E0D0); border-radius: 14px; padding: 22px 26px; box-shadow: 0 16px 44px rgba(41,98,65,0.20); opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.18s ease, transform 0.18s ease; z-index: 200; }
-    .nav-dropdown:hover .nav-dropdown-menu, .nav-dropdown:focus-within .nav-dropdown-menu { opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(-50%) translateY(0); }
-    .nav-dd-group { display: flex; flex-direction: column; gap: 1px; }
-    .nav-dd-heading { font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted, #5a6e5a); font-weight: 700; margin-bottom: 7px; }
-    .nav-dropdown-menu a { color: var(--green, #296241) !important; font-size: 0.9rem !important; font-weight: 500 !important; letter-spacing: normal !important; padding: 5px 0 !important; white-space: nowrap; }
-    .nav-dropdown-menu a:hover { color: var(--accent-hover, #DA8A10) !important; }
-    .nav-dd-all { margin-top: 9px; font-weight: 700 !important; color: var(--accent-hover, #DA8A10) !important; }
-    /* mobile accordion */
-    .mobile-menu details.mobile-dd { border-bottom: 1px solid rgba(253,161,29,0.15); }
-    .mobile-menu details.mobile-dd summary { color: rgba(253,246,236,0.85); font-size: 1rem; font-weight: 500; padding: 12px 0; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
-    .mobile-menu details.mobile-dd summary::-webkit-details-marker { display: none; }
-    .mobile-menu details.mobile-dd summary::after { content: "\25be"; color: #FDA11D; font-size: 0.85em; transition: transform 0.2s; }
-    .mobile-menu details.mobile-dd[open] summary::after { transform: rotate(180deg); }
-    .mobile-menu details.mobile-dd a { display: block; color: rgba(253,246,236,0.7); font-size: 0.92rem; font-weight: 500; padding: 9px 0 9px 16px; border-bottom: none; }
-    .mobile-menu details.mobile-dd a:last-child { color: #FDA11D; font-weight: 600; }
-    /* ===== end dropdown ===== */
+/* ===== Coffee Beans mega-dropdown (nav internal linking — unchanged) ===== */
+.nav-dropdown { position: relative; display: inline-flex; align-items: center; }
+.nav-dropdown .nav-dropdown-trigger { display: inline-flex; align-items: center; gap: 5px; }
+.nav-caret { font-size: 0.7em; transition: transform 0.2s; }
+.nav-dropdown:hover .nav-caret, .nav-dropdown:focus-within .nav-caret { transform: rotate(180deg); }
+.nav-dropdown::after { content: ""; position: absolute; top: 100%; left: -10px; right: -10px; height: 22px; }
+.nav-dropdown-menu { position: absolute; top: calc(100% + 20px); left: 50%; transform: translateX(-50%) translateY(8px); display: grid; grid-template-columns: repeat(3, max-content); gap: 4px 32px; background: var(--cream, #FDF6EC); border: 1px solid var(--border, #E8E0D0); border-radius: 14px; padding: 22px 26px; box-shadow: 0 16px 44px rgba(41,98,65,0.20); opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.18s ease, transform 0.18s ease; z-index: 200; }
+.nav-dropdown:hover .nav-dropdown-menu, .nav-dropdown:focus-within .nav-dropdown-menu { opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+.nav-dd-group { display: flex; flex-direction: column; gap: 1px; }
+.nav-dd-heading { font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted, #5a6e5a); font-weight: 700; margin-bottom: 7px; }
+.nav-dropdown-menu a { color: var(--green, #296241) !important; font-size: 0.9rem !important; font-weight: 500 !important; letter-spacing: normal !important; padding: 5px 0 !important; white-space: nowrap; }
+.nav-dropdown-menu a:hover { color: var(--accent-hover, #DA8A10) !important; }
+.nav-dd-all { margin-top: 9px; font-weight: 700 !important; color: var(--accent-hover, #DA8A10) !important; }
+.mobile-menu details.mobile-dd { border-bottom: 1px solid rgba(253,161,29,0.15); }
+.mobile-menu details.mobile-dd summary { color: rgba(253,246,236,0.85); font-size: 1rem; font-weight: 500; padding: 12px 0; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+.mobile-menu details.mobile-dd summary::-webkit-details-marker { display: none; }
+.mobile-menu details.mobile-dd summary::after { content: "\25be"; color: #FDA11D; font-size: 0.85em; transition: transform 0.2s; }
+.mobile-menu details.mobile-dd[open] summary::after { transform: rotate(180deg); }
+.mobile-menu details.mobile-dd a { display: block; color: rgba(253,246,236,0.7); font-size: 0.92rem; font-weight: 500; padding: 9px 0 9px 16px; border-bottom: none; }
+.mobile-menu details.mobile-dd a:last-child { color: #FDA11D; font-weight: 600; }
+/* ===== end dropdown ===== */
+
+/* --- legacy content components (kept so existing article bodies render) --- */
+.callout { background: var(--tag-bg); border-left: 4px solid var(--orange); border-radius: 0 12px 12px 0; padding: 20px 24px; margin: 32px 0; }
+.callout p { margin: 0; font-size: 0.95rem; line-height: 1.7; }
+.callout-title { font-weight: 700; color: var(--green); margin-bottom: 6px !important; font-size: 0.8rem !important; text-transform: uppercase; letter-spacing: 0.08em; }
+.post-nav { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding: 28px 0 0; border-top: 1px solid var(--border); margin-top: 40px; }
+.post-nav a { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-size: 0.9rem; font-weight: 600; color: var(--green); transition: color 0.2s; }
+.post-nav a:hover { color: var(--orange); }
+.post-banner { background: var(--green-light); display: flex; align-items: center; justify-content: center; height: 220px; font-size: 7rem; border-radius: 20px; margin: 8px 0 24px; }
 </style>
 </head>
 <body>
 <!--#include virtual="/partials/header.html" -->
+<div class="read-progress" id="readProgress"></div>
 
 <div class="post-hero">
 <div class="post-hero-inner">
-<div class="post-breadcrumb">
-<a href="/library">Coffee Library</a>
-<span>&rsaquo;</span>
-<span>Guide</span>
-</div>
-<div class="post-cat-badge badge-guide">☕ Guide</div>
+<div class="hero-breadcrumb"><a href="/">Home</a><span>&rsaquo;</span><a href="/library">Coffee Library</a><span>&rsaquo;</span><span>Guide</span></div>
+<div class="hero-pills"><span class="hero-pill">Guide</span></div>
 <h1>Home Brewing Coffee in Malaysia: The Complete Guide for Home Baristas</h1>
-<div class="post-hero-meta">
-<span>The Beans Hub</span>
-<span class="post-hero-meta-dot"></span>
-<span>June 2026</span>
-<span class="post-hero-meta-dot"></span>
-<span class="post-read-time">10 min read</span>
+<div class="hero-meta"><span>The Beans Hub</span><span class="hero-meta-dot"></span><span>June 2026</span><span class="hero-meta-dot"></span><span>10 min read</span></div>
 </div>
 </div>
-</div>
-
+<figure class="hero-figure"><img src="/img/how-much-coffee-is-too-much.webp" alt="Home Brewing Coffee in Malaysia: The Complete Guide for Home Baristas"/></figure>
 <div class="post-layout">
+<aside class="post-rail" aria-label="Article navigation">
+<a class="rail-back" href="/library">&larr; Back to Coffee Library</a>
+<p class="rail-title">Home Brewing Coffee in Malaysia: The Complete Guide for Home Baristas</p>
+<p class="rail-date">June 2026 · 10 min read</p>
+<div class="rail-toc-title">On this page</div>
+<nav class="toc-nav" id="tocDesktop"><a class="toc-link" href="#the-gear-that-matters">Gear that actually matters</a>
+<a class="toc-link" href="#matching-beans-to-your-brew-method">Matching beans to brew method</a>
+<a class="toc-link" href="#the-variables-that-matter">Variables that move the cup</a>
+<a class="toc-link" href="#choosing-your-beans">Choosing the right beans</a>
+<a class="toc-link" href="#keeping-beans-fresh">Keeping beans fresh</a>
+<a class="toc-link" href="#your-first-brew-dial-in">Dialling in your first brew</a>
+<a class="toc-link" href="#explore-cluster">Go deeper</a>
+<a class="toc-link" href="#faq">FAQ</a></nav>
+<details>
+<summary>On this page</summary>
+<nav class="toc-nav"><a class="toc-link" href="#the-gear-that-matters">Gear that actually matters</a>
+<a class="toc-link" href="#matching-beans-to-your-brew-method">Matching beans to brew method</a>
+<a class="toc-link" href="#the-variables-that-matter">Variables that move the cup</a>
+<a class="toc-link" href="#choosing-your-beans">Choosing the right beans</a>
+<a class="toc-link" href="#keeping-beans-fresh">Keeping beans fresh</a>
+<a class="toc-link" href="#your-first-brew-dial-in">Dialling in your first brew</a>
+<a class="toc-link" href="#explore-cluster">Go deeper</a>
+<a class="toc-link" href="#faq">FAQ</a></nav>
+</details>
+<div class="share-panel">
+<div class="share-title">Share</div>
+<div class="share-btns">
+<a class="share-btn" href="#" data-share="facebook" aria-label="Share on Facebook" title="Share on Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg></a>
+<a class="share-btn" href="#" data-share="instagram" aria-label="Share to Instagram" title="Share to Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg></a>
+<a class="share-btn" href="#" data-share="threads" aria-label="Share on Threads" title="Share on Threads"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.056 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32L7.734 7.847c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.046.216.094.324.145 1.524.716 2.64 1.802 3.23 3.142.82 1.867.899 4.909-1.575 7.325-1.895 1.828-4.195 2.573-7.245 2.588Zm1.063-11.24c-.267 0-.535.007-.808.023-1.797.106-2.884.909-2.826 2.09.055 1.16 1.24 1.727 2.436 1.662 1.088-.059 2.55-.483 2.836-3.606-.585-.14-1.207-.169-1.638-.169Z"/></svg></a>
+<a class="share-btn" href="#" data-share="x" aria-label="Share on X" title="Share on X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+<a class="share-btn" href="#" data-share="reddit" aria-label="Share on Reddit" title="Share on Reddit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-6.993 4.87-3.863 0-6.993-2.176-6.993-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.11-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg></a>
+<button class="share-btn" type="button" data-share="copy" aria-label="Copy link" title="Copy link"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg></button>
+</div>
+</div>
+</aside>
 <div class="post-body">
 
 <p>The cup you brew at home can be better than most cafés, and it costs less per serve. That is not a hot take — it is just what happens when you have fresh beans, the right gear and a bit of attention. The hard part, for most people, is knowing where to start. Malaysian specialty coffee has exploded over the last few years, and there are now excellent local roasters offering beans that can stand up against anything you would find in Seoul or Melbourne. The infrastructure is there. You just need to know how to use it.</p>
 
 <p>This guide covers everything in one place: the gear that actually matters, how to match beans to your brew method, the variables that affect your cup (and which ones to fix first), and how to find good beans without spending an afternoon clicking through Instagram bios. If you are just starting out, work through it in order. If you already brew and want to fill a specific gap, jump to the section you need.</p>
 
+<hr class="section-rule"/>
 <h2 id="the-gear-that-matters">The gear that actually matters</h2>
 
 <p>The single most important piece of equipment in your setup is the grinder, not the brewer. A good grinder feeding a cheap brewer will almost always produce a better cup than a cheap grinder feeding an expensive one. Whole bean coffee ground fresh before each brew is categorically different from pre-ground — the aromatics that make specialty coffee worth buying start escaping the moment the bean is broken open, and you cannot get them back.</p>
@@ -273,6 +386,7 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
 
 <p>You do not need all of this at once. Start with V60 or AeroPress plus a hand grinder. Once you know you enjoy the process, you will know exactly what to upgrade next.</p>
 
+<hr class="section-rule"/>
 <h2 id="matching-beans-to-your-brew-method">Matching beans to your brew method</h2>
 
 <p>Different brew methods extract differently, and beans that shine in one method can taste flat or harsh in another. The basic rule is this: filter brewing amplifies clarity, so it rewards lighter roasts and expressive origins; pressure and immersion brewing amplifies body and sweetness, so it rewards medium to darker roasts that hold up to the intensity.</p>
@@ -294,6 +408,7 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
 
 <p>This is a guide, not a hard rule. Plenty of home baristas use light roast Ethiopia in their espresso and love it. But if you are just starting out and want predictable results, follow the table. For a deeper dive, our <a href="/posts/espresso-vs-filter-vs-omni-beans">espresso vs filter vs omni roast guide</a> covers the bean-type question in full, and our <a href="/posts/coffee-brewing-methods">coffee brewing methods guide</a> walks through each brewer in detail.</p>
 
+<hr class="section-rule"/>
 <h2 id="the-variables-that-matter">The variables that move the cup</h2>
 
 <p>Home brewing has more variables than it looks like, but most of them only need your attention once. Once you have dialled in your ratio and your grind size for a given bean, the cup is usually consistent from there. The ones worth understanding are: grind size, dose, water temperature, water quality and brew time.</p>
@@ -310,6 +425,7 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
 <h3>Water quality</h3>
 <p>This one gets overlooked. Malaysian tap water is soft and generally fine for brewing — it is not the hard mineral disaster that ruins espresso machines in some countries. If your tap water tastes fine to drink, it will brew fine. Filtered water is a small upgrade if you want consistency, but it is not essential at the start.</p>
 
+<hr class="section-rule"/>
 <h2 id="choosing-your-beans">Choosing the right beans</h2>
 
 <p>Fresh beans matter more than expensive beans. A RM 40 bag roasted last week will almost always taste better than a RM 80 bag with no roast date or a roast date from three months ago. When you are buying specialty coffee in Malaysia, the roast date is the first thing to check on the bag.</p>
@@ -329,12 +445,14 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
 </ul>
 </div>
 
+<hr class="section-rule"/>
 <h2 id="keeping-beans-fresh">Keeping beans fresh once you have them</h2>
 
 <p>Roasted coffee has four enemies: oxygen, moisture, light and heat. An airtight container kept away from direct sunlight and heat is all you need. You do not need a fancy vacuum container — a dark, sealed jar at room temperature is fine for daily use. What you do want to avoid: leaving beans in the original bag unsealed, storing them near the stove or on top of the fridge, or putting them in a clear container on the counter in front of a window.</p>
 
 <p>The freezer debate comes up a lot. The short answer: yes, you can freeze beans if you portion them first and never thaw and refreeze. Take out a week&rsquo;s worth at a time, let it come to room temperature sealed, then open and use. Repeated freeze-thaw cycles introduce moisture condensation, which is what actually damages beans, not the cold. Our dedicated guide on <a href="/posts/how-to-store-coffee-beans">how to store coffee beans</a> covers this in full, including the specific containers worth buying.</p>
 
+<hr class="section-rule"/>
 <h2 id="your-first-brew-dial-in">Dialling in your first brew</h2>
 
 <p>Every new bag of beans needs a short dial-in. The recipe that worked perfectly on your last bag may taste flat or sharp on the new one because different roast levels and origins extract differently. Here is the fastest way to get there.</p>
@@ -346,6 +464,7 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
 <p>Match beans to your setup — filter The Beans Hub by <a href="/shop">espresso, filter or omni roast</a>, or browse by origin, roast level and taste notes to find exactly what you are looking for.</p>
 </div>
 
+<hr class="section-rule"/>
 <h2 id="explore-cluster">Go deeper</h2>
 
 <p>This guide covers the foundations. If you want to go further on any of these topics, each one has its own page in the library:</p>
@@ -361,20 +480,28 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
 
 <p>And if you want to go wider — into origins, processing methods or what different bean varieties taste like — the <a href="/posts/coffee-bean-origins">coffee bean origins pillar</a> and the <a href="/posts/best-coffee-beans-malaysia">2026 buying guide</a> are the places to go next.</p>
 
+<hr class="section-rule"/>
 <h2 id="faq">Frequently Asked Questions</h2>
 
-<h3>What do I need to start brewing coffee at home in Malaysia?</h3>
-<p>At minimum: a brewer (V60, AeroPress or French press), a burr grinder, freshly roasted beans and a kettle. You do not need an expensive espresso machine to start. A V60 and a mid-range hand grinder will produce better coffee than most café setups if your beans are fresh and your recipe is dialled in.</p>
 
-<h3>How do I match beans to my brew method?</h3>
-<p>Filter brewers (V60, Chemex, AeroPress, drip) work best with light to medium roast beans — the clarity of the brew method lets origin character and processing notes show through. Espresso and moka pot work best with medium to dark roast — the pressure-based extraction rewards beans with more body and lower acidity. French press suits medium to dark as well, because the immersion style amplifies body and oils.</p>
-
-<h3>What coffee-to-water ratio should I use?</h3>
-<p>A 1:15 to 1:16 ratio is the standard starting point for most filter methods — 15 to 16 grams of water per gram of coffee. For espresso, a 1:2 ratio is standard (18g of coffee in, 36g of espresso out in around 28–32 seconds). These are starting points, not rules — adjust based on how the cup tastes.</p>
-
-<h3>Where can I buy specialty coffee beans for home brewing in Malaysia?</h3>
-<p>The Beans Hub lists specialty coffee beans from Malaysian roasters in one place, filterable by roast level, origin, processing method and taste notes. It is the fastest way to find the right bean for your setup without having to hunt across individual roaster websites and Instagram pages.</p>
-
+<div class="faq-wrap">
+<details class="faq-item">
+<summary>What do I need to start brewing coffee at home in Malaysia?</summary>
+<div class="faq-a"><p>At minimum: a brewer (V60, AeroPress or French press), a burr grinder, freshly roasted beans and a kettle. You do not need an expensive espresso machine to start. A V60 and a mid-range hand grinder will produce better coffee than most café setups if your beans are fresh and your recipe is dialled in.</p></div>
+</details>
+<details class="faq-item">
+<summary>How do I match beans to my brew method?</summary>
+<div class="faq-a"><p>Filter brewers (V60, Chemex, AeroPress, drip) work best with light to medium roast beans — the clarity of the brew method lets origin character and processing notes show through. Espresso and moka pot work best with medium to dark roast — the pressure-based extraction rewards beans with more body and lower acidity. French press suits medium to dark as well, because the immersion style amplifies body and oils.</p></div>
+</details>
+<details class="faq-item">
+<summary>What coffee-to-water ratio should I use?</summary>
+<div class="faq-a"><p>A 1:15 to 1:16 ratio is the standard starting point for most filter methods — 15 to 16 grams of water per gram of coffee. For espresso, a 1:2 ratio is standard (18g of coffee in, 36g of espresso out in around 28–32 seconds). These are starting points, not rules — adjust based on how the cup tastes.</p></div>
+</details>
+<details class="faq-item">
+<summary>Where can I buy specialty coffee beans for home brewing in Malaysia?</summary>
+<div class="faq-a"><p>The Beans Hub lists specialty coffee beans from Malaysian roasters in one place, filterable by roast level, origin, processing method and taste notes. It is the fastest way to find the right bean for your setup without having to hunt across individual roaster websites and Instagram pages.</p></div>
+</details>
+</div>
 <div class="post-tags">
 <span class="post-tag">Home Brewing</span>
 <span class="post-tag">Home Barista</span>
@@ -391,21 +518,6 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
 </div>
 
 </div><!-- /post-body -->
-<aside aria-label="Table of contents" class="toc-sidebar">
-<details class="toc-inner" open>
-<summary class="toc-title">Contents</summary>
-<nav class="toc-nav">
-<a class="toc-link" href="#the-gear-that-matters">Gear that actually matters</a>
-<a class="toc-link" href="#matching-beans-to-your-brew-method">Matching beans to brew method</a>
-<a class="toc-link" href="#the-variables-that-matter">Variables that move the cup</a>
-<a class="toc-link" href="#choosing-your-beans">Choosing the right beans</a>
-<a class="toc-link" href="#keeping-beans-fresh">Keeping beans fresh</a>
-<a class="toc-link" href="#your-first-brew-dial-in">Dialling in your first brew</a>
-<a class="toc-link" href="#explore-cluster">Go deeper</a>
-<a class="toc-link" href="#faq">FAQ</a>
-</nav>
-</details>
-</aside>
 </div><!-- /post-layout -->
 
 <div class="more-posts">
@@ -431,14 +543,115 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
 </div>
 </div>
 
+<div class="share-toast" id="shareToast" role="status" aria-live="polite">Link copied!</div>
 <!--#include virtual="/partials/footer.html" -->
 
 <script>
 function toggleMenu() {
   document.getElementById('mobileMenu').classList.toggle('open');
 }
+// Reading progress bar
 (function () {
-  const tocLinks = document.querySelectorAll('.toc-link[href^="#"]');
+  const bar = document.getElementById('readProgress');
+  if (!bar) return;
+  function update() {
+    const h = document.documentElement;
+    const scrolled = h.scrollTop;
+    const max = h.scrollHeight - h.clientHeight;
+    bar.style.width = (max > 0 ? (scrolled / max) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
+// Hero title fades out & drifts up on scroll; image rises with a gentle parallax
+(function () {
+  const inner = document.querySelector('.post-hero-inner');
+  const figure = document.querySelector('.hero-figure');
+  if (!inner) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const FADE = 460; // px of scroll over which the title fully disappears
+  let ticking = false;
+  function apply() {
+    const y = window.scrollY || window.pageYOffset;
+    const p = Math.min(1, y / FADE);
+    inner.style.opacity = String(1 - p);
+    inner.style.transform = 'translateY(' + (y * 0.35) + 'px)';
+    if (figure) figure.style.transform = 'translateY(' + (-y * 0.06) + 'px)';
+    ticking = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) { window.requestAnimationFrame(apply); ticking = true; }
+  }, { passive: true });
+  apply();
+})();
+// SHARE panel
+(function () {
+  const url = location.href;
+  const title = document.title;
+  const eu = encodeURIComponent(url), et = encodeURIComponent(title);
+  const targets = {
+    facebook: 'https://www.facebook.com/sharer/sharer.php?u=' + eu,
+    x:        'https://twitter.com/intent/tweet?url=' + eu + '&text=' + et,
+    threads:  'https://www.threads.net/intent/post?text=' + et + '%20' + eu,
+    reddit:   'https://www.reddit.com/submit?url=' + eu + '&title=' + et
+  };
+  const toast = document.getElementById('shareToast');
+  function showToast(msg) {
+    if (!toast) return;
+    toast.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(toast._t);
+    toast._t = setTimeout(function () { toast.classList.remove('show'); }, 2400);
+  }
+  function track(method) {
+    if (typeof gtag === 'function') {
+      gtag('event', 'share', { method: method, content_type: 'article', item_id: location.pathname });
+    }
+  }
+  async function copyLink() {
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(url);
+      } else {
+        const ta = document.createElement('textarea');
+        ta.value = url; ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove();
+      }
+      return true;
+    } catch (e) { return false; }
+  }
+  document.querySelectorAll('.share-btn').forEach(function (btn) {
+    btn.addEventListener('click', async function (e) {
+      e.preventDefault();
+      const k = btn.getAttribute('data-share');
+      if (targets[k]) {
+        window.open(targets[k], '_blank', 'noopener,noreferrer,width=600,height=560');
+        track(k);
+        return;
+      }
+      if (k === 'instagram') {
+        // Instagram has no web link-share; use the native share sheet on mobile, else copy.
+        if (navigator.share) {
+          try { await navigator.share({ title: title, url: url }); track('instagram'); } catch (_) {}
+        } else {
+          const ok = await copyLink();
+          showToast(ok ? 'Link copied — paste it into Instagram' : 'Copy failed, please copy manually');
+          track('instagram');
+        }
+        return;
+      }
+      if (k === 'copy') {
+        const ok = await copyLink();
+        showToast(ok ? 'Link copied!' : 'Copy failed, please copy manually');
+        track('copy_link');
+      }
+    });
+  });
+})();
+// TOC — highlight active section on scroll
+(function () {
+  const tocLinks = document.querySelectorAll('#tocDesktop .toc-link[href^="#"]');
   const headings = Array.from(document.querySelectorAll('.post-body h2[id]'));
   if (!tocLinks.length || !headings.length) return;
   function setActive(id) {
@@ -449,7 +662,7 @@ function toggleMenu() {
     entries.forEach(entry => { if (entry.isIntersecting) setActive(entry.target.id); });
   }, { rootMargin: '-10% 0px -80% 0px', threshold: 0 });
   headings.forEach(h => observer.observe(h));
-  tocLinks.forEach(link => {
+  document.querySelectorAll('.toc-link[href^="#"]').forEach(link => {
     link.addEventListener('click', function (e) {
       const target = document.querySelector(this.getAttribute('href'));
       if (!target) return;
