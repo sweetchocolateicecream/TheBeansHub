@@ -13,9 +13,9 @@ node_modules
 # Strategy, marketing, planning and pipeline files stay local only.
 # ──────────────────────────────────────────────────────────────
 CLAUDE.md
-THE-BEANS-HUB-*.docx
-THE-BEANS-HUB-*.xlsx
-The-Beans-Hub-*.docx
+# No Office doc belongs in a webroot — these are drafts/source material only.
+*.docx
+*.xlsx
 *-BUILD-PLAN.md
 *-HANDOFF.md
 30 Series Ideas - TikTok and Instagram.md
