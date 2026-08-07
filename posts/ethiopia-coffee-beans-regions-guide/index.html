@@ -244,6 +244,24 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
 .shelf-empty a { color: var(--green); font-weight: 700; text-decoration: none; }
 .shelf-empty a:hover { color: var(--orange-dark); }
 .shelf-loading { font-size: 0.85rem; color: var(--muted); padding: 10px 4px; }
+.bean-similar-btn { margin-top: 9px; width: 100%; background: none; border: 1px solid var(--border); color: var(--green); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.02em; border-radius: 20px; padding: 7px 10px; cursor: pointer; transition: all 0.16s; display: flex; align-items: center; justify-content: center; gap: 6px; }
+.bean-similar-btn:hover { background: var(--green); color: var(--cream); border-color: var(--green); }
+/* ── "Tastes similar" modal ── */
+.sim-overlay { position: fixed; inset: 0; background: rgba(26,46,31,0.55); backdrop-filter: blur(3px); z-index: 400; display: none; align-items: flex-start; justify-content: center; padding: 6vh 18px 24px; overflow-y: auto; }
+.sim-overlay.open { display: flex; }
+.sim-panel { background: var(--cream); border-radius: 22px; max-width: 940px; width: 100%; padding: 26px 26px 30px; box-shadow: 0 30px 80px rgba(26,46,31,0.4); position: relative; }
+.sim-close { position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--border); background: var(--white); color: var(--green); font-size: 1.2rem; line-height: 1; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
+.sim-close:hover { background: var(--green); color: var(--cream); }
+.sim-eyebrow { font-size: 0.66rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.14em; color: var(--orange); margin-bottom: 8px; }
+.sim-title { font-family: "Sigmar", cursive; font-size: 1.25rem; color: var(--green); line-height: 1.2; margin-bottom: 4px; padding-right: 44px; }
+.sim-sub { font-size: 0.86rem; color: var(--muted); margin-bottom: 20px; }
+.sim-sub b { color: var(--green); }
+.sim-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+@media (max-width: 760px) { .sim-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 460px) { .sim-grid { grid-template-columns: 1fr; } }
+.sim-note { margin-top: 18px; font-size: 0.8rem; color: var(--muted); text-align: center; }
+.sim-note a { color: var(--green); font-weight: 700; text-decoration: none; }
+.sim-grid .bean-card { flex: initial; width: auto; }
 
 .cta-block { margin: 48px 0; }
 .cta-block h2 { font-family: "Sigmar", cursive; font-size: clamp(1.4rem, 2.2vw, 1.9rem); color: var(--green); margin-bottom: 14px; }
@@ -557,6 +575,18 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
 </div><!-- /post-layout -->
 <div class="share-toast" id="shareToast" role="status" aria-live="polite">Link copied!</div>
 
+<!-- "Tastes similar" modal (populated client-side from bean-neighbors.json) -->
+<div class="sim-overlay" id="simOverlay" role="dialog" aria-modal="true" aria-labelledby="simTitle">
+<div class="sim-panel">
+<button class="sim-close" id="simClose" type="button" aria-label="Close">&times;</button>
+<div class="sim-eyebrow">Tastes similar</div>
+<div class="sim-title" id="simTitle">Similar beans</div>
+<div class="sim-sub" id="simSub"></div>
+<div class="sim-grid" id="simGrid"></div>
+<div class="sim-note">Matched by flavour profile across every Malaysian roaster we track. <a href="/shop/ethiopia-coffee-beans">Browse all Ethiopia &rarr;</a></div>
+</div>
+</div>
+
 <!-- NEXT ARTICLE -->
 <div class="next-article">
 <a class="next-card" href="/posts/ethiopia-yirgacheffe-coffee-you-should-try">
@@ -761,8 +791,13 @@ function toggleMenu() {
       ? '<a class="bean-buy-btn" href="' + link + '" target="_blank" rel="noopener sponsored" ' +
         'onclick="gtag(\'event\',\'buy_click\',{bean_name:\'' + esc(gaName) + '\',roaster:\'' + esc(gaRoaster) + '\',source:\'' + source + '\'})">Buy Now</a>'
       : '<a class="bean-buy-btn" href="/shop/ethiopia-coffee-beans">View</a>';
+    const sku = esc(b.SKU || '');
+    const hasSim = window.__NEIGH && window.__NEIGH[b.SKU] && window.__NEIGH[b.SKU].length;
+    const simBtn = hasSim
+      ? '<button class="bean-similar-btn" type="button" data-sim="' + sku + '">&#10022; Tastes similar</button>'
+      : '';
     return '' +
-      '<div class="bean-card" role="listitem">' +
+      '<div class="bean-card" role="listitem" data-sku="' + sku + '">' +
         '<img class="bean-card-img" src="' + img + '" alt="' + name + '" loading="lazy" ' +
           'onerror="this.onerror=null;this.src=\'' + PLACEHOLDER + '\'"/>' +
         '<div class="bean-card-body">' +
@@ -773,6 +808,7 @@ function toggleMenu() {
             '<span class="bean-price">' + (price || '&nbsp;') + '</span>' +
             buy +
           '</div>' +
+          simBtn +
         '</div>' +
       '</div>';
   }
@@ -797,48 +833,85 @@ function toggleMenu() {
     setTimeout(update, 60);
   }
 
-  fetch('/beans.json')
-    .then(r => r.json())
-    .then(all => {
-      const eth = all.filter(isEthiopian);
-      const assigned = new Set();     // SKUs already placed in a region shelf
-      const source = location.pathname; // GA buy_click source = page path
-
-      // Pass 1: specific regions (everything except the catch-all "*"), in DOM order.
-      shelves.forEach(shelfEl => {
-        const keysAttr = shelfEl.getAttribute('data-keys') || '';
-        if (keysAttr === '*') return; // catch-all handled in pass 2
-        const keys = keysAttr.split(',').map(s => s.trim()).filter(Boolean);
-        const track = shelfEl.querySelector('.shelf-track');
-        const matches = eth.filter(b => !assigned.has(b.SKU || b) && matchesKeys(b, keys));
-        matches.forEach(b => assigned.add(b.SKU || b));
-        if (matches.length) {
-          track.innerHTML = matches.map(b => cardHTML(b, source)).join('');
-          wireArrows(shelfEl);
-        }
-        // if no matches, leave the pre-written .shelf-empty note in place
-      });
-
-      // Pass 2: catch-all shelf = every Ethiopian bean not yet assigned.
-      shelves.forEach(shelfEl => {
-        if ((shelfEl.getAttribute('data-keys') || '') !== '*') return;
-        const track = shelfEl.querySelector('.shelf-track');
-        const rest = eth.filter(b => !assigned.has(b.SKU || b));
-        if (rest.length) {
-          track.innerHTML = rest.map(b => cardHTML(b, source)).join('');
-          wireArrows(shelfEl);
-        } else {
-          track.innerHTML = '<div class="shelf-empty">Browse every Ethiopian bean on the <a href="/shop/ethiopia-coffee-beans">Ethiopia catalogue</a>.</div>';
-        }
-      });
-    })
-    .catch(() => {
-      document.querySelectorAll('.shelf-track').forEach(t => {
-        if (t.querySelector('.shelf-loading')) {
-          t.innerHTML = '<div class="shelf-empty">Couldn\'t load the live catalogue. Browse Ethiopian beans on the <a href="/shop/ethiopia-coffee-beans">Ethiopia catalogue</a>.</div>';
-        }
-      });
+  // "Tastes similar" modal — populated from the precomputed neighbour map.
+  function initSimilar() {
+    const overlay = document.getElementById('simOverlay');
+    if (!overlay) return;
+    const grid = document.getElementById('simGrid');
+    const titleEl = document.getElementById('simTitle');
+    const subEl = document.getElementById('simSub');
+    const closeBtn = document.getElementById('simClose');
+    function open(sku) {
+      const base = window.__BYSKU[sku];
+      if (!base) return;
+      const cards = (window.__NEIGH[sku] || []).map(id => window.__BYSKU[id]).filter(Boolean);
+      titleEl.textContent = 'Beans that taste like ' + (base.name || 'this');
+      subEl.innerHTML = 'Similar to <b>' + esc(base.brands || '') + ' &mdash; ' + esc(base.name || '') + '</b>' +
+        (base.taste_notes ? ' &middot; ' + esc(base.taste_notes) : '');
+      grid.innerHTML = cards.length
+        ? cards.map(b => cardHTML(b, window.__SRC + ' (similar)')).join('')
+        : '<div class="shelf-empty">No close matches in stock right now. <a href="/shop/ethiopia-coffee-beans">Browse the catalogue</a>.</div>';
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function close() { overlay.classList.remove('open'); document.body.style.overflow = ''; }
+    document.body.addEventListener('click', function (e) {
+      const btn = e.target.closest('.bean-similar-btn');
+      if (btn) { e.preventDefault(); open(btn.getAttribute('data-sim')); }
     });
+    closeBtn.addEventListener('click', close);
+    overlay.addEventListener('click', function (e) { if (e.target === overlay) close(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+  }
+
+  function renderShelves(eth) {
+    const assigned = new Set();
+    const source = window.__SRC;
+    // Pass 1: specific regions (everything except the catch-all "*"), in DOM order.
+    shelves.forEach(shelfEl => {
+      const keysAttr = shelfEl.getAttribute('data-keys') || '';
+      if (keysAttr === '*') return;
+      const keys = keysAttr.split(',').map(s => s.trim()).filter(Boolean);
+      const track = shelfEl.querySelector('.shelf-track');
+      const matches = eth.filter(b => !assigned.has(b.SKU || b) && matchesKeys(b, keys));
+      matches.forEach(b => assigned.add(b.SKU || b));
+      if (matches.length) {
+        track.innerHTML = matches.map(b => cardHTML(b, source)).join('');
+        wireArrows(shelfEl);
+      }
+    });
+    // Pass 2: catch-all shelf = every Ethiopian bean not yet assigned.
+    shelves.forEach(shelfEl => {
+      if ((shelfEl.getAttribute('data-keys') || '') !== '*') return;
+      const track = shelfEl.querySelector('.shelf-track');
+      const rest = eth.filter(b => !assigned.has(b.SKU || b));
+      if (rest.length) {
+        track.innerHTML = rest.map(b => cardHTML(b, source)).join('');
+        wireArrows(shelfEl);
+      } else {
+        track.innerHTML = '<div class="shelf-empty">Browse every Ethiopian bean on the <a href="/shop/ethiopia-coffee-beans">Ethiopia catalogue</a>.</div>';
+      }
+    });
+  }
+
+  window.__SRC = location.pathname; // GA buy_click source = page path
+  // Load the catalogue + the precomputed "tastes similar" neighbour map together.
+  Promise.all([
+    fetch('/beans.json').then(r => r.json()),
+    fetch('/bean-neighbors.json').then(r => r.ok ? r.json() : {}).catch(() => {})
+  ]).then(([all, neigh]) => {
+    window.__NEIGH = neigh || {};
+    window.__BYSKU = {};
+    all.forEach(b => { if (b.SKU != null) window.__BYSKU[b.SKU] = b; });
+    renderShelves(all.filter(isEthiopian));
+    initSimilar();
+  }).catch(() => {
+    document.querySelectorAll('.shelf-track').forEach(t => {
+      if (t.querySelector('.shelf-loading')) {
+        t.innerHTML = '<div class="shelf-empty">Couldn\'t load the live catalogue. Browse Ethiopian beans on the <a href="/shop/ethiopia-coffee-beans">Ethiopia catalogue</a>.</div>';
+      }
+    });
+  });
 })();
 </script>
 </body>
