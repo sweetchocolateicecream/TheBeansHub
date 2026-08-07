@@ -679,17 +679,104 @@
       background: var(--green-light);
     }
 
-    /* ── MAIN BODY (grid + sidebar) ── */
+    /* ── MAIN BODY (category carousels) ── */
     .lib-body {
-      display: grid;
-      grid-template-columns: 1fr 280px;
-      gap: 56px;
       margin-top: 40px;
     }
 
-    .lib-body-main {}
+    /* ── CATEGORY CAROUSELS ── */
+    .cat-section {
+      margin-bottom: 48px;
+    }
 
-    .lib-body-side {}
+    .cat-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .cat-title {
+      font-family: "Sigmar", cursive;
+      font-size: 1.7rem;
+      color: var(--text);
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .cat-title .cat-count {
+      font-family: "Outfit", sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--orange-dark);
+    }
+
+    .cat-nav {
+      display: flex;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .cat-arrow {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border);
+      background: var(--white);
+      color: var(--green);
+      font-size: 1.4rem;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      font-family: "Outfit", sans-serif;
+    }
+
+    .cat-arrow:hover {
+      background: var(--green);
+      color: #FDF6EC;
+      border-color: var(--green);
+    }
+
+    .cat-arrow:disabled {
+      opacity: 0.35;
+      cursor: default;
+    }
+
+    .cat-arrow:disabled:hover {
+      background: var(--white);
+      color: var(--green);
+      border-color: var(--border);
+    }
+
+    .cat-carousel {
+      position: relative;
+    }
+
+    .cat-track {
+      display: flex;
+      gap: 22px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 6px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .cat-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* 4 cards visible per row on desktop */
+    .cat-track > .post-card {
+      flex: 0 0 calc((100% - 3 * 22px) / 4);
+      scroll-snap-align: start;
+    }
 
     .main-heading {
       font-family: "Sigmar", cursive;
@@ -1043,6 +1130,11 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
+      /* 2 cards visible per row */
+      .cat-track > .post-card {
+        flex: 0 0 calc((100% - 22px) / 2);
+      }
+
       .best-featured {
         height: 420px;
       }
@@ -1125,6 +1217,15 @@
 
       .posts-grid {
         grid-template-columns: 1fr;
+      }
+
+      /* ~1.2 cards visible so the next peeks in */
+      .cat-track > .post-card {
+        flex: 0 0 82%;
+      }
+
+      .cat-title {
+        font-size: 1.4rem;
       }
 
       .newsletter-strip {
@@ -1281,751 +1382,672 @@
       </div>
     </section>
 
-    <!-- MAIN BODY -->
-    <div class="lib-body">
+    <!-- MAIN BODY — split by category, horizontal carousels -->
+    <div class="lib-body" id="all-posts-body">
 
-      <!-- LEFT: Grid -->
-      <div class="lib-body-main">
-        <div class="main-heading-row">
-          <h2 class="main-heading" id="gridHeading">Whiteboards full of brews.</h2>
-          <div class="lib-mast-counts" id="postCount">45 posts</div>
+      <section class="cat-section" data-cat="guide">
+        <div class="cat-head">
+          <h2 class="cat-title">Guides <span class="cat-count">(24)</span></h2>
+          <div class="cat-nav">
+            <button class="cat-arrow" type="button" aria-label="Scroll Guides left" data-dir="-1">‹</button>
+            <button class="cat-arrow" type="button" aria-label="Scroll Guides right" data-dir="1">›</button>
+          </div>
         </div>
-        <div class="lib-tabs" id="libTabs">
-          <button class="lib-tab active" data-cat="all">All <span class="count">(45)</span></button>
-          <button class="lib-tab" data-cat="guide">Guides <span class="count">(24)</span></button>
-          <button class="lib-tab" data-cat="local">Local <span class="count">(14)</span></button>
-          <button class="lib-tab" data-cat="origin">Bean Origins <span class="count">(5)</span></button>
-          <button class="lib-tab" data-cat="recipe">Recipes <span class="count">(2)</span></button>
-        </div>
-        <div class="posts-grid" id="postsGrid">
-
-          <!-- POST CARDS — generated below as plain HTML so they're crawlable -->
-
-          <!-- Latest posts — pinned to top -->
-
-          <a class="post-card reveal post-item" data-cat="local" data-keywords="malaysia price cost beans rm budget"
-            href="/posts/coffee-bean-prices-malaysia">
-            <div class="post-card-img cat-local">
-              <img src="/img/all-picks-coffee-beans.webp" alt="Coffee bean prices in Malaysia" loading="lazy" />
-              <span class="post-card-tag">Local</span>
-            </div>
-            <div class="post-card-body">
-              <div class="post-card-title">Coffee Bean Prices in Malaysia: What Should You Pay?</div>
-              <p>We priced 879 beans from 59 Malaysian roasters — the honest typical price, the four price tiers,
-                why Geisha costs triple, and ten beans worth buying.</p>
-              <div class="post-card-foot"><span class="date">Jul 3, 2026</span><span class="read">Read →</span></div>
-            </div>
-          </a>
-
-          <a class="post-card reveal post-item" data-cat="local" data-keywords="malaysia taste notes flavour atlas strawberry durian liberica"
-            href="/posts/coffee-taste-notes-malaysia">
-            <div class="post-card-img cat-local">
-              <img src="/img/how-to-read-flavour-notes.webp" alt="Coffee taste notes in Malaysia flavour atlas" loading="lazy" />
-              <span class="post-card-tag">Local</span>
-            </div>
-            <div class="post-card-body">
-              <div class="post-card-title">Coffee Taste Notes in Malaysia: The Flavour Atlas</div>
-              <p>We mapped the taste notes of 748 Malaysian-roasted beans — which origin tastes like strawberry
-                or jasmine, and the beans that taste like durian, Milo and biscoff.</p>
-              <div class="post-card-foot"><span class="date">Jul 3, 2026</span><span class="read">Read →</span></div>
-            </div>
-          </a>
-
+        <div class="cat-carousel">
+          <div class="cat-track">
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="flavour notes tasting beginner"
-            href="/posts/how-to-read-flavour-notes">
-            <div class="post-card-img cat-guide">
-              <img src="/img/how-to-read-flavour-notes.webp" alt="How to read flavour notes" loading="lazy" />
-              <span class="post-card-tag">Guide</span>
-            </div>
-            <div class="post-card-body">
-              <div class="post-card-title">How to Read Flavour Notes</div>
-              <p>Can't taste what the bag says? Here's how to read flavour notes in coffee — even if everything still
-                tastes like, well… coffee.</p>
-              <div class="post-card-foot"><span class="date">Mar 5, 2026</span><span class="read">Read →</span></div>
-            </div>
-          </a>
-
-          <!-- Cluster 3 — Coffee Bean Varieties & Malaysian Heritage -->
+                      href="/posts/how-to-read-flavour-notes">
+                      <div class="post-card-img cat-guide">
+                        <img src="/img/how-to-read-flavour-notes.webp" alt="How to read flavour notes" loading="lazy" />
+                        <span class="post-card-tag">Guide</span>
+                      </div>
+                      <div class="post-card-body">
+                        <div class="post-card-title">How to Read Flavour Notes</div>
+                        <p>Can't taste what the bag says? Here's how to read flavour notes in coffee — even if everything still
+                          tastes like, well… coffee.</p>
+                        <div class="post-card-foot"><span class="date">Mar 5, 2026</span><span class="read">Read →</span></div>
+                      </div>
+                    </a>
 
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="arabica robusta liberica species types coffee beans"
-            href="/posts/coffee-bean-varieties">
-            <div class="post-card-img cat-guide">
-              <img src="/img/arabica-robusta-liberica.webp" alt="Arabica, Robusta and Liberica coffee species guide" loading="lazy" />
-              <span class="post-card-tag">Guide</span>
-            </div>
-            <div class="post-card-body">
-              <div class="post-card-title">Arabica, Robusta &amp; Liberica: The Coffee Species Guide</div>
-              <p>The three main coffee species explained — what makes Arabica worth the premium, why Robusta gets underestimated, and how Liberica became Malaysia's own.</p>
-              <div class="post-card-foot"><span class="date">June 2, 2026</span><span class="read">Read →</span></div>
-            </div>
-          </a>
+                      href="/posts/coffee-bean-varieties">
+                      <div class="post-card-img cat-guide">
+                        <img src="/img/arabica-robusta-liberica.webp" alt="Arabica, Robusta and Liberica coffee species guide" loading="lazy" />
+                        <span class="post-card-tag">Guide</span>
+                      </div>
+                      <div class="post-card-body">
+                        <div class="post-card-title">Arabica, Robusta &amp; Liberica: The Coffee Species Guide</div>
+                        <p>The three main coffee species explained — what makes Arabica worth the premium, why Robusta gets underestimated, and how Liberica became Malaysia's own.</p>
+                        <div class="post-card-foot"><span class="date">June 2, 2026</span><span class="read">Read →</span></div>
+                      </div>
+                    </a>
 
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="arabica coffee beans taste specialty price"
-            href="/posts/arabica-coffee-beans">
-            <div class="post-card-img cat-guide">
-              <img src="/img/coffee-bean-origins.webp" alt="Arabica coffee beans guide" loading="lazy" />
-              <span class="post-card-tag">Guide</span>
-            </div>
-            <div class="post-card-body">
-              <div class="post-card-title">Arabica Coffee Beans: What They Taste Like &amp; Why They Cost More</div>
-              <p>Why Arabica dominates specialty coffee — its flavour profile, growing requirements, and what separates a good Arabica from an average one.</p>
-              <div class="post-card-foot"><span class="date">June 2, 2026</span><span class="read">Read →</span></div>
-            </div>
-          </a>
-
-          <a class="post-card reveal post-item" data-cat="local" data-keywords="liberica kopi johor malaysia native bean specialty"
-            href="/posts/liberica-coffee-malaysia">
-            <div class="post-card-img cat-local">
-              <img src="/img/arabica-robusta-liberica.webp" alt="Liberica coffee Malaysia guide" loading="lazy" />
-              <span class="post-card-tag">Local</span>
-            </div>
-            <div class="post-card-body">
-              <div class="post-card-title">Liberica Coffee Malaysia: The Native Bean Most Malaysians Have Never Tried</div>
-              <p>Malaysia grows 90% of the world's Liberica. Here's what it tastes like, how it ended up in every kopitiam, and why specialty Liberica is worth trying.</p>
-              <div class="post-card-foot"><span class="date">June 2, 2026</span><span class="read">Read →</span></div>
-            </div>
-          </a>
+                      href="/posts/arabica-coffee-beans">
+                      <div class="post-card-img cat-guide">
+                        <img src="/img/coffee-bean-origins.webp" alt="Arabica coffee beans guide" loading="lazy" />
+                        <span class="post-card-tag">Guide</span>
+                      </div>
+                      <div class="post-card-body">
+                        <div class="post-card-title">Arabica Coffee Beans: What They Taste Like &amp; Why They Cost More</div>
+                        <p>Why Arabica dominates specialty coffee — its flavour profile, growing requirements, and what separates a good Arabica from an average one.</p>
+                        <div class="post-card-foot"><span class="date">June 2, 2026</span><span class="read">Read →</span></div>
+                      </div>
+                    </a>
 
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="robusta coffee beans stronger cheaper espresso"
-            href="/posts/robusta-coffee">
-            <div class="post-card-img cat-guide">
-              <img src="/img/coffee-bean-origins.webp" alt="Robusta coffee beans guide" loading="lazy" />
-              <span class="post-card-tag">Guide</span>
-            </div>
-            <div class="post-card-body">
-              <div class="post-card-title">Robusta Coffee: Stronger, Cheaper, and Misunderstood</div>
-              <p>Robusta has a reputation for being the lesser species — but that's not the full picture. What Robusta actually tastes like and where it works best.</p>
-              <div class="post-card-foot"><span class="date">June 2, 2026</span><span class="read">Read →</span></div>
-            </div>
-          </a>
+                      href="/posts/robusta-coffee">
+                      <div class="post-card-img cat-guide">
+                        <img src="/img/coffee-bean-origins.webp" alt="Robusta coffee beans guide" loading="lazy" />
+                        <span class="post-card-tag">Guide</span>
+                      </div>
+                      <div class="post-card-body">
+                        <div class="post-card-title">Robusta Coffee: Stronger, Cheaper, and Misunderstood</div>
+                        <p>Robusta has a reputation for being the lesser species — but that's not the full picture. What Robusta actually tastes like and where it works best.</p>
+                        <div class="post-card-foot"><span class="date">June 2, 2026</span><span class="read">Read →</span></div>
+                      </div>
+                    </a>
 
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="arabica vs robusta comparison caffeine flavour"
-            href="/posts/arabica-vs-robusta">
-            <div class="post-card-img cat-guide">
-              <img src="/img/single-origin-vs-blend-coffee.webp" alt="Arabica vs Robusta comparison" loading="lazy" />
-              <span class="post-card-tag">Guide</span>
-            </div>
-            <div class="post-card-body">
-              <div class="post-card-title">Arabica vs Robusta: A Side-by-Side Comparison</div>
-              <p>The two most widely grown coffee species head to head — flavour, caffeine, price, and which one belongs in your cup.</p>
-              <div class="post-card-foot"><span class="date">June 2, 2026</span><span class="read">Read →</span></div>
-            </div>
-          </a>
+                      href="/posts/arabica-vs-robusta">
+                      <div class="post-card-img cat-guide">
+                        <img src="/img/single-origin-vs-blend-coffee.webp" alt="Arabica vs Robusta comparison" loading="lazy" />
+                        <span class="post-card-tag">Guide</span>
+                      </div>
+                      <div class="post-card-body">
+                        <div class="post-card-title">Arabica vs Robusta: A Side-by-Side Comparison</div>
+                        <p>The two most widely grown coffee species head to head — flavour, caffeine, price, and which one belongs in your cup.</p>
+                        <div class="post-card-foot"><span class="date">June 2, 2026</span><span class="read">Read →</span></div>
+                      </div>
+                    </a>
 
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="liberica vs arabica comparison malaysia flavour"
-            href="/posts/liberica-vs-arabica">
-            <div class="post-card-img cat-guide">
-              <img src="/img/arabica-robusta-liberica.webp" alt="Liberica vs Arabica comparison" loading="lazy" />
-              <span class="post-card-tag">Guide</span>
-            </div>
-            <div class="post-card-body">
-              <div class="post-card-title">Liberica vs Arabica: How Malaysia's Native Bean Compares</div>
-              <p>How Liberica and Arabica differ in flavour, body, price and growing conditions — and why both belong in the conversation about Malaysian coffee.</p>
-              <div class="post-card-foot"><span class="date">June 2, 2026</span><span class="read">Read →</span></div>
-            </div>
-          </a>
-
-          <a class="post-card reveal post-item" data-cat="local" data-keywords="kopi malaysia kopitiam white coffee liberica heritage culture"
-            href="/posts/malaysian-coffee-heritage">
-            <div class="post-card-img cat-local">
-              <img src="/img/arabica-robusta-liberica.webp" alt="Malaysian coffee heritage kopi culture" loading="lazy" />
-              <span class="post-card-tag">Local</span>
-            </div>
-            <div class="post-card-body">
-              <div class="post-card-title">Malaysian Coffee Heritage: Kopi, White Coffee &amp; Liberica</div>
-              <p>The story behind kopi Malaysia — kopitiam culture, Ipoh white coffee, Liberica's role, and how traditional Malaysian coffee sits alongside the specialty wave.</p>
-              <div class="post-card-foot"><span class="date">June 2, 2026</span><span class="read">Read →</span></div>
-            </div>
-          </a>
+                      href="/posts/liberica-vs-arabica">
+                      <div class="post-card-img cat-guide">
+                        <img src="/img/arabica-robusta-liberica.webp" alt="Liberica vs Arabica comparison" loading="lazy" />
+                        <span class="post-card-tag">Guide</span>
+                      </div>
+                      <div class="post-card-body">
+                        <div class="post-card-title">Liberica vs Arabica: How Malaysia's Native Bean Compares</div>
+                        <p>How Liberica and Arabica differ in flavour, body, price and growing conditions — and why both belong in the conversation about Malaysian coffee.</p>
+                        <div class="post-card-foot"><span class="date">June 2, 2026</span><span class="read">Read →</span></div>
+                      </div>
+                    </a>
 
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="processing washed natural honey fermented anaerobic"
-            href="/posts/coffee-processing-methods">
-            <div class="post-card-img cat-guide">
-              <img src="/img/coffee-bean-origins.webp" alt="Coffee processing methods explained" loading="lazy" />
-              <span class="post-card-tag">Guide</span>
-            </div>
-            <div class="post-card-body">
-              <div class="post-card-title">Coffee Processing Methods Explained</div>
-              <p>Washed, natural, honey and anaerobic fermentation — what each processing method actually does to a coffee
-                bean, and how it changes flavour, body and acidity in the cup.</p>
-              <div class="post-card-foot"><span class="date">May 17, 2026</span><span class="read">Read →</span></div>
-            </div>
-          </a>
+                      href="/posts/coffee-processing-methods">
+                      <div class="post-card-img cat-guide">
+                        <img src="/img/coffee-bean-origins.webp" alt="Coffee processing methods explained" loading="lazy" />
+                        <span class="post-card-tag">Guide</span>
+                      </div>
+                      <div class="post-card-body">
+                        <div class="post-card-title">Coffee Processing Methods Explained</div>
+                        <p>Washed, natural, honey and anaerobic fermentation — what each processing method actually does to a coffee
+                          bean, and how it changes flavour, body and acidity in the cup.</p>
+                        <div class="post-card-foot"><span class="date">May 17, 2026</span><span class="read">Read →</span></div>
+                      </div>
+                    </a>
 
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="natural washed processing flavour comparison"
-            href="/posts/natural-vs-washed-coffee">
-            <div class="post-card-img cat-guide">
-              <img src="/img/single-origin-vs-blend-coffee.webp" alt="Natural vs washed coffee" loading="lazy" />
-              <span class="post-card-tag">Guide</span>
-            </div>
-            <div class="post-card-body">
-              <div class="post-card-title">Natural vs Washed Coffee</div>
-              <p>Natural vs washed coffee — what actually changes between the two styles, how each one reads on the cup,
-                and which to buy first as a new specialty drinker.</p>
-              <div class="post-card-foot"><span class="date">May 17, 2026</span><span class="read">Read →</span></div>
-            </div>
-          </a>
+                      href="/posts/natural-vs-washed-coffee">
+                      <div class="post-card-img cat-guide">
+                        <img src="/img/single-origin-vs-blend-coffee.webp" alt="Natural vs washed coffee" loading="lazy" />
+                        <span class="post-card-tag">Guide</span>
+                      </div>
+                      <div class="post-card-body">
+                        <div class="post-card-title">Natural vs Washed Coffee</div>
+                        <p>Natural vs washed coffee — what actually changes between the two styles, how each one reads on the cup,
+                          and which to buy first as a new specialty drinker.</p>
+                        <div class="post-card-foot"><span class="date">May 17, 2026</span><span class="read">Read →</span></div>
+                      </div>
+                    </a>
 
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="honey process yellow red black sweetness"
-            href="/posts/honey-process-coffee">
-            <div class="post-card-img cat-guide">
-              <img src="/img/coffee-bean-origins.webp" alt="Honey process coffee explained" loading="lazy" />
-              <span class="post-card-tag">Guide</span>
-            </div>
-            <div class="post-card-body">
-              <div class="post-card-title">Honey Process Coffee Explained</div>
-              <p>Honey process coffee — what it is, where it started, and how yellow, red and black honey lots differ in
-                sweetness, body and flavour.</p>
-              <div class="post-card-foot"><span class="date">May 17, 2026</span><span class="read">Read →</span></div>
-            </div>
-          </a>
-
-          <a class="post-card reveal post-item" data-cat="local" data-keywords="malaysia specialty home brew"
-            href="/posts/specialty-coffee-malaysia">
-            <div class="post-card-img cat-local">
-              <img src="/img/specialty-coffee-malaysia.webp" alt="Specialty coffee in Malaysia" loading="lazy" />
-              <span class="post-card-tag">Local</span>
-            </div>
-            <div class="post-card-body">
-              <div class="post-card-title">Specialty Coffee in Malaysia</div>
-              <p>Where to find and buy specialty coffee beans in Malaysia — by city and online. What makes coffee
-                "specialty", how to read a bag, and how The Beans Hub helps.</p>
-              <div class="post-card-foot"><span class="date">May 15, 2026</span><span class="read">Read →</span></div>
-            </div>
-          </a>
-
-          <a class="post-card reveal post-item" data-cat="local" data-keywords="malaysia best beans 2026"
-            href="/posts/best-coffee-beans-malaysia">
-            <div class="post-card-img cat-local">
-              <img src="/img/best-coffee-beans-malaysia.webp" alt="Best coffee beans in Malaysia 2026" loading="lazy" />
-              <span class="post-card-tag">Local</span>
-            </div>
-            <div class="post-card-body">
-              <div class="post-card-title">Best Coffee Beans in Malaysia 2026</div>
-              <p>How to choose the best coffee beans in Malaysia — five buying criteria that matter, local versus
-                imported-and-roasted, and matching roast level to your brew.</p>
-              <div class="post-card-foot"><span class="date">May 15, 2026</span><span class="read">Read →</span></div>
-            </div>
-          </a>
+                      href="/posts/honey-process-coffee">
+                      <div class="post-card-img cat-guide">
+                        <img src="/img/coffee-bean-origins.webp" alt="Honey process coffee explained" loading="lazy" />
+                        <span class="post-card-tag">Guide</span>
+                      </div>
+                      <div class="post-card-body">
+                        <div class="post-card-title">Honey Process Coffee Explained</div>
+                        <p>Honey process coffee — what it is, where it started, and how yellow, red and black honey lots differ in
+                          sweetness, body and flavour.</p>
+                        <div class="post-card-foot"><span class="date">May 17, 2026</span><span class="read">Read →</span></div>
+                      </div>
+                    </a>
 
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="online malaysia buy beans"
-            href="/posts/buy-coffee-beans-online-malaysia">
-            <div class="post-card-img cat-guide">
-              <img src="/img/buy-coffee-beans-online-malaysia.webp" alt="Buy coffee beans online in Malaysia" loading="lazy" />
-              <span class="post-card-tag">Guide</span>
-            </div>
-            <div class="post-card-body">
-              <div class="post-card-title">Buy Coffee Beans Online in Malaysia</div>
-              <p>A guide to buying specialty coffee beans online in Malaysia — judging freshness before you order,
-                roaster sites versus marketplaces, and nationwide delivery.</p>
-              <div class="post-card-foot"><span class="date">May 15, 2026</span><span class="read">Read →</span></div>
-            </div>
-          </a>
-
-          <a class="post-card reveal post-item" data-cat="local" data-keywords="malaysian brands roasters"
-            href="/posts/malaysia-coffee-brands-roasters">
-            <div class="post-card-img cat-local">
-              <img src="/img/malaysia-coffee-brands-roasters.webp" alt="Malaysian coffee brands and roasters" loading="lazy" />
-              <span class="post-card-tag">Local</span>
-            </div>
-            <div class="post-card-body">
-              <div class="post-card-title">Malaysian Brands &amp; Roasters</div>
-              <p>Commercial coffee brands vs independent Malaysian roasters — why small-batch matters, how to spot a
-                quality roaster, and where to find them in one place.</p>
-              <div class="post-card-foot"><span class="date">May 15, 2026</span><span class="read">Read →</span></div>
-            </div>
-          </a>
-
-          <a class="post-card reveal post-item" data-cat="local" data-keywords="kl kuala lumpur specialty beans"
-            href="/posts/specialty-coffee-beans-kl">
-            <div class="post-card-img cat-local">
-              <img src="/img/specialty-coffee-beans-kl.webp" alt="Specialty coffee beans in Kuala Lumpur" loading="lazy" />
-              <span class="post-card-tag">Local</span>
-            </div>
-            <div class="post-card-body">
-              <div class="post-card-title">Specialty Beans in KL</div>
-              <p>A practical guide to buying specialty coffee beans in Kuala Lumpur — roasteries, online ordering, the
-                main roaster areas, and getting fresh KL beans.</p>
-              <div class="post-card-foot"><span class="date">May 15, 2026</span><span class="read">Read →</span></div>
-            </div>
-          </a>
-
-          <a class="post-card reveal post-item" data-cat="local" data-keywords="pj petaling jaya selangor beans"
-            href="/posts/specialty-coffee-beans-pj-selangor">
-            <div class="post-card-img cat-local">
-              <img src="/img/specialty-coffee-beans-pj-selangor.webp" alt="Specialty coffee beans in PJ and Selangor" loading="lazy" />
-              <span class="post-card-tag">Local</span>
-            </div>
-            <div class="post-card-body">
-              <div class="post-card-title">Specialty Beans in PJ &amp; Selangor</div>
-              <p>Buying specialty coffee beans in Petaling Jaya and the wider Selangor area — where to look, how the PJ
-                scene relates to KL, and getting beans delivered.</p>
-              <div class="post-card-foot"><span class="date">May 15, 2026</span><span class="read">Read →</span></div>
-            </div>
-          </a>
-
-          <a class="post-card reveal post-item" data-cat="local" data-keywords="penang george town beans"
-            href="/posts/specialty-coffee-penang">
-            <div class="post-card-img cat-local">
-              <img src="/img/specialty-coffee-penang.webp" alt="Specialty coffee in Penang" loading="lazy" />
-              <span class="post-card-tag">Local</span>
-            </div>
-            <div class="post-card-body">
-              <div class="post-card-title">Specialty Coffee in Penang</div>
-              <p>Penang's specialty coffee scene for home brewers — what makes it distinct, whether it is café-led or
-                roaster-led, and where to buy freshly roasted beans.</p>
-              <div class="post-card-foot"><span class="date">May 15, 2026</span><span class="read">Read →</span></div>
-            </div>
-          </a>
-
-          <a class="post-card reveal post-item" data-cat="origin" data-keywords="single origin coffee bean origins guide"
-            href="/posts/coffee-bean-origins">
-            <div class="post-card-img cat-origin">
-              <img src="/img/coffee-bean-origins.webp" alt="Coffee bean origins explained" loading="lazy" />
-              <span class="post-card-tag">Origin</span>
-            </div>
-            <div class="post-card-body">
-              <div class="post-card-title">Coffee Bean Origins Explained</div>
-              <p>What single origin coffee means, why origin changes how coffee tastes, and a country-by-country guide
-                to the bean origins Malaysian roasters stock — Ethiopia to Yunnan.</p>
-              <div class="post-card-foot"><span class="date">May 15, 2026</span><span class="read">Read →</span></div>
-            </div>
-          </a>
-
-          <a class="post-card reveal post-item" data-cat="origin" data-keywords="yunnan thailand asia coffee beans"
-            href="/posts/asia-coffee-origins-yunnan-thailand">
-            <div class="post-card-img cat-origin">
-              <img src="/img/asia-coffee-origins-yunnan-thailand.webp" alt="Yunnan and Thailand coffee beans" loading="lazy" />
-              <span class="post-card-tag">Origin</span>
-            </div>
-            <div class="post-card-body">
-              <div class="post-card-title">Yunnan &amp; Thailand Coffee Beans</div>
-              <p>Yunnan and Thailand are Asia's quiet specialty coffee origins — what they taste like, why proximity
-                matters for Malaysian brewers, and where to buy.</p>
-              <div class="post-card-foot"><span class="date">May 15, 2026</span><span class="read">Read →</span></div>
-            </div>
-          </a>
+                      href="/posts/buy-coffee-beans-online-malaysia">
+                      <div class="post-card-img cat-guide">
+                        <img src="/img/buy-coffee-beans-online-malaysia.webp" alt="Buy coffee beans online in Malaysia" loading="lazy" />
+                        <span class="post-card-tag">Guide</span>
+                      </div>
+                      <div class="post-card-body">
+                        <div class="post-card-title">Buy Coffee Beans Online in Malaysia</div>
+                        <p>A guide to buying specialty coffee beans online in Malaysia — judging freshness before you order,
+                          roaster sites versus marketplaces, and nationwide delivery.</p>
+                        <div class="post-card-foot"><span class="date">May 15, 2026</span><span class="read">Read →</span></div>
+                      </div>
+                    </a>
 
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="single origin vs blend coffee"
-            href="/posts/single-origin-vs-blend-coffee">
-            <div class="post-card-img cat-guide">
-              <img src="/img/single-origin-vs-blend-coffee.webp" alt="Single origin vs blend coffee" loading="lazy" />
-              <span class="post-card-tag">Guide</span>
-            </div>
-            <div class="post-card-body">
-              <div class="post-card-title">Single Origin vs Blend Coffee</div>
-              <p>The practical difference between single-origin and blend coffee — when each one wins, how roasters
-                build a blend, and which is better for espresso, milk drinks and pour-over.</p>
-              <div class="post-card-foot"><span class="date">May 15, 2026</span><span class="read">Read →</span></div>
-            </div>
-          </a>
-
-          <a class="post-card reveal post-item" data-cat="local" data-keywords="jeju korea travel cafes"
-            href="/posts/jeju-specialty-coffee">
-            <div class="post-card-img cat-local">
-              <img src="/img/jeju-specialty-coffee.webp" alt="Specialty coffee in Jeju Island" loading="lazy" />
-              <span class="post-card-tag">Travel</span>
-            </div>
-            <div class="post-card-body">
-              <div class="post-card-title">Specialty Coffee in Jeju Island</div>
-              <p>Spent a week hunting specialty coffee in Jeju Island as a Malaysian coffee lover. An honest ranking of
-                6 cafés — from peachy lattes to viral spots.</p>
-              <div class="post-card-foot"><span class="date">Mar 21, 2026</span><span class="read">Read →</span></div>
-            </div>
-          </a>
-
-          <a class="post-card reveal post-item" data-cat="local" data-keywords="kl roasters specialty kuala lumpur"
-            href="/posts/kl-roasters">
-            <div class="post-card-img cat-local">
-              <img src="/img/kl-roasters.webp" alt="Best KL specialty roasters" loading="lazy" />
-              <span class="post-card-tag">Local</span>
-            </div>
-            <div class="post-card-body">
-              <div class="post-card-title">Best KL Specialty Roasters</div>
-              <p>A running list of KL's best specialty coffee roasters — each one roasts in-house, sources with care,
-                and sells retail bags for home brewing. Updated 2026.</p>
-              <div class="post-card-foot"><span class="date">Mar 5, 2026</span><span class="read">Read →</span></div>
-            </div>
-          </a>
-
-          <a class="post-card reveal post-item" data-cat="local" data-keywords="johor jb cafes liberica"
-            href="/posts/specialty-coffee-johor">
-            <div class="post-card-img cat-local">
-              <img src="/img/specialty-coffee-johor.webp" alt="Specialty coffee in Johor" loading="lazy" />
-              <span class="post-card-tag">Local</span>
-            </div>
-            <div class="post-card-body">
-              <div class="post-card-title">Specialty Coffee in Johor</div>
-              <p>JB is my hometown. The specialty coffee scene in Johor keeps growing — and I keep saving cafés I still
-                haven't visited. Here's the honest list.</p>
-              <div class="post-card-foot"><span class="date">Mar 5, 2026</span><span class="read">Read →</span></div>
-            </div>
-          </a>
-
-          <a class="post-card reveal post-item" data-cat="origin" data-keywords="ethiopia yirgacheffe single origin"
-            href="/posts/ethiopia-yirgacheffe-coffee-you-should-try">
-            <div class="post-card-img cat-origin">
-              <img src="/img/ethiopia-yirgacheffe-coffee-you-should-try.webp" alt="Ethiopia Yirgacheffe coffee guide" loading="lazy" />
-              <span class="post-card-tag">Origin</span>
-            </div>
-            <div class="post-card-body">
-              <div class="post-card-title">Ethiopia Yirgacheffe Guide</div>
-              <p>Ethiopia Yirgacheffe is the benchmark for floral, bright specialty coffee. Here's what makes it special
-                and the best Yirgacheffe beans in Malaysia.</p>
-              <div class="post-card-foot"><span class="date">Mar 5, 2026</span><span class="read">Read →</span></div>
-            </div>
-          </a>
-
-          <a class="post-card reveal post-item" data-cat="origin" data-keywords="brazil single origin beans"
-            href="/posts/brazil-coffee-beans-to-try">
-            <div class="post-card-img cat-origin">
-              <img src="/img/brazil-coffee-beans-to-try.webp" alt="Brazil coffee beans worth trying" loading="lazy" />
-              <span class="post-card-tag">Origin</span>
-            </div>
-            <div class="post-card-body">
-              <div class="post-card-title">Brazil Coffee Beans Worth Trying</div>
-              <p>Brazil coffee rarely demands attention. But it holds up everything. A guide to what makes Brazil coffee
-                taste the way it does — and 10 beans to try.</p>
-              <div class="post-card-foot"><span class="date">Mar 5, 2026</span><span class="read">Read →</span></div>
-            </div>
-          </a>
+                      href="/posts/single-origin-vs-blend-coffee">
+                      <div class="post-card-img cat-guide">
+                        <img src="/img/single-origin-vs-blend-coffee.webp" alt="Single origin vs blend coffee" loading="lazy" />
+                        <span class="post-card-tag">Guide</span>
+                      </div>
+                      <div class="post-card-body">
+                        <div class="post-card-title">Single Origin vs Blend Coffee</div>
+                        <p>The practical difference between single-origin and blend coffee — when each one wins, how roasters
+                          build a blend, and which is better for espresso, milk drinks and pour-over.</p>
+                        <div class="post-card-foot"><span class="date">May 15, 2026</span><span class="read">Read →</span></div>
+                      </div>
+                    </a>
 
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="arabica robusta liberica species"
-            href="/posts/arabica-robusta-liberica">
-            <div class="post-card-img cat-guide">
-              <img src="/img/arabica-robusta-liberica.webp" alt="Arabica vs Robusta vs Liberica" loading="lazy" />
-              <span class="post-card-tag">Guide</span>
-            </div>
-            <div class="post-card-body">
-              <div class="post-card-title">Arabica vs Robusta vs Liberica</div>
-              <p>Arabica, Robusta, Liberica — what's the actual difference? A guide to Malaysia's three coffee species,
-                from taste to price to where they grow.</p>
-              <div class="post-card-foot"><span class="date">Mar 5, 2026</span><span class="read">Read →</span></div>
-            </div>
-          </a>
+                      href="/posts/arabica-robusta-liberica">
+                      <div class="post-card-img cat-guide">
+                        <img src="/img/arabica-robusta-liberica.webp" alt="Arabica vs Robusta vs Liberica" loading="lazy" />
+                        <span class="post-card-tag">Guide</span>
+                      </div>
+                      <div class="post-card-body">
+                        <div class="post-card-title">Arabica vs Robusta vs Liberica</div>
+                        <p>Arabica, Robusta, Liberica — what's the actual difference? A guide to Malaysia's three coffee species,
+                          from taste to price to where they grow.</p>
+                        <div class="post-card-foot"><span class="date">Mar 5, 2026</span><span class="read">Read →</span></div>
+                      </div>
+                    </a>
 
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="light medium dark roast levels"
-            href="/posts/light-vs-medium-vs-dark-roast">
-            <div class="post-card-img cat-guide">
-              <img src="/img/light-vs-medium-vs-dark-roast.webp" alt="Light vs medium vs dark roast" loading="lazy" />
-              <span class="post-card-tag">Guide</span>
-            </div>
-            <div class="post-card-body">
-              <div class="post-card-title">Light vs Medium vs Dark Roast</div>
-              <p>New to coffee and confused by roast levels? Honest, no-fluff breakdown of light vs medium vs dark roast
-                coffee — and which one to actually buy first.</p>
-              <div class="post-card-foot"><span class="date">Mar 5, 2026</span><span class="read">Read →</span></div>
-            </div>
-          </a>
+                      href="/posts/light-vs-medium-vs-dark-roast">
+                      <div class="post-card-img cat-guide">
+                        <img src="/img/light-vs-medium-vs-dark-roast.webp" alt="Light vs medium vs dark roast" loading="lazy" />
+                        <span class="post-card-tag">Guide</span>
+                      </div>
+                      <div class="post-card-body">
+                        <div class="post-card-title">Light vs Medium vs Dark Roast</div>
+                        <p>New to coffee and confused by roast levels? Honest, no-fluff breakdown of light vs medium vs dark roast
+                          coffee — and which one to actually buy first.</p>
+                        <div class="post-card-foot"><span class="date">Mar 5, 2026</span><span class="read">Read →</span></div>
+                      </div>
+                    </a>
 
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="caffeine adhd too much"
-            href="/posts/how-much-coffee-is-too-much">
-            <div class="post-card-img cat-guide">
-              <img src="/img/how-much-coffee-is-too-much.webp" alt="How much coffee is too much" loading="lazy" />
-              <span class="post-card-tag">Guide</span>
-            </div>
-            <div class="post-card-body">
-              <div class="post-card-title">How Much Coffee Is Too Much?</div>
-              <p>I drink espresso at 7pm and still fall asleep. So how much coffee is too much — really? Especially if
-                coffee hits you differently than everyone else.</p>
-              <div class="post-card-foot"><span class="date">Mar 5, 2026</span><span class="read">Read →</span></div>
-            </div>
-          </a>
+                      href="/posts/how-much-coffee-is-too-much">
+                      <div class="post-card-img cat-guide">
+                        <img src="/img/how-much-coffee-is-too-much.webp" alt="How much coffee is too much" loading="lazy" />
+                        <span class="post-card-tag">Guide</span>
+                      </div>
+                      <div class="post-card-body">
+                        <div class="post-card-title">How Much Coffee Is Too Much?</div>
+                        <p>I drink espresso at 7pm and still fall asleep. So how much coffee is too much — really? Especially if
+                          coffee hits you differently than everyone else.</p>
+                        <div class="post-card-foot"><span class="date">Mar 5, 2026</span><span class="read">Read →</span></div>
+                      </div>
+                    </a>
 
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="fermented funky beans list"
-            href="/posts/fermented-coffee-beans-to-try-clean">
-            <div class="post-card-img cat-guide">
-              <img src="/img/light-vs-medium-vs-dark-roast.webp" alt="Fermented coffee beans to try" loading="lazy" />
-              <span class="post-card-tag">Guide</span>
-            </div>
-            <div class="post-card-body">
-              <div class="post-card-title">20 Fermented Beans to Try</div>
-              <p>Fermented coffee is one of specialty coffee's most polarising categories. Here are 20 fermented beans
-                worth trying — from mildly fruity to full-on funky.</p>
-              <div class="post-card-foot"><span class="date">Mar 5, 2026</span><span class="read">Read →</span></div>
-            </div>
-          </a>
-
-          <a class="post-card reveal post-item" data-cat="recipe" data-keywords="oat milk cortado recipe espresso"
-            href="/posts/oat-milk-cortado">
-            <div class="post-card-img cat-recipe">
-              <img src="/img/Girl-bought-coffee-from-the-beans-hub.webp" alt="Oat milk cortado at home" loading="lazy" />
-              <span class="post-card-tag">Recipe</span>
-            </div>
-            <div class="post-card-body">
-              <div class="post-card-title">Oat Milk Cortado at Home</div>
-              <p>Want a café-quality oat milk cortado at home? Here's exactly what to do — beans, temp, steaming
-                technique, and the mistakes that ruin most attempts.</p>
-              <div class="post-card-foot"><span class="date">Mar 5, 2026</span><span class="read">Read →</span></div>
-            </div>
-          </a>
-
-          <a class="post-card reveal post-item" data-cat="recipe" data-keywords="kopiko kopitiam arabica kopi recipe"
-            href="/posts/hot-kopiko-arabica-kopitiam-kopi-recipe">
-            <div class="post-card-img cat-recipe">
-              <img src="/img/Girl-bought-coffee-from-the-beans-hub.webp" alt="Hot Kopiko Arabica kopitiam style" loading="lazy" />
-              <span class="post-card-tag">Recipe</span>
-            </div>
-            <div class="post-card-body">
-              <div class="post-card-title">Hot Kopiko — Arabica Kopitiam Style</div>
-              <p>A kopitiam-style Arabica coffee recipe that brings together local kopi culture and specialty brewing.
-                Step-by-step guide with bean recommendations.</p>
-              <div class="post-card-foot"><span class="date">Mar 5, 2026</span><span class="read">Read →</span></div>
-            </div>
-          </a>
-
-          <a class="post-card reveal post-item" data-cat="origin" data-keywords="ethiopia yirgacheffe sidamo guji harrar region origin"
-            href="/posts/ethiopia-coffee-beans-regions-guide">
-            <div class="post-card-img cat-origin">
-              <img src="/img/coffee-bean-origins.webp" alt="Ethiopian coffee beans by region" loading="lazy" />
-              <span class="post-card-tag">Origin</span>
-            </div>
-            <div class="post-card-body">
-              <div class="post-card-title">Ethiopian Coffee Beans by Region: Yirgacheffe to Harrar</div>
-              <p>A field guide to Ethiopian coffee beans by region — Yirgacheffe, Sidamo, Guji and Harrar. What each tastes like, why, and beans from Malaysian roasters to shop.</p>
-              <div class="post-card-foot"><span class="date">Aug 4, 2026</span><span class="read">Read →</span></div>
-            </div>
-          </a>
+                      href="/posts/fermented-coffee-beans-to-try-clean">
+                      <div class="post-card-img cat-guide">
+                        <img src="/img/light-vs-medium-vs-dark-roast.webp" alt="Fermented coffee beans to try" loading="lazy" />
+                        <span class="post-card-tag">Guide</span>
+                      </div>
+                      <div class="post-card-body">
+                        <div class="post-card-title">20 Fermented Beans to Try</div>
+                        <p>Fermented coffee is one of specialty coffee's most polarising categories. Here are 20 fermented beans
+                          worth trying — from mildly fruity to full-on funky.</p>
+                        <div class="post-card-foot"><span class="date">Mar 5, 2026</span><span class="read">Read →</span></div>
+                      </div>
+                    </a>
 
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="tasting cupping slurp acidity body flavour"
-            href="/posts/how-to-taste-specialty-coffee-beans">
-            <div class="post-card-img cat-guide">
-              <img src="/img/how-to-read-flavour-notes.webp" alt="How to taste specialty coffee beans" loading="lazy" />
-              <span class="post-card-tag">Guide</span>
-            </div>
-            <div class="post-card-body">
-              <div class="post-card-title">How to Taste Specialty Coffee Beans Like a Pro</div>
-              <p>Learn how to taste specialty coffee beans step by step — what your tongue really does, why slurping works, and how to name the fruit, acidity and body in your cup.</p>
-              <div class="post-card-foot"><span class="date">Jun 24, 2026</span><span class="read">Read →</span></div>
-            </div>
-          </a>
+                      href="/posts/how-to-taste-specialty-coffee-beans">
+                      <div class="post-card-img cat-guide">
+                        <img src="/img/how-to-read-flavour-notes.webp" alt="How to taste specialty coffee beans" loading="lazy" />
+                        <span class="post-card-tag">Guide</span>
+                      </div>
+                      <div class="post-card-body">
+                        <div class="post-card-title">How to Taste Specialty Coffee Beans Like a Pro</div>
+                        <p>Learn how to taste specialty coffee beans step by step — what your tongue really does, why slurping works, and how to name the fruit, acidity and body in your cup.</p>
+                        <div class="post-card-foot"><span class="date">Jun 24, 2026</span><span class="read">Read →</span></div>
+                      </div>
+                    </a>
 
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="espresso caffeine strength concentration comparison"
-            href="/posts/is-espresso-stronger-than-coffee">
-            <div class="post-card-img cat-guide">
-              <img src="/img/how-much-coffee-is-too-much.webp" alt="Is espresso stronger than coffee" loading="lazy" />
-              <span class="post-card-tag">Guide</span>
-            </div>
-            <div class="post-card-body">
-              <div class="post-card-title">Is Espresso Stronger Than Coffee? The Honest Answer</div>
-              <p>Is espresso stronger than coffee? Yes by concentration, no by total caffeine. Here's how I think about it — and which Malaysian-roasted beans suit each cup.</p>
-              <div class="post-card-foot"><span class="date">Jun 15, 2026</span><span class="read">Read →</span></div>
-            </div>
-          </a>
+                      href="/posts/is-espresso-stronger-than-coffee">
+                      <div class="post-card-img cat-guide">
+                        <img src="/img/how-much-coffee-is-too-much.webp" alt="Is espresso stronger than coffee" loading="lazy" />
+                        <span class="post-card-tag">Guide</span>
+                      </div>
+                      <div class="post-card-body">
+                        <div class="post-card-title">Is Espresso Stronger Than Coffee? The Honest Answer</div>
+                        <p>Is espresso stronger than coffee? Yes by concentration, no by total caffeine. Here's how I think about it — and which Malaysian-roasted beans suit each cup.</p>
+                        <div class="post-card-foot"><span class="date">Jun 15, 2026</span><span class="read">Read →</span></div>
+                      </div>
+                    </a>
 
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="brewing pour over french press aeropress moka pot"
-            href="/posts/coffee-brewing-methods">
-            <div class="post-card-img cat-guide">
-              <img src="/img/how-much-coffee-is-too-much.webp" alt="Coffee brewing methods compared" loading="lazy" />
-              <span class="post-card-tag">Guide</span>
-            </div>
-            <div class="post-card-body">
-              <div class="post-card-title">Coffee Brewing Methods: Pour-Over, French Press, AeroPress &amp; Moka Pot</div>
-              <p>How pour-over, French press, AeroPress and moka pot actually work, which beans each method needs, and which one a beginner should start with.</p>
-              <div class="post-card-foot"><span class="date">Jun 3, 2026</span><span class="read">Read →</span></div>
-            </div>
-          </a>
+                      href="/posts/coffee-brewing-methods">
+                      <div class="post-card-img cat-guide">
+                        <img src="/img/how-much-coffee-is-too-much.webp" alt="Coffee brewing methods compared" loading="lazy" />
+                        <span class="post-card-tag">Guide</span>
+                      </div>
+                      <div class="post-card-body">
+                        <div class="post-card-title">Coffee Brewing Methods: Pour-Over, French Press, AeroPress &amp; Moka Pot</div>
+                        <p>How pour-over, French press, AeroPress and moka pot actually work, which beans each method needs, and which one a beginner should start with.</p>
+                        <div class="post-card-foot"><span class="date">Jun 3, 2026</span><span class="read">Read →</span></div>
+                      </div>
+                    </a>
 
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="roast levels light medium dark acidity body"
-            href="/posts/coffee-roast-levels-explained">
-            <div class="post-card-img cat-guide">
-              <img src="/img/light-vs-medium-vs-dark-roast.webp" alt="Coffee roast levels explained" loading="lazy" />
-              <span class="post-card-tag">Guide</span>
-            </div>
-            <div class="post-card-body">
-              <div class="post-card-title">Coffee Roast Levels Explained: Light, Medium &amp; Dark</div>
-              <p>What actually changes between light, medium and dark roast coffee — how roast level affects flavour, acidity, body and caffeine, and which level suits your brew method.</p>
-              <div class="post-card-foot"><span class="date">Jun 3, 2026</span><span class="read">Read →</span></div>
-            </div>
-          </a>
+                      href="/posts/coffee-roast-levels-explained">
+                      <div class="post-card-img cat-guide">
+                        <img src="/img/light-vs-medium-vs-dark-roast.webp" alt="Coffee roast levels explained" loading="lazy" />
+                        <span class="post-card-tag">Guide</span>
+                      </div>
+                      <div class="post-card-body">
+                        <div class="post-card-title">Coffee Roast Levels Explained: Light, Medium &amp; Dark</div>
+                        <p>What actually changes between light, medium and dark roast coffee — how roast level affects flavour, acidity, body and caffeine, and which level suits your brew method.</p>
+                        <div class="post-card-foot"><span class="date">Jun 3, 2026</span><span class="read">Read →</span></div>
+                      </div>
+                    </a>
 
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="espresso filter omni roast beans choose setup"
-            href="/posts/espresso-vs-filter-vs-omni-beans">
-            <div class="post-card-img cat-guide">
-              <img src="/img/best-coffee-beans-malaysia.webp" alt="Espresso vs filter vs omni roast beans" loading="lazy" />
-              <span class="post-card-tag">Guide</span>
-            </div>
-            <div class="post-card-body">
-              <div class="post-card-title">Espresso vs Filter vs Omni Roast: Which Beans Do You Need?</div>
-              <p>Espresso beans vs filter beans vs omni roast — what actually differs between the three, can you use one bag for both, and how to choose for your setup.</p>
-              <div class="post-card-foot"><span class="date">Jun 3, 2026</span><span class="read">Read →</span></div>
-            </div>
-          </a>
+                      href="/posts/espresso-vs-filter-vs-omni-beans">
+                      <div class="post-card-img cat-guide">
+                        <img src="/img/best-coffee-beans-malaysia.webp" alt="Espresso vs filter vs omni roast beans" loading="lazy" />
+                        <span class="post-card-tag">Guide</span>
+                      </div>
+                      <div class="post-card-body">
+                        <div class="post-card-title">Espresso vs Filter vs Omni Roast: Which Beans Do You Need?</div>
+                        <p>Espresso beans vs filter beans vs omni roast — what actually differs between the three, can you use one bag for both, and how to choose for your setup.</p>
+                        <div class="post-card-foot"><span class="date">Jun 3, 2026</span><span class="read">Read →</span></div>
+                      </div>
+                    </a>
 
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="choose beans checklist bag label brew method"
-            href="/posts/how-to-choose-coffee-beans">
-            <div class="post-card-img cat-guide">
-              <img src="/img/all-picks-coffee-beans.webp" alt="How to choose coffee beans checklist" loading="lazy" />
-              <span class="post-card-tag">Guide</span>
-            </div>
-            <div class="post-card-body">
-              <div class="post-card-title">How to Choose Coffee Beans: A Home Brewer's Checklist</div>
-              <p>A practical checklist for choosing the right coffee beans — what to check first, how to match beans to your brew method, and how to read a bag label properly.</p>
-              <div class="post-card-foot"><span class="date">Jun 3, 2026</span><span class="read">Read →</span></div>
-            </div>
-          </a>
+                      href="/posts/how-to-choose-coffee-beans">
+                      <div class="post-card-img cat-guide">
+                        <img src="/img/all-picks-coffee-beans.webp" alt="How to choose coffee beans checklist" loading="lazy" />
+                        <span class="post-card-tag">Guide</span>
+                      </div>
+                      <div class="post-card-body">
+                        <div class="post-card-title">How to Choose Coffee Beans: A Home Brewer's Checklist</div>
+                        <p>A practical checklist for choosing the right coffee beans — what to check first, how to match beans to your brew method, and how to read a bag label properly.</p>
+                        <div class="post-card-foot"><span class="date">Jun 3, 2026</span><span class="read">Read →</span></div>
+                      </div>
+                    </a>
 
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="store storage freshness freeze airtight stale"
-            href="/posts/how-to-store-coffee-beans">
-            <div class="post-card-img cat-guide">
-              <img src="/img/best-coffee-beans-malaysia.webp" alt="How to store coffee beans fresh" loading="lazy" />
-              <span class="post-card-tag">Guide</span>
-            </div>
-            <div class="post-card-body">
-              <div class="post-card-title">How to Store Coffee Beans and Keep Them Fresh</div>
-              <p>How long roasted beans actually stay fresh, what kills them fastest, whether you should freeze coffee beans, and the simplest way to keep beans at their best.</p>
-              <div class="post-card-foot"><span class="date">Jun 3, 2026</span><span class="read">Read →</span></div>
-            </div>
-          </a>
+                      href="/posts/how-to-store-coffee-beans">
+                      <div class="post-card-img cat-guide">
+                        <img src="/img/best-coffee-beans-malaysia.webp" alt="How to store coffee beans fresh" loading="lazy" />
+                        <span class="post-card-tag">Guide</span>
+                      </div>
+                      <div class="post-card-body">
+                        <div class="post-card-title">How to Store Coffee Beans and Keep Them Fresh</div>
+                        <p>How long roasted beans actually stay fresh, what kills them fastest, whether you should freeze coffee beans, and the simplest way to keep beans at their best.</p>
+                        <div class="post-card-foot"><span class="date">Jun 3, 2026</span><span class="read">Read →</span></div>
+                      </div>
+                    </a>
 
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="drip coffee bags pour over beans office travel"
-            href="/posts/drip-coffee-guide">
-            <div class="post-card-img cat-guide">
-              <img src="/img/how-much-coffee-is-too-much.webp" alt="Drip coffee guide and best beans" loading="lazy" />
-              <span class="post-card-tag">Guide</span>
-            </div>
-            <div class="post-card-body">
-              <div class="post-card-title">Drip Coffee: What It Is and the Best Beans for It</div>
-              <p>Drip coffee explained — what it is, how it differs from pour-over, the best beans and roast levels to use, and where drip bags fit for travel and office.</p>
-              <div class="post-card-foot"><span class="date">Jun 3, 2026</span><span class="read">Read →</span></div>
-            </div>
-          </a>
+                      href="/posts/drip-coffee-guide">
+                      <div class="post-card-img cat-guide">
+                        <img src="/img/how-much-coffee-is-too-much.webp" alt="Drip coffee guide and best beans" loading="lazy" />
+                        <span class="post-card-tag">Guide</span>
+                      </div>
+                      <div class="post-card-body">
+                        <div class="post-card-title">Drip Coffee: What It Is and the Best Beans for It</div>
+                        <p>Drip coffee explained — what it is, how it differs from pour-over, the best beans and roast levels to use, and where drip bags fit for travel and office.</p>
+                        <div class="post-card-foot"><span class="date">Jun 3, 2026</span><span class="read">Read →</span></div>
+                      </div>
+                    </a>
 
           <a class="post-card reveal post-item" data-cat="guide" data-keywords="climate change arabica liberica robusta 2050 survival"
-            href="/posts/coffee-climate-change">
-            <div class="post-card-img cat-guide">
-              <img src="/img/coffee-bean-origins.webp" alt="Coffee and climate change species survival" loading="lazy" />
-              <span class="post-card-tag">Guide</span>
-            </div>
-            <div class="post-card-body">
-              <div class="post-card-title">Coffee and Climate Change: Which Species Will Survive?</div>
-              <p>Arabica faces losing up to 50% of its suitable growing land by 2050. Liberica doesn't. Here's what the science says about each coffee species' survival odds as temperatures rise.</p>
-              <div class="post-card-foot"><span class="date">Jun 3, 2026</span><span class="read">Read →</span></div>
-            </div>
-          </a>
+                      href="/posts/coffee-climate-change">
+                      <div class="post-card-img cat-guide">
+                        <img src="/img/coffee-bean-origins.webp" alt="Coffee and climate change species survival" loading="lazy" />
+                        <span class="post-card-tag">Guide</span>
+                      </div>
+                      <div class="post-card-body">
+                        <div class="post-card-title">Coffee and Climate Change: Which Species Will Survive?</div>
+                        <p>Arabica faces losing up to 50% of its suitable growing land by 2050. Liberica doesn't. Here's what the science says about each coffee species' survival odds as temperatures rise.</p>
+                        <div class="post-card-foot"><span class="date">Jun 3, 2026</span><span class="read">Read →</span></div>
+                      </div>
+                    </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="cat-section" data-cat="local">
+        <div class="cat-head">
+          <h2 class="cat-title">Local <span class="cat-count">(14)</span></h2>
+          <div class="cat-nav">
+            <button class="cat-arrow" type="button" aria-label="Scroll Local left" data-dir="-1">‹</button>
+            <button class="cat-arrow" type="button" aria-label="Scroll Local right" data-dir="1">›</button>
+          </div>
+        </div>
+        <div class="cat-carousel">
+          <div class="cat-track">
+          <a class="post-card reveal post-item" data-cat="local" data-keywords="malaysia price cost beans rm budget"
+                      href="/posts/coffee-bean-prices-malaysia">
+                      <div class="post-card-img cat-local">
+                        <img src="/img/all-picks-coffee-beans.webp" alt="Coffee bean prices in Malaysia" loading="lazy" />
+                        <span class="post-card-tag">Local</span>
+                      </div>
+                      <div class="post-card-body">
+                        <div class="post-card-title">Coffee Bean Prices in Malaysia: What Should You Pay?</div>
+                        <p>We priced 879 beans from 59 Malaysian roasters — the honest typical price, the four price tiers,
+                          why Geisha costs triple, and ten beans worth buying.</p>
+                        <div class="post-card-foot"><span class="date">Jul 3, 2026</span><span class="read">Read →</span></div>
+                      </div>
+                    </a>
+
+          <a class="post-card reveal post-item" data-cat="local" data-keywords="malaysia taste notes flavour atlas strawberry durian liberica"
+                      href="/posts/coffee-taste-notes-malaysia">
+                      <div class="post-card-img cat-local">
+                        <img src="/img/how-to-read-flavour-notes.webp" alt="Coffee taste notes in Malaysia flavour atlas" loading="lazy" />
+                        <span class="post-card-tag">Local</span>
+                      </div>
+                      <div class="post-card-body">
+                        <div class="post-card-title">Coffee Taste Notes in Malaysia: The Flavour Atlas</div>
+                        <p>We mapped the taste notes of 748 Malaysian-roasted beans — which origin tastes like strawberry
+                          or jasmine, and the beans that taste like durian, Milo and biscoff.</p>
+                        <div class="post-card-foot"><span class="date">Jul 3, 2026</span><span class="read">Read →</span></div>
+                      </div>
+                    </a>
+
+          <a class="post-card reveal post-item" data-cat="local" data-keywords="liberica kopi johor malaysia native bean specialty"
+                      href="/posts/liberica-coffee-malaysia">
+                      <div class="post-card-img cat-local">
+                        <img src="/img/arabica-robusta-liberica.webp" alt="Liberica coffee Malaysia guide" loading="lazy" />
+                        <span class="post-card-tag">Local</span>
+                      </div>
+                      <div class="post-card-body">
+                        <div class="post-card-title">Liberica Coffee Malaysia: The Native Bean Most Malaysians Have Never Tried</div>
+                        <p>Malaysia grows 90% of the world's Liberica. Here's what it tastes like, how it ended up in every kopitiam, and why specialty Liberica is worth trying.</p>
+                        <div class="post-card-foot"><span class="date">June 2, 2026</span><span class="read">Read →</span></div>
+                      </div>
+                    </a>
+
+          <a class="post-card reveal post-item" data-cat="local" data-keywords="kopi malaysia kopitiam white coffee liberica heritage culture"
+                      href="/posts/malaysian-coffee-heritage">
+                      <div class="post-card-img cat-local">
+                        <img src="/img/arabica-robusta-liberica.webp" alt="Malaysian coffee heritage kopi culture" loading="lazy" />
+                        <span class="post-card-tag">Local</span>
+                      </div>
+                      <div class="post-card-body">
+                        <div class="post-card-title">Malaysian Coffee Heritage: Kopi, White Coffee &amp; Liberica</div>
+                        <p>The story behind kopi Malaysia — kopitiam culture, Ipoh white coffee, Liberica's role, and how traditional Malaysian coffee sits alongside the specialty wave.</p>
+                        <div class="post-card-foot"><span class="date">June 2, 2026</span><span class="read">Read →</span></div>
+                      </div>
+                    </a>
+
+          <a class="post-card reveal post-item" data-cat="local" data-keywords="malaysia specialty home brew"
+                      href="/posts/specialty-coffee-malaysia">
+                      <div class="post-card-img cat-local">
+                        <img src="/img/specialty-coffee-malaysia.webp" alt="Specialty coffee in Malaysia" loading="lazy" />
+                        <span class="post-card-tag">Local</span>
+                      </div>
+                      <div class="post-card-body">
+                        <div class="post-card-title">Specialty Coffee in Malaysia</div>
+                        <p>Where to find and buy specialty coffee beans in Malaysia — by city and online. What makes coffee
+                          "specialty", how to read a bag, and how The Beans Hub helps.</p>
+                        <div class="post-card-foot"><span class="date">May 15, 2026</span><span class="read">Read →</span></div>
+                      </div>
+                    </a>
+
+          <a class="post-card reveal post-item" data-cat="local" data-keywords="malaysia best beans 2026"
+                      href="/posts/best-coffee-beans-malaysia">
+                      <div class="post-card-img cat-local">
+                        <img src="/img/best-coffee-beans-malaysia.webp" alt="Best coffee beans in Malaysia 2026" loading="lazy" />
+                        <span class="post-card-tag">Local</span>
+                      </div>
+                      <div class="post-card-body">
+                        <div class="post-card-title">Best Coffee Beans in Malaysia 2026</div>
+                        <p>How to choose the best coffee beans in Malaysia — five buying criteria that matter, local versus
+                          imported-and-roasted, and matching roast level to your brew.</p>
+                        <div class="post-card-foot"><span class="date">May 15, 2026</span><span class="read">Read →</span></div>
+                      </div>
+                    </a>
+
+          <a class="post-card reveal post-item" data-cat="local" data-keywords="malaysian brands roasters"
+                      href="/posts/malaysia-coffee-brands-roasters">
+                      <div class="post-card-img cat-local">
+                        <img src="/img/malaysia-coffee-brands-roasters.webp" alt="Malaysian coffee brands and roasters" loading="lazy" />
+                        <span class="post-card-tag">Local</span>
+                      </div>
+                      <div class="post-card-body">
+                        <div class="post-card-title">Malaysian Brands &amp; Roasters</div>
+                        <p>Commercial coffee brands vs independent Malaysian roasters — why small-batch matters, how to spot a
+                          quality roaster, and where to find them in one place.</p>
+                        <div class="post-card-foot"><span class="date">May 15, 2026</span><span class="read">Read →</span></div>
+                      </div>
+                    </a>
+
+          <a class="post-card reveal post-item" data-cat="local" data-keywords="kl kuala lumpur specialty beans"
+                      href="/posts/specialty-coffee-beans-kl">
+                      <div class="post-card-img cat-local">
+                        <img src="/img/specialty-coffee-beans-kl.webp" alt="Specialty coffee beans in Kuala Lumpur" loading="lazy" />
+                        <span class="post-card-tag">Local</span>
+                      </div>
+                      <div class="post-card-body">
+                        <div class="post-card-title">Specialty Beans in KL</div>
+                        <p>A practical guide to buying specialty coffee beans in Kuala Lumpur — roasteries, online ordering, the
+                          main roaster areas, and getting fresh KL beans.</p>
+                        <div class="post-card-foot"><span class="date">May 15, 2026</span><span class="read">Read →</span></div>
+                      </div>
+                    </a>
+
+          <a class="post-card reveal post-item" data-cat="local" data-keywords="pj petaling jaya selangor beans"
+                      href="/posts/specialty-coffee-beans-pj-selangor">
+                      <div class="post-card-img cat-local">
+                        <img src="/img/specialty-coffee-beans-pj-selangor.webp" alt="Specialty coffee beans in PJ and Selangor" loading="lazy" />
+                        <span class="post-card-tag">Local</span>
+                      </div>
+                      <div class="post-card-body">
+                        <div class="post-card-title">Specialty Beans in PJ &amp; Selangor</div>
+                        <p>Buying specialty coffee beans in Petaling Jaya and the wider Selangor area — where to look, how the PJ
+                          scene relates to KL, and getting beans delivered.</p>
+                        <div class="post-card-foot"><span class="date">May 15, 2026</span><span class="read">Read →</span></div>
+                      </div>
+                    </a>
+
+          <a class="post-card reveal post-item" data-cat="local" data-keywords="penang george town beans"
+                      href="/posts/specialty-coffee-penang">
+                      <div class="post-card-img cat-local">
+                        <img src="/img/specialty-coffee-penang.webp" alt="Specialty coffee in Penang" loading="lazy" />
+                        <span class="post-card-tag">Local</span>
+                      </div>
+                      <div class="post-card-body">
+                        <div class="post-card-title">Specialty Coffee in Penang</div>
+                        <p>Penang's specialty coffee scene for home brewers — what makes it distinct, whether it is café-led or
+                          roaster-led, and where to buy freshly roasted beans.</p>
+                        <div class="post-card-foot"><span class="date">May 15, 2026</span><span class="read">Read →</span></div>
+                      </div>
+                    </a>
+
+          <a class="post-card reveal post-item" data-cat="local" data-keywords="jeju korea travel cafes"
+                      href="/posts/jeju-specialty-coffee">
+                      <div class="post-card-img cat-local">
+                        <img src="/img/jeju-specialty-coffee.webp" alt="Specialty coffee in Jeju Island" loading="lazy" />
+                        <span class="post-card-tag">Travel</span>
+                      </div>
+                      <div class="post-card-body">
+                        <div class="post-card-title">Specialty Coffee in Jeju Island</div>
+                        <p>Spent a week hunting specialty coffee in Jeju Island as a Malaysian coffee lover. An honest ranking of
+                          6 cafés — from peachy lattes to viral spots.</p>
+                        <div class="post-card-foot"><span class="date">Mar 21, 2026</span><span class="read">Read →</span></div>
+                      </div>
+                    </a>
+
+          <a class="post-card reveal post-item" data-cat="local" data-keywords="kl roasters specialty kuala lumpur"
+                      href="/posts/kl-roasters">
+                      <div class="post-card-img cat-local">
+                        <img src="/img/kl-roasters.webp" alt="Best KL specialty roasters" loading="lazy" />
+                        <span class="post-card-tag">Local</span>
+                      </div>
+                      <div class="post-card-body">
+                        <div class="post-card-title">Best KL Specialty Roasters</div>
+                        <p>A running list of KL's best specialty coffee roasters — each one roasts in-house, sources with care,
+                          and sells retail bags for home brewing. Updated 2026.</p>
+                        <div class="post-card-foot"><span class="date">Mar 5, 2026</span><span class="read">Read →</span></div>
+                      </div>
+                    </a>
+
+          <a class="post-card reveal post-item" data-cat="local" data-keywords="johor jb cafes liberica"
+                      href="/posts/specialty-coffee-johor">
+                      <div class="post-card-img cat-local">
+                        <img src="/img/specialty-coffee-johor.webp" alt="Specialty coffee in Johor" loading="lazy" />
+                        <span class="post-card-tag">Local</span>
+                      </div>
+                      <div class="post-card-body">
+                        <div class="post-card-title">Specialty Coffee in Johor</div>
+                        <p>JB is my hometown. The specialty coffee scene in Johor keeps growing — and I keep saving cafés I still
+                          haven't visited. Here's the honest list.</p>
+                        <div class="post-card-foot"><span class="date">Mar 5, 2026</span><span class="read">Read →</span></div>
+                      </div>
+                    </a>
 
           <a class="post-card reveal post-item" data-cat="local" data-keywords="malaysia home barista brewing gear grind ratio"
-            href="/posts/home-brewing-coffee-malaysia">
-            <div class="post-card-img cat-local">
-              <img src="/img/how-much-coffee-is-too-much.webp" alt="Home brewing coffee in Malaysia" loading="lazy" />
-              <span class="post-card-tag">Local</span>
-            </div>
-            <div class="post-card-body">
-              <div class="post-card-title">Home Brewing Coffee in Malaysia: The Complete Guide for Home Baristas</div>
-              <p>Everything a Malaysian home barista needs to start brewing great coffee at home — gear, beans, brew methods, grind, ratios and how to keep it all fresh.</p>
-              <div class="post-card-foot"><span class="date">Jun 3, 2026</span><span class="read">Read →</span></div>
-            </div>
-          </a>
-
-        </div>
-      </div>
-
-      <!-- RIGHT: Sidebar -->
-      <aside class="lib-body-side">
-        <div class="side-block">
-          <h3>Featured</h3>
-          <div class="side-list">
-
-            <a class="side-item" href="/posts/specialty-coffee-malaysia">
-              <div class="side-thumb cat-local">
-                <img src="/img/specialty-coffee-malaysia.webp" alt="" loading="lazy" />
-              </div>
-              <div>
-                <div class="side-meta">May 15, 2026</div>
-                <div class="side-title">Specialty Coffee in Malaysia: A Home Brewer's Guide</div>
-              </div>
-            </a>
-
-            <a class="side-item" href="/posts/arabica-robusta-liberica">
-              <div class="side-thumb cat-guide">
-                <img src="/img/arabica-robusta-liberica.webp" alt="" loading="lazy" />
-              </div>
-              <div>
-                <div class="side-meta">Mar 5, 2026</div>
-                <div class="side-title">Arabica vs Robusta vs Liberica</div>
-              </div>
-            </a>
-
-            <a class="side-item" href="/posts/kl-roasters">
-              <div class="side-thumb cat-local">
-                <img src="/img/kl-roasters.webp" alt="" loading="lazy" />
-              </div>
-              <div>
-                <div class="side-meta">Mar 5, 2026</div>
-                <div class="side-title">Best Specialty Coffee Roasters in KL</div>
-              </div>
-            </a>
-
-            <a class="side-item" href="/coffee-roasters-malaysia">
-              <div class="side-thumb cat-local">
-                <img src="/img/malaysia-coffee-brands-roasters.webp" alt="" loading="lazy" />
-              </div>
-              <div>
-                <div class="side-meta">Directory</div>
-                <div class="side-title">Malaysian Coffee Roasters by State — 72 verified listings</div>
-              </div>
-            </a>
-
-            <a class="side-item" href="/posts/jeju-specialty-coffee">
-              <div class="side-thumb cat-local">
-                <img src="/img/jeju-specialty-coffee.webp" alt="" loading="lazy" />
-              </div>
-              <div>
-                <div class="side-meta">Mar 21, 2026</div>
-                <div class="side-title">Specialty Coffee in Jeju Island</div>
-              </div>
-            </a>
-
+                      href="/posts/home-brewing-coffee-malaysia">
+                      <div class="post-card-img cat-local">
+                        <img src="/img/how-much-coffee-is-too-much.webp" alt="Home brewing coffee in Malaysia" loading="lazy" />
+                        <span class="post-card-tag">Local</span>
+                      </div>
+                      <div class="post-card-body">
+                        <div class="post-card-title">Home Brewing Coffee in Malaysia: The Complete Guide for Home Baristas</div>
+                        <p>Everything a Malaysian home barista needs to start brewing great coffee at home — gear, beans, brew methods, grind, ratios and how to keep it all fresh.</p>
+                        <div class="post-card-foot"><span class="date">Jun 3, 2026</span><span class="read">Read →</span></div>
+                      </div>
+                    </a>
           </div>
         </div>
+      </section>
 
-        <div class="side-block">
-          <h3>Latest</h3>
-          <div class="side-list">
-
-            <a class="side-item" href="/posts/coffee-processing-methods">
-              <div class="side-thumb cat-guide">
-                <img src="/img/coffee-bean-origins.webp" alt="" loading="lazy" />
-              </div>
-              <div>
-                <div class="side-meta">May 17, 2026</div>
-                <div class="side-title">Coffee Processing Methods Explained</div>
-              </div>
-            </a>
-
-            <a class="side-item" href="/posts/natural-vs-washed-coffee">
-              <div class="side-thumb cat-guide">
-                <img src="/img/single-origin-vs-blend-coffee.webp" alt="" loading="lazy" />
-              </div>
-              <div>
-                <div class="side-meta">May 17, 2026</div>
-                <div class="side-title">Natural vs Washed Coffee</div>
-              </div>
-            </a>
-
-            <a class="side-item" href="/posts/honey-process-coffee">
-              <div class="side-thumb cat-guide">
-                <img src="/img/coffee-bean-origins.webp" alt="" loading="lazy" />
-              </div>
-              <div>
-                <div class="side-meta">May 17, 2026</div>
-                <div class="side-title">Honey Process Coffee Explained</div>
-              </div>
-            </a>
-
-            <a class="side-item" href="/posts/best-coffee-beans-malaysia">
-              <div class="side-thumb cat-local">
-                <img src="/img/best-coffee-beans-malaysia.webp" alt="" loading="lazy" />
-              </div>
-              <div>
-                <div class="side-meta">May 15, 2026</div>
-                <div class="side-title">Best Coffee Beans in Malaysia 2026</div>
-              </div>
-            </a>
-
+      <section class="cat-section" data-cat="origin">
+        <div class="cat-head">
+          <h2 class="cat-title">Bean Origins <span class="cat-count">(5)</span></h2>
+          <div class="cat-nav">
+            <button class="cat-arrow" type="button" aria-label="Scroll Bean Origins left" data-dir="-1">‹</button>
+            <button class="cat-arrow" type="button" aria-label="Scroll Bean Origins right" data-dir="1">›</button>
           </div>
         </div>
-      </aside>
+        <div class="cat-carousel">
+          <div class="cat-track">
+          <a class="post-card reveal post-item" data-cat="origin" data-keywords="single origin coffee bean origins guide"
+                      href="/posts/coffee-bean-origins">
+                      <div class="post-card-img cat-origin">
+                        <img src="/img/coffee-bean-origins.webp" alt="Coffee bean origins explained" loading="lazy" />
+                        <span class="post-card-tag">Origin</span>
+                      </div>
+                      <div class="post-card-body">
+                        <div class="post-card-title">Coffee Bean Origins Explained</div>
+                        <p>What single origin coffee means, why origin changes how coffee tastes, and a country-by-country guide
+                          to the bean origins Malaysian roasters stock — Ethiopia to Yunnan.</p>
+                        <div class="post-card-foot"><span class="date">May 15, 2026</span><span class="read">Read →</span></div>
+                      </div>
+                    </a>
+
+          <a class="post-card reveal post-item" data-cat="origin" data-keywords="yunnan thailand asia coffee beans"
+                      href="/posts/asia-coffee-origins-yunnan-thailand">
+                      <div class="post-card-img cat-origin">
+                        <img src="/img/asia-coffee-origins-yunnan-thailand.webp" alt="Yunnan and Thailand coffee beans" loading="lazy" />
+                        <span class="post-card-tag">Origin</span>
+                      </div>
+                      <div class="post-card-body">
+                        <div class="post-card-title">Yunnan &amp; Thailand Coffee Beans</div>
+                        <p>Yunnan and Thailand are Asia's quiet specialty coffee origins — what they taste like, why proximity
+                          matters for Malaysian brewers, and where to buy.</p>
+                        <div class="post-card-foot"><span class="date">May 15, 2026</span><span class="read">Read →</span></div>
+                      </div>
+                    </a>
+
+          <a class="post-card reveal post-item" data-cat="origin" data-keywords="ethiopia yirgacheffe single origin"
+                      href="/posts/ethiopia-yirgacheffe-coffee-you-should-try">
+                      <div class="post-card-img cat-origin">
+                        <img src="/img/ethiopia-yirgacheffe-coffee-you-should-try.webp" alt="Ethiopia Yirgacheffe coffee guide" loading="lazy" />
+                        <span class="post-card-tag">Origin</span>
+                      </div>
+                      <div class="post-card-body">
+                        <div class="post-card-title">Ethiopia Yirgacheffe Guide</div>
+                        <p>Ethiopia Yirgacheffe is the benchmark for floral, bright specialty coffee. Here's what makes it special
+                          and the best Yirgacheffe beans in Malaysia.</p>
+                        <div class="post-card-foot"><span class="date">Mar 5, 2026</span><span class="read">Read →</span></div>
+                      </div>
+                    </a>
+
+          <a class="post-card reveal post-item" data-cat="origin" data-keywords="brazil single origin beans"
+                      href="/posts/brazil-coffee-beans-to-try">
+                      <div class="post-card-img cat-origin">
+                        <img src="/img/brazil-coffee-beans-to-try.webp" alt="Brazil coffee beans worth trying" loading="lazy" />
+                        <span class="post-card-tag">Origin</span>
+                      </div>
+                      <div class="post-card-body">
+                        <div class="post-card-title">Brazil Coffee Beans Worth Trying</div>
+                        <p>Brazil coffee rarely demands attention. But it holds up everything. A guide to what makes Brazil coffee
+                          taste the way it does — and 10 beans to try.</p>
+                        <div class="post-card-foot"><span class="date">Mar 5, 2026</span><span class="read">Read →</span></div>
+                      </div>
+                    </a>
+
+          <a class="post-card reveal post-item" data-cat="origin" data-keywords="ethiopia yirgacheffe sidamo guji harrar region origin"
+                      href="/posts/ethiopia-coffee-beans-regions-guide">
+                      <div class="post-card-img cat-origin">
+                        <img src="/img/coffee-bean-origins.webp" alt="Ethiopian coffee beans by region" loading="lazy" />
+                        <span class="post-card-tag">Origin</span>
+                      </div>
+                      <div class="post-card-body">
+                        <div class="post-card-title">Ethiopian Coffee Beans by Region: Yirgacheffe to Harrar</div>
+                        <p>A field guide to Ethiopian coffee beans by region — Yirgacheffe, Sidamo, Guji and Harrar. What each tastes like, why, and beans from Malaysian roasters to shop.</p>
+                        <div class="post-card-foot"><span class="date">Aug 4, 2026</span><span class="read">Read →</span></div>
+                      </div>
+                    </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="cat-section" data-cat="recipe">
+        <div class="cat-head">
+          <h2 class="cat-title">Recipes <span class="cat-count">(2)</span></h2>
+          <div class="cat-nav">
+            <button class="cat-arrow" type="button" aria-label="Scroll Recipes left" data-dir="-1">‹</button>
+            <button class="cat-arrow" type="button" aria-label="Scroll Recipes right" data-dir="1">›</button>
+          </div>
+        </div>
+        <div class="cat-carousel">
+          <div class="cat-track">
+          <a class="post-card reveal post-item" data-cat="recipe" data-keywords="oat milk cortado recipe espresso"
+                      href="/posts/oat-milk-cortado">
+                      <div class="post-card-img cat-recipe">
+                        <img src="/img/Girl-bought-coffee-from-the-beans-hub.webp" alt="Oat milk cortado at home" loading="lazy" />
+                        <span class="post-card-tag">Recipe</span>
+                      </div>
+                      <div class="post-card-body">
+                        <div class="post-card-title">Oat Milk Cortado at Home</div>
+                        <p>Want a café-quality oat milk cortado at home? Here's exactly what to do — beans, temp, steaming
+                          technique, and the mistakes that ruin most attempts.</p>
+                        <div class="post-card-foot"><span class="date">Mar 5, 2026</span><span class="read">Read →</span></div>
+                      </div>
+                    </a>
+
+          <a class="post-card reveal post-item" data-cat="recipe" data-keywords="kopiko kopitiam arabica kopi recipe"
+                      href="/posts/hot-kopiko-arabica-kopitiam-kopi-recipe">
+                      <div class="post-card-img cat-recipe">
+                        <img src="/img/Girl-bought-coffee-from-the-beans-hub.webp" alt="Hot Kopiko Arabica kopitiam style" loading="lazy" />
+                        <span class="post-card-tag">Recipe</span>
+                      </div>
+                      <div class="post-card-body">
+                        <div class="post-card-title">Hot Kopiko — Arabica Kopitiam Style</div>
+                        <p>A kopitiam-style Arabica coffee recipe that brings together local kopi culture and specialty brewing.
+                          Step-by-step guide with bean recommendations.</p>
+                        <div class="post-card-foot"><span class="date">Mar 5, 2026</span><span class="read">Read →</span></div>
+                      </div>
+                    </a>
+          </div>
+        </div>
+      </section>
 
     </div>
 
@@ -2052,51 +2074,41 @@
       document.getElementById('mobileMenu').classList.toggle('open');
     }
 
-    // Tab filtering
-    const tabs = document.querySelectorAll('#libTabs .lib-tab');
+    // Category carousel arrows
     const cards = document.querySelectorAll('.post-item');
-    const gridHeading = document.getElementById('gridHeading');
-    const postCount = document.getElementById('postCount');
-    const headingByCat = {
-      all: 'Whiteboards full of brews.',
-      guide: 'How-to &amp; beginner guides.',
-      local: 'On the ground in Malaysia.',
-      recipe: 'Café recipes, recreated.',
-      origin: 'Single-origin deep dives.'
-    };
+    document.querySelectorAll('.cat-section').forEach(section => {
+      const track = section.querySelector('.cat-track');
+      const arrows = section.querySelectorAll('.cat-arrow');
 
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        tabs.forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-        const cat = tab.dataset.cat;
-        let visible = 0;
-        cards.forEach(c => {
-          const show = cat === 'all' || c.dataset.cat === cat;
-          c.style.display = show ? '' : 'none';
-          if (show) visible++;
-        });
-        gridHeading.innerHTML = headingByCat[cat] || headingByCat.all;
-        postCount.textContent = visible + ' post' + (visible === 1 ? '' : 's');
-      });
+      function page(dir) {
+        // scroll by roughly one full row of visible cards
+        track.scrollBy({ left: dir * track.clientWidth * 0.9, behavior: 'smooth' });
+      }
+      function updateArrows() {
+        const maxScroll = track.scrollWidth - track.clientWidth - 2;
+        const prev = arrows[0], next = arrows[1];
+        if (prev) prev.disabled = track.scrollLeft <= 2;
+        if (next) next.disabled = track.scrollLeft >= maxScroll;
+      }
+      arrows.forEach(a => a.addEventListener('click', () => page(parseInt(a.dataset.dir, 10))));
+      track.addEventListener('scroll', updateArrows, { passive: true });
+      window.addEventListener('resize', updateArrows);
+      updateArrows();
     });
 
-    // Search filter
+    // Search filter — filters cards across every category, hides empty sections
     function runSearch(e) {
       e.preventDefault();
       const q = document.getElementById('searchInput').value.trim().toLowerCase();
-      // Reset tabs to All
-      tabs.forEach(t => t.classList.remove('active'));
-      document.querySelector('.lib-tab[data-cat="all"]').classList.add('active');
-      let visible = 0;
       cards.forEach(c => {
         const hay = (c.textContent + ' ' + (c.dataset.keywords || '')).toLowerCase();
-        const show = !q || hay.includes(q);
-        c.style.display = show ? '' : 'none';
-        if (show) visible++;
+        c.style.display = (!q || hay.includes(q)) ? '' : 'none';
       });
-      gridHeading.innerHTML = q ? ('Results for "' + q + '"') : headingByCat.all;
-      postCount.textContent = visible + ' post' + (visible === 1 ? '' : 's');
+      document.querySelectorAll('.cat-section').forEach(section => {
+        const anyVisible = [...section.querySelectorAll('.post-item')]
+          .some(c => c.style.display !== 'none');
+        section.style.display = anyVisible ? '' : 'none';
+      });
       document.getElementById('all-posts').scrollIntoView({ behavior: 'smooth' });
       return false;
     }
