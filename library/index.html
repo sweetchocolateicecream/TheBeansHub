@@ -761,8 +761,10 @@
       display: flex;
       gap: 22px;
       overflow-x: auto;
+      overflow-y: visible;
       scroll-behavior: smooth;
-      scroll-snap-type: x mandatory;
+      overscroll-behavior-x: contain;
+      touch-action: pan-y;
       padding-bottom: 6px;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
@@ -775,7 +777,6 @@
     /* 4 cards visible per row on desktop */
     .cat-track > .post-card {
       flex: 0 0 calc((100% - 3 * 22px) / 4);
-      scroll-snap-align: start;
     }
 
     .main-heading {
@@ -1738,7 +1739,7 @@
                       </div>
                       <div class="post-card-body">
                         <div class="post-card-title">Coffee Bean Prices in Malaysia: What Should You Pay?</div>
-                        <p>We priced 879 beans from 59 Malaysian roasters — the honest typical price, the four price tiers,
+                        <p>We priced 869 beans from 59 Malaysian roasters — the honest typical price, the four price tiers,
                           why Geisha costs triple, and ten beans worth buying.</p>
                         <div class="post-card-foot"><span class="date">Jul 3, 2026</span><span class="read">Read →</span></div>
                       </div>
@@ -2055,7 +2056,7 @@
     <div class="newsletter-strip">
       <div class="newsletter-strip-text">
         <h3>New posts, straight to your inbox.</h3>
-        <p>No spam. Just good coffee writing, once a month.</p>
+        <p>We don't have the resources to send you coffee updates via email right now. When we do, you'll be the first to know.</p>
       </div>
       <div class="newsletter-strip-form">
         <input class="newsletter-strip-input" id="libEmail" placeholder="Your email address" type="email" />

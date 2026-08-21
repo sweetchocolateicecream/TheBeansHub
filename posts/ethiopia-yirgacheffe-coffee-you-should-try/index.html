@@ -242,6 +242,27 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
 .post-nav a { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-size: 0.9rem; font-weight: 600; color: var(--green); transition: color 0.2s; }
 .post-nav a:hover { color: var(--orange); }
 .post-banner { background: var(--green-light); display: flex; align-items: center; justify-content: center; height: 220px; font-size: 7rem; border-radius: 20px; margin: 8px 0 24px; }
+
+/* Shop-style product cards (3 columns) */
+.bean-shop-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 26px 0 8px; }
+.bean-shop-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s; }
+.bean-shop-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(41,98,65,0.12); }
+.bean-shop-img { width: 100%; height: 170px; object-fit: cover; background: var(--cream); display: block; }
+.bean-shop-imgph { width: 100%; height: 170px; background: linear-gradient(135deg, #f0ebe0 0%, #DDD0BC 100%); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; }
+.bean-shop-body { padding: 15px 16px 8px; flex: 1; display: flex; flex-direction: column; gap: 8px; }
+.bean-shop-brand { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); }
+.bean-shop-name { font-family: "Outfit", sans-serif; font-size: 1rem; font-weight: 700; color: var(--green); line-height: 1.3; margin: 0; }
+.bean-shop-meta { display: flex; flex-wrap: wrap; gap: 5px 10px; margin-top: 1px; }
+.bean-shop-meta span { font-size: 0.72rem; color: var(--muted); font-weight: 500; }
+.bean-shop-notes { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 2px; }
+.bean-shop-notes .note-tag { padding: 2px 9px; background: var(--tag-bg); color: var(--green); border-radius: 10px; font-size: 0.68rem; font-weight: 500; }
+.bean-shop-foot { padding: 11px 16px 15px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border); margin-top: auto; }
+.bean-shop-price { font-size: 1.05rem; font-weight: 700; color: var(--green); }
+.bean-shop-price small { font-size: 0.68rem; color: var(--muted); font-weight: 400; }
+.bean-shop-buy { padding: 8px 15px; background: var(--orange); color: #fff; border-radius: 8px; font-size: 0.8rem; font-weight: 600; text-decoration: none; white-space: nowrap; transition: background 0.2s, transform 0.15s; }
+.bean-shop-buy:hover { background: var(--orange-dark); transform: translateY(-1px); }
+@media (max-width: 900px) { .bean-shop-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .bean-shop-grid { grid-template-columns: 1fr; } }
 </style>
 
 </meta>
@@ -334,7 +355,7 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
 <a class="toc-link" href="#why-yirgacheffe-can-taste-sour-to-beginners">Why Yirgacheffe can taste sour to beginners</a>
 <a class="toc-link" href="#who-should-try-ethiopia-yirgacheffe">Who should try Ethiopia Yirgacheffe?</a>
 <a class="toc-link" href="#final-thought">Final thought</a>
-<a class="toc-link" href="#10-ethiopia-yirgacheffe-coffee-beans-to-try">10 Ethiopia Yirgacheffe coffee beans to try</a></nav>
+<a class="toc-link" href="#12-ethiopia-yirgacheffe-coffee-beans-to-try">12 Ethiopia Yirgacheffe coffee beans to try</a></nav>
 <details>
 <summary>On this page</summary>
 <nav class="toc-nav"><a class="toc-link" href="#what-is-ethiopia-yirgacheffe-coffee-actually">What is Ethiopia Yirgacheffe coffee, actually?</a>
@@ -348,7 +369,7 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
 <a class="toc-link" href="#why-yirgacheffe-can-taste-sour-to-beginners">Why Yirgacheffe can taste sour to beginners</a>
 <a class="toc-link" href="#who-should-try-ethiopia-yirgacheffe">Who should try Ethiopia Yirgacheffe?</a>
 <a class="toc-link" href="#final-thought">Final thought</a>
-<a class="toc-link" href="#10-ethiopia-yirgacheffe-coffee-beans-to-try">10 Ethiopia Yirgacheffe coffee beans to try</a></nav>
+<a class="toc-link" href="#12-ethiopia-yirgacheffe-coffee-beans-to-try">12 Ethiopia Yirgacheffe coffee beans to try</a></nav>
 </details>
 <div class="share-panel">
 <div class="share-title">Share</div>
@@ -367,10 +388,9 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
       the coffee I was used to drinking. It was lighter, cleaner, and somehow more expressive, even though I would not
       have used that word back then.</p>
 <p>Somebody told me it had floral notes, and honestly at that time I had no idea what that was supposed to mean. I
-      just knew the cup made me pause for a second, and that pause is usually how I know something is worth paying
-      attention to.</p>
+      just knew the cup made me pause for a second, made me thinking if this is what all the coffee lovers are talking about.</p>
 <hr class="section-rule"/>
-<h2 id="what-is-ethiopia-yirgacheffe-coffee-actually">What is Ethiopia Yirgacheffe coffee, actually?</h2>
+<h2 id="what-is-ethiopia-yirgacheffe-coffee-actually">What is Ethiopia Yirgacheffe coffee?</h2>
 <p>Yirgacheffe is not a brand, and it is not some fancy roast style either. It is a coffee-growing area in <a href="/shop/ethiopia-coffee-beans">Ethiopia</a>,
       and in coffee, place matters much more than most people think. Coffee is agricultural produce at the end of the
       day, so where it grows changes how it tastes.</p>
@@ -399,13 +419,13 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
 <div class="callout">
 <p class="callout-title">Simple way to think about it</p>
 <p>If Brazil feels like chocolate cake, Ethiopia Yirgacheffe often feels more like citrus tea with coffee hiding
-        inside it. Not weak, just lighter and more expressive.</p>
+        inside it. It's lighter and more expressive.</p>
 </div>
 <hr class="section-rule"/>
 <h2 id="what-does-ethiopia-yirgacheffe-taste-like">What does Ethiopia Yirgacheffe taste like?</h2>
 <p>If I had to explain the common characteristics in plain English, I would say Yirgacheffe usually tastes light on
       the tongue, smells quite pretty, and finishes clean. It does not sit heavy in your mouth, and it usually does not
-      hit you with that bold smoky roast taste either.</p>
+      hit you with that bold smoky roast taste either. That means you cannot eat something spicy or heavy and drink this without cleaning your palate.</p>
 <p>If tasting language still feels abstract, our guide to <a href="/posts/how-to-read-flavour-notes">reading coffee flavour notes</a> will help. The most common tasting notes you will see are:</p>
 <ul>
 <li><strong>Floral:</strong> jasmine, white flowers, tea-like perfume</li>
@@ -428,8 +448,8 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
       tea-like Ethiopian coffee.</p>
 <h3>Natural Yirgacheffe</h3>
 <p>Natural lots are dried with the fruit still attached before the bean is processed out. That usually gives you
-      more fruit, more sweetness, and sometimes more berry-like or jammy notes. It can feel a little louder, a little
-      fuller, and sometimes easier for newer drinkers to notice.</p>
+      more fruit, more sweetness, and sometimes more berry-like or jammy notes. It can feel a little fuller and louder, 
+      and sometimes easier for newer drinkers to notice.</p>
 <div class="table-wrap">
 <table>
 <thead>
@@ -468,7 +488,7 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
 <h2 id="why-people-who-are-deep-into-coffee-love-yirgacheffe">Why people who are deep into coffee love Yirgacheffe</h2>
 <p>I think the reason coffee people keep talking about Yirgacheffe is because it shows that coffee does not have to
       taste only one way. If your idea of coffee is something dark, bitter, and heavy, Yirgacheffe can feel almost
-      disruptive. It tells you that coffee can also be delicate, aromatic, and transparent.</p>
+      disruptive or unnecessary. It tells you that coffee can also be delicate, aromatic, and transparent.</p>
 <p>That may not sound exciting on paper, but in a cup it can be very memorable. It is often one of those coffees
       that makes people realise there is a lot more range in coffee than they first assumed.</p>
 <hr class="section-rule"/>
@@ -495,8 +515,9 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
 </ul>
 <hr class="section-rule"/>
 <h2 id="why-yirgacheffe-can-taste-sour-to-beginners">Why Yirgacheffe can taste sour to beginners</h2>
-<p>This part is worth saying clearly, because many beginners try an Ethiopian coffee and immediately think something
-      is wrong. Most of the time, nothing is wrong. Yirgacheffe often has higher perceived acidity, and if you are used
+<p>This part is worth saying clearly, because many beginners try an Ethiopian coffee and immediately think it's a waste of money.
+  Because there's no strong taste or anything that "stands out" in some way because filter coffee are generally lighter.
+  Yirgacheffe often has higher perceived acidity, and if you are used
       to darker roasts or traditional kopi, that brightness can register as sourness.</p>
 <p>Sometimes it really is under-extracted and genuinely sour, but sometimes it is just bright coffee doing bright
       coffee things. The more cups you drink, the easier it becomes to tell the difference between “this is badly
@@ -525,194 +546,175 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
       back to thinking all coffee tastes the same.</p>
 <hr class="post-divider"/>
 <hr class="section-rule"/>
-<h2 id="10-ethiopia-yirgacheffe-coffee-beans-to-try">10 Ethiopia Yirgacheffe coffee beans to try</h2>
-<p>These are all sourced from Malaysian specialty roasters and available online. Yirgacheffe shines brightest on a V60 or pour-over — our <a href="/posts/coffee-brewing-methods">coffee brewing methods guide</a> covers how to get the most from filter brewing at home. Sorted roughly by price so you can find something that fits where you are in your coffee journey.</p>
-<div class="bean-grid">
-<!-- 01 -->
-<div class="bean-card">
-<div class="bean-header">
-<span class="bean-num">01</span>
-<span class="bean-process">Washed</span>
+<h2 id="12-ethiopia-yirgacheffe-coffee-beans-to-try">12 Ethiopia Yirgacheffe coffee beans to try</h2>
+<p>These are all sourced from Malaysian specialty roasters and available online. Yirgacheffe shines brightest on a V60 or pour-over — our <a href="/posts/coffee-brewing-methods">coffee brewing methods guide</a> covers how to get the most from filter brewing at home. Sorted roughly by price so you can find something that fits your budget and taste.</p>
+<div class="bean-shop-grid">
+<div class="bean-shop-card">
+<img class="bean-shop-img" src="https://down-my.img.susercontent.com/file/78ad557762a07c3523a904766bd34f4f.webp" alt="Ethiopia Yirgacheffe" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+<div class="bean-shop-imgph" style="display:none">☕</div>
+<div class="bean-shop-body">
+<div class="bean-shop-brand">Sol Coffee Roastery</div>
+<h3 class="bean-shop-name">Ethiopia Yirgacheffe</h3>
+<div class="bean-shop-meta"><span>🔥 Medium</span><span>⚙️ Washed</span><span>☕ Both</span></div>
+<div class="bean-shop-notes"><span class="note-tag">Chocolate</span><span class="note-tag">Lemon</span><span class="note-tag">Floral</span><span class="note-tag">Herbal</span></div>
 </div>
-<h3>Ethiopia Yirgacheffe</h3>
-<div class="bean-roaster">Sol Coffee Roastery · Medium Roast · Filter &amp; Espresso</div>
-<div class="bean-notes">
-<span class="note-tag">Chocolate</span>
-<span class="note-tag">Lemon</span>
-<span class="note-tag">Floral</span>
-<span class="note-tag">Herbal</span>
-</div>
-<div class="bean-footer">
-<div><span class="bean-price">RM 29</span><span class="bean-brew">· 200g</span></div>
-<a class="bean-link" href="https://shopee.com.my/Single-Origin-(-ETHIOPIA-YIRGACHEFFE-)-i.233898652.2919666789?extraParams=%7B%22display_model_id%22%3A56129028724%7D" rel="noopener" target="_blank">View →</a>
+<div class="bean-shop-foot">
+<div class="bean-shop-price">RM 29 <small>/ 200g</small></div>
+<a class="bean-shop-buy" href="https://shopee.com.my/Single-Origin-(-ETHIOPIA-YIRGACHEFFE-)-i.233898652.2919666789?extraParams=%7B%22display_model_id%22%3A56129028724%7D" rel="noopener" target="_blank" onclick="gtag('event','buy_click',{bean_name:'Ethiopia Yirgacheffe',roaster:'Sol Coffee Roastery',source:'/posts/ethiopia-yirgacheffe-coffee-you-should-try'})">Buy Now ↗</a>
 </div>
 </div>
-<!-- 02 -->
-<div class="bean-card">
-<div class="bean-header">
-<span class="bean-num">02</span>
-<span class="bean-process">Washed</span>
+<div class="bean-shop-card">
+<img class="bean-shop-img" src="https://www.rumahpanggang.com/wp-content/uploads/2025/02/Rumah-Instagram-Post-Instagram-Post.png" alt="ETHIOPIA YIRGACHEFFE KOKE" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+<div class="bean-shop-imgph" style="display:none">☕</div>
+<div class="bean-shop-body">
+<div class="bean-shop-brand">Rumah Panggang</div>
+<h3 class="bean-shop-name">ETHIOPIA YIRGACHEFFE KOKE</h3>
+<div class="bean-shop-meta"><span>🔥 Medium</span><span>⚙️ Natural</span><span>☕ Filter</span></div>
+<div class="bean-shop-notes"><span class="note-tag">Blueberry</span><span class="note-tag">Floral</span><span class="note-tag">Sweet</span><span class="note-tag">Black Tea</span></div>
 </div>
-<h3>Ethiopia Aricha Washed</h3>
-<div class="bean-roaster">43 Coffee · Light Roast · Filter</div>
-<div class="bean-notes">
-<span class="note-tag">Rose</span>
-<span class="note-tag">Water Apple</span>
-<span class="note-tag">Peach</span>
-</div>
-<div class="bean-footer">
-<div><span class="bean-price">RM 33</span><span class="bean-brew">· 200g</span></div>
-<a class="bean-link" href="https://43coffee.com/product/new-ethiopia-aricha-g1-washed-yirgacheffe-coffee/" rel="noopener" target="_blank">View →</a>
+<div class="bean-shop-foot">
+<div class="bean-shop-price">RM 44 <small>/ 200g</small></div>
+<a class="bean-shop-buy" href="https://www.rumahpanggang.com/product/ethiopia-yirgacheffe-koke/" rel="noopener" target="_blank" onclick="gtag('event','buy_click',{bean_name:'ETHIOPIA YIRGACHEFFE KOKE',roaster:'Rumah Panggang',source:'/posts/ethiopia-yirgacheffe-coffee-you-should-try'})">Buy Now ↗</a>
 </div>
 </div>
-<!-- 03 -->
-<div class="bean-card">
-<div class="bean-header">
-<span class="bean-num">03</span>
-<span class="bean-process">Washed</span>
+<div class="bean-shop-card">
+<img class="bean-shop-img" src="https://cdn.shopify.com/s/files/1/0519/6749/2290/files/ethiopiaarichawebanchi.png?v=1780722244" alt="Ethiopia Yirgacheffe Aricha Webanchi [Washed] (WS)" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+<div class="bean-shop-imgph" style="display:none">☕</div>
+<div class="bean-shop-body">
+<div class="bean-shop-brand">Ghostbird Coffee</div>
+<h3 class="bean-shop-name">Ethiopia Yirgacheffe Aricha Webanchi [Washed] (WS)</h3>
+<div class="bean-shop-meta"><span>🔥 Medium Light</span><span>⚙️ Washed</span><span>☕ Filter</span></div>
+<div class="bean-shop-notes"><span class="note-tag">Rose Apple</span><span class="note-tag">Pomegranate</span><span class="note-tag">Peach Tea</span></div>
 </div>
-<h3>Ethiopia Yirgacheffe Koke Shalaye G1</h3>
-<div class="bean-roaster">Kaffei Roastery · Light Roast · Filter &amp; Espresso</div>
-<div class="bean-notes">
-<span class="note-tag">Black Tea</span>
-<span class="note-tag">Lime</span>
-<span class="note-tag">Floral</span>
-<span class="note-tag">Blueberry</span>
-</div>
-<div class="bean-footer">
-<div><span class="bean-price">RM 42</span><span class="bean-brew">· 200g</span></div>
-<a class="bean-link" href="https://shopee.com.my/-KAFFEI-Specialty-Single-Origin-Ethiopia-Yirgacheffe-Koke-Shalaye-G1-100-Arabica-Coffee-Bean-i.1005149109.50053099818" rel="noopener" target="_blank">View →</a>
+<div class="bean-shop-foot">
+<div class="bean-shop-price">RM 46 <small>/ 200g</small></div>
+<a class="bean-shop-buy" href="https://ghostbirdcoffee.co/products/ethiopia-yirgacheffe-aricha-webanchi-ws" rel="noopener" target="_blank" onclick="gtag('event','buy_click',{bean_name:'Ethiopia Yirgacheffe Aricha Webanchi [Washed] (WS)',roaster:'Ghostbird Coffee',source:'/posts/ethiopia-yirgacheffe-coffee-you-should-try'})">Buy Now ↗</a>
 </div>
 </div>
-<!-- 04 -->
-<div class="bean-card">
-<div class="bean-header">
-<span class="bean-num">04</span>
-<span class="bean-process">Washed</span>
+<div class="bean-shop-card">
+<img class="bean-shop-img" src="https://cdn.shopify.com/s/files/1/0833/5831/8785/files/Copyof_New_Productimage_10.png?v=1759160714" alt="Ethiopia Gedeo Yirgacheffe Konga Amederaro G1" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+<div class="bean-shop-imgph" style="display:none">☕</div>
+<div class="bean-shop-body">
+<div class="bean-shop-brand">Decrypt Coffee</div>
+<h3 class="bean-shop-name">Ethiopia Gedeo Yirgacheffe Konga Amederaro G1</h3>
+<div class="bean-shop-meta"><span>⚙️ Washed</span><span>☕ Both</span></div>
+<div class="bean-shop-notes"><span class="note-tag">Wild berries</span><span class="note-tag">Blood Orange</span><span class="note-tag">Green Grape</span><span class="note-tag">Black Tea</span></div>
 </div>
-<h3>Ethiopia Yirgacheffe Idido Washed</h3>
-<div class="bean-roaster">Beam Coffee Roastery · Light Roast · Filter</div>
-<div class="bean-notes">
-<span class="note-tag">Bergamot</span>
-<span class="note-tag">Lemon</span>
-<span class="note-tag">Yellow Floral</span>
-<span class="note-tag">Peach Tea</span>
-</div>
-<div class="bean-footer">
-<div><span class="bean-price">RM 50</span><span class="bean-brew">· 200g</span></div>
-<a class="bean-link" href="https://shopee.com.my/-BEAM-Ethiopia-Yirgacheffe-Idido-Washed-(Light-Roast)-i.473989601.56604054854" rel="noopener" target="_blank">View →</a>
+<div class="bean-shop-foot">
+<div class="bean-shop-price">RM 48 <small>/ 200g</small></div>
+<a class="bean-shop-buy" href="https://decryptcoffee.com/products/ethiopia-gedeo-yirgacheffe-konga-amederaro-g1" rel="noopener" target="_blank" onclick="gtag('event','buy_click',{bean_name:'Ethiopia Gedeo Yirgacheffe Konga Amederaro G1',roaster:'Decrypt Coffee',source:'/posts/ethiopia-yirgacheffe-coffee-you-should-try'})">Buy Now ↗</a>
 </div>
 </div>
-<!-- 05 -->
-<div class="bean-card">
-<div class="bean-header">
-<span class="bean-num">05</span>
-<span class="bean-process">Natural</span>
+<div class="bean-shop-card">
+<img class="bean-shop-img" src="https://beamspecialty.com/wp-content/uploads/2026/02/Ethiopia-Yirgacheffe-Idido-01.jpg" alt="Ethiopia Yirgacheffe Idido Heirloom Washed" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+<div class="bean-shop-imgph" style="display:none">☕</div>
+<div class="bean-shop-body">
+<div class="bean-shop-brand">BEAM Specialty</div>
+<h3 class="bean-shop-name">Ethiopia Yirgacheffe Idido Heirloom Washed</h3>
+<div class="bean-shop-meta"><span>🔥 Light</span><span>⚙️ Washed</span><span>☕ Both</span></div>
+<div class="bean-shop-notes"><span class="note-tag">Bergamot</span><span class="note-tag">Lemon</span><span class="note-tag">Yellow Floral</span><span class="note-tag">Peach Tea</span></div>
 </div>
-<h3>Ethiopia Yirgacheffe Bogale Mengistu Wadera Natural G1</h3>
-<div class="bean-roaster">HisBrew Roastery · Medium Roast · Filter</div>
-<div class="bean-notes">
-<span class="note-tag">Dried Mango</span>
-<span class="note-tag">Pineapple</span>
-<span class="note-tag">Orange Peel</span>
-</div>
-<div class="bean-footer">
-<div><span class="bean-price">RM 50</span><span class="bean-brew">· 200g</span></div>
-<a class="bean-link" href="https://www.hisbrewroastery.com/collections/single-origin/products/ethiopia-yirgacheffe-bogale-mengistu-wadera-natural-g1" rel="noopener" target="_blank">View →</a>
+<div class="bean-shop-foot">
+<div class="bean-shop-price">RM 51 <small>/ 200g</small></div>
+<a class="bean-shop-buy" href="https://beamspecialty.com/product/ethiopia-yirgacheffe-idido-heirloom-washed/" rel="noopener" target="_blank" onclick="gtag('event','buy_click',{bean_name:'Ethiopia Yirgacheffe Idido Heirloom Washed',roaster:'BEAM Specialty',source:'/posts/ethiopia-yirgacheffe-coffee-you-should-try'})">Buy Now ↗</a>
 </div>
 </div>
-<!-- 06 -->
-<div class="bean-card">
-<div class="bean-header">
-<span class="bean-num">06</span>
-<span class="bean-process">Washed</span>
+<div class="bean-shop-card">
+<img class="bean-shop-img" src="https://badartistcoffee.com/cdn/shop/files/AFRICA_-_Ethiopia_Lalesa_Washed.jpg?v=1784743560&width=1920" alt="Ethiopia - Yirgacheffe Lalesa Washed" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+<div class="bean-shop-imgph" style="display:none">☕</div>
+<div class="bean-shop-body">
+<div class="bean-shop-brand">Bad Artist Coffee Co</div>
+<h3 class="bean-shop-name">Ethiopia - Yirgacheffe Lalesa Washed</h3>
+<div class="bean-shop-meta"><span>⚙️ Washed</span><span>☕ Filter</span></div>
+<div class="bean-shop-notes"><span class="note-tag">Floral aroma</span><span class="note-tag">Bright citrus</span><span class="note-tag">Tea-like body</span></div>
 </div>
-<h3>Ethiopia Gedeo Yirgacheffe Konga Amederaro G1</h3>
-<div class="bean-roaster">Decrypt Coffee Roaster · Filter &amp; Espresso</div>
-<div class="bean-notes">
-<span class="note-tag">Wild Berries</span>
-<span class="note-tag">Blood Orange</span>
-<span class="note-tag">Green Grape</span>
-<span class="note-tag">Black Tea</span>
-</div>
-<div class="bean-footer">
-<div><span class="bean-price">RM 55</span><span class="bean-brew">· 200g</span></div>
-<a class="bean-link" href="https://decryptcoffee.com/products/ethiopia-gedeo-yirgacheffe-konga-amederaro-g1?variant=49567690162369" rel="noopener" target="_blank">View →</a>
+<div class="bean-shop-foot">
+<div class="bean-shop-price">RM 60 <small>/ 200g</small></div>
+<a class="bean-shop-buy" href="https://badartistcoffee.com/products/ethiopia-yirgacheffe-lalesa-washed" rel="noopener" target="_blank" onclick="gtag('event','buy_click',{bean_name:'Ethiopia - Yirgacheffe Lalesa Washed',roaster:'Bad Artist Coffee Co',source:'/posts/ethiopia-yirgacheffe-coffee-you-should-try'})">Buy Now ↗</a>
 </div>
 </div>
-<!-- 07 -->
-<div class="bean-card">
-<div class="bean-header">
-<span class="bean-num">07</span>
-<span class="bean-process">Washed</span>
+<div class="bean-shop-card">
+<img class="bean-shop-img" src="https://cdn.shopify.com/s/files/1/0510/5831/1346/files/EGYBABNSDG-26-01_cover.png?v=1783265377" alt="Ethiopia Yirgacheffe Buduksa AMA Bezabesh S.D. Natural" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+<div class="bean-shop-imgph" style="display:none">☕</div>
+<div class="bean-shop-body">
+<div class="bean-shop-brand">The Crackpots</div>
+<h3 class="bean-shop-name">Ethiopia Yirgacheffe Buduksa AMA Bezabesh S.D. Natural</h3>
+<div class="bean-shop-meta"><span>⚙️ Slow-dry Natural</span><span>☕ Both</span></div>
+<div class="bean-shop-notes"><span class="note-tag">Citrus</span><span class="note-tag">Apricot</span><span class="note-tag">Honey</span><span class="note-tag">Sweet Nuts</span></div>
 </div>
-<h3>NLCR Ethiopia</h3>
-<div class="bean-roaster">Nine Lives Coffee Roaster · Light Roast · Filter</div>
-<div class="bean-notes">
-<span class="note-tag">White Florals</span>
-<span class="note-tag">Orange</span>
-<span class="note-tag">Black Tea</span>
-</div>
-<div class="bean-footer">
-<div><span class="bean-price">RM 60</span><span class="bean-brew">· 200g</span></div>
-<a class="bean-link" href="https://shopee.com.my/NLCR-ETHIOPIA-Light-Roast-Filter-Coffee-Arabica-Coffee-Bean-Kopi-Biji-%E5%92%96%E5%95%A1%E8%B1%86-(100g-250g-)-i.1516164240.41351456465?extraParams=%7B%22display_model_id%22%3A305118377958%7D" rel="noopener" target="_blank">View →</a>
+<div class="bean-shop-foot">
+<div class="bean-shop-price">RM 64 <small>/ 200g</small></div>
+<a class="bean-shop-buy" href="https://thecrackpots.com/products/ethiopia-yirgacheffe-buduksa-ama-bezabesh-s-d-natural" rel="noopener" target="_blank" onclick="gtag('event','buy_click',{bean_name:'Ethiopia Yirgacheffe Buduksa AMA Bezabesh S.D. Natural',roaster:'The Crackpots',source:'/posts/ethiopia-yirgacheffe-coffee-you-should-try'})">Buy Now ↗</a>
 </div>
 </div>
-<!-- 08 -->
-<div class="bean-card">
-<div class="bean-header">
-<span class="bean-num">08</span>
-<span class="bean-process">Washed</span>
+<div class="bean-shop-card">
+<img class="bean-shop-img" src="https://www.rumahpanggang.com/wp-content/uploads/2025/08/img_9845.png" alt="ETHIOPIA YIRGACHEFFE DUMERSO" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+<div class="bean-shop-imgph" style="display:none">☕</div>
+<div class="bean-shop-body">
+<div class="bean-shop-brand">Rumah Panggang</div>
+<h3 class="bean-shop-name">ETHIOPIA YIRGACHEFFE DUMERSO</h3>
+<div class="bean-shop-meta"><span>⚙️ Natural</span><span>☕ Espresso</span></div>
+<div class="bean-shop-notes"><span class="note-tag">Honeysuckle</span><span class="note-tag">Mixed Berries</span><span class="note-tag">Stone Fruits</span></div>
 </div>
-<h3>Ethiopia Yirgacheffe Lalesa</h3>
-<div class="bean-roaster">Cloud Catcher · Filter &amp; Espresso</div>
-<div class="bean-notes">
-<span class="note-tag">Mango</span>
-<span class="note-tag">Jasmine</span>
-<span class="note-tag">Roselle</span>
-<span class="note-tag">White Grapes</span>
-<span class="note-tag">Lemon</span>
-</div>
-<div class="bean-footer">
-<div><span class="bean-price">RM 67</span><span class="bean-brew">· 200g</span></div>
-<a class="bean-link" href="https://shop.cloudcatcher.asia/products/ethiopia-yirgacheffe-lalesa-washed" rel="noopener" target="_blank">View →</a>
+<div class="bean-shop-foot">
+<div class="bean-shop-price">RM 65 <small>/ 200g</small></div>
+<a class="bean-shop-buy" href="https://www.rumahpanggang.com/product/ethiopia-yirgacheffe-dumerso/" rel="noopener" target="_blank" onclick="gtag('event','buy_click',{bean_name:'ETHIOPIA YIRGACHEFFE DUMERSO',roaster:'Rumah Panggang',source:'/posts/ethiopia-yirgacheffe-coffee-you-should-try'})">Buy Now ↗</a>
 </div>
 </div>
-<!-- 09 -->
-<div class="bean-card">
-<div class="bean-header">
-<span class="bean-num">09</span>
-<span class="bean-process">Natural</span>
+<div class="bean-shop-card">
+<img class="bean-shop-img" src="https://cdn.shopify.com/s/files/1/0510/5831/1346/files/EYWQB-26-01_cover.png?v=1778476983" alt="Ethiopia Yirgacheffe Worka &quot;Queen Berry&quot;" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+<div class="bean-shop-imgph" style="display:none">☕</div>
+<div class="bean-shop-body">
+<div class="bean-shop-brand">The Crackpots</div>
+<h3 class="bean-shop-name">Ethiopia Yirgacheffe Worka "Queen Berry"</h3>
+<div class="bean-shop-meta"><span>⚙️ Natural</span><span>☕ Both</span></div>
+<div class="bean-shop-notes"><span class="note-tag">Malic</span><span class="note-tag">Mixed Berries</span><span class="note-tag">Chocolate</span><span class="note-tag">Vanilla</span></div>
 </div>
-<h3>Ethiopia Yirgacheffe Koke — Filter</h3>
-<div class="bean-roaster">103 Coffee · Light Roast · Filter</div>
-<div class="bean-notes">
-<span class="note-tag">Purple Grape</span>
-<span class="note-tag">Honey</span>
-<span class="note-tag">Floral</span>
-</div>
-<div class="bean-footer">
-<div><span class="bean-price">RM 76</span><span class="bean-brew">· 200g</span></div>
-<a class="bean-link" href="https://www.103coffee.com/products/ethiopia-yirgacheffe-koke" rel="noopener" target="_blank">View →</a>
+<div class="bean-shop-foot">
+<div class="bean-shop-price">RM 71 <small>/ 200g</small></div>
+<a class="bean-shop-buy" href="https://thecrackpots.com/products/ethiopia-yirgacheffe-worka-queen-berry" rel="noopener" target="_blank" onclick="gtag('event','buy_click',{bean_name:'Ethiopia Yirgacheffe Worka Queen Berry',roaster:'The Crackpots',source:'/posts/ethiopia-yirgacheffe-coffee-you-should-try'})">Buy Now ↗</a>
 </div>
 </div>
-<!-- 10 -->
-<div class="bean-card">
-<div class="bean-header">
-<span class="bean-num">10</span>
-<span class="bean-process">Washed</span>
+<div class="bean-shop-card">
+<img class="bean-shop-img" src="https://cdn.shopify.com/s/files/1/0609/6374/9959/files/COVER_10.png?v=1753248315" alt="Ethiopia Yirgacheffe Gedeb Lalesa" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+<div class="bean-shop-imgph" style="display:none">☕</div>
+<div class="bean-shop-body">
+<div class="bean-shop-brand">Ang Ang Roastery</div>
+<h3 class="bean-shop-name">Ethiopia Yirgacheffe Gedeb Lalesa</h3>
+<div class="bean-shop-meta"><span>⚙️ Customised Anaerobic Natural</span><span>☕ Filter</span></div>
+<div class="bean-shop-notes"><span class="note-tag">Coffee Blossoms</span><span class="note-tag">Pomelo</span><span class="note-tag">Mango</span><span class="note-tag">Lemon Tea</span></div>
 </div>
-<h3>Ethiopia Yirgacheffe Kochere Chelelektu</h3>
-<div class="bean-roaster">Ang Ang Roastery · Light Roast · Filter</div>
-<div class="bean-notes">
-<span class="note-tag">Ginger Lily</span>
-<span class="note-tag">Orange Marmalade</span>
-<span class="note-tag">Peach</span>
-<span class="note-tag">Tea-like</span>
+<div class="bean-shop-foot">
+<div class="bean-shop-price">RM 113 <small>/ 200g</small></div>
+<a class="bean-shop-buy" href="https://aarcoffeelibrary.com/products/ethiopia-yirgacheffe-gedeb-lalesa" rel="noopener" target="_blank" onclick="gtag('event','buy_click',{bean_name:'Ethiopia Yirgacheffe Gedeb Lalesa',roaster:'Ang Ang Roastery',source:'/posts/ethiopia-yirgacheffe-coffee-you-should-try'})">Buy Now ↗</a>
 </div>
-<div class="bean-footer">
-<div><span class="bean-price">RM 105</span><span class="bean-brew">· 150g</span></div>
-<a class="bean-link" href="https://shopee.com.my/Ang-Ang's-Roastery-Limited-Series-Single-Origin-Coffee-Bean-Ethiopia-Yirgacheffe-Kochere-Chelelektu-150G-i.443319921.26330716325" rel="noopener" target="_blank">View →</a>
+</div>
+<div class="bean-shop-card">
+<img class="bean-shop-img" src="https://cdn.shopify.com/s/files/1/0609/6374/9959/files/productcover-20.webp?v=1753172797" alt="Ethiopia Yirgacheffe Midsummer Night Moon" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+<div class="bean-shop-imgph" style="display:none">☕</div>
+<div class="bean-shop-body">
+<div class="bean-shop-brand">Ang Ang Roastery</div>
+<h3 class="bean-shop-name">Ethiopia Yirgacheffe Midsummer Night Moon</h3>
+<div class="bean-shop-meta"><span>⚙️ Double Anaerobic Washed</span><span>☕ Filter</span></div>
+<div class="bean-shop-notes"><span class="note-tag">Rose</span><span class="note-tag">Lavender</span><span class="note-tag">Citrus</span><span class="note-tag">Peach</span></div>
+</div>
+<div class="bean-shop-foot">
+<div class="bean-shop-price">RM 120 <small>/ 200g</small></div>
+<a class="bean-shop-buy" href="https://aarcoffeelibrary.com/products/ethiopia-yirgacheffe-midsummer-night-moon" rel="noopener" target="_blank" onclick="gtag('event','buy_click',{bean_name:'Ethiopia Yirgacheffe Midsummer Night Moon',roaster:'Ang Ang Roastery',source:'/posts/ethiopia-yirgacheffe-coffee-you-should-try'})">Buy Now ↗</a>
+</div>
+</div>
+<div class="bean-shop-card">
+<img class="bean-shop-img" src="https://theroastthings.com/cdn/shop/files/TRT26_EthiopiaKokeShalaye_0415.jpg?v=1776342384&width=1024" alt="ETHIOPIA KOKE SHALAYE" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+<div class="bean-shop-imgph" style="display:none">☕</div>
+<div class="bean-shop-body">
+<div class="bean-shop-brand">The Roast Things</div>
+<h3 class="bean-shop-name">ETHIOPIA KOKE SHALAYE</h3>
+<div class="bean-shop-meta"><span>⚙️ Washed</span><span>☕ Filter</span></div>
+<div class="bean-shop-notes"><span class="note-tag">Blueberry</span><span class="note-tag">Grapefruit</span><span class="note-tag">Ginger flower</span></div>
+</div>
+<div class="bean-shop-foot">
+<div class="bean-shop-price">RM 145 <small>/ 200g</small></div>
+<a class="bean-shop-buy" href="https://theroastthings.com/products/ethiopia-koke-shalaye" rel="noopener" target="_blank" onclick="gtag('event','buy_click',{bean_name:'ETHIOPIA KOKE SHALAYE',roaster:'The Roast Things',source:'/posts/ethiopia-yirgacheffe-coffee-you-should-try'})">Buy Now ↗</a>
 </div>
 </div>
 </div>
