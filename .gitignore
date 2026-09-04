@@ -23,6 +23,8 @@ For a series on TikTok and Instagram.docx
 CoffeeRoastersList.csv
 roasters-directory.json
 *.bak
+*.bak-*
+*-preview-tmp.html
 *.backup*
 marketing/
 archive/

@@ -10,7 +10,7 @@
   .skip-link { position: absolute; left: 50%; top: -60px; transform: translateX(-50%); z-index: 200; background: var(--green,#296241); color: #FDF6EC; padding: 10px 18px; border-radius: 0 0 10px 10px; font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: top 0.2s; }
   .skip-link:focus { top: 0; }
 
-  /* --- announcement bar (Tasting Flight launch) --- */
+  /* --- announcement bar --- */
   .announce-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 101; height: 38px; display: flex; align-items: center; justify-content: center; gap: 7px; background: var(--green,#296241); border-bottom: 2px solid var(--accent,#FDA11D); overflow: hidden; padding: 0 16px; padding-left: max(16px, env(safe-area-inset-left)); padding-right: max(16px, env(safe-area-inset-right)); text-align: center; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.02em; color: var(--cream,#FDF6EC); text-decoration: none; white-space: nowrap; }
   .announce-bar .ann-cta { color: var(--accent,#FDA11D); font-weight: 700; margin-left: 5px; }
   .announce-bar:hover .ann-cta { text-decoration: underline; color: var(--accent,#FDA11D); }
@@ -71,9 +71,9 @@
 <a class="skip-link" href="#main-content">Skip to content</a>
 
 <!-- ANNOUNCEMENT BAR -->
-<a class="announce-bar" href="/tasting-flight" onclick="if(window.gtag)gtag('event','cta_click',{location:'announcement-bar'})">
-  <span class="ann-long">🎉 The Tasting Flight — 50 only, launches 30 August.<span class="ann-cta">Join the waitlist →</span></span>
-  <span class="ann-short">🎉 Tasting Flight — 50 only.<span class="ann-cta">Join the waitlist →</span></span>
+<a class="announce-bar" href="/shop" onclick="if(window.gtag)gtag('event','cta_click',{location:'announcement-bar'})">
+  <span class="ann-long">☕ 854 specialty beans from 59 Malaysian roasters, all in one place.<span class="ann-cta">Browse the shop →</span></span>
+  <span class="ann-short">☕ 854 beans · 59 Malaysian roasters<span class="ann-cta">Browse →</span></span>
 </a>
 
 <!-- NAV -->

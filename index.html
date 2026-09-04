@@ -133,6 +133,32 @@
     .finder-sour .finder-card-bg { background: linear-gradient(135deg, #2A4A1A, #7BBF72); }
     .finder-green-veg .finder-card-bg { background: linear-gradient(135deg, #0E2E1A, #296241); }
 
+    /* QUIZ CTA BAND */
+    .quiz-cta-section { background: var(--cream); padding: 64px 48px 56px; text-align: center; }
+    .quiz-cta-inner { max-width: 760px; margin: 0 auto; }
+    .quiz-cta-icons { display: flex; justify-content: center; align-items: flex-end; gap: 22px; margin-bottom: 26px; flex-wrap: wrap; }
+    .quiz-cta-icons svg { width: 58px; height: 58px; fill: none; stroke: var(--green); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; opacity: 0.82; }
+    .quiz-cta-section .section-title { margin-bottom: 12px; }
+    .quiz-cta-section .section-sub { margin: 0 auto 26px; }
+    .quiz-cta-btn { display: inline-block; background: var(--accent); color: #fff; text-decoration: none; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 15px 40px; border-radius: 10px; transition: background 0.2s, transform 0.2s; }
+    .quiz-cta-btn:hover { background: var(--accent-hover); transform: translateY(-2px); }
+
+    /* FINDER TABS + ROAST CARDS */
+    .finder-tabs { display: inline-flex; background: rgba(253,246,236,0.12); border-radius: 12px; padding: 5px; gap: 4px; margin-top: 22px; }
+    .finder-tab { background: none; border: none; cursor: pointer; font-family: inherit; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(253,246,236,0.72); padding: 11px 34px; border-radius: 9px; transition: background 0.2s, color 0.2s; }
+    .finder-tab:hover { color: #FDF6EC; }
+    .finder-tab.active { background: var(--cream); color: var(--green); }
+    .finder-panel { display: none; }
+    .finder-panel.active { display: grid; }
+    .roast-grid { grid-template-columns: repeat(5, 1fr); gap: 16px; }
+    .roast-card { background: rgba(253,246,236,0.96); border-radius: 16px; padding: 30px 18px 24px; text-align: center; text-decoration: none; display: flex; flex-direction: column; align-items: center; transition: transform 0.22s, box-shadow 0.22s; }
+    .roast-card:hover { transform: translateY(-5px); box-shadow: 0 20px 44px rgba(0,0,0,0.28); }
+    .roast-card svg { width: 54px; height: 54px; margin-bottom: 20px; }
+    .roast-card-name { font-family: var(--font-display, "Outfit", sans-serif); font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; font-size: 0.95rem; color: var(--green); margin-bottom: 12px; }
+    .roast-card-desc { font-size: 0.86rem; line-height: 1.6; color: var(--text-muted); margin-bottom: 18px; flex: 1; }
+    .roast-card-count { display: block; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(90,110,90,0.75); margin-bottom: 14px; }
+    .roast-card-link { font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-hover); }
+
     /* HOW IT WORKS */
     .how-section { background: var(--cream); padding: 80px 48px; }
     .how-inner { max-width: 1100px; margin: 0 auto; }
@@ -246,6 +272,7 @@
       .roasters-grid { grid-template-columns: repeat(2, 1fr); }
       .bean-carousel { grid-template-columns: repeat(2, 1fr); }
       .persona-grid { grid-template-columns: repeat(2, 1fr); }
+      .roast-grid { grid-template-columns: repeat(3, 1fr); }
     }
     @media (max-width: 768px) {
       nav { padding: 0 20px; }
@@ -260,6 +287,11 @@
       .hero-teaser { left: 28px; bottom: 28px; }
       .finder-section, .how-section, .featured-section, .roasters-section, .stats-section, .liberica-section, .library-section { padding: 56px 20px; }
       .finder-grid { grid-template-columns: repeat(2, 1fr); }
+      .roast-grid { grid-template-columns: repeat(2, 1fr); }
+      .quiz-cta-section { padding: 52px 20px 44px; }
+      .quiz-cta-icons { gap: 14px; }
+      .quiz-cta-icons svg { width: 40px; height: 40px; }
+      .finder-tab { padding: 10px 22px; font-size: 0.76rem; }
       .library-grid { grid-template-columns: 1fr; }
       .steps { flex-direction: column; align-items: center; gap: 24px; }
       .step-connector { display: none; }
@@ -271,6 +303,11 @@
     }
     @media (max-width: 480px) {
       .finder-grid { grid-template-columns: repeat(2, 1fr); }
+      .roast-grid { grid-template-columns: repeat(2, 1fr); }
+      .quiz-cta-section { padding: 52px 20px 44px; }
+      .quiz-cta-icons { gap: 14px; }
+      .quiz-cta-icons svg { width: 40px; height: 40px; }
+      .finder-tab { padding: 10px 22px; font-size: 0.76rem; }
       .persona-grid { grid-template-columns: 1fr; }
       .roasters-grid { grid-template-columns: 1fr; }
       .stats-grid { grid-template-columns: 1fr; gap: 24px; }
@@ -434,15 +471,83 @@
     </div>
   </section>
 
-  <!-- FLAVOUR FINDER -->
+  <!-- QUIZ CTA -->
+  <section class="quiz-cta-section">
+    <div class="quiz-cta-inner">
+      <div class="quiz-cta-icons reveal" aria-hidden="true">
+        <!-- mug -->
+        <svg viewBox="0 0 64 64"><rect x="10" y="16" width="34" height="34" rx="7"/><path d="M44 24h6a7 7 0 0 1 0 14h-6"/><path d="M18 27h18M18 34h12"/></svg>
+        <!-- tumbler -->
+        <svg viewBox="0 0 64 64"><path d="M18 16h28l-4 34a5 5 0 0 1-5 4H27a5 5 0 0 1-5-4L18 16Z"/><path d="M20 32h24"/><path d="M27 22v6M32 21v7M37 22v6"/></svg>
+        <!-- espresso cup + saucer -->
+        <svg viewBox="0 0 64 64"><path d="M16 20h26v14a13 13 0 0 1-13 13h0a13 13 0 0 1-13-13V20Z"/><path d="M42 24h5a6 6 0 0 1 0 12h-5"/><path d="M10 50h44"/></svg>
+        <!-- tilted cup -->
+        <svg viewBox="0 0 64 64"><g transform="rotate(-18 32 32)"><rect x="14" y="18" width="30" height="30" rx="7"/><path d="M44 25h5a6 6 0 0 1 0 12h-5"/><path d="M14 28h30"/></g></svg>
+        <!-- ribbed paper cup -->
+        <svg viewBox="0 0 64 64"><path d="M20 18h24l-3 32a5 5 0 0 1-5 4h-8a5 5 0 0 1-5-4L20 18Z"/><path d="M19 27h26M20 39h24"/><path d="M28 27l-1 12M36 27l1 12"/></svg>
+        <!-- travel mug -->
+        <svg viewBox="0 0 64 64"><path d="M20 14h22v34a6 6 0 0 1-6 6h-10a6 6 0 0 1-6-6V14Z"/><path d="M42 22h6a6 6 0 0 1 0 12h-6"/><path d="M20 22h22"/></svg>
+      </div>
+      <div class="reveal">
+        <h2 class="section-title">Get personalised recommendations.</h2>
+        <p class="section-sub">Wherever you are in your coffee journey, we'll learn your taste and guide you to beans you'll love.</p>
+        <a class="quiz-cta-btn" href="/find-your-beans">Take the quiz</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOOKING FOR SOMETHING SPECIFIC -->
   <section class="finder-section" id="flavour-finder">
     <div class="finder-inner">
       <div class="finder-header reveal">
         <div class="section-label">Find Your Cup</div>
-        <h2 class="section-title">What are you craving today?</h2>
-        <p class="section-sub">Pick a flavour and we'll show you exactly which beans match.</p>
+        <h2 class="section-title">Looking for something specific?</h2>
+        <p class="section-sub">Jump straight in by roast level, or pick the flavour you're craving today.</p>
+        <div class="finder-tabs" role="tablist">
+          <button class="finder-tab active" role="tab" aria-selected="true" aria-controls="panel-roast" id="tab-roast" data-panel="panel-roast">Roast</button>
+          <button class="finder-tab" role="tab" aria-selected="false" aria-controls="panel-taste" id="tab-taste" data-panel="panel-taste">Taste</button>
+        </div>
       </div>
-      <div class="finder-grid reveal">
+
+      <div class="finder-panel roast-grid active reveal" id="panel-roast" role="tabpanel" aria-labelledby="tab-roast">
+        <a class="roast-card" href="/shop?roast=Light">
+          <svg viewBox="0 0 48 48" aria-hidden="true"><ellipse cx="24" cy="24" rx="14" ry="20" fill="#D9B84C"/><path d="M24 5c-2 6-3 12-3 19s1 13 3 19" stroke="#FDF6EC" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>
+          <span class="roast-card-name">Light</span>
+          <span class="roast-card-desc">Bright, tea-like and delicate. The clearest window into floral and fruit flavours.</span>
+          <span class="roast-card-count">112 beans</span>
+          <span class="roast-card-link">Get started ›</span>
+        </a>
+        <a class="roast-card" href="/shop?roast=Medium%20Light">
+          <svg viewBox="0 0 48 48" aria-hidden="true"><ellipse cx="24" cy="24" rx="14" ry="20" fill="#B8892F"/><path d="M24 5c-2 6-3 12-3 19s1 13 3 19" stroke="#FDF6EC" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>
+          <span class="roast-card-name">Medium Light</span>
+          <span class="roast-card-desc">Keeps the fruit but adds body and sweetness. A great place to start if light roasts feel thin.</span>
+          <span class="roast-card-count">73 beans</span>
+          <span class="roast-card-link">Get started ›</span>
+        </a>
+        <a class="roast-card" href="/shop?roast=Medium">
+          <svg viewBox="0 0 48 48" aria-hidden="true"><ellipse cx="24" cy="24" rx="14" ry="20" fill="#8A5A2B"/><path d="M24 5c-2 6-3 12-3 19s1 13 3 19" stroke="#FDF6EC" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>
+          <span class="roast-card-name">Medium</span>
+          <span class="roast-card-desc">Not too light, not too dark — smooth and cosy, with chocolate, caramel and nut notes.</span>
+          <span class="roast-card-count">191 beans</span>
+          <span class="roast-card-link">Get started ›</span>
+        </a>
+        <a class="roast-card" href="/shop?roast=Medium-Dark">
+          <svg viewBox="0 0 48 48" aria-hidden="true"><ellipse cx="24" cy="24" rx="14" ry="20" fill="#5C3317"/><path d="M24 5c-2 6-3 12-3 19s1 13 3 19" stroke="#FDF6EC" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>
+          <span class="roast-card-name">Medium-Dark</span>
+          <span class="roast-card-desc">Rich and rounded with a syrupy body — the sweet spot for milk-based espresso drinks.</span>
+          <span class="roast-card-count">67 beans</span>
+          <span class="roast-card-link">Get started ›</span>
+        </a>
+        <a class="roast-card" href="/shop?roast=Dark">
+          <svg viewBox="0 0 48 48" aria-hidden="true"><ellipse cx="24" cy="24" rx="14" ry="20" fill="#2E1A0F"/><path d="M24 5c-2 6-3 12-3 19s1 13 3 19" stroke="#FDF6EC" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>
+          <span class="roast-card-name">Dark</span>
+          <span class="roast-card-desc">Big on flavour but never bitter. Bold, smoky roasts for starting the day strong.</span>
+          <span class="roast-card-count">31 beans</span>
+          <span class="roast-card-link">Get started ›</span>
+        </a>
+      </div>
+
+      <div class="finder-panel finder-grid reveal" id="panel-taste" role="tabpanel" aria-labelledby="tab-taste">
         <a class="finder-card finder-fruity" href="/shop?taste=Fruity">
           <div class="finder-card-bg"><img src="img/beanshub-icons/taste-notes-fruity.webp" alt="Fruity"></div>
           <div class="finder-card-overlay"></div>
@@ -688,6 +793,21 @@
       });
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+
+    // FINDER TABS (Roast / Taste)
+    document.querySelectorAll('.finder-tab').forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        document.querySelectorAll('.finder-tab').forEach(function (t) {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        document.querySelectorAll('.finder-panel').forEach(function (p) { p.classList.remove('active'); });
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+        var panel = document.getElementById(tab.dataset.panel);
+        if (panel) { panel.classList.add('active', 'visible'); }
+      });
+    });
 
     (function spawnDots() {
       var container = document.getElementById('heroDots');
