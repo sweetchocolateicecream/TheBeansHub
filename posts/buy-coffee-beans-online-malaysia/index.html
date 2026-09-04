@@ -16,7 +16,7 @@
 <meta name="description" content="A guide to buying specialty coffee beans online in Malaysia — judging freshness before you order, roaster sites versus marketplaces, and nationwide delivery."/>
 <meta name="robots" content="index, follow"/>
 <link href="/img/thebeanshub_logo.png" rel="icon" type="image/png"/>
-<link href="https://fonts.googleapis.com/css2?family=Sigmar&amp;family=Outfit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <link rel="canonical" href="https://www.thebeanshub.com/posts/buy-coffee-beans-online-malaysia"/>
 <meta property="og:type" content="article"/>
 <meta property="og:title" content="How to Buy Coffee Beans Online in Malaysia | The Beans Hub"/>
@@ -125,6 +125,12 @@
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
+  --font-display: "Outfit", -apple-system, BlinkMacSystemFont, sans-serif;
+  --display-weight: 700;
+  --display-transform: none;
+  --display-tracking: -0.02em;
+  --display-leading: 1.05;
+  --display-stretch: 100%;
   --green: #296241; --green-light: #3a7a50;
   --cream: #FDF6EC; --white: #FFFFFF;
   --orange: #FDA11D; --orange-dark: #DA8A10;
@@ -139,7 +145,7 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
 
 /* NAV (unchanged — served by /partials/header.html) */
 .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 68px; background: var(--green); border-bottom: 1px solid rgba(253,161,29,0.3); }
-.nav-logo { font-family: "Sigmar", cursive; color: #FDF6EC; font-size: 1.45rem; font-weight: 700; text-decoration: none; }
+.nav-logo { font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif); font-weight: var(--display-weight, 700); font-stretch: var(--display-stretch, 100%); text-transform: var(--display-transform, none); letter-spacing: var(--display-tracking, -0.02em); line-height: var(--display-leading, 1.05); color: #FDF6EC; font-size: 1.45rem; text-decoration: none; }
 .nav-logo span { color: var(--orange); }
 .nav-links { display: flex; gap: 36px; align-items: center; }
 .nav-links a { color: rgba(253,246,236,0.75); text-decoration: none; font-size: 0.88rem; font-weight: 500; letter-spacing: 0.04em; transition: color 0.2s; }
@@ -166,7 +172,7 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
 .hero-breadcrumb span { color: var(--border); }
 .hero-pills { display: flex; justify-content: center; gap: 10px; margin-bottom: 24px; }
 .hero-pill { display: inline-flex; align-items: center; gap: 6px; padding: 6px 16px; border-radius: 30px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; background: var(--white); color: var(--green); border: 1px solid var(--border); }
-.post-hero h1 { font-family: "Sigmar", cursive; font-size: clamp(2.4rem, 5.8vw, 4.4rem); color: var(--green); line-height: 1.08; letter-spacing: -0.015em; max-width: 16ch; margin: 0 auto 28px; }
+.post-hero h1 { font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif); font-weight: var(--display-weight, 700); font-stretch: var(--display-stretch, 100%); text-transform: var(--display-transform, none); letter-spacing: var(--display-tracking, -0.02em); line-height: var(--display-leading, 1.05); font-size: clamp(2.4rem, 5.8vw, 4.4rem); color: var(--green); max-width: 16ch; margin: 0 auto 28px; }
 .hero-meta { display: flex; justify-content: center; align-items: center; gap: 12px; font-size: 0.86rem; color: var(--muted); }
 .hero-meta-dot { width: 3px; height: 3px; background: var(--muted); border-radius: 50%; opacity: 0.6; }
 
@@ -224,7 +230,7 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
 
 /* ── ARTICLE TYPOGRAPHY ── */
 .post-body .lead { font-size: 1.18rem; line-height: 1.7; color: var(--text); margin-bottom: 40px; }
-.post-body h2 { font-family: "Sigmar", cursive; font-size: clamp(1.5rem, 2.4vw, 2rem); color: var(--green); margin: 8px 0 6px; line-height: 1.2; }
+.post-body h2 { font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif); font-weight: var(--display-weight, 700); font-stretch: var(--display-stretch, 100%); text-transform: var(--display-transform, none); letter-spacing: var(--display-tracking, -0.02em); line-height: var(--display-leading, 1.05); font-size: clamp(1.5rem, 2.4vw, 2rem); color: var(--green); margin: 8px 0 6px; }
 .post-body .thesis { font-family: "Outfit", sans-serif; font-size: 1.22rem; font-weight: 600; color: var(--text); line-height: 1.4; margin: 0 0 24px; }
 .post-body h3 { font-family: "Outfit", sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--text); margin: 30px 0 12px; }
 .post-body p { font-size: 1.02rem; line-height: 1.85; color: #2a3a2a; margin-bottom: 22px; }
@@ -251,7 +257,7 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
 
 /* CTA BLOCK (MindMarket "Planning a study?" pattern) */
 .cta-block { margin: 48px 0; }
-.cta-block h2 { font-family: "Sigmar", cursive; font-size: clamp(1.4rem, 2.2vw, 1.9rem); color: var(--green); margin-bottom: 14px; }
+.cta-block h2 { font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif); font-weight: var(--display-weight, 700); font-stretch: var(--display-stretch, 100%); text-transform: var(--display-transform, none); letter-spacing: var(--display-tracking, -0.02em); line-height: var(--display-leading, 1.05); font-size: clamp(1.4rem, 2.2vw, 1.9rem); color: var(--green); margin-bottom: 14px; }
 .cta-block p { font-size: 1.05rem; line-height: 1.7; color: #2a3a2a; margin-bottom: 20px; }
 .pill-btn { display: inline-flex; align-items: center; gap: 12px; background: var(--orange); color: var(--white); font-weight: 700; font-size: 0.95rem; text-decoration: none; padding: 12px 14px 12px 24px; border-radius: 40px; transition: background 0.2s, transform 0.2s; }
 .pill-btn:hover { background: var(--orange-dark); transform: translateX(2px); }
@@ -279,13 +285,13 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
 .next-card-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .next-card-body { padding: 48px 44px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: var(--cream); }
 .next-card-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
-.next-card-title { font-family: "Sigmar", cursive; font-size: clamp(1.2rem, 1.8vw, 1.7rem); color: var(--green); line-height: 1.25; margin-bottom: 24px; }
+.next-card-title { font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif); font-weight: var(--display-weight, 700); font-stretch: var(--display-stretch, 100%); text-transform: var(--display-transform, none); letter-spacing: var(--display-tracking, -0.02em); line-height: var(--display-leading, 1.05); font-size: clamp(1.2rem, 1.8vw, 1.7rem); color: var(--green); margin-bottom: 24px; }
 @media (max-width: 768px) { .next-card { grid-template-columns: 1fr; } .next-card-img { min-height: 220px; } .next-card-body { padding: 36px 24px; } }
 
 /* MORE POSTS */
 .more-posts { background: var(--cream); border-top: 1px solid var(--border); padding: 64px 24px; margin-top: 48px; }
 .more-posts-inner { max-width: 1100px; margin: 0 auto; }
-.more-posts h2 { font-family: "Sigmar", cursive; font-size: 1.4rem; color: var(--text); margin-bottom: 32px; }
+.more-posts h2 { font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif); font-weight: var(--display-weight, 700); font-stretch: var(--display-stretch, 100%); text-transform: var(--display-transform, none); letter-spacing: var(--display-tracking, -0.02em); line-height: var(--display-leading, 1.05); font-size: 1.4rem; color: var(--text); margin-bottom: 32px; }
 .more-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .more-card { background: var(--white); border-radius: 14px; border: 1px solid var(--border); padding: 24px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 10px; transition: transform 0.2s, box-shadow 0.2s; }
 .more-card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(41,98,65,0.1); }

@@ -17,7 +17,7 @@
 <meta name="description" content="Best coffee beans for an iced latte from Malaysian roasters — chocolate, caramel and nutty profiles that hold up to milk and ice. Compare roasts and buy direct.">
 <link rel="canonical" href="https://www.thebeanshub.com/shop/coffee-beans-for-iced-latte">
 <link rel="icon" type="image/png" href="/img/thebeanshub_logo.png">
-<link href="https://fonts.googleapis.com/css2?family=Sigmar&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
@@ -36,6 +36,12 @@
 <!-- Inline CSS inherited from shop.html (kept identical so styling stays in sync) -->
 <style>
     :root {
+      --font-display: "Outfit", -apple-system, BlinkMacSystemFont, sans-serif;
+      --display-weight: 700;
+      --display-transform: none;
+      --display-tracking: -0.02em;
+      --display-leading: 1.05;
+      --display-stretch: 100%;
       --cream: #FDF6EC;
       --warm-white: #FDF6EC;
       --brown-dark: #296241;
@@ -81,10 +87,14 @@
     }
 
     .nav-logo {
-      font-family: "Sigmar", cursive;
+      font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
+      font-weight: var(--display-weight, 700);
+      font-stretch: var(--display-stretch, 100%);
+      text-transform: var(--display-transform, none);
+      letter-spacing: var(--display-tracking, -0.02em);
+      line-height: var(--display-leading, 1.05);
       color: #FDF6EC;
       font-size: 1.45rem;
-      font-weight: 700;
       text-decoration: none;
     }
 
@@ -190,12 +200,14 @@
     }
 
     .page-header h1 {
-      font-family: "Sigmar", cursive;
+      font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
+      font-weight: var(--display-weight, 700);
+      font-stretch: var(--display-stretch, 100%);
+      text-transform: var(--display-transform, none);
+      letter-spacing: var(--display-tracking, -0.02em);
+      line-height: var(--display-leading, 1.05);
       font-size: 2.25rem;
-      line-height: 1.16;
-      letter-spacing: -0.005em;
       color: var(--cream);
-      font-weight: 700;
       margin: 0 0 14px;
       max-width: 24ch;
     }
@@ -643,7 +655,12 @@
     }
 
     .empty-state h3 {
-      font-family: "Sigmar", cursive;
+      font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
+      font-weight: var(--display-weight, 700);
+      font-stretch: var(--display-stretch, 100%);
+      text-transform: var(--display-transform, none);
+      letter-spacing: var(--display-tracking, -0.02em);
+      line-height: var(--display-leading, 1.05);
       font-size: 1.4rem;
       color: var(--brown-dark);
       margin-bottom: 8px;
@@ -781,7 +798,12 @@
     }
 
     .drawer-header h3 {
-      font-family: "Sigmar", cursive;
+      font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
+      font-weight: var(--display-weight, 700);
+      font-stretch: var(--display-stretch, 100%);
+      text-transform: var(--display-transform, none);
+      letter-spacing: var(--display-tracking, -0.02em);
+      line-height: var(--display-leading, 1.05);
       font-size: 1.1rem;
       color: var(--brown-dark);
     }
@@ -1052,8 +1074,8 @@
   .quick-fact-value { font-size: 0.9rem; }
 }
 
-/* iced-latte guide: brand headings (Sigmar) + accent links, matching post conventions */
-.intro-hero h2 { font-family: "Sigmar", cursive; font-size: 1.3rem; color: var(--green); margin: 26px 0 10px; line-height: 1.3; }
+/* iced-latte guide: brand headings (--font-display) + accent links, matching post conventions */
+.intro-hero h2 { font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif); font-weight: var(--display-weight, 700); font-stretch: var(--display-stretch, 100%); text-transform: var(--display-transform, none); letter-spacing: var(--display-tracking, -0.02em); line-height: var(--display-leading, 1.05); font-size: 1.3rem; color: var(--green); margin: 26px 0 10px; }
 .intro-hero h3 { font-family: "Outfit", sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--brown-dark); margin: 18px 0 6px; }
 .intro-body > div > h2:first-child { margin-top: 4px; }
 .intro-hero p a, .intro-lead a, .intro-hero li a { color: var(--accent); font-weight: 600; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.15s; }

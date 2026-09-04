@@ -31,7 +31,7 @@
   <meta name="twitter:description" content="3 secret Malaysian roasters, matched to your taste quiz. RM120 shipped. 50 flights only." />
   <meta name="twitter:image" content="https://www.thebeanshub.com/img/thebeanshub_logo.png" />
 
-  <link href="https://fonts.googleapis.com/css2?family=Sigmar&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link href="/img/thebeanshub_logo.png" rel="icon" type="image/png" />
 
   <script type="application/ld+json">
@@ -81,6 +81,12 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
+      --font-display: "Outfit", -apple-system, BlinkMacSystemFont, sans-serif;
+      --display-weight: 700;
+      --display-transform: none;
+      --display-tracking: -0.02em;
+      --display-leading: 1.05;
+      --display-stretch: 100%;
       --cream: #FDF6EC;
       --green: #296241;
       --accent: #FDA11D;
@@ -100,7 +106,7 @@
     section { scroll-margin-top: 120px; }
     .wrap { max-width: 880px; margin: 0 auto; }
     .sec-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
-    .sec-title { font-family: "Sigmar", cursive; font-size: clamp(1.6rem, 3vw, 2.3rem); color: var(--green); line-height: 1.18; margin-bottom: 14px; }
+    .sec-title { font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif); font-weight: var(--display-weight, 700); font-stretch: var(--display-stretch, 100%); text-transform: var(--display-transform, none); letter-spacing: var(--display-tracking, -0.02em); line-height: var(--display-leading, 1.05); font-size: clamp(1.6rem, 3vw, 2.3rem); color: var(--green); margin-bottom: 14px; }
     .sec-sub { font-size: 1rem; color: var(--text-muted); line-height: 1.7; max-width: 580px; margin-left: auto; margin-right: auto; }
 
     /* scroll-in fade */
@@ -116,14 +122,14 @@
     .hero-grain { position: absolute; inset: 0; opacity: 0.05; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
     .hero-inner { position: relative; z-index: 2; max-width: 640px; margin: 0 auto; }
     .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: rgba(253,161,29,0.18); border: 1px solid rgba(253,161,29,0.4); color: var(--accent); font-size: 0.74rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 16px; border-radius: 20px; margin-bottom: 22px; }
-    .hero-title { font-family: "Sigmar", cursive; font-size: clamp(2.2rem, 5vw, 3.6rem); color: var(--cream); line-height: 1.12; margin-bottom: 18px; }
+    .hero-title { font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif); font-weight: var(--display-weight, 700); font-stretch: var(--display-stretch, 100%); text-transform: var(--display-transform, none); letter-spacing: var(--display-tracking, -0.02em); line-height: var(--display-leading, 1.05); font-size: clamp(2.2rem, 5vw, 3.6rem); color: var(--cream); margin-bottom: 18px; }
     .hero-sub { font-size: 1.08rem; color: rgba(253,246,236,0.85); line-height: 1.65; max-width: 520px; margin: 0 auto 26px; }
     .hero-price { display: flex; align-items: baseline; justify-content: center; gap: 10px; flex-wrap: wrap; color: rgba(253,246,236,0.85); font-size: 0.98rem; font-weight: 500; margin-bottom: 26px; }
-    .hero-price .price-num { font-family: "Sigmar", cursive; font-size: 1.9rem; color: var(--accent); line-height: 1; }
+    .hero-price .price-num { font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif); font-weight: var(--display-weight, 700); font-stretch: var(--display-stretch, 100%); text-transform: var(--display-transform, none); letter-spacing: var(--display-tracking, -0.02em); line-height: var(--display-leading, 1.05); font-size: 1.9rem; color: var(--accent); }
     .hero-price .dot { color: rgba(253,246,236,0.4); }
     .hero .btn-primary { font-size: 1.02rem; padding: 16px 34px; }
     .hero-note { font-size: 0.84rem; color: rgba(253,246,236,0.62); margin-top: 14px; }
-    .hero-note strong { font-family: "Sigmar", cursive; font-weight: 400; color: var(--accent); }
+    .hero-note strong { font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif); font-weight: var(--display-weight, 700); font-stretch: var(--display-stretch, 100%); text-transform: var(--display-transform, none); letter-spacing: var(--display-tracking, -0.02em); line-height: var(--display-leading, 1.05); color: var(--accent); }
 
     /* HOW IT WORKS */
     .how { padding: 72px 24px; }
@@ -131,7 +137,7 @@
     .how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
     .how-card { text-align: center; padding: 26px 18px; background: #fff; border: 1px solid var(--border); border-radius: 18px; transition: transform 0.2s, box-shadow 0.2s; }
     .how-card:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(41,98,65,0.1); }
-    .how-step { width: 46px; height: 46px; margin: 0 auto 14px; border-radius: 50%; background: rgba(253,161,29,0.14); color: var(--accent); font-family: "Sigmar", cursive; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; }
+    .how-step { width: 46px; height: 46px; margin: 0 auto 14px; border-radius: 50%; background: rgba(253,161,29,0.14); color: var(--accent); font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif); font-weight: var(--display-weight, 700); font-stretch: var(--display-stretch, 100%); text-transform: var(--display-transform, none); letter-spacing: var(--display-tracking, -0.02em); line-height: var(--display-leading, 1.05); font-size: 1.2rem; display: flex; align-items: center; justify-content: center; }
     .how-card h3 { font-size: 1.08rem; color: var(--green); margin-bottom: 8px; }
     .how-card p { font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; }
 
@@ -146,7 +152,7 @@
     .mystery-head { text-align: center; margin-bottom: 36px; }
     .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; max-width: 760px; margin: 0 auto; }
     .stat-card { background: #fff; border: 1px solid var(--border); border-radius: 18px; padding: 28px 22px; text-align: center; }
-    .stat-num { font-family: "Sigmar", cursive; font-size: 2.4rem; color: var(--accent); line-height: 1; }
+    .stat-num { font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif); font-weight: var(--display-weight, 700); font-stretch: var(--display-stretch, 100%); text-transform: var(--display-transform, none); letter-spacing: var(--display-tracking, -0.02em); line-height: var(--display-leading, 1.05); font-size: 2.4rem; color: var(--accent); }
     .stat-label { font-size: 0.88rem; color: var(--text-muted); margin-top: 8px; }
 
     /* KEY DATES */
@@ -154,7 +160,7 @@
     .dates-strip { max-width: 880px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; background: #fff; border: 1px solid var(--border); border-radius: 18px; overflow: hidden; }
     .date-item { text-align: center; padding: 26px 14px; border-left: 1px solid var(--border); }
     .date-item:first-child { border-left: none; }
-    .date-when { font-family: "Sigmar", cursive; font-size: 1.05rem; color: var(--green); margin-bottom: 6px; }
+    .date-when { font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif); font-weight: var(--display-weight, 700); font-stretch: var(--display-stretch, 100%); text-transform: var(--display-transform, none); letter-spacing: var(--display-tracking, -0.02em); line-height: var(--display-leading, 1.05); font-size: 1.05rem; color: var(--green); margin-bottom: 6px; }
     .date-what { font-size: 0.84rem; color: var(--text-muted); line-height: 1.5; }
     .date-item.hot .date-when { color: var(--accent); }
 
@@ -171,7 +177,7 @@
     .quiz-step.active { display: block; animation: fade 0.3s ease; }
     @keyframes fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
     .quiz-q-num { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
-    .quiz-q { font-family: "Sigmar", cursive; font-size: 1.35rem; color: var(--green); margin-bottom: 6px; line-height: 1.2; }
+    .quiz-q { font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif); font-weight: var(--display-weight, 700); font-stretch: var(--display-stretch, 100%); text-transform: var(--display-transform, none); letter-spacing: var(--display-tracking, -0.02em); line-height: var(--display-leading, 1.05); font-size: 1.35rem; color: var(--green); margin-bottom: 6px; }
     .quiz-hint { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px; }
     .quiz-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
     .quiz-opt { border: 1.5px solid var(--border); background: #fff; border-radius: 12px; padding: 15px 16px; font-family: "Outfit", sans-serif; font-size: 0.92rem; font-weight: 600; color: var(--green); cursor: pointer; text-align: left; transition: all 0.15s; }
@@ -204,7 +210,7 @@
     /* EMAIL GATE */
     .gate { text-align: center; }
     .gate-icon { font-size: 2rem; }
-    .gate-title { font-family: "Sigmar", cursive; font-size: 1.5rem; color: var(--green); margin: 8px 0 8px; }
+    .gate-title { font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif); font-weight: var(--display-weight, 700); font-stretch: var(--display-stretch, 100%); text-transform: var(--display-transform, none); letter-spacing: var(--display-tracking, -0.02em); line-height: var(--display-leading, 1.05); font-size: 1.5rem; color: var(--green); margin: 8px 0 8px; }
     .gate-sub { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; max-width: 440px; margin: 0 auto 22px; }
     .gate-sub strong { color: var(--green); }
     .gate-form { display: flex; gap: 10px; max-width: 440px; margin: 0 auto; flex-wrap: wrap; }
@@ -214,7 +220,7 @@
 
     /* RESULTS */
     .results-head { text-align: center; margin-bottom: 8px; }
-    .results-title { font-family: "Sigmar", cursive; font-size: 1.45rem; color: var(--green); }
+    .results-title { font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif); font-weight: var(--display-weight, 700); font-stretch: var(--display-stretch, 100%); text-transform: var(--display-transform, none); letter-spacing: var(--display-tracking, -0.02em); line-height: var(--display-leading, 1.05); font-size: 1.45rem; color: var(--green); }
     .results-sub { font-size: 0.92rem; color: var(--text-muted); line-height: 1.65; margin: 10px auto 0; max-width: 480px; text-align: left; }
     .results-sub li { margin: 0 0 8px 18px; }
     .results-sub strong { color: var(--green); }
@@ -238,9 +244,9 @@
     /* FINAL CTA */
     .final { padding: 0 24px 80px; text-align: center; }
     .final-card { max-width: 760px; margin: 0 auto; background: linear-gradient(135deg, #296241 0%, #1f4d33 100%); border-radius: 24px; padding: 56px 32px; }
-    .final-title { font-family: "Sigmar", cursive; font-size: clamp(1.5rem, 3vw, 2.1rem); color: var(--cream); line-height: 1.2; margin-bottom: 12px; }
+    .final-title { font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif); font-weight: var(--display-weight, 700); font-stretch: var(--display-stretch, 100%); text-transform: var(--display-transform, none); letter-spacing: var(--display-tracking, -0.02em); line-height: var(--display-leading, 1.05); font-size: clamp(1.5rem, 3vw, 2.1rem); color: var(--cream); margin-bottom: 12px; }
     .final-sub { color: rgba(253,246,236,0.75); font-size: 0.98rem; line-height: 1.6; max-width: 460px; margin: 0 auto 26px; }
-    .final-sub strong { font-family: "Sigmar", cursive; font-weight: 400; color: var(--accent); }
+    .final-sub strong { font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif); font-weight: var(--display-weight, 700); font-stretch: var(--display-stretch, 100%); text-transform: var(--display-transform, none); letter-spacing: var(--display-tracking, -0.02em); line-height: var(--display-leading, 1.05); color: var(--accent); }
     .notify { margin-top: 34px; padding-top: 28px; border-top: 1px solid rgba(253,246,236,0.12); }
     .notify p { color: rgba(253,246,236,0.65); font-size: 0.88rem; margin-bottom: 14px; }
     .notify-form { display: flex; gap: 10px; max-width: 420px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }

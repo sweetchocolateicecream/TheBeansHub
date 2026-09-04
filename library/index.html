@@ -19,7 +19,7 @@
     name="description" />
   <link href="/img/thebeanshub_logo.png" rel="icon" type="image/png" />
   <link
-    href="https://fonts.googleapis.com/css2?family=Sigmar&amp;family=Outfit:wght@300;400;500;600;700;800&amp;display=swap"
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&amp;display=swap"
     rel="stylesheet" />
   <link rel="canonical" href="https://www.thebeanshub.com/library">
   <meta property="og:type" content="website">
@@ -42,6 +42,12 @@
     }
 
     :root {
+      --font-display: "Outfit", -apple-system, BlinkMacSystemFont, sans-serif;
+      --display-weight: 700;
+      --display-transform: none;
+      --display-tracking: -0.02em;
+      --display-leading: 1.05;
+      --display-stretch: 100%;
       --green: #296241;
       --green-light: #3a7a50;
       --green-dark: #1a4029;
@@ -89,10 +95,14 @@
     }
 
     .nav-logo {
-      font-family: "Sigmar", cursive;
+      font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
+      font-weight: var(--display-weight, 700);
+      font-stretch: var(--display-stretch, 100%);
+      text-transform: var(--display-transform, none);
+      letter-spacing: var(--display-tracking, -0.02em);
+      line-height: var(--display-leading, 1.05);
       color: #FDF6EC;
       font-size: 1.45rem;
-      font-weight: 700;
     }
 
     .nav-links {
@@ -262,10 +272,14 @@
     }
 
     .best-title {
-      font-family: "Sigmar", cursive;
+      font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
+      font-weight: var(--display-weight, 700);
+      font-stretch: var(--display-stretch, 100%);
+      text-transform: var(--display-transform, none);
+      letter-spacing: var(--display-tracking, -0.02em);
+      line-height: var(--display-leading, 1.05);
       font-style: italic;
       font-size: clamp(2.4rem, 5vw, 3.6rem);
-      line-height: 1;
       color: var(--text);
     }
 
@@ -394,9 +408,13 @@
     }
 
     .best-headline-title {
-      font-family: "Sigmar", cursive;
+      font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
+      font-weight: var(--display-weight, 700);
+      font-stretch: var(--display-stretch, 100%);
+      text-transform: var(--display-transform, none);
+      letter-spacing: var(--display-tracking, -0.02em);
+      line-height: var(--display-leading, 1.05);
       font-size: 1.5rem;
-      line-height: 1.2;
       color: var(--text);
     }
 
@@ -484,10 +502,14 @@
     }
 
     .side-card-title {
-      font-family: "Sigmar", cursive;
+      font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
+      font-weight: var(--display-weight, 700);
+      font-stretch: var(--display-stretch, 100%);
+      text-transform: var(--display-transform, none);
+      letter-spacing: var(--display-tracking, -0.02em);
+      line-height: var(--display-leading, 1.05);
       font-size: 1.5rem;
       color: var(--text);
-      line-height: 1.18;
       margin-bottom: 22px;
     }
 
@@ -606,11 +628,15 @@
     }
 
     .discover h2 {
-      font-family: "Sigmar", cursive;
+      font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
+      font-weight: var(--display-weight, 700);
+      font-stretch: var(--display-stretch, 100%);
+      text-transform: var(--display-transform, none);
+      letter-spacing: var(--display-tracking, -0.02em);
+      line-height: var(--display-leading, 1.05);
       font-size: clamp(2.2rem, 4.2vw, 3rem);
       color: var(--text);
       margin-bottom: 12px;
-      line-height: 1.1;
     }
 
     .discover p {
@@ -698,7 +724,12 @@
     }
 
     .cat-title {
-      font-family: "Sigmar", cursive;
+      font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
+      font-weight: var(--display-weight, 700);
+      font-stretch: var(--display-stretch, 100%);
+      text-transform: var(--display-transform, none);
+      letter-spacing: var(--display-tracking, -0.02em);
+      line-height: var(--display-leading, 1.05);
       font-size: 1.7rem;
       color: var(--text);
       display: flex;
@@ -780,7 +811,12 @@
     }
 
     .main-heading {
-      font-family: "Sigmar", cursive;
+      font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
+      font-weight: var(--display-weight, 700);
+      font-stretch: var(--display-stretch, 100%);
+      text-transform: var(--display-transform, none);
+      letter-spacing: var(--display-tracking, -0.02em);
+      line-height: var(--display-leading, 1.05);
       font-size: 1.7rem;
       color: var(--text);
       margin-bottom: 22px;
@@ -947,7 +983,12 @@
     }
 
     .side-block h3 {
-      font-family: "Sigmar", cursive;
+      font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
+      font-weight: var(--display-weight, 700);
+      font-stretch: var(--display-stretch, 100%);
+      text-transform: var(--display-transform, none);
+      letter-spacing: var(--display-tracking, -0.02em);
+      line-height: var(--display-leading, 1.05);
       font-size: 1.3rem;
       color: var(--text);
       margin-bottom: 18px;
@@ -1034,7 +1075,12 @@
     }
 
     .newsletter-strip-text h3 {
-      font-family: "Sigmar", cursive;
+      font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
+      font-weight: var(--display-weight, 700);
+      font-stretch: var(--display-stretch, 100%);
+      text-transform: var(--display-transform, none);
+      letter-spacing: var(--display-tracking, -0.02em);
+      line-height: var(--display-leading, 1.05);
       font-size: 1.5rem;
       color: #FDF6EC;
       margin-bottom: 8px;

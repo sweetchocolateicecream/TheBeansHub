@@ -4,9 +4,15 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Hero Beans Fill — Preview</title>
-<link href="https://fonts.googleapis.com/css2?family=Sigmar&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 <style>
   :root{
+    --font-display: "Outfit", -apple-system, BlinkMacSystemFont, sans-serif;
+    --display-weight: 700;
+    --display-transform: none;
+    --display-tracking: -0.02em;
+    --display-leading: 1.05;
+    --display-stretch: 100%;
     --cream:#FDF6EC; --green:#296241; --accent:#FDA11D; --accent-hover:#DA8A10;
     --tag-bg:#f0ebe0; --tag-text:#296241; --border:#E8E0D0; --text-muted:#5a6e5a;
   }
@@ -31,8 +37,14 @@
   .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(253,161,29,0.18);
     border:1px solid rgba(253,161,29,0.4);color:var(--accent);font-size:0.74rem;font-weight:600;
     letter-spacing:0.1em;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:22px}
-  .hero-title{font-family:"Sigmar",cursive;font-size:clamp(2.1rem,4vw,3.4rem);color:var(--cream);
-    line-height:1.12;margin-bottom:18px}
+  .hero-title{font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
+ font-weight: var(--display-weight, 700);
+ font-stretch: var(--display-stretch, 100%);
+ text-transform: var(--display-transform, none);
+ letter-spacing: var(--display-tracking, -0.02em);
+ line-height: var(--display-leading, 1.05);
+font-size:clamp(2.1rem,4vw,3.4rem);color:var(--cream);
+margin-bottom:18px}
   .hero-title em{font-style:normal;color:var(--accent)}
   .hero-sub{font-size:1.05rem;color:rgba(253,246,236,0.82);line-height:1.65;max-width:460px;margin-bottom:26px}
   .btn-primary{display:inline-block;background:var(--accent);color:#1f4d33;font-weight:700;

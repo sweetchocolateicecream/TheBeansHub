@@ -15,11 +15,17 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <title>The Beans Hub | Specialty Coffee Beans from 59 Malaysian Roasters</title>
   <meta content="Shop 850+ specialty Arabica coffee beans from 59 Malaysian roasters in one place. Filter by origin, process, roast level and taste notes." name="description" />
-  <link href="https://fonts.googleapis.com/css2?family=Sigmar&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link href="img/thebeanshub_logo.png" rel="icon" type="image/png" />
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
+      --font-display: "Outfit", -apple-system, BlinkMacSystemFont, sans-serif;
+      --display-weight: 700;
+      --display-transform: none;
+      --display-tracking: -0.02em;
+      --display-leading: 1.05;
+      --display-stretch: 100%;
       --cream: #FDF6EC;
       --green: #296241;
       --accent: #FDA11D;
@@ -43,7 +49,7 @@
 
     /* NAV */
     nav { position: fixed; top: 38px; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 68px; background: #296241; border-radius: 0 0 22px 22px; box-shadow: 0 8px 24px rgba(41,98,65,0.18); }
-    .nav-logo { font-family: "Sigmar", cursive; color: #FDF6EC; font-size: 1.45rem; font-weight: 700; text-decoration: none; }
+    .nav-logo { font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif); font-weight: var(--display-weight, 700); font-stretch: var(--display-stretch, 100%); text-transform: var(--display-transform, none); letter-spacing: var(--display-tracking, -0.02em); line-height: var(--display-leading, 1.05); color: #FDF6EC; font-size: 1.45rem; text-decoration: none; }
     .nav-logo span { color: #FDA11D; }
     .nav-links { display: flex; gap: 36px; align-items: center; }
     .nav-links a { color: rgba(253,246,236,0.92); text-decoration: none; font-size: 0.88rem; font-weight: 500; letter-spacing: 0.04em; transition: color 0.2s; }
@@ -67,7 +73,7 @@
     @keyframes floatDot { 0% { transform: translateY(0) scale(1); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 0.6; } 100% { transform: translateY(-120vh) scale(0.5); opacity: 0; } }
     .hero-content { position: relative; z-index: 2; padding: 80px 72px; max-width: 680px; }
     .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: rgba(253,161,29,0.18); border: 1px solid rgba(253,161,29,0.4); color: #FDA11D; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 16px; border-radius: 20px; margin-bottom: 28px; }
-    .hero-title { font-family: "Sigmar", cursive; font-size: clamp(2.4rem, 5vw, 4rem); color: #FDF6EC; line-height: 1.1; margin-bottom: 20px; }
+    .hero-title { font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif); font-weight: var(--display-weight, 700); font-stretch: var(--display-stretch, 100%); text-transform: var(--display-transform, none); letter-spacing: var(--display-tracking, -0.02em); line-height: var(--display-leading, 1.05); font-size: clamp(2.4rem, 5vw, 4rem); color: #FDF6EC; margin-bottom: 20px; }
     .hero-title em { font-style: normal; color: #FDA11D; }
     .hero-sub { font-size: 1.1rem; color: rgba(253,246,236,0.82); line-height: 1.7; max-width: 480px; margin-bottom: 36px; }
     .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
@@ -90,13 +96,13 @@
     .persona-card { position: relative; text-decoration: none; background: white; border: 1px solid var(--border); border-radius: 18px; padding: 26px 22px 24px; display: flex; flex-direction: column; gap: 8px; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; }
     .persona-card:hover { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(41,98,65,0.12); border-color: transparent; }
     .persona-emoji { font-size: 1.6rem; line-height: 1; }
-    .persona-name { font-family: "Sigmar", cursive; font-size: 1.08rem; color: var(--green); line-height: 1.2; }
+    .persona-name { font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif); font-weight: var(--display-weight, 700); font-stretch: var(--display-stretch, 100%); text-transform: var(--display-transform, none); letter-spacing: var(--display-tracking, -0.02em); line-height: var(--display-leading, 1.05); font-size: 1.08rem; color: var(--green); }
     .persona-desc { font-size: 0.84rem; color: var(--text-muted); line-height: 1.55; flex: 1; }
     .persona-link { font-size: 0.8rem; font-weight: 700; color: var(--accent); margin-top: 4px; }
 
     /* SECTION COMMONS */
     .section-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
-    .section-title { font-family: "Sigmar", cursive; font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--green); line-height: 1.15; margin-bottom: 16px; }
+    .section-title { font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif); font-weight: var(--display-weight, 700); font-stretch: var(--display-stretch, 100%); text-transform: var(--display-transform, none); letter-spacing: var(--display-tracking, -0.02em); line-height: var(--display-leading, 1.05); font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--green); margin-bottom: 16px; }
     .section-sub { font-size: 1rem; color: var(--text-muted); line-height: 1.7; max-width: 560px; }
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -116,7 +122,7 @@
     .finder-card:hover .finder-card-bg img { transform: scale(1.08); }
     .finder-card-overlay { position: absolute; inset: 0; border-radius: 16px; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.1) 60%, transparent 100%); }
     .finder-card-label { position: relative; z-index: 2; padding: 16px; }
-    .finder-card-name { display: block; font-family: "Sigmar", cursive; font-size: 1.1rem; color: #FDF6EC; margin-bottom: 3px; }
+    .finder-card-name { display: block; font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif); font-weight: var(--display-weight, 700); font-stretch: var(--display-stretch, 100%); text-transform: var(--display-transform, none); letter-spacing: var(--display-tracking, -0.02em); line-height: var(--display-leading, 1.05); font-size: 1.1rem; color: #FDF6EC; margin-bottom: 3px; }
     .finder-card-sub { display: block; font-size: 0.72rem; color: rgba(253,246,236,0.7); font-weight: 400; }
     .finder-fruity .finder-card-bg { background: linear-gradient(135deg, #8B0E30, #E8445A); }
     .finder-sweet .finder-card-bg { background: linear-gradient(135deg, #A03060, #D4608A); }
@@ -137,7 +143,7 @@
     .step-icon { width: 72px; height: 72px; background: white; border-radius: 20px; border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
     .step-icon img { width: 42px; height: 42px; object-fit: contain; }
     .step-num { display: inline-block; background: var(--accent); color: white; font-size: 0.7rem; font-weight: 700; width: 22px; height: 22px; border-radius: 50%; line-height: 22px; text-align: center; margin-bottom: 12px; }
-    .step h3 { font-family: "Sigmar", cursive; font-size: 1.25rem; color: var(--green); margin-bottom: 8px; }
+    .step h3 { font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif); font-weight: var(--display-weight, 700); font-stretch: var(--display-stretch, 100%); text-transform: var(--display-transform, none); letter-spacing: var(--display-tracking, -0.02em); line-height: var(--display-leading, 1.05); font-size: 1.25rem; color: var(--green); margin-bottom: 8px; }
     .step p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.65; }
     .step-connector { padding-top: 36px; font-size: 1.6rem; color: var(--accent); opacity: 0.5; flex-shrink: 0; }
 
@@ -167,7 +173,7 @@
     .library-card:hover .library-card-media img { transform: scale(1.05); }
     .library-card-body { padding: 22px 22px 24px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
     .library-card-tag { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
-    .library-card-title { font-family: "Sigmar", cursive; font-size: 1.08rem; color: var(--green); line-height: 1.25; }
+    .library-card-title { font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif); font-weight: var(--display-weight, 700); font-stretch: var(--display-stretch, 100%); text-transform: var(--display-transform, none); letter-spacing: var(--display-tracking, -0.02em); line-height: var(--display-leading, 1.05); font-size: 1.08rem; color: var(--green); }
     .library-card-desc { font-size: 0.84rem; color: var(--text-muted); line-height: 1.55; flex: 1; }
     .library-card-link { font-size: 0.8rem; font-weight: 700; color: var(--accent); margin-top: 4px; }
 
@@ -194,8 +200,8 @@
     .roasters-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
     .roaster-card { background: white; border-radius: 16px; border: 1px solid var(--border); padding: 24px 20px; display: flex; flex-direction: column; gap: 12px; transition: transform 0.2s, box-shadow 0.2s; }
     .roaster-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(41,98,65,0.1); }
-    .roaster-avatar { width: 52px; height: 52px; border-radius: 14px; background: var(--green); display: flex; align-items: center; justify-content: center; font-family: "Sigmar", cursive; font-size: 1.1rem; color: #FDA11D; flex-shrink: 0; letter-spacing: -1px; }
-    .roaster-name { font-family: "Sigmar", cursive; font-size: 1rem; color: var(--green); line-height: 1.2; }
+    .roaster-avatar { width: 52px; height: 52px; border-radius: 14px; background: var(--green); display: flex; align-items: center; justify-content: center; font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif); font-weight: var(--display-weight, 700); font-stretch: var(--display-stretch, 100%); text-transform: var(--display-transform, none); letter-spacing: var(--display-tracking, -0.02em); line-height: var(--display-leading, 1.05); font-size: 1.1rem; color: #FDA11D; flex-shrink: 0; }
+    .roaster-name { font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif); font-weight: var(--display-weight, 700); font-stretch: var(--display-stretch, 100%); text-transform: var(--display-transform, none); letter-spacing: var(--display-tracking, -0.02em); line-height: var(--display-leading, 1.05); font-size: 1rem; color: var(--green); }
     .roaster-city { font-size: 0.75rem; color: var(--text-muted); font-weight: 500; }
     .roaster-line { font-size: 0.82rem; color: var(--text-muted); line-height: 1.55; flex: 1; }
     .roaster-tag { display: inline-block; font-size: 0.68rem; font-weight: 600; padding: 3px 10px; background: var(--tag-bg); color: var(--tag-text); border-radius: 20px; align-self: flex-start; }
@@ -203,9 +209,9 @@
     /* STATS */
     .stats-section { background: var(--green); padding: 72px 48px; }
     .stats-inner { max-width: 900px; margin: 0 auto; text-align: center; }
-    .stats-title { font-family: "Sigmar", cursive; font-size: clamp(1.4rem, 3vw, 2rem); color: #FDF6EC; margin-bottom: 48px; line-height: 1.2; }
+    .stats-title { font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif); font-weight: var(--display-weight, 700); font-stretch: var(--display-stretch, 100%); text-transform: var(--display-transform, none); letter-spacing: var(--display-tracking, -0.02em); line-height: var(--display-leading, 1.05); font-size: clamp(1.4rem, 3vw, 2rem); color: #FDF6EC; margin-bottom: 48px; }
     .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
-    .stat-num { font-family: "Sigmar", cursive; font-size: clamp(2.5rem, 5vw, 3.5rem); color: #FDA11D; line-height: 1; margin-bottom: 8px; }
+    .stat-num { font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif); font-weight: var(--display-weight, 700); font-stretch: var(--display-stretch, 100%); text-transform: var(--display-transform, none); letter-spacing: var(--display-tracking, -0.02em); line-height: var(--display-leading, 1.05); font-size: clamp(2.5rem, 5vw, 3.5rem); color: #FDA11D; margin-bottom: 8px; }
     .stat-label { font-size: 0.9rem; color: rgba(253,246,236,0.7); font-weight: 500; }
 
     /* LIBERICA */
@@ -221,7 +227,7 @@
     .newsletter-section::before { content: ''; position: absolute; top: -60px; right: -60px; width: 220px; height: 220px; border-radius: 50%; background: rgba(253,161,29,0.1); pointer-events: none; }
     .newsletter-section::after { content: ''; position: absolute; bottom: -40px; left: -40px; width: 160px; height: 160px; border-radius: 50%; background: rgba(253,161,29,0.07); pointer-events: none; }
     .newsletter-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(253,161,29,0.9); margin-bottom: 14px; }
-    .newsletter-title { font-family: "Sigmar", cursive; font-size: clamp(1.5rem, 3vw, 2.1rem); color: #FDF6EC; line-height: 1.2; margin-bottom: 14px; }
+    .newsletter-title { font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif); font-weight: var(--display-weight, 700); font-stretch: var(--display-stretch, 100%); text-transform: var(--display-transform, none); letter-spacing: var(--display-tracking, -0.02em); line-height: var(--display-leading, 1.05); font-size: clamp(1.5rem, 3vw, 2.1rem); color: #FDF6EC; margin-bottom: 14px; }
     .newsletter-sub { font-size: 0.95rem; color: rgba(253,246,236,0.65); line-height: 1.7; margin-bottom: 36px; position: relative; z-index: 1; }
     .newsletter-form { display: flex; gap: 10px; max-width: 560px; margin: 0 auto; flex-wrap: wrap; position: relative; z-index: 1; }
     .newsletter-input { flex: 1; min-width: 160px; padding: 14px 18px; border-radius: 10px; border: 1.5px solid rgba(253,246,236,0.2); background: rgba(255,255,255,0.08); color: #FDF6EC; font-family: "Outfit", sans-serif; font-size: 0.9rem; outline: none; transition: border-color 0.2s; }
@@ -361,7 +367,7 @@
       <div class="persona-header reveal">
         <div class="section-label">Where do you start?</div>
         <h2 class="section-title">Find your way in</h2>
-        <p class="section-sub">Tell us what you're after and we'll jump you straight to the right beans.</p>
+        <p class="section-sub">You know the feeling, we know the coffee.</p>
       </div>
       <div class="persona-grid reveal">
         <a class="persona-card" href="/shop?taste=Nutty%2FCocoa&amp;roast=Medium-Dark">

@@ -27,7 +27,7 @@
 <meta name="twitter:description" content="The Beans Hub maps Malaysia's specialty coffee scene — 775 beans from 53 local roasters, organised by taste, origin, roast and process. Here's our story.">
 <meta name="twitter:image" content="https://www.thebeanshub.com/img/Girl-bought-coffee-from-the-beans-hub.png">
 <link href="../img/thebeanshub_logo.png" rel="icon" type="image/png">
-<link href="https://fonts.googleapis.com/css2?family=Sigmar&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -75,6 +75,12 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
+    --font-display: "Outfit", -apple-system, BlinkMacSystemFont, sans-serif;
+    --display-weight: 700;
+    --display-transform: none;
+    --display-tracking: -0.02em;
+    --display-leading: 1.05;
+    --display-stretch: 100%;
     --cream: #FDF6EC;
     --green: #296241;
     --accent: #FDA11D;
@@ -112,10 +118,13 @@
   }
 
   .map-hero h1 {
-    font-family: "Sigmar", cursive;
+    font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
+    font-weight: var(--display-weight, 700);
+    font-stretch: var(--display-stretch, 100%);
+    text-transform: var(--display-transform, none);
+    letter-spacing: var(--display-tracking, -0.02em);
+    line-height: var(--display-leading, 1.05);
     font-size: clamp(2rem, 4.6vw, 3.4rem);
-    font-weight: 700;
-    line-height: 1.18;
     color: var(--green);
     max-width: 820px;
     margin-bottom: 18px;
@@ -158,7 +167,12 @@
   }
 
   .map-counter {
-    font-family: "Sigmar", cursive;
+    font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
+    font-weight: var(--display-weight, 700);
+    font-stretch: var(--display-stretch, 100%);
+    text-transform: var(--display-transform, none);
+    letter-spacing: var(--display-tracking, -0.02em);
+    line-height: var(--display-leading, 1.05);
     font-size: clamp(1.1rem, 2.2vw, 1.6rem);
     color: var(--green);
     margin-top: 22px;
@@ -231,10 +245,14 @@
   }
 
   .pin-slide h2 {
-    font-family: "Sigmar", cursive;
+    font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
+    font-weight: var(--display-weight, 700);
+    font-stretch: var(--display-stretch, 100%);
+    text-transform: var(--display-transform, none);
+    letter-spacing: var(--display-tracking, -0.02em);
+    line-height: var(--display-leading, 1.05);
     font-size: clamp(2rem, 5.4vw, 4rem);
     color: var(--cream);
-    line-height: 1.15;
     margin-bottom: 18px;
   }
 
@@ -275,9 +293,14 @@
   .story-sticky { position: sticky; top: 140px; }
 
   .story-sticky h2 {
-    font-family: "Sigmar", cursive;
+    font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
+    font-weight: var(--display-weight, 700);
+    font-stretch: var(--display-stretch, 100%);
+    text-transform: var(--display-transform, none);
+    letter-spacing: var(--display-tracking, -0.02em);
+    line-height: var(--display-leading, 1.05);
     font-size: clamp(1.7rem, 3vw, 2.4rem);
-    font-weight: 700; line-height: 1.3; color: var(--green);
+color: var(--green);
   }
 
   .story-sticky h2 em { font-style: italic; color: var(--accent); }
@@ -290,9 +313,13 @@
   .story-body p strong { font-weight: 600; }
 
   .story-body .story-kicker {
-    font-family: "Sigmar", cursive;
-    font-size: 1.15rem; line-height: 1.5;
-    color: var(--green); margin-bottom: 26px;
+    font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
+    font-weight: var(--display-weight, 700);
+    font-stretch: var(--display-stretch, 100%);
+    text-transform: var(--display-transform, none);
+    letter-spacing: var(--display-tracking, -0.02em);
+    line-height: var(--display-leading, 1.05);
+    font-size: 1.15rem;    color: var(--green); margin-bottom: 26px;
   }
 
   /* ── HOW IT WORKS (numbered) ── */
@@ -303,10 +330,14 @@
   .how-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px; flex-wrap: wrap; gap: 16px; }
 
   .how-head h2 {
-    font-family: "Sigmar", cursive;
+    font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
+    font-weight: var(--display-weight, 700);
+    font-stretch: var(--display-stretch, 100%);
+    text-transform: var(--display-transform, none);
+    letter-spacing: var(--display-tracking, -0.02em);
+    line-height: var(--display-leading, 1.05);
     font-size: clamp(1.6rem, 3vw, 2.3rem);
-    color: var(--green); line-height: 1.25;
-  }
+    color: var(--green);  }
 
   .how-head a { color: var(--accent-hover); text-decoration: none; font-weight: 600; font-size: 0.9rem; white-space: nowrap; }
 
@@ -322,12 +353,21 @@
   .how-row:last-child { border-bottom: 1px solid var(--border); }
 
   .how-num {
-    font-family: "Sigmar", cursive;
-    font-size: 2.4rem; color: var(--accent); line-height: 1;
-  }
+    font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
+    font-weight: var(--display-weight, 700);
+    font-stretch: var(--display-stretch, 100%);
+    text-transform: var(--display-transform, none);
+    letter-spacing: var(--display-tracking, -0.02em);
+    line-height: var(--display-leading, 1.05);
+    font-size: 2.4rem; color: var(--accent);  }
 
   .how-body h3 {
-    font-family: "Sigmar", cursive;
+    font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
+    font-weight: var(--display-weight, 700);
+    font-stretch: var(--display-stretch, 100%);
+    text-transform: var(--display-transform, none);
+    letter-spacing: var(--display-tracking, -0.02em);
+    line-height: var(--display-leading, 1.05);
     font-size: 1.3rem; color: var(--green); margin-bottom: 10px;
   }
 
@@ -346,7 +386,12 @@
   .stats-section { background: var(--green); padding: 96px 48px; text-align: center; }
 
   .stats-title {
-    font-family: "Sigmar", cursive;
+    font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
+    font-weight: var(--display-weight, 700);
+    font-stretch: var(--display-stretch, 100%);
+    text-transform: var(--display-transform, none);
+    letter-spacing: var(--display-tracking, -0.02em);
+    line-height: var(--display-leading, 1.05);
     font-size: clamp(1.4rem, 2.6vw, 2rem);
     color: var(--cream); margin-bottom: 56px;
   }
@@ -358,9 +403,14 @@
   .stat-item + .stat-item { border-left: 1px solid rgba(253,246,236,0.18); }
 
   .stat-num {
-    font-family: "Sigmar", cursive;
+    font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
+    font-weight: var(--display-weight, 700);
+    font-stretch: var(--display-stretch, 100%);
+    text-transform: var(--display-transform, none);
+    letter-spacing: var(--display-tracking, -0.02em);
+    line-height: var(--display-leading, 1.05);
     font-size: clamp(2.4rem, 4.4vw, 3.6rem);
-    color: var(--accent); line-height: 1; margin-bottom: 10px;
+    color: var(--accent);margin-bottom: 10px;
   }
 
   .stat-label { font-size: 0.84rem; color: rgba(253,246,236,0.75); font-weight: 300; letter-spacing: 0.05em; }
@@ -369,7 +419,12 @@
   .roasters-section { background: var(--cream); padding: 100px 48px; text-align: center; }
 
   .roasters-section h2 {
-    font-family: "Sigmar", cursive;
+    font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
+    font-weight: var(--display-weight, 700);
+    font-stretch: var(--display-stretch, 100%);
+    text-transform: var(--display-transform, none);
+    letter-spacing: var(--display-tracking, -0.02em);
+    line-height: var(--display-leading, 1.05);
     font-size: clamp(1.6rem, 3vw, 2.3rem);
     color: var(--green); margin-bottom: 18px;
   }
@@ -391,7 +446,12 @@
   .faq-inner { max-width: 780px; margin: 0 auto; }
 
   .faq-inner h2 {
-    font-family: "Sigmar", cursive;
+    font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
+    font-weight: var(--display-weight, 700);
+    font-stretch: var(--display-stretch, 100%);
+    text-transform: var(--display-transform, none);
+    letter-spacing: var(--display-tracking, -0.02em);
+    line-height: var(--display-leading, 1.05);
     font-size: clamp(1.6rem, 3vw, 2.3rem);
     color: var(--green); margin-bottom: 36px;
   }
@@ -428,9 +488,14 @@
   }
 
   .sub-title {
-    font-family: "Sigmar", cursive;
+    font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
+    font-weight: var(--display-weight, 700);
+    font-stretch: var(--display-stretch, 100%);
+    text-transform: var(--display-transform, none);
+    letter-spacing: var(--display-tracking, -0.02em);
+    line-height: var(--display-leading, 1.05);
     font-size: clamp(1.4rem, 2.5vw, 2rem);
-    color: var(--cream); font-weight: 700; margin-bottom: 10px;
+    color: var(--cream);margin-bottom: 10px;
   }
 
   .sub-desc {
@@ -516,7 +581,7 @@
 
   /* --- nav --- */
   .tbh-nav { position: fixed; top: 38px; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; padding-left: max(48px, env(safe-area-inset-left)); padding-right: max(48px, env(safe-area-inset-right)); height: 68px; background: #296241; border-radius: 0 0 22px 22px; box-shadow: 0 8px 24px rgba(41,98,65,0.18); }
-  .nav-logo { font-family: "Sigmar", cursive; color: #FDF6EC; font-size: 1.45rem; font-weight: 700; text-decoration: none; }
+  .nav-logo { font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif); font-weight: var(--display-weight, 700); font-stretch: var(--display-stretch, 100%); text-transform: var(--display-transform, none); letter-spacing: var(--display-tracking, -0.02em); line-height: var(--display-leading, 1.05); color: #FDF6EC; font-size: 1.45rem; text-decoration: none; }
   .nav-logo span { color: #FDA11D; }
   .nav-links { display: flex; gap: 36px; align-items: center; }
   .nav-links a { color: rgba(253,246,236,0.92); text-decoration: none; font-size: 0.88rem; font-weight: 500; letter-spacing: 0.04em; transition: color 0.2s; }
@@ -842,7 +907,7 @@
   .tbh-footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
   .tbh-footer-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; margin-bottom: 14px; }
   .tbh-footer-logo-img { height: 40px; width: auto; }
-  .tbh-footer-logo-text { font-family: "Sigmar", cursive; font-size: 1.15rem; color: #FDF6EC; }
+  .tbh-footer-logo-text { font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif); font-weight: var(--display-weight, 700); font-stretch: var(--display-stretch, 100%); text-transform: var(--display-transform, none); letter-spacing: var(--display-tracking, -0.02em); line-height: var(--display-leading, 1.05); font-size: 1.15rem; color: #FDF6EC; }
   .tbh-footer-logo-text .accent { color: #FDA11D; }
   .tbh-footer-tagline { font-size: 0.85rem; color: rgba(253,246,236,0.5); line-height: 1.7; }
   .tbh-footer-heading { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(253,246,236,0.4); margin-bottom: 16px; }

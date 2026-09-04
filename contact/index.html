@@ -17,7 +17,7 @@
 <title>Contact The Beans Hub | Get in Touch</title>
 <meta content="Get in touch with The Beans Hub. Whether you're a roaster wanting to be listed or a coffee lover with a question." name="description"/>
 <link href="/img/thebeanshub_logo.png" rel="icon" type="image/png"/>
-<link href="https://fonts.googleapis.com/css2?family=Sigmar&amp;family=Outfit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <style>
     * {
       box-sizing: border-box;
@@ -26,6 +26,12 @@
     }
 
     :root {
+      --font-display: "Outfit", -apple-system, BlinkMacSystemFont, sans-serif;
+      --display-weight: 700;
+      --display-transform: none;
+      --display-tracking: -0.02em;
+      --display-leading: 1.05;
+      --display-stretch: 100%;
       --cream: #FDF6EC;
       --warm-white: #FDF6EC;
       --brown-dark: #296241;
@@ -59,7 +65,7 @@
       background: #296241;
       border-bottom: 1px solid rgba(253,161,29,0.3);
     }
-    .nav-logo { font-family: "Sigmar", cursive; color: #FDF6EC; font-size: 1.45rem; font-weight: 700; text-decoration: none; }
+    .nav-logo { font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif); font-weight: var(--display-weight, 700); font-stretch: var(--display-stretch, 100%); text-transform: var(--display-transform, none); letter-spacing: var(--display-tracking, -0.02em); line-height: var(--display-leading, 1.05); color: #FDF6EC; font-size: 1.45rem; text-decoration: none; }
     .nav-logo span { color: #FDA11D; }
     .nav-links { display: flex; gap: 36px; align-items: center; }
     .nav-links a { color: rgba(253,246,236,0.75); text-decoration: none; font-size: 0.88rem; font-weight: 500; letter-spacing: 0.04em; transition: color 0.2s; }
@@ -139,11 +145,14 @@
     }
 
     .hero-title {
-      font-family: "Sigmar", cursive;
+      font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
+      font-weight: var(--display-weight, 700);
+      font-stretch: var(--display-stretch, 100%);
+      text-transform: var(--display-transform, none);
+      letter-spacing: var(--display-tracking, -0.02em);
+      line-height: var(--display-leading, 1.05);
       font-size: clamp(2.4rem, 5vw, 4rem);
-      font-weight: 700;
       color: white;
-      line-height: 1.15;
       margin-bottom: 20px;
     }
 
@@ -242,9 +251,13 @@
     }
 
     .section-title {
-      font-family: "Sigmar", cursive;
+      font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
+      font-weight: var(--display-weight, 700);
+      font-stretch: var(--display-stretch, 100%);
+      text-transform: var(--display-transform, none);
+      letter-spacing: var(--display-tracking, -0.02em);
+      line-height: var(--display-leading, 1.05);
       font-size: clamp(1.6rem, 3vw, 2.2rem);
-      font-weight: 700;
       color: var(--brown-dark);
       margin-bottom: 48px;
     }
@@ -285,9 +298,13 @@
     }
 
     .step-text h3 {
-      font-family: "Sigmar", cursive;
+      font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
+      font-weight: var(--display-weight, 700);
+      font-stretch: var(--display-stretch, 100%);
+      text-transform: var(--display-transform, none);
+      letter-spacing: var(--display-tracking, -0.02em);
+      line-height: var(--display-leading, 1.05);
       font-size: 1.05rem;
-      font-weight: 600;
       margin-bottom: 5px;
       color: var(--brown-dark);
     }
@@ -362,9 +379,13 @@
     }
 
     .taste-card-name {
-      font-family: "Sigmar", cursive;
+      font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
+      font-weight: var(--display-weight, 700);
+      font-stretch: var(--display-stretch, 100%);
+      text-transform: var(--display-transform, none);
+      letter-spacing: var(--display-tracking, -0.02em);
+      line-height: var(--display-leading, 1.05);
       font-size: 1.05rem;
-      font-weight: 600;
       color: white;
       display: block;
       margin-bottom: 2px;
@@ -473,12 +494,15 @@
     }
 
     .bean-card-name {
-      font-family: "Sigmar", cursive;
+      font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
+      font-weight: var(--display-weight, 700);
+      font-stretch: var(--display-stretch, 100%);
+      text-transform: var(--display-transform, none);
+      letter-spacing: var(--display-tracking, -0.02em);
+      line-height: var(--display-leading, 1.05);
       font-size: 0.95rem;
-      font-weight: 600;
       color: var(--brown-dark);
       margin-bottom: 8px;
-      line-height: 1.3;
     }
 
     .bean-card-tags {
@@ -504,9 +528,13 @@
     }
 
     .bean-card-price {
-      font-family: "Sigmar", cursive;
+      font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
+      font-weight: var(--display-weight, 700);
+      font-stretch: var(--display-stretch, 100%);
+      text-transform: var(--display-transform, none);
+      letter-spacing: var(--display-tracking, -0.02em);
+      line-height: var(--display-leading, 1.05);
       font-size: 0.95rem;
-      font-weight: 700;
     }
 
     .bean-buy-btn {
@@ -537,11 +565,15 @@
     }
 
     .stats-title {
-      font-family: "Sigmar", cursive;
+      font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
+      font-weight: var(--display-weight, 700);
+      font-stretch: var(--display-stretch, 100%);
+      text-transform: var(--display-transform, none);
+      letter-spacing: var(--display-tracking, -0.02em);
+      line-height: var(--display-leading, 1.05);
       font-size: clamp(1.4rem, 2.5vw, 1.9rem);
       color: var(--cream);
       margin-bottom: 48px;
-      font-weight: 600;
     }
 
     .stats-grid {
@@ -560,11 +592,14 @@
     }
 
     .stat-num {
-      font-family: "Sigmar", cursive;
+      font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
+      font-weight: var(--display-weight, 700);
+      font-stretch: var(--display-stretch, 100%);
+      text-transform: var(--display-transform, none);
+      letter-spacing: var(--display-tracking, -0.02em);
+      line-height: var(--display-leading, 1.05);
       font-size: clamp(2.4rem, 4vw, 3.2rem);
-      font-weight: 700;
       color: var(--accent);
-      line-height: 1;
       margin-bottom: 6px;
     }
 
@@ -589,11 +624,14 @@
     }
 
     .teaser-quote {
-      font-family: "Sigmar", cursive;
+      font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
+      font-weight: var(--display-weight, 700);
+      font-stretch: var(--display-stretch, 100%);
+      text-transform: var(--display-transform, none);
+      letter-spacing: var(--display-tracking, -0.02em);
+      line-height: var(--display-leading, 1.05);
       font-size: clamp(1.5rem, 3vw, 2.2rem);
-      font-weight: 600;
       color: var(--brown-dark);
-      line-height: 1.4;
       margin-bottom: 16px;
     }
 
@@ -646,10 +684,14 @@
     }
 
     .newsletter-title {
-      font-family: "Sigmar", cursive;
+      font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
+      font-weight: var(--display-weight, 700);
+      font-stretch: var(--display-stretch, 100%);
+      text-transform: var(--display-transform, none);
+      letter-spacing: var(--display-tracking, -0.02em);
+      line-height: var(--display-leading, 1.05);
       font-size: clamp(1.5rem, 3vw, 2.1rem);
       color: var(--cream);
-      font-weight: 700;
       margin-bottom: 12px;
     }
 
@@ -846,12 +888,15 @@
     }
 
     .page-hero h1 {
-      font-family: "Sigmar", cursive;
+      font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
+      font-weight: var(--display-weight, 700);
+      font-stretch: var(--display-stretch, 100%);
+      text-transform: var(--display-transform, none);
+      letter-spacing: var(--display-tracking, -0.02em);
+      line-height: var(--display-leading, 1.05);
       font-size: clamp(2rem, 4vw, 3rem);
       color: var(--cream);
-      font-weight: 700;
       margin-bottom: 12px;
-      line-height: 1.2;
     }
 
     .page-hero p {
@@ -879,10 +924,14 @@
     }
 
     .sub-title {
-      font-family: "Sigmar", cursive;
+      font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
+      font-weight: var(--display-weight, 700);
+      font-stretch: var(--display-stretch, 100%);
+      text-transform: var(--display-transform, none);
+      letter-spacing: var(--display-tracking, -0.02em);
+      line-height: var(--display-leading, 1.05);
       font-size: clamp(1.4rem, 2.5vw, 2rem);
       color: var(--cream);
-      font-weight: 700;
       margin-bottom: 10px;
     }
 
@@ -1025,11 +1074,14 @@
     }
 
     .contact-left h2 {
-      font-family: "Sigmar", cursive;
+      font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
+      font-weight: var(--display-weight, 700);
+      font-stretch: var(--display-stretch, 100%);
+      text-transform: var(--display-transform, none);
+      letter-spacing: var(--display-tracking, -0.02em);
+      line-height: var(--display-leading, 1.05);
       font-size: clamp(1.5rem, 2.5vw, 2rem);
       color: var(--cream);
-      font-weight: 700;
-      line-height: 1.35;
     }
 
     .contact-left p {
@@ -1084,9 +1136,13 @@
     }
 
     .contact-right h3 {
-      font-family: "Sigmar", cursive;
+      font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
+      font-weight: var(--display-weight, 700);
+      font-stretch: var(--display-stretch, 100%);
+      text-transform: var(--display-transform, none);
+      letter-spacing: var(--display-tracking, -0.02em);
+      line-height: var(--display-leading, 1.05);
       font-size: 1.4rem;
-      font-weight: 700;
       color: var(--brown-dark);
       margin-bottom: 6px;
     }
@@ -1199,7 +1255,12 @@
     }
 
     .form-success h3 {
-      font-family: "Sigmar", cursive;
+      font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
+      font-weight: var(--display-weight, 700);
+      font-stretch: var(--display-stretch, 100%);
+      text-transform: var(--display-transform, none);
+      letter-spacing: var(--display-tracking, -0.02em);
+      line-height: var(--display-leading, 1.05);
       font-size: 1.3rem;
       color: var(--brown-dark);
       margin-bottom: 8px;
@@ -1231,9 +1292,13 @@
     }
 
     .faq-item h4 {
-      font-family: "Sigmar", cursive;
+      font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
+      font-weight: var(--display-weight, 700);
+      font-stretch: var(--display-stretch, 100%);
+      text-transform: var(--display-transform, none);
+      letter-spacing: var(--display-tracking, -0.02em);
+      line-height: var(--display-leading, 1.05);
       font-size: 0.95rem;
-      font-weight: 700;
       color: var(--brown-dark);
       margin-bottom: 8px;
     }
