@@ -376,6 +376,9 @@
     .mobile-menu details.mobile-dd a:last-child { color: #FDA11D; font-weight: 600; }
     /* ===== end dropdown ===== */
 </style>
+
+  <!-- SCROLL MOTION (shared) -->
+  <!--#include virtual="/partials/motion.html" -->
 </head>
 
 <body>
@@ -387,19 +390,19 @@
   <main id="main-content" tabindex="-1">
   <div class="hero-wrapper">
     <section class="hero">
-      <div class="hero-bg"></div>
+      <div class="hero-bg" data-parallax="90" data-parallax-scale="1.14"></div>
       <div class="hero-grain"></div>
       <div class="hero-dots" id="heroDots"></div>
       <div class="hero-content">
-        <div class="hero-eyebrow">☕ Roasted in Malaysia</div>
-        <h1 class="hero-title">Find the cup you've<br />been <em>looking for</em></h1>
-        <p class="hero-sub">Discover, compare and fall for specialty beans from Malaysia's best roasters — then buy fresh, straight from the source.</p>
-        <div class="hero-actions">
+        <div class="hero-eyebrow" data-anim="up" data-anim-on="load">☕ Roasted in Malaysia</div>
+        <h1 class="hero-title" data-anim="split" data-anim-on="load" data-anim-delay="0.12" data-anim-stagger="0.07">Find the cup you've<br />been <em>looking for</em></h1>
+        <p class="hero-sub" data-anim="up" data-anim-on="load" data-anim-delay="0.5">Discover, compare and fall for specialty beans from Malaysia's best roasters — then buy fresh, straight from the source.</p>
+        <div class="hero-actions" data-anim="up" data-anim-on="load" data-anim-delay="0.62">
           <a class="btn-primary" href="/find-your-beans">Find Your Perfect Bean →</a>
           <a class="btn-ghost" href="/shop">Browse all beans →</a>
           <a class="btn-ghost" href="#flavour-finder">Find by taste ↓</a>
         </div>
-        <p class="hero-trust"><strong>854 beans</strong> · <strong>59 roasters</strong> · one place, no middleman</p>
+        <p class="hero-trust" data-anim="up" data-anim-on="load" data-anim-delay="0.74"><strong>854 beans</strong> · <strong>59 roasters</strong> · one place, no middleman</p>
       </div>
       <div class="hero-teaser">What does your perfect cup taste like?</div>
     </section>
@@ -408,12 +411,12 @@
   <!-- PERSONA TILES -->
   <section class="persona-section">
     <div class="persona-inner">
-      <div class="persona-header reveal">
-        <div class="section-label">Where do you start?</div>
-        <h2 class="section-title">Find your way in</h2>
-        <p class="section-sub">You know the feeling, we know the coffee.</p>
+      <div class="persona-header">
+        <div class="section-label" data-anim="up">Where do you start?</div>
+        <h2 class="section-title" data-anim="split">Find your way in</h2>
+        <p class="section-sub" data-anim="up" data-anim-delay="0.1">You know the feeling, we know the coffee.</p>
       </div>
-      <div class="persona-grid reveal">
+      <div class="persona-grid" data-anim="stagger">
         <a class="persona-card" href="/shop?taste=Nutty%2FCocoa&amp;roast=Medium-Dark">
           <span class="persona-emoji">🌱</span>
           <span class="persona-name">New to specialty</span>
@@ -439,7 +442,7 @@
           <span class="persona-link">Show me →</span>
         </a>
       </div>
-      <p class="reveal" style="text-align:center;margin-top:22px;font-size:0.95rem;color:var(--text-muted);">
+      <p data-anim="up" style="text-align:center;margin-top:22px;font-size:0.95rem;color:var(--text-muted);">
         Prefer to visit in person? Browse the <a href="/coffee-roasters-malaysia" style="color:var(--accent-hover);font-weight:600;">directory of Malaysian coffee roasters by state</a> — real addresses and Google ratings for 72 roasters.
       </p>
     </div>
@@ -448,12 +451,12 @@
   <!-- HOW IT WORKS -->
   <section class="how-section" id="how">
     <div class="how-inner">
-      <div class="how-header reveal">
-        <div class="section-label">Simple Process</div>
-        <h2 class="section-title">Three steps to your next favourite cup</h2>
-        <p class="section-sub">One click, endless scroll! Abudance of coffee beans at your fingertips.</p>
+      <div class="how-header">
+        <div class="section-label" data-anim="up">Simple Process</div>
+        <h2 class="section-title" data-anim="split">Three steps to your next favourite cup</h2>
+        <p class="section-sub" data-anim="up" data-anim-delay="0.1">One click, endless scroll! Abudance of coffee beans at your fingertips.</p>
       </div>
-      <div class="steps reveal">
+      <div class="steps" data-anim="stagger" data-anim-stagger="0.12">
         <div class="step">
           <div class="step-icon"><img src="img/beanshub-icons/process-browse.jpeg" alt="Browse coffee beans"></div>
           <div class="step-num">1</div>
@@ -481,7 +484,7 @@
   <!-- QUIZ CTA -->
   <section class="quiz-cta-section">
     <div class="quiz-cta-inner">
-      <div class="quiz-cta-icons reveal" aria-hidden="true">
+      <div class="quiz-cta-icons" data-anim="stagger" data-anim-stagger="0.06" aria-hidden="true">
         <!-- mug -->
         <svg viewBox="0 0 64 64"><rect x="10" y="16" width="34" height="34" rx="7"/><path d="M44 24h6a7 7 0 0 1 0 14h-6"/><path d="M18 27h18M18 34h12"/></svg>
         <!-- tumbler -->
@@ -495,10 +498,10 @@
         <!-- travel mug -->
         <svg viewBox="0 0 64 64"><path d="M20 14h22v34a6 6 0 0 1-6 6h-10a6 6 0 0 1-6-6V14Z"/><path d="M42 22h6a6 6 0 0 1 0 12h-6"/><path d="M20 22h22"/></svg>
       </div>
-      <div class="reveal">
-        <h2 class="section-title">Get personalised recommendations.</h2>
-        <p class="section-sub">Wherever you are in your coffee journey, we'll learn your taste and guide you to beans you'll love.</p>
-        <a class="quiz-cta-btn" href="/find-your-beans">Take the quiz</a>
+      <div>
+        <h2 class="section-title" data-anim="split">Get personalised recommendations.</h2>
+        <p class="section-sub" data-anim="up" data-anim-delay="0.1">Wherever you are in your coffee journey, we'll learn your taste and guide you to beans you'll love.</p>
+        <a class="quiz-cta-btn" data-anim="up" data-anim-delay="0.2" href="/find-your-beans">Take the quiz</a>
       </div>
     </div>
   </section>
@@ -506,11 +509,11 @@
   <!-- LOOKING FOR SOMETHING SPECIFIC -->
   <section class="finder-section" id="flavour-finder">
     <div class="finder-inner">
-      <div class="finder-header reveal">
-        <div class="section-label">Find Your Cup</div>
-        <h2 class="section-title">Looking for something specific?</h2>
-        <p class="section-sub">Jump straight in by roast level, or pick the flavour you're craving today.</p>
-        <div class="finder-tabs" role="tablist">
+      <div class="finder-header">
+        <div class="section-label" data-anim="up">Find Your Cup</div>
+        <h2 class="section-title" data-anim="split">Looking for something specific?</h2>
+        <p class="section-sub" data-anim="up" data-anim-delay="0.1">Jump straight in by roast level, or pick the flavour you're craving today.</p>
+        <div class="finder-tabs" data-anim="up" data-anim-delay="0.18" role="tablist">
           <button class="finder-tab active" role="tab" aria-selected="true" aria-controls="panel-roast" id="tab-roast" data-panel="panel-roast">Roast</button>
           <button class="finder-tab" role="tab" aria-selected="false" aria-controls="panel-taste" id="tab-taste" data-panel="panel-taste">Taste</button>
         </div>
@@ -626,12 +629,12 @@
   <!-- LATEST BEANS -->
   <section class="featured-section" id="latestBeans">
     <div class="featured-inner">
-      <div class="featured-header reveal">
+      <div class="featured-header">
         <div>
-          <div class="section-label">Fresh Arrivals</div>
-          <h2 class="section-title" style="margin-bottom:0">Latest beans in town</h2>
+          <div class="section-label" data-anim="up">Fresh Arrivals</div>
+          <h2 class="section-title" data-anim="split" style="margin-bottom:0">Latest beans in town</h2>
         </div>
-        <a href="/shop">View all beans →</a>
+        <a data-anim="up" data-anim-delay="0.15" href="/shop">View all beans →</a>
       </div>
     </div>
     <div class="latest-marquee reveal">
@@ -651,8 +654,8 @@
   <!-- STATS -->
   <section class="stats-section">
     <div class="stats-inner">
-      <div class="stats-title reveal">Malaysia's most complete specialty coffee directory</div>
-      <div class="stats-grid reveal">
+      <div class="stats-title" data-anim="fill" style="--tbh-fill-from:rgba(253,246,236,0.58);--tbh-fill-to:#FDF6EC">Malaysia's most complete specialty coffee directory</div>
+      <div class="stats-grid" data-anim="stagger" data-anim-stagger="0.14">
         <div class="stat-item">
           <div class="stat-num" data-target="854">0</div>
           <div class="stat-label">Coffee Beans Listed</div>
@@ -672,16 +675,16 @@
   <!-- LATEST FROM THE LIBRARY -->
   <section class="library-section">
     <div class="library-inner">
-      <div class="library-header reveal">
+      <div class="library-header">
         <div>
-          <div class="section-label">From the Coffee Library</div>
-          <h2 class="section-title" style="margin-bottom:0">Latest from the Library</h2>
+          <div class="section-label" data-anim="up">From the Coffee Library</div>
+          <h2 class="section-title" data-anim="split" style="margin-bottom:0">Latest from the Library</h2>
         </div>
-        <a href="/library">Read all guides →</a>
+        <a data-anim="up" data-anim-delay="0.15" href="/library">Read all guides →</a>
       </div>
-      <div class="library-grid reveal">
+      <div class="library-grid" data-anim="stagger" data-anim-stagger="0.12">
         <a class="library-card" href="/posts/asia-coffee-origins-yunnan-thailand">
-          <div class="library-card-media">
+          <div class="library-card-media" data-parallax="26" data-parallax-scale="1.12">
             <img alt="Yunnan and Thailand specialty coffee beans" loading="lazy" src="/img/asia-coffee-origins-yunnan-thailand.webp" />
           </div>
           <div class="library-card-body">
@@ -692,7 +695,7 @@
           </div>
         </a>
         <a class="library-card" href="/posts/best-coffee-beans-malaysia">
-          <div class="library-card-media">
+          <div class="library-card-media" data-parallax="26" data-parallax-scale="1.12">
             <img alt="Best coffee beans in Malaysia buying guide" loading="lazy" src="/img/best-coffee-beans-malaysia.webp" />
           </div>
           <div class="library-card-body">
@@ -703,7 +706,7 @@
           </div>
         </a>
         <a class="library-card" href="/posts/brazil-coffee-beans-to-try">
-          <div class="library-card-media">
+          <div class="library-card-media" data-parallax="26" data-parallax-scale="1.12">
             <img alt="Brazil coffee beans worth trying" loading="lazy" src="/img/brazil-coffee-beans-to-try.webp" />
           </div>
           <div class="library-card-body">
@@ -720,16 +723,16 @@
   <!-- NEWSLETTER -->
   <div class="newsletter-wrap" id="newsletter">
     <section class="newsletter-section">
-      <div class="newsletter-eyebrow">Join the Hub</div>
-      <div class="newsletter-title reveal">New roasters. New beans.<br />First in your inbox.</div>
-      <p class="newsletter-sub reveal">Monthly picks, fresh roaster drops, and brewing guides — curated for Malaysian coffee lovers.</p>
-      <div class="newsletter-form reveal" id="homeSubForm">
+      <div class="newsletter-eyebrow" data-anim="up">Join the Hub</div>
+      <div class="newsletter-title" data-anim="split" data-anim-stagger="0.055">New roasters. New beans.<br />First in your inbox.</div>
+      <p class="newsletter-sub" data-anim="up" data-anim-delay="0.15">Monthly picks, fresh roaster drops, and brewing guides — curated for Malaysian coffee lovers.</p>
+      <div class="newsletter-form" data-anim="up" data-anim-delay="0.25" id="homeSubForm">
         <input class="newsletter-input sub-name" aria-label="Your first name" autocomplete="given-name" placeholder="Your first name" style="flex:0.8" type="text" />
         <input class="newsletter-input sub-email" aria-label="Your email address" autocomplete="email" placeholder="Your email address" type="email" />
         <button class="newsletter-btn" onclick="handleHomeSub()">Join the Hub →</button>
       </div>
       <p id="homeSubMsg" style="display:none;color:#A8D5A2;font-size:0.85rem;margin-top:12px;position:relative;z-index:1;">🎉 Welcome to The Beans Hub! Check your inbox.</p>
-      <div class="newsletter-perks">
+      <div class="newsletter-perks" data-anim="stagger" data-anim-stagger="0.08">
         <span class="newsletter-perk">Monthly bean picks</span>
         <span class="newsletter-perk">New roaster alerts</span>
         <span class="newsletter-perk">Brewing tips</span>
@@ -914,13 +917,19 @@
 
     var observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(e) {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          if (e.target.closest('.stats-section')) animateCounters();
-        }
+        if (e.isIntersecting) e.target.classList.add('visible');
       });
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+
+    var statsSection = document.querySelector('.stats-section');
+    if (statsSection) {
+      new IntersectionObserver(function(entries, obs) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) { animateCounters(); obs.disconnect(); }
+        });
+      }, { threshold: 0.25 }).observe(statsSection);
+    }
 
     // FINDER TABS (Roast / Taste)
     document.querySelectorAll('.finder-tab').forEach(function (tab) {

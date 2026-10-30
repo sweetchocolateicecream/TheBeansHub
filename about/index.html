@@ -555,6 +555,9 @@ color: var(--green);
     .sub-name, .sub-email { min-width: 100%; }
   }
 </style>
+
+<!-- SCROLL MOTION (shared) -->
+<!--#include virtual="/partials/motion.html" -->
 </head>
 <body>
 <!-- NAV -->
@@ -562,9 +565,9 @@ color: var(--green);
 
 <!-- HERO: MALAYSIA MAP FILLING WITH BEANS -->
 <section class="map-hero">
-  <div class="section-label">Our Story</div>
-  <h1>Malaysia's specialty coffee,<br>all on <em>one map</em>.</h1>
-  <p class="map-hero-sub">The Beans Hub gathers every specialty coffee bean roasted in Malaysia into one place — searchable by taste, origin, roast level and process — then sends you straight to the roaster to buy it fresh.</p>
+  <div class="section-label" data-anim="up" data-anim-on="load">Our Story</div>
+  <h1 data-anim="split" data-anim-on="load" data-anim-delay="0.1" data-anim-stagger="0.07">Malaysia's specialty coffee,<br>all on <em>one map</em>.</h1>
+  <p class="map-hero-sub" data-anim="up" data-anim-on="load" data-anim-delay="0.55">The Beans Hub gathers every specialty coffee bean roasted in Malaysia into one place — searchable by taste, origin, roast level and process — then sends you straight to the roaster to buy it fresh.</p>
   <div class="map-wrap">
     <svg id="beanMap" viewBox="0 0 1000 331" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Map of Malaysia drawn from coffee beans"></svg>
   </div>
@@ -597,11 +600,11 @@ color: var(--green);
 
 <!-- STORY -->
 <section class="story-section">
-  <div class="story-sticky reveal">
-    <div class="section-label">Why We Built This</div>
-    <h2 id="why-we-built-this">Finding great coffee here shouldn't be <em>this hard</em>.</h2>
+  <div class="story-sticky">
+    <div class="section-label" data-anim="up">Why We Built This</div>
+    <h2 id="why-we-built-this" data-anim="split">Finding great coffee here shouldn't be <em>this hard</em>.</h2>
   </div>
-  <div class="story-body reveal">
+  <div class="story-body" data-anim="stagger" data-anim-stagger="0.1">
     <p class="story-kicker">The Beans Hub started with a Saturday morning wasted across eleven Instagram pages and four Shopee tabs — and still no beans in the cart.</p>
     <p>If you drink specialty coffee in Malaysia, you know the routine. You stumble across a roaster by luck, screenshot a bag you can't find again, or give up and grab whatever's on the shelf. The roasters are here — brilliant ones — but there was no single place to see what they'd all roasted this week.</p>
     <p>So we built one. <strong>The Beans Hub is a discovery platform, not a shop.</strong> We catalogue the beans, standardise the taste notes, list the origin, process, roast level and price — and then we hand you over to the roaster to buy direct. We've done the legwork so your only job is choosing between the washed Ethiopia and the anaerobic Colombia.</p>
@@ -612,47 +615,47 @@ color: var(--green);
 <!-- HOW IT WORKS -->
 <section class="how-section">
   <div class="how-inner">
-    <div class="how-head reveal">
+    <div class="how-head">
       <div>
-        <div class="section-label">How It Works</div>
-        <h2 id="how-it-works">Three steps. No account. No checkout.</h2>
+        <div class="section-label" data-anim="up">How It Works</div>
+        <h2 id="how-it-works" data-anim="split">Three steps. No account. No checkout.</h2>
       </div>
-      <a href="/shop">Explore all beans →</a>
+      <a data-anim="up" data-anim-delay="0.15" href="/shop">Explore all beans →</a>
     </div>
-    <div class="how-row reveal">
+    <div class="how-row" data-anim="stagger" data-anim-stagger="0.1">
       <div class="how-num">01</div>
       <div class="how-body">
         <h3>Browse the whole scene</h3>
         <p>Every specialty bean we can find from roasters across Malaysia, in one catalogue — compared side by side instead of scattered across dozens of stores.</p>
         <div class="how-tags"><span>854 beans</span><span>59 roasters</span><span>28 origins</span></div>
       </div>
-      <img src="/img/beanshub-icons/process-browse.jpeg" alt="" loading="lazy">
+      <img data-parallax="34" src="/img/beanshub-icons/process-browse.jpeg" alt="" loading="lazy">
     </div>
-    <div class="how-row reveal">
+    <div class="how-row" data-anim="stagger" data-anim-stagger="0.1">
       <div class="how-num">02</div>
       <div class="how-body">
         <h3>Filter to your taste</h3>
         <p>Narrow it down by taste family, origin country, processing method and roast level until what's left is exactly your kind of cup.</p>
         <div class="how-tags"><span>Fruity</span><span>Nutty/Cocoa</span><span>Floral</span><span>Sweet</span><span>+4 more</span></div>
       </div>
-      <img src="/img/beanshub-icons/process-filter.jpeg" alt="" loading="lazy">
+      <img data-parallax="34" src="/img/beanshub-icons/process-filter.jpeg" alt="" loading="lazy">
     </div>
-    <div class="how-row reveal">
+    <div class="how-row" data-anim="stagger" data-anim-stagger="0.1">
       <div class="how-num">03</div>
       <div class="how-body">
         <h3>Buy direct from the roaster</h3>
         <p>One click takes you to the roaster's own store. Freshly roasted, shipped by the people who roasted it, with nothing added in between.</p>
         <div class="how-tags"><span>No middleman</span><span>No markup</span><span>Roasted fresh</span></div>
       </div>
-      <img src="/img/beanshub-icons/process-buy-direct.jpeg" alt="" loading="lazy">
+      <img data-parallax="34" src="/img/beanshub-icons/process-buy-direct.jpeg" alt="" loading="lazy">
     </div>
   </div>
 </section>
 
 <!-- COUNT-UP STATS -->
 <section class="stats-section" id="statsSection">
-  <h2 class="stats-title reveal" id="by-the-numbers">Growing every single week.</h2>
-  <div class="stats-grid">
+  <h2 class="stats-title" id="by-the-numbers" data-anim="fill" style="--tbh-fill-from:rgba(253,246,236,0.58);--tbh-fill-to:#FDF6EC">Growing every single week.</h2>
+  <div class="stats-grid" data-anim="stagger" data-anim-stagger="0.12">
     <div class="stat-item"><div class="stat-num"><span data-count="854">0</span>+</div><div class="stat-label">Coffee Beans</div></div>
     <div class="stat-item"><div class="stat-num"><span data-count="59">0</span></div><div class="stat-label">Malaysian Roasters</div></div>
     <div class="stat-item"><div class="stat-num"><span data-count="28">0</span></div><div class="stat-label">Origin Countries</div></div>
@@ -662,18 +665,18 @@ color: var(--green);
 
 <!-- FOR ROASTERS -->
 <section class="roasters-section">
-  <div class="section-label reveal">For Roasters</div>
-  <h2 class="reveal" id="for-roasters">We exist to send customers to you.</h2>
-  <p class="roasters-note reveal">The Beans Hub doesn't compete with anyone — we're a discovery platform. If you roast in Malaysia and want your beans listed (or your listing updated), we'd love to hear from you. Listing is currently free.</p>
-  <a class="roasters-cta reveal" href="/contact">Get listed →</a>
+  <div class="section-label" data-anim="up">For Roasters</div>
+  <h2 id="for-roasters" data-anim="split">We exist to send customers to you.</h2>
+  <p class="roasters-note" data-anim="up" data-anim-delay="0.12">The Beans Hub doesn't compete with anyone — we're a discovery platform. If you roast in Malaysia and want your beans listed (or your listing updated), we'd love to hear from you. Listing is currently free.</p>
+  <a class="roasters-cta" data-anim="up" data-anim-delay="0.22" href="/contact">Get listed →</a>
 </section>
 
 <!-- FAQ -->
 <section class="faq-section">
   <div class="faq-inner">
-    <div class="section-label reveal">Good Questions</div>
-    <h2 class="reveal" id="faq">Things people ask us.</h2>
-    <div class="reveal">
+    <div class="section-label" data-anim="up">Good Questions</div>
+    <h2 id="faq" data-anim="split">Things people ask us.</h2>
+    <div data-anim="stagger" data-anim-stagger="0.07">
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Does The Beans Hub sell coffee beans?<span class="faq-icon">+</span></button>
         <div class="faq-a"><p>No — and that's the point. Every bean links straight to the Malaysian roaster who roasted it. You buy direct from them, so your beans ship fresher and the roaster keeps the full sale.</p></div>
@@ -700,10 +703,10 @@ color: var(--green);
 
 <!-- SUBSCRIPTION -->
 <section class="sub-section">
-  <div class="section-label reveal" style="color:var(--accent)">Join the Community</div>
-  <div class="sub-title reveal">Your next favourite coffee is out there.</div>
-  <p class="sub-desc reveal">New beans, roaster spotlights and brewing tips — straight to your inbox. No spam, just good coffee.</p>
-  <div class="sub-form reveal" id="aboutSub">
+  <div class="section-label" data-anim="up" style="color:var(--accent)">Join the Community</div>
+  <div class="sub-title" data-anim="split" data-anim-stagger="0.055">Your next favourite coffee is out there.</div>
+  <p class="sub-desc" data-anim="up" data-anim-delay="0.15">New beans, roaster spotlights and brewing tips — straight to your inbox. No spam, just good coffee.</p>
+  <div class="sub-form" data-anim="up" data-anim-delay="0.25" id="aboutSub">
     <input class="sub-name" placeholder="Your first name 👋" type="text">
     <input class="sub-email" placeholder="Your email address" type="email">
     <button class="sub-btn" onclick="handleSubscribe('aboutSub')">Count me in →</button>

@@ -1,0 +1,308 @@
+<!-- ============================================================
+     THE BEANS HUB — SITEWIDE SCROLL MOTION
+     Single source of truth for scroll transitions and the
+     word-by-word typography reveal. Pages pull this in with an
+     SSI include at the END of <head> (it must land before the
+     body paints, or animated elements flash in then hide).
+
+     Markup API — add these attributes to any element:
+       data-anim="split"    headings: words rise out of a mask
+       data-anim="up"       fade + rise
+       data-anim="fade"     fade only
+       data-anim="left"     fade + slide in from the left
+       data-anim="stagger"  direct children fade + rise in sequence
+       data-anim="fill"     text colour wipes in, tied to scroll
+       data-anim-on="load"  play on load instead of on scroll
+       data-anim-delay="0.2"        extra delay, seconds
+       data-anim-stagger="0.05"     per-word / per-child step, seconds
+       data-parallax="60"           drifts +/-60px against the scroll
+       data-parallax-scale="1.12"   scale to hide the parallax gap
+
+     Nothing is hidden unless this script runs, so a JS failure or
+     prefers-reduced-motion leaves every page fully readable.
+     ============================================================ -->
+<style>
+  /* ── Lenis smooth scroll (its required base styles) ── */
+  html.lenis, html.lenis body { height: auto; }
+  html.lenis.lenis-smooth { scroll-behavior: auto !important; }
+  .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+  .lenis.lenis-stopped { overflow: hidden; }
+  .lenis.lenis-smooth iframe { pointer-events: none; }
+
+  html.tbh-motion { --tbh-ease: cubic-bezier(0.22, 1, 0.36, 1); }
+
+  /* Anchor jumps clear the fixed announce bar + nav (38px + 68px). */
+  html.tbh-motion [id] { scroll-margin-top: 124px; }
+
+  /* ── fade family: resting state ── */
+  html.tbh-motion [data-anim="up"],
+  html.tbh-motion [data-anim="fade"],
+  html.tbh-motion [data-anim="left"],
+  html.tbh-motion [data-anim="stagger"] > * {
+    opacity: 0;
+    transition: opacity 0.8s var(--tbh-ease), transform 0.9s var(--tbh-ease);
+  }
+  html.tbh-motion [data-anim="up"],
+  html.tbh-motion [data-anim="stagger"] > * { transform: translate3d(0, 30px, 0); }
+  html.tbh-motion [data-anim="left"] { transform: translate3d(-34px, 0, 0); }
+
+  html.tbh-motion [data-anim].is-in,
+  html.tbh-motion [data-anim="stagger"].is-in > * { opacity: 1; transform: none; }
+
+  /* ── split headings: each word rides up out of its own mask ── */
+  html.tbh-motion .tbh-w {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+    /* padding opens the mask past the ascenders/descenders and the
+       italic overhang; the negative margin takes the space back. */
+    padding: 0.16em 0.06em 0.22em;
+    margin: -0.16em -0.06em -0.22em;
+  }
+  html.tbh-motion .tbh-wi {
+    display: inline-block;
+    opacity: 0;
+    transform: translate3d(0, 115%, 0);
+    transition: transform 1s var(--tbh-ease), opacity 0.7s var(--tbh-ease);
+  }
+  html.tbh-motion [data-anim="split"].is-in .tbh-wi { opacity: 1; transform: none; }
+
+  /* ── scroll-scrubbed colour wipe across a line of text ── */
+  @supports ((-webkit-background-clip: text) or (background-clip: text)) {
+    html.tbh-motion [data-anim="fill"] {
+      background-image: linear-gradient(to right,
+        var(--tbh-fill-to, #296241) 50%, var(--tbh-fill-from, #5a6e5a) 50%);
+      background-size: 200% 100%;
+      background-repeat: no-repeat;
+      background-position: var(--tbh-fill, 100%) 0;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  html.tbh-motion [data-parallax] {
+    will-change: transform;
+    transform: translate3d(0, var(--tbh-py, 0px), 0) scale(var(--tbh-ps, 1));
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html.tbh-motion [data-anim],
+    html.tbh-motion [data-anim="stagger"] > *,
+    html.tbh-motion .tbh-wi {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+    html.tbh-motion [data-parallax] { transform: none !important; }
+    html.tbh-motion [data-anim="fill"] {
+      background-image: none !important;
+      -webkit-text-fill-color: currentColor !important;
+      color: var(--tbh-fill-to, inherit) !important;
+    }
+  }
+</style>
+
+<script>
+  /* Runs during head parse so nothing paints before it hides. Opting in with
+     a class means no-JS and reduced-motion visitors never see a blank page. */
+  (function () {
+    var m = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (m && m.matches) return;
+    if (!('IntersectionObserver' in window)) return;
+    document.documentElement.classList.add('tbh-motion');
+  })();
+</script>
+
+<!-- Lenis is vendored at /js/lenis.min.js: the sitewide CSP is
+     script-src 'self', so a CDN copy would be blocked. If it fails to
+     load, the page falls back to native scrolling and everything else
+     below still runs. -->
+<script defer src="/js/lenis.min.js"></script>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    if (!root.classList.contains('tbh-motion')) return;
+
+    var lenis = null;
+    var scrollFx = [];
+
+    /* ── split every [data-anim="split"] heading into masked words ──
+       Recurses so <em> keeps its styling and <br> keeps its line break. */
+    function wrapWords(node, out) {
+      Array.prototype.slice.call(node.childNodes).forEach(function (n) {
+        if (n.nodeType === 3) {
+          if (!n.nodeValue.trim()) return;
+          var frag = document.createDocumentFragment();
+          n.nodeValue.split(/(\s+)/).forEach(function (part) {
+            if (!part) return;
+            if (!part.trim()) { frag.appendChild(document.createTextNode(' ')); return; }
+            var mask = document.createElement('span');
+            mask.className = 'tbh-w';
+            var word = document.createElement('span');
+            word.className = 'tbh-wi';
+            word.textContent = part;
+            mask.appendChild(word);
+            frag.appendChild(mask);
+            out.push(word);
+          });
+          node.replaceChild(frag, n);
+        } else if (n.nodeType === 1 && n.nodeName !== 'BR') {
+          wrapWords(n, out);
+        }
+      });
+    }
+
+    function splitHeading(el) {
+      var words = [];
+      wrapWords(el, words);
+      var step = parseFloat(el.getAttribute('data-anim-stagger')) || 0.05;
+      var base = parseFloat(el.getAttribute('data-anim-delay')) || 0;
+      words.forEach(function (w, i) {
+        // Cap the ramp so a long headline still lands in about a second.
+        var d = base + Math.min(i, 16) * step;
+        w.style.transitionDelay = d + 's, ' + d + 's';
+      });
+    }
+
+    function stagger(el) {
+      var step = parseFloat(el.getAttribute('data-anim-stagger')) || 0.09;
+      var base = parseFloat(el.getAttribute('data-anim-delay')) || 0;
+      Array.prototype.slice.call(el.children).forEach(function (c, i) {
+        c.style.transitionDelay = (base + Math.min(i, 12) * step) + 's';
+      });
+    }
+
+    /* ── scroll-linked effects: parallax drift and the text colour wipe ── */
+    function measure() {
+      var vh = window.innerHeight || 1;
+      scrollFx.forEach(function (fx) {
+        var r = fx.el.getBoundingClientRect();
+        if (r.bottom < -vh || r.top > vh * 2) return;
+        if (fx.kind === 'parallax') {
+          var centred = (r.top + r.height / 2 - vh / 2) / (vh / 2 + r.height / 2);
+          fx.el.style.setProperty('--tbh-py', (-centred * fx.amount).toFixed(1) + 'px');
+        } else {
+          var p = (vh * 0.85 - r.top) / (r.height + vh * 0.25);
+          p = p < 0 ? 0 : p > 1 ? 1 : p;
+          fx.el.style.setProperty('--tbh-fill', (100 - p * 100).toFixed(1) + '%');
+        }
+      });
+    }
+
+    function collectScrollFx() {
+      document.querySelectorAll('[data-parallax]').forEach(function (el) {
+        var scale = parseFloat(el.getAttribute('data-parallax-scale'));
+        if (scale) el.style.setProperty('--tbh-ps', scale);
+        scrollFx.push({ el: el, kind: 'parallax', amount: parseFloat(el.getAttribute('data-parallax')) || 50 });
+      });
+      document.querySelectorAll('[data-anim="fill"]').forEach(function (el) {
+        scrollFx.push({ el: el, kind: 'fill' });
+      });
+    }
+
+    function startLenis() {
+      if (!window.Lenis || (window.matchMedia && window.matchMedia('(pointer: coarse)').matches)) return false;
+      lenis = new Lenis({
+        duration: 1.1,
+        easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+        smoothWheel: true,
+        syncTouch: false
+      });
+      // Exposed so page scripts (and anything that needs to drive the page)
+      // can scroll through Lenis instead of fighting it.
+      window.tbhLenis = lenis;
+      function frame(time) { lenis.raf(time); measure(); requestAnimationFrame(frame); }
+      requestAnimationFrame(frame);
+      return true;
+    }
+
+    function startNativeTicker() {
+      var queued = false;
+      function onScroll() {
+        if (queued) return;
+        queued = true;
+        requestAnimationFrame(function () { queued = false; measure(); });
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll, { passive: true });
+      measure();
+    }
+
+    /* In-page links are offset for the fixed header and eased through Lenis. */
+    function smoothAnchors() {
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest && e.target.closest('a[href^="#"]');
+        if (!a || a.classList.contains('skip-link') || a.hasAttribute('data-lenis-ignore')) return;
+        var hash = a.getAttribute('href');
+        if (!hash || hash === '#') return;
+        var target = document.getElementById(hash.slice(1));
+        if (!target) return;
+        e.preventDefault();
+        if (lenis) lenis.scrollTo(target, { offset: -118, duration: 1.2 });
+        else target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (history.pushState) history.pushState(null, '', hash);
+      });
+    }
+
+    function init() {
+      try {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          });
+        }, { rootMargin: '0px 0px -12% 0px', threshold: 0 });
+
+        document.querySelectorAll('[data-anim]').forEach(function (el) {
+          var kind = el.getAttribute('data-anim');
+          if (kind === 'split') splitHeading(el);
+          else if (kind === 'stagger') stagger(el);
+          else {
+            var d = parseFloat(el.getAttribute('data-anim-delay'));
+            if (d) el.style.transitionDelay = d + 's, ' + d + 's';
+          }
+          if (kind === 'fill') return; // scrubbed, not toggled
+          if (el.getAttribute('data-anim-on') === 'load') {
+            // A reflow pins the resting state so the transition still plays,
+            // and a timer (not rAF) fires even in a backgrounded tab.
+            void el.offsetWidth;
+            setTimeout(function () { el.classList.add('is-in'); }, 20);
+          } else {
+            io.observe(el);
+          }
+        });
+
+        // A deep link or a restored scroll position can leave elements above
+        // the viewport that will never intersect. Show those straight away.
+        function revealPassed() {
+          document.querySelectorAll('[data-anim]:not(.is-in)').forEach(function (el) {
+            if (el.getAttribute('data-anim') === 'fill') return;
+            if (el.getBoundingClientRect().bottom < 0) {
+              el.style.transition = 'none';
+              el.classList.add('is-in');
+            }
+          });
+        }
+        // A hash jump, a restored position or late-loading content can all
+        // move the page after init, so keep sweeping while things settle.
+        revealPassed();
+        window.addEventListener('load', revealPassed);
+        var settle = setInterval(revealPassed, 250);
+        setTimeout(function () { clearInterval(settle); }, 6000);
+
+        collectScrollFx();
+        smoothAnchors();
+        if (!startLenis()) startNativeTicker();
+      } catch (err) {
+        // Never trap the page behind a broken animation.
+        root.classList.remove('tbh-motion');
+      }
+    }
+
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+    else init();
+  })();
+</script>
