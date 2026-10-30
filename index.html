@@ -173,18 +173,23 @@
     .step p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.65; }
     .step-connector { padding-top: 36px; font-size: 1.6rem; color: var(--accent); opacity: 0.5; flex-shrink: 0; }
 
-    /* FEATURED BEANS */
-    .featured-section { background: white; padding: 80px 48px; }
-    .featured-inner { max-width: 1200px; margin: 0 auto; }
-    .featured-tabs { display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap; }
-    .featured-tab { padding: 8px 22px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; cursor: pointer; border: 1.5px solid var(--border); background: transparent; color: var(--text-muted); font-family: "Outfit", sans-serif; transition: all 0.18s; }
-    .featured-tab.active { background: var(--green); color: #FDF6EC; border-color: var(--green); }
-    .featured-tab:hover:not(.active) { border-color: var(--green); color: var(--green); }
+    /* LATEST BEANS */
+    .featured-section { background: white; padding: 80px 0; overflow: hidden; }
+    .featured-inner { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
     .featured-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 28px; flex-wrap: wrap; gap: 12px; }
     .featured-header a { color: var(--accent); text-decoration: none; font-size: 0.85rem; font-weight: 600; }
-    .bean-carousel { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .bean-panel { display: none; }
-    .bean-panel.active { display: block; }
+    .latest-marquee { position: relative; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%); }
+    .latest-track { display: flex; gap: 20px; width: max-content; padding: 6px 48px 16px; animation: latest-scroll var(--marquee-duration, 70s) linear infinite; }
+    .latest-marquee:hover .latest-track, .latest-marquee:focus-within .latest-track { animation-play-state: paused; }
+    .latest-group { display: flex; gap: 20px; }
+    .latest-track .bean-card { flex: 0 0 272px; width: 272px; }
+    .latest-skeleton { flex: 0 0 272px; width: 272px; height: 352px; border-radius: 14px; border: 1px solid var(--border); background: linear-gradient(100deg, #f6f2ea 30%, #fbf8f2 50%, #f6f2ea 70%); background-size: 220% 100%; animation: latest-shimmer 1.4s linear infinite; }
+    @keyframes latest-scroll { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(calc(-1 * var(--marquee-shift, 50%)), 0, 0); } }
+    @keyframes latest-shimmer { from { background-position: 120% 0; } to { background-position: -120% 0; } }
+    @media (prefers-reduced-motion: reduce) {
+      .latest-track { animation: none; }
+      .latest-marquee { overflow-x: auto; }
+    }
 
     /* LATEST FROM THE LIBRARY */
     .library-section { background: var(--cream); padding: 80px 48px; }
@@ -270,7 +275,6 @@
     /* RESPONSIVE */
     @media (max-width: 1024px) {
       .roasters-grid { grid-template-columns: repeat(2, 1fr); }
-      .bean-carousel { grid-template-columns: repeat(2, 1fr); }
       .persona-grid { grid-template-columns: repeat(2, 1fr); }
       .roast-grid { grid-template-columns: repeat(3, 1fr); }
     }
@@ -285,7 +289,11 @@
       .hero-content { padding: 48px 28px; }
       .hero-title { font-size: 2rem; }
       .hero-teaser { left: 28px; bottom: 28px; }
-      .finder-section, .how-section, .featured-section, .roasters-section, .stats-section, .liberica-section, .library-section { padding: 56px 20px; }
+      .finder-section, .how-section, .roasters-section, .stats-section, .liberica-section, .library-section { padding: 56px 20px; }
+      .featured-section { padding: 56px 0; }
+      .featured-inner { padding: 0 20px; }
+      .latest-track { padding: 6px 20px 16px; }
+      .latest-track .bean-card, .latest-skeleton { flex-basis: 236px; width: 236px; }
       .finder-grid { grid-template-columns: repeat(2, 1fr); }
       .roast-grid { grid-template-columns: repeat(2, 1fr); }
       .quiz-cta-section { padding: 52px 20px 44px; }
@@ -295,7 +303,6 @@
       .library-grid { grid-template-columns: 1fr; }
       .steps { flex-direction: column; align-items: center; gap: 24px; }
       .step-connector { display: none; }
-      .bean-carousel { grid-template-columns: 1fr; }
       .liberica-grid { grid-template-columns: 1fr; }
       .stats-grid { grid-template-columns: repeat(3, 1fr); }
       .newsletter-section { padding: 40px 28px; }
@@ -616,25 +623,27 @@
     </div>
   </section>
 
-  <!-- FEATURED BEANS -->
-  <section class="featured-section">
+  <!-- LATEST BEANS -->
+  <section class="featured-section" id="latestBeans">
     <div class="featured-inner">
       <div class="featured-header reveal">
         <div>
-          <div class="section-label">Featured Beans</div>
-          <h2 class="section-title" style="margin-bottom:0">Handpicked for you</h2>
+          <div class="section-label">Fresh Arrivals</div>
+          <h2 class="section-title" style="margin-bottom:0">Latest beans in town</h2>
         </div>
         <a href="/shop">View all beans →</a>
       </div>
-      <div class="featured-tabs reveal">
-        <button class="featured-tab active" onclick="switchTab(this,'ethiopia')">🇪🇹 Ethiopia</button>
-        <button class="featured-tab" onclick="switchTab(this,'liberica')">🇲🇾 Liberica</button>
-      </div>
-      <div class="bean-panel active" id="panel-ethiopia">
-        <div class="bean-carousel" id="ethiopiaGrid"></div>
-      </div>
-      <div class="bean-panel" id="panel-liberica">
-        <div class="bean-carousel" id="libericaGrid"></div>
+    </div>
+    <div class="latest-marquee reveal">
+      <div class="latest-track" id="latestTrack">
+        <div class="latest-group">
+          <div class="latest-skeleton"></div>
+          <div class="latest-skeleton"></div>
+          <div class="latest-skeleton"></div>
+          <div class="latest-skeleton"></div>
+          <div class="latest-skeleton"></div>
+          <div class="latest-skeleton"></div>
+        </div>
       </div>
     </div>
   </section>
@@ -733,39 +742,158 @@
   <!--#include virtual="/partials/footer.html" -->
 
   <script>
-    const ETHIOPIA_BEANS = [{"brand":"103 Coffee","name":"Apartment Blend (Espresso)","taste_notes":["Orange","Chocolate","Floral"],"price_200g":"RM 73","price_500g":"RM 135","image_url":"https://down-my.img.susercontent.com/file/my-11134207-7rasi-m0vte42ecvzs27.webp","link":"https://www.103coffee.com/products/apartment-blend-espresso"},{"brand":"103 Coffee","name":"Ethiopia Geisha Village Lot 108","taste_notes":["Lychee","Pear","Honey"],"price_200g":"RM 150","price_500g":null,"image_url":"https://down-my.img.susercontent.com/file/my-11134207-820l4-mgw6lav76vii52.webp","link":"https://www.103coffee.com/products/ethiopia-geisha-village-rr-filter"},{"brand":"103 Coffee","name":"Ethiopia Yirgacheffe Koke","taste_notes":["Purple Grape","Honey","Floral"],"price_200g":"RM 76","price_500g":null,"image_url":"https://down-my.img.susercontent.com/file/my-11134207-820l4-mgw6lav76vii52.webp","link":"https://www.103coffee.com/products/ethiopia-yirgacheffe-koke"},{"brand":"103 Coffee","name":"Summerblast Blend (Espresso)","taste_notes":["Dried Mango","Blackberry Jam","Floral"],"price_200g":"RM 73","price_500g":null,"image_url":"https://down-my.img.susercontent.com/file/my-11134207-7rasj-m0xslj03dll9f6.webp","link":"https://www.103coffee.com/products/poppin-mango-blend-espresso-roast"},{"brand":"2f+ Coffee Roastery","name":"Ethiopia Alo Sidama Bensa Natural 102Hrs","taste_notes":["Red Currant","Yellow Peach","Roselle"],"price_200g":"RM 150","price_500g":null,"image_url":"https://cdn.store-assets.com/s/390997/i/91590553.png","link":"https://www.2fcoffeeroastery.com/collections/coffee-bean-1/products/ethiopia-alo-sidama-bensa-natural-102hrs"},{"brand":"2f+ Coffee Roastery","name":"Ethiopia Guji x China Yunan — 13th Anniversary","taste_notes":["Raisin","Grape","Berries"],"price_200g":"RM 50","price_500g":null,"image_url":"https://cdn.store-assets.com/s/390997/i/93889002.png","link":"https://www.2fcoffeeroastery.com/collections/coffee-bean-1/products/ethiopia-guji-x-china-yunan-13th-anniversary-special-roast"}];
+    var LATEST_COUNT = 10;
+    var MAX_PER_ROASTER = 2;
+    var MARQUEE_SPEED = 40; // pixels per second
+    var latestRequested = false;
 
-    const LIBERICA_BEANS = [{"brand":"Bad Artist Coffee Co","name":"Malaysia MyLiberica Johor Jason Liew","taste_notes":["Honey","Brown Sugar","Jackfruit"],"price_200g":"RM 37","price_500g":null,"image_url":"https://badartistcoffee.com/cdn/shop/files/ASIA_-_Malaysia_MyLiberica_Johor.jpg?v=1765365977","link":"https://badartistcoffee.com/products/malaysia-myliberica-johor-jason-liew"},{"brand":"Ghostbird Coffee Co","name":"Johor Liberica Anaerobic Natural N26","taste_notes":["Peach","Dried Longan","Red Dates"],"price_200g":"RM 213","price_500g":null,"image_url":"https://ghostbirdcoffee.co/cdn/shop/files/liberica_sun_dried_380x.png?v=1760502195","link":"https://ghostbirdcoffee.co/products/malaysia-liberica-anaerobic-natural-n26"}];
-
-    function renderBeans(data, containerId) {
-      const grid = document.getElementById(containerId);
-      if (!grid) return;
-      grid.innerHTML = data.slice(0, 6).map(b => {
-        const price = b.price_200g || b.price_500g || null;
-        const tags = b.taste_notes.slice(0, 3).map(t => '<span class="bean-card-tag">' + t + '</span>').join('');
-        const safeName = b.name.replace(/'/g, "\\'");
-        const safeBrand = b.brand.replace(/'/g, "\\'");
-        return '<div class="bean-card">'
-          + '<img src="' + b.image_url + '" alt="' + b.name + '" loading="lazy" onerror="this.style.background=\'#f0ebe0\'">'
-          + '<div class="bean-card-body">'
-          + '<div class="bean-card-brand">' + b.brand + '</div>'
-          + '<div class="bean-card-name">' + b.name + '</div>'
-          + '<div class="bean-card-tags">' + tags + '</div>'
-          + '</div>'
-          + '<div class="bean-card-footer">'
-          + '<div><div class="bean-card-price">' + (price || '—') + '</div>'
-          + '<div class="bean-card-price-sub">' + (price ? 'per 200g' : '') + '</div></div>'
-          + '<a href="' + b.link + '" target="_blank" rel="noopener" class="bean-buy-btn" onclick="gtag(\'event\',\'buy_click\',{bean_name:\'' + safeName + '\',roaster:\'' + safeBrand + '\',source:\'homepage\'})">Buy Now</a>'
-          + '</div></div>';
-      }).join('');
+    function roasterKey(b) {
+      return String(b.brands || b.brand || '').trim().toLowerCase();
     }
 
-    function switchTab(btn, panel) {
-      document.querySelectorAll('.featured-tab').forEach(function(t) { t.classList.remove('active'); });
-      document.querySelectorAll('.bean-panel').forEach(function(p) { p.classList.remove('active'); });
-      btn.classList.add('active');
-      document.getElementById('panel-' + panel).classList.add('active');
+    // Newest first, but no more than MAX_PER_ROASTER from any one roaster — a
+    // single roaster uploading a batch would otherwise fill the whole row.
+    function pickLatest(all) {
+      var sorted = all
+        .filter(function(b) { return b && b.name && /^\d+$/.test(String(b.SKU || '').trim()); })
+        .sort(function(a, b) { return parseInt(b.SKU, 10) - parseInt(a.SKU, 10); });
+
+      var counts = {};
+      var picked = [];
+      var spare = [];
+      for (var i = 0; i < sorted.length; i++) {
+        if (picked.length >= LATEST_COUNT && spare.length >= LATEST_COUNT) break;
+        var key = roasterKey(sorted[i]);
+        var seen = counts[key] || 0;
+        if (seen < MAX_PER_ROASTER && picked.length < LATEST_COUNT) {
+          counts[key] = seen + 1;
+          picked.push(sorted[i]);
+        } else if (spare.length < LATEST_COUNT) {
+          spare.push(sorted[i]);
+        }
+      }
+      // Too few roasters to fill the row: top up with the next newest anyway.
+      while (picked.length < LATEST_COUNT && spare.length) picked.push(spare.shift());
+
+      return interleaveByRoaster(picked.slice(0, LATEST_COUNT));
     }
+
+    // Deal the picks out round-robin so neighbouring cards come from different
+    // roasters — including across the loop seam, where last meets first again.
+    function interleaveByRoaster(beans) {
+      var buckets = [];
+      var seen = {};
+      beans.forEach(function(b) {
+        var key = roasterKey(b);
+        if (!(key in seen)) { seen[key] = buckets.length; buckets.push([]); }
+        buckets[seen[key]].push(b);
+      });
+      var out = [];
+      for (var round = 0; out.length < beans.length; round++) {
+        var dealt = false;
+        for (var i = 0; i < buckets.length; i++) {
+          if (buckets[i][round]) { out.push(buckets[i][round]); dealt = true; }
+        }
+        if (!dealt) break;
+      }
+      return out;
+    }
+
+    function escHtml(v) {
+      return String(v == null ? '' : v).replace(/[&<>"']/g, function(c) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+      });
+    }
+
+    function latestBeanCard(b) {
+      var price = b.price_200g || b.price_500g || '';
+      var notes = String(b.taste_notes || '').split(',')
+        .map(function(t) { return t.trim(); })
+        .filter(Boolean)
+        .slice(0, 3)
+        .map(function(t) { return '<span class="bean-card-tag">' + escHtml(t) + '</span>'; })
+        .join('');
+      var name = escHtml(b.name);
+      var brand = escHtml(b.brands || b.brand);
+      var jsName = name.replace(/'/g, "\\'");
+      var jsBrand = brand.replace(/'/g, "\\'");
+      var img = b.image_url
+        ? '<img src="' + escHtml(b.image_url) + '" alt="' + name + '" loading="lazy" onerror="this.style.visibility=\'hidden\'">'
+        : '<img alt="" aria-hidden="true" style="visibility:hidden">';
+      var buy = b.link
+        ? '<a href="' + escHtml(b.link) + '" target="_blank" rel="noopener" class="bean-buy-btn" onclick="gtag(\'event\',\'buy_click\',{bean_name:\'' + jsName + '\',roaster:\'' + jsBrand + '\',source:\'homepage_latest\'})">Buy Now</a>'
+        : '';
+      return '<div class="bean-card">'
+        + img
+        + '<div class="bean-card-body">'
+        + '<div class="bean-card-brand">' + brand + '</div>'
+        + '<div class="bean-card-name">' + name + '</div>'
+        + '<div class="bean-card-tags">' + notes + '</div>'
+        + '</div>'
+        + '<div class="bean-card-footer">'
+        + '<div><div class="bean-card-price">' + (price ? escHtml(price) : '—') + '</div>'
+        + '<div class="bean-card-price-sub">' + (price ? 'per 200g' : '') + '</div></div>'
+        + buy
+        + '</div></div>';
+    }
+
+    // One full cycle moves the track by exactly one card set, so the duplicate
+    // set lands where the first started and the loop reads as continuous.
+    function sizeMarquee() {
+      var track = document.getElementById('latestTrack');
+      var group = track && track.querySelector('.latest-group');
+      if (!group) return;
+      var gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+      var shift = group.getBoundingClientRect().width + gap;
+      if (!shift) return;
+      track.style.setProperty('--marquee-shift', shift + 'px');
+      track.style.setProperty('--marquee-duration', (shift / MARQUEE_SPEED) + 's');
+    }
+
+    function renderLatestBeans(beans) {
+      var track = document.getElementById('latestTrack');
+      if (!track || !beans.length) return;
+      var cards = beans.map(latestBeanCard).join('');
+      track.innerHTML = '<div class="latest-group">' + cards + '</div>'
+        + '<div class="latest-group" aria-hidden="true">' + cards + '</div>';
+      requestAnimationFrame(sizeMarquee);
+    }
+
+    function loadLatestBeans() {
+      if (latestRequested) return;
+      latestRequested = true;
+      fetch('/beans.json')
+        .then(function(res) { return res.json(); })
+        .then(function(all) {
+          renderLatestBeans(pickLatest(all));
+        })
+        .catch(function() {
+          var track = document.getElementById('latestTrack');
+          if (track) {
+            track.style.animation = 'none';
+            track.innerHTML = '<div style="padding:28px 48px;color:var(--text-muted);font-size:0.9rem;">'
+              + 'Could not load the latest beans right now. <a href="/shop" style="color:var(--accent);font-weight:600;">Browse the full shop →</a></div>';
+          }
+        });
+    }
+
+    (function initLatestBeans() {
+      var section = document.getElementById('latestBeans');
+      if (!section) return;
+      if (!('IntersectionObserver' in window)) { loadLatestBeans(); return; }
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) { loadLatestBeans(); io.disconnect(); }
+        });
+      }, { rootMargin: '600px 0px' });
+      io.observe(section);
+
+      var resizeTimer;
+      window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(sizeMarquee, 150);
+      });
+    })();
 
     function animateCounters() {
       document.querySelectorAll('[data-target]').forEach(function(el) {
@@ -877,8 +1005,6 @@
       }).catch(function() { btn.textContent = 'Network error'; btn.disabled = false; });
     }
 
-    renderBeans(ETHIOPIA_BEANS, 'ethiopiaGrid');
-    renderBeans(LIBERICA_BEANS, 'libericaGrid');
   </script>
 </body>
 </html>
