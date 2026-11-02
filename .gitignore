@@ -34,6 +34,7 @@ routine/
 analysis/
 Scripts/
 outputs/
+pipeline/
 .tmp-*/
 *.pdf
 .codex_work/
