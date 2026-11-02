@@ -45,6 +45,13 @@ RewriteRule ^store/?$ /shop [R=301,L,NC]
 RewriteRule ^about-us/?$ /about [R=301,L,NC]
 RewriteRule ^what-is-arabica-coffee/?$ /posts/arabica-coffee-beans [R=301,L,NC]
 
+# ── Retired: a local preview copy of /about committed by accident (2 Nov 2026) ──
+# It was publicly reachable and showed a stale 775-bean / 53-roaster catalogue.
+# Removed from the repo; 301 rather than 404 because the site is already fighting
+# a 404 backlog in GSC. Catches both the .html form and the extensionless form the
+# clean-URL rules below served it as. MUST stay above those rules.
+RewriteRule ^about/_preview-local(\.html)?/?$ /about [R=301,L,NC]
+
 # ── SEO: directory pages — serve index.html at the clean slash-less URL ──
 # Every page lives as <slug>/index.html, but all canonical tags, sitemap
 # entries and internal links use the slash-less URL (/shop/ethiopia-coffee-beans).

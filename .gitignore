@@ -25,6 +25,9 @@ roasters-directory.json
 *.bak
 *.bak-*
 *-preview-tmp.html
+# Underscore-prefixed HTML = local scratch/preview copy, never a real page.
+# about/_preview-local.html slipped past *-preview-tmp.html and shipped live.
+_*.html
 *.backup*
 marketing/
 archive/
