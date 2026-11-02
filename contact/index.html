@@ -1059,80 +1059,21 @@
 </style>
 <style>
     .contact-layout {
-      display: grid;
-      grid-template-columns: 1fr 1.4fr;
-      gap: 0;
-      min-height: 60vh;
-    }
-
-    .contact-left {
-      background: var(--brown-dark);
-      padding: 64px 48px;
-      display: flex;
-      flex-direction: column;
-      gap: 48px;
-    }
-
-    .contact-left h2 {
-      font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
-      font-weight: var(--display-weight, 700);
-      font-stretch: var(--display-stretch, 100%);
-      text-transform: var(--display-transform, none);
-      letter-spacing: var(--display-tracking, -0.02em);
-      line-height: var(--display-leading, 1.05);
-      font-size: clamp(1.5rem, 2.5vw, 2rem);
-      color: var(--cream);
-    }
-
-    .contact-left p {
-      color: rgba(253,246,236,0.75);
-      font-size: 0.9rem;
-      line-height: 1.75;
-      margin-top: 10px;
-    }
-
-    .contact-reasons {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .contact-reason {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-    }
-
-    .reason-icon {
-      width: 40px;
-      height: 40px;
-      background: rgba(253, 161, 29, 0.15);
-      border: 1px solid rgba(253, 161, 29, 0.3);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      flex-shrink: 0;
-    }
-
-    .reason-text h4 {
-      font-size: 0.88rem;
-      font-weight: 600;
-      color: var(--cream);
-      margin-bottom: 3px;
-    }
-
-    .reason-text p {
-      font-size: 0.78rem;
-      color: rgba(253,246,236,0.6);
-      margin: 0;
-      line-height: 1.5;
-    }
-
-    .contact-right {
       background: var(--warm-white);
-      padding: 64px 48px;
+      min-height: 60vh;
+      padding: 0 20px;
+    }
+
+    /* The form stands alone now, so it sits centred in its own column. */
+    .contact-right {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 64px 0;
+    }
+
+    .contact-right h3,
+    .contact-right .form-sub {
+      text-align: center;
     }
 
     .contact-right h3 {
@@ -1310,13 +1251,8 @@
     }
 
     @media (max-width: 768px) {
-      .contact-layout {
-        grid-template-columns: 1fr;
-      }
-
-      .contact-left,
       .contact-right {
-        padding: 48px 20px;
+        padding: 48px 0;
       }
 
       .form-row {
@@ -1365,65 +1301,23 @@
   ]
 }
   </script>
+
+<!-- SCROLL MOTION (shared) -->
+<!--#include virtual="/partials/motion.html" -->
 </head>
 <body>
 <!-- NAV -->
 <!--#include virtual="/partials/header.html" -->
 <!-- PAGE HERO -->
 <div class="page-hero">
-<div class="page-hero-eyebrow">Get in Touch</div>
-<h1>We'd love to hear from you.</h1>
-<p>Whether you're a roaster wanting to be listed, a coffee lover with a suggestion, or just want to say hi — our
+<div class="page-hero-eyebrow" data-anim="up" data-anim-on="load">Get in Touch</div>
+<h1 data-anim="split" data-anim-on="load" data-anim-delay="0.1" data-anim-stagger="0.07">We'd love to hear from you.</h1>
+<p data-anim="up" data-anim-on="load" data-anim-delay="0.5">Whether you're a roaster wanting to be listed, a coffee lover with a suggestion, or just want to say hi — our
       inbox is always open.</p>
 </div>
 <!-- CONTACT LAYOUT -->
 <div class="contact-layout">
-<!-- LEFT: reasons to contact -->
-<div class="contact-left">
-<div>
-<h2>How can we help?</h2>
-<p>Pick whatever topic fits and we'll get back to you within 1–2 working days.</p>
-</div>
-<div class="contact-reasons">
-<div class="contact-reason">
-<div class="reason-icon">☕</div>
-<div class="reason-text">
-<h4>I'm a Roaster</h4>
-<p>Want to list your beans or update your existing entries on The Beans Hub.</p>
-</div>
-</div>
-<div class="contact-reason">
-<div class="reason-icon">🔍</div>
-<div class="reason-text">
-<h4>Missing Bean or Roaster</h4>
-<p>Know a great Malaysian roaster or bean we haven't listed yet? Tell us.</p>
-</div>
-</div>
-<div class="contact-reason">
-<div class="reason-icon">🛠️</div>
-<div class="reason-text">
-<h4>Report an Issue</h4>
-<p>Found a broken link, wrong info, or something that looks off.</p>
-</div>
-</div>
-<div class="contact-reason">
-<div class="reason-icon">💡</div>
-<div class="reason-text">
-<h4>Suggestion or Feedback</h4>
-<p>Have an idea to make The Beans Hub better? We genuinely want to hear it.</p>
-</div>
-</div>
-<div class="contact-reason">
-<div class="reason-icon">👋</div>
-<div class="reason-text">
-<h4>Just Saying Hi</h4>
-<p>Fellow coffee nerd? We're always happy to talk beans.</p>
-</div>
-</div>
-</div>
-</div>
-<!-- RIGHT: form -->
-<div class="contact-right">
+<div class="contact-right" data-anim="up" data-anim-delay="0.1">
 <h3>Send us a message</h3>
 <p class="form-sub">Fill in the form below and we'll get back to you as soon as we can. Usually within a day or
         two.</p>
@@ -1443,6 +1337,7 @@
 <select class="form-select" id="cTopic">
 <option value="">Select a topic...</option>
 <option>I'm a Roaster — list my beans</option>
+<option>Report wrong/broken info</option>
 <option>Suggestion or feedback</option>
 <option>Just saying hi</option>
 </select>
@@ -1463,9 +1358,9 @@
 </div>
 <!-- FAQ -->
 <section class="faq-section">
-<div class="section-label reveal">Quick Answers</div>
-<div class="section-title reveal">Frequently asked questions</div>
-<div class="faq-grid reveal">
+<div class="section-label" data-anim="up">Quick Answers</div>
+<div class="section-title" data-anim="split">Frequently asked questions</div>
+<div class="faq-grid" data-anim="stagger" data-anim-stagger="0.09">
 <div class="faq-item">
 <h4>Can I buy coffee beans directly from The Beans Hub?</h4>
 <p>No — we're a discovery platform, not a shop. Every "Buy Now" button takes you directly to the roaster's own
@@ -1490,11 +1385,11 @@
 </section>
 <!-- SUBSCRIPTION -->
 <section class="sub-section">
-<div class="sub-eyebrow reveal">While You\'re Here</div>
-<div class="sub-title reveal">Don't miss a single bean.</div>
-<p class="sub-desc reveal">New listings, roaster features, and the occasional brewing tip — dropped into your inbox
+<div class="sub-eyebrow" data-anim="up">While You're Here</div>
+<div class="sub-title" data-anim="split" data-anim-stagger="0.055">Don't miss a single bean.</div>
+<p class="sub-desc" data-anim="up" data-anim-delay="0.15">New listings, roaster features, and the occasional brewing tip — dropped into your inbox
       monthly. Pop your name and email below and we'll take care of the rest.</p>
-<div class="sub-form reveal" id="contactSub">
+<div class="sub-form" data-anim="up" data-anim-delay="0.25" id="contactSub">
 <input class="sub-name" placeholder="Your first name 👋" type="text"/>
 <input class="sub-email" placeholder="Your email address" type="email"/>
 <button class="sub-btn" onclick="handleSubscribe('contactSub')">Count me in →</button>
