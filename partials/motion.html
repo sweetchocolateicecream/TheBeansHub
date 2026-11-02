@@ -10,6 +10,7 @@
        data-anim="up"       fade + rise
        data-anim="fade"     fade only
        data-anim="left"     fade + slide in from the left
+       data-anim="right"    fade + slide in from the right
        data-anim="stagger"  direct children fade + rise in sequence
        data-anim="fill"     text colour wipes in, tied to scroll
        data-anim-on="load"  play on load instead of on scroll
@@ -38,6 +39,7 @@
   html.tbh-motion [data-anim="up"],
   html.tbh-motion [data-anim="fade"],
   html.tbh-motion [data-anim="left"],
+  html.tbh-motion [data-anim="right"],
   html.tbh-motion [data-anim="stagger"] > * {
     opacity: 0;
     transition: opacity 0.8s var(--tbh-ease), transform 0.9s var(--tbh-ease);
@@ -45,6 +47,7 @@
   html.tbh-motion [data-anim="up"],
   html.tbh-motion [data-anim="stagger"] > * { transform: translate3d(0, 30px, 0); }
   html.tbh-motion [data-anim="left"] { transform: translate3d(-34px, 0, 0); }
+  html.tbh-motion [data-anim="right"] { transform: translate3d(34px, 0, 0); }
 
   html.tbh-motion [data-anim].is-in,
   html.tbh-motion [data-anim="stagger"].is-in > * { opacity: 1; transform: none; }
