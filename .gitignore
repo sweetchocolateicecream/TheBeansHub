@@ -21,6 +21,10 @@ CLAUDE.md
 30 Series Ideas - TikTok and Instagram.md
 For a series on TikTok and Instagram.docx
 CoffeeRoastersList.csv
+# check-link-health.py writes these to the repo root, which IS the webroot.
+# Stock/enrichment data — internal only.
+link-health-report.csv
+link-health-summary.txt
 roasters-directory.json
 *.bak
 *.bak-*
