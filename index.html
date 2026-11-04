@@ -238,12 +238,17 @@
     .roaster-tag { display: inline-block; font-size: 0.68rem; font-weight: 600; padding: 3px 10px; background: var(--tag-bg); color: var(--tag-text); border-radius: 20px; align-self: flex-start; }
 
     /* STATS */
-    .stats-section { background: var(--green); padding: 72px 48px; }
-    .stats-inner { max-width: 900px; margin: 0 auto; text-align: center; }
-    .stats-title { font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif); font-weight: var(--display-weight, 700); font-stretch: var(--display-stretch, 100%); text-transform: var(--display-transform, none); letter-spacing: var(--display-tracking, -0.02em); line-height: var(--display-leading, 1.05); font-size: clamp(1.4rem, 3vw, 2rem); color: #FDF6EC; margin-bottom: 48px; }
-    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
-    .stat-num { font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif); font-weight: var(--display-weight, 700); font-stretch: var(--display-stretch, 100%); text-transform: var(--display-transform, none); letter-spacing: var(--display-tracking, -0.02em); line-height: var(--display-leading, 1.05); font-size: clamp(2.5rem, 5vw, 3.5rem); color: #FDA11D; margin-bottom: 8px; }
-    .stat-label { font-size: 0.9rem; color: rgba(253,246,236,0.7); font-weight: 500; }
+    .stats-section { background: var(--green); padding: 104px 48px; }
+    .stats-inner { max-width: 1200px; margin: 0 auto; }
+    .stats-title { font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif); font-weight: var(--display-weight, 700); font-stretch: var(--display-stretch, 100%); text-transform: var(--display-transform, none); letter-spacing: var(--display-tracking, -0.02em); line-height: var(--display-leading, 1.05); font-size: clamp(1.6rem, 3.6vw, 2.6rem); color: #FDF6EC; max-width: 20ch; margin-bottom: 72px; }
+    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px 44px; align-items: start; }
+    .stat-item { display: flex; flex-direction: column; padding-bottom: 16px; border-bottom: 1px solid rgba(253,246,236,0.32); }
+    .stat-item:nth-child(even) { margin-top: 88px; }
+    .stat-num { font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif); font-weight: var(--display-weight, 700); font-stretch: var(--display-stretch, 100%); text-transform: var(--display-transform, none); letter-spacing: var(--display-tracking, -0.02em); line-height: var(--display-leading, 1.05); font-size: clamp(3rem, 6.5vw, 5rem); color: #FDA11D; margin-bottom: 2px; }
+    .stat-label { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(253,246,236,0.62); margin-bottom: 14px; }
+    .stat-desc { font-size: 0.95rem; line-height: 1.65; color: rgba(253,246,236,0.82); margin: 0; }
+    /* Slide the stat blocks in from further out than the sitewide default. */
+    html.tbh-motion .stat-item[data-anim="left"] { transform: translate3d(-72px, 0, 0); }
 
     /* LIBERICA */
     .liberica-section { background: white; padding: 80px 48px; }
@@ -277,6 +282,8 @@
       .roasters-grid { grid-template-columns: repeat(2, 1fr); }
       .persona-grid { grid-template-columns: repeat(2, 1fr); }
       .roast-grid { grid-template-columns: repeat(3, 1fr); }
+      .stats-grid { gap: 24px 32px; }
+      .stat-item:nth-child(even) { margin-top: 60px; }
     }
     @media (max-width: 768px) {
       nav { padding: 0 20px; }
@@ -304,7 +311,9 @@
       .steps { flex-direction: column; align-items: center; gap: 24px; }
       .step-connector { display: none; }
       .liberica-grid { grid-template-columns: 1fr; }
-      .stats-grid { grid-template-columns: repeat(3, 1fr); }
+      .stats-title { max-width: none; margin-bottom: 44px; }
+      .stats-grid { grid-template-columns: 1fr; gap: 28px; }
+      .stat-item:nth-child(even) { margin-top: 0; }
       .newsletter-section { padding: 40px 28px; }
       .newsletter-form { flex-direction: column; }
     }
@@ -317,7 +326,7 @@
       .finder-tab { padding: 10px 22px; font-size: 0.76rem; }
       .persona-grid { grid-template-columns: 1fr; }
       .roasters-grid { grid-template-columns: 1fr; }
-      .stats-grid { grid-template-columns: 1fr; gap: 24px; }
+      .stats-grid { gap: 24px; }
     }
 
     /* ============================================================
@@ -655,18 +664,21 @@
   <section class="stats-section">
     <div class="stats-inner">
       <div class="stats-title" data-anim="fill" style="--tbh-fill-from:rgba(253,246,236,0.58);--tbh-fill-to:#FDF6EC">Malaysia's most complete specialty coffee directory</div>
-      <div class="stats-grid" data-anim="stagger" data-anim-stagger="0.14">
-        <div class="stat-item">
+      <div class="stats-grid">
+        <div class="stat-item" data-anim="left">
           <div class="stat-num" data-target="868">0</div>
           <div class="stat-label">Coffee Beans Listed</div>
+          <p class="stat-desc">Every specialty bag we can track down in Malaysia, filtered by taste note, roast level, origin and process.</p>
         </div>
-        <div class="stat-item">
+        <div class="stat-item" data-anim="left" data-anim-delay="0.18">
           <div class="stat-num" data-target="64">0</div>
           <div class="stat-label">Malaysian Roasters</div>
+          <p class="stat-desc">From KL cafe roasteries to small-batch roasters up the peninsula, each one linked straight to their own shop.</p>
         </div>
-        <div class="stat-item">
+        <div class="stat-item" data-anim="left" data-anim-delay="0.36">
           <div class="stat-num" data-target="28">0</div>
           <div class="stat-label">Origin Countries</div>
+          <p class="stat-desc">Ethiopia, Colombia, Yunnan, Thailand and more, all roasted here and ready to drink fresh.</p>
         </div>
       </div>
     </div>
