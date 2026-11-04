@@ -149,11 +149,20 @@
 
     /* MYSTERY */
     .mystery { padding: 24px 24px 72px; }
-    .mystery-head { text-align: center; margin-bottom: 36px; }
-    .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; max-width: 760px; margin: 0 auto; }
-    .stat-card { background: #fff; border: 1px solid var(--border); border-radius: 18px; padding: 28px 22px; text-align: center; }
-    .stat-num { font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif); font-weight: var(--display-weight, 700); font-stretch: var(--display-stretch, 100%); text-transform: var(--display-transform, none); letter-spacing: var(--display-tracking, -0.02em); line-height: var(--display-leading, 1.05); font-size: 2.4rem; color: var(--accent); }
-    .stat-label { font-size: 0.88rem; color: var(--text-muted); margin-top: 8px; }
+    .mystery-inner { max-width: 1100px; margin: 0 auto; }
+    .mystery-head { text-align: left; margin-bottom: 56px; }
+    .mystery-head .sec-sub { margin-left: 0; margin-right: 0; }
+    .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px 40px; align-items: start; }
+    .stat-card { display: flex; flex-direction: column; background: none; border: none; border-bottom: 1px solid var(--border); border-radius: 0; padding: 0 0 16px; text-align: left; }
+    .stat-card:nth-child(even) { margin-top: 76px; }
+    /* Slide the stat blocks in from the left, staggered, instead of the page's default rise. */
+    .stat-card.fade { transform: translate3d(-72px, 0, 0); }
+    .stat-card.fade.visible { transform: none; }
+    .stat-card:nth-child(2) { transition-delay: 0.15s; }
+    .stat-card:nth-child(3) { transition-delay: 0.3s; }
+    .stat-desc { font-size: 0.92rem; line-height: 1.65; color: var(--text-muted); margin: 0; }
+    .stat-num { font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif); font-weight: var(--display-weight, 700); font-stretch: var(--display-stretch, 100%); text-transform: var(--display-transform, none); letter-spacing: var(--display-tracking, -0.02em); line-height: var(--display-leading, 1.05); font-size: clamp(2.6rem, 5.2vw, 4rem); color: var(--accent); margin-bottom: 2px; }
+    .stat-label { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-top: 0; margin-bottom: 14px; }
 
     /* KEY DATES */
     .dates { padding: 0 24px 72px; }
@@ -258,7 +267,9 @@
 
     @media (max-width: 900px) {
       .how-grid { grid-template-columns: 1fr; }
-      .stat-row { grid-template-columns: 1fr; }
+      .stat-row { grid-template-columns: 1fr; gap: 28px; }
+      .stat-card:nth-child(even) { margin-top: 0; }
+      .mystery-head { margin-bottom: 40px; }
       .dates-strip { grid-template-columns: 1fr; }
       .date-item { border-left: none; border-top: 1px solid var(--border); display: flex; align-items: baseline; justify-content: flex-start; gap: 12px; text-align: left; padding: 18px 22px; }
       .date-item:first-child { border-top: none; }
@@ -343,15 +354,17 @@
 
     <!-- THE MYSTERY -->
     <section class="mystery" id="the-mystery">
+      <div class="mystery-inner">
       <div class="mystery-head fade">
         <div class="sec-label">The mystery</div>
         <h2 class="sec-title" id="mystery">Who are the roasters? That's the surprise.</h2>
         <p class="sec-sub">We're not telling. We pick from the 64 Malaysian roasters and 868 beans catalogued on The Beans Hub, and every bag is chosen for your answers. You'll meet your three roasters when you open the box.</p>
       </div>
       <div class="stat-row">
-        <div class="stat-card fade"><div class="stat-num">64</div><div class="stat-label">roasters in the pool</div></div>
-        <div class="stat-card fade"><div class="stat-num">868</div><div class="stat-label">beans to pick from</div></div>
-        <div class="stat-card fade"><div class="stat-num">3</div><div class="stat-label">chosen for you</div></div>
+        <div class="stat-card fade"><div class="stat-num">64</div><div class="stat-label">roasters in the pool</div><p class="stat-desc">Every roaster catalogued on The Beans Hub is fair game for your box.</p></div>
+        <div class="stat-card fade"><div class="stat-num">868</div><div class="stat-label">beans to pick from</div><p class="stat-desc">Scored against your answers, with your dealbreakers ruled out outright.</p></div>
+        <div class="stat-card fade"><div class="stat-num">3</div><div class="stat-label">chosen for you</div><p class="stat-desc">Three 100g bags, one per roaster, named only when you open the box.</p></div>
+      </div>
       </div>
     </section>
 
