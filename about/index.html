@@ -383,7 +383,7 @@ color: var(--green);
   .how-row img { width: 96px; height: 96px; object-fit: contain; justify-self: end; }
 
   /* ── COUNT-UP STATS ── */
-  .stats-section { background: var(--green); padding: 96px 48px; text-align: center; }
+  .stats-section { background: var(--green); padding: 104px 48px; }
 
   .stats-title {
     font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
@@ -392,15 +392,17 @@ color: var(--green);
     text-transform: var(--display-transform, none);
     letter-spacing: var(--display-tracking, -0.02em);
     line-height: var(--display-leading, 1.05);
-    font-size: clamp(1.4rem, 2.6vw, 2rem);
-    color: var(--cream); margin-bottom: 56px;
+    font-size: clamp(1.6rem, 3.6vw, 2.6rem);
+    color: var(--cream); max-width: 20ch; margin: 0 0 72px;
   }
 
-  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); max-width: 960px; margin: 0 auto; }
+  .stats-inner { max-width: 1280px; margin: 0 auto; }
 
-  .stat-item { padding: 0 20px; }
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px 32px; align-items: start; }
 
-  .stat-item + .stat-item { border-left: 1px solid rgba(253,246,236,0.18); }
+  .stat-item { display: flex; flex-direction: column; padding-bottom: 16px; border-bottom: 1px solid rgba(253,246,236,0.32); }
+
+  .stat-item:nth-child(even) { margin-top: 88px; }
 
   .stat-num {
     font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
@@ -409,11 +411,21 @@ color: var(--green);
     text-transform: var(--display-transform, none);
     letter-spacing: var(--display-tracking, -0.02em);
     line-height: var(--display-leading, 1.05);
-    font-size: clamp(2.4rem, 4.4vw, 3.6rem);
-    color: var(--accent);margin-bottom: 10px;
+    font-size: clamp(2.8rem, 5.4vw, 4.4rem);
+    color: var(--accent); margin-bottom: 2px;
   }
 
-  .stat-label { font-size: 0.84rem; color: rgba(253,246,236,0.75); font-weight: 300; letter-spacing: 0.05em; }
+  .stat-label { font-size: 0.74rem; color: rgba(253,246,236,0.62); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 14px; }
+
+  .stat-desc { font-size: 0.92rem; line-height: 1.65; color: rgba(253,246,236,0.82); margin: 0; }
+
+  /* Slide the stat blocks in from further out than the sitewide default. */
+  html.tbh-motion .stat-item[data-anim="left"] { transform: translate3d(-72px, 0, 0); }
+
+  @media (max-width: 1024px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 28px 36px; }
+    .stat-item:nth-child(even) { margin-top: 64px; }
+  }
 
   /* ── ROASTERS ── */
   .roasters-section { background: var(--cream); padding: 100px 48px; text-align: center; }
@@ -547,8 +559,9 @@ color: var(--green);
     .how-row { grid-template-columns: 1fr; gap: 14px; padding: 34px 0; }
     .how-num { font-size: 1.8rem; }
     .how-row img { display: none; }
-    .stats-grid { grid-template-columns: 1fr 1fr; gap: 40px 0; }
-    .stat-item:nth-child(3) { border-left: none; }
+    .stats-title { max-width: none; margin-bottom: 44px; }
+    .stats-grid { grid-template-columns: 1fr; gap: 28px; }
+    .stat-item:nth-child(even) { margin-top: 0; }
     .pin-progress { right: 16px; }
     .pin-slide img { width: 68px; height: 68px; }
     .sub-form { flex-direction: column; }
@@ -654,12 +667,14 @@ color: var(--green);
 
 <!-- COUNT-UP STATS -->
 <section class="stats-section" id="statsSection">
+  <div class="stats-inner">
   <h2 class="stats-title" id="by-the-numbers" data-anim="fill" style="--tbh-fill-from:rgba(253,246,236,0.58);--tbh-fill-to:#FDF6EC">Growing every single week.</h2>
-  <div class="stats-grid" data-anim="stagger" data-anim-stagger="0.12">
-    <div class="stat-item"><div class="stat-num"><span data-count="868">0</span>+</div><div class="stat-label">Coffee Beans</div></div>
-    <div class="stat-item"><div class="stat-num"><span data-count="64">0</span></div><div class="stat-label">Malaysian Roasters</div></div>
-    <div class="stat-item"><div class="stat-num"><span data-count="28">0</span></div><div class="stat-label">Origin Countries</div></div>
-    <div class="stat-item"><div class="stat-num"><span data-count="8">0</span></div><div class="stat-label">Taste Families</div></div>
+  <div class="stats-grid">
+    <div class="stat-item" data-anim="left"><div class="stat-num"><span data-count="868">0</span>+</div><div class="stat-label">Coffee Beans</div><p class="stat-desc">Every specialty bag we can track down, added as roasters release new lots.</p></div>
+    <div class="stat-item" data-anim="left" data-anim-delay="0.15"><div class="stat-num"><span data-count="64">0</span></div><div class="stat-label">Malaysian Roasters</div><p class="stat-desc">Local roasters featured, each one linked straight to their own shop.</p></div>
+    <div class="stat-item" data-anim="left" data-anim-delay="0.3"><div class="stat-num"><span data-count="28">0</span></div><div class="stat-label">Origin Countries</div><p class="stat-desc">Ethiopia and Colombia through to Yunnan and Thailand.</p></div>
+    <div class="stat-item" data-anim="left" data-anim-delay="0.45"><div class="stat-num"><span data-count="8">0</span></div><div class="stat-label">Taste Families</div><p class="stat-desc">The flavour groups every bean is sorted into, from fruity to roasted.</p></div>
+  </div>
   </div>
 </section>
 
