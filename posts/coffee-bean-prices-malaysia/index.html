@@ -310,6 +310,55 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
   .more-grid { grid-template-columns: 1fr; }
 }
 
+/* ===== Bean pick carousel (scrollable product rail inside the article) ===== */
+.bp-carousel { position: relative; margin: 8px 0 34px; }
+.bp-rail { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 4px 0 16px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.bp-rail::-webkit-scrollbar { display: none; }
+.bp-rail:focus-visible { outline: 2px solid var(--orange); outline-offset: 4px; border-radius: 14px; }
+.bp-card { flex: 0 0 248px; width: 248px; scroll-snap-align: start; background: var(--white); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s; }
+.bp-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(41,98,65,0.12); }
+.bp-card-media { background: var(--tag-bg); height: 150px; }
+.bp-card-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.bp-card-body { padding: 14px 15px 12px; display: flex; flex-direction: column; gap: 7px; flex: 1; }
+.bp-card-roaster { font-size: 0.66rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); }
+.bp-card-name { font-family: "Outfit", sans-serif; font-size: 0.97rem; font-weight: 700; color: var(--green); line-height: 1.3; margin: 0; }
+.bp-card-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+.bp-card-tags span { padding: 2px 8px; background: var(--tag-bg); color: var(--green); border-radius: 10px; font-size: 0.66rem; font-weight: 500; line-height: 1.6; }
+.bp-card-why { font-size: 0.82rem; line-height: 1.6; color: var(--muted); margin: 2px 0 0; }
+.bp-card-foot { padding: 11px 15px 14px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.bp-card-price { font-size: 1.02rem; font-weight: 700; color: var(--green); line-height: 1.1; }
+.bp-card-price small { display: block; font-size: 0.64rem; font-weight: 500; color: var(--muted); }
+.bp-carousel .bean-buy-btn { padding: 8px 15px; background: var(--orange); color: var(--white); border-radius: 8px; font-family: "Outfit", sans-serif; font-size: 0.78rem; font-weight: 700; text-decoration: none; white-space: nowrap; transition: background 0.18s; }
+.bp-carousel .bean-buy-btn:hover { background: var(--orange-dark); }
+
+/* Footer row: progress bar + arrows */
+.bp-controls { display: flex; align-items: center; gap: 14px; }
+.bp-progress { position: relative; flex: 1; height: 3px; border-radius: 3px; background: var(--border); overflow: hidden; }
+.bp-progress span { position: absolute; left: 0; top: 0; bottom: 0; width: 30%; border-radius: 3px; background: var(--orange); transition: transform 0.15s linear, width 0.15s linear; }
+.bp-arrows { display: flex; gap: 8px; }
+.bp-arrow { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--border); background: var(--white); color: var(--green); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.18s; padding: 0; }
+.bp-arrow svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.bp-arrow:hover:not(:disabled) { background: var(--green); border-color: var(--green); color: var(--cream); }
+.bp-arrow:disabled { opacity: 0.32; cursor: default; }
+
+/* Below the two-column breakpoint the article column fills the page, so the
+   rail cancels .post-layout's side padding and runs to the screen edge. The
+   offsets match that padding exactly, so this can never overflow the page. */
+@media (max-width: 999px) {
+  .bp-rail { margin-left: -24px; margin-right: -24px; padding-left: 24px; padding-right: 24px; scroll-padding-left: 24px; }
+  .bp-arrows { display: none; }
+}
+@media (max-width: 768px) {
+  .bp-rail { margin-left: -20px; margin-right: -20px; padding-left: 20px; padding-right: 20px; scroll-padding-left: 20px; }
+}
+@media (max-width: 480px) {
+  .bp-card { flex-basis: 225px; width: 225px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bp-rail { scroll-behavior: auto; }
+  .bp-card:hover { transform: none; }
+}
+
 /* ===== Coffee Beans mega-dropdown (nav internal linking — unchanged) ===== */
 .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
 .nav-dropdown .nav-dropdown-trigger { display: inline-flex; align-items: center; gap: 5px; }
@@ -358,7 +407,7 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
 <p class="rail-title">How Much Should Specialty Coffee Beans Cost in Malaysia?</p>
 <p class="rail-date">July 2026 · 9 min read</p>
 <div class="rail-toc-title">On this page</div>
-<nav class="toc-nav" id="tocDesktop"><a class="toc-link" href="#the-honest-number">The honest number: RM57</a>
+<nav class="toc-nav" id="tocDesktop"><a class="toc-link" href="#the-honest-number">The typical price of a 200g bag of coffee beans is RM57</a>
 <a class="toc-link" href="#four-shelves">The four price shelves</a>
 <a class="toc-link" href="#what-makes-expensive">What makes a bean expensive</a>
 <a class="toc-link" href="#origins">Origins: cheapest to spendiest</a>
@@ -367,7 +416,7 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
 <a class="toc-link" href="#faq">FAQ</a></nav>
 <details>
 <summary>On this page</summary>
-<nav class="toc-nav"><a class="toc-link" href="#the-honest-number">The honest number: RM57</a>
+<nav class="toc-nav"><a class="toc-link" href="#the-honest-number">The typical price of a 200g bag is RM57</a>
 <a class="toc-link" href="#four-shelves">The four price shelves</a>
 <a class="toc-link" href="#what-makes-expensive">What makes a bean expensive</a>
 <a class="toc-link" href="#origins">Origins: cheapest to spendiest</a>
@@ -393,46 +442,52 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
 <p><em>Prices in this guide come from 868 beans across 64 Malaysian roasters in The Beans Hub catalogue, checked mid-2026. Every price is normalised to 200g, so the comparisons are fair even when roasters sell different bag sizes.</em></p>
 
 <hr class="section-rule"/>
-<h2 id="the-honest-number">The honest number: RM57</h2>
-<p>The typical specialty bean in Malaysia costs <strong>RM57 per 200g</strong>. Half the catalogue costs less than that, half costs more.</p>
-<p>Notice we said <em>typical</em>, not <em>average</em>. The mathematical average is RM80, but that's a lie. A small club of RM400-and-up trophy beans drags the average upward, the same way one billionaire walking into a kopitiam makes the "average customer" a millionaire. Nobody typically pays RM80 (or at least that's what I see from my observations, maybe it's skewed). The middle of the market is RM57, and that's the number to anchor on.</p>
+<h2 id="the-honest-number">The typical price of a 200g bag is RM57</h2>
+<p>The typical specialty bean in Malaysia costs <strong>RM57 per 200g</strong>. To be honest, I alawys buy at around RM30 per 200g (sometimes less than that). Because HALF of the catalogue costs less than that, and half costs more.</p>
+<p>Notice we said <em>typical</em>, not <em>average</em>. The mathematical average is RM80, but that's a lie. Coffee beans prices can vary A LOT. If you are new to specialty coffee beans, you may not know that there's a small group of coffee beans that are extremely premium, pricing at RM400 and above for a 200g bag. They are the ones driving the average upwards. Well, in Malaysia, we are still kinda blessed with this coffee pricing. In China (Shanghai), Singapore, Australia, Korea, or Japan, the prices are double of what I normally buy. 
+  So, the middle of the Malaysia coffee beans prices market is RM57, and that's the number to anchor on.</p>
 <p>Now make it real. A 200g bag brews roughly 11 to 13 cups, depending on whether you use 15g for a pour-over or 18g for an espresso shot. That puts the typical specialty bean at <strong>about RM4–5 per cup, brewed at home</strong>.</p>
 <div class="callout">
 <p class="callout-title">💡 The comparison that matters</p>
-<p>A specialty latte at a café in Malaysia runs RM13–17. Brewing the same grade of coffee at home costs RM4–5 a cup. One café coffee a day is roughly three bags (200g x 3) of beans a month.</p>
+<p>A specialty latte at a café in Malaysia runs RM13–17. Brewing the same grade of coffee at home costs RM4–5 a cup. So 3 months of brewing at home, is equivalent to 1 month of drinking from a cafe. In another words, it's 3 times cheaper la.</p>
 </div>
 
 <hr class="section-rule"/>
 <h2 id="four-shelves">The four price shelves</h2>
-<p>When we grouped every bean by price, the catalogue didn't spread out evenly — it settled into four distinct shelves. Once you can see them, every price tag makes sense.</p>
+<p>When we grouped every bean by price, the catalogue didn't spread out evenly. Statistically, we can group them into 4 distinct tiers.</p>
 
 <div class="tier-card">
 <div class="tier-card-head"><h3>☕ Daily fuel</h3><span class="tier-price">RM16–36 · ~RM2–3 a cup</span></div>
 <div class="tier-meta">About 1 in 5 beans on the market</div>
-<p>Blends and darker roasts built for one job: a solid, chocolatey cup every single morning, usually with milk. This is the shelf most cafés without their own roastery buy from. Nothing here is trying to taste like strawberries — and that's the point.</p>
+<p>That's already enough options for you here to be honest. I used to think that it's very hard to find coffee beans at this price but look what we have now! (hehe) The cheat code is blends and darker roasts. They are generally cheaper, most cafes without their own roastery uses this type of coffee beans. Please don't expect strawberry notes here okay. 
+  It's mostly chocolatey, nutty, and caramel notes.
+</p>
 </div>
 
 <div class="tier-card">
 <div class="tier-card-head"><h3>🎯 The sweet spot</h3><span class="tier-price">RM37–62 · ~RM4–5 a cup</span></div>
 <div class="tier-meta">About a third of the market — where the typical RM57 bean lives</div>
-<p>Entry single origins and better blends. A Brazil with honey and peanut-butter notes, an Indonesian with spice and body, an easy-drinking Ethiopian. If you're upgrading from instant or supermarket beans, this shelf is where the difference becomes obvious.</p>
+<p>Here, we have entry level single origins and better blends. Latte can start tasting a little different (not necessarily you will like it ya, my housemate don't like it here).
+  A Brazil with honey and peanut-butter notes, an Indonesian with spice and body, an easy-drinking Ethiopian. If you're upgrading from instant or supermarket beans, this shelf is probably <wbr></wbr>here the difference becomes obvious.</p>
 </div>
 
 <div class="tier-card">
 <div class="tier-card-head"><h3>🌸 Weekend brews</h3><span class="tier-price">RM64–145 · ~RM6–12 a cup</span></div>
 <div class="tier-meta">Another third of the market</div>
-<p>Light roasts, filter beans, the fruity and floral single origins that taste nothing like "coffee-flavoured coffee". Washed Kenyans, juicy Colombians, jasmine-scented Ethiopians. Priced for slower mornings when you actually taste what's in the cup.</p>
+<p>Light roasts, filter beans, the fruity and floral single origins that taste nothing like "coffee-flavoured coffee". Washed Kenyans, juicy Colombians, jasmine-scented Ethiopians. If you are here, you are already in the rabbit hole!</p>
 </div>
 
 <div class="tier-card">
-<div class="tier-card-head"><h3>🏆 The bucket list</h3><span class="tier-price">RM148–1,000 · RM12+ a cup</span></div>
+<div class="tier-card-head"><h3>🏆 The tai-tai list</h3><span class="tier-price">RM148–1,000 · RM12+ a cup</span></div>
 <div class="tier-meta">Fewer than 1 in 10 beans</div>
-<p>Geishas, Panama lots, experimental processing, competition coffees. A RM235 bag sounds absurd until you do the maths: that's about RM20 a cup — less than a hotel-lounge pour-over, for a coffee that might genuinely be a once-a-year experience. Absurd and worth it can coexist.</p>
+<p>Geishas, Panama lots, experimental processing, competition coffees. If you want to make yourself feel better about spending it here, let me do a calculation for you. Say a 200g coffee beans here costs RM235, that's RM20 per cup. Still not too bad rightttt. Almost the same as paying for a cup of latte outside. HAHAHA.
+  But if you are here, you are probably already a coffee nerd. You know what you want, and you are willing to pay for it. Please don't buy for the sake of feeling good, because you WON'T!
+</p>
 </div>
 
 <hr class="section-rule"/>
 <h2 id="what-makes-expensive">What actually makes a bean expensive</h2>
-<p>Four patterns explain most of the price differences in Malaysia. None of them is "the roaster feels like charging more".</p>
+<p>To be fair, there are several factors at play:</p>
 <h3>The Geisha name is worth triple</h3>
 <p>Beans with the Geisha varietal on the bag sell at a typical <strong>RM165 per 200g versus RM52 for everything else</strong>. Just one "Panama" word, the coffee prices multiplies by 3. This is because Geisha (the coffee varietal) earned that reputation. It's a genuinely distinct, tea-like, floral cup, but know that when you pay RM200+, you're mostly paying for the varietal. (I'm not saying the roasters earn nothing)</p>
 <h3>Panama is the Rolex of origins</h3>
@@ -465,144 +520,170 @@ body { font-family: "Outfit", sans-serif; background: var(--cream); color: var(-
 </tbody>
 </table>
 </div>
-<p>Brazil is the reliable workhorse — chocolate, nuts, low acidity, and the lowest floor on the market. Ethiopia gives you the most interesting cup per ringgit, which is why it's the most common origin in Malaysian roasteries by far. (Curious what each origin actually tastes like? Our <a href="/posts/coffee-taste-notes-malaysia">flavour atlas</a> maps the taste notes of all 864 beans.) And that RM620 Brazil? A rare eugenioides-adjacent lot — the exception that proves even "cheap" origins have a ceiling worth breaking.</p>
+<p>Brazil is my housemate's favourite. It's chocolatey, nutty, low acidity, and the lowest floor on the market. 
+  Ethiopia gives you the most interesting cup per ringgit, which is why it's the most common origin in Malaysian roasteries by far. (Curious what each origin actually tastes like? Our <a href="/posts/coffee-taste-notes-malaysia">flavour atlas</a> maps the taste notes of all 864 beans.) 
+  And that RM620 Brazil is a rare eugenioides-adjacent lot LOL.</p>
 
 <hr class="section-rule"/>
 <h2 id="entry-blends">Just want good coffee? Start with these five blends</h2>
 <p>If you're new to specialty, mostly drink your coffee with milk, and aren't chasing subtle flavour notes yet — you don't need to spend RM60 to drink well. Cafés that don't roast their own beans mostly run blends like these through their machines. Five picks from five different roasters, all RM22–25 per 200g, or roughly RM2 a cup:</p>
 
-<div class="bean-pick">
-<div class="bean-pick-info">
-<h4>Coffex Discovery Blend</h4>
-<div class="bean-pick-roaster">Coffex Coffee</div>
-<div class="bean-pick-notes"><span>Nutty</span><span>Toffee</span><span>Butter Cookies</span></div>
-<p class="bean-pick-why">One of Malaysia's longest-running roasters. Medium roast, tastes like a biscuit tin — the definition of a safe first bag.</p>
+<div class="bp-carousel" data-bp-carousel>
+<div class="bp-rail" tabindex="0" role="region" aria-label="Five entry-level coffee blends under RM25">
+<article class="bp-card">
+<div class="bp-card-media"><img alt="Coffex Discovery Blend coffee beans by Coffex Coffee" loading="lazy" src="https://down-my.img.susercontent.com/file/d294797c529826ee1ed63d4d2880af7b.webp" onerror="this.closest('.bp-card-media').style.display='none'"/></div>
+<div class="bp-card-body">
+<div class="bp-card-roaster">Coffex Coffee</div>
+<h4 class="bp-card-name">Coffex Discovery Blend</h4>
+<div class="bp-card-tags"><span>Nutty</span><span>Toffee</span><span>Butter Cookies</span></div>
+<p class="bp-card-why">One of Malaysia's longest-running roasters. Medium roast, tastes like a biscuit tin — the definition of a safe first bag.</p>
 </div>
-<div class="bean-pick-cta">
-<div class="bean-pick-price">RM22<small>per 200g</small></div>
+<div class="bp-card-foot">
+<div class="bp-card-price">RM22<small>per 200g</small></div>
 <a href="https://shopee.com.my/Coffex-Discovery-Blend-100-Arabica-Medium-Roast-Whole-Coffee-Bean-(250g-1kg)-i.63481488.8709180220" target="_blank" rel="noopener" class="bean-buy-btn" onclick="gtag('event','buy_click',{bean_name:'Coffex Discovery Blend',roaster:'Coffex Coffee',source:'/posts/coffee-bean-prices-malaysia'})">Buy Now</a>
 </div>
+</article>
+<article class="bp-card">
+<div class="bp-card-media"><img alt="Norma coffee beans by V Coffee Malaysia" loading="lazy" src="https://down-my.img.susercontent.com/file/my-11134207-7quky-lfz34ygqh8yy39.webp" onerror="this.closest('.bp-card-media').style.display='none'"/></div>
+<div class="bp-card-body">
+<div class="bp-card-roaster">V Coffee Malaysia</div>
+<h4 class="bp-card-name">Norma</h4>
+<div class="bp-card-tags"><span>Dark Chocolate</span><span>Graham Cracker</span><span>Smooth</span></div>
+<p class="bp-card-why">Medium-dark Brazil–Indonesia blend. Bold without turning bitter — built for milk, forgiving of any brewing method.</p>
 </div>
-
-<div class="bean-pick">
-<div class="bean-pick-info">
-<h4>Norma</h4>
-<div class="bean-pick-roaster">V Coffee Malaysia</div>
-<div class="bean-pick-notes"><span>Dark Chocolate</span><span>Graham Cracker</span><span>Smooth</span></div>
-<p class="bean-pick-why">Medium-dark Brazil–Indonesia blend. Bold without turning bitter — built for milk, forgiving of any brewing method.</p>
-</div>
-<div class="bean-pick-cta">
-<div class="bean-pick-price">RM22<small>per 200g</small></div>
+<div class="bp-card-foot">
+<div class="bp-card-price">RM22<small>per 200g</small></div>
 <a href="https://shopee.com.my/V-Coffee-Norma-(Medium-Dark-Roast)-200g-400g-Arabica-Coffee-Bean-i.228481819.18079141019" target="_blank" rel="noopener" class="bean-buy-btn" onclick="gtag('event','buy_click',{bean_name:'Norma',roaster:'V Coffee Malaysia',source:'/posts/coffee-bean-prices-malaysia'})">Buy Now</a>
 </div>
+</article>
+<article class="bp-card">
+<div class="bp-card-media"><img alt="Java Fusion Espresso Blend coffee beans by Craft Origin" loading="lazy" src="https://down-my.img.susercontent.com/file/my-11134207-820l9-mkhqwejcivi853.webp" onerror="this.closest('.bp-card-media').style.display='none'"/></div>
+<div class="bp-card-body">
+<div class="bp-card-roaster">Craft Origin</div>
+<h4 class="bp-card-name">Java Fusion Espresso Blend</h4>
+<div class="bp-card-tags"><span>Milk Chocolate</span><span>Sweet Tobacco</span><span>Pomelo</span></div>
+<p class="bp-card-why">Guatemala–Indonesia blend with a little pomelo brightness on top of the chocolate — more interesting than its price suggests.</p>
 </div>
-
-<div class="bean-pick">
-<div class="bean-pick-info">
-<h4>Java Fusion Espresso Blend</h4>
-<div class="bean-pick-roaster">Craft Origin</div>
-<div class="bean-pick-notes"><span>Milk Chocolate</span><span>Sweet Tobacco</span><span>Pomelo</span></div>
-<p class="bean-pick-why">Guatemala–Indonesia blend with a little pomelo brightness on top of the chocolate — more interesting than its price suggests.</p>
-</div>
-<div class="bean-pick-cta">
-<div class="bean-pick-price">RM22<small>per 200g</small></div>
+<div class="bp-card-foot">
+<div class="bp-card-price">RM22<small>per 200g</small></div>
 <a href="https://shopee.com.my/Craft-Origin-Java-Fusion-Espresso-Blend-1KG-Roasted-Bean--100-Arabica-i.961720340.23275083415" target="_blank" rel="noopener" class="bean-buy-btn" onclick="gtag('event','buy_click',{bean_name:'Java Fusion Espresso Blend',roaster:'Craft Origin',source:'/posts/coffee-bean-prices-malaysia'})">Buy Now</a>
 </div>
+</article>
+<article class="bp-card">
+<div class="bp-card-media"><img alt="Nyok-Nyok Espresso Blend coffee beans by Rumah Panggang" loading="lazy" src="https://www.rumahpanggang.com/wp-content/uploads/2025/01/Packaging-Cards-Instagram-Post-3.png" onerror="this.closest('.bp-card-media').style.display='none'"/></div>
+<div class="bp-card-body">
+<div class="bp-card-roaster">Rumah Panggang</div>
+<h4 class="bp-card-name">Nyok-Nyok Espresso Blend</h4>
+<div class="bp-card-tags"><span>Kelapa</span><span>Gula Melaka</span><span>Karamel</span></div>
+<p class="bp-card-why">Coconut and gula Melaka notes in an espresso blend — the most Malaysian cup on this list. Wonderful with condensed or fresh milk.</p>
 </div>
-
-<div class="bean-pick">
-<div class="bean-pick-info">
-<h4>Nyok-Nyok Espresso Blend</h4>
-<div class="bean-pick-roaster">Rumah Panggang</div>
-<div class="bean-pick-notes"><span>Kelapa</span><span>Gula Melaka</span><span>Karamel</span></div>
-<p class="bean-pick-why">Coconut and gula Melaka notes in an espresso blend — the most Malaysian cup on this list. Wonderful with condensed or fresh milk.</p>
-</div>
-<div class="bean-pick-cta">
-<div class="bean-pick-price">RM23<small>per 200g</small></div>
+<div class="bp-card-foot">
+<div class="bp-card-price">RM23<small>per 200g</small></div>
 <a href="https://www.rumahpanggang.com/product/nyok-nyok-espresso-blend-series-ru-pa/" target="_blank" rel="noopener" class="bean-buy-btn" onclick="gtag('event','buy_click',{bean_name:'Nyok-Nyok Espresso Blend',roaster:'Rumah Panggang',source:'/posts/coffee-bean-prices-malaysia'})">Buy Now</a>
 </div>
+</article>
+<article class="bp-card">
+<div class="bp-card-media"><img alt="Kopi Blend / Essence coffee beans by ASK Coffee Roastery" loading="lazy" src="https://down-my.img.susercontent.com/file/my-11134207-7rash-mb3o2u1zmgbvf5.webp" onerror="this.closest('.bp-card-media').style.display='none'"/></div>
+<div class="bp-card-body">
+<div class="bp-card-roaster">ASK Coffee Roastery</div>
+<h4 class="bp-card-name">Kopi Blend / Essence</h4>
+<div class="bp-card-tags"><span>Dark Chocolate</span><span>Caramel</span><span>Full Body</span></div>
+<p class="bp-card-why">Brazil and Papua New Guinea, medium-dark, heavy body. If you like your coffee kaw, start here.</p>
 </div>
-
-<div class="bean-pick">
-<div class="bean-pick-info">
-<h4>Kopi Blend / Essence</h4>
-<div class="bean-pick-roaster">ASK Coffee Roastery</div>
-<div class="bean-pick-notes"><span>Dark Chocolate</span><span>Caramel</span><span>Full Body</span></div>
-<p class="bean-pick-why">Brazil and Papua New Guinea, medium-dark, heavy body. If you like your coffee kaw, start here.</p>
-</div>
-<div class="bean-pick-cta">
-<div class="bean-pick-price">RM25<small>per 200g</small></div>
+<div class="bp-card-foot">
+<div class="bp-card-price">RM25<small>per 200g</small></div>
 <a href="https://shopee.com.my/ASK-Coffee-Roastery-Biji-Kopi-Blend-Essence-Coffee-Beans-i.73241418.2924272374" target="_blank" rel="noopener" class="bean-buy-btn" onclick="gtag('event','buy_click',{bean_name:'Kopi Blend / Essence',roaster:'ASK Coffee Roastery',source:'/posts/coffee-bean-prices-malaysia'})">Buy Now</a>
+</div>
+</article>
+</div>
+<div class="bp-controls">
+<div class="bp-progress"><span></span></div>
+<div class="bp-arrows">
+<button type="button" class="bp-arrow" data-bp-prev aria-label="Show previous beans"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+<button type="button" class="bp-arrow" data-bp-next aria-label="Show next beans"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+</div>
 </div>
 </div>
 
 <hr class="section-rule"/>
 <h2 id="step-up">Ready to taste one farm? RM8 more gets you these five</h2>
 <p>Here's the interesting part where I was a bit sad knowing it haha. The jump from a blend to a single origin — from "good coffee" to "GOOOOODDD coffee" — costs about 
-  <strong>RM8</strong>. If you drink daily, and get 600g per month, that's RM24 extra per month. These five are all single origins from five more roasters, RM30–34, medium roasts that work for espresso and filter alike, spread across five origins so the list doubles as a taste tour:</p>
+  <strong>RM8</strong>. If you drink daily, and get 600g per month, that's RM24 extra per month. These five are all single origins from five more roasters, RM30–33, mostly medium roasts that work for espresso and filter alike, spread across five origins so the list doubles as a taste tour:</p>
 
-<div class="bean-pick">
-<div class="bean-pick-info">
-<h4>Brazil Cerrado</h4>
-<div class="bean-pick-roaster">Tatih Roastworks</div>
-<div class="bean-pick-notes"><span>Honey</span><span>Caramel</span><span>Peanut Butter</span></div>
-<p class="bean-pick-why">The friendliest possible introduction to single origin — sweet, nutty, zero sharp edges. Tastes like Brazil in one cup.</p>
+<div class="bp-carousel" data-bp-carousel>
+<div class="bp-rail" tabindex="0" role="region" aria-label="Five single-origin coffee beans from RM30">
+<article class="bp-card">
+<div class="bp-card-media"><img alt="Brazil Cerrado coffee beans by Tatih Roastworks" loading="lazy" src="https://cdn.store-assets.com/s/1328774/i/98851928.png" onerror="this.closest('.bp-card-media').style.display='none'"/></div>
+<div class="bp-card-body">
+<div class="bp-card-roaster">Tatih Roastworks</div>
+<h4 class="bp-card-name">Brazil Cerrado</h4>
+<div class="bp-card-tags"><span>Honey</span><span>Caramel</span><span>Peanut Butter</span></div>
+<p class="bp-card-why">The friendliest possible introduction to single origin — sweet, nutty, zero sharp edges. Tastes like Brazil in one cup.</p>
 </div>
-<div class="bean-pick-cta">
-<div class="bean-pick-price">RM30<small>per 200g</small></div>
+<div class="bp-card-foot">
+<div class="bp-card-price">RM30<small>per 200g</small></div>
 <a href="https://tatihroastworks.easy.co/products/brazil-cerrado-pulped-natural" target="_blank" rel="noopener" class="bean-buy-btn" onclick="gtag('event','buy_click',{bean_name:'Brazil Cerrado',roaster:'Tatih Roastworks',source:'/posts/coffee-bean-prices-malaysia'})">Buy Now</a>
 </div>
+</article>
+<article class="bp-card">
+<div class="bp-card-media"><img alt="Kopi Origin / Brazil Santos coffee beans by ASK Coffee Roastery" loading="lazy" src="https://down-my.img.susercontent.com/file/my-11134207-7rask-m1hvrcuqjkfb58.webp" onerror="this.closest('.bp-card-media').style.display='none'"/></div>
+<div class="bp-card-body">
+<div class="bp-card-roaster">ASK Coffee Roastery</div>
+<h4 class="bp-card-name">Kopi Origin / Brazil Santos</h4>
+<div class="bp-card-tags"><span>Nutty</span><span>Sweet Caramel</span></div>
+<p class="bp-card-why">The classic Brazilian profile at the lowest single-origin price on this list. A daily-driver origin bean.</p>
 </div>
-
-<div class="bean-pick">
-<div class="bean-pick-info">
-<h4>Kopi Origin / Brazil Santos</h4>
-<div class="bean-pick-roaster">ASK Coffee Roastery</div>
-<div class="bean-pick-notes"><span>Nutty</span><span>Sweet Caramel</span></div>
-<p class="bean-pick-why">The classic Brazilian profile at the lowest single-origin price on this list. A daily-driver origin bean.</p>
-</div>
-<div class="bean-pick-cta">
-<div class="bean-pick-price">RM30<small>per 200g</small></div>
+<div class="bp-card-foot">
+<div class="bp-card-price">RM30<small>per 200g</small></div>
 <a href="https://shopee.com.my/ASK-Coffee-Roastery-Kopi-Origin-Brazil-Santos-i.73241418.3010929420" target="_blank" rel="noopener" class="bean-buy-btn" onclick="gtag('event','buy_click',{bean_name:'Kopi Origin / Brazil Santos',roaster:'ASK Coffee Roastery',source:'/posts/coffee-bean-prices-malaysia'})">Buy Now</a>
 </div>
+</article>
+<article class="bp-card">
+<div class="bp-card-media"><img alt="Costa Rica Jaguar coffee beans by Sol Coffee Roastery" loading="lazy" src="https://down-my.img.susercontent.com/file/199a19eb8fda890779c01fd00d6776ea.webp" onerror="this.closest('.bp-card-media').style.display='none'"/></div>
+<div class="bp-card-body">
+<div class="bp-card-roaster">Sol Coffee Roastery</div>
+<h4 class="bp-card-name">Costa Rica Jaguar</h4>
+<div class="bp-card-tags"><span>Creamy Milk Chocolate</span><span>Citrus</span><span>Sweet Berry</span></div>
+<p class="bp-card-why">Chocolate base with a citrus lift and a hint of berry — your first taste of the brightness that makes single origins fun.</p>
 </div>
-
-<div class="bean-pick">
-<div class="bean-pick-info">
-<h4>Costa Rica Jaguar</h4>
-<div class="bean-pick-roaster">Sol Coffee Roastery</div>
-<div class="bean-pick-notes"><span>Creamy Milk Chocolate</span><span>Citrus</span><span>Sweet Berry</span></div>
-<p class="bean-pick-why">Chocolate base with a citrus lift and a hint of berry — your first taste of the brightness that makes single origins fun.</p>
-</div>
-<div class="bean-pick-cta">
-<div class="bean-pick-price">RM31<small>per 200g</small></div>
+<div class="bp-card-foot">
+<div class="bp-card-price">RM31<small>per 200g</small></div>
 <a href="https://shopee.com.my/Single-Origin-(-COSTA-RICA-JAGUAR-)-i.233898652.8582004250" target="_blank" rel="noopener" class="bean-buy-btn" onclick="gtag('event','buy_click',{bean_name:'Costa Rica Jaguar',roaster:'Sol Coffee Roastery',source:'/posts/coffee-bean-prices-malaysia'})">Buy Now</a>
 </div>
+</article>
+<article class="bp-card">
+<div class="bp-card-media"><img alt="Indonesia Mandheling G1 coffee beans by Port Coffee Roastery" loading="lazy" src="https://static.wixstatic.com/media/d7adcc_a37a66b7904a47ecabdab08cee8a4e4e~mv2.jpg/v1/fit/w_500,h_500,q_90/file.jpg" onerror="this.closest('.bp-card-media').style.display='none'"/></div>
+<div class="bp-card-body">
+<div class="bp-card-roaster">Port Coffee Roastery</div>
+<h4 class="bp-card-name">Indonesia Mandheling G1</h4>
+<div class="bp-card-tags"><span>Spice</span><span>Tangy</span><span>Rich Body</span></div>
+<p class="bp-card-why">Wet-hulled in Sumatra, which is exactly what gives the cup its weight and warm spice. Port roast it medium-dark for espresso and milk — the closest single origin here to a kopitiam cup, but cleaner.</p>
 </div>
-
-<div class="bean-pick">
-<div class="bean-pick-info">
-<h4>SO Colombia Regional Inza Washed</h4>
-<div class="bean-pick-roaster">Soon Specialty Coffee</div>
-<div class="bean-pick-notes"><span>Orange Blossom</span><span>Spice</span><span>Brown Sugar</span></div>
-<p class="bean-pick-why">A clean washed Colombian with a floral edge — the cup that shows you what "washed process" means in practice.</p>
+<div class="bp-card-foot">
+<div class="bp-card-price">RM32<small>per 200g</small></div>
+<a href="https://www.portcoffeeroastery.com/product-page/indonesia-mandheling-g2" target="_blank" rel="noopener" class="bean-buy-btn" onclick="gtag('event','buy_click',{bean_name:'Indonesia Mandheling G1',roaster:'Port Coffee Roastery',source:'/posts/coffee-bean-prices-malaysia'})">Buy Now</a>
 </div>
-<div class="bean-pick-cta">
-<div class="bean-pick-price">RM33<small>per 200g</small></div>
+</article>
+<article class="bp-card">
+<div class="bp-card-media"><img alt="SO Colombia Regional Inza Washed coffee beans by Soon Specialty Coffee" loading="lazy" src="https://down-my.img.susercontent.com/file/my-11134207-7r992-lv0mee6u2p888e.webp" onerror="this.closest('.bp-card-media').style.display='none'"/></div>
+<div class="bp-card-body">
+<div class="bp-card-roaster">Soon Specialty Coffee</div>
+<h4 class="bp-card-name">SO Colombia Regional Inza Washed</h4>
+<div class="bp-card-tags"><span>Orange Blossom</span><span>Spice</span><span>Brown Sugar</span></div>
+<p class="bp-card-why">A clean washed Colombian with a floral edge — the cup that shows you what "washed process" means in practice.</p>
+</div>
+<div class="bp-card-foot">
+<div class="bp-card-price">RM33<small>per 200g</small></div>
 <a href="https://shopee.com.my/Soon-Specialty-Coffee-Single-Origin-Colombia-Regional-Inza-Washed-i.320818486.24029020119" target="_blank" rel="noopener" class="bean-buy-btn" onclick="gtag('event','buy_click',{bean_name:'SO Colombia Regional Inza Washed',roaster:'Soon Specialty Coffee',source:'/posts/coffee-bean-prices-malaysia'})">Buy Now</a>
 </div>
+</article>
 </div>
-
-<div class="bean-pick">
-<div class="bean-pick-info">
-<h4>Indonesia Sumatra Mandheling TP G1</h4>
-<div class="bean-pick-roaster">BEAM Specialty</div>
-<div class="bean-pick-notes"><span>Chocolate</span><span>Sultana Raisin</span><span>Caramel</span></div>
-<p class="bean-pick-why">Heavy body, dried-fruit sweetness, unmistakably Sumatran. The closest single origin to a kopitiam cup's weight — but cleaner.</p>
+<div class="bp-controls">
+<div class="bp-progress"><span></span></div>
+<div class="bp-arrows">
+<button type="button" class="bp-arrow" data-bp-prev aria-label="Show previous beans"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+<button type="button" class="bp-arrow" data-bp-next aria-label="Show next beans"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
 </div>
-<div class="bean-pick-cta">
-<div class="bean-pick-price">RM34<small>per 200g</small></div>
-<a href="https://beamspecialty.com/product/indonesia-sumatra-mandheling-tp-g1-semi-washed/" target="_blank" rel="noopener" class="bean-buy-btn" onclick="gtag('event','buy_click',{bean_name:'Indonesia Sumatra Mandheling TP G1 Semi-Washed',roaster:'BEAM Specialty',source:'/posts/coffee-bean-prices-malaysia'})">Buy Now</a>
 </div>
 </div>
 
@@ -773,6 +854,40 @@ function toggleMenu() {
 // TOC — highlight active section on scroll
 (function () {
   const tocLinks = document.querySelectorAll('#tocDesktop .toc-link[href^="#"]');
+  /* Bean-pick carousels: arrows step one card-width, the bar tracks scroll. */
+  document.querySelectorAll('[data-bp-carousel]').forEach(function (wrap) {
+    var rail = wrap.querySelector('.bp-rail');
+    var prev = wrap.querySelector('[data-bp-prev]');
+    var next = wrap.querySelector('[data-bp-next]');
+    var bar = wrap.querySelector('.bp-progress span');
+    if (!rail) return;
+
+    function step() {
+      var card = rail.querySelector('.bp-card');
+      if (!card) return rail.clientWidth;
+      var gap = parseFloat(getComputedStyle(rail).columnGap) || 0;
+      return card.getBoundingClientRect().width + gap;
+    }
+
+    function sync() {
+      var max = rail.scrollWidth - rail.clientWidth;
+      if (bar) {
+        var frac = rail.clientWidth / rail.scrollWidth;
+        bar.style.width = Math.min(100, Math.max(12, frac * 100)) + '%';
+        var travel = rail.clientWidth - bar.offsetWidth;
+        bar.style.transform = 'translateX(' + (max > 1 ? (rail.scrollLeft / max) * travel : 0) + 'px)';
+      }
+      if (prev) prev.disabled = rail.scrollLeft <= 1;
+      if (next) next.disabled = rail.scrollLeft >= max - 1;
+    }
+
+    if (prev) prev.addEventListener('click', function () { rail.scrollBy({ left: -step(), behavior: 'smooth' }); });
+    if (next) next.addEventListener('click', function () { rail.scrollBy({ left: step(), behavior: 'smooth' }); });
+    rail.addEventListener('scroll', sync, { passive: true });
+    window.addEventListener('resize', sync);
+    sync();
+  });
+
   const headings = Array.from(document.querySelectorAll('.post-body h2[id]'));
   if (!tocLinks.length || !headings.length) return;
   function setActive(id) {
