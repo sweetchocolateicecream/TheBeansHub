@@ -87,3 +87,212 @@
     <p class="tbh-footer-copy">© 2026 The Beans Hub. All rights reserved.</p>
   </div>
 </footer>
+
+<!-- ============================================================
+     QUIZ PROMPT SLIDE-IN
+     Small bottom card inviting visitors to the taste quiz.
+     Self-contained (own CSS + JS), no libraries, no page edits needed.
+     Sits below the nav (z-index 90 vs nav 100 / announce bar 101) and
+     never covers the page — no overlay, no dimming.
+     ============================================================ -->
+<style>
+  .tbh-qp {
+    position: fixed; z-index: 90; right: 24px; bottom: 24px;
+    width: 360px; max-width: calc(100vw - 48px);
+    box-sizing: border-box; padding: 20px 22px 22px;
+    background: var(--cream, #FDF6EC); color: var(--green, #296241);
+    border: 1px solid var(--border, #E8E0D0); border-radius: 16px;
+    box-shadow: 0 18px 44px rgba(41, 98, 65, 0.18);
+    font-family: "Outfit", -apple-system, BlinkMacSystemFont, sans-serif;
+    opacity: 0; transform: translateY(calc(100% + 32px));
+    transition: opacity 0.35s ease, transform 0.45s cubic-bezier(0.22, 0.8, 0.3, 1);
+    pointer-events: none;
+  }
+  .tbh-qp.is-in { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  .tbh-qp *, .tbh-qp *::before, .tbh-qp *::after { box-sizing: border-box; }
+  .tbh-qp-title {
+    font-family: var(--font-display, "Outfit", -apple-system, BlinkMacSystemFont, sans-serif);
+    font-weight: 700; letter-spacing: -0.015em; line-height: 1.2;
+    font-size: 1.06rem; color: var(--green, #296241);
+    margin: 0 28px 7px 0;
+  }
+  .tbh-qp-body {
+    font-size: 0.86rem; line-height: 1.6; margin: 0 0 16px;
+    color: var(--text-muted, #5a6e5a);
+  }
+  .tbh-qp-cta {
+    display: inline-block; padding: 11px 22px;
+    background: var(--accent, #FDA11D); color: #fff;
+    font-family: inherit; font-size: 0.88rem; font-weight: 700;
+    border: none; border-radius: 10px; text-decoration: none;
+    transition: background 0.2s ease;
+  }
+  .tbh-qp-cta:hover, .tbh-qp-cta:focus-visible { background: var(--accent-hover, #DA8A10); color: #fff; }
+  .tbh-qp-close {
+    position: absolute; top: 10px; right: 10px;
+    width: 30px; height: 30px; padding: 0;
+    display: flex; align-items: center; justify-content: center;
+    background: transparent; border: none; border-radius: 8px;
+    font-family: inherit; font-size: 1.2rem; line-height: 1;
+    color: var(--text-muted, #5a6e5a); cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .tbh-qp-close:hover { background: rgba(41, 98, 65, 0.08); color: var(--green, #296241); }
+  .tbh-qp-cta:focus-visible, .tbh-qp-close:focus-visible {
+    outline: 2px solid var(--green, #296241); outline-offset: 2px;
+  }
+  @media (max-width: 600px) {
+    .tbh-qp { left: 16px; right: 16px; bottom: 16px; width: auto; max-width: none; padding: 18px 18px 20px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .tbh-qp, .tbh-qp.is-in { transform: none; transition: opacity 0.2s linear; }
+  }
+</style>
+
+<script>
+(function () {
+  'use strict';
+
+  var KEY         = 'tbh_quiz_prompt';   // shared with /find-your-beans
+  var NEVER       = 'never';
+  var SNOOZE      = 'snooze:';
+  var SNOOZE_MS   = 7 * 24 * 60 * 60 * 1000;  // dismissed -> hide for 7 days
+  var DELAY_MS    = 25000;                    // show after 25s...
+  var SCROLL_FRAC = 0.5;                      // ...or at 50% scrolled
+  var EXCLUDE     = ['/find-your-beans', '/tasting-flight'];
+
+  // Normalise the path: lower-case, no trailing slash, no trailing index.html.
+  function currentPath() {
+    var p = (window.location.pathname || '/').toLowerCase();
+    p = p.replace(/\/index\.html?$/, '');
+    if (p.length > 1 && p.charAt(p.length - 1) === '/') { p = p.slice(0, -1); }
+    return p || '/';
+  }
+
+  function isExcluded() {
+    var p = currentPath();
+    for (var i = 0; i < EXCLUDE.length; i++) {
+      if (p === EXCLUDE[i]) { return true; }
+    }
+    return false;
+  }
+
+  // localStorage can throw (private mode, blocked cookies, full quota).
+  // Every access is guarded; on failure we fall back to "no record", which
+  // means the card shows but the dismissal only lasts for this page view.
+  function readFlag() {
+    try { return window.localStorage.getItem(KEY); } catch (e) { return null; }
+  }
+  function writeFlag(value) {
+    try { window.localStorage.setItem(KEY, value); } catch (e) { /* no-op */ }
+  }
+
+  function suppressed() {
+    var v = readFlag();
+    if (!v) { return false; }
+    if (v === NEVER) { return true; }
+    if (v.indexOf(SNOOZE) === 0) {
+      var t = parseInt(v.slice(SNOOZE.length), 10);
+      if (!isNaN(t) && (Date.now() - t) < SNOOZE_MS) { return true; }
+    }
+    return false;
+  }
+
+  function track(name) {
+    if (typeof gtag === 'function') {
+      try { gtag('event', name, { page_path: window.location.pathname }); } catch (e) { /* no-op */ }
+    }
+  }
+
+  if (isExcluded() || suppressed()) { return; }
+
+  var card = null, timer = null, shown = false, closing = false;
+
+  function scrolledFraction() {
+    var doc = document.documentElement;
+    var full = Math.max(doc.scrollHeight, document.body ? document.body.scrollHeight : 0);
+    var max = full - window.innerHeight;
+    if (max <= 0) { return 0; }
+    return (window.pageYOffset || doc.scrollTop || 0) / max;
+  }
+
+  function teardownTriggers() {
+    if (timer) { clearTimeout(timer); timer = null; }
+    window.removeEventListener('scroll', onScroll);
+  }
+
+  function onScroll() {
+    if (scrolledFraction() >= SCROLL_FRAC) { show(); }
+  }
+
+  function hide(reason) {
+    if (!card || closing) { return; }
+    closing = true;
+    if (reason === 'dismiss') {
+      writeFlag(SNOOZE + Date.now());
+      track('quiz_prompt_dismiss');
+    }
+    card.classList.remove('is-in');
+    document.removeEventListener('keydown', onKeydown);
+    window.setTimeout(function () {
+      if (card && card.parentNode) { card.parentNode.removeChild(card); }
+      card = null;
+    }, 500);
+  }
+
+  function onKeydown(e) {
+    if (e.key === 'Escape' || e.key === 'Esc' || e.keyCode === 27) { hide('dismiss'); }
+  }
+
+  function show() {
+    if (shown) { return; }
+    shown = true;
+    teardownTriggers();
+    if (suppressed()) { return; }   // another tab may have set the flag meanwhile
+
+    card = document.createElement('aside');
+    card.className = 'tbh-qp';
+    card.id = 'tbhQuizPrompt';
+    card.setAttribute('role', 'dialog');
+    card.setAttribute('aria-live', 'polite');
+    card.setAttribute('aria-labelledby', 'tbhQuizPromptTitle');
+    card.innerHTML =
+        '<button type="button" class="tbh-qp-close" aria-label="Close">&times;</button>'
+      + '<p class="tbh-qp-title" id="tbhQuizPromptTitle">Not sure where to start?</p>'
+      + '<p class="tbh-qp-body">Take our 60-second taste quiz and we&rsquo;ll email you 5 '
+      + 'Malaysian-roasted beans matched to how you drink coffee.</p>'
+      + '<a class="tbh-qp-cta" href="/find-your-beans">Find my beans &rarr;</a>';
+
+    document.body.appendChild(card);
+
+    card.querySelector('.tbh-qp-close').addEventListener('click', function () { hide('dismiss'); });
+    card.querySelector('.tbh-qp-cta').addEventListener('click', function () {
+      writeFlag(NEVER);               // clicked through -> never show again
+      track('quiz_prompt_click');
+    });
+    document.addEventListener('keydown', onKeydown);
+
+    // Next frame so the browser has a start state to animate from.
+    window.requestAnimationFrame(function () {
+      window.requestAnimationFrame(function () {
+        if (card) { card.classList.add('is-in'); }
+      });
+    });
+
+    track('quiz_prompt_view');
+  }
+
+  function arm() {
+    if (!document.body) { return; }
+    timer = window.setTimeout(show, DELAY_MS);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();   // already past halfway on load (short page, restored scroll)
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', arm);
+  } else {
+    arm();
+  }
+})();
+</script>

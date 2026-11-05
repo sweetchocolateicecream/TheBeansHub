@@ -147,6 +147,8 @@
     .gate-form input { flex: 1; min-width: 200px; padding: 14px 16px; border: 1.5px solid var(--border); border-radius: 10px; font-family: "Outfit", sans-serif; font-size: 0.95rem; color: var(--green); }
     .gate-form input:focus { outline: none; border-color: var(--accent); }
     .gate-fine { font-size: 0.76rem; color: var(--text-muted); margin-top: 14px; }
+    .gate-consent { flex: 0 0 100%; display: flex; align-items: flex-start; gap: 9px; text-align: left; font-size: 0.8rem; line-height: 1.5; color: var(--text-muted); cursor: pointer; margin: -2px 0 2px; }
+    .gate-form input[type="checkbox"].gate-consent-box { flex: 0 0 auto; width: 16px; height: 16px; min-width: 0; margin: 2px 0 0; padding: 0; border: 1.5px solid var(--border); border-radius: 4px; accent-color: var(--accent); cursor: pointer; }
 
     /* RESULTS */
     .results-head { text-align: center; margin-bottom: 8px; }
@@ -437,6 +439,10 @@
           <form class="gate-form" id="gateForm" onsubmit="return submitGate(event)">
             <input type="text" id="gateName" placeholder="How can we address you?" required autocomplete="given-name" aria-label="Your name" />
             <input type="email" id="gateEmail" placeholder="your@email.com" required autocomplete="email" />
+            <label class="gate-consent" for="gateConsent">
+              <input type="checkbox" id="gateConsent" class="gate-consent-box" />
+              <span>Also send me new Malaysian beans that match my taste. Unsubscribe anytime.</span>
+            </label>
             <button type="submit" class="btn-primary" id="gateBtn">Show my beans →</button>
           </form>
           <p class="gate-fine">Or catch us on <a href="https://www.instagram.com/thebeanshub/" target="_blank" rel="noopener" style="color:var(--accent);font-weight:600;text-decoration:none;">Instagram</a>. We post good stuff.</p>
@@ -815,6 +821,8 @@
       var email = document.getElementById('gateEmail').value.trim();
       if (!name) { document.getElementById('gateName').style.borderColor = '#e85d4a'; return false; }
       if (email.indexOf('@') === -1) return false;
+      var consentBox = document.getElementById('gateConsent');
+      var consent = (consentBox && consentBox.checked) ? 'yes' : 'no';
       var btn = document.getElementById('gateBtn');
       btn.textContent = 'Matching…'; btn.disabled = true;
       gtag('event', 'quiz_complete');
@@ -822,7 +830,8 @@
       var payload = {
         name: name, email: email, source: 'find-your-beans-quiz',
         milk: answers.milk, brew: answers.brew, flavours: answers.flavours.join(', '),
-        roast: answers.roast, budget: answers.budget
+        roast: answers.roast, budget: answers.budget,
+        marketing_consent: consent
       };
       fetch(FORMSPREE, {
         method: 'POST',
@@ -859,6 +868,9 @@
     }
 
     function reveal() {
+      // Quiz is done — the sitewide slide-in prompt (see /partials/footer.html)
+      // reads this key and never shows again.
+      try { window.localStorage.setItem('tbh_quiz_prompt', 'never'); } catch (e) { /* storage blocked */ }
       document.getElementById('verdict').innerHTML = buildVerdict();
       if (answers.name) {
         document.getElementById('resultsTitle').textContent = 'Your beans are on the way, ' + answers.name + ' ✦';
@@ -878,7 +890,7 @@
       fetch(FORMSPREE, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({ name: name, email: email, source: 'find-your-beans-newsletter' })
+        body: JSON.stringify({ name: name, email: email, source: 'find-your-beans-newsletter', marketing_consent: 'yes' })
       }).then(function (res) {
         gtag('event', 'email_submit', { source: 'newsletter', success: res.ok });
         if (res.ok) {
