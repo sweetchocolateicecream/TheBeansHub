@@ -42,6 +42,10 @@ routine/
 analysis/
 Scripts/
 outputs/
+# Agent/session scratch output. "Claude outputs/" held a finished quiz-email
+# deliverable (lead-facing marketing HTML) — internal, never a public page.
+Claude outputs/
+claude-outputs/
 pipeline/
 .tmp-*/
 *.pdf
