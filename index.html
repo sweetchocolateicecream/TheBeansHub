@@ -153,7 +153,8 @@
     .roast-grid { grid-template-columns: repeat(5, 1fr); gap: 16px; }
     .roast-card { background: rgba(253,246,236,0.96); border-radius: 16px; padding: 30px 18px 24px; text-align: center; text-decoration: none; display: flex; flex-direction: column; align-items: center; transition: transform 0.22s, box-shadow 0.22s; }
     .roast-card:hover { transform: translateY(-5px); box-shadow: 0 20px 44px rgba(0,0,0,0.28); }
-    .roast-card svg { width: 54px; height: 54px; margin-bottom: 20px; }
+    .roast-card-img { display: block; width: 80px; height: 72px; object-fit: contain; margin-bottom: 20px; filter: drop-shadow(0 6px 8px rgba(46,26,15,0.22)); transition: transform 0.22s; }
+    .roast-card:hover .roast-card-img { transform: rotate(-6deg) scale(1.06); }
     .roast-card-name { font-family: var(--font-display, "Outfit", sans-serif); font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; font-size: 0.95rem; color: var(--green); margin-bottom: 12px; }
     .roast-card-desc { font-size: 0.86rem; line-height: 1.6; color: var(--text-muted); margin-bottom: 18px; flex: 1; }
     .roast-card-count { display: block; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(90,110,90,0.75); margin-bottom: 14px; }
@@ -530,35 +531,35 @@
 
       <div class="finder-panel roast-grid active reveal" id="panel-roast" role="tabpanel" aria-labelledby="tab-roast">
         <a class="roast-card" href="/shop?roast=Light">
-          <svg viewBox="0 0 48 48" aria-hidden="true"><ellipse cx="24" cy="24" rx="14" ry="20" fill="#D9B84C"/><path d="M24 5c-2 6-3 12-3 19s1 13 3 19" stroke="#FDF6EC" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>
+          <img class="roast-card-img" src="/img/roast-levels/roast-light.webp" alt="Light roast coffee bean" width="178" height="200" loading="lazy" decoding="async">
           <span class="roast-card-name">Light</span>
           <span class="roast-card-desc">Bright, tea-like and delicate. The clearest window into floral and fruit flavours.</span>
           <span class="roast-card-count">109 beans</span>
           <span class="roast-card-link">Get started ›</span>
         </a>
         <a class="roast-card" href="/shop?roast=Medium%20Light">
-          <svg viewBox="0 0 48 48" aria-hidden="true"><ellipse cx="24" cy="24" rx="14" ry="20" fill="#B8892F"/><path d="M24 5c-2 6-3 12-3 19s1 13 3 19" stroke="#FDF6EC" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>
+          <img class="roast-card-img" src="/img/roast-levels/roast-medium-light.webp" alt="Medium Light roast coffee bean" width="174" height="200" loading="lazy" decoding="async">
           <span class="roast-card-name">Medium Light</span>
           <span class="roast-card-desc">Keeps the fruit but adds body and sweetness. A great place to start if light roasts feel thin.</span>
           <span class="roast-card-count">77 beans</span>
           <span class="roast-card-link">Get started ›</span>
         </a>
         <a class="roast-card" href="/shop?roast=Medium">
-          <svg viewBox="0 0 48 48" aria-hidden="true"><ellipse cx="24" cy="24" rx="14" ry="20" fill="#8A5A2B"/><path d="M24 5c-2 6-3 12-3 19s1 13 3 19" stroke="#FDF6EC" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>
+          <img class="roast-card-img" src="/img/roast-levels/roast-medium.webp" alt="Medium roast coffee bean" width="171" height="200" loading="lazy" decoding="async">
           <span class="roast-card-name">Medium</span>
           <span class="roast-card-desc">Not too light, not too dark — smooth and cosy, with chocolate, caramel and nut notes.</span>
           <span class="roast-card-count">198 beans</span>
           <span class="roast-card-link">Get started ›</span>
         </a>
         <a class="roast-card" href="/shop?roast=Medium-Dark">
-          <svg viewBox="0 0 48 48" aria-hidden="true"><ellipse cx="24" cy="24" rx="14" ry="20" fill="#5C3317"/><path d="M24 5c-2 6-3 12-3 19s1 13 3 19" stroke="#FDF6EC" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>
+          <img class="roast-card-img" src="/img/roast-levels/roast-medium-dark.webp" alt="Medium-Dark roast coffee bean" width="200" height="179" loading="lazy" decoding="async">
           <span class="roast-card-name">Medium-Dark</span>
           <span class="roast-card-desc">Rich and rounded with a syrupy body — the sweet spot for milk-based espresso drinks.</span>
           <span class="roast-card-count">70 beans</span>
           <span class="roast-card-link">Get started ›</span>
         </a>
         <a class="roast-card" href="/shop?roast=Dark">
-          <svg viewBox="0 0 48 48" aria-hidden="true"><ellipse cx="24" cy="24" rx="14" ry="20" fill="#2E1A0F"/><path d="M24 5c-2 6-3 12-3 19s1 13 3 19" stroke="#FDF6EC" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>
+          <img class="roast-card-img" src="/img/roast-levels/roast-dark.webp" alt="Dark roast coffee bean" width="200" height="157" loading="lazy" decoding="async">
           <span class="roast-card-name">Dark</span>
           <span class="roast-card-desc">Big on flavour but never bitter. Bold, smoky roasts for starting the day strong.</span>
           <span class="roast-card-count">31 beans</span>
@@ -697,7 +698,7 @@
       <div class="library-grid" data-anim="stagger" data-anim-stagger="0.12">
         <a class="library-card" href="/posts/asia-coffee-origins-yunnan-thailand">
           <div class="library-card-media" data-parallax="26" data-parallax-scale="1.12">
-            <img alt="Yunnan and Thailand specialty coffee beans" loading="lazy" src="/img/asia-coffee-origins-yunnan-thailand.webp" />
+            <img alt="Yunnan and Thailand specialty coffee beans" loading="lazy" src="/img/asia-coffee-origins-yunnan-thailand.jpg" />
           </div>
           <div class="library-card-body">
             <span class="library-card-tag">Origins</span>

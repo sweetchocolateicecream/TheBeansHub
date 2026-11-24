@@ -51,3 +51,12 @@ pipeline/
 *.pdf
 .codex_work/
 *-design-analysis.md
+
+# Original iPhone photos (24 Nov 2026). These carry EXIF GPS — the exact
+# location the shot was taken — and this repo is PUBLIC and the live webroot,
+# so committing one publishes that location. Only the stripped, resized
+# web derivatives (img/roast-levels/*, *-2.webp, *-2.jpg, …) go in git.
+img/CoffeeBeans_RoastingLevel.jpeg
+img/buy-coffee-beans-online-malaysia.jpeg
+img/how-to-read-flavour-notes.JPG
+img/Girl-bought-coffee-from-the-beans-hub.jpeg
