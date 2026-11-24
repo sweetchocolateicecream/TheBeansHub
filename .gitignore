@@ -60,3 +60,11 @@ img/CoffeeBeans_RoastingLevel.jpeg
 img/buy-coffee-beans-online-malaysia.jpeg
 img/how-to-read-flavour-notes.JPG
 img/Girl-bought-coffee-from-the-beans-hub.jpeg
+
+# Camera originals behind the iced-latte page (untracked 24 Nov 2026). These
+# are the full-size iPhone source shots + a 17MB .MOV that the hero crops were
+# made from — no page references them, so they were 31MB of dead weight in a
+# public webroot, and they shipped with EXIF/QuickTime GPS. Only the derived
+# img/iced-latte/iced-latte-hero-*.jpg are real site assets. Pattern, not exact
+# names, so the next camera original can't slip through either.
+img/iced-latte/TheBeansHub-*
